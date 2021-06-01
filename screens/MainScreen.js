@@ -1,13 +1,19 @@
 import { StyleSheet, Text, View, Button } from "react-native";
-
 import React from "react";
+import Category from "../data/category";
+import Items from "../data/dummy-data";
+import WeeklyChart from "../components/WeeklyChart";
 const MainScreen = (props) => {
   return (
     <View>
-      <Text>Main</Text>
+      <View style={styles.WeeklyChart}>
+        <WeeklyChart press={() => props.navigation.navigate("Date")} />
+      </View>
+
       <Button
-        title="details"
-        onPress={() => props.navigation.navigate("Details")}
+        color="red"
+        title="Raport"
+        onPress={() => props.navigation.navigate("Raport")}
       />
     </View>
   );
@@ -15,4 +21,9 @@ const MainScreen = (props) => {
 
 export default MainScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  WeeklyChart: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
