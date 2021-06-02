@@ -33,7 +33,7 @@ const Category = {
     fuel: "paliwo",
     tolls: "opłaty autostradowe",
     repairs: "naprawy",
-    maintenance: "utrzymanie",
+    maintenance: "utrzymanie samochodów",
     parts: "części samochodowe",
   },
   housingExpense: {

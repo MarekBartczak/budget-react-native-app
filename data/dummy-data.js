@@ -216,11 +216,27 @@ const Items = [
   ),
   new Item(
     "i27",
-    dateForm("2021-06-01"),
+    dateForm("2021-06-02"),
     "Lidl",
     Category.foodExpense.bread,
     "Rogal maślany",
     1.99
+  ),
+  new Item(
+    "i28",
+    dateForm("2021-06-02"),
+    "Lidl",
+    Category.foodExpense.bread,
+    "Rogal maślany",
+    1.99
+  ),
+  new Item(
+    "i29",
+    dateForm("2021-06-02"),
+    "Lidl",
+    Category.foodExpense.bread,
+    "chleb razowy",
+    11.99
   ),
 ];
 

@@ -5,32 +5,65 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Items from "../data/dummy-data";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/simplyItems";
+import Colors from "../constants/Colors";
 
 const DateScreen = (props) => {
+  const dateList = Items.map((el) => {
+    return el.date;
+  });
+  const newlist = (dateList) =>
+    dateList.filter((a, b) => dateList.indexOf(a) === b);
+  const workingDateList = newlist(dateList);
+
+  const [currentDate, setCurrentDate] = useState(
+    workingDateList[workingDateList.length - 1]
+  );
+
+  const filteredItem = Items.filter((el) => el.date === currentDate);
+
+  const switchDate = (param) => {
+    const currentIndex = workingDateList.indexOf(currentDate);
+
+    if (
+      currentIndex + param < [workingDateList.length] &&
+      currentIndex + param >= 0
+    ) {
+      setCurrentDate(workingDateList[currentIndex + param]);
+    }
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.top}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => switchDate(-1)}>
           <Ionicons name="ios-arrow-back" size={43} color="black" />
         </TouchableOpacity>
-        <Text>2021-05-31</Text>
-        <TouchableOpacity onPress={() => {}}>
+        <Text style={styles.showDate}>{currentDate}</Text>
+        <TouchableOpacity onPress={() => switchDate(1)}>
           <Ionicons name="ios-arrow-forward" size={43} color="black" />
         </TouchableOpacity>
       </View>
       <View style={styles.items}>
         <FlatList
-          data={Items}
+          contentContainerStyle={{ paddingBottom: 150 }}
+          data={filteredItem}
           renderItem={(itemData) => (
             <SimplyItems
-              //   place={itemData.item.place}
-              //   category={itemData.item.category}
               name={itemData.item.name}
               cost={itemData.item.cost}
+              press={() =>
+                props.navigation.navigate("Details", {
+                  date: itemData.item.date,
+                  place: itemData.item.place,
+                  category: itemData.item.category,
+                  cost: itemData.item.cost,
+                  name: itemData.item.name,
+                })
+              }
             />
           )}
           keyExtractor={(item) => item.id}
@@ -47,6 +80,11 @@ const styles = StyleSheet.create({
     // flex: 1,
     width: "100%",
     alignItems: "center",
+  },
+  showDate: {
+    color: Colors.primary,
+    fontWeight: "bold",
+    fontSize: 26,
   },
   top: {
     marginTop: 10,

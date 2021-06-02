@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import Items from "../data/dummy-data";
+import Colors from "../constants/Colors";
 
 const WeeklyChart = (props) => {
   const lastDate = (days) => {
@@ -25,7 +26,7 @@ const WeeklyChart = (props) => {
       <View style={styles.column}>
         <Text style={styles.date}>{lastDate(day).slice(5, 10)}</Text>
         <View>
-          <Text style={{ fontSize: 10 }}>
+          <Text style={{ fontSize: 10, color: Colors.accent }}>
             {sumOfCostsInCurrentDay.cost.toFixed(2)}zł
           </Text>
         </View>
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
   date: {
     transform: [{ rotate: "90deg" }],
     // flex: 1,
-    color: "#BB2343",
+    color: Colors.primary,
     fontWeight: "bold",
     marginTop: 30,
   },

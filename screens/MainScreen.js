@@ -3,6 +3,7 @@ import React from "react";
 import Category from "../data/category";
 import Items from "../data/dummy-data";
 import WeeklyChart from "../components/WeeklyChart";
+import Colors from "../constants/Colors";
 const MainScreen = (props) => {
   return (
     <View>
@@ -11,7 +12,7 @@ const MainScreen = (props) => {
       </View>
 
       <Button
-        color="red"
+        color={Colors.primary}
         title="Raport"
         onPress={() => props.navigation.navigate("Raport")}
       />

@@ -1,28 +1,30 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
+import Colors from "../constants/Colors";
 
 const details = (props) => {
   return (
-    <View style={styles.details}>
-      <View style={styles.info}>
-        <Text>{props.name}</Text>
-        <Text>{props.cost}zł</Text>
+    <TouchableOpacity onPress={props.press}>
+      <View style={styles.details}>
+        <View style={styles.info}>
+          <Text>{props.name}</Text>
+          <Text style={styles.cost}>{props.cost}zł</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   details: {
     margin: 10,
-
     padding: 20,
     shadowColor: "black",
     shadowOffset: { height: 5, width: 0 },
     shadowOpacity: 0.25,
     shadowRadius: 10,
     borderRadius: 10,
-    backgroundColor: "white",
+    backgroundColor: Colors.banner,
   },
 
   info: {
@@ -30,6 +32,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "space-between",
     paddingHorizontal: 10,
+  },
+  cost: {
+    color: Colors.primary,
+    fontWeight: "bold",
   },
 });
 
