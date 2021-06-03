@@ -9,19 +9,47 @@ import RaportScreen from "./screens/RaportScreen";
 import DateScreen from "./screens/DateScreen";
 import PlaceScreen from "./screens/PlaceScreen";
 import CategoryScreen from "./screens/CategoryScreen";
+import Colors from "./constants/Colors";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={MainScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="Raport" component={RaportScreen} />
-        <Stack.Screen name="Date" component={DateScreen} />
-        <Stack.Screen name="Place" component={PlaceScreen} />
-        <Stack.Screen name="Category" component={CategoryScreen} />
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerTintColor: Colors.primary }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={MainScreen}
+          options={{ title: "Główna" }}
+        />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={{ title: "Szczegóły" }}
+        />
+        <Stack.Screen
+          name="Raport"
+          component={RaportScreen}
+          options={{ title: "Raport" }}
+        />
+        <Stack.Screen
+          name="Date"
+          component={DateScreen}
+          options={{ title: "Data" }}
+        />
+        <Stack.Screen
+          name="Place"
+          component={PlaceScreen}
+          options={{ title: "Miejsce" }}
+        />
+        <Stack.Screen
+          name="Category"
+          component={CategoryScreen}
+          options={{ title: "Kategoria" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
