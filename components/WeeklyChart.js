@@ -5,7 +5,15 @@ import Colors from "../constants/Colors";
 
 const WeeklyChart = (props) => {
   const lastDate = (days) => {
-    const currentDate = new Date();
+    const dateList = Items.map((el) => {
+      return el.date;
+    });
+    const newList = (dateList) =>
+      dateList.filter((a, b) => dateList.indexOf(a) === b);
+    const workingDateList = newList(dateList);
+
+    const currentDate = new Date(workingDateList[workingDateList.length - 1]);
+
     const newDate = currentDate.setDate(currentDate.getDate() - days);
     return new Date(newDate).toISOString().slice(0, 10);
   };
@@ -14,14 +22,12 @@ const WeeklyChart = (props) => {
     return { height: num };
   };
 
-  const showChart = (day, sum) => {
+  const showChart = (day) => {
     const prevDay = lastDate(day);
     const currentDayItem = Items.filter((el) => el.date === prevDay);
-    // console.log(currentDayItem);
     const sumOfCostsInCurrentDay = currentDayItem.reduce((a, b) => ({
       cost: a.cost + b.cost,
     }));
-    // console.log(sumOfCostsInCurrentDay.cost.toFixed(2));
     return (
       <View style={styles.column}>
         <Text style={styles.date}>{lastDate(day).slice(5, 10)}</Text>
@@ -43,13 +49,13 @@ const WeeklyChart = (props) => {
   return (
     <TouchableOpacity style={styles.touch} onPress={props.press}>
       <View style={styles.component}>
-        {showChart(6, 140)}
-        {showChart(5, 45)}
-        {showChart(4, 32)}
-        {showChart(3, 53)}
-        {showChart(2, 24)}
-        {showChart(1, 10)}
-        {showChart(0, 3)}
+        {showChart(6)}
+        {showChart(5)}
+        {showChart(4)}
+        {showChart(3)}
+        {showChart(2)}
+        {showChart(1)}
+        {showChart(0)}
       </View>
     </TouchableOpacity>
   );
@@ -61,10 +67,10 @@ const styles = StyleSheet.create({
   touch: {
     backgroundColor: "white",
 
-    shadowColor: "black",
-    shadowOffset: { height: 3, width: 0 },
-    shadowOpacity: 0.24,
-    shadowRadius: 20,
+    // shadowColor: "black",
+    // shadowOffset: { height: 3, width: 0 },
+    // shadowOpacity: 0.24,
+    // shadowRadius: 20,
     borderRadius: 20,
     width: "90%",
     height: 150,

@@ -33,6 +33,12 @@ const PlaceScreen = (props) => {
     }
   };
 
+  const filteredCost = filteredItem.map((el) => {
+    return el.cost;
+  });
+  const sumOf = (total, sum) => total + sum;
+  const sum = filteredCost.reduce(sumOf);
+
   return (
     <View style={styles.screen}>
       <View style={styles.top}>
@@ -43,6 +49,9 @@ const PlaceScreen = (props) => {
         <TouchableOpacity onPress={() => switchPlace(1)}>
           <Ionicons name="ios-arrow-forward" size={43} color="black" />
         </TouchableOpacity>
+      </View>
+      <View>
+        <Text>Razem {sum.toFixed(2)}zł</Text>
       </View>
       <View style={styles.items}>
         <FlatList
@@ -81,7 +90,7 @@ const styles = StyleSheet.create({
   showPlace: {
     color: Colors.primary,
     fontWeight: "bold",
-    fontSize: 26,
+    fontSize: 20,
   },
   top: {
     marginTop: 10,

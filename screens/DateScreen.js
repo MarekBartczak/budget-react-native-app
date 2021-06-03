@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Items from "../data/dummy-data";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/simplyItems";
@@ -19,9 +19,16 @@ const DateScreen = (props) => {
     dateList.filter((a, b) => dateList.indexOf(a) === b);
   const workingDateList = newlist(dateList);
 
+  const selectedDate = props.route.params;
   const [currentDate, setCurrentDate] = useState(
     workingDateList[workingDateList.length - 1]
   );
+
+  useEffect(() => {
+    if (props.route.params !== undefined) {
+      setCurrentDate(selectedDate.selectedDate);
+    }
+  }, [selectedDate]);
 
   const filteredItem = Items.filter((el) => el.date === currentDate);
 
@@ -36,6 +43,12 @@ const DateScreen = (props) => {
     }
   };
 
+  const filteredCost = filteredItem.map((el) => {
+    return el.cost;
+  });
+  const sumOf = (total, sum) => total + sum;
+  const sum = filteredCost.reduce(sumOf);
+
   return (
     <View style={styles.screen}>
       <View style={styles.top}>
@@ -46,6 +59,9 @@ const DateScreen = (props) => {
         <TouchableOpacity onPress={() => switchDate(1)}>
           <Ionicons name="ios-arrow-forward" size={43} color="black" />
         </TouchableOpacity>
+      </View>
+      <View>
+        <Text>Razem {sum.toFixed(2)}zł</Text>
       </View>
       <View style={styles.items}>
         <FlatList
@@ -84,7 +100,7 @@ const styles = StyleSheet.create({
   showDate: {
     color: Colors.primary,
     fontWeight: "bold",
-    fontSize: 26,
+    fontSize: 20,
   },
   top: {
     marginTop: 10,

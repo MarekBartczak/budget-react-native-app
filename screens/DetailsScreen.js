@@ -7,7 +7,11 @@ const DetailsScreen = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.dateView}>
-        <TouchableOpacity onPress={() => props.navigation.navigate("Date")}>
+        <TouchableOpacity
+          onPress={() =>
+            props.navigation.navigate("Date", { selectedDate: date })
+          }
+        >
           <Text style={styles.date}>{date}</Text>
         </TouchableOpacity>
       </View>
@@ -54,10 +58,10 @@ const styles = StyleSheet.create({
 
     margin: 30,
     backgroundColor: "white",
-    shadowColor: "black",
-    shadowOffset: { height: 5, width: 0 },
-    shadowOpacity: 0.24,
-    shadowRadius: 10,
+    // shadowColor: "black",
+    // shadowOffset: { height: 5, width: 0 },
+    // shadowOpacity: 0.24,
+    // shadowRadius: 10,
     borderRadius: 10,
   },
   dateView: {

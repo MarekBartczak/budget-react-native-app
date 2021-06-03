@@ -211,7 +211,7 @@ const Items = [
     dateForm("2021-06-01"),
     "Auchan",
     Category.foodExpense.dogFood,
-    "Chleb",
+    "Karma",
     15.99
   ),
   new Item(
