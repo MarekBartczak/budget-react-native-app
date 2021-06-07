@@ -14,7 +14,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import Items from "../data/dummy-data";
+import Items from "../data/Dummy-data";
 import Colors from "../constants/Colors";
 
 const Chart = (props) => {
@@ -58,7 +58,7 @@ const Chart = (props) => {
           withHorizontalLabels={true}
           withShadow={false}
           width={Dimensions.get("window").width * 0.9}
-          height={200}
+          height={160}
           chartConfig={{
             labelColor: () => "black",
             backgroundColor: "rgba(4, 4, 4, 1)",

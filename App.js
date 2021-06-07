@@ -10,6 +10,7 @@ import DateScreen from "./screens/DateScreen";
 import PlaceScreen from "./screens/PlaceScreen";
 import CategoryScreen from "./screens/CategoryScreen";
 import Colors from "./constants/Colors";
+import AddSingleItemScreen from "./screens/AddSingleItemScreen";
 
 const Stack = createStackNavigator();
 
@@ -49,6 +50,11 @@ export default function App() {
           name="Category"
           component={CategoryScreen}
           options={{ title: "Kategoria" }}
+        />
+        <Stack.Screen
+          name="AddSingleItem"
+          component={AddSingleItemScreen}
+          options={{ title: "Nowy pojedynczy wydatek" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

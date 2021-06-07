@@ -6,9 +6,9 @@ import {
   FlatList,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import Items from "../data/dummy-data";
+import Items from "../data/Dummy-data";
 import { Ionicons } from "@expo/vector-icons";
-import SimplyItems from "../components/simplyItems";
+import SimplyItems from "../components/SimplyItems";
 import Colors from "../constants/Colors";
 
 const DateScreen = (props) => {
