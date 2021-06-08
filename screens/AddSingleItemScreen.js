@@ -2,20 +2,25 @@ import {
   StyleSheet,
   Text,
   View,
-  FlatList,
-  TextInput,
   Keyboard,
   TouchableWithoutFeedback,
   Button,
   KeyboardAvoidingView,
-  ScrollView,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
-import Chart from "../components/Chart";
-import RNDateTimePicker from "@react-native-community/datetimepicker";
+
 import Colors from "../constants/Colors";
 import Items from "../data/Dummy-data";
-import ItemListToAdd from "../components/itemListToAdd";
+import Item from "../models/Item";
+import Chart from "../components/Chart";
+import uuid from "react-native-uuid";
+import DatePicker from "../components/DatePicker";
+import PlaceList from "../components/newItems/PlaceList";
+import Input from "../components/newItems/Input";
+import SeparatorText from "../components/newItems/SeparatorText";
+import switchComaToDot from "../functions/switchCompaToDot";
+import CategoryList from "../components/newItems/CategoryList";
 
 const AddSingleItemScreen = (props) => {
   const [date, setDate] = useState(new Date());
@@ -23,9 +28,8 @@ const AddSingleItemScreen = (props) => {
   const [itemName, setItemName] = useState("");
   const [cost, setCost] = useState("");
 
-  const onChange = (event, selectedDate) => {
+  const onChangeDate = (selectedDate) => {
     const currentDate = selectedDate || date;
-    // setShow(Platform.OS === 'ios');
     setDate(currentDate);
   };
 
@@ -34,102 +38,108 @@ const AddSingleItemScreen = (props) => {
     placeList.filter((a, b) => placeList.indexOf(a) === b);
 
   const workingPlaceList = newList(placeList);
-  //   console.log(workingPlaceList);
   const getPlaceInfo = (data) => {
     setPlace(data);
   };
-  return (
-    <View>
-      <ScrollView>
-        <KeyboardAvoidingView
-          behavior="position"
-          keyboardVerticalOffset={30}
-          style={styles.container}
-          enabled
-        >
-          <View style={styles.screen}>
-            <View>
-              <Chart press={() => props.navigation.navigate("Date")} />
-            </View>
-            <Text style={styles.textSeparator}>Kiedy?</Text>
-            <View style={styles.pickADate}>
-              <View style={styles.pickADate}>
-                <RNDateTimePicker
-                  maximumDate={new Date()}
-                  testID="dateTimePicker"
-                  value={date}
-                  mode={"date"}
-                  is24Hour={true}
-                  display="spinner"
-                  textColor={Colors.primary}
-                  onChange={onChange}
-                />
-              </View>
-              <View>
-                <Text style={styles.textSeparator}>Gdzie?</Text>
-                <View style={styles.selectPlace}>
-                  <View style={styles.place}>
-                    <Text style={{ textAlign: "center" }}>Wybierz z listy</Text>
-                    <View>
-                      <FlatList
-                        data={workingPlaceList}
-                        keyExtractor={(item) => item}
-                        renderItem={(list) => (
-                          <ItemListToAdd
-                            list={list.item}
-                            setPlace={getPlaceInfo}
-                          />
-                        )}
-                      />
-                    </View>
-                  </View>
-                  <View style={styles.selectedPlace}>
-                    <Text>Wybrano</Text>
-                    <Text>{place}</Text>
-                  </View>
-                </View>
-              </View>
-              <View>
-                <Text style={styles.textSeparator}>Co i za ile?</Text>
-                <View>
-                  <View>
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                      <TextInput
-                        style={styles.input}
-                        value={itemName}
-                        placeholder="co?"
-                        autoComplete="off"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        enablesReturnKeyAutomatically={true}
-                        onChangeText={setItemName}
-                      />
-                    </TouchableWithoutFeedback>
 
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                      <TextInput
-                        style={styles.input}
-                        keyboardType="numeric"
-                        placeholder="za ile?"
-                        onChangeText={setCost}
-                        value={cost}
-                      />
-                    </TouchableWithoutFeedback>
-                  </View>
-                </View>
-              </View>
-              <View>
-                <Button
-                  title={"Dodaj"}
-                  color={Colors.primary}
-                  onPress={() => console.log(date, place, itemName, cost)}
+  const saveItem = (date, place, category, name, cost) => {
+    return new Item(
+      uuid.v4(),
+      date,
+      place,
+      category,
+      name,
+      switchComaToDot(cost)
+    );
+  };
+
+  const chart = (
+    <View>
+      <Chart press={() => props.navigation.navigate("Date")} />
+    </View>
+  );
+  const windowHeight = Dimensions.get("window").height;
+
+  return (
+    <KeyboardAvoidingView
+      behavior="position"
+      //   keyboardVerticalOffset={5}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={styles.screen}>
+          {/* Chart depend of windowHeight */}
+          {windowHeight > 800 ? chart : null}
+
+          {/* Kiedy View */}
+          <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
+          <DatePicker date={date} onChange={onChangeDate} />
+
+          {/* Gdzie View */}
+          <SeparatorText style={styles.textSeparator}>Gdzie?</SeparatorText>
+          <View style={styles.selectPlace}>
+            <View style={styles.place}>
+              <Text style={{ textAlign: "center" }}>Wybierz z listy</Text>
+              <View style={styles.placeList}>
+                <PlaceList
+                  data={workingPlaceList}
+                  getPlaceInfo={getPlaceInfo}
                 />
               </View>
+            </View>
+            <View style={styles.selectedPlace}>
+              <Text>Wybrano</Text>
+              <Input
+                placeholder={"Miejsce"}
+                value={place}
+                keyboardType={"default"}
+                onChangeText={setPlace}
+                style={styles.inputPlace}
+              />
             </View>
           </View>
-        </KeyboardAvoidingView>
-      </ScrollView>
-    </View>
+          {/* Kategorie View */}
+          <SeparatorText style={styles.textSeparator}>
+            W jakiej kategorii?
+          </SeparatorText>
+          <View>
+            <CategoryList />
+          </View>
+
+          {/* Co i za ile View */}
+          <SeparatorText style={styles.textSeparator}>
+            Co i za ile?
+          </SeparatorText>
+          <View style={styles.inputs}>
+            <Input
+              style={styles.input}
+              value={itemName}
+              placeholder="co?"
+              keyboardType={"default"}
+              onChangeText={setItemName}
+            />
+            <Input
+              style={styles.input}
+              value={cost}
+              placeholder="za ile"
+              keyboardType={"numeric"}
+              onChangeText={setCost}
+            />
+          </View>
+
+          {/* Button View */}
+          <View>
+            <Button
+              title={"Dodaj"}
+              color={Colors.primary}
+              onPress={() =>
+                console.log(saveItem(date, place, "owoce", itemName, cost))
+              }
+            />
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -137,20 +147,29 @@ export default AddSingleItemScreen;
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    height: "100%",
   },
-  container: {
-    flex: 1,
+
+  placeList: {
+    height: 70,
+    backgroundColor: "rgb(227, 227, 228)",
+    borderRadius: 10,
+    padding: 5,
+    paddingLeft: 10,
   },
   textSeparator: {
     color: Colors.primary,
     fontSize: 30,
     textAlign: "center",
   },
-  pickADate: {
-    width: "100%",
-    backgroundColor: "rgb(242,242,242)",
+  selectedPlace: {
+    alignItems: "center",
+    width: "40%",
   },
+  inputs: {
+    alignItems: "center",
+  },
+
   selectPlace: {
     flexDirection: "row",
   },
@@ -161,9 +180,17 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 25,
-    width: 150,
+    width: 200,
     borderBottomWidth: 1,
     margin: 5,
-    borderColor: "black",
+    margin: 10,
+    borderColor: Colors.accent,
+  },
+  inputPlace: {
+    color: Colors.accent,
+    paddingTop: 25,
+    color: Colors.accent,
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
