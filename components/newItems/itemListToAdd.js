@@ -16,7 +16,13 @@ export default itemListToAdd;
 
 const styles = StyleSheet.create({
   list: {
-    color: Colors.accent,
+    color: Colors.banner,
+    backgroundColor: Colors.primary,
+    marginVertical: 3,
+    borderRadius: 10,
+    overflow: "hidden",
+    textAlign: "center",
     fontWeight: "bold",
+    fontSize: 15,
   },
 });

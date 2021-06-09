@@ -61,6 +61,7 @@ const Category = {
     books: "książki",
   },
   familyExpense: {
+    name: "rodzinne",
     gifts: "prezenty",
     goingOut: "Wyjścia",
   },

@@ -9,6 +9,7 @@ import {
   Dimensions,
 } from "react-native";
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import Colors from "../constants/Colors";
 import Items from "../data/Dummy-data";
@@ -21,14 +22,19 @@ import Input from "../components/newItems/Input";
 import SeparatorText from "../components/newItems/SeparatorText";
 import switchComaToDot from "../functions/switchCompaToDot";
 import CategoryList from "../components/newItems/CategoryList";
-
+import { LinearGradient } from "expo-linear-gradient";
+import * as itemsAction from "../store/actions/items";
 const AddSingleItemScreen = (props) => {
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
+  const [category, setCategory] = useState("");
   const [itemName, setItemName] = useState("");
   const [cost, setCost] = useState("");
 
-  const onChangeDate = (selectedDate) => {
+  const dispatch = useDispatch();
+
+  const onChangeDate = (event, selectedDate) => {
+    let testDate = new Date(selectedDate);
     const currentDate = selectedDate || date;
     setDate(currentDate);
   };
@@ -53,6 +59,10 @@ const AddSingleItemScreen = (props) => {
     );
   };
 
+  const setCategoryState = (data) => {
+    setCategory(data);
+  };
+
   const chart = (
     <View>
       <Chart press={() => props.navigation.navigate("Date")} />
@@ -63,23 +73,30 @@ const AddSingleItemScreen = (props) => {
   return (
     <KeyboardAvoidingView
       behavior="position"
-      //   keyboardVerticalOffset={5}
+      keyboardVerticalOffset={30}
       style={styles.container}
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View style={styles.screen}>
-          {/* Chart depend of windowHeight */}
-          {windowHeight > 800 ? chart : null}
+        <LinearGradient
+          colors={[
+            Colors.lightBackground.colorTop,
+            Colors.lightBackground.colorMiddle,
+            Colors.lightBackground.colorBottom,
+          ]}
+        >
+          <View style={styles.screen}>
+            {/* Chart depend of windowHeight */}
+            {windowHeight > 800 ? chart : null}
 
-          {/* Kiedy View */}
-          <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
-          <DatePicker date={date} onChange={onChangeDate} />
+            {/* Kiedy View */}
+            <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
+            <View style={styles.datePicker}>
+              <DatePicker date={date} onChange={onChangeDate} />
+            </View>
 
-          {/* Gdzie View */}
-          <SeparatorText style={styles.textSeparator}>Gdzie?</SeparatorText>
-          <View style={styles.selectPlace}>
+            {/* Gdzie View */}
+            <SeparatorText style={styles.textSeparator}>Gdzie?</SeparatorText>
             <View style={styles.place}>
-              <Text style={{ textAlign: "center" }}>Wybierz z listy</Text>
               <View style={styles.placeList}>
                 <PlaceList
                   data={workingPlaceList}
@@ -87,57 +104,51 @@ const AddSingleItemScreen = (props) => {
                 />
               </View>
             </View>
-            <View style={styles.selectedPlace}>
-              <Text>Wybrano</Text>
+            {/* Kategorie View */}
+            <SeparatorText style={styles.textSeparator}>
+              W jakiej kategorii?
+            </SeparatorText>
+            <View>
+              <CategoryList onChangeCategory={setCategoryState} />
+            </View>
+
+            {/* Co i za ile View */}
+            <SeparatorText style={styles.textSeparator}>
+              Co i za ile?
+            </SeparatorText>
+            <View style={styles.inputs}>
               <Input
-                placeholder={"Miejsce"}
-                value={place}
+                style={styles.input}
+                value={itemName}
+                placeholder="co?"
                 keyboardType={"default"}
-                onChangeText={setPlace}
-                style={styles.inputPlace}
+                onChangeText={setItemName}
+              />
+              <Input
+                style={styles.input}
+                value={cost}
+                placeholder="za ile"
+                keyboardType={"numeric"}
+                onChangeText={setCost}
+              />
+            </View>
+
+            {/* Button View */}
+            <View>
+              <Button
+                title={"Dodaj"}
+                color={Colors.primary}
+                onPress={() => {
+                  dispatch(
+                    itemsAction.addItem(
+                      saveItem(date, place, "owoce", itemName, cost)
+                    )
+                  );
+                }}
               />
             </View>
           </View>
-          {/* Kategorie View */}
-          <SeparatorText style={styles.textSeparator}>
-            W jakiej kategorii?
-          </SeparatorText>
-          <View>
-            <CategoryList />
-          </View>
-
-          {/* Co i za ile View */}
-          <SeparatorText style={styles.textSeparator}>
-            Co i za ile?
-          </SeparatorText>
-          <View style={styles.inputs}>
-            <Input
-              style={styles.input}
-              value={itemName}
-              placeholder="co?"
-              keyboardType={"default"}
-              onChangeText={setItemName}
-            />
-            <Input
-              style={styles.input}
-              value={cost}
-              placeholder="za ile"
-              keyboardType={"numeric"}
-              onChangeText={setCost}
-            />
-          </View>
-
-          {/* Button View */}
-          <View>
-            <Button
-              title={"Dodaj"}
-              color={Colors.primary}
-              onPress={() =>
-                console.log(saveItem(date, place, "owoce", itemName, cost))
-              }
-            />
-          </View>
-        </View>
+        </LinearGradient>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
@@ -149,46 +160,56 @@ const styles = StyleSheet.create({
   screen: {
     height: "100%",
   },
+  gradientBackgroundColor: {},
+  datePicker: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  place: {
+    width: "100%",
+    flexDirection: "column",
+
+    justifyContent: "space-around",
+    alignItems: "center",
+    shadowOffset: { height: 0, width: 10 },
+    shadowColor: Colors.primary,
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
 
   placeList: {
+    marginTop: 10,
+    flexDirection: "column",
+    width: "90%",
     height: 70,
-    backgroundColor: "rgb(227, 227, 228)",
-    borderRadius: 10,
-    padding: 5,
-    paddingLeft: 10,
   },
   textSeparator: {
-    color: Colors.primary,
-    fontSize: 30,
-    textAlign: "center",
+    color: "black",
+    fontSize: 15,
+    textAlign: "left",
+    marginRight: 10,
   },
-  selectedPlace: {
-    alignItems: "center",
-    width: "40%",
-  },
+
   inputs: {
     alignItems: "center",
   },
 
-  selectPlace: {
-    flexDirection: "row",
-  },
-  place: {
-    height: 90,
-    width: "50%",
-    marginLeft: 10,
-  },
   input: {
     height: 25,
     width: 200,
     borderBottomWidth: 1,
     margin: 5,
     margin: 10,
-    borderColor: Colors.accent,
+    color: Colors.primary,
+    borderColor: Colors.primary,
   },
   inputPlace: {
+    // paddingTop: 25,
     color: Colors.accent,
-    paddingTop: 25,
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  category: {
     color: Colors.accent,
     fontSize: 18,
     fontWeight: "bold",

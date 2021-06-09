@@ -3,38 +3,29 @@ import React, { useState } from "react";
 import Category from "../../data/Category";
 import CategoryElementList from "./CategoryElementList";
 import Colors from "../../constants/Colors";
+import { LinearGradient } from "expo-linear-gradient";
 
 const categoryList = (props) => {
-  const [selectedCategory, setSelectedCategory] = useState();
-  const [subCat, setSubCat] = useState(selectedCategory);
+  const [subCat, setSubCat] = useState();
   const mainCategoryList = [];
-  let subCategoryList = [];
   const objKeys = Object.keys(Category);
   for (let i = 0; i < objKeys.length; i++) {
     mainCategoryList.push(Category[objKeys[i]].name);
   }
 
   const selectedCat = (data) => {
-    setSelectedCategory(data);
-    getSubCategory();
-    setSubCat(selectedCategory);
-  };
-
-  const getSubCategory = () => {
-    for (let i = 0; i < objKeys.length; i++) {
-      if (Category[objKeys[i]].name === selectedCategory) {
-        // subCategoryList.push(Object.values(Category[objKeys[i]]));
-        // console.log(Object.values(Category[objKeys[i]]));
-        subCategoryList = Object.values(Category[objKeys[i]]);
+    for (let i = 0; i < Object.keys(Category).length; i++) {
+      if (Category[Object.keys(Category)[i]].name === data) {
+        const newList = { ...Category[Object.keys(Category)[i]] };
+        delete newList.name;
+        setSubCat(Object.values(newList));
       }
     }
-    console.log(subCategoryList);
   };
 
   return (
     <View style={styles.categoryList}>
       <View style={styles.semiScreen}>
-        <Text style={styles.categoryListTitle}>Kategoria</Text>
         <FlatList
           data={mainCategoryList}
           keyExtractor={(item, index) => "item" + index}
@@ -47,13 +38,31 @@ const categoryList = (props) => {
           )}
         />
       </View>
+      <LinearGradient
+        colors={[Colors.banner, Colors.primary, Colors.banner]}
+        style={{
+          height: 20,
+          width: "100%",
+          marginTop: 15,
+          marginBottom: 5,
+          shadowOffset: { height: 10, width: 0 },
+          shadowColor: "black",
+          shadowOpacity: 0.9,
+          shadowRadius: 10,
+        }}
+      />
 
       <View style={styles.semiScreen}>
-        <Text style={styles.categoryListTitle}>Podkategoria</Text>
         <FlatList
           data={subCat}
           keyExtractor={(item, index) => "item" + index}
-          renderItem={(item) => <Text>{item.item}</Text>}
+          renderItem={(item) => (
+            <CategoryElementList
+              style={styles.catElement}
+              list={item.item}
+              press={props.onChangeCategory}
+            />
+          )}
         />
       </View>
     </View>
@@ -64,21 +73,31 @@ export default categoryList;
 
 const styles = StyleSheet.create({
   categoryList: {
-    height: 150,
     width: "100%",
-    flexDirection: "row",
-    // marginLeft: 10,
-    // borderRadius: 10,
-    // backgroundColor: Colors.backGround,
+    flexDirection: "column",
+
+    justifyContent: "space-around",
+    alignItems: "center",
+    shadowOffset: { height: 0, width: 10 },
+    shadowColor: "black",
+    shadowOpacity: 0.23,
+    shadowRadius: 10,
   },
   semiScreen: {
+    marginTop: 10,
     flexDirection: "column",
-    width: "50%",
+    width: "90%",
+    height: 70,
   },
   catElement: {
-    color: Colors.accent,
-    // backgroundColor: Colors.backGround,
-    fontSize: 16,
+    color: Colors.primary,
+    backgroundColor: Colors.banner,
+    marginVertical: 3,
+    borderRadius: 10,
+    overflow: "hidden",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 15,
   },
   categoryListTitle: {
     textAlign: "center",

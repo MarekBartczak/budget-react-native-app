@@ -58,15 +58,15 @@ const Chart = (props) => {
           withHorizontalLabels={true}
           withShadow={false}
           width={Dimensions.get("window").width * 0.9}
-          height={160}
+          height={180}
           chartConfig={{
             labelColor: () => "black",
             backgroundColor: "rgba(4, 4, 4, 1)",
-            backgroundGradientFrom: "rgba(242, 242, 242, 1)",
-            backgroundGradientTo: "rgba(242,242, 242, 1)",
+            backgroundGradientFrom: Colors.backGround,
+            backgroundGradientTo: Colors.backGroundChart,
 
             decimalPlaces: 2,
-            color: () => Colors.primary,
+            color: () => Colors.backGround2,
             style: {
               borderRadius: 16,
             },

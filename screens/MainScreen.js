@@ -6,6 +6,7 @@ import Colors from "../constants/Colors";
 import Chart from "../components/Chart";
 import FavoritePlaces from "../components/FavoritePlaces";
 import AddNewItem from "../components/AddNewItem";
+import ButtonRaport from "../components/Button";
 const MainScreen = (props) => {
   return (
     <View style={styles.screen}>
@@ -14,7 +15,9 @@ const MainScreen = (props) => {
           <Chart press={() => props.navigation.navigate("Date")} />
         </View>
         <View>
-          <FavoritePlaces />
+          <FavoritePlaces
+            onPress={() => props.navigation.navigate("FavoritePlace")}
+          />
         </View>
         <View>
           <AddNewItem
@@ -24,11 +27,12 @@ const MainScreen = (props) => {
           />
         </View>
 
-        <Button
-          color={Colors.primary}
-          title="Raport"
-          onPress={() => props.navigation.navigate("Raport")}
-        />
+        <View>
+          <ButtonRaport
+            onPress={() => props.navigation.navigate("Raport")}
+            text="Raport"
+          />
+        </View>
       </ScrollView>
     </View>
   );

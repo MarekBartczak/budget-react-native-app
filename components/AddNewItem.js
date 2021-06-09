@@ -30,7 +30,12 @@ const styles = StyleSheet.create({
   screen: {
     width: "100%",
     height: 100,
-    backgroundColor: "rgba(213, 213, 213,1)",
+    backgroundColor: Colors.banner,
+    shadowOffset: { height: 0, width: 10 },
+    shadowColor: Colors.primary,
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    marginTop: 20,
   },
   addBtn: {
     justifyContent: "space-around",
