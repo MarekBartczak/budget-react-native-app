@@ -1,6 +1,6 @@
 const Category = {
   foodExpense: {
-    name: "spożywczy",
+    name: "spożywcze",
     bread: "pieczywo",
     dairy: "nabiał",
     drinks: "napoje",

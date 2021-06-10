@@ -1,15 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const FavoritePlaceScreen = (props) => {
+const AddMultiItemsScreen = (props) => {
   return (
     <View style={styles.screen}>
-      <Text>Fav Place</Text>
+      <Text> add multi items</Text>
     </View>
   );
 };
-
-export default FavoritePlaceScreen;
 
 const styles = StyleSheet.create({
   screen: {
@@ -18,3 +16,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+export default AddMultiItemsScreen;

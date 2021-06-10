@@ -238,6 +238,14 @@ const Items = [
     "chleb razowy",
     11.99
   ),
+  new Item(
+    "i30",
+    dateForm("2021-06-10"),
+    "Lidl",
+    Category.foodExpense.bread,
+    "chleb razowy",
+    101.99
+  ),
 ];
 
 export default Items;

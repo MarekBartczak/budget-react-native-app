@@ -15,9 +15,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Items from "../data/Dummy-data";
+import { useSelector } from "react-redux";
 import Colors from "../constants/Colors";
 
 const Chart = (props) => {
+  //   const Items = useSelector((state) => state.item.items);
+  //   console.log(Items);
+
   const dateList = Items.map((el) => el.date);
   const newDateList = (dateList) =>
     dateList.filter((a, b) => dateList.indexOf(a) === b);
@@ -67,9 +71,6 @@ const Chart = (props) => {
 
             decimalPlaces: 2,
             color: () => Colors.backGround2,
-            style: {
-              borderRadius: 16,
-            },
           }}
           bezier
           style={{
@@ -80,6 +81,10 @@ const Chart = (props) => {
             alignItems: "center",
             width: Dimensions.get("window").width * 0.9,
             marginHorizontal: "5%",
+            shadowOpacity: 0.9,
+            shadowRadius: 10,
+            shadowOffset: { height: 10, width: 10 },
+            shadowColor: Colors.primary,
           }}
         />
       </TouchableOpacity>

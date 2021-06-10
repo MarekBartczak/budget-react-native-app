@@ -17,7 +17,10 @@ const AddNewItem = (props) => {
           />
           <Text>Pojedynczy Element</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.add} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.add}
+          onPress={props.pressToAddMultiItems}
+        >
           <Ionicons name="ios-cart-outline" size={62} color={Colors.primary} />
           <Text>Cały Paragon</Text>
         </TouchableOpacity>

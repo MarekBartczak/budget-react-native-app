@@ -1,7 +1,7 @@
 import {
   StyleSheet,
-  Text,
   View,
+  Text,
   Keyboard,
   TouchableWithoutFeedback,
   Button,
@@ -34,11 +34,13 @@ const AddSingleItemScreen = (props) => {
   const dispatch = useDispatch();
 
   const onChangeDate = (event, selectedDate) => {
-    let testDate = new Date(selectedDate);
     const currentDate = selectedDate || date;
     setDate(currentDate);
   };
 
+  const checkIfEmpty = (val) => {
+    return val ? true : false;
+  };
   const placeList = Items.map((el) => el.place);
   const newList = (placeList) =>
     placeList.filter((a, b) => placeList.indexOf(a) === b);
@@ -112,40 +114,121 @@ const AddSingleItemScreen = (props) => {
               <CategoryList onChangeCategory={setCategoryState} />
             </View>
 
-            {/* Co i za ile View */}
-            <SeparatorText style={styles.textSeparator}>
-              Co i za ile?
-            </SeparatorText>
-            <View style={styles.inputs}>
-              <Input
-                style={styles.input}
-                value={itemName}
-                placeholder="co?"
-                keyboardType={"default"}
-                onChangeText={setItemName}
-              />
-              <Input
-                style={styles.input}
-                value={cost}
-                placeholder="za ile"
-                keyboardType={"numeric"}
-                onChangeText={setCost}
-              />
-            </View>
+            <View style={styles.CardAndInpuView}>
+              <View>
+                {/* Co i za ile View */}
+                <SeparatorText style={styles.textSeparator}>
+                  Co i za ile?
+                </SeparatorText>
+                <View style={styles.inputs}>
+                  <Input
+                    style={styles.input}
+                    value={itemName}
+                    placeholder="co?"
+                    keyboardType={"default"}
+                    onChangeText={setItemName}
+                  />
+                  <Input
+                    style={styles.input}
+                    value={cost}
+                    placeholder="za ile"
+                    keyboardType={"numeric"}
+                    onChangeText={setCost}
+                  />
+                </View>
 
-            {/* Button View */}
-            <View>
-              <Button
-                title={"Dodaj"}
-                color={Colors.primary}
-                onPress={() => {
-                  dispatch(
-                    itemsAction.addItem(
-                      saveItem(date, place, "owoce", itemName, cost)
-                    )
-                  );
-                }}
-              />
+                {/* Button View */}
+                <View>
+                  <Button
+                    title={"Dodaj"}
+                    style={{ fontWeight: "bold" }}
+                    color={Colors.primary}
+                    onPress={() => {
+                      if (
+                        checkIfEmpty(date) &&
+                        checkIfEmpty(place) &&
+                        checkIfEmpty(category) &&
+                        checkIfEmpty(itemName) &&
+                        checkIfEmpty(cost)
+                      ) {
+                        dispatch(
+                          itemsAction.addItem(
+                            saveItem(date, place, category, itemName, cost)
+                          )
+                        );
+                      } else alert("uzupełnij wszystkie pola");
+                    }}
+                  />
+                </View>
+              </View>
+              <View style={styles.miniCard}>
+                <View style={styles.miniCardDate}>
+                  <Text style={styles.miniCardDateText}>
+                    {date.toISOString().slice(0, 10)}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    backgroundColor: "white",
+                    height: 100,
+                    borderBottomLeftRadius: 10,
+                    borderBottomRightRadius: 10,
+                  }}
+                >
+                  <View style={styles.miniCardContentTop}>
+                    <View style={styles.miniCardContentTopPlace}>
+                      <Text
+                        style={{
+                          fontSize: 10,
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          paddingLeft: 2,
+                        }}
+                      >
+                        {place}
+                      </Text>
+                    </View>
+                    <View style={styles.miniCardContentTopCategory}>
+                      <Text
+                        style={{
+                          fontSize: 10,
+                          fontWeight: "bold",
+                          textAlign: "right",
+                          paddingRight: 2,
+                        }}
+                      >
+                        {category}
+                      </Text>
+                    </View>
+                    <View style={styles.miniCardContentName}>
+                      <Text
+                        style={{
+                          paddingTop: 15,
+                          fontSize: 11,
+                          color: Colors.primary,
+                          fontWeight: "bold",
+                          textAlign: "center",
+                        }}
+                      >
+                        {itemName}
+                      </Text>
+                    </View>
+                    <View style={styles.miniCardContentCost}>
+                      <Text
+                        style={{
+                          paddingTop: 15,
+                          fontSize: 11,
+                          color: Colors.accent,
+                          fontWeight: "bold",
+                          textAlign: "center",
+                        }}
+                      >
+                        {cost} {cost ? "zł" : null}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
             </View>
           </View>
         </LinearGradient>
@@ -159,6 +242,11 @@ export default AddSingleItemScreen;
 const styles = StyleSheet.create({
   screen: {
     height: "100%",
+  },
+  CardAndInpuView: {
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
   gradientBackgroundColor: {},
   datePicker: {
@@ -213,5 +301,30 @@ const styles = StyleSheet.create({
     color: Colors.accent,
     fontSize: 18,
     fontWeight: "bold",
+  },
+  miniCard: {
+    paddingTop: 10,
+    flexDirection: "column",
+    borderRadius: 10,
+    shadowOpacity: 0.2,
+    shadowOffset: { height: 10, width: 0 },
+    shadowColor: Colors.primary,
+    shadowRadius: 10,
+  },
+  miniCardDate: {
+    backgroundColor: Colors.banner,
+    width: 120,
+    height: 20,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  miniCardDateText: {
+    color: Colors.primary,
+    textAlign: "center",
+  },
+
+  miniCardContentTop: {
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
 });

@@ -4,9 +4,10 @@ export default {
   accent: "#FF8A1A",
   banner: "#DFDFDF",
   backGround2: "rgb(227, 227, 228)",
-  // backGround: "rgb(242, 242, 242)",
+  default: "rgb(242, 242, 242)",
   backGround: "rgb(109,94,200)",
   backGroundChart: "rgb(19,94,140)",
+  ready: "rgb(100,235, 124)",
   darkBackground: {
     colorTop: "rgb(0, 2, 150)",
     colorMiddle: "rgb(0, 89, 122)",
