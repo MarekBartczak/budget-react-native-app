@@ -6,15 +6,13 @@ import {
   TouchableWithoutFeedback,
   Button,
   KeyboardAvoidingView,
-  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Colors from "../constants/Colors";
 import Items from "../data/Dummy-data";
 import Item from "../models/Item";
-import Chart from "../components/Chart";
 import uuid from "react-native-uuid";
 import DatePicker from "../components/DatePicker";
 import PlaceList from "../components/newItems/PlaceList";
@@ -65,13 +63,6 @@ const AddSingleItemScreen = (props) => {
     setCategory(data);
   };
 
-  // const chart = (
-  //   <View>
-  //     <Chart press={() => props.navigation.navigate("Date")} />
-  //   </View>
-  // );
-  const windowHeight = Dimensions.get("window").height;
-
   return (
     <KeyboardAvoidingView
       behavior="position"
@@ -87,10 +78,6 @@ const AddSingleItemScreen = (props) => {
           ]}
         >
           <View style={styles.screen}>
-            {/* Chart depend of windowHeight */}
-            {/* {windowHeight > 800 ? chart : null} */}
-
-            {/* Kiedy View */}
             <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
             <View style={styles.datePicker}>
               <DatePicker date={date} onChange={onChangeDate} />
@@ -303,12 +290,7 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     borderColor: Colors.primary,
   },
-  inputPlace: {
-    // paddingTop: 25,
-    color: Colors.accent,
-    fontSize: 18,
-    fontWeight: "bold",
-  },
+
   category: {
     color: Colors.accent,
     fontSize: 18,
