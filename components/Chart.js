@@ -6,7 +6,7 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from "react-native-chart-kit";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,20 +15,24 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Items from "../data/Dummy-data";
-import { useSelector } from "react-redux";
 import Colors from "../constants/Colors";
+import { useSelector } from "react-redux";
 
 const Chart = (props) => {
-  //   const Items = useSelector((state) => state.item.items);
-  //   console.log(Items);
+  const itemsFromRedux = useSelector((state) => state.item.items);
+  const [newItems, setNewItems] = useState(Items);
 
-  const dateList = Items.map((el) => el.date);
+  useEffect(() => {
+    setNewItems([...Items, ...itemsFromRedux]);
+  }, [itemsFromRedux]);
+
+  const dateList = newItems.map((el) => el.date);
   const newDateList = (dateList) =>
     dateList.filter((a, b) => dateList.indexOf(a) === b);
   const workingDateList = newDateList(dateList);
 
   const calculateSum = (list, index) => {
-    const filteredItems = Items.filter((el) => el.date === list[index]);
+    const filteredItems = newItems.filter((el) => el.date === list[index]);
     const filteredCostArray = filteredItems.map((el) => el.cost);
     const filteredCost = (total, sum) => total + sum;
     return filteredCostArray.reduce(filteredCost).toFixed(2);

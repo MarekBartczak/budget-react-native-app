@@ -1,9 +1,19 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import Colors from "../constants/Colors";
+import { Ionicons } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import * as itemsAction from "../store/actions/items";
 
 const DetailsScreen = (props) => {
-  const { date, place, category, name, cost } = props.route.params;
+  const { date, place, category, name, cost, id } = props.route.params;
+  const dispatch = useDispatch();
+  const deleteItem = () => {
+    dispatch(itemsAction.delItem(id));
+    props.navigation.navigate("Home");
+    // console.log(name);
+    // console.log(id);
+  };
   return (
     <View style={styles.screen}>
       <View style={styles.dateView}>
@@ -17,6 +27,7 @@ const DetailsScreen = (props) => {
       </View>
 
       <View style={styles.middleSection}>
+        {/* first column */}
         <View style={styles.placeView}>
           <Text>Miejsce</Text>
           <TouchableOpacity
@@ -26,24 +37,48 @@ const DetailsScreen = (props) => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.categoryView}>
-          <Text>Kategoria</Text>
-          <TouchableOpacity
-            onPress={() =>
-              props.navigation.navigate("Category", { category: category })
-            }
-          >
-            <Text style={styles.category}>{category}</Text>
-          </TouchableOpacity>
+        {/* middle column */}
+        <View style={styles.detailsMiddleCenter}>
+          <View style={styles.nameView}>
+            <Text style={styles.name}>{name}</Text>
+          </View>
+
+          <View style={styles.costView}>
+            <Text style={styles.cost}>{cost}zł</Text>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.nameView}>
-        <Text style={styles.name}>{name}</Text>
-      </View>
+        {/* third column */}
+        <View style={styles.thirdColumn}>
+          <View style={styles.categoryView}>
+            <Text>Kategoria</Text>
 
-      <View style={styles.costView}>
-        <Text style={styles.cost}>{cost}zł</Text>
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate("Category", { category: category })
+              }
+            >
+              <Text style={styles.category}>{category}</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.trash}>
+            <TouchableOpacity
+              onPress={() => {
+                Alert.alert(
+                  "Uwaga!",
+                  "Czy usunąć?",
+                  [
+                    { text: "Nie", style: "cancel" },
+                    { text: "Tak", onPress: () => deleteItem() },
+                  ],
+                  { cancelable: false }
+                );
+              }}
+            >
+              <Ionicons name="ios-trash" size={34} color={Colors.primary} />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -78,6 +113,7 @@ const styles = StyleSheet.create({
   },
   middleSection: {
     marginVertical: 20,
+    height: 180,
 
     flexDirection: "row",
     justifyContent: "space-between",
@@ -94,6 +130,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     marginRight: 10,
     alignItems: "center",
+  },
+  thirdColumn: {
+    justifyContent: "space-between",
+  },
+  trash: {
+    alignItems: "center",
+    marginBottom: 20,
   },
   category: {
     fontWeight: "bold",
@@ -118,5 +161,8 @@ const styles = StyleSheet.create({
     color: Colors.accent,
     fontSize: 24,
     paddingVertical: 10,
+  },
+  detailsMiddleCenter: {
+    justifyContent: "flex-end",
   },
 });

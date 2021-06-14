@@ -5,15 +5,23 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Items from "../data/Dummy-data";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/SimplyItems";
 import Colors from "../constants/Colors";
+import { useSelector } from "react-redux";
 
 const CategoryScreen = (props) => {
+  const itemsFromRedux = useSelector((state) => state.item.items);
+  const [newItems, setNewItems] = useState(Items);
+
+  useEffect(() => {
+    setNewItems([...Items, ...itemsFromRedux]);
+  }, [itemsFromRedux]);
+
   const currentCategoryParam = props.route.params;
-  const categoryList = Items.map((el) => {
+  const categoryList = newItems.map((el) => {
     return el.category;
   });
 
@@ -24,7 +32,7 @@ const CategoryScreen = (props) => {
     currentCategoryParam.category
   );
 
-  const filteredItem = Items.filter((el) => el.category === currentCategory);
+  const filteredItem = newItems.filter((el) => el.category === currentCategory);
 
   const switchCategory = (param) => {
     const currentIndex = workingCategoryList.indexOf(currentCategory);
@@ -71,6 +79,7 @@ const CategoryScreen = (props) => {
                   category: itemData.item.category,
                   cost: itemData.item.cost,
                   name: itemData.item.name,
+                  id: itemData.item.id,
                 })
               }
             />

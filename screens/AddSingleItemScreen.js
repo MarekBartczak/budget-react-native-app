@@ -53,11 +53,11 @@ const AddSingleItemScreen = (props) => {
   const saveItem = (date, place, category, name, cost) => {
     return new Item(
       uuid.v4(),
-      date,
+      date.toISOString().slice(0, 10),
       place,
       category,
       name,
-      switchComaToDot(cost)
+      Number(switchComaToDot(cost))
     );
   };
 
@@ -65,11 +65,11 @@ const AddSingleItemScreen = (props) => {
     setCategory(data);
   };
 
-  const chart = (
-    <View>
-      <Chart press={() => props.navigation.navigate("Date")} />
-    </View>
-  );
+  // const chart = (
+  //   <View>
+  //     <Chart press={() => props.navigation.navigate("Date")} />
+  //   </View>
+  // );
   const windowHeight = Dimensions.get("window").height;
 
   return (
@@ -88,7 +88,7 @@ const AddSingleItemScreen = (props) => {
         >
           <View style={styles.screen}>
             {/* Chart depend of windowHeight */}
-            {windowHeight > 800 ? chart : null}
+            {/* {windowHeight > 800 ? chart : null} */}
 
             {/* Kiedy View */}
             <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
@@ -115,7 +115,7 @@ const AddSingleItemScreen = (props) => {
             </View>
 
             <View style={styles.CardAndInpuView}>
-              <View>
+              <View style={styles.inputArea}>
                 {/* Co i za ile View */}
                 <SeparatorText style={styles.textSeparator}>
                   Co i za ile?
@@ -138,10 +138,9 @@ const AddSingleItemScreen = (props) => {
                 </View>
 
                 {/* Button View */}
-                <View>
+                <View style={styles.addBtn}>
                   <Button
                     title={"Dodaj"}
-                    style={{ fontWeight: "bold" }}
                     color={Colors.primary}
                     onPress={() => {
                       if (
@@ -156,6 +155,12 @@ const AddSingleItemScreen = (props) => {
                             saveItem(date, place, category, itemName, cost)
                           )
                         );
+                        setDate(new Date());
+                        setPlace("");
+                        setCost("");
+                        setItemName("");
+                        setCategory("");
+                        props.navigation.navigate("Home");
                       } else alert("uzupełnij wszystkie pola");
                     }}
                   />
@@ -243,8 +248,15 @@ const styles = StyleSheet.create({
   screen: {
     height: "100%",
   },
+  addBtn: {
+    width: 100,
+  },
+  inputArea: {
+    alignItems: "center",
+    // justifyContent: "center",
+  },
   CardAndInpuView: {
-    marginTop: 10,
+    marginTop: 20,
     flexDirection: "row",
     justifyContent: "space-around",
   },
@@ -303,6 +315,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   miniCard: {
+    maxWidth: 120,
+
     paddingTop: 10,
     flexDirection: "column",
     borderRadius: 10,
@@ -321,6 +335,9 @@ const styles = StyleSheet.create({
   miniCardDateText: {
     color: Colors.primary,
     textAlign: "center",
+  },
+  miniCardContent: {
+    maxWidth: 120,
   },
 
   miniCardContentTop: {

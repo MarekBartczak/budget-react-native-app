@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import Category from "../data/Category";
 import Items from "../data/Dummy-data";
 import Colors from "../constants/Colors";
@@ -9,6 +9,8 @@ import Chart from "../components/Chart";
 import FavoritePlaces from "../components/FavoritePlaces";
 import AddNewItem from "../components/AddNewItem";
 import ButtonRaport from "../components/Button";
+import { useSelector } from "react-redux";
+
 const MainScreen = (props) => {
   return (
     <SafeAreaView
