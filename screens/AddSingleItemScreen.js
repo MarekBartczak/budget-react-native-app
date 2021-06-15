@@ -4,8 +4,10 @@ import {
   Text,
   Keyboard,
   TouchableWithoutFeedback,
+  TouchableOpacity,
   Button,
   KeyboardAvoidingView,
+  Modal,
 } from "react-native";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -22,12 +24,16 @@ import switchComaToDot from "../functions/switchCompaToDot";
 import CategoryList from "../components/newItems/CategoryList";
 import { LinearGradient } from "expo-linear-gradient";
 import * as itemsAction from "../store/actions/items";
+import { Feather } from "@expo/vector-icons";
+
 const AddSingleItemScreen = (props) => {
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
   const [category, setCategory] = useState("");
   const [itemName, setItemName] = useState("");
   const [cost, setCost] = useState("");
+  const [addNewPlace, setAddNewPlace] = useState(false);
+  const [addNewCategory, setAddNewCategory] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -84,7 +90,34 @@ const AddSingleItemScreen = (props) => {
             </View>
 
             {/* Gdzie View */}
-            <SeparatorText style={styles.textSeparator}>Gdzie?</SeparatorText>
+            <View style={styles.separatorView}>
+              <SeparatorText style={styles.textSeparator}>Gdzie?</SeparatorText>
+              <TouchableOpacity onPress={() => setAddNewPlace(true)}>
+                <Feather name="edit" size={15} color="black" />
+              </TouchableOpacity>
+
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={addNewPlace}
+                onRequestClose={() => setAddNewPlace(!addNewPlace)}
+              >
+                <View style={styles.addNewPlaceView}>
+                  <Input
+                    style={styles.inputModal}
+                    value={place}
+                    placeholder="wpisz nowe miejsce"
+                    keyboardType={"default"}
+                    onChangeText={setPlace}
+                  />
+
+                  <TouchableOpacity onPress={() => setAddNewPlace(false)}>
+                    <Feather name="save" size={25} color={Colors.primary} />
+                  </TouchableOpacity>
+                </View>
+              </Modal>
+            </View>
+
             <View style={styles.place}>
               <View style={styles.placeList}>
                 <PlaceList
@@ -94,9 +127,34 @@ const AddSingleItemScreen = (props) => {
               </View>
             </View>
             {/* Kategorie View */}
-            <SeparatorText style={styles.textSeparator}>
-              W jakiej kategorii?
-            </SeparatorText>
+            <View style={styles.separatorView}>
+              <SeparatorText style={styles.textSeparator}>
+                W jakiej kategorii?
+              </SeparatorText>
+              <TouchableOpacity onPress={() => setAddNewCategory(true)}>
+                <Feather name="edit" size={15} color="black" />
+              </TouchableOpacity>
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={addNewCategory}
+                onRequestClose={() => setAddNewCategory(!addNewCategory)}
+              >
+                <View style={styles.addNewPlaceView}>
+                  <Input
+                    style={styles.inputModal}
+                    value={category}
+                    placeholder="wpisz nową Kategorie"
+                    keyboardType={"default"}
+                    onChangeText={setCategory}
+                  />
+
+                  <TouchableOpacity onPress={() => setAddNewCategory(false)}>
+                    <Feather name="save" size={25} color={Colors.primary} />
+                  </TouchableOpacity>
+                </View>
+              </Modal>
+            </View>
             <View>
               <CategoryList onChangeCategory={setCategoryState} />
             </View>
@@ -107,6 +165,7 @@ const AddSingleItemScreen = (props) => {
                 <SeparatorText style={styles.textSeparator}>
                   Co i za ile?
                 </SeparatorText>
+
                 <View style={styles.inputs}>
                   <Input
                     style={styles.input}
@@ -263,7 +322,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.9,
     shadowRadius: 10,
   },
-
+  addNewPlaceView: {
+    height: "100%",
+    backgroundColor: "rgba(255, 255, 255,0.9)",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   placeList: {
     marginTop: 10,
     flexDirection: "column",
@@ -275,16 +340,31 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "left",
     marginRight: 10,
+    marginTop: 10,
   },
 
   inputs: {
     alignItems: "center",
   },
-
+  separatorView: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   input: {
     height: 25,
     width: 200,
     borderBottomWidth: 1,
+    margin: 5,
+    margin: 10,
+    color: Colors.primary,
+    borderColor: Colors.primary,
+  },
+  inputModal: {
+    height: 40,
+    fontSize: 20,
+    width: 200,
+    borderBottomWidth: 3,
+    fontWeight: "bold",
     margin: 5,
     margin: 10,
     color: Colors.primary,

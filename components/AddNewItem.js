@@ -15,7 +15,7 @@ const AddNewItem = (props) => {
             size={62}
             color={Colors.primary}
           />
-          <Text>Pojedynczy Element</Text>
+          <Text>Pojedynczy Wydatek</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.add}

@@ -7,7 +7,7 @@ import CategoryScreen from "../screens/CategoryScreen";
 import Colors from "../constants/Colors";
 import AddSingleItemScreen from "../screens/AddSingleItemScreen";
 import FavoritePlaceScreen from "../screens/FavoritePlaceScreen";
-import AddMultipleItemScreen from "../screens/AddMultiItemsScreen";
+import AddMultipleItemScreen from "../screens/AddMultiItemsSetDateAndPlaceScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View, Button, TouchableOpacity } from "react-native";

@@ -21,6 +21,7 @@ const PlaceScreen = (props) => {
   }, [itemsFromRedux]);
 
   const currentPlaceParam = props.route.params;
+
   const placeList = newItems.map((el) => {
     return el.place;
   });

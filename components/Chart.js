@@ -39,25 +39,25 @@ const Chart = (props) => {
   };
 
   let lastWeekDateArray = [];
-  let sumOfCostLastWeekItems = [];
   for (let i = 6; i >= 0; i--) {
-    lastWeekDateArray.push(
-      workingDateList[workingDateList.length - 1 - i].slice(5, 10)
-    );
-    sumOfCostLastWeekItems.push(
-      calculateSum(workingDateList, workingDateList.length - 1 - i)
-    );
+    let newItem = workingDateList[workingDateList.length - 1 - i].slice(5, 10);
+    lastWeekDateArray.push({
+      id: Number(newItem.replace("-", "")),
+      date: newItem,
+      cost: calculateSum(workingDateList, workingDateList.length - 1 - i),
+    });
   }
+  lastWeekDateArray.sort((a, b) => a.id - b.id);
 
   return (
     <View>
       <TouchableOpacity onPress={props.press}>
         <LineChart
           data={{
-            labels: lastWeekDateArray,
+            labels: lastWeekDateArray.map((el) => el.date),
             datasets: [
               {
-                data: sumOfCostLastWeekItems,
+                data: lastWeekDateArray.map((el) => el.cost),
               },
             ],
           }}
