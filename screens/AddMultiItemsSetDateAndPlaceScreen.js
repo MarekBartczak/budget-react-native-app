@@ -76,7 +76,11 @@ const AddMultiItemsScreen = (props) => {
 
         <View style={styles.place}>
           <View style={styles.placeList}>
-            <PlaceList data={workingPlaceList} getPlaceInfo={getPlaceInfo} />
+            <PlaceList
+              data={workingPlaceList}
+              getPlaceInfo={getPlaceInfo}
+              place={place}
+            />
           </View>
         </View>
         <View style={styles.receipt}>
