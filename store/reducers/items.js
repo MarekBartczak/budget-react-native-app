@@ -1,7 +1,8 @@
-import { ADD_ITEM, DEL_ITEM } from "../actions/items";
+import { ADD_ITEM, DEL_ITEM, ADD_ITEM_TO_THE_RECIPT } from "../actions/items";
 
 const initialState = {
   items: [],
+  recipt: [],
 };
 
 export default (state = initialState, action) => {
@@ -18,6 +19,9 @@ export default (state = initialState, action) => {
       } else {
         return { ...state };
       }
+
+    case ADD_ITEM_TO_THE_RECIPT:
+      return { ...state, recipt: [...state.recipt, action.item] };
   }
   return state;
 };

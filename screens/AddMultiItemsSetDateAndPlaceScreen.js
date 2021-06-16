@@ -5,22 +5,39 @@ import {
   Modal,
   Button,
   KeyboardAvoidingView,
+  TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
+import * as itemsAction from "../store/actions/items";
 
 import DatePicker from "../components/DatePicker";
 import PlaceList from "../components/newItems/PlaceList";
 import Items from "../data/Dummy-data";
 import Colors from "../constants/Colors";
 import Receipt from "../components/newMultiItems/Receipt";
-
+import Item from "../models/Item";
+import uuid from "react-native-uuid";
+import switchComaToDot from "../functions/switchCompaToDot";
+import { useDispatch } from "react-redux";
 const AddMultiItemsScreen = (props) => {
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
+  const [itemName, setItemName] = useState("");
+  const [cost, setCost] = useState("");
+  const [category, setCategory] = useState("");
+
+  const dispatch = useDispatch();
 
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setDate(currentDate);
+  };
+
+  const clearState = () => {
+    setCategory("");
+    setCost("");
+    setItemName("");
   };
 
   const placeList = Items.map((el) => el.place);
@@ -30,6 +47,21 @@ const AddMultiItemsScreen = (props) => {
 
   const getPlaceInfo = (data) => {
     setPlace(data);
+  };
+
+  const addItemToTheRecipt = () => {
+    const itemObj = new Item(
+      uuid.v4(),
+      date.toISOString().slice(0, 10),
+      place,
+      category,
+      itemName,
+      Number(switchComaToDot(cost))
+    );
+
+    dispatch(itemsAction.addItemToTheRecipt(itemObj));
+
+    clearState();
   };
   return (
     <KeyboardAvoidingView
@@ -52,6 +84,13 @@ const AddMultiItemsScreen = (props) => {
             place={place}
             date={date.toISOString().slice(0, 10)}
             setPlace={setPlace}
+            cost={cost}
+            onSetCost={setCost}
+            itemName={itemName}
+            onSetName={setItemName}
+            setCategory={setCategory}
+            category={category}
+            addItemToTheRecipt={() => addItemToTheRecipt()}
           />
         </View>
       </View>
@@ -68,12 +107,12 @@ const styles = StyleSheet.create({
   placeList: {
     marginTop: 10,
 
-    height: 150,
+    height: Dimensions.get("window").height * 0.2,
     width: "90%",
   },
   receipt: {
     marginTop: 30,
-    height: "50%",
+    height: Dimensions.get("window").height * 0.5,
     width: "100%",
     flexDirection: "column",
     justifyContent: "space-between",

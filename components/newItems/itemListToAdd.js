@@ -3,10 +3,15 @@ import React from "react";
 import Colors from "../../constants/Colors";
 
 const itemListToAdd = (props) => {
+  const selected = {
+    color: props.place === props.list ? Colors.accent : Colors.banner,
+  };
   return (
     <View>
       <TouchableOpacity onPress={() => props.setPlace(props.list)}>
-        <Text style={styles.list}>{props.list}</Text>
+        <Text style={{ ...styles.list, ...{ color: selected.color } }}>
+          {props.list}
+        </Text>
       </TouchableOpacity>
     </View>
   );

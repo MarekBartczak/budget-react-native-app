@@ -7,6 +7,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const categoryList = (props) => {
   const [subCat, setSubCat] = useState();
+  const [category, setCategory] = useState();
   const mainCategoryList = [];
   const objKeys = Object.keys(Category);
   for (let i = 0; i < objKeys.length; i++) {
@@ -14,6 +15,7 @@ const categoryList = (props) => {
   }
 
   const selectedCat = (data) => {
+    setCategory(data);
     for (let i = 0; i < Object.keys(Category).length; i++) {
       if (Category[Object.keys(Category)[i]].name === data) {
         const newList = { ...Category[Object.keys(Category)[i]] };
@@ -22,7 +24,6 @@ const categoryList = (props) => {
       }
     }
   };
-
   return (
     <View style={styles.categoryList}>
       <View style={styles.semiScreen}>
@@ -34,6 +35,7 @@ const categoryList = (props) => {
               style={styles.catElement}
               list={item.item}
               press={selectedCat}
+              selected={category}
             />
           )}
         />
@@ -61,6 +63,7 @@ const categoryList = (props) => {
               style={styles.catElement}
               list={item.item}
               press={props.onChangeCategory}
+              selected={props.category}
             />
           )}
         />

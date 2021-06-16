@@ -10,7 +10,11 @@ const PlaceList = (props) => {
         data={props.data}
         keyExtractor={(item) => item}
         renderItem={(list) => (
-          <ItemListToAdd list={list.item} setPlace={props.getPlaceInfo} />
+          <ItemListToAdd
+            list={list.item}
+            setPlace={props.getPlaceInfo}
+            place={props.place}
+          />
         )}
       />
     </View>

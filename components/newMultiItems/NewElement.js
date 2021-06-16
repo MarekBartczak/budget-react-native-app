@@ -1,30 +1,44 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
 import Input from "../newItems/Input";
 import React, { useState } from "react";
 import Colors from "../../constants/Colors";
+import CategoryList from "../../components/newItems/CategoryList";
 
 const NewElement = (props) => {
-  //   const [itemName, setItemName] = useState("");
-  //   const [cost, setCost] = useState("");
   return (
-    <View style={styles.newElement}>
-      <View style={styles.inputs}>
-        <Input
-          style={styles.input}
-          value={props.itemName}
-          placeholder={"Nazwa produktu"}
-          keyboardType={"default"}
-          onChangeText={props.onSetName}
-        />
-        <Input
-          style={styles.input}
-          value={props.cost}
-          placeholder={"Kwota"}
-          keyboardType={"numeric"}
-          onChangeText={props.onSetCost}
-        />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.newElement}>
+        <View style={styles.category}>
+          <CategoryList
+            onChangeCategory={props.onChangeCategory}
+            category={props.category}
+          />
+        </View>
+
+        <View style={styles.inputs}>
+          <Input
+            style={styles.input}
+            value={props.itemName}
+            placeholder={"Nazwa produktu"}
+            keyboardType={"default"}
+            onChangeText={props.onSetName}
+          />
+          <Input
+            style={styles.input}
+            value={props.cost}
+            placeholder={"Kwota"}
+            keyboardType={"numeric"}
+            onChangeText={props.onSetCost}
+          />
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -33,6 +47,11 @@ export default NewElement;
 const styles = StyleSheet.create({
   newElement: {
     alignItems: "center",
+    width: "100%",
+  },
+  category: {
+    marginVertical: 20,
+    width: "100%",
   },
   inputs: {
     alignItems: "center",

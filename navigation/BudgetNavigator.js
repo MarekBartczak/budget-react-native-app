@@ -9,7 +9,7 @@ import AddSingleItemScreen from "../screens/AddSingleItemScreen";
 import FavoritePlaceScreen from "../screens/FavoritePlaceScreen";
 import AddMultipleItemScreen from "../screens/AddMultiItemsSetDateAndPlaceScreen";
 
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Text, View, Button, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -77,8 +77,8 @@ const BudgetNavigator = (props) => {
                 }}
                 onPress={() => navigation.navigate("AddMultipleItem")}
               >
-                <Ionicons
-                  name="ios-cart-outline"
+                <MaterialCommunityIcons
+                  name="text-box-multiple-outline"
                   size={24}
                   color={Colors.primary}
                 />
@@ -105,8 +105,8 @@ const BudgetNavigator = (props) => {
                 }}
                 onPress={() => navigation.navigate("AddSingleItem")}
               >
-                <Ionicons
-                  name="ios-add-circle-outline"
+                <MaterialCommunityIcons
+                  name="numeric-1-box-multiple-outline"
                   size={24}
                   color={Colors.primary}
                 />

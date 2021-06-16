@@ -123,6 +123,7 @@ const AddSingleItemScreen = (props) => {
                 <PlaceList
                   data={workingPlaceList}
                   getPlaceInfo={getPlaceInfo}
+                  place={place}
                 />
               </View>
             </View>
@@ -156,7 +157,10 @@ const AddSingleItemScreen = (props) => {
               </Modal>
             </View>
             <View>
-              <CategoryList onChangeCategory={setCategoryState} />
+              <CategoryList
+                onChangeCategory={setCategoryState}
+                category={category}
+              />
             </View>
 
             <View style={styles.CardAndInpuView}>

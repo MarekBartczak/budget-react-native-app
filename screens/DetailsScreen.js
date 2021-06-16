@@ -17,6 +17,7 @@ const DetailsScreen = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.dateView}>
+        <View style={styles.trash}></View>
         <TouchableOpacity
           onPress={() =>
             props.navigation.navigate("Date", { selectedDate: date })
@@ -24,17 +25,51 @@ const DetailsScreen = (props) => {
         >
           <Text style={styles.date}>{date}</Text>
         </TouchableOpacity>
+
+        <View style={styles.trash}>
+          <TouchableOpacity
+            onPress={() => {
+              Alert.alert(
+                "Uwaga!",
+                "Czy usunąć?",
+                [
+                  { text: "Nie", style: "cancel" },
+                  { text: "Tak", onPress: () => deleteItem() },
+                ],
+                { cancelable: false }
+              );
+            }}
+          >
+            <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View style={styles.middleSection}>
         {/* first column */}
-        <View style={styles.placeView}>
-          <Text>Miejsce</Text>
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate("Place", { place: place })}
-          >
-            <Text style={styles.place}>{place}</Text>
-          </TouchableOpacity>
+        <View style={styles.placeAndCategory}>
+          <View style={styles.placeView}>
+            <Text>Miejsce</Text>
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate("Place", { place: place })
+              }
+            >
+              <Text style={styles.place}>{place}</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.categoryView}>
+            <Text>Kategoria</Text>
+
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate("Category", { category: category })
+              }
+            >
+              <Text style={styles.category}>{category}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* middle column */}
@@ -49,36 +84,7 @@ const DetailsScreen = (props) => {
         </View>
 
         {/* third column */}
-        <View style={styles.thirdColumn}>
-          <View style={styles.categoryView}>
-            <Text>Kategoria</Text>
-
-            <TouchableOpacity
-              onPress={() =>
-                props.navigation.navigate("Category", { category: category })
-              }
-            >
-              <Text style={styles.category}>{category}</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.trash}>
-            <TouchableOpacity
-              onPress={() => {
-                Alert.alert(
-                  "Uwaga!",
-                  "Czy usunąć?",
-                  [
-                    { text: "Nie", style: "cancel" },
-                    { text: "Tak", onPress: () => deleteItem() },
-                  ],
-                  { cancelable: false }
-                );
-              }}
-            >
-              <Ionicons name="ios-trash" size={34} color={Colors.primary} />
-            </TouchableOpacity>
-          </View>
-        </View>
+        <View style={styles.thirdColumn}></View>
       </View>
     </View>
   );
@@ -105,6 +111,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   date: {
     fontWeight: "bold",
@@ -115,6 +124,10 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     height: 180,
 
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  placeAndCategory: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
@@ -136,7 +149,8 @@ const styles = StyleSheet.create({
   },
   trash: {
     alignItems: "center",
-    marginBottom: 20,
+    // marginBottom: 20,
+    width: 30,
   },
   category: {
     fontWeight: "bold",
