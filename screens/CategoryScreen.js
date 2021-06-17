@@ -6,7 +6,7 @@ import {
   FlatList,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import Items from "../data/Dummy-data";
+// import Items from "../data/Dummy-data";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/SimplyItems";
 import Colors from "../constants/Colors";
@@ -14,14 +14,14 @@ import { useSelector } from "react-redux";
 
 const CategoryScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
-  const [newItems, setNewItems] = useState(Items);
+  // const [newItems, setNewItems] = useState(Items);
 
-  useEffect(() => {
-    setNewItems([...Items, ...itemsFromRedux]);
-  }, [itemsFromRedux]);
+  // useEffect(() => {
+  //   setNewItems([...Items, ...itemsFromRedux]);
+  // }, [itemsFromRedux]);
 
   const currentCategoryParam = props.route.params;
-  const categoryList = newItems.map((el) => {
+  const categoryList = itemsFromRedux.map((el) => {
     return el.category;
   });
 
@@ -32,7 +32,9 @@ const CategoryScreen = (props) => {
     currentCategoryParam.category
   );
 
-  const filteredItem = newItems.filter((el) => el.category === currentCategory);
+  const filteredItem = itemsFromRedux.filter(
+    (el) => el.category === currentCategory
+  );
 
   const switchCategory = (param) => {
     const currentIndex = workingCategoryList.indexOf(currentCategory);

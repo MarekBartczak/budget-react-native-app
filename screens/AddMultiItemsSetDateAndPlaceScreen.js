@@ -13,14 +13,16 @@ import * as itemsAction from "../store/actions/items";
 
 import DatePicker from "../components/DatePicker";
 import PlaceList from "../components/newItems/PlaceList";
-import Items from "../data/Dummy-data";
+// import Items from "../data/Dummy-data";
 import Colors from "../constants/Colors";
 import Receipt from "../components/newMultiItems/Receipt";
 import Item from "../models/Item";
 import uuid from "react-native-uuid";
 import switchComaToDot from "../functions/switchCompaToDot";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const AddMultiItemsScreen = (props) => {
+  const itemsFromRedux = useSelector((state) => state.item.items);
+
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
   const [itemName, setItemName] = useState("");
@@ -40,7 +42,7 @@ const AddMultiItemsScreen = (props) => {
     setItemName("");
   };
 
-  const placeList = Items.map((el) => el.place);
+  const placeList = itemsFromRedux.map((el) => el.place);
   const newList = (placeList) =>
     placeList.filter((a, b) => placeList.indexOf(a) === b);
   const workingPlaceList = newList(placeList);

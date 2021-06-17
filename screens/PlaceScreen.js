@@ -6,7 +6,7 @@ import {
   FlatList,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import Items from "../data/Dummy-data";
+// import Items from "../data/Dummy-data";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/SimplyItems";
 import Colors from "../constants/Colors";
@@ -14,22 +14,22 @@ import { useSelector } from "react-redux";
 
 const PlaceScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
-  const [newItems, setNewItems] = useState(Items);
+  // const [newItems, setNewItems] = useState(Items);
 
-  useEffect(() => {
-    setNewItems([...Items, ...itemsFromRedux]);
-  }, [itemsFromRedux]);
+  // useEffect(() => {
+  //   setNewItems([...Items, ...itemsFromRedux]);
+  // }, [itemsFromRedux]);
 
   const currentPlaceParam = props.route.params;
 
-  const placeList = newItems.map((el) => {
+  const placeList = itemsFromRedux.map((el) => {
     return el.place;
   });
   const newList = (placeList) =>
     placeList.filter((a, b) => placeList.indexOf(a) === b);
   const workingPlaceList = newList(placeList);
   const [currentPlace, setCurrentPlace] = useState(currentPlaceParam.place);
-  const filteredItem = newItems.filter((el) => el.place === currentPlace);
+  const filteredItem = itemsFromRedux.filter((el) => el.place === currentPlace);
 
   const switchPlace = (param) => {
     const currentIndex = workingPlaceList.indexOf(currentPlace);

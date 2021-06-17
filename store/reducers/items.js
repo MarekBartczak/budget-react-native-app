@@ -1,7 +1,8 @@
 import { ADD_ITEM, DEL_ITEM, ADD_ITEM_TO_THE_RECIPT } from "../actions/items";
+import Items from "../../data/Dummy-data";
 
 const initialState = {
-  items: [],
+  items: [...Items],
   recipt: [],
 };
 

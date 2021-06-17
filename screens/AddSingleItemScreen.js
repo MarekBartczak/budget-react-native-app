@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import Colors from "../constants/Colors";
-import Items from "../data/Dummy-data";
+// import Items from "../data/Dummy-data";
 import Item from "../models/Item";
 import uuid from "react-native-uuid";
 import DatePicker from "../components/DatePicker";
@@ -25,8 +25,11 @@ import CategoryList from "../components/newItems/CategoryList";
 import { LinearGradient } from "expo-linear-gradient";
 import * as itemsAction from "../store/actions/items";
 import { Feather } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 const AddSingleItemScreen = (props) => {
+  const itemsFromRedux = useSelector((state) => state.item.items);
+
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
   const [category, setCategory] = useState("");
@@ -45,7 +48,7 @@ const AddSingleItemScreen = (props) => {
   const checkIfEmpty = (val) => {
     return val ? true : false;
   };
-  const placeList = Items.map((el) => el.place);
+  const placeList = itemsFromRedux.map((el) => el.place);
   const newList = (placeList) =>
     placeList.filter((a, b) => placeList.indexOf(a) === b);
 

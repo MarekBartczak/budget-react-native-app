@@ -14,25 +14,27 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import Items from "../data/Dummy-data";
+// import Items from "../data/Dummy-data";
 import Colors from "../constants/Colors";
 import { useSelector } from "react-redux";
 
 const Chart = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
-  const [newItems, setNewItems] = useState(Items);
+  // const [newItems, setNewItems] = useState(Items);
 
-  useEffect(() => {
-    setNewItems([...Items, ...itemsFromRedux]);
-  }, [itemsFromRedux]);
+  // useEffect(() => {
+  //   setNewItems([...Items, ...itemsFromRedux]);
+  // }, [itemsFromRedux]);
 
-  const dateList = newItems.map((el) => el.date);
+  const dateList = itemsFromRedux.map((el) => el.date);
   const newDateList = (dateList) =>
     dateList.filter((a, b) => dateList.indexOf(a) === b);
   const workingDateList = newDateList(dateList);
 
   const calculateSum = (list, index) => {
-    const filteredItems = newItems.filter((el) => el.date === list[index]);
+    const filteredItems = itemsFromRedux.filter(
+      (el) => el.date === list[index]
+    );
     const filteredCostArray = filteredItems.map((el) => el.cost);
     const filteredCost = (total, sum) => total + sum;
     return filteredCostArray.reduce(filteredCost).toFixed(2);

@@ -3,7 +3,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import React, { useEffect, useCallback } from "react";
 import Category from "../data/Category";
-import Items from "../data/Dummy-data";
+// import Items from "../data/Dummy-data";
 import Colors from "../constants/Colors";
 import Chart from "../components/Chart";
 import FavoritePlaces from "../components/FavoritePlaces";
