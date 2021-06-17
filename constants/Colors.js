@@ -1,5 +1,4 @@
 export default {
-  // primary: "#C2185B",
   primary: "rgb(109,94,200)",
   accent: "#FF8A1A",
   banner: "#DFDFDF",

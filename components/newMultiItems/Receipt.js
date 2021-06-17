@@ -25,12 +25,15 @@ import { useSelector } from "react-redux";
 const Receipt = (props) => {
   const [modal, showModal] = useState(false);
   const [addItemModal, showAddItemModal] = useState(false);
-  const reciptData = useSelector((state) => state.item.recipt);
+  const receiptDate = useSelector((state) => state.item.receipt.date);
+  const showReceipt = useSelector((state) => state.item.receipt);
+  const receiptItem = useSelector((state) => state.item.receipt.items);
+
   const sumOf = (total, sum) => total + sum;
   let costList = [];
   let sum = 0;
-  if (reciptData.length > 0) {
-    costList = reciptData.map((item) => item.cost);
+  if (receiptItem.length > 0) {
+    costList = receiptItem.map((item) => item.cost);
     sum = costList.reduce(sumOf);
   }
   return (
@@ -87,7 +90,7 @@ const Receipt = (props) => {
 
             <View style={styles.list}>
               <FlatList
-                data={reciptData}
+                data={receiptItem}
                 keyExtractor={(item, index) => "item" + index}
                 renderItem={(item) => (
                   <ListElement
@@ -137,7 +140,7 @@ const Receipt = (props) => {
 
             <View style={styles.bottomPartOfRecipt}>
               <View style={styles.sumView}>
-                <Text style={styles.sum}>Razem {sum}zł</Text>
+                <Text style={styles.sum}>Razem {sum.toFixed(2)}zł</Text>
               </View>
               <View style={styles.buttons}>
                 <View style={styles.saveBtn}>
@@ -248,5 +251,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.banner,
     padding: 5,
     alignItems: "flex-end",
+    marginVertical: 5,
   },
 });

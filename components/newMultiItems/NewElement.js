@@ -1,12 +1,11 @@
 import {
   StyleSheet,
-  Text,
   View,
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
 import Input from "../newItems/Input";
-import React, { useState } from "react";
+import React from "react";
 import Colors from "../../constants/Colors";
 import CategoryList from "../../components/newItems/CategoryList";
 

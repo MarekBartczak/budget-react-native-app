@@ -5,8 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React, { useState, useEffect } from "react";
-// import Items from "../data/Dummy-data";
+import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/SimplyItems";
 import Colors from "../constants/Colors";
@@ -14,13 +13,11 @@ import { useSelector } from "react-redux";
 
 const CategoryScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
-  // const [newItems, setNewItems] = useState(Items);
-
-  // useEffect(() => {
-  //   setNewItems([...Items, ...itemsFromRedux]);
-  // }, [itemsFromRedux]);
-
   const currentCategoryParam = props.route.params;
+  const [currentCategory, setCurrentCategory] = useState(
+    currentCategoryParam.category
+  );
+
   const categoryList = itemsFromRedux.map((el) => {
     return el.category;
   });
@@ -28,10 +25,6 @@ const CategoryScreen = (props) => {
   const newList = (categoryList) =>
     categoryList.filter((a, b) => categoryList.indexOf(a) === b);
   const workingCategoryList = newList(categoryList);
-  const [currentCategory, setCurrentCategory] = useState(
-    currentCategoryParam.category
-  );
-
   const filteredItem = itemsFromRedux.filter(
     (el) => el.category === currentCategory
   );
@@ -49,6 +42,7 @@ const CategoryScreen = (props) => {
   const filteredCost = filteredItem.map((el) => {
     return el.cost;
   });
+
   const sumOf = (total, sum) => total + sum;
   const sum = filteredCost.reduce(sumOf);
 
@@ -97,7 +91,6 @@ export default CategoryScreen;
 
 const styles = StyleSheet.create({
   screen: {
-    // flex: 1,
     width: "100%",
     alignItems: "center",
     justifyContent: "center",

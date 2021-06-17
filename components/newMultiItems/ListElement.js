@@ -9,14 +9,11 @@ const ListElement = (props) => {
           <Text style={styles.itemName}>{props.itemName}</Text>
           <Text style={styles.category}>{props.category}</Text>
         </View>
-
         <Text style={styles.cost}>{props.cost}zł</Text>
       </View>
     </View>
   );
 };
-
-export default ListElement;
 
 const styles = StyleSheet.create({
   ListElement: {
@@ -41,3 +38,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+export default ListElement;

@@ -1,32 +1,14 @@
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart,
-} from "react-native-chart-kit";
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
-// import Items from "../data/Dummy-data";
+import { LineChart } from "react-native-chart-kit";
+import React from "react";
+import { StyleSheet, View, Dimensions, TouchableOpacity } from "react-native";
 import Colors from "../constants/Colors";
 import { useSelector } from "react-redux";
 
 const Chart = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
-  // const [newItems, setNewItems] = useState(Items);
-
-  // useEffect(() => {
-  //   setNewItems([...Items, ...itemsFromRedux]);
-  // }, [itemsFromRedux]);
-
   const dateList = itemsFromRedux.map((el) => el.date);
+  let lastWeekDateArray = [];
+
   const newDateList = (dateList) =>
     dateList.filter((a, b) => dateList.indexOf(a) === b);
   const workingDateList = newDateList(dateList);
@@ -40,7 +22,6 @@ const Chart = (props) => {
     return filteredCostArray.reduce(filteredCost).toFixed(2);
   };
 
-  let lastWeekDateArray = [];
   for (let i = 6; i >= 0; i--) {
     let newItem = workingDateList[workingDateList.length - 1 - i].slice(5, 10);
     lastWeekDateArray.push({
@@ -71,27 +52,13 @@ const Chart = (props) => {
           height={180}
           chartConfig={{
             labelColor: () => "black",
-            backgroundColor: "rgba(4, 4, 4, 1)",
             backgroundGradientFrom: Colors.backGround,
             backgroundGradientTo: Colors.backGroundChart,
-
             decimalPlaces: 2,
             color: () => Colors.backGround2,
           }}
           bezier
-          style={{
-            marginVertical: 18,
-            borderRadius: 16,
-            padding: 0,
-            justifyContent: "center",
-            alignItems: "center",
-            width: Dimensions.get("window").width * 0.9,
-            marginHorizontal: "5%",
-            shadowOpacity: 0.9,
-            shadowRadius: 10,
-            shadowOffset: { height: 10, width: 10 },
-            shadowColor: Colors.primary,
-          }}
+          style={styles.chart}
         />
       </TouchableOpacity>
     </View>
@@ -100,4 +67,18 @@ const Chart = (props) => {
 
 export default Chart;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  chart: {
+    marginVertical: 18,
+    borderRadius: 16,
+    padding: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    width: Dimensions.get("window").width * 0.9,
+    marginHorizontal: "5%",
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    shadowOffset: { height: 10, width: 10 },
+    shadowColor: Colors.primary,
+  },
+});

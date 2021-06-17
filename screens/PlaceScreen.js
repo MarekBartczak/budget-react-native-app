@@ -5,8 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React, { useState, useEffect } from "react";
-// import Items from "../data/Dummy-data";
+import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/SimplyItems";
 import Colors from "../constants/Colors";
@@ -14,26 +13,20 @@ import { useSelector } from "react-redux";
 
 const PlaceScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
-  // const [newItems, setNewItems] = useState(Items);
-
-  // useEffect(() => {
-  //   setNewItems([...Items, ...itemsFromRedux]);
-  // }, [itemsFromRedux]);
-
   const currentPlaceParam = props.route.params;
+  const [currentPlace, setCurrentPlace] = useState(currentPlaceParam.place);
 
   const placeList = itemsFromRedux.map((el) => {
     return el.place;
   });
+
   const newList = (placeList) =>
     placeList.filter((a, b) => placeList.indexOf(a) === b);
   const workingPlaceList = newList(placeList);
-  const [currentPlace, setCurrentPlace] = useState(currentPlaceParam.place);
   const filteredItem = itemsFromRedux.filter((el) => el.place === currentPlace);
 
   const switchPlace = (param) => {
     const currentIndex = workingPlaceList.indexOf(currentPlace);
-
     if (
       currentIndex + param < [workingPlaceList.length] &&
       currentIndex + param >= 0
@@ -89,11 +82,8 @@ const PlaceScreen = (props) => {
   );
 };
 
-export default PlaceScreen;
-
 const styles = StyleSheet.create({
   screen: {
-    // flex: 1,
     width: "100%",
     alignItems: "center",
   },
@@ -113,3 +103,5 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 });
+
+export default PlaceScreen;

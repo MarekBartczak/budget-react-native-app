@@ -1,9 +1,19 @@
-import { ADD_ITEM, DEL_ITEM, ADD_ITEM_TO_THE_RECIPT } from "../actions/items";
+import {
+  ADD_ITEM,
+  DEL_ITEM,
+  ADD_ITEM_TO_THE_RECEIPT,
+  SET_RECEIPT_PLACE,
+  SET_RECEIPT_DATE,
+} from "../actions/items";
 import Items from "../../data/Dummy-data";
 
 const initialState = {
   items: [...Items],
-  recipt: [],
+  receipt: {
+    place: "",
+    date: "",
+    items: [],
+  },
 };
 
 export default (state = initialState, action) => {
@@ -21,8 +31,19 @@ export default (state = initialState, action) => {
         return { ...state };
       }
 
-    case ADD_ITEM_TO_THE_RECIPT:
-      return { ...state, recipt: [...state.recipt, action.item] };
+    case ADD_ITEM_TO_THE_RECEIPT:
+      return {
+        ...state,
+        receipt: {
+          ...state.receipt,
+          items: [...state.receipt.items, action.item],
+        },
+      };
+
+    case SET_RECEIPT_DATE:
+      return { ...state, receipt: { ...state.receipt, date: action.date } };
+    case SET_RECEIPT_PLACE:
+      return { ...state, receipt: { ...state.receipt, place: action.place } };
   }
   return state;
 };

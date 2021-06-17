@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import React, { useState } from "react";
 import Category from "../../data/Category";
 import CategoryElementList from "./CategoryElementList";
@@ -8,8 +8,10 @@ import { LinearGradient } from "expo-linear-gradient";
 const categoryList = (props) => {
   const [subCat, setSubCat] = useState();
   const [category, setCategory] = useState();
+
   const mainCategoryList = [];
   const objKeys = Object.keys(Category);
+
   for (let i = 0; i < objKeys.length; i++) {
     mainCategoryList.push(Category[objKeys[i]].name);
   }
@@ -24,6 +26,7 @@ const categoryList = (props) => {
       }
     }
   };
+
   return (
     <View style={styles.categoryList}>
       <View style={styles.semiScreen}>

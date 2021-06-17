@@ -9,6 +9,6 @@ const RaportScreen = (props) => {
   );
 };
 
-export default RaportScreen;
-
 const styles = StyleSheet.create({});
+
+export default RaportScreen;

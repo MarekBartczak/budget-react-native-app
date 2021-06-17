@@ -9,8 +9,6 @@ const FavoritePlaceScreen = (props) => {
   );
 };
 
-export default FavoritePlaceScreen;
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -18,3 +16,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+export default FavoritePlaceScreen;

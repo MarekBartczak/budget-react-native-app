@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
+
 const AddNewItem = (props) => {
   return (
     <View style={styles.screen}>
@@ -17,6 +18,7 @@ const AddNewItem = (props) => {
           />
           <Text>Pojedynczy Wydatek</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.add}
           onPress={props.pressToAddMultiItems}

@@ -8,12 +8,12 @@ import * as itemsAction from "../store/actions/items";
 const DetailsScreen = (props) => {
   const { date, place, category, name, cost, id } = props.route.params;
   const dispatch = useDispatch();
+
   const deleteItem = () => {
     dispatch(itemsAction.delItem(id));
     props.navigation.navigate("Home");
-    // console.log(name);
-    // console.log(id);
   };
+
   return (
     <View style={styles.screen}>
       <View style={styles.dateView}>
@@ -44,7 +44,6 @@ const DetailsScreen = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-
       <View style={styles.middleSection}>
         {/* first column */}
         <View style={styles.placeAndCategory}>
@@ -58,10 +57,8 @@ const DetailsScreen = (props) => {
               <Text style={styles.place}>{place}</Text>
             </TouchableOpacity>
           </View>
-
           <View style={styles.categoryView}>
             <Text>Kategoria</Text>
-
             <TouchableOpacity
               onPress={() =>
                 props.navigation.navigate("Category", { category: category })
@@ -71,18 +68,15 @@ const DetailsScreen = (props) => {
             </TouchableOpacity>
           </View>
         </View>
-
         {/* middle column */}
         <View style={styles.detailsMiddleCenter}>
           <View style={styles.nameView}>
             <Text style={styles.name}>{name}</Text>
           </View>
-
           <View style={styles.costView}>
             <Text style={styles.cost}>{cost}zł</Text>
           </View>
         </View>
-
         {/* third column */}
         <View style={styles.thirdColumn}></View>
       </View>
@@ -95,14 +89,8 @@ export default DetailsScreen;
 const styles = StyleSheet.create({
   screen: {
     alignContent: "center",
-    // flex: 1,
-
     margin: 30,
     backgroundColor: "white",
-    // shadowColor: "black",
-    // shadowOffset: { height: 5, width: 0 },
-    // shadowOpacity: 0.24,
-    // shadowRadius: 10,
     borderRadius: 10,
   },
   dateView: {
@@ -149,7 +137,6 @@ const styles = StyleSheet.create({
   },
   trash: {
     alignItems: "center",
-    // marginBottom: 20,
     width: 30,
   },
   category: {

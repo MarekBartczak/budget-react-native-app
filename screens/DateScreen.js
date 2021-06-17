@@ -6,28 +6,20 @@ import {
   FlatList,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-// import Items from "../data/Dummy-data";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/SimplyItems";
 import Colors from "../constants/Colors";
 import { useSelector } from "react-redux";
 
 const DateScreen = (props) => {
+  const selectedDate = props.route.params;
   const itemsFromRedux = useSelector((state) => state.item.items);
-  // const [newItems, setNewItems] = useState(Items);
-
-  // useEffect(() => {
-  //   setNewItems([...Items, ...itemsFromRedux]);
-  // }, [itemsFromRedux]);
-
   const dateList = itemsFromRedux.map((el) => {
     return el.date;
   });
   const newlist = (dateList) =>
     dateList.filter((a, b) => dateList.indexOf(a) === b);
   const workingDateList = newlist(dateList);
-
-  const selectedDate = props.route.params;
   const [currentDate, setCurrentDate] = useState(
     workingDateList[workingDateList.length - 1]
   );
@@ -37,12 +29,10 @@ const DateScreen = (props) => {
       setCurrentDate(selectedDate.selectedDate);
     }
   }, [selectedDate]);
-
   const filteredItem = itemsFromRedux.filter((el) => el.date === currentDate);
 
   const switchDate = (param) => {
     const currentIndex = workingDateList.indexOf(currentDate);
-
     if (
       currentIndex + param < [workingDateList.length] &&
       currentIndex + param >= 0
@@ -54,6 +44,7 @@ const DateScreen = (props) => {
   const filteredCost = filteredItem.map((el) => {
     return el.cost;
   });
+
   const sumOf = (total, sum) => total + sum;
   const sum = filteredCost.reduce(sumOf);
 
@@ -102,7 +93,6 @@ export default DateScreen;
 
 const styles = StyleSheet.create({
   screen: {
-    // flex: 1,
     width: "100%",
     alignItems: "center",
   },

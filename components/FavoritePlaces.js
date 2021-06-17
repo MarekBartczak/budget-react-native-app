@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     height: 200,
     justifyContent: "center",
     backgroundColor: Colors.banner,
-
     alignItems: "center",
     shadowOffset: { height: 0, width: 10 },
     shadowColor: Colors.primary,

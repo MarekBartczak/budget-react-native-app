@@ -1,6 +1,7 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
+
 const CategoruElementList = (props) => {
   const selected = {
     color: props.selected === props.list ? Colors.accent : Colors.primary,
