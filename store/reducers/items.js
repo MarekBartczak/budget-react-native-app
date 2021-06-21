@@ -40,7 +40,6 @@ export default (state = initialState, action) => {
           items: [...state.receipt.items, action.item],
         },
       };
-
     case SET_RECEIPT_DATE:
       return { ...state, receipt: { ...state.receipt, date: action.date } };
     case SET_RECEIPT_PLACE:
