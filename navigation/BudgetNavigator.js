@@ -35,7 +35,7 @@ const BudgetNavigator = (props) => {
           },
         }}
       >
-        {stackScreen("home", MainScreen, { title: "Główna" })}
+        {stackScreen("Home", MainScreen, { title: "Główna" })}
         {stackScreen("Details", DetailsScreen, { title: "Szczegóły" })}
         {stackScreen("Raport", RaportScreen, { title: "Raport" })}
         {stackScreen("Date", DateScreen, { title: "Data" })}

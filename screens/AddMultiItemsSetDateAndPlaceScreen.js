@@ -4,12 +4,13 @@ import {
   KeyboardAvoidingView,
   Dimensions,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "../components/DatePicker";
 import PlaceList from "../components/newItems/PlaceList";
 import Colors from "../constants/Colors";
 import Receipt from "../components/newMultiItems/Receipt";
 import Item from "../models/Item";
+import MultiItem from "../models/MultiItem";
 import uuid from "react-native-uuid";
 import switchComaToDot from "../functions/switchCompaToDot";
 import * as itemsAction from "../store/actions/items";
@@ -17,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const AddMultiItemsScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
+  const getSelectedPlace = useSelector((state) => state.item.receipt.place);
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
   const [itemName, setItemName] = useState("");
@@ -27,8 +29,12 @@ const AddMultiItemsScreen = (props) => {
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setDate(currentDate);
-    dispatch(itemsAction.setReceiptDate(date));
+    dispatch(itemsAction.setReceiptDate(currentDate));
   };
+
+  useEffect(() => {
+    dispatch(itemsAction.setReceiptDate(date));
+  }, [date]);
 
   const placeList = itemsFromRedux.map((el) => el.place);
   const newList = (placeList) =>
@@ -47,10 +53,8 @@ const AddMultiItemsScreen = (props) => {
   };
 
   const addIntoTheReceipt = () => {
-    const itemObj = new Item(
+    const itemObj = new MultiItem(
       uuid.v4(),
-      date.toISOString().slice(0, 10),
-      place,
       category,
       itemName,
       Number(switchComaToDot(cost))
@@ -86,6 +90,7 @@ const AddMultiItemsScreen = (props) => {
             setCategory={setCategory}
             category={category}
             addItemToTheRecipt={() => addIntoTheReceipt()}
+            backToHome={() => props.navigation.navigate("Home")}
           />
         </View>
       </View>

@@ -4,6 +4,7 @@ import {
   ADD_ITEM_TO_THE_RECEIPT,
   SET_RECEIPT_PLACE,
   SET_RECEIPT_DATE,
+  ADD_ITEMS_FROM_RECEIPT,
 } from "../actions/items";
 import Items from "../../data/Dummy-data";
 
@@ -44,6 +45,12 @@ export default (state = initialState, action) => {
       return { ...state, receipt: { ...state.receipt, date: action.date } };
     case SET_RECEIPT_PLACE:
       return { ...state, receipt: { ...state.receipt, place: action.place } };
+    case ADD_ITEMS_FROM_RECEIPT:
+      return {
+        ...state,
+        items: [...state.items, ...action.list],
+        receipt: { place: "", date: "", items: [] },
+      };
   }
   return state;
 };

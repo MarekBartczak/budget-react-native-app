@@ -22,3 +22,8 @@ export const SET_RECEIPT_PLACE = "SET_RECEIPT_PLACE";
 export const setReceiptPlace = (place) => {
   return { type: SET_RECEIPT_PLACE, place: place };
 };
+
+export const ADD_ITEMS_FROM_RECEIPT = "ADD_ITEMS_FROM_RECEIPT";
+export const addItemsFromReceipt = (list) => {
+  return { type: ADD_ITEMS_FROM_RECEIPT, list: list };
+};

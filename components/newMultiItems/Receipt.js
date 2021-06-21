@@ -7,6 +7,7 @@ import {
   Keyboard,
   FlatList,
   Button,
+  Dimensions,
 } from "react-native";
 
 import {
@@ -20,15 +21,19 @@ import Input from "../../components/newItems/Input";
 import { MaterialIcons } from "@expo/vector-icons";
 import NewElement from "./NewElement";
 import ListElement from "./ListElement";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import * as itemsAction from "../../store/actions/items";
+import SaveItemsToTheStore from "../../functions/SaveItemsToTheStore";
 
+const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
   const [modal, showModal] = useState(false);
   const [addItemModal, showAddItemModal] = useState(false);
   const receiptDate = useSelector((state) => state.item.receipt.date);
+  const GetSelectedPlace = useSelector((state) => state.item.receipt.place);
   const showReceipt = useSelector((state) => state.item.receipt);
   const receiptItem = useSelector((state) => state.item.receipt.items);
-
+  const dispatch = useDispatch();
   const sumOf = (total, sum) => total + sum;
   let costList = [];
   let sum = 0;
@@ -144,13 +149,32 @@ const Receipt = (props) => {
               </View>
               <View style={styles.buttons}>
                 <View style={styles.saveBtn}>
-                  <TouchableOpacity onPress={() => {}}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      if (receiptItem.length > 0) {
+                        let currentDate = receiptDate;
+                        dispatch(itemsAction.setReceiptDate(currentDate));
+                        let show;
+                        show = SaveItemsToTheStore(showReceipt);
+                        dispatch(itemsAction.addItemsFromReceipt(show));
+                        props.backToHome();
+                      } else {
+                        alert("Dodaj pozycje do paragonu");
+                      }
+                    }}
+                  >
                     <Feather name="save" size={44} color={Colors.accent} />
                   </TouchableOpacity>
                 </View>
                 <View style={styles.addBtn}>
                   <TouchableOpacity
-                    onPress={() => showAddItemModal(!addItemModal)}
+                    onPress={() => {
+                      if (GetSelectedPlace.length > 0) {
+                        showAddItemModal(!addItemModal);
+                      } else {
+                        alert("Wybierz Sklep");
+                      }
+                    }}
                   >
                     <MaterialIcons
                       name="playlist-add"
@@ -230,7 +254,8 @@ const styles = StyleSheet.create({
   },
   addBtn: {},
   list: {
-    height: 150,
+    marginTop: 5,
+    height: heightWindow < 900 ? heightWindow / 4.6 : heightWindow / 3.6,
     width: "100%",
     flexDirection: "column",
   },
