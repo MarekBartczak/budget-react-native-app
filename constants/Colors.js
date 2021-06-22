@@ -1,6 +1,6 @@
 export default {
   // primary: "rgb(109,94,200)",
-  primary: "rgb(109,91,129)",
+  primary: "rgb(109,81,209)",
   accent: "#FF8A1A",
   banner: "#DFDFDF",
   backGround2: "rgb(227, 227, 228)",

@@ -6,7 +6,6 @@ const FavoritePlaceScreen = (props) => {
   const favPlaceList = useSelector(
     (state) => state.favoritePlace.favoritePlace
   );
-  console.log(favPlaceList);
   return <View style={styles.screen}></View>;
 };
 

@@ -2,8 +2,11 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
+import * as favoritePlaceAction from "../store/actions/favoritePlace";
+import { useDispatch } from "react-redux";
 
 const AddNewItem = (props) => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.screen}>
       <View style={styles.addBtn}>
@@ -21,7 +24,10 @@ const AddNewItem = (props) => {
 
         <TouchableOpacity
           style={styles.add}
-          onPress={props.pressToAddMultiItems}
+          onPress={() => {
+            props.pressToAddMultiItems();
+            dispatch(favoritePlaceAction.selectPlace(""));
+          }}
         >
           <Ionicons name="ios-cart-outline" size={62} color={Colors.primary} />
           <Text>Cały Paragon</Text>

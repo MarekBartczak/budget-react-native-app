@@ -9,7 +9,6 @@ import DatePicker from "../components/DatePicker";
 import PlaceList from "../components/place/PlaceList";
 import Colors from "../constants/Colors";
 import Receipt from "../components/newMultiItems/Receipt";
-import Item from "../models/Item";
 import MultiItem from "../models/MultiItem";
 import uuid from "react-native-uuid";
 import switchComaToDot from "../functions/switchCompaToDot";
@@ -17,10 +16,11 @@ import * as itemsAction from "../store/actions/items";
 import { useDispatch, useSelector } from "react-redux";
 
 const AddMultiItemsScreen = (props) => {
+  const selectedPlace = useSelector((state) => state.favoritePlace.selected);
+
   const itemsFromRedux = useSelector((state) => state.item.items);
-  const getSelectedPlace = useSelector((state) => state.item.receipt.place);
   const [date, setDate] = useState(new Date());
-  const [place, setPlace] = useState("");
+  const [place, setPlace] = useState(selectedPlace);
   const [itemName, setItemName] = useState("");
   const [cost, setCost] = useState("");
   const [category, setCategory] = useState("");

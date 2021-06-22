@@ -5,8 +5,10 @@ import Chart from "../components/Chart";
 import FavoritePlaces from "../components/FavoritePlaces";
 import AddNewItem from "../components/AddNewItem";
 import ButtonRaport from "../components/Button";
+import { useSelector } from "react-redux";
 
 const MainScreen = (props) => {
+  const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   return (
     <SafeAreaView
       style={{ flex: 1, justifyContent: "space-between", alignItems: "center" }}
@@ -19,6 +21,11 @@ const MainScreen = (props) => {
           <View>
             <FavoritePlaces
               onPress={() => props.navigation.navigate("FavoritePlace")}
+              pressToAddMultiItems={() =>
+                props.navigation.navigate("AddMultipleItem", {
+                  favPlaceName: selectedPlace,
+                })
+              }
             />
           </View>
           <View>
