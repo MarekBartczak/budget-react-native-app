@@ -14,7 +14,7 @@ import Colors from "../constants/Colors";
 import Item from "../models/Item";
 import uuid from "react-native-uuid";
 import DatePicker from "../components/DatePicker";
-import PlaceList from "../components/newItems/PlaceList";
+import PlaceList from "../components/place/PlaceList";
 import Input from "../components/newItems/Input";
 import SeparatorText from "../components/newItems/SeparatorText";
 import switchComaToDot from "../functions/switchCompaToDot";
@@ -120,6 +120,7 @@ const AddSingleItemScreen = (props) => {
                 />
               </View>
             </View>
+
             {/* Kategorie View */}
             <View style={styles.separatorView}>
               <SeparatorText style={styles.textSeparator}>
@@ -138,7 +139,7 @@ const AddSingleItemScreen = (props) => {
                   <Input
                     style={styles.inputModal}
                     value={category}
-                    placeholder="wpisz nową Kategorie"
+                    placeholder="wpisz nową kategorie"
                     keyboardType={"default"}
                     onChangeText={setCategory}
                   />
@@ -268,9 +269,10 @@ const styles = StyleSheet.create({
     shadowColor: Colors.primary,
     shadowOpacity: 0.9,
     shadowRadius: 10,
+    marginBottom: 40,
   },
   placeList: {
-    marginTop: 10,
+    marginTop: -20,
     flexDirection: "column",
     width: "90%",
     height: 70,

@@ -1,10 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../constants/Colors";
+import { useSelector } from "react-redux";
 
 const FavoritePlaces = (props) => {
   const icon = <View style={styles.icon}></View>;
-
+  const favPlaceList = useSelector(
+    (state) => state.favoritePlace.favoritePlace
+  );
+  // console.log(favPlaceList);
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={styles.screen}></View>
@@ -16,9 +20,7 @@ const styles = StyleSheet.create({
   screen: {
     width: "100%",
     height: 200,
-    // justifyContent: "center",
     backgroundColor: Colors.banner,
-    // alignItems: "center",
     shadowOffset: { height: 0, width: 10 },
     shadowColor: Colors.primary,
     shadowOpacity: 0.9,

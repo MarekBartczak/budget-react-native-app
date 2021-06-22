@@ -6,7 +6,7 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import DatePicker from "../components/DatePicker";
-import PlaceList from "../components/newItems/PlaceList";
+import PlaceList from "../components/place/PlaceList";
 import Colors from "../constants/Colors";
 import Receipt from "../components/newMultiItems/Receipt";
 import Item from "../models/Item";
