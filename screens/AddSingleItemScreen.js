@@ -27,6 +27,9 @@ import MiniCard from "../components/newItems/MiniCard";
 
 const AddSingleItemScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
+  const favList = useSelector((state) => state.favoritePlace.favoritePlace);
+
+  const favListNames = favList.map((el) => el.name);
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
   const [category, setCategory] = useState("");
@@ -114,6 +117,7 @@ const AddSingleItemScreen = (props) => {
             <View style={styles.place}>
               <View style={styles.placeList}>
                 <PlaceList
+                  favData={favListNames}
                   data={workingPlaceList}
                   getPlaceInfo={getPlaceInfo}
                   place={place}

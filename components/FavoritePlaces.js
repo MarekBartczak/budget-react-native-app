@@ -81,7 +81,7 @@ const FavoritePlaces = (props) => {
               />
             </View>
             <View style={styles.closeModalBtn}>
-              <Text>Zamknij</Text>
+              <Text style={styles.closeModalText}>Zamknij</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -154,10 +154,14 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width / 2,
     borderRadius: 20,
   },
-  // closeModalBtn: {
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
+  closeModalBtn: {
+    marginTop: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  closeModalText: {
+    color: Colors.primary,
+  },
 });
 
 export default FavoritePlaces;

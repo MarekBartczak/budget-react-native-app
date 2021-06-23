@@ -17,14 +17,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 const AddMultiItemsScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
-
+  const favList = useSelector((state) => state.favoritePlace.favoritePlace);
   const itemsFromRedux = useSelector((state) => state.item.items);
+
+  const dispatch = useDispatch();
+
+  const favListNames = favList.map((el) => el.name);
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState(selectedPlace);
   const [itemName, setItemName] = useState("");
   const [cost, setCost] = useState("");
   const [category, setCategory] = useState("");
-  const dispatch = useDispatch();
 
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -72,6 +75,7 @@ const AddMultiItemsScreen = (props) => {
         <View style={styles.place}>
           <View style={styles.placeList}>
             <PlaceList
+              favData={favListNames}
               data={workingPlaceList}
               getPlaceInfo={getPlaceInfo}
               place={place}
@@ -105,7 +109,9 @@ const styles = StyleSheet.create({
   },
   placeList: {
     marginTop: 10,
+
     height: Dimensions.get("window").height * 0.2,
+    marginBottom: 10,
     width: "90%",
   },
   receipt: {

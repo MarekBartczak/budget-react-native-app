@@ -35,6 +35,21 @@ const PlaceList = (props) => {
       )}
     />
   );
+
+  const favList = (
+    <FlatList
+      nestedScrollEnabled
+      data={props.favData}
+      keyExtractor={(item) => item}
+      renderItem={(list) => (
+        <ItemListToAdd
+          list={list.item}
+          setPlace={props.getPlaceInfo}
+          place={props.place}
+        />
+      )}
+    />
+  );
   return (
     <View>
       <View style={styles.switchBtns}>
@@ -63,13 +78,7 @@ const PlaceList = (props) => {
           </View>
         </TouchableOpacity>
       </View>
-      {isFavoritePlaceShow ? (
-        <View>
-          <Text>FAV</Text>
-        </View>
-      ) : (
-        allList
-      )}
+      {isFavoritePlaceShow ? favList : allList}
     </View>
   );
 };
