@@ -8,13 +8,30 @@ import {
   Modal,
   Button,
 } from "react-native";
+import axios from "axios";
+
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
 import * as favoritePlaceAction from "../store/actions/favoritePlace";
 import { useSelector, useDispatch } from "react-redux";
 import Input from "../components/newItems/Input";
 import FavPlaceElement from "../components/FavPlaceElement";
+import {
+  Autocomplete,
+  withKeyboardAwareScrollView,
+} from "react-native-dropdown-autocomplete";
 
+const searchFavPlace = (placeYouLookingFor) => {
+  const url = "https://autocomplete.clearbit.com/v1/companies/suggest?query=";
+
+  axios
+    .get(url + placeYouLookingFor)
+    .then((res) => {
+      console.log(res.data.map((el) => el.domain));
+      console.log(res.data);
+    })
+    .catch((err) => console.log(err));
+};
 const FavoritePlaces = (props) => {
   const [showEdit, setShowEdit] = useState(false);
   const [favPlaceName, setFavPlaceName] = useState("");
@@ -39,6 +56,16 @@ const FavoritePlaces = (props) => {
       />
     );
   };
+  const data = [
+    "Apples",
+    "Broccoli",
+    "Chicken",
+    "Duck",
+    "Eggs",
+    "Fish",
+    "Granola",
+    "Hash Browns",
+  ];
   return (
     <View style={styles.screen}>
       <View style={styles.row}>
@@ -72,12 +99,16 @@ const FavoritePlaces = (props) => {
                 keyboardType="default"
                 onChangeText={setFavPlaceName}
               />
+              {/* <View style={{ height: 40, width: 200 }}>
+                <Autocomplete data={data} valueExtractor={(item) => item} />
+              </View> */}
               <Button
-                title={"zapisz"}
+                title={"szukaj"}
                 color={Colors.primary}
-                onPress={() =>
-                  dispatch(favoritePlaceAction.editPlace(favPlaceName))
-                }
+                onPress={() => {
+                  searchFavPlace(favPlaceName);
+                  dispatch(favoritePlaceAction.editPlace(favPlaceName));
+                }}
               />
             </View>
             <View style={styles.closeModalBtn}>

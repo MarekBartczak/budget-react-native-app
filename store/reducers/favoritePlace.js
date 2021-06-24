@@ -3,7 +3,6 @@ import {
   EDIT_PLACE,
   SELECT_LOGO,
 } from "../actions/favoritePlace";
-import axios from "axios";
 
 const data = { lidl: "www.lidl.de" };
 
@@ -28,6 +27,7 @@ const initialState = {
   ],
   selected: "",
   selectedLogo: "",
+  toSearchIn: [],
 };
 
 export default (state = initialState, action) => {
@@ -37,20 +37,9 @@ export default (state = initialState, action) => {
     case SELECT_LOGO:
       return { ...state, selectedLogo: action.logo };
     case EDIT_PLACE:
-      //   const url = "https://logo.clearbit.com/";
-      //   const newState = [...state.favoritePlace];
-      //   const isName = (placeName) => placeName.name === state.selected;
-      //   const index = newState.indexOf(newState.find(isName));
-
-      //   const target = "biedronka.pl";
-
-      //   axios
-      //     .get(url + action.place + ".pl")
-      //     .then((res) => {
-      //       console.log(res.config.url);
-      //       newState[index].logo = res.config.url;
-      //     })
-      //     .catch((err) => console.log(`error: ${err.response.status}`));
+      const newState = [...state.favoritePlace];
+      const isName = (placeName) => placeName.name === state.selected;
+      const index = newState.indexOf(newState.find(isName));
       newState[index].name = action.place;
       return { ...state, favoritePlace: [...newState] };
   }

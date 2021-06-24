@@ -4,7 +4,7 @@ import React from "react";
 const FixedExpenseScreen = (props) => {
   return (
     <View>
-      <Text>Fixed Expence</Text>
+      <Text>Fixed Expense</Text>
     </View>
   );
 };
