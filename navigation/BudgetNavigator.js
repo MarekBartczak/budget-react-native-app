@@ -7,6 +7,7 @@ import CategoryScreen from "../screens/CategoryScreen";
 import AddSingleItemScreen from "../screens/AddSingleItemScreen";
 import FavoritePlaceScreen from "../screens/FavoritePlaceScreen";
 import AddMultipleItemScreen from "../screens/AddMultiItemsSetDateAndPlaceScreen";
+import FixedExpenseScreen from "../screens/FixedExpenseScreen";
 import Colors from "../constants/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
@@ -35,12 +36,33 @@ const BudgetNavigator = (props) => {
           },
         }}
       >
-        {stackScreen("Home", MainScreen, { title: "Główna" })}
+        {stackScreen("Home", MainScreen, ({ navigation }) => ({
+          headerTitle: "Wydatki",
+          headerRight: () => (
+            <TouchableOpacity
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                marginRight: 20,
+              }}
+              onPress={() => navigation.navigate("FixedExpense")}
+            >
+              <MaterialCommunityIcons
+                name="scale-balance"
+                size={24}
+                color={Colors.primary}
+              />
+            </TouchableOpacity>
+          ),
+        }))}
         {stackScreen("Details", DetailsScreen, { title: "Szczegóły" })}
         {stackScreen("Raport", RaportScreen, { title: "Raport" })}
         {stackScreen("Date", DateScreen, { title: "Data" })}
         {stackScreen("Place", PlaceScreen, { title: "Miejsce" })}
         {stackScreen("Category", CategoryScreen, { title: "Kategoria" })}
+        {stackScreen("FixedExpense", FixedExpenseScreen, {
+          title: "Wydatki Stałe",
+        })}
         {stackScreen(
           "AddSingleItem",
           AddSingleItemScreen,

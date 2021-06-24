@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as favoritePlaceAction from "../store/actions/favoritePlace";
+import Colors from "../constants/Colors";
 
 const FavPlaceElement = (props) => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     height: "80%",
     width: "80%",
     borderRadius: 10,
-    borderColor: "rgba(189,81,291,0.6)",
+    borderColor: Colors.banner,
     borderWidth: 3,
   },
 });

@@ -4,7 +4,7 @@ import React from "react";
 import Chart from "../components/Chart";
 import FavoritePlaces from "../components/FavoritePlaces";
 import AddNewItem from "../components/AddNewItem";
-import ButtonRaport from "../components/Button";
+import ButtonComponent from "../components/buttons/Button";
 import { useSelector } from "react-redux";
 
 const MainScreen = (props) => {
@@ -28,6 +28,7 @@ const MainScreen = (props) => {
               }
             />
           </View>
+
           <View>
             <AddNewItem
               pressToAddSignleItem={() =>
@@ -38,8 +39,9 @@ const MainScreen = (props) => {
               }
             />
           </View>
+
           <View>
-            <ButtonRaport
+            <ButtonComponent
               onPress={() => props.navigation.navigate("Raport")}
               text="Raport"
             />

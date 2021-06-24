@@ -2,14 +2,17 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 
-const itemListToAdd = (props) => {
+const ItemListToAdd = (props) => {
   const selected = {
     color: props.place === props.list ? Colors.accent : Colors.banner,
   };
   return (
     <View>
       <TouchableOpacity onPress={() => props.setPlace(props.list)}>
-        <Text style={{ ...styles.list, ...{ color: selected.color } }}>
+        <Text
+          testID="text"
+          style={{ ...styles.list, ...{ color: selected.color } }}
+        >
           {props.list}
         </Text>
       </TouchableOpacity>
@@ -17,7 +20,7 @@ const itemListToAdd = (props) => {
   );
 };
 
-export default itemListToAdd;
+export default ItemListToAdd;
 
 const styles = StyleSheet.create({
   list: {
