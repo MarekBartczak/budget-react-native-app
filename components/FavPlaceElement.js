@@ -35,7 +35,7 @@ const FavPlaceElement = (props) => {
     >
       <View style={styles.favBtn}>
         <Image style={styles.logo} source={{ url: props.favPlaceLogo }} />
-        <Text> {props.favPlaceName}</Text>
+        <Text style={styles.text}> {props.favPlaceName}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -51,6 +51,11 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width / 4,
     alignItems: "center",
     justifyContent: "flex-end",
+  },
+  text: {
+    width: "80%",
+    height: 20,
+    textAlign: "center",
   },
   logo: {
     height: "80%",

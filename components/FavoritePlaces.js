@@ -8,7 +8,6 @@ import {
   Modal,
   Button,
 } from "react-native";
-import axios from "axios";
 
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
@@ -20,18 +19,8 @@ import {
   Autocomplete,
   withKeyboardAwareScrollView,
 } from "react-native-dropdown-autocomplete";
+import ApiList from "../components/place/ApiList";
 
-const searchFavPlace = (placeYouLookingFor) => {
-  const url = "https://autocomplete.clearbit.com/v1/companies/suggest?query=";
-
-  axios
-    .get(url + placeYouLookingFor)
-    .then((res) => {
-      console.log(res.data.map((el) => el.domain));
-      console.log(res.data);
-    })
-    .catch((err) => console.log(err));
-};
 const FavoritePlaces = (props) => {
   const [showEdit, setShowEdit] = useState(false);
   const [favPlaceName, setFavPlaceName] = useState("");
@@ -56,16 +45,16 @@ const FavoritePlaces = (props) => {
       />
     );
   };
-  const data = [
-    "Apples",
-    "Broccoli",
-    "Chicken",
-    "Duck",
-    "Eggs",
-    "Fish",
-    "Granola",
-    "Hash Browns",
-  ];
+  // const data = [
+  //   "Apples",
+  //   "Broccoli",
+  //   "Chicken",
+  //   "Duck",
+  //   "Eggs",
+  //   "Fish",
+  //   "Granola",
+  //   "Hash Browns",
+  // ];
   return (
     <View style={styles.screen}>
       <View style={styles.row}>
@@ -88,10 +77,16 @@ const FavoritePlaces = (props) => {
         <View style={styles.modalEdit}>
           <TouchableOpacity onPress={() => setShowEdit(false)}>
             <View>
-              <Image
+              <View style={styles.apiList}>
+                <ApiList
+                  source={favPlaceName}
+                  closeWindow={() => setShowEdit(false)}
+                />
+              </View>
+              {/* <Image
                 style={styles.ModalViewImage}
                 source={{ url: favplaceLogo }}
-              />
+              /> */}
               <Input
                 style={styles.input}
                 value={favPlaceName}
@@ -102,14 +97,6 @@ const FavoritePlaces = (props) => {
               {/* <View style={{ height: 40, width: 200 }}>
                 <Autocomplete data={data} valueExtractor={(item) => item} />
               </View> */}
-              <Button
-                title={"szukaj"}
-                color={Colors.primary}
-                onPress={() => {
-                  searchFavPlace(favPlaceName);
-                  dispatch(favoritePlaceAction.editPlace(favPlaceName));
-                }}
-              />
             </View>
             <View style={styles.closeModalBtn}>
               <Text style={styles.closeModalText}>Zamknij</Text>
@@ -172,7 +159,9 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     fontSize: 20,
-    width: 200,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
     borderBottomWidth: 3,
     fontWeight: "bold",
     margin: 5,
@@ -192,6 +181,10 @@ const styles = StyleSheet.create({
   },
   closeModalText: {
     color: Colors.primary,
+  },
+  apiList: {
+    width: Dimensions.get("window").width * 0.8,
+    alignItems: "center",
   },
 });
 

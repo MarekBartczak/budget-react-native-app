@@ -41,6 +41,8 @@ export default (state = initialState, action) => {
       const isName = (placeName) => placeName.name === state.selected;
       const index = newState.indexOf(newState.find(isName));
       newState[index].name = action.place;
+      newState[index].logo = action.logo;
+
       return { ...state, favoritePlace: [...newState] };
   }
 
