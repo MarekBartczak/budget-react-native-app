@@ -51,11 +51,13 @@ const Chart = (props) => {
           width={Dimensions.get("window").width * 0.9}
           height={180}
           chartConfig={{
-            labelColor: () => "black",
-            backgroundGradientFrom: Colors.backGround,
-            backgroundGradientTo: Colors.backGroundChart,
+            labelColor: () => Colors.default,
+            backgroundGradientFromOpacity: 0.3,
+            backgroundGradientToOpacity: 0.3,
+            backgroundGradientFrom: "rgb(255,255,255)",
+            backgroundGradientTo: "rgb(255,255,255)",
             decimalPlaces: 2,
-            color: () => Colors.backGround2,
+            color: () => Colors.primary,
           }}
           bezier
           style={styles.chart}
@@ -69,16 +71,14 @@ export default Chart;
 
 const styles = StyleSheet.create({
   chart: {
-    marginVertical: 18,
     borderRadius: 16,
     padding: 0,
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width * 0.9,
-    marginHorizontal: "5%",
     shadowOpacity: 0.9,
     shadowRadius: 10,
-    shadowOffset: { height: 10, width: 10 },
+    shadowOffset: { height: 0, width: 0 },
     shadowColor: Colors.primary,
   },
 });

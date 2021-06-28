@@ -7,6 +7,7 @@ import {
   Button,
   KeyboardAvoidingView,
   Modal,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -77,10 +78,10 @@ const AddSingleItemScreen = (props) => {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <LinearGradient
           colors={[
-            Colors.lightBackground.colorTop,
-            Colors.lightBackground.colorMiddle,
-            Colors.lightBackground.colorBottom,
+            Colors.gradientBackground.primary,
+            Colors.gradientBackground.secondary,
           ]}
+          style={styles.background}
         >
           <View style={styles.screen}>
             <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
@@ -303,5 +304,19 @@ const styles = StyleSheet.create({
   },
   addBtn: {
     width: 100,
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
   },
 });

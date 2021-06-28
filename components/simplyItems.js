@@ -20,7 +20,11 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 20,
     borderRadius: 10,
-    backgroundColor: Colors.banner,
+    backgroundColor: Colors.transparent,
+    shadowOffset: { height: 0, width: 10 },
+    shadowColor: Colors.primary,
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
   },
   info: {
     flexDirection: "row",

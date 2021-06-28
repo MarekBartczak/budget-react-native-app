@@ -14,6 +14,7 @@ import uuid from "react-native-uuid";
 import switchComaToDot from "../functions/switchCompaToDot";
 import * as itemsAction from "../store/actions/items";
 import { useDispatch, useSelector } from "react-redux";
+import { LinearGradient } from "expo-linear-gradient";
 
 const AddMultiItemsScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
@@ -69,6 +70,13 @@ const AddMultiItemsScreen = (props) => {
   return (
     <KeyboardAvoidingView>
       <View style={styles.screen}>
+        <LinearGradient
+          colors={[
+            Colors.gradientBackground.primary,
+            Colors.gradientBackground.secondary,
+          ]}
+          style={styles.background}
+        />
         <View style={styles.datePicker}>
           <DatePicker date={date} onChange={onChangeDate} />
         </View>
@@ -131,6 +139,13 @@ const styles = StyleSheet.create({
     shadowColor: Colors.primary,
     shadowOpacity: 0.9,
     shadowRadius: 10,
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
   },
 });
 export default AddMultiItemsScreen;

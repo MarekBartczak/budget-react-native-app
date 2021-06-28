@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 
@@ -16,15 +22,16 @@ export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    width: "100%",
+    width: Dimensions.get("window").width * 0.9,
     height: 50,
-    backgroundColor: Colors.banner,
+    backgroundColor: Colors.transparent,
     shadowOffset: { height: 0, width: 10 },
     shadowColor: Colors.primary,
     shadowOpacity: 0.9,
     shadowRadius: 10,
     marginTop: 20,
     marginBottom: 20,
+    borderRadius: 10,
   },
   btn: {
     height: "100%",

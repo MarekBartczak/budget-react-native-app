@@ -13,9 +13,15 @@ export default {
     colorMiddle: "rgb(0, 89, 122)",
     colorBottom: "rgb(0, 0, 42)",
   },
+  shadowColor: "rgb(120, 140, 184)",
+  transparent: "rgba(255,255,255,0.3)",
   lightBackground: {
     colorTop: "rgb(241, 241, 241)",
     colorMiddle: "rgb(241, 241, 241)",
     colorBottom: "rgb(241, 241, 241)",
+  },
+  gradientBackground: {
+    primary: "rgb(150, 180, 204)",
+    secondary: "rgb(180,191,220)",
   },
 };

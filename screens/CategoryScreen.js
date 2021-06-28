@@ -4,12 +4,14 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import SimplyItems from "../components/SimplyItems";
 import Colors from "../constants/Colors";
 import { useSelector } from "react-redux";
+import { LinearGradient } from "expo-linear-gradient";
 
 const CategoryScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
@@ -48,6 +50,13 @@ const CategoryScreen = (props) => {
 
   return (
     <View style={styles.screen}>
+      <LinearGradient
+        colors={[
+          Colors.gradientBackground.primary,
+          Colors.gradientBackground.secondary,
+        ]}
+        style={styles.background}
+      />
       <View style={styles.top}>
         <TouchableOpacity onPress={() => switchCategory(-1)}>
           <Ionicons name="ios-arrow-back" size={43} color="black" />
@@ -109,5 +118,12 @@ const styles = StyleSheet.create({
   },
   items: {
     width: "100%",
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
   },
 });

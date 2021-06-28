@@ -1,9 +1,17 @@
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  Dimensions,
+} from "react-native";
 import React from "react";
 import Colors from "../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import * as itemsAction from "../store/actions/items";
+import { LinearGradient } from "expo-linear-gradient";
 
 const DetailsScreen = (props) => {
   const { date, place, category, name, cost, id } = props.route.params;
@@ -16,6 +24,13 @@ const DetailsScreen = (props) => {
 
   return (
     <View style={styles.screen}>
+      <LinearGradient
+        colors={[
+          Colors.gradientBackground.primary,
+          Colors.gradientBackground.secondary,
+        ]}
+        style={styles.background}
+      />
       <View style={styles.dateView}>
         <View style={styles.trash}></View>
         <TouchableOpacity
@@ -89,16 +104,25 @@ export default DetailsScreen;
 const styles = StyleSheet.create({
   screen: {
     alignContent: "center",
-    margin: 30,
-    backgroundColor: "white",
+    padding: 30,
     borderRadius: 10,
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
   },
   dateView: {
     alignItems: "center",
-    backgroundColor: Colors.banner,
+    backgroundColor: Colors.accent,
     padding: 10,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderRadius: 10,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: Colors.accent,
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -111,6 +135,13 @@ const styles = StyleSheet.create({
   middleSection: {
     marginVertical: 20,
     height: 180,
+    backgroundColor: Colors.transparent,
+    shadowOffset: { height: 0, width: 10 },
+    shadowColor: Colors.primary,
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    borderRadius: 10,
+    padding: 10,
 
     flexDirection: "column",
     justifyContent: "space-between",

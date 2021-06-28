@@ -5,6 +5,7 @@ import BudgetNavigator from "./navigation/BudgetNavigator";
 import itemReducer from "./store/reducers/items";
 import FavoritePlacesReducer from "./store/reducers/favoritePlace";
 import FixedExpenceReducer from "./store/reducers/fixedExpense";
+
 const rootReducer = combineReducers({
   item: itemReducer,
   favoritePlace: FavoritePlacesReducer,

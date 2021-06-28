@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Input from "../components/newItems/Input";
 import FavPlaceElement from "../components/FavPlaceElement";
 import ApiList from "../components/place/ApiList";
+import { LinearGradient } from "expo-linear-gradient";
 
 const FavoritePlaces = (props) => {
   const [showEdit, setShowEdit] = useState(false);
@@ -50,6 +51,7 @@ const FavoritePlaces = (props) => {
         {favPlace(favPlaceList[4])}
         {favPlace(favPlaceList[5])}
       </View>
+
       <Modal
         animationType="slide"
         transparent={true}
@@ -57,27 +59,35 @@ const FavoritePlaces = (props) => {
         onRequestClose={() => setShowEdit(false)}
       >
         <View style={styles.modalEdit}>
-          <TouchableOpacity onPress={() => setShowEdit(false)}>
-            <View>
-              <View style={styles.apiList}>
-                <ApiList
-                  source={favPlaceName}
-                  closeWindow={() => setShowEdit(false)}
+          <LinearGradient
+            colors={[
+              Colors.gradientBackground.primary,
+              Colors.gradientBackground.secondary,
+            ]}
+            style={styles.background}
+          >
+            <TouchableOpacity onPress={() => setShowEdit(false)}>
+              <View>
+                <View style={styles.apiList}>
+                  <ApiList
+                    source={favPlaceName}
+                    closeWindow={() => setShowEdit(false)}
+                  />
+                </View>
+
+                <Input
+                  style={styles.input}
+                  value={favPlaceName}
+                  placeholder={"nazwa"}
+                  keyboardType="default"
+                  onChangeText={setFavPlaceName}
                 />
               </View>
-
-              <Input
-                style={styles.input}
-                value={favPlaceName}
-                placeholder={"nazwa"}
-                keyboardType="default"
-                onChangeText={setFavPlaceName}
-              />
-            </View>
-            <View style={styles.closeModalBtn}>
-              <Text style={styles.closeModalText}>Zamknij</Text>
-            </View>
-          </TouchableOpacity>
+              <View style={styles.closeModalBtn}>
+                <Text style={styles.closeModalText}>Zamknij</Text>
+              </View>
+            </TouchableOpacity>
+          </LinearGradient>
         </View>
       </Modal>
     </View>
@@ -89,14 +99,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "100%",
+    width: Dimensions.get("window").width * 0.9,
     height: 200,
-    backgroundColor: Colors.banner,
-    shadowOffset: { height: 0, width: 10 },
+    backgroundColor: Colors.transparent,
+    shadowOffset: { height: 0, width: 0 },
     shadowColor: Colors.primary,
     shadowOpacity: 0.9,
     shadowRadius: 10,
     marginTop: 20,
+    paddingTop: 10,
+    borderRadius: 10,
   },
 
   icon: {
@@ -118,30 +130,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
   },
-  logo: {
-    height: "80%",
-    width: "80%",
-    borderRadius: 10,
-    borderColor: "rgba(189,81,291,0.6)",
-    borderWidth: 3,
-  },
+
   modalEdit: {
     width: "100%",
     height: "100%",
-    backgroundColor: Colors.banner,
     justifyContent: "center",
     alignItems: "center",
   },
   input: {
     height: 40,
     fontSize: 20,
-    width: "100%",
+    width: "80%",
     alignItems: "center",
     justifyContent: "center",
     borderBottomWidth: 3,
     fontWeight: "bold",
-    margin: 5,
-    margin: 10,
+    margin: "10%",
     color: Colors.primary,
     borderColor: Colors.primary,
   },
@@ -159,8 +163,17 @@ const styles = StyleSheet.create({
     color: Colors.primary,
   },
   apiList: {
-    width: Dimensions.get("window").width * 0.8,
+    width: Dimensions.get("window").width,
     alignItems: "center",
+  },
+  background: {
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
   },
 });
 

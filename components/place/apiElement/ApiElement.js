@@ -31,15 +31,20 @@ export default ApiElement;
 
 const styles = StyleSheet.create({
   element: {
-    width: Dimensions.get("window").width * 0.8,
+    width: Dimensions.get("window").width * 0.9,
     height: 50,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 15,
-    backgroundColor: Colors.default,
+    backgroundColor: Colors.transparent,
+    shadowOffset: { height: 10, width: 10 },
+    shadowColor: Colors.primary,
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
     borderRadius: 10,
     marginVertical: 10,
+    overflow: "hidden",
   },
   name: {
     fontWeight: "bold",

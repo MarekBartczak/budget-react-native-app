@@ -44,7 +44,10 @@ const categoryList = (props) => {
         />
       </View>
       <LinearGradient
-        colors={[Colors.banner, Colors.primary, Colors.banner]}
+        colors={[
+          Colors.gradientBackground.primary,
+          Colors.gradientBackground.secondary,
+        ]}
         style={{
           height: 20,
           width: "100%",

@@ -29,7 +29,8 @@ const BudgetNavigator = (props) => {
         screenOptions={{
           headerTintColor: Colors.primary,
           headerStyle: {
-            backgroundColor: Colors.default,
+            // height: 60,
+            backgroundColor: Colors.gradientBackground.primary,
             elevation: 0,
             shadowOpacity: 0,
             borderBottomWidth: 0,
@@ -41,6 +42,7 @@ const BudgetNavigator = (props) => {
           headerRight: () => (
             <TouchableOpacity
               style={{
+                padding: 0,
                 justifyContent: "center",
                 alignItems: "center",
                 marginRight: 20,

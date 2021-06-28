@@ -201,11 +201,11 @@ const styles = StyleSheet.create({
   receipt: {
     width: "90%",
     height: "100%",
-    backgroundColor: "rgba(210, 210, 210,1)",
+    backgroundColor: Colors.transparent,
     borderRadius: 10,
     shadowRadius: 10,
     shadowOffset: { height: 0, width: 10 },
-    shadowColor: "black",
+    shadowColor: Colors.primary,
     shadowOpacity: 0.23,
   },
   modalView: {
