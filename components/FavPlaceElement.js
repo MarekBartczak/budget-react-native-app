@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as favoritePlaceAction from "../store/actions/favoritePlace";
+import * as itemsAction from "../store/actions/items";
 import Colors from "../constants/Colors";
 
 const FavPlaceElement = (props) => {
@@ -17,19 +18,16 @@ const FavPlaceElement = (props) => {
     <TouchableOpacity
       onPress={() => {
         props.selectPlace();
-        // dispatch(favoritePlaceAction.selectPlace(favPlaceList[0].name));
+        dispatch(favoritePlaceAction.selectPlace(props.favPlaceName));
+        dispatch(itemsAction.setReceiptPlace(props.favPlaceName));
         props.pressToAddMultiItems();
-        // props.pressToAddMultiItems();
       }}
       onLongPress={() => {
-        dispatch(favoritePlaceAction.selecLogo(props.favPlaceLogo));
+        // dispatch(favoritePlaceAction.selecLogo(props.favPlaceLogo));
 
         props.selectPlace();
-        // dispatch(favoritePlaceAction.selectPlace(favPlaceList[0].name));
         props.setFavPlaceName();
-        // setFavPlaceName(favPlaceList[0].name);
         props.showEdit();
-        // setShowEdit(true);
       }}
       delayLongPress="500"
     >

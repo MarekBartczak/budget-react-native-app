@@ -26,7 +26,6 @@ const initialState = {
     },
   ],
   selected: "",
-  selectedLogo: "",
   toSearchIn: [],
 };
 

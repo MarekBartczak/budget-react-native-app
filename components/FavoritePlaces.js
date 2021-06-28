@@ -4,9 +4,7 @@ import {
   View,
   TouchableOpacity,
   Dimensions,
-  Image,
   Modal,
-  Button,
 } from "react-native";
 
 import React, { useState } from "react";
@@ -15,20 +13,14 @@ import * as favoritePlaceAction from "../store/actions/favoritePlace";
 import { useSelector, useDispatch } from "react-redux";
 import Input from "../components/newItems/Input";
 import FavPlaceElement from "../components/FavPlaceElement";
-import {
-  Autocomplete,
-  withKeyboardAwareScrollView,
-} from "react-native-dropdown-autocomplete";
 import ApiList from "../components/place/ApiList";
 
 const FavoritePlaces = (props) => {
   const [showEdit, setShowEdit] = useState(false);
   const [favPlaceName, setFavPlaceName] = useState("");
-  const favplaceLogo = useSelector((state) => state.favoritePlace.selectedLogo);
   const favPlaceList = useSelector(
     (state) => state.favoritePlace.favoritePlace
   );
-  const selectedFavPlace = useSelector((state) => state.favoritePlace.selected);
   const dispatch = useDispatch();
 
   const favPlace = (favPlaceList) => {
@@ -45,16 +37,6 @@ const FavoritePlaces = (props) => {
       />
     );
   };
-  // const data = [
-  //   "Apples",
-  //   "Broccoli",
-  //   "Chicken",
-  //   "Duck",
-  //   "Eggs",
-  //   "Fish",
-  //   "Granola",
-  //   "Hash Browns",
-  // ];
   return (
     <View style={styles.screen}>
       <View style={styles.row}>
@@ -83,10 +65,7 @@ const FavoritePlaces = (props) => {
                   closeWindow={() => setShowEdit(false)}
                 />
               </View>
-              {/* <Image
-                style={styles.ModalViewImage}
-                source={{ url: favplaceLogo }}
-              /> */}
+
               <Input
                 style={styles.input}
                 value={favPlaceName}
@@ -94,9 +73,6 @@ const FavoritePlaces = (props) => {
                 keyboardType="default"
                 onChangeText={setFavPlaceName}
               />
-              {/* <View style={{ height: 40, width: 200 }}>
-                <Autocomplete data={data} valueExtractor={(item) => item} />
-              </View> */}
             </View>
             <View style={styles.closeModalBtn}>
               <Text style={styles.closeModalText}>Zamknij</Text>

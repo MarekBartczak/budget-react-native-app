@@ -28,6 +28,7 @@ import SaveItemsToTheStore from "../../functions/SaveItemsToTheStore";
 const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
   const [modal, showModal] = useState(false);
+  const [addButtonState, setAddButtonState] = useState(false);
   const [addItemModal, showAddItemModal] = useState(false);
   const receiptDate = useSelector((state) => state.item.receipt.date);
   const GetSelectedPlace = useSelector((state) => state.item.receipt.place);
@@ -116,6 +117,7 @@ const Receipt = (props) => {
             >
               <View style={styles.addItemModalView}>
                 <NewElement
+                  place={props.place}
                   itemName={props.itemName}
                   onSetName={props.onSetName}
                   cost={props.cost}
@@ -132,6 +134,7 @@ const Receipt = (props) => {
                     }}
                   />
                   <Button
+                    disabled={props.category.length > 0 ? false : true}
                     color={Colors.primary}
                     title="Dodaj"
                     onPress={() => {

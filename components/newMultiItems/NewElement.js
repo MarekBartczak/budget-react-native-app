@@ -1,6 +1,7 @@
 import {
   StyleSheet,
   View,
+  Text,
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
@@ -35,6 +36,9 @@ const NewElement = (props) => {
             keyboardType={"numeric"}
             onChangeText={props.onSetCost}
           />
+          <Text>
+            [{props.category}] w miejscu [{props.place}]
+          </Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
