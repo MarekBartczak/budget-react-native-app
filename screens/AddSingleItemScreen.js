@@ -5,6 +5,8 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Button,
+  ScrollView,
+  SafeAreaView,
   KeyboardAvoidingView,
   Modal,
   Dimensions,
@@ -74,155 +76,166 @@ const AddSingleItemScreen = (props) => {
   };
 
   return (
-    <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <LinearGradient
-          colors={[
-            Colors.gradientBackground.primary,
-            Colors.gradientBackground.secondary,
-          ]}
-          style={styles.background}
-        >
-          <View style={styles.screen}>
-            <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
-            <View style={styles.datePicker}>
-              <DatePicker date={date} onChange={onChangeDate} />
-            </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        behavior={"position"}
+        style={{ flex: 1 }}
+        keyboardVerticalOffset={
+          Dimensions.get("window").height < 670 ? 60 : -100
+        }
+        enabled
+      >
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <LinearGradient
+            colors={[
+              Colors.gradientBackground.primary,
+              Colors.gradientBackground.secondary,
+            ]}
+            style={styles.background}
+          >
+            <View style={styles.screen}>
+              <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
+              <View style={styles.datePicker}>
+                <DatePicker date={date} onChange={onChangeDate} />
+              </View>
 
-            {/* Gdzie View */}
-            <View style={styles.separatorView}>
-              <SeparatorText style={styles.textSeparator}>Gdzie?</SeparatorText>
-              <TouchableOpacity onPress={() => setAddNewPlace(true)}>
-                <Feather name="edit" size={15} color="black" />
-              </TouchableOpacity>
-              <Modal
-                animationType="slide"
-                transparent={true}
-                visible={addNewPlace}
-                onRequestClose={() => setAddNewPlace(!addNewPlace)}
-              >
-                <View style={styles.addNewPlaceView}>
-                  <Input
-                    style={styles.inputModal}
-                    value={place}
-                    placeholder="wpisz nowe miejsce"
-                    keyboardType={"default"}
-                    onChangeText={setPlace}
+              {/* Gdzie View */}
+              <View style={styles.separatorView}>
+                <SeparatorText style={styles.textSeparator}>
+                  Gdzie?
+                </SeparatorText>
+                <TouchableOpacity onPress={() => setAddNewPlace(true)}>
+                  <Feather name="edit" size={15} color="black" />
+                </TouchableOpacity>
+                <Modal
+                  animationType="slide"
+                  transparent={true}
+                  visible={addNewPlace}
+                  onRequestClose={() => setAddNewPlace(!addNewPlace)}
+                >
+                  <View style={styles.addNewPlaceView}>
+                    <Input
+                      style={styles.inputModal}
+                      value={place}
+                      placeholder="wpisz nowe miejsce"
+                      keyboardType={"default"}
+                      onChangeText={setPlace}
+                    />
+                    <TouchableOpacity onPress={() => setAddNewPlace(false)}>
+                      <Feather name="save" size={25} color={Colors.primary} />
+                    </TouchableOpacity>
+                  </View>
+                </Modal>
+              </View>
+              <View style={styles.place}>
+                <View style={styles.placeList}>
+                  <PlaceList
+                    favData={favListNames}
+                    data={workingPlaceList}
+                    getPlaceInfo={getPlaceInfo}
+                    place={place}
                   />
-                  <TouchableOpacity onPress={() => setAddNewPlace(false)}>
-                    <Feather name="save" size={25} color={Colors.primary} />
-                  </TouchableOpacity>
                 </View>
-              </Modal>
-            </View>
-            <View style={styles.place}>
-              <View style={styles.placeList}>
-                <PlaceList
-                  favData={favListNames}
-                  data={workingPlaceList}
-                  getPlaceInfo={getPlaceInfo}
+              </View>
+
+              {/* Kategorie View */}
+              <View style={styles.separatorView}>
+                <SeparatorText style={styles.textSeparator}>
+                  W jakiej kategorii?
+                </SeparatorText>
+                <TouchableOpacity onPress={() => setAddNewCategory(true)}>
+                  <Feather name="edit" size={15} color="black" />
+                </TouchableOpacity>
+                <Modal
+                  animationType="slide"
+                  transparent={true}
+                  visible={addNewCategory}
+                  onRequestClose={() => setAddNewCategory(!addNewCategory)}
+                >
+                  <View style={styles.addNewPlaceView}>
+                    <Input
+                      style={styles.inputModal}
+                      value={category}
+                      placeholder="wpisz nową kategorie"
+                      keyboardType={"default"}
+                      onChangeText={setCategory}
+                    />
+                    <TouchableOpacity onPress={() => setAddNewCategory(false)}>
+                      <Feather name="save" size={25} color={Colors.primary} />
+                    </TouchableOpacity>
+                  </View>
+                </Modal>
+              </View>
+              <View>
+                <CategoryList
+                  onChangeCategory={setCategoryState}
+                  category={category}
+                />
+              </View>
+              <View style={styles.CardAndInpuView}>
+                <View style={styles.inputArea}>
+                  {/* Co i za ile View */}
+                  <SeparatorText style={styles.textSeparator}>
+                    Co i za ile?
+                  </SeparatorText>
+                  <View style={styles.inputs}>
+                    <Input
+                      style={styles.input}
+                      value={itemName}
+                      placeholder="co?"
+                      keyboardType={"default"}
+                      onChangeText={setItemName}
+                    />
+                    <Input
+                      style={styles.input}
+                      value={cost}
+                      placeholder="za ile"
+                      keyboardType={"numeric"}
+                      onChangeText={setCost}
+                    />
+                  </View>
+                  {/* Button View */}
+                  <View style={styles.addBtn}>
+                    <Button
+                      title={"Dodaj"}
+                      color={Colors.primary}
+                      onPress={() => {
+                        if (
+                          checkIfEmpty(date) &&
+                          checkIfEmpty(place) &&
+                          checkIfEmpty(category) &&
+                          checkIfEmpty(itemName) &&
+                          checkIfEmpty(cost)
+                        ) {
+                          dispatch(
+                            itemsAction.addItem(
+                              saveItem(date, place, category, itemName, cost)
+                            )
+                          );
+                          setDate(new Date());
+                          setPlace("");
+                          setCost("");
+                          setItemName("");
+                          setCategory("");
+                          props.navigation.navigate("Home");
+                        } else alert("uzupełnij wszystkie pola");
+                      }}
+                    />
+                  </View>
+                </View>
+                <MiniCard
+                  date={date}
                   place={place}
+                  category={category}
+                  itemName={itemName}
+                  cost={cost}
                 />
               </View>
             </View>
-
-            {/* Kategorie View */}
-            <View style={styles.separatorView}>
-              <SeparatorText style={styles.textSeparator}>
-                W jakiej kategorii?
-              </SeparatorText>
-              <TouchableOpacity onPress={() => setAddNewCategory(true)}>
-                <Feather name="edit" size={15} color="black" />
-              </TouchableOpacity>
-              <Modal
-                animationType="slide"
-                transparent={true}
-                visible={addNewCategory}
-                onRequestClose={() => setAddNewCategory(!addNewCategory)}
-              >
-                <View style={styles.addNewPlaceView}>
-                  <Input
-                    style={styles.inputModal}
-                    value={category}
-                    placeholder="wpisz nową kategorie"
-                    keyboardType={"default"}
-                    onChangeText={setCategory}
-                  />
-                  <TouchableOpacity onPress={() => setAddNewCategory(false)}>
-                    <Feather name="save" size={25} color={Colors.primary} />
-                  </TouchableOpacity>
-                </View>
-              </Modal>
-            </View>
-            <View>
-              <CategoryList
-                onChangeCategory={setCategoryState}
-                category={category}
-              />
-            </View>
-            <View style={styles.CardAndInpuView}>
-              <View style={styles.inputArea}>
-                {/* Co i za ile View */}
-                <SeparatorText style={styles.textSeparator}>
-                  Co i za ile?
-                </SeparatorText>
-                <View style={styles.inputs}>
-                  <Input
-                    style={styles.input}
-                    value={itemName}
-                    placeholder="co?"
-                    keyboardType={"default"}
-                    onChangeText={setItemName}
-                  />
-                  <Input
-                    style={styles.input}
-                    value={cost}
-                    placeholder="za ile"
-                    keyboardType={"numeric"}
-                    onChangeText={setCost}
-                  />
-                </View>
-                {/* Button View */}
-                <View style={styles.addBtn}>
-                  <Button
-                    title={"Dodaj"}
-                    color={Colors.primary}
-                    onPress={() => {
-                      if (
-                        checkIfEmpty(date) &&
-                        checkIfEmpty(place) &&
-                        checkIfEmpty(category) &&
-                        checkIfEmpty(itemName) &&
-                        checkIfEmpty(cost)
-                      ) {
-                        dispatch(
-                          itemsAction.addItem(
-                            saveItem(date, place, category, itemName, cost)
-                          )
-                        );
-                        setDate(new Date());
-                        setPlace("");
-                        setCost("");
-                        setItemName("");
-                        setCategory("");
-                        props.navigation.navigate("Home");
-                      } else alert("uzupełnij wszystkie pola");
-                    }}
-                  />
-                </View>
-              </View>
-              <MiniCard
-                date={date}
-                place={place}
-                category={category}
-                itemName={itemName}
-                cost={cost}
-              />
-            </View>
-          </View>
-        </LinearGradient>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+          </LinearGradient>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 

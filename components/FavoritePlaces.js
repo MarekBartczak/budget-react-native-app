@@ -68,13 +68,6 @@ const FavoritePlaces = (props) => {
           >
             <TouchableOpacity onPress={() => setShowEdit(false)}>
               <View>
-                <View style={styles.apiList}>
-                  <ApiList
-                    source={favPlaceName}
-                    closeWindow={() => setShowEdit(false)}
-                  />
-                </View>
-
                 <Input
                   style={styles.input}
                   value={favPlaceName}
@@ -82,6 +75,12 @@ const FavoritePlaces = (props) => {
                   keyboardType="default"
                   onChangeText={setFavPlaceName}
                 />
+                <View style={styles.apiList}>
+                  <ApiList
+                    source={favPlaceName}
+                    closeWindow={() => setShowEdit(false)}
+                  />
+                </View>
               </View>
               <View style={styles.closeModalBtn}>
                 <Text style={styles.closeModalText}>Zamknij</Text>
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
     height: 200,
     backgroundColor: Colors.transparent,
     shadowOffset: { height: 0, width: 0 },
-    shadowColor: Colors.primary,
+    shadowColor: Colors.shadowColor,
     shadowOpacity: 0.9,
     shadowRadius: 10,
     marginTop: 20,

@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     shadowRadius: 10,
     shadowOffset: { height: 0, width: 10 },
-    shadowColor: Colors.primary,
+    shadowColor: Colors.shadowColor,
     shadowOpacity: 0.23,
   },
   modalView: {
