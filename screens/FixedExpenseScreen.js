@@ -1,10 +1,23 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
 
 const FixedExpenseScreen = (props) => {
-  return (
+  const stackScreen = (name, component, option) => {
+    return <Stack.Screen name={name} component={component} options={option} />;
+  };
+  const FixedExpense = () => (
     <View>
       <LinearGradient
         colors={[
@@ -13,8 +26,51 @@ const FixedExpenseScreen = (props) => {
         ]}
         style={styles.background}
       />
-      <Text>Fixed Expense</Text>
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <Text>Wydatki stałe</Text>
+      </View>
     </View>
+  );
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: Colors.primary,
+        headerStyle: {
+          backgroundColor: Colors.gradientBackground.primary,
+          elevation: 0,
+          shadowOpacity: 0,
+          borderBottomWidth: 0,
+        },
+      }}
+    >
+      {stackScreen("FixedExpense", FixedExpense, ({ navigation }) => ({
+        headerTitle: "Wydatki Stałe",
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{
+              padding: 0,
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: 20,
+            }}
+            onPress={() => navigation.toggleDrawer()}
+          >
+            <MaterialCommunityIcons
+              name="menu"
+              size={34}
+              color={Colors.primary}
+            />
+          </TouchableOpacity>
+        ),
+      }))}
+    </Stack.Navigator>
   );
 };
 

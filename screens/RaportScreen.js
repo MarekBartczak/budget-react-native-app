@@ -1,10 +1,23 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
 
 const RaportScreen = (props) => {
-  return (
+  const stackScreen = (name, component, option) => {
+    return <Stack.Screen name={name} component={component} options={option} />;
+  };
+  const Raport = () => (
     <View>
       <LinearGradient
         colors={[
@@ -13,8 +26,68 @@ const RaportScreen = (props) => {
         ]}
         style={styles.background}
       />
-      <Text>Raport</Text>
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <Text>Raport</Text>
+      </View>
     </View>
+  );
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: Colors.primary,
+        headerStyle: {
+          backgroundColor: Colors.gradientBackground.primary,
+          elevation: 0,
+          shadowOpacity: 0,
+          borderBottomWidth: 0,
+        },
+      }}
+    >
+      {stackScreen("Raport", Raport, ({ navigation }) => ({
+        headerTitle: "Raport",
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{
+              padding: 0,
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: 20,
+            }}
+            onPress={() => navigation.toggleDrawer()}
+          >
+            <MaterialCommunityIcons
+              name="menu"
+              size={34}
+              color={Colors.primary}
+            />
+          </TouchableOpacity>
+        ),
+        headerRight: () => (
+          <TouchableOpacity
+            style={{
+              padding: 0,
+              justifyContent: "center",
+              alignItems: "center",
+              marginRight: 20,
+            }}
+            onPress={() => navigation.navigate("FixedExpense")}
+          >
+            <MaterialCommunityIcons
+              name="scale-balance"
+              size={24}
+              color={Colors.primary}
+            />
+          </TouchableOpacity>
+        ),
+      }))}
+    </Stack.Navigator>
   );
 };
 

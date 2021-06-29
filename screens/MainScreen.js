@@ -53,12 +53,12 @@ const MainScreen = (props) => {
           />
         </View>
 
-        <View style={styles.raport}>
+        {/* <View style={styles.raport}>
           <ButtonComponent
             onPress={() => props.navigation.navigate("Raport")}
             text="Raport"
           />
-        </View>
+        </View> */}
         {/* </ScrollView> */}
       </View>
     </View>

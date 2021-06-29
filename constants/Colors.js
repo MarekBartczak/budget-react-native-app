@@ -8,6 +8,7 @@ export default {
   backGroundChart: "rgb(19,94,140)",
   transparent: "rgba(255,255,255,0.3)",
   shadowColor: "rgb(120, 140, 184)",
+
   gradientBackground: {
     primary: "rgb(150, 180, 204)",
     secondary: "rgb(180,191,220)",
