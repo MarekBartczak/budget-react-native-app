@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import SimplyItems from "../components/SimplyItems";
-import Colors from "../constants/Colors";
+import SimplyItems from "../../components/SimplyItems";
+import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import { LinearGradient } from "expo-linear-gradient";
 

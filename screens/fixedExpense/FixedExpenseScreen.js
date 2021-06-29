@@ -7,17 +7,17 @@ import {
 } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Colors from "../constants/Colors";
+import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
 
-const RaportScreen = (props) => {
+const FixedExpenseScreen = (props) => {
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
-  const Raport = () => (
+  const FixedExpense = () => (
     <View>
       <LinearGradient
         colors={[
@@ -34,7 +34,7 @@ const RaportScreen = (props) => {
           height: "100%",
         }}
       >
-        <Text>Raport</Text>
+        <Text>Wydatki stałe</Text>
       </View>
     </View>
   );
@@ -50,8 +50,8 @@ const RaportScreen = (props) => {
         },
       }}
     >
-      {stackScreen("Raport", Raport, ({ navigation }) => ({
-        headerTitle: "Raport",
+      {stackScreen("FixedExpense", FixedExpense, ({ navigation }) => ({
+        headerTitle: "Wydatki Stałe",
         headerLeft: () => (
           <TouchableOpacity
             style={{
@@ -65,23 +65,6 @@ const RaportScreen = (props) => {
             <MaterialCommunityIcons
               name="menu"
               size={34}
-              color={Colors.primary}
-            />
-          </TouchableOpacity>
-        ),
-        headerRight: () => (
-          <TouchableOpacity
-            style={{
-              padding: 0,
-              justifyContent: "center",
-              alignItems: "center",
-              marginRight: 20,
-            }}
-            onPress={() => navigation.navigate("FixedExpense")}
-          >
-            <MaterialCommunityIcons
-              name="scale-balance"
-              size={24}
               color={Colors.primary}
             />
           </TouchableOpacity>
@@ -101,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RaportScreen;
+export default FixedExpenseScreen;

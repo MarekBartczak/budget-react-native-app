@@ -13,20 +13,20 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Colors from "../constants/Colors";
-import Item from "../models/Item";
+import Colors from "../../constants/Colors";
+import Item from "../../models/Item";
 import uuid from "react-native-uuid";
-import DatePicker from "../components/DatePicker";
-import PlaceList from "../components/place/PlaceList";
-import Input from "../components/newItems/Input";
-import SeparatorText from "../components/newItems/SeparatorText";
-import switchComaToDot from "../functions/switchCompaToDot";
-import CategoryList from "../components/newItems/CategoryList";
+import DatePicker from "../../components/DatePicker";
+import PlaceList from "../../components/place/PlaceList";
+import Input from "../../components/newItems/Input";
+import SeparatorText from "../../components/newItems/SeparatorText";
+import switchComaToDot from "../../functions/switchCompaToDot";
+import CategoryList from "../../components/newItems/CategoryList";
 import { LinearGradient } from "expo-linear-gradient";
-import * as itemsAction from "../store/actions/items";
+import * as itemsAction from "../../store/actions/items";
 import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
-import MiniCard from "../components/newItems/MiniCard";
+import MiniCard from "../../components/newItems/MiniCard";
 
 const AddSingleItemScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);

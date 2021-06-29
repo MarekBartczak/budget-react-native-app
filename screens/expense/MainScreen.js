@@ -1,12 +1,12 @@
 import { StyleSheet, View, Text, ScrollView, Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
-import Chart from "../components/Chart";
-import FavoritePlaces from "../components/FavoritePlaces";
-import AddNewItem from "../components/AddNewItem";
-import ButtonComponent from "../components/buttons/Button";
+import Chart from "../../components/Chart";
+import FavoritePlaces from "../../components/FavoritePlaces";
+import AddNewItem from "../../components/AddNewItem";
+import ButtonComponent from "../../components/buttons/Button";
 import { useSelector } from "react-redux";
-import Colors from "../constants/Colors";
+import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 
 const MainScreen = (props) => {

@@ -7,10 +7,10 @@ import {
   Dimensions,
 } from "react-native";
 import React from "react";
-import Colors from "../constants/Colors";
+import Colors from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
-import * as itemsAction from "../store/actions/items";
+import * as itemsAction from "../../store/actions/items";
 import { LinearGradient } from "expo-linear-gradient";
 
 const DetailsScreen = (props) => {

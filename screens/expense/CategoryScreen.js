@@ -6,40 +6,38 @@ import {
   FlatList,
   Dimensions,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import SimplyItems from "../components/SimplyItems";
-import Colors from "../constants/Colors";
+import SimplyItems from "../../components/SimplyItems";
+import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import { LinearGradient } from "expo-linear-gradient";
 
-const DateScreen = (props) => {
-  const selectedDate = props.route.params;
+const CategoryScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
-  const dateList = itemsFromRedux.map((el) => {
-    return el.date;
-  });
-  const newlist = (dateList) =>
-    dateList.filter((a, b) => dateList.indexOf(a) === b);
-  const workingDateList = newlist(dateList);
-  const [currentDate, setCurrentDate] = useState(
-    workingDateList[workingDateList.length - 1]
+  const currentCategoryParam = props.route.params;
+  const [currentCategory, setCurrentCategory] = useState(
+    currentCategoryParam.category
   );
 
-  useEffect(() => {
-    if (props.route.params !== undefined) {
-      setCurrentDate(selectedDate.selectedDate);
-    }
-  }, [selectedDate]);
-  const filteredItem = itemsFromRedux.filter((el) => el.date === currentDate);
+  const categoryList = itemsFromRedux.map((el) => {
+    return el.category;
+  });
 
-  const switchDate = (param) => {
-    const currentIndex = workingDateList.indexOf(currentDate);
+  const newList = (categoryList) =>
+    categoryList.filter((a, b) => categoryList.indexOf(a) === b);
+  const workingCategoryList = newList(categoryList);
+  const filteredItem = itemsFromRedux.filter(
+    (el) => el.category === currentCategory
+  );
+
+  const switchCategory = (param) => {
+    const currentIndex = workingCategoryList.indexOf(currentCategory);
     if (
-      currentIndex + param < [workingDateList.length] &&
+      currentIndex + param < [workingCategoryList.length] &&
       currentIndex + param >= 0
     ) {
-      setCurrentDate(workingDateList[currentIndex + param]);
+      setCurrentCategory(workingCategoryList[currentIndex + param]);
     }
   };
 
@@ -60,11 +58,11 @@ const DateScreen = (props) => {
         style={styles.background}
       />
       <View style={styles.top}>
-        <TouchableOpacity onPress={() => switchDate(-1)}>
+        <TouchableOpacity onPress={() => switchCategory(-1)}>
           <Ionicons name="ios-arrow-back" size={43} color="black" />
         </TouchableOpacity>
-        <Text style={styles.showDate}>{currentDate}</Text>
-        <TouchableOpacity onPress={() => switchDate(1)}>
+        <Text style={styles.showCategory}>{currentCategory}</Text>
+        <TouchableOpacity onPress={() => switchCategory(1)}>
           <Ionicons name="ios-arrow-forward" size={43} color="black" />
         </TouchableOpacity>
       </View>
@@ -98,12 +96,28 @@ const DateScreen = (props) => {
   );
 };
 
-export default DateScreen;
+export default CategoryScreen;
 
 const styles = StyleSheet.create({
   screen: {
     width: "100%",
     alignItems: "center",
+    justifyContent: "center",
+  },
+  showCategory: {
+    color: Colors.primary,
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  top: {
+    marginTop: 10,
+    width: "90%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  items: {
+    width: "100%",
   },
   background: {
     position: "absolute",
@@ -111,20 +125,5 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     height: Dimensions.get("window").height,
-  },
-  showDate: {
-    color: Colors.primary,
-    fontWeight: "bold",
-    fontSize: 20,
-  },
-  top: {
-    marginTop: 10,
-    width: "80%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  items: {
-    width: "100%",
   },
 });

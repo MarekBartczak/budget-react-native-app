@@ -5,14 +5,14 @@ import {
   Dimensions,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import DatePicker from "../components/DatePicker";
-import PlaceList from "../components/place/PlaceList";
-import Colors from "../constants/Colors";
-import Receipt from "../components/newMultiItems/Receipt";
-import MultiItem from "../models/MultiItem";
+import DatePicker from "../../components/DatePicker";
+import PlaceList from "../../components/place/PlaceList";
+import Colors from "../../constants/Colors";
+import Receipt from "../../components/newMultiItems/Receipt";
+import MultiItem from "../../models/MultiItem";
 import uuid from "react-native-uuid";
-import switchComaToDot from "../functions/switchCompaToDot";
-import * as itemsAction from "../store/actions/items";
+import switchComaToDot from "../../functions/switchCompaToDot";
+import * as itemsAction from "../../store/actions/items";
 import { useDispatch, useSelector } from "react-redux";
 import { LinearGradient } from "expo-linear-gradient";
 
