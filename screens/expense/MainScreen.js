@@ -1,16 +1,24 @@
 import { StyleSheet, View, Text, ScrollView, Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
-import Chart from "../../components/Chart";
+import Chart from "../../components/chart/Chart";
 import FavoritePlaces from "../../components/FavoritePlaces";
 import AddNewItem from "../../components/AddNewItem";
-import ButtonComponent from "../../components/buttons/Button";
 import { useSelector } from "react-redux";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
+import chartElement from "../../functions/ChartElement";
 
 const MainScreen = (props) => {
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // it have to be refacor because looks very ugly!!
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
+  const itemsFromRedux = useSelector((state) => state.item.items);
+
+  const chartEl = chartElement(itemsFromRedux, 6);
+
   return (
     <View
       style={{
@@ -29,7 +37,11 @@ const MainScreen = (props) => {
       <View style={styles.screen}>
         {/* <ScrollView> */}
         <View>
-          <Chart press={() => props.navigation.navigate("Date")} />
+          <Chart
+            press={() => props.navigation.navigate("Date")}
+            label={chartEl.label}
+            data={chartEl.data}
+          />
         </View>
         <View style={styles.favoritePlace}>
           <FavoritePlaces

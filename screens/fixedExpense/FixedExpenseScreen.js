@@ -8,8 +8,13 @@ import {
 import React from "react";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
+import { useSelector } from "react-redux";
 
-const FixedExpenseScreen = (props) => {
+import Chart from "../../components/chart/Chart";
+import fixedExpense from "../../store/reducers/fixedExpense";
+import chartElement from "../../functions/ChartElement";
+
+const ExternalComponent = (props) => {
   return (
     <View>
       <LinearGradient
@@ -27,9 +32,23 @@ const FixedExpenseScreen = (props) => {
           height: "100%",
         }}
       >
-        <Text>Wydatki stałe</Text>
+        {props.children}
       </View>
     </View>
+  );
+};
+
+const FixedExpenseScreen = (props) => {
+  const fixedExpenseShowList = useSelector(
+    (state) => state.fixedExpense.fixedExpense
+  );
+
+  const chartEl = chartElement(fixedExpenseShowList);
+
+  return (
+    <ExternalComponent>
+      <Chart press={() => {}} label={chartEl.label} data={chartEl.data} />
+    </ExternalComponent>
   );
 };
 
