@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
-import BudgetNavigator from "./navigation/StackNavigator";
+import BudgetNavigator from "./navigation/StackExpenseNavigator";
 import DrawerNavigator from "./navigation/DrawerNavigator";
 import itemReducer from "./store/reducers/items";
 import FavoritePlacesReducer from "./store/reducers/favoritePlace";

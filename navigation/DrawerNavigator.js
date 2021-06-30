@@ -1,16 +1,16 @@
+import React from "react";
+import Colors from "../constants/Colors";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import IncomeScreen from "../screens/income/IncomeScreen";
-import BudgetNavigator from "./StackNavigator";
-import FixedExpenseScreen from "../screens/fixedExpense/FixedExpenseScreen";
-import RaportScreen from "../screens/raport/RaportScreen";
-import FixedIncomeScreen from "../screens/fixedIncome/FixedIncomeScreen";
-import SettingsScreen from "../screens/settings/SettingsScreen";
-import Colors from "../constants/Colors";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+
+import StackExpenseNavigator from "./StackExpenseNavigator";
+import StackIncomeNavigator from "./StackIncomeNavigator";
+import StackFixedExpenseNavigator from "./StackFixedExpenseNavigator";
+import StackRaportNavigator from "./StackRaportNavigator";
+import StackFixedIncomeNavigator from "./StackFixedIncomeNavigator";
+import StackSettingsNavigator from "./StackSettingsNavigator";
 
 const Drawer = createDrawerNavigator();
 
@@ -28,7 +28,7 @@ const DrawerNavigator = (props) => {
       >
         <Drawer.Screen
           name="Wydatki"
-          component={BudgetNavigator}
+          component={StackExpenseNavigator}
           options={{
             drawerIcon: () => (
               <MaterialCommunityIcons
@@ -42,7 +42,7 @@ const DrawerNavigator = (props) => {
         />
         <Drawer.Screen
           name="Stałe wydatki"
-          component={FixedExpenseScreen}
+          component={StackFixedExpenseNavigator}
           options={{
             drawerIcon: () => (
               <MaterialCommunityIcons
@@ -56,7 +56,7 @@ const DrawerNavigator = (props) => {
         />
         <Drawer.Screen
           name="Wpływy"
-          component={IncomeScreen}
+          component={StackIncomeNavigator}
           options={{
             drawerIcon: () => (
               <MaterialCommunityIcons
@@ -70,7 +70,7 @@ const DrawerNavigator = (props) => {
         />
         <Drawer.Screen
           name="Stałe wpływy"
-          component={FixedIncomeScreen}
+          component={StackFixedIncomeNavigator}
           options={{
             drawerIcon: () => (
               <MaterialCommunityIcons
@@ -84,7 +84,7 @@ const DrawerNavigator = (props) => {
         />
         <Drawer.Screen
           name="Raport"
-          component={RaportScreen}
+          component={StackRaportNavigator}
           options={{
             drawerIcon: () => (
               <MaterialCommunityIcons
@@ -98,7 +98,7 @@ const DrawerNavigator = (props) => {
         />
         <Drawer.Screen
           name="Ustawienia"
-          component={SettingsScreen}
+          component={StackSettingsNavigator}
           options={{
             drawerIcon: () => (
               <Ionicons name="ios-settings" size={34} color={Colors.primary} />

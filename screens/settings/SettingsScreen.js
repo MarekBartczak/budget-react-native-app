@@ -8,16 +8,9 @@ import {
 import React from "react";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
-import { createStackNavigator } from "@react-navigation/stack";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-const Stack = createStackNavigator();
 
 const SettingsScreen = (props) => {
-  const stackScreen = (name, component, option) => {
-    return <Stack.Screen name={name} component={component} options={option} />;
-  };
-  const Settings = () => (
+  return (
     <View>
       <LinearGradient
         colors={[
@@ -37,40 +30,6 @@ const SettingsScreen = (props) => {
         <Text>Ustawienia</Text>
       </View>
     </View>
-  );
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTintColor: Colors.primary,
-        headerStyle: {
-          backgroundColor: Colors.gradientBackground.primary,
-          elevation: 0,
-          shadowOpacity: 0,
-          borderBottomWidth: 0,
-        },
-      }}
-    >
-      {stackScreen("Ustawienia", Settings, ({ navigation }) => ({
-        headerTitle: "Ustawienia",
-        headerLeft: () => (
-          <TouchableOpacity
-            style={{
-              padding: 0,
-              justifyContent: "center",
-              alignItems: "center",
-              marginLeft: 20,
-            }}
-            onPress={() => navigation.toggleDrawer()}
-          >
-            <MaterialCommunityIcons
-              name="menu"
-              size={34}
-              color={Colors.primary}
-            />
-          </TouchableOpacity>
-        ),
-      }))}
-    </Stack.Navigator>
   );
 };
 

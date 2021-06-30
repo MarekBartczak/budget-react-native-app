@@ -15,11 +15,10 @@ import React from "react";
 
 const Stack = createStackNavigator();
 
-const stackScreen = (name, component, option) => {
-  return <Stack.Screen name={name} component={component} options={option} />;
-};
-
-const BudgetNavigator = (props) => {
+const StackExpenseNavigator = (props) => {
+  const stackScreen = (name, component, option) => {
+    return <Stack.Screen name={name} component={component} options={option} />;
+  };
   return (
     <Stack.Navigator
       // initialRouteName="Home"
@@ -108,4 +107,4 @@ const BudgetNavigator = (props) => {
   );
 };
 
-export default BudgetNavigator;
+export default StackExpenseNavigator;

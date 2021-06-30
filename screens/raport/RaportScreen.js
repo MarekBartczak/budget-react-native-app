@@ -2,15 +2,9 @@ import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
-import { createStackNavigator } from "@react-navigation/stack";
-import HeaderScreenComponent from "../HeaderScreen/HeaderScreenComponent";
-const Stack = createStackNavigator();
 
 const RaportScreen = (props) => {
-  const stackScreen = (name, component, option) => {
-    return <Stack.Screen name={name} component={component} options={option} />;
-  };
-  const Raport = () => (
+  return (
     <View>
       <LinearGradient
         colors={[
@@ -30,23 +24,6 @@ const RaportScreen = (props) => {
         <Text>Raport</Text>
       </View>
     </View>
-  );
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTintColor: Colors.primary,
-        headerStyle: {
-          backgroundColor: Colors.gradientBackground.primary,
-          elevation: 0,
-          shadowOpacity: 0,
-          borderBottomWidth: 0,
-        },
-      }}
-    >
-      {stackScreen("Raport", Raport, ({ navigation }) =>
-        HeaderScreenComponent({ navigation })
-      )}
-    </Stack.Navigator>
   );
 };
 
