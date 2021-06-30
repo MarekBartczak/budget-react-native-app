@@ -6,18 +6,18 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { createStackNavigator } from "@react-navigation/stack";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 
-const FixedExpenseScreen = (props) => {
+const SettingsScreen = (props) => {
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
-  const FixedExpense = () => (
+  const Settings = () => (
     <View>
       <LinearGradient
         colors={[
@@ -34,7 +34,7 @@ const FixedExpenseScreen = (props) => {
           height: "100%",
         }}
       >
-        <Text>Wydatki stałe</Text>
+        <Text>Ustawienia</Text>
       </View>
     </View>
   );
@@ -50,8 +50,8 @@ const FixedExpenseScreen = (props) => {
         },
       }}
     >
-      {stackScreen("FixedExpense", FixedExpense, ({ navigation }) => ({
-        headerTitle: "Stałe wydatki",
+      {stackScreen("Ustawienia", Settings, ({ navigation }) => ({
+        headerTitle: "Ustawienia",
         headerLeft: () => (
           <TouchableOpacity
             style={{
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FixedExpenseScreen;
+export default SettingsScreen;

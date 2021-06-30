@@ -1,16 +1,9 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import HeaderScreenComponent from "../HeaderScreen/HeaderScreenComponent";
 const Stack = createStackNavigator();
 
 const RaportScreen = (props) => {
@@ -50,26 +43,9 @@ const RaportScreen = (props) => {
         },
       }}
     >
-      {stackScreen("Raport", Raport, ({ navigation }) => ({
-        headerTitle: "Raport",
-        headerLeft: () => (
-          <TouchableOpacity
-            style={{
-              padding: 0,
-              justifyContent: "center",
-              alignItems: "center",
-              marginLeft: 20,
-            }}
-            onPress={() => navigation.toggleDrawer()}
-          >
-            <MaterialCommunityIcons
-              name="menu"
-              size={34}
-              color={Colors.primary}
-            />
-          </TouchableOpacity>
-        ),
-      }))}
+      {stackScreen("Raport", Raport, ({ navigation }) =>
+        HeaderScreenComponent({ navigation })
+      )}
     </Stack.Navigator>
   );
 };
