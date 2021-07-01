@@ -17,32 +17,36 @@ const AddNewItem = (props) => {
     <View style={styles.screen}>
       <View style={styles.inner}>
         <View style={styles.addBtn}>
-          <TouchableOpacity
-            style={styles.add}
-            onPress={props.pressToAddSignleItem}
-          >
-            <Ionicons
-              name="ios-add-circle-outline"
-              size={62}
-              color={Colors.primary}
-            />
+          <View>
+            <TouchableOpacity
+              style={styles.add}
+              onPress={props.pressToAddSignleItem}
+            >
+              <Ionicons
+                name="ios-add-circle-outline"
+                size={62}
+                color={Colors.primary}
+              />
+            </TouchableOpacity>
             <Text style={styles.btnText}>Pojedynczy Wydatek</Text>
-          </TouchableOpacity>
+          </View>
 
-          <TouchableOpacity
-            style={styles.add}
-            onPress={() => {
-              props.pressToAddMultiItems();
-              dispatch(favoritePlaceAction.selectPlace(""));
-            }}
-          >
-            <Ionicons
-              name="ios-cart-outline"
-              size={62}
-              color={Colors.primary}
-            />
+          <View>
+            <TouchableOpacity
+              style={styles.add}
+              onPress={() => {
+                props.pressToAddMultiItems();
+                dispatch(favoritePlaceAction.selectPlace(""));
+              }}
+            >
+              <Ionicons
+                name="ios-cart-outline"
+                size={62}
+                color={Colors.primary}
+              />
+            </TouchableOpacity>
             <Text style={styles.btnText}>Cały Paragon</Text>
-          </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -80,9 +84,10 @@ const styles = StyleSheet.create({
   add: {
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 5,
   },
   btnText: {
-    marginBottom: -15,
+    marginBottom: -10,
     fontWeight: "bold",
     fontSize: 9,
     paddingHorizontal: 10,
