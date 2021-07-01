@@ -15,29 +15,35 @@ const AddNewItem = (props) => {
   const dispatch = useDispatch();
   return (
     <View style={styles.screen}>
-      <View style={styles.addBtn}>
-        <TouchableOpacity
-          style={styles.add}
-          onPress={props.pressToAddSignleItem}
-        >
-          <Ionicons
-            name="ios-add-circle-outline"
-            size={62}
-            color={Colors.primary}
-          />
-          <Text>Pojedynczy Wydatek</Text>
-        </TouchableOpacity>
+      <View style={styles.inner}>
+        <View style={styles.addBtn}>
+          <TouchableOpacity
+            style={styles.add}
+            onPress={props.pressToAddSignleItem}
+          >
+            <Ionicons
+              name="ios-add-circle-outline"
+              size={62}
+              color={Colors.primary}
+            />
+            <Text style={styles.btnText}>Pojedynczy Wydatek</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.add}
-          onPress={() => {
-            props.pressToAddMultiItems();
-            dispatch(favoritePlaceAction.selectPlace(""));
-          }}
-        >
-          <Ionicons name="ios-cart-outline" size={62} color={Colors.primary} />
-          <Text>Cały Paragon</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.add}
+            onPress={() => {
+              props.pressToAddMultiItems();
+              dispatch(favoritePlaceAction.selectPlace(""));
+            }}
+          >
+            <Ionicons
+              name="ios-cart-outline"
+              size={62}
+              color={Colors.primary}
+            />
+            <Text style={styles.btnText}>Cały Paragon</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -47,13 +53,23 @@ const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get("window").width * 0.9,
     height: 100,
-    backgroundColor: Colors.transparent,
-    shadowOffset: { height: 0, width: 10 },
+    backgroundColor: Colors.gradientBackground.third,
+    shadowOffset: { height: 0, width: 0 },
     shadowColor: Colors.shadowColor,
     shadowOpacity: 0.9,
     shadowRadius: 10,
-    marginTop: 20,
     borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
+  },
+  inner: {
+    backgroundColor: Colors.gradientBackground.third,
+    borderRadius: 10,
+    height: "88%",
+    width: "96%",
+    borderWidth: 3,
+    borderColor: Colors.primary,
   },
   addBtn: {
     justifyContent: "space-around",
@@ -64,6 +80,13 @@ const styles = StyleSheet.create({
   add: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  btnText: {
+    marginBottom: -15,
+    fontWeight: "bold",
+    fontSize: 9,
+    paddingHorizontal: 10,
+    backgroundColor: Colors.gradientBackground.third,
   },
 });
 
