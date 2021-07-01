@@ -1,6 +1,7 @@
 export default {
   primary: "rgb(109,81,209)",
   accent: "#FF8A1A",
+  accentOpacity: "rgba(240,143,60,0.5)",
   banner: "#DFDFDF",
   backGround2: "rgb(227, 227, 228)",
   default: "rgb(242, 242, 242)",
@@ -12,5 +13,6 @@ export default {
   gradientBackground: {
     primary: "rgb(150, 180, 204)",
     secondary: "rgb(180,191,220)",
+    third: "rgb(176,189,214)",
   },
 };

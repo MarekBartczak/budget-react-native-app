@@ -1,5 +1,5 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// range count from 0 && range < data.length
+// range count from 0 && range < workingDateList.length
 // data should be an array
 // of objects contains {{ cost }}
 // and {{ date }} properties

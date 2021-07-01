@@ -1,5 +1,4 @@
-import { StyleSheet, View, Text, ScrollView, Dimensions } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, View, Dimensions } from "react-native";
 import React from "react";
 import Chart from "../../components/chart/Chart";
 import FavoritePlaces from "../../components/FavoritePlaces";
@@ -8,7 +7,8 @@ import { useSelector } from "react-redux";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 import chartElement from "../../functions/ChartElement";
-
+import SummaryCost from "../../components/summaryCost/SumaryCost";
+import summaryCostCounter from "../../functions/summaryCostCounter";
 const MainScreen = (props) => {
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // it have to be refacor because looks very ugly!!
@@ -42,6 +42,9 @@ const MainScreen = (props) => {
             label={chartEl.label}
             data={chartEl.data}
           />
+        </View>
+        <View style={{ marginTop: 20 }}>
+          <SummaryCost cost={summaryCostCounter(itemsFromRedux)} />
         </View>
         <View style={styles.favoritePlace}>
           <FavoritePlaces

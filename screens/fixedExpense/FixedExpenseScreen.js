@@ -10,33 +10,12 @@ import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSelector } from "react-redux";
 
+import summaryCostCounter from "../../functions/summaryCostCounter";
 import Chart from "../../components/chart/Chart";
-import fixedExpense from "../../store/reducers/fixedExpense";
+import AddNewFixedExpenseComponent from "../../components/fixedExpense/addNewFixedExpense/AddNewFixedExpenseComponent";
 import chartElement from "../../functions/ChartElement";
-
-const ExternalComponent = (props) => {
-  return (
-    <View>
-      <LinearGradient
-        colors={[
-          Colors.gradientBackground.primary,
-          Colors.gradientBackground.secondary,
-        ]}
-        style={styles.background}
-      />
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        {props.children}
-      </View>
-    </View>
-  );
-};
+import SummaryCost from "../../components/summaryCost/SumaryCost";
+import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const FixedExpenseScreen = (props) => {
   const fixedExpenseShowList = useSelector(
@@ -47,7 +26,19 @@ const FixedExpenseScreen = (props) => {
 
   return (
     <ExternalComponent>
-      <Chart press={() => {}} label={chartEl.label} data={chartEl.data} />
+      <View style={styles.component}>
+        <Chart
+          press={() => props.navigation.navigate("FixedExpensesList")}
+          label={chartEl.label}
+          data={chartEl.data}
+        />
+      </View>
+      <View style={styles.component}>
+        <SummaryCost cost={summaryCostCounter(fixedExpenseShowList)} />
+      </View>
+      <View style={styles.component}>
+        <AddNewFixedExpenseComponent />
+      </View>
     </ExternalComponent>
   );
 };
@@ -59,6 +50,9 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     height: Dimensions.get("window").height,
+  },
+  component: {
+    marginBottom: 20,
   },
 });
 

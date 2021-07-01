@@ -5,6 +5,8 @@ import Colors from "../constants/Colors";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import FixedExpenseScreen from "../screens/fixedExpense/FixedExpenseScreen";
+import FixedExpensesList from "../components/fixedExpense/FixedExpensesList";
+import FixedExpenseDetails from "../components/fixedExpense/fixedExpenseDetails/FixedExpenseDetails";
 
 const Stack = createStackNavigator();
 
@@ -44,6 +46,20 @@ const StackFixedExpenseNavigator = (props) => {
           </TouchableOpacity>
         ),
       }))}
+      {stackScreen(
+        "FixedExpensesList",
+        FixedExpensesList,
+        ({ navigation }) => ({
+          headerTitle: "Lista stałych wydatków",
+        })
+      )}
+      {stackScreen(
+        "FixedExpenseDetails",
+        FixedExpenseDetails,
+        ({ navigation }) => ({
+          headerTitle: "Szczegóły",
+        })
+      )}
     </Stack.Navigator>
   );
 };
