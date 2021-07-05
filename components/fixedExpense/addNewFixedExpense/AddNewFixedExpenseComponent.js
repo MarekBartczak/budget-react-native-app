@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     height: "95%",
     width: "95%",
     borderWidth: 3,
-    borderColor: Colors.primary,
+    borderColor: Colors.gradientBackground.primary,
   },
   descriptionComponent: {
     marginLeft: 10,

@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     height: "88%",
     width: "96%",
     borderWidth: 3,
-    borderColor: Colors.primary,
+    borderColor: Colors.gradientBackground.secondary,
   },
   addBtn: {
     justifyContent: "space-around",

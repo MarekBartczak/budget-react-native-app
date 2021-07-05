@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";

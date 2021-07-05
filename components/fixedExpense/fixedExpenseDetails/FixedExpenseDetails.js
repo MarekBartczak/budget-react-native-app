@@ -1,11 +1,20 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Colors from "../../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
+import SetNextPayDay from "../../../functions/SetNextPayDay";
 
 const FixedExpenseDetails = (props) => {
+  const [nextPayDay, setNextPayDay] = useState();
+  const [dateInfo, setDateInfo] = useState();
   const { id, cost, title, date, recipient } = props.route.params;
+  let getInfoDate;
+  useEffect(() => {
+    getInfoDate = SetNextPayDay(date);
+    setDateInfo(getInfoDate.date.replaceAll("-", "."));
+    setNextPayDay(getInfoDate.days);
+  }, [date]);
   return (
     <ExternalComponent>
       <View>
@@ -22,7 +31,8 @@ const FixedExpenseDetails = (props) => {
           <View style={styles.top}>
             <View style={styles.paymentDate}>
               <Text>Termin zapłaty</Text>
-              <Text style={styles.textDate}>{date.replaceAll("-", ".")}</Text>
+              <Text style={styles.textDate}>{dateInfo}</Text>
+              <Text>pozostało dni: {nextPayDay} </Text>
             </View>
             <View style={styles.costInfo}>
               <Text>Kwota</Text>
