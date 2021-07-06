@@ -13,7 +13,7 @@ const DatePicker = (props) => {
           justifyContent: "center",
         }}
         locale="pl-PL"
-        maximumDate={new Date()}
+        maximumDate={props.maxDate}
         timeZoneOffsetInMinutes={0}
         testID="dateTimePicker"
         value={props.date}

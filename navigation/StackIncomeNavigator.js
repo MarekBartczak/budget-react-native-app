@@ -4,6 +4,8 @@ import Colors from "../constants/Colors";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import IncomeScreen from "../screens/income/IncomeScreen";
+import IncomeDetails from "../components/income/incomeDetails/IncomeDetails";
+import IncomeList from "../components/income/IncomeList";
 const Stack = createStackNavigator();
 
 const StackIncomeNavigator = (props) => {
@@ -42,6 +44,12 @@ const StackIncomeNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
+      }))}
+      {stackScreen("IncomeList", IncomeList, ({ navigation }) => ({
+        headerTitle: "Lista wpływów",
+      }))}
+      {stackScreen("IncomeDetails", IncomeDetails, ({ navigation }) => ({
+        headerTitle: "Szczegóły",
       }))}
     </Stack.Navigator>
   );

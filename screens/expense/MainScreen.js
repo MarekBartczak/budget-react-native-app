@@ -10,10 +10,6 @@ import chartElement from "../../functions/ChartElement";
 import SummaryCost from "../../components/summaryCost/SumaryCost";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 const MainScreen = (props) => {
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // it have to be refacor because looks very ugly!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
 
@@ -67,14 +63,6 @@ const MainScreen = (props) => {
             }
           />
         </View>
-
-        {/* <View style={styles.raport}>
-          <ButtonComponent
-            onPress={() => props.navigation.navigate("Raport")}
-            text="Raport"
-          />
-        </View> */}
-        {/* </ScrollView> */}
       </View>
     </View>
   );

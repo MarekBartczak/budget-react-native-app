@@ -7,7 +7,6 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
-import { LinearGradient } from "expo-linear-gradient";
 import { useSelector } from "react-redux";
 
 import summaryCostCounter from "../../functions/summaryCostCounter";
@@ -44,13 +43,6 @@ const FixedExpenseScreen = (props) => {
 };
 
 const styles = StyleSheet.create({
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: Dimensions.get("window").height,
-  },
   component: {
     marginBottom: 20,
   },

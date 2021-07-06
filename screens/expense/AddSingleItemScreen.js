@@ -5,7 +5,6 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Button,
-  ScrollView,
   SafeAreaView,
   KeyboardAvoidingView,
   Modal,
@@ -96,7 +95,11 @@ const AddSingleItemScreen = (props) => {
             <View style={styles.screen}>
               <SeparatorText style={styles.textSeparator}>Kiedy?</SeparatorText>
               <View style={styles.datePicker}>
-                <DatePicker date={date} onChange={onChangeDate} />
+                <DatePicker
+                  date={date}
+                  onChange={onChangeDate}
+                  maxDate={new Date()}
+                />
               </View>
 
               {/* Gdzie View */}

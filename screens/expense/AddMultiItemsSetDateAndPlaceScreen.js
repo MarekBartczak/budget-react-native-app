@@ -78,7 +78,11 @@ const AddMultiItemsScreen = (props) => {
           style={styles.background}
         />
         <View style={styles.datePicker}>
-          <DatePicker date={date} onChange={onChangeDate} />
+          <DatePicker
+            date={date}
+            onChange={onChangeDate}
+            maxDate={new Date()}
+          />
         </View>
         <View style={styles.place}>
           <View style={styles.placeList}>

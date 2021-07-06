@@ -10,7 +10,10 @@ import Colors from "../../constants/Colors";
 
 const Button = (props) => {
   return (
-    <TouchableOpacity onPress={props.onPress} style={styles.button}>
+    <TouchableOpacity
+      onPress={props.onPress}
+      style={{ ...styles.button, ...props.style }}
+    >
       <View style={styles.btn}>
         <Text style={styles.text}>{props.text}</Text>
       </View>

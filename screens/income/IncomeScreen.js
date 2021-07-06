@@ -6,40 +6,37 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
+import { useSelector } from "react-redux";
 import Colors from "../../constants/Colors";
-import { LinearGradient } from "expo-linear-gradient";
-
+import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
+import Chart from "../../components/chart/Chart";
+import chartElement from "../../functions/ChartElement";
+import summaryCostCounter from "../../functions/summaryCostCounter";
+import SummaryCost from "../../components/summaryCost/SumaryCost";
 const IncomeScreen = (props) => {
+  const incomeList = useSelector((state) => state.income.income);
+
+  const chartEl = chartElement(incomeList);
+
   return (
-    <View>
-      <LinearGradient
-        colors={[
-          Colors.gradientBackground.primary,
-          Colors.gradientBackground.secondary,
-        ]}
-        style={styles.background}
-      />
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <Text>Wpływy</Text>
+    <ExternalComponent>
+      <View style={styles.component}>
+        <Chart
+          press={() => props.navigation.navigate("IncomeList")}
+          label={chartEl.label}
+          data={chartEl.data}
+        />
       </View>
-    </View>
+      <View style={styles.component}>
+        <SummaryCost cost={summaryCostCounter(incomeList)} />
+      </View>
+    </ExternalComponent>
   );
 };
 
 const styles = StyleSheet.create({
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: Dimensions.get("window").height,
+  component: {
+    marginBottom: 20,
   },
 });
 
