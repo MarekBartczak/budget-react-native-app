@@ -4,7 +4,8 @@ import Colors from "../constants/Colors";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import FixedIncomeScreen from "../screens/fixedIncome/FixedIncomeScreen";
-
+import FixedIncomeDetails from "../components/fixedIncome/fixedIncomeDetails/FixedIncomeDetails";
+import FixedIncomeList from "../components/fixedIncome/FixedIncomeList";
 const Stack = createStackNavigator();
 
 const StackFixedIncomeNavigator = (props) => {
@@ -44,6 +45,16 @@ const StackFixedIncomeNavigator = (props) => {
           </TouchableOpacity>
         ),
       }))}
+      {stackScreen("FixedIncomeList", FixedIncomeList, ({ navigation }) => ({
+        headerTitle: "Lista stałych wpływów",
+      }))}
+      {stackScreen(
+        "FixedIncomeDetails",
+        FixedIncomeDetails,
+        ({ navigation }) => ({
+          headerTitle: "Szczegóły",
+        })
+      )}
     </Stack.Navigator>
   );
 };
