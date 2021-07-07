@@ -3,7 +3,6 @@ import DetailsScreen from "../screens/expense/DetailsScreen";
 import DateScreen from "../screens/expense/DateScreen";
 import PlaceScreen from "../screens/expense/PlaceScreen";
 import CategoryScreen from "../screens/expense/CategoryScreen";
-import AddSingleItemScreen from "../screens/expense/AddSingleItemScreen";
 import FavoritePlaceScreen from "../screens/expense/FavoritePlaceScreen";
 import AddMultipleItemScreen from "../screens/expense/AddMultiItemsSetDateAndPlaceScreen";
 import Colors from "../constants/Colors";
@@ -57,26 +56,6 @@ const StackExpenseNavigator = (props) => {
       {stackScreen("Place", PlaceScreen, { title: "Miejsce" })}
       {stackScreen("Category", CategoryScreen, { title: "Kategoria" })}
 
-      {stackScreen("AddSingleItem", AddSingleItemScreen, ({ navigation }) => ({
-        headerTitle: "Pojedynczy element",
-        headerRight: () => (
-          <TouchableOpacity
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              marginRight: 20,
-            }}
-            onPress={() => navigation.navigate("AddMultipleItem")}
-          >
-            <MaterialCommunityIcons
-              name="text-box-multiple-outline"
-              size={24}
-              color={Colors.primary}
-            />
-          </TouchableOpacity>
-        ),
-      }))}
-
       {stackScreen("FavoritePlace", FavoritePlaceScreen, {
         title: "Ulubione",
       })}
@@ -85,22 +64,6 @@ const StackExpenseNavigator = (props) => {
         AddMultipleItemScreen,
         ({ navigation }) => ({
           headerTitle: "Cały paragon",
-          headerRight: () => (
-            <TouchableOpacity
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                marginRight: 20,
-              }}
-              onPress={() => navigation.navigate("AddSingleItem")}
-            >
-              <MaterialCommunityIcons
-                name="numeric-1-box-multiple-outline"
-                size={24}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-          ),
         })
       )}
     </Stack.Navigator>

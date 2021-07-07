@@ -20,9 +20,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADD_ITEM:
-      return { ...state, items: [...state.items, action.item] };
-
     case DEL_ITEM:
       if (state.items.length > 0) {
         let current = [...state.items];

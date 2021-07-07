@@ -27,7 +27,7 @@ const AddNewPeriodicElement = (props) => {
             <View style={styles.descriptionComponent}>
               <Text style={styles.defaultText}>{props.title}</Text>
             </View>
-            <View>
+            <View style={styles.datePickerView}>
               <DatePicker
                 date={props.date}
                 onChange={props.onChangeDate}
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.gradientBackground.primary,
     alignItems: "center",
   },
+  datePickerView: { marginTop: 10 },
   descriptionComponent: {
     marginLeft: 10,
     marginTop: -10,

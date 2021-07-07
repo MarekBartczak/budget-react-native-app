@@ -18,14 +18,14 @@ import uuid from "react-native-uuid";
 import DatePicker from "../../components/DatePicker";
 import PlaceList from "../../components/place/PlaceList";
 import Input from "../../components/input/Input";
-import SeparatorText from "../../components/newItems/SeparatorText";
+import SeparatorText from "../../components/newItems/_SeparatorText";
 import switchComaToDot from "../../functions/switchCompaToDot";
 import CategoryList from "../../components/newItems/CategoryList";
 import { LinearGradient } from "expo-linear-gradient";
 import * as itemsAction from "../../store/actions/items";
 import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
-import MiniCard from "../../components/newItems/MiniCard";
+import MiniCard from "../../components/newItems/_MiniCard";
 
 const AddSingleItemScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
@@ -107,9 +107,11 @@ const AddSingleItemScreen = (props) => {
                 <SeparatorText style={styles.textSeparator}>
                   Gdzie?
                 </SeparatorText>
+
                 <TouchableOpacity onPress={() => setAddNewPlace(true)}>
                   <Feather name="edit" size={15} color="black" />
                 </TouchableOpacity>
+
                 <Modal
                   animationType="slide"
                   transparent={true}
@@ -130,6 +132,7 @@ const AddSingleItemScreen = (props) => {
                   </View>
                 </Modal>
               </View>
+
               <View style={styles.place}>
                 <View style={styles.placeList}>
                   <PlaceList
@@ -175,9 +178,9 @@ const AddSingleItemScreen = (props) => {
                   category={category}
                 />
               </View>
-              <View style={styles.CardAndInpuView}>
+
+              {/* <View style={styles.CardAndInpuView}>
                 <View style={styles.inputArea}>
-                  {/* Co i za ile View */}
                   <SeparatorText style={styles.textSeparator}>
                     Co i za ile?
                   </SeparatorText>
@@ -197,7 +200,6 @@ const AddSingleItemScreen = (props) => {
                       onChangeText={setCost}
                     />
                   </View>
-                  {/* Button View */}
                   <View style={styles.addBtn}>
                     <Button
                       title={"Dodaj"}
@@ -233,7 +235,7 @@ const AddSingleItemScreen = (props) => {
                   itemName={itemName}
                   cost={cost}
                 />
-              </View>
+              </View> */}
             </View>
           </LinearGradient>
         </TouchableWithoutFeedback>
@@ -260,6 +262,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   separatorView: {
+    marginTop: 10,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -293,7 +296,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   placeList: {
-    marginTop: -20,
+    marginTop: 0,
     flexDirection: "column",
     width: "90%",
     height: 70,

@@ -17,8 +17,8 @@ const AddNewItem = (props) => {
     <View style={styles.screen}>
       <View style={styles.inner}>
         <View style={styles.addBtn}>
-          <View>
-            <TouchableOpacity
+          {/* <View> */}
+          {/* <TouchableOpacity
               style={styles.add}
               onPress={props.pressToAddSignleItem}
             >
@@ -28,8 +28,8 @@ const AddNewItem = (props) => {
                 color={Colors.primary}
               />
             </TouchableOpacity>
-            <Text style={styles.btnText}>Pojedynczy Wydatek</Text>
-          </View>
+            <Text style={styles.btnText}>Pojedynczy Wydatek</Text> */}
+          {/* </View> */}
 
           <View>
             <TouchableOpacity
@@ -45,7 +45,7 @@ const AddNewItem = (props) => {
                 color={Colors.primary}
               />
             </TouchableOpacity>
-            <Text style={styles.btnText}>Cały Paragon</Text>
+            <Text style={styles.btnText}>Nowe wydatki</Text>
           </View>
         </View>
       </View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     height: "88%",
     width: "96%",
     borderWidth: 3,
-    borderColor: Colors.gradientBackground.secondary,
+    borderColor: Colors.gradientBackground.primary,
   },
   addBtn: {
     justifyContent: "space-around",
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
   btnText: {
     marginBottom: -10,
     fontWeight: "bold",
-    fontSize: 9,
     paddingHorizontal: 10,
     backgroundColor: Colors.gradientBackground.third,
   },

@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 
-const CategoruElementList = (props) => {
+const CategoryElementList = (props) => {
   const selected = {
     color: props.selected === props.list ? Colors.accent : Colors.primary,
   };
@@ -17,4 +17,4 @@ const CategoruElementList = (props) => {
   );
 };
 
-export default CategoruElementList;
+export default CategoryElementList;

@@ -5,6 +5,8 @@
 // and {{ date }} properties
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+// !!! rebuild this function
+
 const chartElement = (data, range) => {
   if (data.length > 0 || range.length > 0) {
     const dateList = data.map((el) => el.date);
