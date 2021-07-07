@@ -5,7 +5,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
-import Input from "../newItems/Input";
+import Input from "../input/Input";
 import React from "react";
 import Colors from "../../constants/Colors";
 import CategoryList from "../../components/newItems/CategoryList";

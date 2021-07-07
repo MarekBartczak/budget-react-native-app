@@ -9,6 +9,7 @@ import {
 import Items from "../../data/Dummy-data";
 
 const initialState = {
+  // items: [],
   items: [...Items],
   receipt: {
     place: "",

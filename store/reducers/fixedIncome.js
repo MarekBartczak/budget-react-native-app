@@ -8,7 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_FIXED_INCOME:
-      return { ...state, income: [...state.income, action.income] };
+      return { ...state, fixedIncome: [...state.fixedIncome, action.income] };
   }
   return state;
 };

@@ -12,6 +12,7 @@ import Chart from "../../components/chart/Chart";
 import chartElement from "../../functions/ChartElement";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import SummaryCost from "../../components/summaryCost/SumaryCost";
+import AddNewFixedIncomeComponent from "../../components/fixedIncome/addFixedIncome/AddNewFixedIncomeComponent";
 import { useSelector } from "react-redux";
 
 const FixedIncomeScreen = (props) => {
@@ -29,6 +30,9 @@ const FixedIncomeScreen = (props) => {
       </View>
       <View style={styles.component}>
         <SummaryCost cost={summaryCostCounter(fixedIncomeList)} />
+      </View>
+      <View style={styles.component}>
+        <AddNewFixedIncomeComponent />
       </View>
     </ExternalComponent>
   );

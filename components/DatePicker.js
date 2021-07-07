@@ -8,7 +8,7 @@ const DatePicker = (props) => {
       <RNDateTimePicker
         style={{
           height: 50,
-          width: "85%",
+          width: "90%",
           alignItems: "center",
           justifyContent: "center",
         }}

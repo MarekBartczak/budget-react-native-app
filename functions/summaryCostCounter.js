@@ -5,8 +5,12 @@
 const filteredCost = (total, sum) => total + sum;
 
 const summaryCostCounter = (list) => {
-  const costList = list.map((el) => el.cost);
-  return costList.reduce(filteredCost).toFixed(2);
+  if (list.length > 0) {
+    const costList = list.map((el) => el.cost);
+    return costList.reduce(filteredCost).toFixed(2);
+  } else {
+    return "0";
+  }
 };
 
 export default summaryCostCounter;

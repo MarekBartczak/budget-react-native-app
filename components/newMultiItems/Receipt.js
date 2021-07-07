@@ -17,7 +17,7 @@ import {
 import React, { useState } from "react";
 import Colors from "../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
-import Input from "../../components/newItems/Input";
+import Input from "../input/Input";
 import { MaterialIcons } from "@expo/vector-icons";
 import NewElement from "./NewElement";
 import ListElement from "./ListElement";

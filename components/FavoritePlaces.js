@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import Colors from "../constants/Colors";
 import * as favoritePlaceAction from "../store/actions/favoritePlace";
 import { useSelector, useDispatch } from "react-redux";
-import Input from "../components/newItems/Input";
+import Input from "./input/Input";
 import FavPlaceElement from "../components/FavPlaceElement";
 import ApiList from "../components/place/ApiList";
 import { LinearGradient } from "expo-linear-gradient";

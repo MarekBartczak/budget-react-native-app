@@ -17,7 +17,7 @@ import Item from "../../models/Item";
 import uuid from "react-native-uuid";
 import DatePicker from "../../components/DatePicker";
 import PlaceList from "../../components/place/PlaceList";
-import Input from "../../components/newItems/Input";
+import Input from "../../components/input/Input";
 import SeparatorText from "../../components/newItems/SeparatorText";
 import switchComaToDot from "../../functions/switchCompaToDot";
 import CategoryList from "../../components/newItems/CategoryList";

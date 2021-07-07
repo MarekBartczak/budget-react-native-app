@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import uuid from "react-native-uuid";
-import Expense from "../../../models/Expense";
-import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
-import { useDispatch } from "react-redux";
 import switchComaToDot from "../../../functions/switchCompaToDot";
 import AddNewPeriodicElement from "../../addNewPeriodicElement/AddNewPeriodicElement";
 import validateChecker from "../../addNewPeriodicElement/ValidateChecker";
-const AddNewFixedExpenseComponent = (props) => {
+import Income from "../../../models/Income";
+import * as fixedIncomeAction from "../../../store/actions/fixedIncome";
+import { useDispatch } from "react-redux";
+const AddNewFixedIncomeComponent = (props) => {
   const [date, setDate] = useState(new Date());
   const [cost, setCost] = useState();
   const [title, setTitle] = useState();
-  const [recipient, setRecipient] = useState();
+  const [contractor, setContractor] = useState();
 
   const dispatch = useDispatch();
 
@@ -19,12 +19,12 @@ const AddNewFixedExpenseComponent = (props) => {
     setDate(currentDate);
   };
 
-  const newFixedExpense = () => {
-    return new Expense(
+  const newFixedIncome = () => {
+    return new Income(
       uuid.v4(),
       date.toISOString().slice(0, 10),
       title,
-      recipient,
+      contractor,
       Number(switchComaToDot(cost))
     );
   };
@@ -33,13 +33,13 @@ const AddNewFixedExpenseComponent = (props) => {
     setDate(new Date());
     setCost();
     setTitle();
-    setRecipient();
+    setContractor();
   };
 
-  const saveFixedExpense = () => {
-    const list = [title, cost, recipient];
+  const saveFixedIncome = () => {
+    const list = [title, cost, contractor];
     if (validateChecker(list)) {
-      dispatch(fixedExpenseActions.addCost(newFixedExpense()));
+      dispatch(fixedIncomeAction.addFixedIncome(newFixedIncome()));
       cleanState();
     } else {
       alert("dane nie zostaly uzupelnione");
@@ -47,24 +47,24 @@ const AddNewFixedExpenseComponent = (props) => {
   };
 
   const perdiodicElementProps = {
-    title: "Nowy stały wydatek",
+    title: "Nowy stały wpływ",
     placeHolderAmount: "Kwota",
     placeHolderName: "Nazwa",
-    placeHolderContractor: "Odbiorca",
+    placeHolderContractor: "kontrahent",
     amountValue: cost,
     setAmountValue: setCost,
     nameValue: title,
     setNameValue: setTitle,
-    contractor: recipient,
-    setContractor: setRecipient,
+    contractor: contractor,
+    setContractor: setContractor,
     date: date,
     onChangeDate: onChangeDate,
     save: () => {
-      saveFixedExpense();
+      saveFixedIncome();
     },
   };
 
   return <AddNewPeriodicElement {...perdiodicElementProps} />;
 };
 
-export default AddNewFixedExpenseComponent;
+export default AddNewFixedIncomeComponent;
