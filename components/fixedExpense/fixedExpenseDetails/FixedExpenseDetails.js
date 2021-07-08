@@ -1,20 +1,64 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Colors from "../../../constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
-import SetNextPayDay from "../../../functions/SetNextPayDay";
+import { Ionicons, Fontisto } from "@expo/vector-icons";
+import SetNextPayDay from "../../../functions/_SetNextPayDay";
+import { useDispatch, useSelector } from "react-redux";
+import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 
 const FixedExpenseDetails = (props) => {
+  const { id, cost, title, date, recipient } = props.route.params;
+  const dispatch = useDispatch();
+  const fixedExpenseList = useSelector(
+    (state) => state.fixedExpense.fixedExpense
+  );
+  const historyList = useSelector((state) => state.fixedExpense.history);
+  const history = historyList.filter((el) => el.id === id);
   const [nextPayDay, setNextPayDay] = useState();
   const [dateInfo, setDateInfo] = useState();
-  const { id, cost, title, date, recipient } = props.route.params;
   let getInfoDate;
+  const expenseById = fixedExpenseList.find((el) => el.id === id);
   useEffect(() => {
-    getInfoDate = SetNextPayDay(date);
-    setDateInfo(getInfoDate.date.replaceAll("-", "."));
-    setNextPayDay(getInfoDate.days);
+    // getInfoDate = SetNextPayDay(date, { type: "MONTH", interval: 1 });
+    // getInfoDate = SetNextPayDay(date);
+    // getInfoDate = date.toISOString().slice(0, 10);
+
+    setDateInfo(date.replaceAll("-", "."));
+    // setNextPayDay(getInfoDate.days);
   }, [date]);
+
+  const toArchive = () => {
+    dispatch(fixedExpenseActions.archive(id));
+  };
+  // console.log(history);
+  // console.log(fixedExpenseList);
+  const showIsPaid = () => {
+    if (expenseById.isPaid) {
+      // return <Text style={{ fontWeight: "bold", color: "green" }}>tak</Text>;
+      return <Fontisto name="checkbox-active" size={15} color="green" />;
+    } else {
+      // return <Text style={{ fontWeight: "bold", color: "red" }}>nie</Text>;
+      return <Fontisto name="checkbox-passive" size={15} color="red" />;
+    }
+  };
+
+  const setPaid = () => {
+    dispatch(fixedExpenseActions.isPaid(!expenseById.isPaid, id));
+  };
+
+  const archive = () => (
+    <TouchableOpacity onPress={() => toArchive()}>
+      <Text style={{ color: Colors.primary, marginTop: 5 }}>archiwizuj</Text>
+    </TouchableOpacity>
+  );
   return (
     <ExternalComponent>
       <View>
@@ -32,7 +76,8 @@ const FixedExpenseDetails = (props) => {
             <View style={styles.paymentDate}>
               <Text>Termin zapłaty</Text>
               <Text style={styles.textDate}>{dateInfo}</Text>
-              <Text>pozostało dni: {nextPayDay} </Text>
+
+              {/* <Text>pozostało dni: {nextPayDay} </Text> */}
             </View>
             <View style={styles.costInfo}>
               <Text>Kwota</Text>
@@ -43,10 +88,26 @@ const FixedExpenseDetails = (props) => {
           <View style={styles.middle}>
             <Text style={styles.textRecipient}>{recipient}</Text>
           </View>
+          <View style={{ alignItems: "center", marginTop: 20 }}>
+            <Text>Opłacony? {showIsPaid()}</Text>
+            <TouchableOpacity onPress={() => setPaid()}>
+              <Text style={{ color: Colors.primary, marginTop: 5 }}>
+                zmien status
+              </Text>
+            </TouchableOpacity>
+            {expenseById.isPaid ? archive() : null}
+          </View>
         </View>
-
+        {console.log(history)}
         <View style={styles.history}>
-          <Text> historia</Text>
+          <FlatList
+            data={history}
+            renderItem={(item) => (
+              <Text>
+                {item.item.title} {item.item.cost}zł {item.item.date}
+              </Text>
+            )}
+          />
         </View>
       </View>
     </ExternalComponent>

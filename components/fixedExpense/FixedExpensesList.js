@@ -26,6 +26,7 @@ const FixedExpensesList = (props) => {
                     title: itemData.item.title,
                     date: itemData.item.date,
                     recipient: itemData.item.recipient,
+                    isPaid: itemData.item.isPaid,
                   })
                 }
               />
