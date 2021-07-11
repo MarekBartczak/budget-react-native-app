@@ -1,40 +1,26 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Colors from "../../constants/Colors";
-import { LinearGradient } from "expo-linear-gradient";
+import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const RaportScreen = (props) => {
   return (
-    <View>
-      <LinearGradient
-        colors={[
-          Colors.gradientBackground.primary,
-          Colors.gradientBackground.secondary,
-        ]}
-        style={styles.background}
-      />
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <Text>Raport</Text>
+    <ExternalComponent>
+      <View>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Text>Raport</Text>
+        </View>
       </View>
-    </View>
+    </ExternalComponent>
   );
 };
 
-const styles = StyleSheet.create({
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: Dimensions.get("window").height,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default RaportScreen;

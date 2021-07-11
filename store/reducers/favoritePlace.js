@@ -10,7 +10,6 @@ const initialState = {
   favoritePlace: [
     {
       name: "Biedronka",
-      //   logo: "https://assets.brandfetch.io/0f4497cd69d445d.png",
       logo: "https://logo.clearbit.com/biedronka.pl",
     },
     { name: "Lidl", logo: "https://assets.brandfetch.io/cfcdf51c90bc4a1.png" },

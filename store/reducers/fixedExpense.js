@@ -20,12 +20,10 @@ export default (state = initialState, action) => {
       let newStateToArchive = [...state.fixedExpense];
       let newEl = { ...newStateToArchive.find((el) => el.id === action.id) };
       newEl.isPaid = false;
-      // console.log(newEl);
 
       return {
         ...state,
         history: [...state.history, newEl],
-        // fixedExpense: [...state.fixedExpense, updatedEl ],
       };
   }
   return state;

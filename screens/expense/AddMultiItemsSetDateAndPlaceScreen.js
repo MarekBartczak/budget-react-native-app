@@ -14,7 +14,7 @@ import uuid from "react-native-uuid";
 import switchComaToDot from "../../functions/switchCompaToDot";
 import * as itemsAction from "../../store/actions/items";
 import { useDispatch, useSelector } from "react-redux";
-import { LinearGradient } from "expo-linear-gradient";
+import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const AddMultiItemsScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
@@ -70,47 +70,42 @@ const AddMultiItemsScreen = (props) => {
   return (
     <KeyboardAvoidingView>
       <View style={styles.screen}>
-        <LinearGradient
-          colors={[
-            Colors.gradientBackground.primary,
-            Colors.gradientBackground.secondary,
-          ]}
-          style={styles.background}
-        />
-        <View style={styles.datePicker}>
-          <DatePicker
-            date={date}
-            onChange={onChangeDate}
-            maxDate={new Date()}
-          />
-        </View>
-        <View style={styles.place}>
-          <View style={styles.placeList}>
-            <View style={styles.inner}>
-              <PlaceList
-                favData={favListNames}
-                data={workingPlaceList}
-                getPlaceInfo={getPlaceInfo}
-                place={place}
-              />
+        <ExternalComponent>
+          <View style={styles.datePicker}>
+            <DatePicker
+              date={date}
+              onChange={onChangeDate}
+              maxDate={new Date()}
+            />
+          </View>
+          <View style={styles.place}>
+            <View style={styles.placeList}>
+              <View style={styles.inner}>
+                <PlaceList
+                  favData={favListNames}
+                  data={workingPlaceList}
+                  getPlaceInfo={getPlaceInfo}
+                  place={place}
+                />
+              </View>
             </View>
           </View>
-        </View>
-        <View style={styles.receipt}>
-          <Receipt
-            place={place}
-            date={date.toISOString().slice(0, 10)}
-            setPlace={getPlaceInfo}
-            cost={cost}
-            onSetCost={setCost}
-            itemName={itemName}
-            onSetName={setItemName}
-            setCategory={setCategory}
-            category={category}
-            addItemToTheRecipt={() => addIntoTheReceipt()}
-            backToHome={() => props.navigation.navigate("Home")}
-          />
-        </View>
+          <View style={styles.receipt}>
+            <Receipt
+              place={place}
+              date={date.toISOString().slice(0, 10)}
+              setPlace={getPlaceInfo}
+              cost={cost}
+              onSetCost={setCost}
+              itemName={itemName}
+              onSetName={setItemName}
+              setCategory={setCategory}
+              category={category}
+              addItemToTheRecipt={() => addIntoTheReceipt()}
+              backToHome={() => props.navigation.navigate("Home")}
+            />
+          </View>
+        </ExternalComponent>
       </View>
     </KeyboardAvoidingView>
   );
@@ -123,13 +118,8 @@ const styles = StyleSheet.create({
   },
   placeList: {
     marginTop: 10,
-
     height: Dimensions.get("window").height * 0.2,
-    // marginBottom: 10,
-    // paddingBottom: 40,
     width: "90%",
-
-    // paddingHorizontal: 20,
     borderRadius: 10,
     backgroundColor: Colors.gradientBackground.secondary,
     alignItems: "center",
@@ -144,7 +134,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderWidth: 3,
     borderRadius: 10,
-
     borderColor: Colors.gradientBackground.primary,
     backgroundColor: Colors.gradientBackground.third,
   },
@@ -161,17 +150,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-    // shadowOffset: { height: 0, width: 10 },
-    // shadowColor: Colors.primary,
-    // shadowOpacity: 0.9,
-    // shadowRadius: 10,
-  },
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: Dimensions.get("window").height,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: Colors.primary,
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
 });
 export default AddMultiItemsScreen;

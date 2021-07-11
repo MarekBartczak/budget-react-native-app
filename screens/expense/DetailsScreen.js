@@ -1,17 +1,10 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Alert,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import * as itemsAction from "../../store/actions/items";
-import { LinearGradient } from "expo-linear-gradient";
+import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const DetailsScreen = (props) => {
   const { date, place, category, name, cost, id } = props.route.params;
@@ -23,79 +16,74 @@ const DetailsScreen = (props) => {
   };
 
   return (
-    <View style={styles.screen}>
-      <LinearGradient
-        colors={[
-          Colors.gradientBackground.primary,
-          Colors.gradientBackground.secondary,
-        ]}
-        style={styles.background}
-      />
-      <View style={styles.dateView}>
-        <View style={styles.trash}></View>
-        <TouchableOpacity
-          onPress={() =>
-            props.navigation.navigate("Date", { selectedDate: date })
-          }
-        >
-          <Text style={styles.date}>{date}</Text>
-        </TouchableOpacity>
-
-        <View style={styles.trash}>
+    <ExternalComponent>
+      <View style={styles.screen}>
+        <View style={styles.dateView}>
+          <View style={styles.trash}></View>
           <TouchableOpacity
-            onPress={() => {
-              Alert.alert(
-                "Uwaga!",
-                "Czy usunąć?",
-                [
-                  { text: "Nie", style: "cancel" },
-                  { text: "Tak", onPress: () => deleteItem() },
-                ],
-                { cancelable: false }
-              );
-            }}
+            onPress={() =>
+              props.navigation.navigate("Date", { selectedDate: date })
+            }
           >
-            <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+            <Text style={styles.date}>{date}</Text>
           </TouchableOpacity>
-        </View>
-      </View>
-      <View style={styles.middleSection}>
-        {/* first column */}
-        <View style={styles.placeAndCategory}>
-          <View style={styles.placeView}>
-            <Text>Miejsce</Text>
+
+          <View style={styles.trash}>
             <TouchableOpacity
-              onPress={() =>
-                props.navigation.navigate("Place", { place: place })
-              }
+              onPress={() => {
+                Alert.alert(
+                  "Uwaga!",
+                  "Czy usunąć?",
+                  [
+                    { text: "Nie", style: "cancel" },
+                    { text: "Tak", onPress: () => deleteItem() },
+                  ],
+                  { cancelable: false }
+                );
+              }}
             >
-              <Text style={styles.place}>{place}</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.categoryView}>
-            <Text>Kategoria</Text>
-            <TouchableOpacity
-              onPress={() =>
-                props.navigation.navigate("Category", { category: category })
-              }
-            >
-              <Text style={styles.category}>{category}</Text>
+              <Ionicons name="ios-trash" size={24} color={Colors.primary} />
             </TouchableOpacity>
           </View>
         </View>
-        {/* middle column */}
-        <View style={styles.detailsMiddleCenter}>
-          <View style={styles.nameView}>
-            <Text style={styles.name}>{name}</Text>
+        <View style={styles.middleSection}>
+          {/* first column */}
+          <View style={styles.placeAndCategory}>
+            <View style={styles.placeView}>
+              <Text>Miejsce</Text>
+              <TouchableOpacity
+                onPress={() =>
+                  props.navigation.navigate("Place", { place: place })
+                }
+              >
+                <Text style={styles.place}>{place}</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.categoryView}>
+              <Text>Kategoria</Text>
+              <TouchableOpacity
+                onPress={() =>
+                  props.navigation.navigate("Category", { category: category })
+                }
+              >
+                <Text style={styles.category}>{category}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.costView}>
-            <Text style={styles.cost}>{cost}zł</Text>
+          {/* middle column */}
+          <View style={styles.detailsMiddleCenter}>
+            <View style={styles.nameView}>
+              <Text style={styles.name}>{name}</Text>
+            </View>
+            <View style={styles.costView}>
+              <Text style={styles.cost}>{cost}zł</Text>
+            </View>
           </View>
+          {/* third column */}
+          <View style={styles.thirdColumn}></View>
         </View>
-        {/* third column */}
-        <View style={styles.thirdColumn}></View>
       </View>
-    </View>
+    </ExternalComponent>
   );
 };
 
@@ -106,13 +94,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     padding: 30,
     borderRadius: 10,
-  },
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: Dimensions.get("window").height,
+    width: "100%",
   },
   dateView: {
     alignItems: "center",

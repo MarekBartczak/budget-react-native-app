@@ -1,14 +1,6 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
-import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
-
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import Chart from "../../components/chart/Chart";
 import AddNewFixedExpenseComponent from "../../components/fixedExpense/addNewFixedExpense/AddNewFixedExpenseComponent";
