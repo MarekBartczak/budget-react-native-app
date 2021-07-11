@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: 100,
-    height: 40,
+    // height: 40,
+    marginBottom: 10,
   },
 });

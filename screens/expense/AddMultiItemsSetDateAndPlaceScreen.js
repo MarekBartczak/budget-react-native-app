@@ -86,12 +86,14 @@ const AddMultiItemsScreen = (props) => {
         </View>
         <View style={styles.place}>
           <View style={styles.placeList}>
-            <PlaceList
-              favData={favListNames}
-              data={workingPlaceList}
-              getPlaceInfo={getPlaceInfo}
-              place={place}
-            />
+            <View style={styles.inner}>
+              <PlaceList
+                favData={favListNames}
+                data={workingPlaceList}
+                getPlaceInfo={getPlaceInfo}
+                place={place}
+              />
+            </View>
           </View>
         </View>
         <View style={styles.receipt}>
@@ -123,8 +125,28 @@ const styles = StyleSheet.create({
     marginTop: 10,
 
     height: Dimensions.get("window").height * 0.2,
-    marginBottom: 10,
+    // marginBottom: 10,
+    // paddingBottom: 40,
     width: "90%",
+
+    // paddingHorizontal: 20,
+    borderRadius: 10,
+    backgroundColor: Colors.gradientBackground.secondary,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inner: {
+    height: "95%",
+    width: "98%",
+    marginTop: 30,
+    marginBottom: 30,
+    paddingBottom: 40,
+    paddingHorizontal: 20,
+    borderWidth: 3,
+    borderRadius: 10,
+
+    borderColor: Colors.gradientBackground.primary,
+    backgroundColor: Colors.gradientBackground.third,
   },
   receipt: {
     marginTop: 30,
@@ -139,10 +161,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-    shadowOffset: { height: 0, width: 10 },
-    shadowColor: Colors.primary,
-    shadowOpacity: 0.9,
-    shadowRadius: 10,
+    // shadowOffset: { height: 0, width: 10 },
+    // shadowColor: Colors.primary,
+    // shadowOpacity: 0.9,
+    // shadowRadius: 10,
   },
   background: {
     position: "absolute",
