@@ -34,14 +34,20 @@ const addingAmounts = (dateList, data) => {
   return sumOfElements;
 };
 
+const reduceArrayToMaxRange = (array, range) => {
+  return array.splice(array.length - range, array.length);
+};
+
 const chartElement = (data, range) => {
   const finalDateList = dateSorting(generateDateListWithoutDuplicates(data));
   const finalRange = rangeChecker(finalDateList, range);
   const sum = addingAmounts(finalDateList, data);
   return {
-    label: finalDateList.map((el) => el.slice(5)),
-    range: finalRange,
-    data: sum,
+    label: reduceArrayToMaxRange(
+      finalDateList.map((el) => el.slice(5)),
+      finalRange
+    ),
+    data: reduceArrayToMaxRange(sum, finalRange),
   };
 };
 

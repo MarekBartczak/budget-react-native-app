@@ -10,8 +10,8 @@ import Items from "../../data/Dummy-data";
 import Items5 from "../../data/Dummy-data-5";
 
 const initialState = {
-  // items: [...Items],
-  items: [],
+  items: [...Items],
+  // items: [],
   receipt: {
     place: "",
     date: "",
