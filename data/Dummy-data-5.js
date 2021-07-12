@@ -46,6 +46,14 @@ const Items = [
     "Ajax",
     3.99
   ),
+  new Item(
+    "i6",
+    dateForm("2021-01-01"),
+    "Biedronka",
+    Category.householdChemistryExpense.cleaningProducts,
+    "Ajax2",
+    3.99
+  ),
 ];
 
 export default Items;

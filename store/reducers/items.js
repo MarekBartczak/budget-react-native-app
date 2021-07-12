@@ -11,7 +11,7 @@ import Items5 from "../../data/Dummy-data-5";
 
 const initialState = {
   // items: [...Items],
-  items: [...Items5],
+  items: [],
   receipt: {
     place: "",
     date: "",
