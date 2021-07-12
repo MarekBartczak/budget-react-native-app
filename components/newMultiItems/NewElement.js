@@ -9,6 +9,11 @@ import Input from "../input/Input";
 import React from "react";
 import Colors from "../../constants/Colors";
 import CategoryList from "../../components/newItems/CategoryList";
+import numberInputValidation from "../../functions/NumberInputValidation";
+
+const ErrorCostValidation = () => {
+  return <Text style={{ color: "red" }}> Proszę wpisać poprawną kwotę </Text>;
+};
 
 const NewElement = (props) => {
   return (
@@ -29,6 +34,7 @@ const NewElement = (props) => {
             keyboardType={"default"}
             onChangeText={props.onSetName}
           />
+
           <Input
             style={styles.input}
             value={props.cost}
@@ -36,6 +42,7 @@ const NewElement = (props) => {
             keyboardType={"numeric"}
             onChangeText={props.onSetCost}
           />
+          {!numberInputValidation(props.cost) && <ErrorCostValidation />}
           <Text>
             [{props.category}] w miejscu [{props.place}]
           </Text>

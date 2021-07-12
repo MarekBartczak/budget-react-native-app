@@ -1,6 +1,5 @@
 import { StyleSheet, View, TextInput } from "react-native";
 import React from "react";
-
 const Input = (props) => {
   return (
     <View>

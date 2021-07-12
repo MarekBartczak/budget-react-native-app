@@ -24,6 +24,7 @@ import ListElement from "./ListElement";
 import { useSelector, useDispatch } from "react-redux";
 import * as itemsAction from "../../store/actions/items";
 import SaveItemsToTheStore from "../../functions/SaveItemsToTheStore";
+import numberInputValidation from "../../functions/NumberInputValidation";
 
 const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
@@ -41,6 +42,8 @@ const Receipt = (props) => {
     costList = receiptItem.map((item) => item.cost);
     sum = costList.reduce(sumOf);
   }
+
+  numberInputValidation(props.cost);
   return (
     <KeyboardAvoidingView
       behavior="position"
@@ -133,6 +136,8 @@ const Receipt = (props) => {
                     }}
                   />
                   <Button
+                    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    // add cost number validation
                     disabled={props.category.length > 0 ? false : true}
                     color={Colors.primary}
                     title="Dodaj"
