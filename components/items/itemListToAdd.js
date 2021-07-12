@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 
@@ -9,12 +9,18 @@ const ItemListToAdd = (props) => {
   return (
     <View>
       <TouchableOpacity onPress={() => props.setPlace(props.list)}>
+        {/* <View> */}
         <Text
           testID="text"
           style={{ ...styles.list, ...{ color: selected.color } }}
         >
           {props.list}
         </Text>
+        {/* <Image
+            style={{ width: 10, height: 10 }}
+            source={{ url: props.logo }}
+          /> */}
+        {/* </View> */}
       </TouchableOpacity>
     </View>
   );

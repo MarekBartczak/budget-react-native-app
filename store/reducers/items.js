@@ -7,9 +7,11 @@ import {
   ADD_ITEMS_FROM_RECEIPT,
 } from "../actions/items";
 import Items from "../../data/Dummy-data";
+import Items5 from "../../data/Dummy-data-5";
 
 const initialState = {
-  items: [...Items],
+  // items: [...Items],
+  items: [...Items5],
   receipt: {
     place: "",
     date: "",

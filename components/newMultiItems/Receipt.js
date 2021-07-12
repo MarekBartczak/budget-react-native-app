@@ -28,7 +28,6 @@ import SaveItemsToTheStore from "../../functions/SaveItemsToTheStore";
 const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
   const [modal, showModal] = useState(false);
-  const [addButtonState, setAddButtonState] = useState(false);
   const [addItemModal, showAddItemModal] = useState(false);
   const receiptDate = useSelector((state) => state.item.receipt.date);
   const GetSelectedPlace = useSelector((state) => state.item.receipt.place);
