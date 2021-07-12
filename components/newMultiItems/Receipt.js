@@ -43,6 +43,19 @@ const Receipt = (props) => {
     sum = costList.reduce(sumOf);
   }
 
+  const addValidate = () => {
+    let category = !props.category.length > 0 ? false : true;
+    let cost = numberInputValidation(props.cost);
+    let costLength = !props.cost.length > 0 ? false : true;
+    let nameLength = !props.itemName.length > 0 ? false : true;
+
+    if (category && cost && costLength && nameLength) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   numberInputValidation(props.cost);
   return (
     <KeyboardAvoidingView
@@ -138,7 +151,8 @@ const Receipt = (props) => {
                   <Button
                     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     // add cost number validation
-                    disabled={props.category.length > 0 ? false : true}
+                    // disabled={props.category.length > 0 ? false : true}
+                    disabled={!addValidate()}
                     color={Colors.primary}
                     title="Dodaj"
                     onPress={() => {
