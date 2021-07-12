@@ -39,13 +39,14 @@ const PlaceList = (props) => {
   const favList = (
     <FlatList
       nestedScrollEnabled
-      data={props.favData}
-      keyExtractor={(item) => item}
+      data={props.imageUrl}
+      keyExtractor={(item) => item.name}
       renderItem={(list) => (
         <ItemListToAdd
-          list={list.item}
+          list={list.item.name}
           setPlace={props.getPlaceInfo}
           place={props.place}
+          imageUrl={list.item.logo}
         />
       )}
     />

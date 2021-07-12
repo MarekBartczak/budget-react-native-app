@@ -17,7 +17,7 @@ describe("<ItemListToAdd/>", () => {
     expect(wrapper.find(Text)).toHaveLength(1);
   });
   it("should render <View></View>  ", () => {
-    expect(wrapper.find(View)).toHaveLength(1);
+    expect(wrapper.find(View)).toHaveLength(3);
   });
   it("should render <TouchableOpacity></TouchableOpacity> item wrapped in <View/> ", () => {
     expect(wrapper.find(TouchableOpacity)).toHaveLength(1);

@@ -22,7 +22,6 @@ const AddMultiItemsScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
 
   const dispatch = useDispatch();
-
   const favListNames = favList.map((el) => el.name);
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState(selectedPlace);
@@ -86,6 +85,7 @@ const AddMultiItemsScreen = (props) => {
                   data={workingPlaceList}
                   getPlaceInfo={getPlaceInfo}
                   place={place}
+                  imageUrl={favList}
                 />
               </View>
             </View>
