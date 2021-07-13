@@ -20,9 +20,6 @@ const ItemListToAdd = (props) => {
         style={{ alignItems: "center" }}
       >
         <View style={styles.list}>
-          <Text testID="text" style={{ ...{ color: selected.color } }}>
-            {props.list}
-          </Text>
           <View style={styles.imageView}>
             <Image
               style={{
@@ -33,6 +30,9 @@ const ItemListToAdd = (props) => {
               source={{ url: props.imageUrl }}
             />
           </View>
+          <Text testID="text" style={{ ...{ color: selected.color } }}>
+            {props.list}
+          </Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -42,17 +42,20 @@ const ItemListToAdd = (props) => {
 export default ItemListToAdd;
 
 const styles = StyleSheet.create({
+  text: {
+    color: Colors.primary,
+  },
   list: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.7,
     padding: 5,
     color: Colors.banner,
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.shadowColor,
     marginVertical: 3,
-    borderRadius: 10,
+
     paddingLeft: 20,
   },
   imageView: {
-    marginLeft: 20,
+    marginRight: 20,
   },
 });

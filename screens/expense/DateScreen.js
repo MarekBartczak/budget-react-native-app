@@ -11,6 +11,7 @@ import SimplyItems from "../../components/SimplyItems";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
+import FilterList from "../../components/items/FilterList";
 
 const DateScreen = (props) => {
   const selectedDate = props.route.params;
@@ -49,6 +50,10 @@ const DateScreen = (props) => {
   const sumOf = (total, sum) => total + sum;
   const sum = filteredCost.reduce(sumOf);
 
+  const callBack = (data) => {
+    setCurrentDate(data);
+  };
+
   return (
     <ExternalComponent>
       <View style={styles.screen}>
@@ -57,6 +62,8 @@ const DateScreen = (props) => {
             <Ionicons name="ios-arrow-back" size={43} color="black" />
           </TouchableOpacity>
           <Text style={styles.showDate}>{currentDate}</Text>
+          <FilterList listData={workingDateList} callBack={callBack} />
+
           <TouchableOpacity onPress={() => switchDate(1)}>
             <Ionicons name="ios-arrow-forward" size={43} color="black" />
           </TouchableOpacity>

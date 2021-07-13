@@ -12,6 +12,7 @@ import SimplyItems from "../../components/SimplyItems";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
+import FilterList from "../../components/items/FilterList";
 
 const CategoryScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
@@ -48,6 +49,9 @@ const CategoryScreen = (props) => {
   const sumOf = (total, sum) => total + sum;
   const sum = filteredCost.reduce(sumOf);
 
+  const callBack = (data) => {
+    setCurrentCategory(data);
+  };
   return (
     <ExternalComponent>
       <View style={styles.screen}>
@@ -56,6 +60,8 @@ const CategoryScreen = (props) => {
             <Ionicons name="ios-arrow-back" size={43} color="black" />
           </TouchableOpacity>
           <Text style={styles.showCategory}>{currentCategory}</Text>
+          <FilterList listData={workingCategoryList} callBack={callBack} />
+
           <TouchableOpacity onPress={() => switchCategory(1)}>
             <Ionicons name="ios-arrow-forward" size={43} color="black" />
           </TouchableOpacity>

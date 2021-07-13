@@ -4,6 +4,7 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  Modal,
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -11,6 +12,7 @@ import SimplyItems from "../../components/SimplyItems";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
+import FilterList from "../../components/items/FilterList";
 
 const PlaceScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
@@ -42,6 +44,9 @@ const PlaceScreen = (props) => {
   const sumOf = (total, sum) => total + sum;
   const sum = filteredCost.reduce(sumOf);
 
+  const callBack = (data) => {
+    setCurrentPlace(data);
+  };
   return (
     <ExternalComponent>
       <View style={styles.screen}>
@@ -50,6 +55,8 @@ const PlaceScreen = (props) => {
             <Ionicons name="ios-arrow-back" size={43} color="black" />
           </TouchableOpacity>
           <Text style={styles.showPlace}>{currentPlace}</Text>
+          <FilterList listData={workingPlaceList} callBack={callBack} />
+
           <TouchableOpacity onPress={() => switchPlace(1)}>
             <Ionicons name="ios-arrow-forward" size={43} color="black" />
           </TouchableOpacity>

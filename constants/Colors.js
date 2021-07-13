@@ -1,5 +1,6 @@
 export default {
   primary: "rgb(109,81,209)",
+  primaryLight: "rgb(100, 70, 190)",
   accent: "#FF8A1A",
   accentOpacity: "rgba(240,143,60,0.5)",
   banner: "#DFDFDF",
@@ -9,6 +10,7 @@ export default {
   backGroundChart: "rgb(19,94,140)",
   transparent: "rgba(255,255,255,0.3)",
   shadowColor: "rgb(120, 140, 184)",
+  shadowColorLight: "rgb(110, 130, 170)",
 
   gradientBackground: {
     primary: "rgb(150, 180, 204)",

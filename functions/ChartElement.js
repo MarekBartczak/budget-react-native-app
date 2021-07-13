@@ -22,8 +22,8 @@ const addingAmounts = (dateList, data) => {
   const sumElementsValue = (total, sum) => total + sum;
   let newList = [];
   let costList = [];
-  let sum = 0;
   let sumOfElements = [];
+  let sum = 0;
 
   for (let i = 0; i < dateList.length; i++) {
     newList = filteredData.filter((el) => el.date === dateList[i]);

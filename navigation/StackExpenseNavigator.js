@@ -14,45 +14,48 @@ import React from "react";
 
 const Stack = createStackNavigator();
 
-const filter = (title) => {
-  return {
-    title: title,
-    headerRight: () => (
-      <TouchableOpacity
-        style={{
-          padding: 0,
-          justifyContent: "center",
-          alignItems: "center",
-          marginRight: 20,
-        }}
-        onPress={() => {}}
-      >
-        <MaterialIcons name="filter-list" size={34} color={Colors.primary} />
-      </TouchableOpacity>
-    ),
-  };
-};
-
-const toggleDrawer = (navigation) => {
-  return {
-    headerTitle: "Wydatki",
-    headerLeft: () => (
-      <TouchableOpacity
-        style={{
-          padding: 0,
-          justifyContent: "center",
-          alignItems: "center",
-          marginLeft: 20,
-        }}
-        onPress={() => navigation.toggleDrawer()}
-      >
-        <MaterialCommunityIcons name="menu" size={34} color={Colors.primary} />
-      </TouchableOpacity>
-    ),
-  };
-};
-
 const StackExpenseNavigator = (props) => {
+  const filter = (title, screenName) => {
+    return {
+      title: title,
+      // headerRight: () => (
+      //   <TouchableOpacity
+      //     style={{
+      //       padding: 0,
+      //       justifyContent: "center",
+      //       alignItems: "center",
+      //       marginRight: 20,
+      //     }}
+      //     onPress={() => {}}
+      //   >
+      //     <MaterialIcons name="filter-list" size={34} color={Colors.primary} />
+      //   </TouchableOpacity>
+      // ),
+    };
+  };
+
+  const toggleDrawer = (navigation) => {
+    return {
+      headerTitle: "Wydatki",
+      headerLeft: () => (
+        <TouchableOpacity
+          style={{
+            padding: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            marginLeft: 20,
+          }}
+          onPress={() => navigation.toggleDrawer()}
+        >
+          <MaterialCommunityIcons
+            name="menu"
+            size={34}
+            color={Colors.primary}
+          />
+        </TouchableOpacity>
+      ),
+    };
+  };
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
@@ -73,10 +76,14 @@ const StackExpenseNavigator = (props) => {
         toggleDrawer(navigation)
       )}
       {stackScreen("Details", DetailsScreen, { title: "Szczegóły" })}
-      {stackScreen("Date", DateScreen, ({ navigation }) => filter("Data"))}
-      {stackScreen("Place", PlaceScreen, ({ navigation }) => filter("Miejsce"))}
+      {stackScreen("Date", DateScreen, ({ navigation }) =>
+        filter("Data", "Date")
+      )}
+      {stackScreen("Place", PlaceScreen, ({ navigation }) =>
+        filter("Miejsce", "Place")
+      )}
       {stackScreen("Category", CategoryScreen, ({ navigation }) =>
-        filter("Kategoria")
+        filter("Kategoria", "Category")
       )}
 
       {stackScreen("FavoritePlace", FavoritePlaceScreen, {

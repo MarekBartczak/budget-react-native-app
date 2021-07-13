@@ -29,36 +29,34 @@ const categoryList = (props) => {
 
   return (
     <View style={styles.categoryList}>
-      <View style={styles.semiScreen}>
-        <FlatList
-          data={mainCategoryList}
-          keyExtractor={(item, index) => "item" + index}
-          renderItem={(item) => (
-            <CategoryElementList
-              style={styles.catElement}
-              list={item.item}
-              press={selectedCat}
-              selected={category}
-            />
-          )}
-        />
-      </View>
       <LinearGradient
-        colors={[
-          Colors.gradientBackground.primary,
-          Colors.gradientBackground.secondary,
-        ]}
+        colors={[Colors.primary, Colors.gradientBackground.secondary]}
         style={{
-          height: 20,
           width: "100%",
-          marginTop: 15,
-          marginBottom: 5,
+          paddingBottom: 15,
           shadowOffset: { height: 10, width: 0 },
           shadowColor: "black",
           shadowOpacity: 0.9,
           shadowRadius: 10,
+          justifyContent: "center",
+          alignItems: "center",
         }}
-      />
+      >
+        <View style={styles.semiScreen}>
+          <FlatList
+            data={mainCategoryList}
+            keyExtractor={(item, index) => "item" + index}
+            renderItem={(item) => (
+              <CategoryElementList
+                style={styles.catElement}
+                list={item.item}
+                press={selectedCat}
+                selected={category}
+              />
+            )}
+          />
+        </View>
+      </LinearGradient>
 
       <View style={styles.semiScreen}>
         <FlatList

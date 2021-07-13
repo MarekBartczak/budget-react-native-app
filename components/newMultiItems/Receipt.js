@@ -126,7 +126,7 @@ const Receipt = (props) => {
           <View style={styles.addBtnView}>
             <Modal
               animationType="slide"
-              transparent={true}
+              transparent={false}
               visible={addItemModal}
               onRequestClose={() => showAddItemModal(false)}
             >
@@ -149,9 +149,6 @@ const Receipt = (props) => {
                     }}
                   />
                   <Button
-                    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    // add cost number validation
-                    // disabled={props.category.length > 0 ? false : true}
                     disabled={!addValidate()}
                     color={Colors.primary}
                     title="Dodaj"
