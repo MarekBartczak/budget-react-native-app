@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
 import React from "react";
-import Colors from "../../constants/Colors";
 import FixedExpenseElement from "../../components/fixedExpense/fixedExpenseElement/FixedExpenseElement";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../ExternalComponentWithGradient/ExternalComponentWithGradient";
@@ -44,10 +43,5 @@ const styles = StyleSheet.create({
   fixedExpensesList: {
     width: Dimensions.get("window").width * 0.9,
     height: Dimensions.get("window").height * 0.9,
-    // backgroundColor: Colors.transparent,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: Colors.shadowColor,
-    // shadowOpacity: 0.9,
-    // shadowRadius: 10,
   },
 });

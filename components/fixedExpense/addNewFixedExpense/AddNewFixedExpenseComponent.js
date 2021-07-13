@@ -4,8 +4,8 @@ import Expense from "../../../models/Expense";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 import { useDispatch } from "react-redux";
 import switchComaToDot from "../../../functions/switchCompaToDot";
-import AddNewPeriodicElement from "../../addNewPeriodicElement/AddNewPeriodicElement";
-import validateChecker from "../../addNewPeriodicElement/ValidateChecker";
+import AddNew from "../../addNew/AddNew";
+import validateChecker from "../../undefinedListCheck/ValidateChecker";
 const AddNewFixedExpenseComponent = (props) => {
   const [date, setDate] = useState(new Date());
   const [cost, setCost] = useState();
@@ -64,7 +64,7 @@ const AddNewFixedExpenseComponent = (props) => {
     },
   };
 
-  return <AddNewPeriodicElement {...perdiodicElementProps} />;
+  return <AddNew {...perdiodicElementProps} />;
 };
 
 export default AddNewFixedExpenseComponent;

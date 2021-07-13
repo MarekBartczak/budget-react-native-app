@@ -3,17 +3,16 @@ import {
   Text,
   View,
   Dimensions,
-  Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
-import DatePicker from "../../components/DatePicker";
 import Input from "../input/Input";
+import DatePicker from "../../components/DatePicker";
 import Button from "../../components/buttons/Button";
-
-const AddNewPeriodicElement = (props) => {
+const AddNewComponent = (props) => {
   return (
     <KeyboardAvoidingView
       behavior={"position"}
@@ -21,7 +20,7 @@ const AddNewPeriodicElement = (props) => {
       keyboardVerticalOffset={Dimensions.get("window").height < 670 ? 60 : -100}
       enabled
     >
-      <View style={styles.newPeriodicElement}>
+      <View style={styles.AddNewComponent}>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <View style={styles.inner}>
             <View style={styles.descriptionComponent}>
@@ -71,10 +70,10 @@ const AddNewPeriodicElement = (props) => {
   );
 };
 
-export default AddNewPeriodicElement;
+export default AddNewComponent;
 
 const styles = StyleSheet.create({
-  newPeriodicElement: {
+  AddNewComponent: {
     width: Dimensions.get("window").width * 0.9,
     height: Dimensions.get("window").height * 0.45,
     borderRadius: 10,
@@ -86,6 +85,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  datePickerView: { marginTop: 10 },
+
   inner: {
     backgroundColor: Colors.gradientBackground.third,
     borderRadius: 10,
@@ -95,7 +96,6 @@ const styles = StyleSheet.create({
     borderColor: Colors.gradientBackground.primary,
     alignItems: "center",
   },
-  datePickerView: { marginTop: 10 },
   descriptionComponent: {
     marginLeft: 10,
     marginTop: -10,

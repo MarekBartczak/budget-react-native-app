@@ -3,7 +3,7 @@ import React from "react";
 const FixedIncomeDetails = (props) => {
   return (
     <View>
-      <Text></Text>
+      <Text> fixed income details</Text>
     </View>
   );
 };

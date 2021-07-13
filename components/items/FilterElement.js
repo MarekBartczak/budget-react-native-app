@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     margin: 10,
     borderBottomColor: Colors.shadowColor,
     borderBottomWidth: 3,
+    backgroundColor: Colors.shadowColor,
+    paddingVertical: 3,
+    justifyContent: "center",
   },
   text: {
     paddingLeft: 20,

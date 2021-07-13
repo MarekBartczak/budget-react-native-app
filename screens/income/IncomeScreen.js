@@ -6,6 +6,7 @@ import Chart from "../../components/chart/Chart";
 import chartElement from "../../functions/ChartElement";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import SummaryCost from "../../components/summaryCost/SumaryCost";
+import AddNewIncomeComponent from "../../components/income/addNewIncome/AddNewIncomeComponent";
 const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
 
@@ -22,6 +23,9 @@ const IncomeScreen = (props) => {
       </View>
       <View style={styles.component}>
         <SummaryCost cost={summaryCostCounter(incomeList)} />
+      </View>
+      <View style={styles.component}>
+        <AddNewIncomeComponent />
       </View>
     </ExternalComponent>
   );

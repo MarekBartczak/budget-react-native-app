@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import uuid from "react-native-uuid";
 import switchComaToDot from "../../../functions/switchCompaToDot";
-import AddNewPeriodicElement from "../../addNewPeriodicElement/AddNewPeriodicElement";
-import validateChecker from "../../addNewPeriodicElement/ValidateChecker";
+import AddNew from "../../addNew/AddNew";
+import validateChecker from "../../undefinedListCheck/ValidateChecker";
 import Income from "../../../models/Income";
 import * as fixedIncomeAction from "../../../store/actions/fixedIncome";
 import { useDispatch } from "react-redux";
@@ -64,7 +64,7 @@ const AddNewFixedIncomeComponent = (props) => {
     },
   };
 
-  return <AddNewPeriodicElement {...perdiodicElementProps} />;
+  return <AddNew {...perdiodicElementProps} />;
 };
 
 export default AddNewFixedIncomeComponent;
