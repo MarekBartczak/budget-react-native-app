@@ -1,6 +1,19 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../../../constants/Colors";
+
+const checkPayDate = (date) => {
+  let currentDate = new Date();
+  let getDate = new Date(date);
+
+  let tolate = currentDate > getDate;
+  if (tolate) {
+    return { color: "red" };
+  } else {
+    return { color: "green" };
+  }
+};
+
 const FixedExpenseElement = (props) => {
   return (
     <TouchableOpacity style={styles.element} onPress={props.press}>
@@ -8,7 +21,7 @@ const FixedExpenseElement = (props) => {
         <Text style={styles.textTitle}>{props.el.title}</Text>
       </View>
       <View style={styles.description}>
-        <Text style={styles.textDate}>{props.el.date}</Text>
+        <Text style={checkPayDate(props.el.date)}>{props.el.date}</Text>
         <Text style={styles.textCost}>{props.el.cost}zł</Text>
       </View>
     </TouchableOpacity>
