@@ -10,7 +10,7 @@ import React, { useState, useEffect } from "react";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Colors from "../../../constants/Colors";
 import { Ionicons, Fontisto } from "@expo/vector-icons";
-import SetNextPayDay from "../../../functions/_SetNextPayDay";
+import setNextPayDay from "../../../functions/SetNextPayDay";
 import { useDispatch, useSelector } from "react-redux";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 
@@ -20,36 +20,31 @@ const FixedExpenseDetails = (props) => {
   const fixedExpenseList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
-  const historyList = useSelector((state) => state.fixedExpense.history);
-  const history = historyList.filter((el) => el.id === id);
-  const [nextPayDay, setNextPayDay] = useState();
-  const [dateInfo, setDateInfo] = useState();
-  let getInfoDate;
+  const history = useSelector((state) => state.fixedExpense.history);
+  const historyEl = history.filter((el) => el.originId === id);
   const expenseById = fixedExpenseList.find((el) => el.id === id);
-  useEffect(() => {
-    // getInfoDate = SetNextPayDay(date, { type: "MONTH", interval: 1 });
-    // getInfoDate = SetNextPayDay(date);
-    // getInfoDate = date.toISOString().slice(0, 10);
-
-    setDateInfo(date.replaceAll("-", "."));
-    // setNextPayDay(getInfoDate.days);
-  }, [date]);
-
   const toArchive = () => {
     dispatch(fixedExpenseActions.archive(id));
+    setPaid();
   };
-  // console.log(history);
-  // console.log(fixedExpenseList);
   const showIsPaid = () => {
     if (expenseById.isPaid) {
-      // return <Text style={{ fontWeight: "bold", color: "green" }}>tak</Text>;
-      return <Fontisto name="checkbox-active" size={15} color="green" />;
+      return (
+        <TouchableOpacity onPress={() => setPaid()}>
+          <Fontisto name="checkbox-active" size={15} color="green" />
+        </TouchableOpacity>
+      );
     } else {
-      // return <Text style={{ fontWeight: "bold", color: "red" }}>nie</Text>;
-      return <Fontisto name="checkbox-passive" size={15} color="red" />;
+      return (
+        <TouchableOpacity onPress={() => setPaid()}>
+          <Fontisto name="checkbox-passive" size={15} color="red" />
+        </TouchableOpacity>
+      );
     }
   };
 
+  history.map((el) => setNextPayDay(el.date, el.interval));
+  // console.log(history);
   const setPaid = () => {
     dispatch(fixedExpenseActions.isPaid(!expenseById.isPaid, id));
   };
@@ -59,6 +54,7 @@ const FixedExpenseDetails = (props) => {
       <Text style={{ color: Colors.primary, marginTop: 5 }}>archiwizuj</Text>
     </TouchableOpacity>
   );
+
   return (
     <ExternalComponent>
       <View>
@@ -75,9 +71,7 @@ const FixedExpenseDetails = (props) => {
           <View style={styles.top}>
             <View style={styles.paymentDate}>
               <Text>Termin zapłaty</Text>
-              <Text style={styles.textDate}>{dateInfo}</Text>
-
-              {/* <Text>pozostało dni: {nextPayDay} </Text> */}
+              <Text style={styles.textDate}>{expenseById.date}</Text>
             </View>
             <View style={styles.costInfo}>
               <Text>Kwota</Text>
@@ -90,21 +84,17 @@ const FixedExpenseDetails = (props) => {
           </View>
           <View style={{ alignItems: "center", marginTop: 20 }}>
             <Text>Opłacony? {showIsPaid()}</Text>
-            <TouchableOpacity onPress={() => setPaid()}>
-              <Text style={{ color: Colors.primary, marginTop: 5 }}>
-                zmien status
-              </Text>
-            </TouchableOpacity>
+
             {expenseById.isPaid ? archive() : null}
           </View>
         </View>
-        {console.log(history)}
         <View style={styles.history}>
           <FlatList
-            data={history}
+            data={historyEl}
             renderItem={(item) => (
               <Text>
-                {item.item.title} {item.item.cost}zł {item.item.date}
+                {item.item.title} {item.item.cost}zł{" "}
+                {item.item.date.replaceAll("-", ".")}
               </Text>
             )}
           />
