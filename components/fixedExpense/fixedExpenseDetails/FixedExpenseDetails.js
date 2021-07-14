@@ -26,6 +26,7 @@ const FixedExpenseDetails = (props) => {
   const toArchive = () => {
     dispatch(fixedExpenseActions.archive(id));
     setPaid();
+    props.navigation.goBack();
   };
   const showIsPaid = () => {
     if (expenseById.isPaid) {

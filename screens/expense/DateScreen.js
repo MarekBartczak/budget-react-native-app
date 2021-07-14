@@ -48,7 +48,11 @@ const DateScreen = (props) => {
   });
 
   const sumOf = (total, sum) => total + sum;
-  const sum = filteredCost.reduce(sumOf);
+
+  let sum = 0;
+  if (filteredCost.length > 0) {
+    sum = filteredCost.reduce(sumOf);
+  }
 
   const callBack = (data) => {
     setCurrentDate(data);
