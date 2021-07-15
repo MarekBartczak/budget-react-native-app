@@ -29,34 +29,33 @@ const categoryList = (props) => {
 
   return (
     <View style={styles.categoryList}>
-      <LinearGradient
+      {/* <LinearGradient
         colors={[Colors.primary, Colors.gradientBackground.secondary]}
         style={{
           width: "100%",
           paddingBottom: 15,
-          shadowOffset: { height: 10, width: 0 },
-          shadowColor: "black",
-          shadowOpacity: 0.9,
-          shadowRadius: 10,
+          // shadowOffset: { height: 10, width: 0 },
+          // shadowColor: "black",
+          // shadowOpacity: 0.9,
+          // shadowRadius: 10,
           justifyContent: "center",
           alignItems: "center",
         }}
-      >
-        <View style={styles.semiScreen}>
-          <FlatList
-            data={mainCategoryList}
-            keyExtractor={(item, index) => "item" + index}
-            renderItem={(item) => (
-              <CategoryElementList
-                style={styles.catElement}
-                list={item.item}
-                press={selectedCat}
-                selected={category}
-              />
-            )}
-          />
-        </View>
-      </LinearGradient>
+      > */}
+      <View style={styles.semiScreen}>
+        <FlatList
+          data={mainCategoryList}
+          keyExtractor={(item, index) => "item" + index}
+          renderItem={(item) => (
+            <CategoryElementList
+              style={styles.catElement}
+              list={item.item}
+              press={selectedCat}
+              selected={category}
+            />
+          )}
+        />
+      </View>
 
       <View style={styles.semiScreen}>
         <FlatList
@@ -72,6 +71,7 @@ const categoryList = (props) => {
           )}
         />
       </View>
+      {/* </LinearGradient> */}
     </View>
   );
 };
@@ -85,10 +85,10 @@ const styles = StyleSheet.create({
 
     justifyContent: "space-around",
     alignItems: "center",
-    shadowOffset: { height: 0, width: 10 },
-    shadowColor: "black",
-    shadowOpacity: 0.23,
-    shadowRadius: 10,
+    // shadowOffset: { height: 0, width: 10 },
+    // shadowColor: "black",
+    // shadowOpacity: 0.23,
+    // shadowRadius: 10,
   },
   semiScreen: {
     marginTop: 10,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     backgroundColor: Colors.banner,
     marginVertical: 3,
-    borderRadius: 10,
+    // borderRadius: 10,
     overflow: "hidden",
     textAlign: "center",
     fontWeight: "bold",

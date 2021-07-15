@@ -27,11 +27,13 @@ const Chart = (props) => {
           width={Dimensions.get("window").width * 0.9}
           height={180}
           chartConfig={{
-            labelColor: () => Colors.default,
-            backgroundGradientFromOpacity: 0.3,
-            backgroundGradientToOpacity: 0.3,
-            backgroundGradientFrom: "rgb(255,255,255)",
-            backgroundGradientTo: "rgb(255,255,255)",
+            labelColor: () => Colors.primary,
+            backgroundGradientFromOpacity: 1,
+            backgroundGradientToOpacity: 1,
+            backgroundGradientFrom: Colors.gradientBackground.primary,
+            backgroundGradientTo: Colors.gradientBackground.primary,
+            // backgroundGradientFrom: Colors.primary,
+            // backgroundGradientTo: Colors.primary,
             decimalPlaces: 2,
             color: () => Colors.primary,
           }}
@@ -52,9 +54,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width * 0.9,
-    shadowOpacity: 0.9,
-    shadowRadius: 10,
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: Colors.shadowColor,
+    // shadowOpacity: 0.9,
+    // shadowRadius: 10,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowColor: Colors.shadowColor,
   },
 });

@@ -11,7 +11,7 @@ import Colors from "../../constants/Colors";
 
 const ItemListToAdd = (props) => {
   const selected = {
-    color: props.place === props.list ? Colors.accent : Colors.banner,
+    fontWeight: props.place === props.list ? "bold" : null,
   };
   return (
     <View>
@@ -30,7 +30,10 @@ const ItemListToAdd = (props) => {
               source={{ url: props.imageUrl }}
             />
           </View>
-          <Text testID="text" style={{ ...{ color: selected.color } }}>
+          <Text
+            testID="text"
+            style={{ ...{ fontWeight: selected.fontWeight } }}
+          >
             {props.list}
           </Text>
         </View>
@@ -43,14 +46,14 @@ export default ItemListToAdd;
 
 const styles = StyleSheet.create({
   text: {
-    color: Colors.primary,
+    color: Colors.backgroundColor,
   },
   list: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.7,
     padding: 5,
-    color: Colors.banner,
-    backgroundColor: Colors.shadowColor,
+    color: Colors.primary,
+    backgroundColor: Colors.banner,
     marginVertical: 3,
 
     paddingLeft: 20,

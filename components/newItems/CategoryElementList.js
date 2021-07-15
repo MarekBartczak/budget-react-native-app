@@ -4,12 +4,14 @@ import Colors from "../../constants/Colors";
 
 const CategoryElementList = (props) => {
   const selected = {
-    color: props.selected === props.list ? Colors.accent : Colors.primary,
+    fontWeight: props.selected === props.list ? "bold" : null,
   };
   return (
     <View>
       <TouchableOpacity onPress={() => props.press(props.list)}>
-        <Text style={{ ...props.style, ...{ color: selected.color } }}>
+        <Text
+          style={{ ...props.style, ...{ fontWeight: selected.fontWeight } }}
+        >
           {props.list}
         </Text>
       </TouchableOpacity>

@@ -57,18 +57,18 @@ const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get("window").width * 0.9,
     height: 100,
-    backgroundColor: Colors.gradientBackground.third,
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: Colors.shadowColor,
-    shadowOpacity: 0.9,
-    shadowRadius: 10,
+    backgroundColor: Colors.accent,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowColor: Colors.shadowColor,
+    // shadowOpacity: 0.9,
+    // shadowRadius: 10,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
   },
   inner: {
-    backgroundColor: Colors.gradientBackground.third,
+    backgroundColor: Colors.accent,
     borderRadius: 10,
     height: "88%",
     width: "96%",
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginBottom: -10,
     fontWeight: "bold",
     paddingHorizontal: 10,
-    backgroundColor: Colors.gradientBackground.third,
+    backgroundColor: Colors.accent,
   },
 });
 

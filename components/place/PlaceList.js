@@ -14,10 +14,10 @@ const PlaceList = (props) => {
 
   const setBtnColor = (state) => {
     if (state === false) {
-      return Colors.primary;
+      return null;
     }
     if (state === true) {
-      return Colors.accent;
+      return "bold";
     }
   };
 
@@ -61,7 +61,7 @@ const PlaceList = (props) => {
           }}
         >
           <View>
-            <Text style={{ color: setBtnColor(!isFavoritePlaceShow) }}>
+            <Text style={{ fontWeight: setBtnColor(!isFavoritePlaceShow) }}>
               Wszystkie
             </Text>
           </View>
@@ -73,7 +73,7 @@ const PlaceList = (props) => {
           }}
         >
           <View>
-            <Text style={{ color: setBtnColor(isFavoritePlaceShow) }}>
+            <Text style={{ fontWeight: setBtnColor(isFavoritePlaceShow) }}>
               Ulubione
             </Text>
           </View>

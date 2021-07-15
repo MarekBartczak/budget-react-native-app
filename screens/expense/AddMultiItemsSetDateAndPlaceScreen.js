@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height * 0.2,
     width: "90%",
     borderRadius: 10,
-    backgroundColor: Colors.gradientBackground.secondary,
+    backgroundColor: Colors.accent,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 10,
     borderColor: Colors.gradientBackground.primary,
-    backgroundColor: Colors.gradientBackground.third,
+    backgroundColor: Colors.accent,
   },
   receipt: {
     marginTop: 30,
@@ -150,10 +150,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: Colors.primary,
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowColor: Colors.primary,
+    // shadowOpacity: 0.5,
+    // shadowRadius: 10,
   },
 });
 export default AddMultiItemsScreen;
