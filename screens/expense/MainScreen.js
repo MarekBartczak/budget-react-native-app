@@ -45,9 +45,6 @@ const MainScreen = (props) => {
           </View>
           <View style={styles.addNewItem}>
             <AddNewItem
-              pressToAddSignleItem={() =>
-                props.navigation.navigate("AddSingleItem")
-              }
               pressToAddMultiItems={() =>
                 props.navigation.navigate("AddMultipleItem")
               }

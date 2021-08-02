@@ -17,20 +17,6 @@ const AddNewItem = (props) => {
     <View style={styles.screen}>
       <View style={styles.inner}>
         <View style={styles.addBtn}>
-          {/* <View> */}
-          {/* <TouchableOpacity
-              style={styles.add}
-              onPress={props.pressToAddSignleItem}
-            >
-              <Ionicons
-                name="ios-add-circle-outline"
-                size={62}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-            <Text style={styles.btnText}>Pojedynczy Wydatek</Text> */}
-          {/* </View> */}
-
           <View>
             <TouchableOpacity
               style={styles.add}

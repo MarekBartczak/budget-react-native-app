@@ -63,149 +63,155 @@ const Receipt = (props) => {
       keyboardVerticalOffset={30}
       style={styles.receipt}
     >
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View
-          style={{
-            height: "100%",
-            justifyContent: "space-between",
-            flexDirection: "column",
-          }}
-        >
-          <View>
-            <View style={styles.place}>
-              <Text style={styles.placeText}>
-                {props.place ? props.place : "Wybierz sklep"}
-              </Text>
+      <View style={styles.inner}>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View
+            style={{
+              height: "100%",
+              justifyContent: "space-between",
+              flexDirection: "column",
+            }}
+          >
+            <View>
+              <View style={styles.place}>
+                <Text style={styles.placeText}>
+                  {props.place ? props.place : "Wybierz sklep"}
+                </Text>
 
-              <View style={styles.editBtn}>
-                <TouchableOpacity onPress={() => showModal(true)}>
-                  <Feather name="edit" size={15} color="black" />
-                </TouchableOpacity>
-                <Modal
-                  animationType="slide"
-                  transparent={true}
-                  visible={modal}
-                  onRequestClose={() => showModal(false)}
-                >
-                  <View style={styles.modalView}>
-                    <Input
-                      style={styles.inputModal}
-                      value={props.place}
-                      placeholder="wpisz nowe miejsce"
-                      keyboardType={"default"}
-                      onChangeText={props.setPlace}
-                    />
-                    <View>
-                      <TouchableOpacity onPress={() => showModal(!modal)}>
-                        <Feather name="save" size={25} color={Colors.primary} />
-                      </TouchableOpacity>
+                <View style={styles.editBtn}>
+                  <TouchableOpacity onPress={() => showModal(true)}>
+                    <Feather name="edit" size={15} color="black" />
+                  </TouchableOpacity>
+                  <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modal}
+                    onRequestClose={() => showModal(false)}
+                  >
+                    <View style={styles.modalView}>
+                      <Input
+                        style={styles.inputModal}
+                        value={props.place}
+                        placeholder="wpisz nowe miejsce"
+                        keyboardType={"default"}
+                        onChangeText={props.setPlace}
+                      />
+                      <View>
+                        <TouchableOpacity onPress={() => showModal(!modal)}>
+                          <Feather
+                            name="save"
+                            size={25}
+                            color={Colors.primary}
+                          />
+                        </TouchableOpacity>
+                      </View>
                     </View>
-                  </View>
-                </Modal>
-              </View>
-            </View>
-
-            <View style={styles.date}>
-              <Text style={styles.dateText}>{props.date}</Text>
-            </View>
-
-            <View style={styles.list}>
-              <FlatList
-                data={receiptItem}
-                keyExtractor={(item, index) => "item" + index}
-                renderItem={(item) => (
-                  <ListElement
-                    cost={item.item.cost}
-                    itemName={item.item.name}
-                    category={item.item.category}
-                  />
-                )}
-              />
-            </View>
-          </View>
-          <View style={styles.addBtnView}>
-            <Modal
-              animationType="slide"
-              transparent={false}
-              visible={addItemModal}
-              onRequestClose={() => showAddItemModal(false)}
-            >
-              <View style={styles.addItemModalView}>
-                <NewElement
-                  place={props.place}
-                  itemName={props.itemName}
-                  onSetName={props.onSetName}
-                  cost={props.cost}
-                  category={props.category}
-                  onSetCost={props.onSetCost}
-                  onChangeCategory={props.setCategory}
-                />
-                <View style={styles.buttons}>
-                  <Button
-                    title="Anuluj"
-                    color="red"
-                    onPress={() => {
-                      showAddItemModal(!addItemModal);
-                    }}
-                  />
-                  <Button
-                    disabled={!addValidate()}
-                    color={Colors.primary}
-                    title="Dodaj"
-                    onPress={() => {
-                      props.addItemToTheRecipt();
-                      showAddItemModal(!addItemModal);
-                    }}
-                  />
+                  </Modal>
                 </View>
               </View>
-            </Modal>
 
-            <View style={styles.bottomPartOfRecipt}>
-              <View style={styles.sumView}>
-                <Text style={styles.sum}>Razem {sum.toFixed(2)}zł</Text>
+              <View style={styles.date}>
+                <Text style={styles.dateText}>{props.date}</Text>
               </View>
-              <View style={styles.buttons}>
-                <View style={styles.saveBtn}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      if (receiptItem.length > 0) {
-                        let currentDate = receiptDate;
-                        dispatch(itemsAction.setReceiptDate(currentDate));
-                        let show;
-                        show = SaveItemsToTheStore(showReceipt);
-                        dispatch(itemsAction.addItemsFromReceipt(show));
-                        props.backToHome();
-                      } else {
-                        alert("Dodaj pozycje do paragonu");
-                      }
-                    }}
-                  >
-                    <Feather name="save" size={44} color={Colors.accent} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.addBtn}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      if (GetSelectedPlace.length > 0) {
-                        showAddItemModal(!addItemModal);
-                      } else {
-                        alert("Wybierz Sklep");
-                      }
-                    }}
-                  >
-                    <MaterialIcons
-                      name="playlist-add"
-                      size={44}
-                      color={Colors.primary}
+
+              <View style={styles.list}>
+                <FlatList
+                  data={receiptItem}
+                  keyExtractor={(item, index) => "item" + index}
+                  renderItem={(item) => (
+                    <ListElement
+                      cost={item.item.cost}
+                      itemName={item.item.name}
+                      category={item.item.category}
                     />
-                  </TouchableOpacity>
+                  )}
+                />
+              </View>
+            </View>
+            <View style={styles.addBtnView}>
+              <Modal
+                animationType="slide"
+                transparent={false}
+                visible={addItemModal}
+                onRequestClose={() => showAddItemModal(false)}
+              >
+                <View style={styles.addItemModalView}>
+                  <NewElement
+                    place={props.place}
+                    itemName={props.itemName}
+                    onSetName={props.onSetName}
+                    cost={props.cost}
+                    category={props.category}
+                    onSetCost={props.onSetCost}
+                    onChangeCategory={props.setCategory}
+                  />
+                  <View style={styles.buttons}>
+                    <Button
+                      title="Anuluj"
+                      color="red"
+                      onPress={() => {
+                        showAddItemModal(!addItemModal);
+                      }}
+                    />
+                    <Button
+                      disabled={!addValidate()}
+                      color={Colors.primary}
+                      title="Dodaj"
+                      onPress={() => {
+                        props.addItemToTheRecipt();
+                        showAddItemModal(!addItemModal);
+                      }}
+                    />
+                  </View>
+                </View>
+              </Modal>
+
+              <View style={styles.bottomPartOfRecipt}>
+                <View style={styles.sumView}>
+                  <Text style={styles.sum}>Razem {sum.toFixed(2)}zł</Text>
+                </View>
+                <View style={styles.buttons}>
+                  <View style={styles.saveBtn}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        if (receiptItem.length > 0) {
+                          let currentDate = receiptDate;
+                          dispatch(itemsAction.setReceiptDate(currentDate));
+                          let show;
+                          show = SaveItemsToTheStore(showReceipt);
+                          dispatch(itemsAction.addItemsFromReceipt(show));
+                          props.backToHome();
+                        } else {
+                          alert("Dodaj pozycje do paragonu");
+                        }
+                      }}
+                    >
+                      <Feather name="save" size={44} color={Colors.primary} />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.addBtn}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        if (GetSelectedPlace.length > 0) {
+                          showAddItemModal(!addItemModal);
+                        } else {
+                          alert("Wybierz Sklep");
+                        }
+                      }}
+                    >
+                      <MaterialIcons
+                        name="playlist-add"
+                        size={44}
+                        color={Colors.primary}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </View>
     </KeyboardAvoidingView>
   );
 };
@@ -222,6 +228,19 @@ const styles = StyleSheet.create({
     // shadowOffset: { height: 0, width: 10 },
     // shadowColor: Colors.shadowColor,
     // shadowOpacity: 0.23,
+    // alignItems: "center",
+    // justifyContent: "center",
+  },
+  inner: {
+    backgroundColor: Colors.accent,
+    borderRadius: 7,
+    height: "96%",
+    width: "96%",
+    borderWidth: 3,
+    borderColor: Colors.gradientBackground.primary,
+    // alignItems: "center",
+    // justifyContent: "center",
+    margin: "2%",
   },
   modalView: {
     height: "100%",
@@ -273,7 +292,8 @@ const styles = StyleSheet.create({
   addBtn: {},
   list: {
     marginTop: 5,
-    height: heightWindow < 900 ? heightWindow / 4.6 : heightWindow / 3.6,
+
+    height: heightWindow < 900 ? heightWindow / 5 : heightWindow / 4,
     width: "100%",
     flexDirection: "column",
   },

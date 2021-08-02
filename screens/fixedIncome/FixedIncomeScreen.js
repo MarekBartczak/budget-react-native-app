@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-import Chart from "../../components/chart/Chart";
+import BarChart from "../../components/chart/BarChart";
 import chartElement from "../../functions/ChartElement";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import SummaryCost from "../../components/summaryCost/SumaryCost";
@@ -18,7 +18,7 @@ const FixedIncomeScreen = (props) => {
         <SummaryCost cost={summaryCostCounter(fixedIncomeList)} />
       </View>
       <View style={styles.component}>
-        <Chart
+        <BarChart
           press={() => props.navigation.navigate("FixedIncomeList")}
           label={chartEl.label}
           data={chartEl.data}

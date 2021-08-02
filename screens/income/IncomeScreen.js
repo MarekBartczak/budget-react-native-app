@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-import Chart from "../../components/chart/Chart";
+import Chart from "../../components/chart/BarChart";
 import chartElement from "../../functions/ChartElement";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import SummaryCost from "../../components/summaryCost/SumaryCost";

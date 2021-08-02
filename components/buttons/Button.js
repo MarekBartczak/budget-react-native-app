@@ -14,8 +14,10 @@ const Button = (props) => {
       onPress={props.onPress}
       style={{ ...styles.button, ...props.style }}
     >
-      <View style={styles.btn}>
-        <Text style={styles.text}>{props.text}</Text>
+      <View style={styles.inner}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>{props.text}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -35,6 +37,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inner: {
+    backgroundColor: Colors.accent,
+    borderRadius: 7,
+    height: "70%",
+    width: "95%",
+    borderWidth: 3,
+    borderColor: Colors.gradientBackground.primary,
+    alignItems: "center",
+    justifyContent: "center",
   },
   btn: {
     height: "100%",
