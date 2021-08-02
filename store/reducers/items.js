@@ -6,7 +6,7 @@ import {
   SET_RECEIPT_DATE,
   ADD_ITEMS_FROM_RECEIPT,
 } from "../actions/items";
-import Items from "../../data/Dummy-data";
+import Items from "../../data/dummy-data";
 
 const initialState = {
   items: [...Items],

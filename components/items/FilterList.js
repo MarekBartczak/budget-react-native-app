@@ -56,12 +56,15 @@ export default FilterList;
 
 const styles = StyleSheet.create({
   filter: {
-    backgroundColor: Colors.shadowColor,
+    backgroundColor: Colors.banner,
     marginLeft: "10%",
     width: "80%",
     height: "80%",
     marginTop: "10%",
     alignItems: "flex-end",
+    borderRadius: 10,
+    overflow: "hidden",
+    paddingBottom: 70,
   },
   closeBtn: {
     backgroundColor: Colors.primary,
@@ -76,6 +79,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "98%",
     marginTop: 20,
-    backgroundColor: Colors.shadowColorLight,
+    backgroundColor: Colors.accent,
   },
 });
