@@ -23,8 +23,6 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
     height: 40,
-    // borderBottomColor: Colors.backGround,
-    // borderBottomWidth: 3,
     backgroundColor: Colors.default,
     paddingVertical: 3,
     justifyContent: "center",

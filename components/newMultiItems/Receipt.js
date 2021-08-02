@@ -224,12 +224,6 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: Colors.transparent,
     borderRadius: 10,
-    // shadowRadius: 10,
-    // shadowOffset: { height: 0, width: 10 },
-    // shadowColor: Colors.shadowColor,
-    // shadowOpacity: 0.23,
-    // alignItems: "center",
-    // justifyContent: "center",
   },
   inner: {
     backgroundColor: Colors.accent,
@@ -238,8 +232,6 @@ const styles = StyleSheet.create({
     width: "96%",
     borderWidth: 3,
     borderColor: Colors.gradientBackground.primary,
-    // alignItems: "center",
-    // justifyContent: "center",
     margin: "2%",
   },
   modalView: {
@@ -254,7 +246,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255,0.9)",
     flexDirection: "column",
     alignItems: "center",
-    // justifyContent: "center",
     paddingTop: 40,
   },
   inputModal: {
@@ -292,7 +283,6 @@ const styles = StyleSheet.create({
   addBtn: {},
   list: {
     marginTop: 5,
-
     height: heightWindow < 900 ? heightWindow / 5 : heightWindow / 4,
     width: "100%",
     flexDirection: "column",
@@ -302,14 +292,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
   },
-  //   sum: {
-  //     fontWeight: "bold",
-  //   },
   buttons: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
-
   sumView: {
     backgroundColor: Colors.banner,
     padding: 5,

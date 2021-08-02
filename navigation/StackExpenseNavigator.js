@@ -18,19 +18,6 @@ const StackExpenseNavigator = (props) => {
   const filter = (title, screenName) => {
     return {
       title: title,
-      // headerRight: () => (
-      //   <TouchableOpacity
-      //     style={{
-      //       padding: 0,
-      //       justifyContent: "center",
-      //       alignItems: "center",
-      //       marginRight: 20,
-      //     }}
-      //     onPress={() => {}}
-      //   >
-      //     <MaterialIcons name="filter-list" size={34} color={Colors.primary} />
-      //   </TouchableOpacity>
-      // ),
     };
   };
 
@@ -61,7 +48,6 @@ const StackExpenseNavigator = (props) => {
   };
   return (
     <Stack.Navigator
-      // initialRouteName="Home"
       screenOptions={{
         headerTintColor: Colors.primary,
         headerStyle: {

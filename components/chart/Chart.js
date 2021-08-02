@@ -32,8 +32,6 @@ const Chart = (props) => {
             backgroundGradientToOpacity: 1,
             backgroundGradientFrom: Colors.gradientBackground.primary,
             backgroundGradientTo: Colors.gradientBackground.primary,
-            // backgroundGradientFrom: Colors.primary,
-            // backgroundGradientTo: Colors.primary,
             decimalPlaces: 2,
             color: () => Colors.primary,
           }}
@@ -54,9 +52,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width * 0.9,
-    // shadowOpacity: 0.9,
-    // shadowRadius: 10,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: Colors.shadowColor,
   },
 });

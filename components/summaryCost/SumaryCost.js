@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   inner: {
     height: "70%",
     width: "95%",
-    // backgroundColor: "red",
     borderRadius: 7,
     borderWidth: 3,
     borderColor: Colors.gradientBackground.third,

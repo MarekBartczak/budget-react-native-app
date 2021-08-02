@@ -23,8 +23,6 @@ const FavPlaceElement = (props) => {
         props.pressToAddMultiItems();
       }}
       onLongPress={() => {
-        // dispatch(favoritePlaceAction.selecLogo(props.favPlaceLogo));
-
         props.selectPlace();
         props.setFavPlaceName();
         props.showEdit();
@@ -44,7 +42,6 @@ export default FavPlaceElement;
 const styles = StyleSheet.create({
   favBtn: {
     margin: 10,
-    // backgroundColor: Colors.primary,
     height: 80,
 
     width: Dimensions.get("window").width / 4,

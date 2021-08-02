@@ -25,10 +25,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     backgroundColor: Colors.transparent,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: Colors.shadowColor,
-    // shadowOpacity: 0.9,
-    // shadowRadius: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -39,7 +35,6 @@ const styles = StyleSheet.create({
   textCost: {
     color: Colors.primary,
     fontWeight: "bold",
-    // fontSize: 15,
   },
   description: {
     alignItems: "center",

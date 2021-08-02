@@ -45,7 +45,6 @@ const ListOfElements = (props) => {
     bookType: "xlsx",
   });
   const uri = FileSystem.cacheDirectory + "cities.xlsx";
-  // console.log(`Writing to ${JSON.stringify(uri)} with text: ${wbout}`);
   const faxeXLSX = async () => {
     await FileSystem.writeAsStringAsync(uri, wbout, {
       encoding: FileSystem.EncodingType.Base64,

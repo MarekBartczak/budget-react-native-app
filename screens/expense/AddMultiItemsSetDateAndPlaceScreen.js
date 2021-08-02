@@ -150,10 +150,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: Colors.primary,
-    // shadowOpacity: 0.5,
-    // shadowRadius: 10,
   },
 });
 export default AddMultiItemsScreen;
