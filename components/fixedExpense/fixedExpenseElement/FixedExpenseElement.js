@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   textCost: {
-    color: Colors.backGround,
+    color: Colors.primary,
     fontWeight: "bold",
     // fontSize: 15,
   },

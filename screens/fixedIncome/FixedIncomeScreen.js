@@ -15,14 +15,14 @@ const FixedIncomeScreen = (props) => {
   return (
     <ExternalComponent>
       <View style={styles.component}>
+        <SummaryCost cost={summaryCostCounter(fixedIncomeList)} />
+      </View>
+      <View style={styles.component}>
         <Chart
           press={() => props.navigation.navigate("FixedIncomeList")}
           label={chartEl.label}
           data={chartEl.data}
         />
-      </View>
-      <View style={styles.component}>
-        <SummaryCost cost={summaryCostCounter(fixedIncomeList)} />
       </View>
       <View style={styles.component}>
         <AddNewFixedIncomeComponent />

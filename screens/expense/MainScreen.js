@@ -23,15 +23,15 @@ const MainScreen = (props) => {
         }}
       >
         <View style={styles.screen}>
+          <View style={{ marginBottom: 20 }}>
+            <SummaryCost cost={summaryCostCounter(itemsFromRedux)} />
+          </View>
           <View>
             <Chart
               press={() => props.navigation.navigate("Date")}
               label={chartEl.label}
               data={chartEl.data}
             />
-          </View>
-          <View style={{ marginTop: 20 }}>
-            <SummaryCost cost={summaryCostCounter(itemsFromRedux)} />
           </View>
           <View style={styles.favoritePlace}>
             <FavoritePlaces

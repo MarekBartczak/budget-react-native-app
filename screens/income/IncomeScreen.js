@@ -15,14 +15,14 @@ const IncomeScreen = (props) => {
   return (
     <ExternalComponent>
       <View style={styles.component}>
+        <SummaryCost cost={summaryCostCounter(incomeList)} />
+      </View>
+      <View style={styles.component}>
         <Chart
           press={() => props.navigation.navigate("IncomeList")}
           label={chartEl.label}
           data={chartEl.data}
         />
-      </View>
-      <View style={styles.component}>
-        <SummaryCost cost={summaryCostCounter(incomeList)} />
       </View>
       <View style={styles.component}>
         <AddNewIncomeComponent />

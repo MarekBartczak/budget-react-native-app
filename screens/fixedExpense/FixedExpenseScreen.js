@@ -18,15 +18,16 @@ const FixedExpenseScreen = (props) => {
   return (
     <ExternalComponent>
       <View style={styles.component}>
+        <SummaryCost cost={summaryCostCounter(fixedExpenseShowList)} />
+      </View>
+      <View style={styles.component}>
         <Chart
           press={() => props.navigation.navigate("FixedExpensesList")}
           label={chartEl.label}
           data={chartEl.data}
         />
       </View>
-      <View style={styles.component}>
-        <SummaryCost cost={summaryCostCounter(fixedExpenseShowList)} />
-      </View>
+
       <View style={styles.component}>
         <AddNewFixedExpenseComponent />
       </View>
