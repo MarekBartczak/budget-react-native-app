@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-import ListOfElements from "./listOfElements/ListOfElements";
+import FilterComponent from "./filterComponent/FilterComponent";
 const RaportScreen = (props) => {
   return (
     <ExternalComponent>
@@ -10,11 +10,11 @@ const RaportScreen = (props) => {
           style={{
             // justifyContent: "center",
             // alignItems: "center",
-            width: "100%",
-            height: "100%",
+            width: Dimensions.get("window").width * 0.9,
+            height: Dimensions.get("window").height * 0.9,
           }}
         >
-          <ListOfElements />
+          <FilterComponent />
         </View>
       </View>
     </ExternalComponent>
