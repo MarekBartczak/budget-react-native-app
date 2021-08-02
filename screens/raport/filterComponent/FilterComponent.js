@@ -14,7 +14,7 @@ const FilterComponent = (props) => {
   const flatListRef = useRef();
 
   const [year, setYear] = useState(new Date().getFullYear());
-  const [month, setMonth] = useState();
+  const [month, setMonth] = useState(months[new Date().getMonth()]);
   const [list, setList] = useState([]);
   const listObj = {
     expense: useSelector((state) => state.item.items),
