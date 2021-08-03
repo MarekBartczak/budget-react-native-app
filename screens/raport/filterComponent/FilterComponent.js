@@ -9,59 +9,80 @@ import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import Colors from "../../../constants/Colors";
 import months from "../../../constants/Months";
+import getDateList from "./GetDateList";
+
+import Expense from "../elemets/Expense";
+import FixedExpense from "../elemets/FixedExpense";
+import Income from "../elemets/Income";
+import FixedIncome from "../elemets/FixedIncome";
 
 const FilterComponent = (props) => {
   const flatListRef = useRef();
 
   const [year, setYear] = useState(new Date().getFullYear());
-  const [month, setMonth] = useState(months[new Date().getMonth()]);
-  const [list, setList] = useState([]);
+  const [filterListType, setFilterListType] = useState("Expense");
   const listObj = {
-    expense: useSelector((state) => state.item.items),
-    fixedExpense: useSelector((state) => state.fixedExpense.fixedExpense),
-    income: useSelector((state) => state.income.income),
-    fixedIncome: useSelector((state) => state.fixedIncome.fixedIncome),
+    Expense: useSelector((state) => state.item.items),
+    FixedExpense: useSelector((state) => state.fixedExpense.fixedExpense),
+    Income: useSelector((state) => state.income.income),
+    FixedIncome: useSelector((state) => state.fixedIncome.fixedIncome),
   };
 
-  const testEl = listObj.expense[6].date;
-  const range = listObj.expense.length;
+  const dateList = {
+    Expense: getDateList(listObj.Expense),
+    FixedExpense: getDateList(listObj.FixedExpense),
+    Income: getDateList(listObj.Income),
+    FixedIncome: getDateList(listObj.FixedIncome),
+  };
 
-  const monthInxed = months.findIndex((el) => el === month) + 1;
-  const selectedDate = `${year}-${
-    monthInxed < 10 ? "0" + monthInxed : monthInxed
-  }`;
-
-  console.log(testEl);
-  console.log(selectedDate);
-
-  console.log(testEl.includes(selectedDate));
-  let lst = [];
-  listObj.expense.forEach((el) => {
-    if (el.date.includes(selectedDate)) {
-      console.log(el);
-      lst.push(el);
+  let filteredList = [];
+  const showList = (type) => {
+    listObj[type].forEach((el) => {
+      if (el.date.includes(year)) {
+        filteredList.push(el);
+      }
+    });
+    switch (type) {
+      case "Expense":
+        return <Expense filteredList={filteredList} />;
+      case "FixedExpense":
+        return <FixedExpense filteredList={filteredList} />;
+      case "Income":
+        return <Income filteredList={filteredList} />;
+      case "FixedIncome":
+        return <FixedIncome filteredList={filteredList} />;
     }
-  });
-  console.log(lst);
-  //   const checkMonth = (itemDate) => {
-  //     return months[new Date(itemDate).getMonth()];
-  //   };
-  //   const selectedMonth = checkMonth(testEl);
+  };
 
-  const listOfYears = () => {
-    const list = ["2019", "2020", "2021", "2022", "2023", "2024", "2025"];
-    return list;
+  const filterBtn = (type, name) => {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          setFilterListType(type);
+          setYear(dateList[type][0]);
+        }}
+      >
+        <Text>{name}</Text>
+      </TouchableOpacity>
+    );
   };
 
   return (
     <View>
+      <View style={styles.switch}>
+        {filterBtn("Expense", "Wydatki")}
+        {filterBtn("FixedExpense", "Stałe wydatki")}
+        {filterBtn("Income", "Wpływy")}
+        {filterBtn("FixedIncome", "Stałe wpływy")}
+      </View>
+
       <View style={styles.filterComponent}>
         <View style={styles.yearsListFilter}>
-          <Text> Wybierz rok </Text>
+          <Text> Wybierz date </Text>
           <FlatList
             ref={flatListRef}
             style={styles.listOfYears}
-            data={listOfYears()}
+            data={dateList[filterListType]}
             renderItem={(item) => {
               return (
                 <TouchableOpacity
@@ -76,46 +97,9 @@ const FilterComponent = (props) => {
             keyExtractor={(key) => key}
           />
         </View>
-        <View style={styles.monthsListFilter}>
-          <Text> Wybierz miesiąc </Text>
-
-          <FlatList
-            ref={flatListRef}
-            style={styles.listOfYears}
-            data={months}
-            renderItem={(item) => {
-              return (
-                <TouchableOpacity
-                  onPress={() => {
-                    setMonth(item.item);
-                  }}
-                >
-                  <Text style={styles.date}>{item.item}</Text>
-                </TouchableOpacity>
-              );
-            }}
-            keyExtractor={(key) => key}
-          />
-        </View>
       </View>
 
-      <Text>
-        {year} {month}
-      </Text>
-      <View>
-        <FlatList
-          data={lst}
-          keyExtractor={(key, index) => key + index}
-          renderItem={(item) => (
-            <View style={{ backgroundColor: "white", marginBottom: 20 }}>
-              <Text>{item.item.name}</Text>
-              <Text>{item.item.date}</Text>
-              <Text>{item.item.place}</Text>
-              <Text>{item.item.cost}</Text>
-            </View>
-          )}
-        />
-      </View>
+      {showList(filterListType)}
     </View>
   );
 };
@@ -141,5 +125,15 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 20,
+  },
+  switch: {
+    backgroundColor: Colors.primaryLight,
+    width: "100%",
+    height: 50,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 10,
   },
 });
