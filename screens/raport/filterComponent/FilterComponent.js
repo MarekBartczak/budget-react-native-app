@@ -3,6 +3,7 @@ import {
   Text,
   View,
   FlatList,
+  Dimensions,
   TouchableOpacity,
 } from "react-native";
 import React, { useState, useRef } from "react";
@@ -15,6 +16,7 @@ import Expense from "../elemets/Expense";
 import FixedExpense from "../elemets/FixedExpense";
 import Income from "../elemets/Income";
 import FixedIncome from "../elemets/FixedIncome";
+import DateElement from "../elemets/DateElement";
 
 const FilterComponent = (props) => {
   const flatListRef = useRef();
@@ -62,7 +64,7 @@ const FilterComponent = (props) => {
           setYear(dateList[type][0]);
         }}
       >
-        <Text>{name}</Text>
+        <Text style={styles.btnText}>{name}</Text>
       </TouchableOpacity>
     );
   };
@@ -70,10 +72,12 @@ const FilterComponent = (props) => {
   return (
     <View>
       <View style={styles.switch}>
-        {filterBtn("Expense", "Wydatki")}
-        {filterBtn("FixedExpense", "Stałe wydatki")}
-        {filterBtn("Income", "Wpływy")}
-        {filterBtn("FixedIncome", "Stałe wpływy")}
+        <View style={styles.inner}>
+          {filterBtn("Expense", "Wydatki")}
+          {filterBtn("FixedExpense", "Stałe wydatki")}
+          {filterBtn("Income", "Wpływy")}
+          {filterBtn("FixedIncome", "Stałe wpływy")}
+        </View>
       </View>
 
       <View style={styles.filterComponent}>
@@ -90,7 +94,7 @@ const FilterComponent = (props) => {
                     setYear(item.item);
                   }}
                 >
-                  <Text style={styles.date}>{item.item}</Text>
+                  <DateElement element={item.item} />
                 </TouchableOpacity>
               );
             }}
@@ -98,8 +102,7 @@ const FilterComponent = (props) => {
           />
         </View>
       </View>
-
-      {showList(filterListType)}
+      <View style={styles.list}>{showList(filterListType)}</View>
     </View>
   );
 };
@@ -109,31 +112,56 @@ export default FilterComponent;
 const styles = StyleSheet.create({
   filterComponent: {
     flexDirection: "row",
-    backgroundColor: Colors.accent,
-    height: 200,
+    // backgroundColor: Colors.accent,
+    height: 150,
   },
   listOfYears: {
-    backgroundColor: Colors.backGround,
+    width: Dimensions.get("window").width * 0.9,
+
+    // backgroundColor: Colors.backGround,
   },
   yearsListFilter: {
-    height: 100,
-    width: 100,
+    height: 150,
+    alignItems: "center",
+    justifyContent: "center",
   },
   monthsListFilter: {
     height: 100,
     width: 200,
   },
-  date: {
-    fontSize: 20,
-  },
+
   switch: {
-    backgroundColor: Colors.primaryLight,
+    backgroundColor: Colors.accent,
     width: "100%",
-    height: 50,
+    height: 60,
+
+    alignItems: "center",
+    // padding: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
+  inner: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 10,
+
+    backgroundColor: Colors.accent,
+
     borderRadius: 10,
+    height: "70%",
+    width: "96%",
+    borderWidth: 3,
+    borderColor: Colors.gradientBackground.primary,
+  },
+  btnText: {
+    // color: Colors.accent,
+    fontWeight: "bold",
+    fontSize: 12,
+    padding: 5,
+  },
+  list: {
+    marginTop: 50,
   },
 });
