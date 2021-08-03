@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../../constants/Colors";
 import months from "../../../constants/Months";
 import getDateList from "./GetDateList";
@@ -17,9 +17,12 @@ import FixedExpense from "../elemets/FixedExpense";
 import Income from "../elemets/Income";
 import FixedIncome from "../elemets/FixedIncome";
 import DateElement from "../elemets/DateElement";
+import * as raportActions from "../../../store/actions/raport";
 
 const FilterComponent = (props) => {
   const flatListRef = useRef();
+
+  const dispatch = useDispatch();
 
   const [year, setYear] = useState(new Date().getFullYear());
   const [filterListType, setFilterListType] = useState("Expense");
@@ -37,13 +40,16 @@ const FilterComponent = (props) => {
     FixedIncome: getDateList(listObj.FixedIncome),
   };
 
-  let filteredList = [];
+  dispatch(raportActions.setDateObj(dateList));
+
   const showList = (type) => {
+    let filteredList = [];
     listObj[type].forEach((el) => {
       if (el.date.includes(year)) {
         filteredList.push(el);
       }
     });
+
     switch (type) {
       case "Expense":
         return <Expense filteredList={filteredList} />;
@@ -162,6 +168,9 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   list: {
-    marginTop: 50,
+    backgroundColor: Colors.accent,
+    marginTop: 10,
+    padding: 10,
+    height: Dimensions.get("window").height * 0.5,
   },
 });

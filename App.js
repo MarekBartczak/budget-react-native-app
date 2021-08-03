@@ -7,12 +7,14 @@ import FavoritePlacesReducer from "./store/reducers/favoritePlace";
 import FixedExpenseReducer from "./store/reducers/fixedExpense";
 import IncomeReducer from "./store/reducers/income";
 import FixedIncomeReducer from "./store/reducers/fixedIncome";
+import RaportReducer from "./store/reducers/raport";
 const rootReducer = combineReducers({
   item: itemReducer,
   favoritePlace: FavoritePlacesReducer,
   fixedExpense: FixedExpenseReducer,
   income: IncomeReducer,
   fixedIncome: FixedIncomeReducer,
+  raport: RaportReducer,
 });
 
 const store = createStore(rootReducer);

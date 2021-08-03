@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import React from "react";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-import FilterComponent from "../../components/raport/filterComponent/FilterComponent";
-const RaportScreen = (props) => {
+import SelectComponent from "../../components/raport/sendEmail/selectComponent/SelectComponent";
+import React from "react";
+const SendRaportScreen = (props) => {
   return (
     <ExternalComponent>
       <View>
@@ -12,13 +12,13 @@ const RaportScreen = (props) => {
             height: Dimensions.get("window").height * 0.9,
           }}
         >
-          <FilterComponent />
+          <SelectComponent />
         </View>
       </View>
     </ExternalComponent>
   );
 };
 
-const styles = StyleSheet.create({});
+export default SendRaportScreen;
 
-export default RaportScreen;
+const styles = StyleSheet.create({});
