@@ -7,29 +7,55 @@ import {
   Dimensions,
 } from "react-native";
 import Colors from "../../../../constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import * as raportActions from "../../../../store/actions/raport";
+import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 
-import React, { useState } from "react";
 const SelectEl = (props) => {
-  const [isSelected, setIsSelected] = useState(false);
+  const raportState = useSelector((state) => state.raport);
+  const isSelected = raportState[props.el].isSelected;
+  const dateList = raportState[props.el].dateList;
+  const isDateSelected = dateList;
+  const dispatch = useDispatch();
+  const setTypeInStore = () => {
+    dispatch(raportActions.isSelectedType(!isSelected, props.el));
+    //if selected is false set all data as false also
+  };
+
+  const isDateSelectedToggle = (date, isSelected) => {
+    dispatch(raportActions.isSelectedDate(date, props.el, isSelected));
+  };
+
+  const renderDateList = (item) => {
+    return (
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => isDateSelectedToggle(item.date, !item.isSelected)}
+      >
+        <View style={styles.el}>
+          <Ionicons
+            name={item.isSelected ? "radio-button-on" : "radio-button-off"}
+            size={15}
+            color="black"
+          />
+          <Text>{item.date}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
   const showDatePicker = (isSelected) => {
-    const list = props.dateList;
+    let list;
     if (isSelected) {
+      list = props.dateList.dateList;
       return (
         <View>
           <FlatList
             style={styles.list}
-            data={list}
-            renderItem={(item) => (
-              <TouchableOpacity style={styles.item} onPress={() => {}}>
-                <View style={styles.el}>
-                  <Ionicons name={"radio-button-off"} size={15} color="black" />
-                  <Text style={styles.textDate}>{item.item}</Text>
-                </View>
-              </TouchableOpacity>
-            )}
-            keyExtractor={(key) => key}
+            data={list[0]}
+            renderItem={({ item }) => renderDateList(item)}
+            keyExtractor={(key) => key.date.toString()}
           />
         </View>
       );
@@ -39,11 +65,11 @@ const SelectEl = (props) => {
 
   return (
     <View style={styles.button}>
-      <TouchableOpacity onPress={() => setIsSelected(!isSelected)}>
+      <TouchableOpacity onPress={() => setTypeInStore()}>
         <View style={styles.select}>
-          <Ionicons
-            name={isSelected ? "radio-button-on" : "radio-button-off"}
-            size={15}
+          <FontAwesome
+            name={isSelected ? "angle-double-up" : "angle-double-down"}
+            size={24}
             color="black"
           />
           <Text style={styles.textName}> {props.name}</Text>
@@ -77,7 +103,6 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: Colors.banner,
-
     margin: 3,
     padding: 5,
     marginLeft: 20,

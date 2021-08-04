@@ -21,7 +21,6 @@ import * as raportActions from "../../../store/actions/raport";
 
 const FilterComponent = (props) => {
   const flatListRef = useRef();
-
   const dispatch = useDispatch();
 
   const [year, setYear] = useState(new Date().getFullYear());
@@ -39,8 +38,46 @@ const FilterComponent = (props) => {
     Income: getDateList(listObj.Income),
     FixedIncome: getDateList(listObj.FixedIncome),
   };
+  const createInitialRaportState = (dateList) => {
+    return {
+      Expense: {
+        isSelected: false,
+        dateList: [
+          dateList.Expense.map((el) => {
+            return { date: el, isSelected: false };
+          }),
+        ],
+      },
+      FixedExpense: {
+        isSelected: false,
+        dateList: [
+          dateList.FixedExpense.map((el) => {
+            return { date: el, isSelected: false };
+          }),
+        ],
+      },
+      Income: {
+        isSelected: false,
+        dateList: [
+          dateList.Income.map((el) => {
+            return { date: el, isSelected: false };
+          }),
+        ],
+      },
+      FixedIncome: {
+        isSelected: false,
+        dateList: [
+          dateList.FixedIncome.map((el) => {
+            return { date: el, isSelected: false };
+          }),
+        ],
+      },
+    };
+  };
 
-  dispatch(raportActions.setDateObj(dateList));
+  dispatch(
+    raportActions.initialRaportState(createInitialRaportState(dateList))
+  );
 
   const showList = (type) => {
     let filteredList = [];

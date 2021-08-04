@@ -3,22 +3,31 @@ import Colors from "../../../../constants/Colors";
 import SelectEl from "./SelectEl";
 import React from "react";
 import { useSelector } from "react-redux";
+import * as raportActions from "../../../../store/actions/raport";
 const SelectComponent = (props) => {
-  const dateList = useSelector((state) => state.raport.dateObj);
+  const initialRaportState = useSelector((state) => state.raport);
 
   return (
     <View style={styles.select}>
       <Text style={styles.titleText}>Wybierz zawartość</Text>
-      <SelectEl el={"Expense"} dateList={dateList.Expense} name={"Wydatki"} />
+      <SelectEl
+        el={"Expense"}
+        dateList={initialRaportState.Expense}
+        name={"Wydatki"}
+      />
       <SelectEl
         el={"FixedExpense"}
-        dateList={dateList.FixedExpense}
+        dateList={initialRaportState.FixedExpense}
         name={"Stałe wydatki"}
       />
-      <SelectEl el={"Income"} dateList={dateList.Income} name={"Wpływy"} />
+      <SelectEl
+        el={"Income"}
+        dateList={initialRaportState.Income}
+        name={"Wpływy"}
+      />
       <SelectEl
         el={"FixedIncome"}
-        dateList={dateList.FixedIncome}
+        dateList={initialRaportState.FixedIncome}
         name={"Stałe wpływy"}
       />
     </View>
