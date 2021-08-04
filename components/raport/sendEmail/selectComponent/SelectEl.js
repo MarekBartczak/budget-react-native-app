@@ -20,7 +20,6 @@ const SelectEl = (props) => {
   const dispatch = useDispatch();
   const setTypeInStore = () => {
     dispatch(raportActions.isSelectedType(!isSelected, props.el));
-    //if selected is false set all data as false also
   };
 
   const isDateSelectedToggle = (date, isSelected) => {
