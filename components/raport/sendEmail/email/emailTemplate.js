@@ -1,6 +1,3 @@
-import months from "../../../../constants/Months";
-import FixedExpense from "../../elemets/FixedExpense";
-
 const emailTemplate = (list) => {
   let NumberedList = {
     head: `<h2>Raport finansowy</h2> utworzony dnia: ${new Date()
@@ -17,63 +14,25 @@ const emailTemplate = (list) => {
     <li>2021 lipiec: 321zł</li>
     </ul>`,
   };
-
-  const createNumberedList = (type) => {
-    let numList = [];
+  const liObj = (type, el) => {
     switch (type) {
       case "Expense":
-        for (let i = 0; i < list[type].length; i++) {
-          numList.push(
-            list[type][i]
-              .map(
-                (el) =>
-                  `<li> ${el.date} | ${el.name} | ${el.category} | ${el.place} | <b>${el.cost}zł</b> </li>`
-              )
-              .join("")
-          );
-        }
-        return numList;
+        return `<li> ${el.date} | ${el.name} | ${el.category} | ${el.place} | <b>${el.cost}zł</b> </li>`;
       case "FixedExpense":
-        for (let i = 0; i < list[type].length; i++) {
-          numList.push(
-            list[type][i]
-              .map(
-                (el) =>
-                  `<li> ${el.date} | ${el.title} | ${el.recipient} | <b>${el.cost}zł</b></li>`
-              )
-              .join("")
-          );
-        }
-        return numList;
-
+        return `<li> ${el.date} | ${el.title} | ${el.recipient} | <b>${el.cost}zł</b></li>`;
       case "Income":
-        for (let i = 0; i < list[type].length; i++) {
-          numList.push(
-            list[type][i]
-              .map(
-                (el) =>
-                  `<li> ${el.date} | ${el.title} | ${el.from} | <b>${el.cost}zł</b></li>`
-              )
-              .join("")
-          );
-        }
-        return numList;
-
+        return `<li> ${el.date} | ${el.title} | ${el.from} | <b>${el.cost}zł</b></li>`;
       case "FixedIncome":
-        for (let i = 0; i < list[type].length; i++) {
-          numList.push(
-            list[type][i]
-              .map(
-                (el) =>
-                  `<li> ${el.date} | ${el.title} | ${el.from} | <b>${el.cost}zł</b></li>`
-              )
-              .join("")
-          );
-        }
-        return numList;
+        return `<li> ${el.date} | ${el.title} | ${el.from} | <b>${el.cost}zł</b></li>`;
     }
   };
-
+  const createNumberedList = (type) => {
+    let numList = [];
+    for (let i = 0; i < list[type].length; i++) {
+      numList.push(list[type][i].map((el) => liObj(type, el)).join(""));
+    }
+    return numList;
+  };
   NumberedList.Expense = createNumberedList("Expense");
   NumberedList.FixedExpense = createNumberedList("FixedExpense");
   NumberedList.Income = createNumberedList("Income");
