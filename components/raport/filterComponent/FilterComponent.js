@@ -18,11 +18,9 @@ import Income from "../elemets/Income";
 import FixedIncome from "../elemets/FixedIncome";
 import DateElement from "../elemets/DateElement";
 import * as raportActions from "../../../store/actions/raport";
-
 const FilterComponent = (props) => {
   const flatListRef = useRef();
   const dispatch = useDispatch();
-
   const [year, setYear] = useState(new Date().getFullYear());
   const [filterListType, setFilterListType] = useState("Expense");
   const listObj = {
@@ -145,6 +143,7 @@ const FilterComponent = (props) => {
           />
         </View>
       </View>
+
       <View style={styles.list}>{showList(filterListType)}</View>
     </View>
   );
