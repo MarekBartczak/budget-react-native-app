@@ -8,7 +8,7 @@ const emailTemplate = (list) => {
     FixedExpense: [],
     Income: [],
     FixedIncome: [],
-    fotter: `<h5>Podsumowanie:</h5>
+    footer: `<h5>Podsumowanie:</h5>
     <ul>
     <li>2021 maj: 2123zł</li>
     <li>2021 lipiec: 321zł</li>
@@ -29,14 +29,16 @@ const emailTemplate = (list) => {
   const createNumberedList = (type) => {
     let numList = [];
     for (let i = 0; i < list[type].length; i++) {
+      numList.push("<ol>");
       numList.push(list[type][i].map((el) => liObj(type, el)).join(""));
+      numList.push("</ol>");
     }
     return numList;
   };
-  NumberedList.Expense = createNumberedList("Expense");
-  NumberedList.FixedExpense = createNumberedList("FixedExpense");
-  NumberedList.Income = createNumberedList("Income");
-  NumberedList.FixedIncome = createNumberedList("FixedIncome");
+  NumberedList.Expense = createNumberedList("Expense").join("");
+  NumberedList.FixedExpense = createNumberedList("FixedExpense").join("");
+  NumberedList.Income = createNumberedList("Income").join("");
+  NumberedList.FixedIncome = createNumberedList("FixedIncome").join("");
 
   return NumberedList;
 };
