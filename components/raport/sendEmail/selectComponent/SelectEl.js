@@ -63,18 +63,20 @@ const SelectEl = (props) => {
   };
 
   return (
-    <View style={styles.button}>
-      <TouchableOpacity onPress={() => setTypeInStore()}>
-        <View style={styles.select}>
-          <FontAwesome
-            name={isSelected ? "angle-double-up" : "angle-double-down"}
-            size={24}
-            color="black"
-          />
-          <Text style={styles.textName}> {props.name}</Text>
-        </View>
-      </TouchableOpacity>
-      {showDatePicker(isSelected)}
+    <View>
+      <View style={styles.button}>
+        <TouchableOpacity onPress={() => setTypeInStore()}>
+          <View style={styles.select}>
+            <FontAwesome
+              name={isSelected ? "angle-double-up" : "angle-double-down"}
+              size={24}
+              color="black"
+            />
+            <Text style={styles.textName}> {props.name}</Text>
+          </View>
+        </TouchableOpacity>
+        {showDatePicker(isSelected)}
+      </View>
     </View>
   );
 };
