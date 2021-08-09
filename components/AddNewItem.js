@@ -6,13 +6,9 @@ import {
   Dimensions,
 } from "react-native";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
-import * as favoritePlaceAction from "../store/actions/favoritePlace";
-import { useDispatch } from "react-redux";
 
 const AddNewItem = (props) => {
-  const dispatch = useDispatch();
   return (
     <View style={styles.screen}>
       <View style={styles.inner}>
@@ -21,17 +17,13 @@ const AddNewItem = (props) => {
             <TouchableOpacity
               style={styles.add}
               onPress={() => {
-                props.pressToAddMultiItems();
-                dispatch(favoritePlaceAction.selectPlace(""));
+                props.navigateTo();
+                props.setPlace();
               }}
             >
-              <Ionicons
-                name="ios-cart-outline"
-                size={62}
-                color={Colors.primary}
-              />
+              {props.icon}
             </TouchableOpacity>
-            <Text style={styles.btnText}>Nowe wydatki</Text>
+            <Text style={styles.btnText}>{props.text}</Text>
           </View>
         </View>
       </View>

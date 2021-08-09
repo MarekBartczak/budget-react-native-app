@@ -13,7 +13,7 @@ const fixedExpense = [
     "Orange",
     false,
     150,
-    { days: 0, months: 1, years: 0 }
+    { days: 10, months: 0, years: 0 }
   ),
   new FixedExpense(
     "ei2",

@@ -1,5 +1,15 @@
 class FixedExpense {
-  constructor(id, date, paidDate, title, recipient, isPaid, cost, interval) {
+  constructor(
+    id,
+    date,
+    paidDate,
+    title,
+    recipient,
+    isPaid,
+    cost,
+    interval,
+    description
+  ) {
     this.id = id;
     this.date = date;
     this.paidDate = paidDate;
@@ -8,6 +18,7 @@ class FixedExpense {
     this.isPaid = isPaid;
     this.cost = cost;
     this.interval = interval;
+    this.description = description;
   }
 }
 

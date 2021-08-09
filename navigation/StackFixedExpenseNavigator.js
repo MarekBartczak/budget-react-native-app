@@ -7,7 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import FixedExpenseScreen from "../screens/fixedExpense/FixedExpenseScreen";
 import FixedExpensesList from "../components/fixedExpense/FixedExpensesList";
 import FixedExpenseDetails from "../components/fixedExpense/fixedExpenseDetails/FixedExpenseDetails";
-
+import AddNewFixedExpenseScreen from "../screens/fixedExpense/AddNewFixedExpenseScreen";
 const Stack = createStackNavigator();
 
 const StackFixedExpenseNavigator = (props) => {
@@ -58,6 +58,13 @@ const StackFixedExpenseNavigator = (props) => {
         FixedExpenseDetails,
         ({ navigation }) => ({
           headerTitle: "Szczegóły",
+        })
+      )}
+      {stackScreen(
+        "AddNewFixedExpenseScreen",
+        AddNewFixedExpenseScreen,
+        ({ navigation }) => ({
+          headerTitle: "Dodaj nowy stały wydatek",
         })
       )}
     </Stack.Navigator>

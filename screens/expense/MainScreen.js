@@ -3,7 +3,10 @@ import React from "react";
 import Chart from "../../components/chart/Chart";
 import FavoritePlaces from "../../components/FavoritePlaces";
 import AddNewItem from "../../components/AddNewItem";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Ionicons } from "@expo/vector-icons";
+import Colors from "../../constants/Colors";
+import * as favoritePlaceAction from "../../store/actions/favoritePlace";
 import chartElement from "../../functions/ChartElement";
 import SummaryCost from "../../components/summaryCost/SumaryCost";
 import summaryCostCounter from "../../functions/summaryCostCounter";
@@ -12,6 +15,7 @@ const MainScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
   const chartEl = chartElement(itemsFromRedux, 7);
+  const dispatch = useDispatch();
 
   return (
     <ExternalComponent>
@@ -45,8 +49,15 @@ const MainScreen = (props) => {
           </View>
           <View style={styles.addNewItem}>
             <AddNewItem
-              pressToAddMultiItems={() =>
-                props.navigation.navigate("AddMultipleItem")
+              navigateTo={() => props.navigation.navigate("AddMultipleItem")}
+              setPlace={() => dispatch(favoritePlaceAction.selectPlace(""))}
+              text={"Nowe Wydatki"}
+              icon={
+                <Ionicons
+                  name="ios-cart-outline"
+                  size={62}
+                  color={Colors.primary}
+                />
               }
             />
           </View>

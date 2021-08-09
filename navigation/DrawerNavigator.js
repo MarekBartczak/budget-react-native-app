@@ -1,9 +1,13 @@
 import React from "react";
 import Colors from "../constants/Colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  Ionicons,
+  FontAwesome,
+} from "@expo/vector-icons";
 
 import StackExpenseNavigator from "./StackExpenseNavigator";
 import StackIncomeNavigator from "./StackIncomeNavigator";
@@ -12,9 +16,19 @@ import StackRaportNavigator from "./StackRaportNavigator";
 import StackFixedIncomeNavigator from "./StackFixedIncomeNavigator";
 import StackSettingsNavigator from "./StackSettingsNavigator";
 
-const Drawer = createDrawerNavigator();
+import { useSelector } from "react-redux";
 
+const Drawer = createDrawerNavigator();
+const isNotPadid = false;
 const DrawerNavigator = (props) => {
+  const fixedExpensesList = useSelector(
+    (state) => state.fixedExpense.fixedExpense
+  );
+
+  const today = new Date();
+  const dateList = fixedExpensesList.map((el) => new Date(el.date) > today);
+  const isAllPaid = dateList.filter((el) => el === false);
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -45,11 +59,22 @@ const DrawerNavigator = (props) => {
           component={StackFixedExpenseNavigator}
           options={{
             drawerIcon: () => (
-              <MaterialCommunityIcons
-                name="calendar-arrow-left"
-                size={34}
-                color={Colors.primary}
-              />
+              <View style={{ flexDirection: "row" }}>
+                <MaterialCommunityIcons
+                  name="calendar-arrow-left"
+                  size={34}
+                  color={Colors.primary}
+                />
+                <Text style={{ position: "absolute", marginLeft: 40 }}>
+                  {isAllPaid.length > 0 ? (
+                    <FontAwesome
+                      name="exclamation-circle"
+                      size={20}
+                      color="red"
+                    />
+                  ) : null}
+                </Text>
+              </View>
             ),
             drawerLabel: "Stałe wydatki",
           }}
