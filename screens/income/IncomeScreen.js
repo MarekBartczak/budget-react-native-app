@@ -11,7 +11,6 @@ const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
 
   const chartEl = chartElement(incomeList);
-
   return (
     <ExternalComponent>
       <View style={styles.component}>

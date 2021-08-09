@@ -58,7 +58,7 @@ const Send = (props) => {
     <TouchableOpacity onPress={() => emailSender()}>
       <View style={styles.send}>
         <Feather name="send" size={24} color="black" />
-        <Text style={styles.sendText}>Wyślij</Text>
+        <Text style={styles.sendText}>Wyślij raport</Text>
       </View>
     </TouchableOpacity>
   );

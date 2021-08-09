@@ -25,7 +25,7 @@ const StackFixedIncomeNavigator = (props) => {
         },
       }}
     >
-      {stackScreen("Income", FixedIncomeScreen, ({ navigation }) => ({
+      {stackScreen("FixedIncome", FixedIncomeScreen, ({ navigation }) => ({
         headerTitle: "Stałe wpływy",
         headerLeft: () => (
           <TouchableOpacity

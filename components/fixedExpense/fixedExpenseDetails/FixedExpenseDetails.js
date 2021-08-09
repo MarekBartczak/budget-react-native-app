@@ -5,56 +5,61 @@ import {
   Dimensions,
   TouchableOpacity,
   FlatList,
+  Alert,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Colors from "../../../constants/Colors";
-import { Ionicons, Fontisto } from "@expo/vector-icons";
+import { Ionicons, Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import setNextPayDay from "../../../functions/SetNextPayDay";
 import { useDispatch, useSelector } from "react-redux";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 
 const FixedExpenseDetails = (props) => {
-  const { id, cost, title, date, recipient } = props.route.params;
+  const { id, cost, title, date, recipient, isPaid } = props.route.params;
   const dispatch = useDispatch();
-  const fixedExpenseList = useSelector(
-    (state) => state.fixedExpense.fixedExpense
-  );
   const history = useSelector((state) => state.fixedExpense.history);
   const historyEl = history.filter((el) => el.originId === id);
-  const expenseById = fixedExpenseList.find((el) => el.id === id);
-  const toArchive = () => {
-    dispatch(fixedExpenseActions.archive(id));
-    setPaid();
-    props.navigation.goBack();
-  };
   const showIsPaid = () => {
-    if (expenseById.isPaid) {
-      return (
-        <TouchableOpacity onPress={() => setPaid()}>
-          <Fontisto name="checkbox-active" size={15} color="green" />
-        </TouchableOpacity>
-      );
-    } else {
-      return (
-        <TouchableOpacity onPress={() => setPaid()}>
-          <Fontisto name="checkbox-passive" size={15} color="red" />
-        </TouchableOpacity>
-      );
-    }
+    return (
+      <TouchableOpacity
+        style={{
+          borderColor: Colors.gradientBackground.third,
+          borderWidth: 3,
+          borderRadius: 10,
+          padding: 5,
+          paddingLeft: 20,
+          paddingRight: 20,
+        }}
+        onPress={() => {
+          Alert.alert(
+            "Uwaga!",
+            "Czy opłacić?",
+            [
+              { text: "Nie", style: "cancel" },
+              { text: "Tak", onPress: () => setPaid() },
+            ],
+            { cancelable: false }
+          );
+        }}
+      >
+        <MaterialCommunityIcons name="cash-register" size={34} color="black" />
+      </TouchableOpacity>
+    );
   };
 
   history.map((el) => setNextPayDay(el.date, el.interval));
-  // console.log(history);
   const setPaid = () => {
-    dispatch(fixedExpenseActions.isPaid(!expenseById.isPaid, id));
+    dispatch(fixedExpenseActions.isPaid(!isPaid, id));
+    dispatch(fixedExpenseActions.archive(id));
+
+    props.navigation.goBack();
   };
 
-  const archive = () => (
-    <TouchableOpacity onPress={() => toArchive()}>
-      <Text style={{ color: Colors.primary, marginTop: 5 }}>archiwizuj</Text>
-    </TouchableOpacity>
-  );
+  const removeIncome = () => {
+    dispatch(fixedExpenseActions.delItem(id));
+    props.navigation.navigate("FixedExpense");
+  };
 
   return (
     <ExternalComponent>
@@ -64,7 +69,21 @@ const FixedExpenseDetails = (props) => {
 
           <Text style={styles.textTitle}>{title}</Text>
           <View style={styles.trash}>
-            <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+            <TouchableOpacity
+              onPress={() => {
+                Alert.alert(
+                  "Uwaga!",
+                  "Czy usunąć?",
+                  [
+                    { text: "Nie", style: "cancel" },
+                    { text: "Tak", onPress: () => removeIncome() },
+                  ],
+                  { cancelable: false }
+                );
+              }}
+            >
+              <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -72,7 +91,7 @@ const FixedExpenseDetails = (props) => {
           <View style={styles.top}>
             <View style={styles.paymentDate}>
               <Text>Termin zapłaty</Text>
-              <Text style={styles.textDate}>{expenseById.date}</Text>
+              <Text style={styles.textDate}>{date}</Text>
             </View>
             <View style={styles.costInfo}>
               <Text>Kwota</Text>
@@ -83,10 +102,20 @@ const FixedExpenseDetails = (props) => {
           <View style={styles.middle}>
             <Text style={styles.textRecipient}>{recipient}</Text>
           </View>
-          <View style={{ alignItems: "center", marginTop: 20 }}>
-            <Text>Opłacony? {showIsPaid()}</Text>
+          <View
+            style={{
+              alignItems: "center",
+              marginTop: 20,
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={{ marginRight: 20 }}>
+              archiwizuj opłacony rachunek{" "}
+            </Text>
+            <Text>{showIsPaid()}</Text>
 
-            {expenseById.isPaid ? archive() : null}
+            {/* {isPaid ? archive() : null} */}
           </View>
         </View>
         <View style={styles.history}>

@@ -1,4 +1,9 @@
-import { ADD_COST, IS_PAID, ARCHIVE } from "../actions/fixedExpense";
+import {
+  ADD_COST,
+  IS_PAID,
+  ARCHIVE,
+  DEL_EXPENSE,
+} from "../actions/fixedExpense";
 import Expense from "../../data/Dummy-FixedExpense";
 import uuid from "react-native-uuid";
 import setNextPayDay from "../../functions/SetNextPayDay";
@@ -37,6 +42,15 @@ export default (state = initialState, action) => {
         fixedExpense: updateState,
         history: [...state.history, newEl],
       };
+    case DEL_EXPENSE:
+      if (state.fixedExpense.length > 0) {
+        let current = [...state.fixedExpense];
+        let removeItem = current.map((el) => el.id).indexOf(action.itemId);
+        current.splice(removeItem, 1);
+        return { ...state, fixedExpense: current };
+      } else {
+        return { ...state };
+      }
   }
   return state;
 };

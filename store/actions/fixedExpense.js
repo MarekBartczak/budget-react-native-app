@@ -11,3 +11,8 @@ export const ARCHIVE = "ARCHIVE";
 export const archive = (id) => {
   return { type: ARCHIVE, id: id };
 };
+
+export const DEL_EXPENSE = "DEL_EXPENSE";
+export const delItem = (id) => {
+  return { type: DEL_EXPENSE, itemId: id };
+};

@@ -5,8 +5,8 @@ import DrawerNavigator from "./navigation/DrawerNavigator";
 import itemReducer from "./store/reducers/items";
 import FavoritePlacesReducer from "./store/reducers/favoritePlace";
 import FixedExpenseReducer from "./store/reducers/fixedExpense";
-import IncomeReducer from "./store/reducers/income";
 import FixedIncomeReducer from "./store/reducers/fixedIncome";
+import IncomeReducer from "./store/reducers/income";
 import RaportReducer from "./store/reducers/raport";
 const rootReducer = combineReducers({
   item: itemReducer,

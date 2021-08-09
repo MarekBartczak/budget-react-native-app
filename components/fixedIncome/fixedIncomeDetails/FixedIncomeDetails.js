@@ -5,14 +5,23 @@ import {
   Dimensions,
   TouchableOpacity,
   FlatList,
+  Alert,
 } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../constants/Colors";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
+import * as fixedIncomeAction from "../../../store/actions/fixedIncome";
+import { useDispatch } from "react-redux";
+
 const FixedIncomeDetails = (props) => {
   const { id, cost, title, date, recipient } = props.route.params;
+  const dispatch = useDispatch();
 
+  const removeIncome = () => {
+    dispatch(fixedIncomeAction.delItem(id));
+    props.navigation.navigate("FixedIncome");
+  };
   return (
     <ExternalComponent>
       <View>
@@ -21,7 +30,21 @@ const FixedIncomeDetails = (props) => {
 
           <Text style={styles.textTitle}>{title}</Text>
           <View style={styles.trash}>
-            <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+            <TouchableOpacity
+              onPress={() => {
+                Alert.alert(
+                  "Uwaga!",
+                  "Czy usunąć?",
+                  [
+                    { text: "Nie", style: "cancel" },
+                    { text: "Tak", onPress: () => removeIncome() },
+                  ],
+                  { cancelable: false }
+                );
+              }}
+            >
+              <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+            </TouchableOpacity>
           </View>
         </View>
 

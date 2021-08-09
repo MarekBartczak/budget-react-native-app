@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import FixedExpenseElement from "../../components/fixedExpense/fixedExpenseElement/FixedExpenseElement";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../ExternalComponentWithGradient/ExternalComponentWithGradient";
@@ -8,6 +8,8 @@ const FixedExpensesList = (props) => {
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
+  // const expenseById = fixedExpenseList.find((el) => el.id === id);
+
   return (
     <ExternalComponent>
       <View style={styles.fixedExpensesList}>
