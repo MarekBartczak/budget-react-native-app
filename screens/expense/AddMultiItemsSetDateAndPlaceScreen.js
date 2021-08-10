@@ -20,9 +20,11 @@ const AddMultiItemsScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const favList = useSelector((state) => state.favoritePlace.favoritePlace);
   const itemsFromRedux = useSelector((state) => state.item.items);
-
+  const filteredFavList = favList.filter(
+    (el) => el.name !== "Dodaj" && el.logo !== ""
+  );
   const dispatch = useDispatch();
-  const favListNames = favList.map((el) => el.name);
+  const favListNames = filteredFavList.map((el) => el.name);
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState(selectedPlace);
   const [itemName, setItemName] = useState("");
@@ -85,7 +87,7 @@ const AddMultiItemsScreen = (props) => {
                   data={workingPlaceList}
                   getPlaceInfo={getPlaceInfo}
                   place={place}
-                  imageUrl={favList}
+                  imageUrl={filteredFavList}
                 />
               </View>
             </View>
