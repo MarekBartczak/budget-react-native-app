@@ -1,5 +1,5 @@
 import { StyleSheet, View, Dimensions } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Chart from "../../components/chart/Chart";
 import FavoritePlaces from "../../components/FavoritePlaces";
 import AddNewItem from "../../components/AddNewItem";

@@ -8,6 +8,7 @@ import FixedExpenseReducer from "./store/reducers/fixedExpense";
 import FixedIncomeReducer from "./store/reducers/fixedIncome";
 import IncomeReducer from "./store/reducers/income";
 import RaportReducer from "./store/reducers/raport";
+
 const rootReducer = combineReducers({
   item: itemReducer,
   favoritePlace: FavoritePlacesReducer,

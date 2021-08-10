@@ -23,6 +23,7 @@ const AddMultiItemsScreen = (props) => {
   const filteredFavList = favList.filter(
     (el) => el.name !== "Dodaj" && el.logo !== ""
   );
+
   const dispatch = useDispatch();
   const favListNames = filteredFavList.map((el) => el.name);
   const [date, setDate] = useState(new Date());

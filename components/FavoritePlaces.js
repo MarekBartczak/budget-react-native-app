@@ -7,7 +7,7 @@ import {
   Modal,
 } from "react-native";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../constants/Colors";
 import * as favoritePlaceAction from "../store/actions/favoritePlace";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,11 +19,13 @@ import { LinearGradient } from "expo-linear-gradient";
 const FavoritePlaces = (props) => {
   const [showEdit, setShowEdit] = useState(false);
   const [favPlaceName, setFavPlaceName] = useState("");
+
   const favPlaceList = useSelector(
     (state) => state.favoritePlace.favoritePlace
   );
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  // console.log(favPlaceList);
   const favPlace = (favPlaceList) => {
     return (
       <FavPlaceElement
