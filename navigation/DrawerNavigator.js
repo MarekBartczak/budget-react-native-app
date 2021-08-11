@@ -19,7 +19,7 @@ import StackSettingsNavigator from "./StackSettingsNavigator";
 import { useSelector, useDispatch } from "react-redux";
 import AxiosInstance from "../AxiosInstance";
 import * as favoritePlace from "../store/actions/favoritePlace";
-
+import loadingData from "../functions/LoadingData";
 const Drawer = createDrawerNavigator();
 const isNotPadid = false;
 const DrawerNavigator = (props) => {
@@ -36,17 +36,16 @@ const DrawerNavigator = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
-      const result = await AxiosInstance.get("items/favoritePlace.json");
-      // console.log(result);
-      dispatch(favoritePlace.loafingFavoritePlaceFromDB(result.data));
-      setLoadedFavoritePlace(result.data);
+      const result = await loadingData();
+      dispatch(
+        favoritePlace.loafingFavoritePlaceFromDB(result.data.favoritePlace)
+      );
+      setLoadedFavoritePlace(result.data.favoritePlace);
       setStatus(result ? true : false);
     };
 
     fetchData();
   }, []);
-
-  // console.log(status);
 
   if (status) {
     return (

@@ -11,8 +11,8 @@ const data = { lidl: "www.lidl.de" };
 
 const initialState = {
   // favoritePlace: [...favoritePlace],
-  favoritePlace: [...favoritePlaceEmpty],
-  // favoritePlace: [],
+  // favoritePlace: [...favoritePlaceEmpty],
+  favoritePlace: [],
   selected: "",
   toSearchIn: [],
 };
