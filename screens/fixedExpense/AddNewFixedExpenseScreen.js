@@ -15,13 +15,17 @@ import DatePicker from "../../components/DatePicker";
 import Input from "../../components/input/Input";
 import Button from "../../components/buttons/Button";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as fixedExpenseActions from "../../store/actions/fixedExpense";
 import switchComaToDot from "../../functions/switchCompaToDot";
 import validateChecker from "../../components/undefinedListCheck/ValidateChecker";
 import Colors from "../../constants/Colors";
 import ExternalComponentWithGradient from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
+import saveDataToTheCloud from "../../functions/saveDataToTheCloud";
 const AddNewFixedExpenseScreen = (props) => {
+  const listOfFixedExpense = useSelector(
+    (state) => state.fixedExpense.fixedExpense
+  );
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
   const [cost, setCost] = useState();
@@ -65,7 +69,9 @@ const AddNewFixedExpenseScreen = (props) => {
   const saveFixedExpense = () => {
     const list = [title, cost, recipient];
     if (validateChecker(list) && typeof interval === "object") {
-      dispatch(fixedExpenseActions.addCost(newFixedExpense()));
+      const obj = newFixedExpense();
+      dispatch(fixedExpenseActions.addCost(obj));
+      saveDataToTheCloud.fixedExpense(obj, listOfFixedExpense.length);
       cleanState();
       props.navigation.navigate("FixedExpense");
     } else {

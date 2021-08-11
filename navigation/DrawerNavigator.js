@@ -3,27 +3,25 @@ import Colors from "../constants/Colors";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import {
-  MaterialCommunityIcons,
-  Ionicons,
-  FontAwesome,
-} from "@expo/vector-icons";
-
 import StackExpenseNavigator from "./StackExpenseNavigator";
 import StackIncomeNavigator from "./StackIncomeNavigator";
 import StackFixedExpenseNavigator from "./StackFixedExpenseNavigator";
 import StackRaportNavigator from "./StackRaportNavigator";
 import StackFixedIncomeNavigator from "./StackFixedIncomeNavigator";
 import StackSettingsNavigator from "./StackSettingsNavigator";
-
 import { useSelector, useDispatch } from "react-redux";
-import AxiosInstance from "../AxiosInstance";
+
 import * as favoritePlaceActions from "../store/actions/favoritePlace";
 import * as fixedExpenseActions from "../store/actions/fixedExpense";
 import * as fixedIncomeActions from "../store/actions/fixedIncome";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
 import loadingData from "../functions/LoadingData";
+import {
+  MaterialCommunityIcons,
+  Ionicons,
+  FontAwesome,
+} from "@expo/vector-icons";
 const Drawer = createDrawerNavigator();
 const isNotPadid = false;
 const DrawerNavigator = (props) => {

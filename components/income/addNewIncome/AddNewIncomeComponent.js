@@ -2,12 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 import uuid from "react-native-uuid";
 import AddNew from "../../addNew/AddNew";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as incomeAction from "../../../store/actions/income";
 import Income from "../../../models/Income";
 import switchComaToDot from "../../../functions/switchCompaToDot";
 import validateChecker from "../../undefinedListCheck/ValidateChecker";
+import saveDataToTheCloud from "../../../functions/saveDataToTheCloud";
 const AddNewIncomeComponent = (props) => {
+  const listOfIncome = useSelector((state) => state.income.income);
   const [date, setDate] = useState(new Date());
   const [cost, setCost] = useState();
   const [title, setTitle] = useState();
@@ -40,7 +42,9 @@ const AddNewIncomeComponent = (props) => {
   const saveFixedIncome = () => {
     const list = [title, cost, contractor];
     if (validateChecker(list)) {
-      dispatch(incomeAction.addIncome(newIncome()));
+      const obj = newIncome();
+      dispatch(incomeAction.addIncome(obj));
+      saveDataToTheCloud.income(obj, listOfIncome.length);
       cleanState();
     } else {
       alert("dane nie zostaly uzupelnione");

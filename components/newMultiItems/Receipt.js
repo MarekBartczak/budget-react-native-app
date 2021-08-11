@@ -25,7 +25,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as itemsAction from "../../store/actions/items";
 import SaveItemsToTheStore from "../../functions/SaveItemsToTheStore";
 import numberInputValidation from "../../functions/NumberInputValidation";
-
+import saveDataToTheCloud from "../../functions/saveDataToTheCloud";
 const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
   const [modal, showModal] = useState(false);
@@ -34,6 +34,8 @@ const Receipt = (props) => {
   const GetSelectedPlace = useSelector((state) => state.item.receipt.place);
   const showReceipt = useSelector((state) => state.item.receipt);
   const receiptItem = useSelector((state) => state.item.receipt.items);
+  const allElements = useSelector((state) => state.item.items);
+  // console.log(allElements.length);
   const dispatch = useDispatch();
   const sumOf = (total, sum) => total + sum;
   let costList = [];
@@ -177,9 +179,15 @@ const Receipt = (props) => {
                         if (receiptItem.length > 0) {
                           let currentDate = receiptDate;
                           dispatch(itemsAction.setReceiptDate(currentDate));
-                          let show;
-                          show = SaveItemsToTheStore(showReceipt);
-                          dispatch(itemsAction.addItemsFromReceipt(show));
+                          let itemToSaved;
+                          itemToSaved = SaveItemsToTheStore(showReceipt);
+                          dispatch(
+                            itemsAction.addItemsFromReceipt(itemToSaved)
+                          );
+                          saveDataToTheCloud.expense(
+                            ...itemToSaved,
+                            allElements.length
+                          );
                           props.backToHome();
                         } else {
                           alert("Dodaj pozycje do paragonu");

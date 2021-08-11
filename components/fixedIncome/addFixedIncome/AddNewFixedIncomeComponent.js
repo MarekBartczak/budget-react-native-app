@@ -5,8 +5,12 @@ import AddNew from "../../addNew/AddNew";
 import validateChecker from "../../undefinedListCheck/ValidateChecker";
 import Income from "../../../models/Income";
 import * as fixedIncomeAction from "../../../store/actions/fixedIncome";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import saveDataToTheCloud from "../../../functions/saveDataToTheCloud";
 const AddNewFixedIncomeComponent = (props) => {
+  const listOFFixedIncome = useSelector(
+    (state) => state.fixedIncome.fixedIncome
+  );
   const [date, setDate] = useState(new Date());
   const [cost, setCost] = useState();
   const [title, setTitle] = useState();
@@ -39,7 +43,9 @@ const AddNewFixedIncomeComponent = (props) => {
   const saveFixedIncome = () => {
     const list = [title, cost, contractor];
     if (validateChecker(list)) {
-      dispatch(fixedIncomeAction.addFixedIncome(newFixedIncome()));
+      const obj = newFixedIncome();
+      dispatch(fixedIncomeAction.addFixedIncome(obj));
+      saveDataToTheCloud.fixedIncome(obj, listOFFixedIncome.length);
       cleanState();
     } else {
       alert("dane nie zostaly uzupelnione");
