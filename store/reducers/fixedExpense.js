@@ -8,6 +8,8 @@ import {
 import Expense from "../../data/Dummy-FixedExpense";
 import uuid from "react-native-uuid";
 import setNextPayDay from "../../functions/SetNextPayDay";
+import deleteDataInCloud from "../../functions/deleteDataInCloud";
+
 const initialState = {
   // fixedExpense: [...Expense],
   fixedExpense: [],
@@ -51,6 +53,9 @@ export default (state = initialState, action) => {
         let current = [...state.fixedExpense];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);
         current.splice(removeItem, 1);
+        deleteDataInCloud.fixedExpense(
+          { ...state, fixedExpense: current }.fixedExpense
+        );
         return { ...state, fixedExpense: current };
       } else {
         return { ...state };

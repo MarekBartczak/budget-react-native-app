@@ -8,6 +8,7 @@ import {
   LOADING_EXPENSE_FROM_DB,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
+import deleteDataInCloud from "../../functions/deleteDataInCloud";
 
 const initialState = {
   // items: [...Items],
@@ -28,6 +29,7 @@ export default (state = initialState, action) => {
         let current = [...state.items];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);
         current.splice(removeItem, 1);
+        deleteDataInCloud.expense({ ...state, items: current }.items);
         return { ...state, items: current };
       } else {
         return { ...state };

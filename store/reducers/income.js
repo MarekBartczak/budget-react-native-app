@@ -4,6 +4,7 @@ import {
   LOADING_INCOME_FROM_DB,
 } from "../actions/income";
 import Income from "../../data/Dummy-income";
+import deleteDataInCloud from "../../functions/deleteDataInCloud";
 
 const initialState = {
   // income: [...Income],
@@ -21,6 +22,7 @@ export default (state = initialState, action) => {
         let current = [...state.income];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);
         current.splice(removeItem, 1);
+        deleteDataInCloud.income({ ...state, income: current }.income);
         return { ...state, income: current };
       } else {
         return { ...state };
