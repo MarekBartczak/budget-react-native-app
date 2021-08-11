@@ -1,5 +1,12 @@
 # BUDGET REACT NATIVE MOBILE APP (no beter name yet)
 
+## preview
+
+repoImg/a.png
+![picture a] (https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/a.png)
+![picture b] (https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/b.png)
+![picture c] (https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/c.png)
+
 ## installation
 
 first install EXPO
