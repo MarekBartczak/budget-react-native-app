@@ -10,13 +10,7 @@
 
 ## installation
 
-first install EXPO
-
-```bash
-npm install -g expo
-```
-
-then install dependencies
+first install dependencies
 
 ```bash
 npm install
