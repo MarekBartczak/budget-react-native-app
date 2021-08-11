@@ -2,9 +2,11 @@
 
 ## preview
 
-![picture a] (https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/a.png)
-![picture b] (https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/b.png)
-![picture c] (https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/c.png)
+    ![picture a](/repoImg/a.png)
+
+    ![picture b](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/b.png)
+
+    ![picture c](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/c.png)
 
 ## installation
 
