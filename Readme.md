@@ -1,6 +1,6 @@
 # BUDGET REACT NATIVE MOBILE APP (no beter name yet)
 
-## preview
+## Short preview
 
 ![picture a](/repoImg/a.png)
 
