@@ -7,7 +7,7 @@ import * as incomeAction from "../../../store/actions/income";
 import Income from "../../../models/Income";
 import switchComaToDot from "../../../functions/switchCompaToDot";
 import validateChecker from "../../undefinedListCheck/ValidateChecker";
-import saveDataToTheCloud from "../../../functions/saveDataToTheCloud";
+import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";
 const AddNewIncomeComponent = (props) => {
   const listOfIncome = useSelector((state) => state.income.income);
   const [date, setDate] = useState(new Date());

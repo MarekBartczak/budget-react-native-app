@@ -8,7 +8,7 @@ import {
 import Expense from "../../data/Dummy-FixedExpense";
 import uuid from "react-native-uuid";
 import setNextPayDay from "../../functions/SetNextPayDay";
-import deleteDataInCloud from "../../functions/deleteDataInCloud";
+import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 
 const initialState = {
   // fixedExpense: [...Expense],

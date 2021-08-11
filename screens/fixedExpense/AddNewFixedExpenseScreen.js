@@ -21,7 +21,7 @@ import switchComaToDot from "../../functions/switchCompaToDot";
 import validateChecker from "../../components/undefinedListCheck/ValidateChecker";
 import Colors from "../../constants/Colors";
 import ExternalComponentWithGradient from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-import saveDataToTheCloud from "../../functions/saveDataToTheCloud";
+import saveDataToTheCloud from "../../functions/cloud/saveDataToTheCloud";
 const AddNewFixedExpenseScreen = (props) => {
   const listOfFixedExpense = useSelector(
     (state) => state.fixedExpense.fixedExpense

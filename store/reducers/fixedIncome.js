@@ -4,7 +4,7 @@ import {
   LOADING_FIXED_INCOME_FROM_DB,
 } from "../actions/fixedIncome";
 import FixedIncome from "../../data/Dummy-FixedIncome";
-import deleteDataInCloud from "../../functions/deleteDataInCloud";
+import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 
 const initialState = {
   // fixedIncome: [...FixedIncome],

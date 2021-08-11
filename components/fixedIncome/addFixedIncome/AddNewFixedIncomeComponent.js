@@ -6,7 +6,7 @@ import validateChecker from "../../undefinedListCheck/ValidateChecker";
 import Income from "../../../models/Income";
 import * as fixedIncomeAction from "../../../store/actions/fixedIncome";
 import { useDispatch, useSelector } from "react-redux";
-import saveDataToTheCloud from "../../../functions/saveDataToTheCloud";
+import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";
 const AddNewFixedIncomeComponent = (props) => {
   const listOFFixedIncome = useSelector(
     (state) => state.fixedIncome.fixedIncome

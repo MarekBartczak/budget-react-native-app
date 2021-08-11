@@ -25,7 +25,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as itemsAction from "../../store/actions/items";
 import SaveItemsToTheStore from "../../functions/SaveItemsToTheStore";
 import numberInputValidation from "../../functions/NumberInputValidation";
-import saveDataToTheCloud from "../../functions/saveDataToTheCloud";
+import saveDataToTheCloud from "../../functions/cloud/saveDataToTheCloud";
 const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
   const [modal, showModal] = useState(false);

@@ -8,7 +8,7 @@ import {
   LOADING_EXPENSE_FROM_DB,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
-import deleteDataInCloud from "../../functions/deleteDataInCloud";
+import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 
 const initialState = {
   // items: [...Items],

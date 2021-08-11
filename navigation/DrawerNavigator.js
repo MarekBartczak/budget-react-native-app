@@ -16,7 +16,7 @@ import * as fixedExpenseActions from "../store/actions/fixedExpense";
 import * as fixedIncomeActions from "../store/actions/fixedIncome";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
-import loadingData from "../functions/LoadingData";
+import loadingData from "../functions/cloud/LoadingData";
 import {
   MaterialCommunityIcons,
   Ionicons,
