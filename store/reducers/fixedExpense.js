@@ -3,17 +3,21 @@ import {
   IS_PAID,
   ARCHIVE,
   DEL_EXPENSE,
+  LOADING_FIXED_EXPENSE_FROM_DB,
 } from "../actions/fixedExpense";
 import Expense from "../../data/Dummy-FixedExpense";
 import uuid from "react-native-uuid";
 import setNextPayDay from "../../functions/SetNextPayDay";
 const initialState = {
-  fixedExpense: [...Expense],
+  // fixedExpense: [...Expense],
+  fixedExpense: [],
   history: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOADING_FIXED_EXPENSE_FROM_DB:
+      return { ...state, fixedExpense: [...action.array] };
     case ADD_COST:
       return { ...state, fixedExpense: [...state.fixedExpense, action.cost] };
     case IS_PAID:

@@ -5,11 +5,13 @@ import {
   SET_RECEIPT_PLACE,
   SET_RECEIPT_DATE,
   ADD_ITEMS_FROM_RECEIPT,
+  LOADING_EXPENSE_FROM_DB,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
 
 const initialState = {
-  items: [...Items],
+  // items: [...Items],
+  items: [],
   receipt: {
     place: "",
     date: "",
@@ -19,6 +21,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOADING_EXPENSE_FROM_DB:
+      return { ...state, items: [...action.array] };
     case DEL_ITEM:
       if (state.items.length > 0) {
         let current = [...state.items];

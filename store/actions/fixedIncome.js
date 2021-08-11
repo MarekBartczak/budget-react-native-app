@@ -8,3 +8,8 @@ export const DELETE_FIXED_INCOME = "DELETE_FIXED_INCOME";
 export const delItem = (id) => {
   return { type: DELETE_FIXED_INCOME, itemId: id };
 };
+
+export const LOADING_FIXED_INCOME_FROM_DB = "LOADING_FIXED_INCOME_FROM_DB";
+export const loadingFixedIncomefromDB = (array) => {
+  return { type: LOADING_FIXED_INCOME_FROM_DB, array: array };
+};

@@ -16,3 +16,8 @@ export const DEL_EXPENSE = "DEL_EXPENSE";
 export const delItem = (id) => {
   return { type: DEL_EXPENSE, itemId: id };
 };
+
+export const LOADING_FIXED_EXPENSE_FROM_DB = "LOADING_FIXED_EXPENSE_FROM_DB";
+export const loadingFixedExpensefromDB = (array) => {
+  return { type: LOADING_FIXED_EXPENSE_FROM_DB, array: array };
+};

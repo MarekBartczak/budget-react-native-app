@@ -18,7 +18,11 @@ import StackSettingsNavigator from "./StackSettingsNavigator";
 
 import { useSelector, useDispatch } from "react-redux";
 import AxiosInstance from "../AxiosInstance";
-import * as favoritePlace from "../store/actions/favoritePlace";
+import * as favoritePlaceActions from "../store/actions/favoritePlace";
+import * as fixedExpenseActions from "../store/actions/fixedExpense";
+import * as fixedIncomeActions from "../store/actions/fixedIncome";
+import * as expenseActions from "../store/actions/items";
+import * as incomeActions from "../store/actions/income";
 import loadingData from "../functions/LoadingData";
 const Drawer = createDrawerNavigator();
 const isNotPadid = false;
@@ -38,8 +42,18 @@ const DrawerNavigator = (props) => {
     const fetchData = async () => {
       const result = await loadingData();
       dispatch(
-        favoritePlace.loafingFavoritePlaceFromDB(result.data.favoritePlace)
+        favoritePlaceActions.loadingFavoritePlaceFromDB(
+          result.data.favoritePlace
+        )
       );
+      dispatch(
+        fixedExpenseActions.loadingFixedExpensefromDB(result.data.fixedExpense)
+      );
+      dispatch(
+        fixedIncomeActions.loadingFixedIncomefromDB(result.data.fixedIncome)
+      );
+      dispatch(expenseActions.loadingExpensefromDB(result.data.expense));
+      dispatch(incomeActions.loadingIncomefromDB(result.data.income));
       setLoadedFavoritePlace(result.data.favoritePlace);
       setStatus(result ? true : false);
     };

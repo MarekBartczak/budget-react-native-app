@@ -14,6 +14,6 @@ export const selecLogo = (logo) => {
 };
 
 export const LOADING_FAVORITE_PLACE_FROM_DB = "LOADING_FAVORITE_PLACE_FROM_DB";
-export const loafingFavoritePlaceFromDB = (array) => {
+export const loadingFavoritePlaceFromDB = (array) => {
   return { type: LOADING_FAVORITE_PLACE_FROM_DB, array: array };
 };

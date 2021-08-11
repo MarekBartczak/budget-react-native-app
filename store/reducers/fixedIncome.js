@@ -1,12 +1,19 @@
-import { ADD_FIXED_INCOME, DELETE_FIXED_INCOME } from "../actions/fixedIncome";
+import {
+  ADD_FIXED_INCOME,
+  DELETE_FIXED_INCOME,
+  LOADING_FIXED_INCOME_FROM_DB,
+} from "../actions/fixedIncome";
 import FixedIncome from "../../data/Dummy-FixedIncome";
 
 const initialState = {
-  fixedIncome: [...FixedIncome],
+  // fixedIncome: [...FixedIncome],
+  fixedIncome: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOADING_FIXED_INCOME_FROM_DB:
+      return { ...state, fixedIncome: [...action.array] };
     case ADD_FIXED_INCOME:
       return { ...state, fixedIncome: [...state.fixedIncome, action.income] };
     case DELETE_FIXED_INCOME:

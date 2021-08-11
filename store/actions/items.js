@@ -22,3 +22,8 @@ export const ADD_ITEMS_FROM_RECEIPT = "ADD_ITEMS_FROM_RECEIPT";
 export const addItemsFromReceipt = (list) => {
   return { type: ADD_ITEMS_FROM_RECEIPT, list: list };
 };
+
+export const LOADING_EXPENSE_FROM_DB = "LOADING_EXPENSE_FROM_DB";
+export const loadingExpensefromDB = (array) => {
+  return { type: LOADING_EXPENSE_FROM_DB, array: array };
+};
