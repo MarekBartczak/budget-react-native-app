@@ -17,6 +17,7 @@ import * as fixedIncomeActions from "../store/actions/fixedIncome";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
 import loadingData from "../functions/cloud/LoadingData";
+
 import {
   MaterialCommunityIcons,
   Ionicons,
@@ -72,7 +73,7 @@ const DrawerNavigator = (props) => {
           }}
         >
           <Drawer.Screen
-            name="Wydatki"
+            name="Home"
             component={StackExpenseNavigator}
             options={{
               drawerIcon: () => (

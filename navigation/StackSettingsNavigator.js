@@ -11,6 +11,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import SettingsScreen from "../screens/settings/SettingsScreen";
+import Logout from "../components/auth/logout/Logout";
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,7 @@ const StackSettingsNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
+        headerRight: () => <Logout />,
       }))}
     </Stack.Navigator>
   );

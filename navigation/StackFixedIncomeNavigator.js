@@ -6,6 +6,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import FixedIncomeScreen from "../screens/fixedIncome/FixedIncomeScreen";
 import FixedIncomeDetails from "../components/fixedIncome/fixedIncomeDetails/FixedIncomeDetails";
 import FixedIncomeList from "../components/fixedIncome/FixedIncomeList";
+import Logout from "../components/auth/logout/Logout";
+
 const Stack = createStackNavigator();
 
 const StackFixedIncomeNavigator = (props) => {
@@ -44,6 +46,7 @@ const StackFixedIncomeNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
+        headerRight: () => <Logout />,
       }))}
       {stackScreen("FixedIncomeList", FixedIncomeList, ({ navigation }) => ({
         headerTitle: "Lista stałych wpływów",

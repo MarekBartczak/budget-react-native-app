@@ -12,6 +12,8 @@ import HeaderScreenComponent from "../screens/HeaderScreen/HeaderScreenComponent
 import RaportScreen from "../screens/raport/RaportScreen";
 import SendRaportScreen from "../screens/raport/SendRaportScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Logout from "../components/auth/logout/Logout";
+
 const Stack = createStackNavigator();
 
 const StackRaportNavigator = (props) => {
@@ -49,6 +51,8 @@ const StackRaportNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
+        // headerRight: () => <Logout />,
+
         headerRight: () => (
           <TouchableOpacity
             style={{ marginRight: 20 }}

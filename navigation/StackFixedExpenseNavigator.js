@@ -8,6 +8,8 @@ import FixedExpenseScreen from "../screens/fixedExpense/FixedExpenseScreen";
 import FixedExpensesList from "../components/fixedExpense/FixedExpensesList";
 import FixedExpenseDetails from "../components/fixedExpense/fixedExpenseDetails/FixedExpenseDetails";
 import AddNewFixedExpenseScreen from "../screens/fixedExpense/AddNewFixedExpenseScreen";
+import Logout from "../components/auth/logout/Logout";
+
 const Stack = createStackNavigator();
 
 const StackFixedExpenseNavigator = (props) => {
@@ -45,6 +47,7 @@ const StackFixedExpenseNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
+        headerRight: () => <Logout />,
       }))}
       {stackScreen(
         "FixedExpensesList",

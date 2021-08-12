@@ -13,6 +13,7 @@ const Input = (props) => {
         autoCorrect={false}
         enablesReturnKeyAutomatically={true}
         onChangeText={props.onChangeText}
+        {...props}
       />
     </View>
   );

@@ -9,7 +9,7 @@ import Colors from "../constants/Colors";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import Logout from "../components/auth/logout/Logout";
 import React from "react";
 
 const Stack = createStackNavigator();
@@ -41,6 +41,7 @@ const StackExpenseNavigator = (props) => {
           />
         </TouchableOpacity>
       ),
+      headerRight: () => <Logout />,
     };
   };
   const stackScreen = (name, component, option) => {

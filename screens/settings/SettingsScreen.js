@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 const SettingsScreen = (props) => {
   return (

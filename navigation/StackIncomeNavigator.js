@@ -6,6 +6,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import IncomeScreen from "../screens/income/IncomeScreen";
 import IncomeDetails from "../components/income/incomeDetails/IncomeDetails";
 import IncomeList from "../components/income/IncomeList";
+import Logout from "../components/auth/logout/Logout";
+
 const Stack = createStackNavigator();
 
 const StackIncomeNavigator = (props) => {
@@ -44,6 +46,7 @@ const StackIncomeNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
+        headerRight: () => <Logout />,
       }))}
       {stackScreen("IncomeList", IncomeList, ({ navigation }) => ({
         headerTitle: "Lista wpływów",
