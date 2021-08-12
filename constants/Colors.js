@@ -14,7 +14,8 @@ export default {
   transparent: "rgba(255,255,255,0.3)",
   shadowColor: "rgb(120, 140, 184)",
   shadowColorLight: "rgb(110, 130, 170)",
-
+  facebook: "rgb(59,89,152)",
+  google: "#ea4335",
   gradientBackground: {
     primary: "rgb(200, 200,200)",
     secondary: "rgb(200,200,200)",
