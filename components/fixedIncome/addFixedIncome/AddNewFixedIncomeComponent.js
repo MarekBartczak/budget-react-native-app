@@ -3,7 +3,7 @@ import uuid from "react-native-uuid";
 import switchComaToDot from "../../../functions/switchCompaToDot";
 import AddNew from "../../addNew/AddNew";
 import validateChecker from "../../undefinedListCheck/ValidateChecker";
-import Income from "../../../models/Income";
+import Income from "../../../models/income";
 import * as fixedIncomeAction from "../../../store/actions/fixedIncome";
 import { useDispatch, useSelector } from "react-redux";
 import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";

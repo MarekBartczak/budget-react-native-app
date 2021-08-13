@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import uuid from "react-native-uuid";
-import Expense from "../../../models/Expense";
+import Expense from "../../../models/expense";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 import { useDispatch } from "react-redux";
 import switchComaToDot from "../../../functions/switchCompaToDot";

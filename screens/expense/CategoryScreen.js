@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import SimplyItems from "../../components/SimplyItems";
+import SimplyItems from "../../components/simplyItems";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";

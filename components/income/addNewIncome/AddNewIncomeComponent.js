@@ -4,7 +4,7 @@ import AddNew from "../../addNew/AddNew";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as incomeAction from "../../../store/actions/income";
-import Income from "../../../models/Income";
+import Income from "../../../models/income";
 import switchComaToDot from "../../../functions/switchCompaToDot";
 import validateChecker from "../../undefinedListCheck/ValidateChecker";
 import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";

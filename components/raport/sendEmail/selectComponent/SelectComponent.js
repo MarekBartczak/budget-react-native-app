@@ -4,7 +4,7 @@ import SelectEl from "./SelectEl";
 import React from "react";
 import { useSelector } from "react-redux";
 import * as raportActions from "../../../../store/actions/raport";
-import Send from "../email/Send";
+import Send from "../email/send";
 
 const SelectComponent = (props) => {
   const initialRaportState = useSelector((state) => state.raport);

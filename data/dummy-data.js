@@ -1,4 +1,4 @@
-import Category from "./Category";
+import Category from "./category";
 import Item from "../models/Item";
 
 const dateForm = (date) => {

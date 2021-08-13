@@ -1,6 +1,6 @@
 import { StyleSheet, View, FlatList } from "react-native";
 import React, { useState } from "react";
-import Category from "../../data/Category";
+import Category from "../../data/category";
 import CategoryElementList from "./CategoryElementList";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";

@@ -1,4 +1,4 @@
-import Income from "../models/Income";
+import Income from "../models/income";
 
 const dateForm = (date) => {
   return new Date(date).toISOString().slice(0, 10);
