@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Colors from "../constants/Colors";
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  ActivityIndicator,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import StackExpenseNavigator from "./StackExpenseNavigator";
@@ -180,7 +186,9 @@ const DrawerNavigator = (props) => {
           justifyContent: "center",
         }}
       >
-        <Text>Loading</Text>
+        <Text>
+          <ActivityIndicator size="large" />
+        </Text>
       </View>
     );
   }

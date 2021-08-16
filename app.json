@@ -15,7 +15,14 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": false
+      "bundleIdentifier": "com.marek.bartczak.budgetreactnativeapp",
+      "supportsTablet": false,
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.506404078923-n0o0rasbikpkccr3rrglt9qda03mnrlv"
+        }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
