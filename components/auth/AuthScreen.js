@@ -20,6 +20,8 @@ import config from "./config/firebase";
 import signInWithEmailAndPassowrd from "./authMethods/withEmailAndPassword";
 import signInWithGoogleAsync from "./authMethods/withGoogle";
 import firebaseInit from "./firebaseInit";
+import * as SecureStore from "expo-secure-store";
+
 const AuthScreen = (props) => {
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
@@ -33,9 +35,10 @@ const AuthScreen = (props) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const userData = firebase.auth().currentUser;
-      console.log(userData);
+      // console.log(userData);
       login();
       createUserInfo(userData);
+      console.log(userData.uid);
     }
   });
 
@@ -43,19 +46,24 @@ const AuthScreen = (props) => {
     firebase
       .database()
       .ref(`users/` + user.uid)
-      .set({
+      .update({
         username: user.displayName,
         email: user.providerData[0].email,
         photoURL: user.photoURL,
       })
-      // .then(snapshot)
       .catch((err) => console.log(err));
+    testReadData(user.uid);
+  };
+
+  const testReadData = (uid) => {
+    const itemRef = firebase.database().ref(`users/${uid}`);
+    itemRef.on("value", (data) => {
+      const items = data.val();
+      // console.log(items);
+    });
   };
 
   if (userStatus) {
-    // return (
-
-    // );
     return <DrawerNavigator />;
   } else {
     return (
@@ -83,9 +91,6 @@ const AuthScreen = (props) => {
                 }
               >
                 <Text style={styles.loginBtn}>Zaloguj</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => firebase.auth().signOut()}>
-                <Text style={styles.loginBtn}>logout</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.otherMethodLogin}>
