@@ -22,7 +22,7 @@ import * as fixedExpenseActions from "../store/actions/fixedExpense";
 import * as fixedIncomeActions from "../store/actions/fixedIncome";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
-import loadingData from "../functions/cloud/LoadingData";
+import firebase from "firebase";
 
 import {
   MaterialCommunityIcons,
@@ -40,28 +40,47 @@ const DrawerNavigator = (props) => {
   const dateList = fixedExpensesList.map((el) => new Date(el.date) > today);
   const isAllPaid = dateList.filter((el) => el === false);
 
-  const [loadedFavoritePlace, setLoadedFavoritePlace] = useState([]);
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
+
+  const dispatchSwitcher = (type, list) => {
+    switch (type) {
+      case "income":
+        dispatch(incomeActions.loadingIncomefromDB(list));
+        return;
+      case "expense":
+        dispatch(expenseActions.loadingExpensefromDB(list));
+        return;
+      case "fixedExpense":
+        dispatch(fixedExpenseActions.loadingFixedExpensefromDB(list));
+        return;
+      case "fixedIncome":
+        dispatch(fixedIncomeActions.loadingFixedIncomefromDB(list));
+        return;
+    }
+  };
+  const loadingData = (type) => {
+    const uid = "U5FPqWVHfEYKXvhNPUNiAeY0XSB3";
+    const itemRef = firebase.database().ref(`users/${uid}/items/${type}`);
+    let list;
+    itemRef.on("value", async (data) => {
+      let obj = await data.val();
+      if (obj != null) {
+        let objKeyList = Object.keys(obj);
+        let list = Object.values(obj);
+        list.forEach((el, index) => (el.firebaseId = objKeyList[index]));
+        dispatchSwitcher(type, list);
+      }
+    });
+    setStatus(true);
+    return list;
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await loadingData();
-      console.log(result.data);
-      dispatch(
-        favoritePlaceActions.loadingFavoritePlaceFromDB(
-          result.data.favoritePlace
-        )
-      );
-      dispatch(
-        fixedExpenseActions.loadingFixedExpensefromDB(result.data.fixedExpense)
-      );
-      dispatch(
-        fixedIncomeActions.loadingFixedIncomefromDB(result.data.fixedIncome)
-      );
-      dispatch(expenseActions.loadingExpensefromDB(result.data.expense));
-      dispatch(incomeActions.loadingIncomefromDB(result.data.income));
-      setLoadedFavoritePlace(result.data.favoritePlace);
-      setStatus(result ? true : false);
+    const fetchData = () => {
+      loadingData("income");
+      loadingData("expense");
+      loadingData("fixedExpense");
+      loadingData("fixedIncome");
     };
 
     fetchData();

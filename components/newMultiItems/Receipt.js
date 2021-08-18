@@ -184,10 +184,8 @@ const Receipt = (props) => {
                           dispatch(
                             itemsAction.addItemsFromReceipt(itemToSaved)
                           );
-                          saveDataToTheCloud.expense(
-                            ...itemToSaved,
-                            allElements.length
-                          );
+                          // console.log(itemToSaved);
+                          saveDataToTheCloud.expense(itemToSaved);
                           props.backToHome();
                         } else {
                           alert("Dodaj pozycje do paragonu");

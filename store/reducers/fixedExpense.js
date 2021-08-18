@@ -49,13 +49,18 @@ export default (state = initialState, action) => {
         history: [...state.history, newEl],
       };
     case DEL_EXPENSE:
+      const filteredItem = state.fixedExpense.find(
+        (el) => el.id === action.itemId
+      );
+      deleteDataInCloud.fixedExpense(filteredItem.firebaseId);
+
       if (state.fixedExpense.length > 0) {
         let current = [...state.fixedExpense];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);
         current.splice(removeItem, 1);
-        deleteDataInCloud.fixedExpense(
-          { ...state, fixedExpense: current }.fixedExpense
-        );
+        // deleteDataInCloud.fixedExpense(
+        //   { ...state, fixedExpense: current }.fixedExpense
+        // );
         return { ...state, fixedExpense: current };
       } else {
         return { ...state };

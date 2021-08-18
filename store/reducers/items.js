@@ -25,11 +25,16 @@ export default (state = initialState, action) => {
     case LOADING_EXPENSE_FROM_DB:
       return { ...state, items: [...action.array] };
     case DEL_ITEM:
+      // console.log(action.itemId);
+      // console.log(state.items);
+      const filteredItem = state.items.find((el) => el.id === action.itemId);
+      // console.log(filteredItem.firebaseId);
+      deleteDataInCloud.expense(filteredItem.firebaseId);
       if (state.items.length > 0) {
         let current = [...state.items];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);
         current.splice(removeItem, 1);
-        deleteDataInCloud.expense({ ...state, items: current }.items);
+        // deleteDataInCloud.expense({ ...state, items: current }.items);
         return { ...state, items: current };
       } else {
         return { ...state };

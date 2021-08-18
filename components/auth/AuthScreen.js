@@ -38,7 +38,7 @@ const AuthScreen = (props) => {
       // console.log(userData);
       login();
       createUserInfo(userData);
-      console.log(userData.uid);
+      // console.log(userData.uid);
     }
   });
 

@@ -18,11 +18,14 @@ export default (state = initialState, action) => {
     case ADD_INCOME:
       return { ...state, income: [...state.income, action.income] };
     case DELETE_INCOME:
+      const filteredItem = state.income.find((el) => el.id === action.itemId);
+      deleteDataInCloud.income(filteredItem.firebaseId);
+
       if (state.income.length > 0) {
         let current = [...state.income];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);
         current.splice(removeItem, 1);
-        deleteDataInCloud.income({ ...state, income: current }.income);
+        // deleteDataInCloud.income({ ...state, income: current }.income);
         return { ...state, income: current };
       } else {
         return { ...state };

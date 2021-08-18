@@ -12,9 +12,9 @@ const DetailsScreen = (props) => {
 
   const deleteItem = () => {
     dispatch(itemsAction.delItem(id));
+    // console.log(id);
     props.navigation.navigate("Home");
   };
-
   return (
     <ExternalComponent>
       <View style={styles.screen}>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   cost: {
     fontWeight: "bold",
-    color: Colors.accent,
+    color: "black",
     fontSize: 24,
     paddingVertical: 10,
   },

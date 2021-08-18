@@ -1,33 +1,23 @@
 import axiosInstance from "../../AxiosInstance";
+import firebase from "firebase";
 
+const uid = "U5FPqWVHfEYKXvhNPUNiAeY0XSB3";
+
+const removeFromFirebaseBySet = (id, type) => {
+  firebase.database().ref(`users/${uid}/items/${type}/${id}`).set(null);
+};
 const deleteDataInCloud = {
-  expense: (list) => {
-    console.log(list);
-    axiosInstance
-      .put("items/expense.json", list)
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+  expense: (id) => {
+    removeFromFirebaseBySet(id, "expense");
   },
-  income: (list) => {
-    console.log(list);
-    axiosInstance
-      .put("items/income.json", list)
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+  income: (id) => {
+    removeFromFirebaseBySet(id, "income");
   },
-  fixedExpense: (list) => {
-    console.log(list);
-    axiosInstance
-      .put("items/fixedExpense.json", list)
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+  fixedExpense: (id) => {
+    removeFromFirebaseBySet(id, "fixedExpense");
   },
-  fixedIncome: (list) => {
-    console.log(list);
-    axiosInstance
-      .put("items/fixedIncome.json", list)
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+  fixedIncome: (id) => {
+    removeFromFirebaseBySet(id, "firebase");
   },
 };
 
