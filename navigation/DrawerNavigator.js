@@ -44,23 +44,23 @@ const DrawerNavigator = (props) => {
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    const fetchData = () => {
-      const result = loadingData();
-      console.log(result);
-      // dispatch(
-      //   favoritePlaceActions.loadingFavoritePlaceFromDB(
-      //     result.data.favoritePlace
-      //   )
-      // );
-      // dispatch(
-      //   fixedExpenseActions.loadingFixedExpensefromDB(result.data.fixedExpense)
-      // );
-      // dispatch(
-      //   fixedIncomeActions.loadingFixedIncomefromDB(result.data.fixedIncome)
-      // );
-      // dispatch(expenseActions.loadingExpensefromDB(result.data.expense));
-      // dispatch(incomeActions.loadingIncomefromDB(result.data.income));
-      // setLoadedFavoritePlace(result.data.favoritePlace);
+    const fetchData = async () => {
+      const result = await loadingData();
+      console.log(result.data);
+      dispatch(
+        favoritePlaceActions.loadingFavoritePlaceFromDB(
+          result.data.favoritePlace
+        )
+      );
+      dispatch(
+        fixedExpenseActions.loadingFixedExpensefromDB(result.data.fixedExpense)
+      );
+      dispatch(
+        fixedIncomeActions.loadingFixedIncomefromDB(result.data.fixedIncome)
+      );
+      dispatch(expenseActions.loadingExpensefromDB(result.data.expense));
+      dispatch(incomeActions.loadingIncomefromDB(result.data.income));
+      setLoadedFavoritePlace(result.data.favoritePlace);
       setStatus(result ? true : false);
     };
 

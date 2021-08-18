@@ -8,6 +8,7 @@ import {
   Keyboard,
   FlatList,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
 import FixedExpense from "../../models/FixedExpense";
 import uuid from "react-native-uuid";
@@ -32,6 +33,7 @@ const AddNewFixedExpenseScreen = (props) => {
   const [title, setTitle] = useState();
   const [recipient, setRecipient] = useState();
   const [interval, setInterval] = useState("");
+  const [description, setDescription] = useState("");
   const intervalList = [
     { id: "00", title: "co 10 dni", value: { days: 10, months: 0, years: 0 } },
     { id: "01", title: "co 7 dni", value: { days: 7, months: 0, years: 0 } },
@@ -55,7 +57,8 @@ const AddNewFixedExpenseScreen = (props) => {
       recipient,
       false,
       Number(switchComaToDot(cost)),
-      interval.value
+      interval.value,
+      description
     );
   };
 
@@ -125,6 +128,15 @@ const AddNewFixedExpenseScreen = (props) => {
                     keyboardType={"default"}
                     onChangeText={setRecipient}
                   />
+                  <TextInput
+                    style={styles.descriptionInput}
+                    placeholder={"Opis"}
+                    multiline
+                    numberOfLines={3}
+                    keyboardType={"default"}
+                    onChangeText={setDescription}
+                  />
+
                   <View style={styles.interval}>
                     <View style={styles.inner}>
                       <Text
@@ -192,7 +204,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  datePickerView: { marginTop: 10 },
+  datePickerView: {
+    marginTop: 10,
+    width: Dimensions.get("window").width * 0.9,
+  },
 
   inner: {
     backgroundColor: Colors.gradientBackground.third,
@@ -219,7 +234,16 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 25,
-    width: 200,
+    width: Dimensions.get("window").width * 0.9,
+    borderBottomWidth: 1,
+    margin: 5,
+    margin: 10,
+    color: Colors.primary,
+    borderColor: Colors.primary,
+  },
+  descriptionInput: {
+    height: 75,
+    width: Dimensions.get("window").width * 0.9,
     borderBottomWidth: 1,
     margin: 5,
     margin: 10,
@@ -233,7 +257,7 @@ const styles = StyleSheet.create({
   interval: {
     marginTop: 20,
     backgroundColor: Colors.accent,
-    width: Dimensions.get("window").width * 0.7,
+    width: Dimensions.get("window").width * 0.9,
     height: 160,
     justifyContent: "center",
     alignItems: "center",
@@ -249,16 +273,18 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   intervalOptions: {
-    alignItems: "flex-start",
+    // alignItems: "flex-start",
     backgroundColor: Colors.accent,
-
+    justifyContent: "center",
+    alignItems: "center",
     width: "100%",
   },
   intervalListElement: {
     marginVertical: 2,
     backgroundColor: Colors.gradientBackground.third,
-    marginLeft: 10,
-    width: Dimensions.get("window").width * 0.6,
+    // marginLeft: 10,
+    width: Dimensions.get("window").width * 0.8,
+    // width: "100%",
     paddingLeft: 20,
     height: 21,
   },

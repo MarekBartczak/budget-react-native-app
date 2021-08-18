@@ -37,7 +37,7 @@ const MainScreen = (props) => {
               data={chartEl.data}
             />
           </View>
-          {/* <View style={styles.favoritePlace}>
+          <View style={styles.favoritePlace}>
             <FavoritePlaces
               onPress={() => props.navigation.navigate("FavoritePlace")}
               pressToAddMultiItems={() =>
@@ -46,7 +46,7 @@ const MainScreen = (props) => {
                 })
               }
             />
-          </View> */}
+          </View>
           <View style={styles.addNewItem}>
             <AddNewItem
               navigateTo={() => props.navigation.navigate("AddMultipleItem")}
