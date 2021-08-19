@@ -6,6 +6,7 @@ import {
   Text,
   Dimensions,
   ActivityIndicator,
+  Image,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -15,6 +16,7 @@ import StackFixedExpenseNavigator from "./StackFixedExpenseNavigator";
 import StackRaportNavigator from "./StackRaportNavigator";
 import StackFixedIncomeNavigator from "./StackFixedIncomeNavigator";
 import StackSettingsNavigator from "./StackSettingsNavigator";
+import StackUserNavigator from "./StackUserNavigator";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as favoritePlaceActions from "../store/actions/favoritePlace";
@@ -33,6 +35,8 @@ const Drawer = createDrawerNavigator();
 const isNotPadid = false;
 const DrawerNavigator = (props) => {
   const userId = useSelector((state) => state.auth.userID);
+  const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
+  const userDisplayName = useSelector((state) => state.auth.userName);
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
@@ -114,6 +118,23 @@ const DrawerNavigator = (props) => {
             labelStyle: { color: Colors.primary, fontSize: 15 },
           }}
         >
+          <Drawer.Screen
+            name="UserData"
+            component={StackUserNavigator}
+            options={{
+              drawerIcon: () => (
+                <Image
+                  style={{
+                    height: 40,
+                    width: 40,
+                    borderRadius: 20,
+                  }}
+                  source={{ url: userPhotoUrl }}
+                />
+              ),
+              drawerLabel: userDisplayName,
+            }}
+          />
           <Drawer.Screen
             name="Home"
             component={StackExpenseNavigator}

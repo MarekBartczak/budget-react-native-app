@@ -44,6 +44,7 @@ const StackExpenseNavigator = (props) => {
       headerRight: () => <Logout />,
     };
   };
+
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };

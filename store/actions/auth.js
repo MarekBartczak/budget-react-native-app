@@ -12,7 +12,7 @@ export const SHOW_INDICATOR = "SHOW_INDICATOR";
 export const showIndicator = (state) => {
   return { type: SHOW_INDICATOR, state: state };
 };
-export const SAVE_USER_ID = "SAVE_USER_ID";
-export const saveUserId = (id) => {
-  return { type: SAVE_USER_ID, id: id };
+export const SAVE_USER_DATA = "SAVE_USER_DATA";
+export const saveUserData = (userData) => {
+  return { type: SAVE_USER_DATA, userData: userData };
 };

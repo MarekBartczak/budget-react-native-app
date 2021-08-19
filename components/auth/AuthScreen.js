@@ -21,7 +21,6 @@ import config from "./config/firebase";
 import signInWithEmailAndPassowrd from "./authMethods/withEmailAndPassword";
 import signInWithGoogleAsync from "./authMethods/withGoogle";
 import firebaseInit from "./firebaseInit";
-import * as SecureStore from "expo-secure-store";
 
 const AuthScreen = (props) => {
   const [userEmail, setUserEmail] = useState();
@@ -46,6 +45,12 @@ const AuthScreen = (props) => {
   });
 
   const createUserInfo = (user) => {
+    const userDataObj = {
+      name: user.displayName,
+      email: user.providerData[0].email,
+      photoURL: user.photoURL,
+      id: user.uid,
+    };
     firebase
       .database()
       .ref(`users/` + user.uid)
@@ -55,7 +60,7 @@ const AuthScreen = (props) => {
         photoURL: user.photoURL,
       })
       .catch((err) => console.log(err));
-    dispatch(authActions.saveUserId(user.uid));
+    dispatch(authActions.saveUserData(userDataObj));
     // testReadData(user.uid);
   };
 
