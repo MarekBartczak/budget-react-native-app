@@ -231,6 +231,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputView: {
+    marginTop: 40,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -253,6 +254,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
   },
   buttonView: {
+    marginTop: 50,
     justifyContent: "center",
     alignItems: "center",
   },

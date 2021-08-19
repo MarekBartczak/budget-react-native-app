@@ -62,6 +62,7 @@ const FixedExpenseScreen = (props) => {
 
 const styles = StyleSheet.create({
   component: {
+    // marginTop: 20,
     marginBottom: 20,
   },
 });
