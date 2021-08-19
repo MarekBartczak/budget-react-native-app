@@ -1,22 +1,21 @@
 import firebase from "firebase";
-import * as SecureStore from "expo-secure-store";
 
-const pushNewItem = (obj, type) => {
+const pushNewItem = (obj, type, userId) => {
   firebase
     .database()
-    .ref(`users/${"U5FPqWVHfEYKXvhNPUNiAeY0XSB3"}/items/${type}/`)
+    .ref(`users/${userId}/items/${type}/`)
     .push(obj)
     .then((res) => console.log(res))
     .catch((error) => console.log(error));
 };
 
 const saveDataToTheCloud = {
-  expense: (obj) => {
+  expense: (obj, userid) => {
     let newObj = {};
     obj.forEach((el) => {
       var newPostKey = firebase
         .database()
-        .ref(`users/${"U5FPqWVHfEYKXvhNPUNiAeY0XSB3"}/items/expense/`)
+        .ref(`users/${userid}/items/expense/`)
         .child("expense")
         .push().key;
 
@@ -25,14 +24,14 @@ const saveDataToTheCloud = {
     });
     firebase
       .database()
-      .ref(`users/${"U5FPqWVHfEYKXvhNPUNiAeY0XSB3"}/items/expense/`)
+      .ref(`users/${userid}/items/expense/`)
       .update({ ...newObj })
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
   },
-  fixedExpense: (obj) => pushNewItem(obj, "fixedExpense"),
-  income: (obj) => pushNewItem(obj, "income"),
-  fixedIncome: (obj) => pushNewItem(obj, "fixedIncome"),
+  fixedExpense: (obj, userId) => pushNewItem(obj, "fixedExpense", userId),
+  income: (obj, userId) => pushNewItem(obj, "income", userId),
+  fixedIncome: (obj, userId) => pushNewItem(obj, "fixedIncome", userId),
 };
 
 export default saveDataToTheCloud;

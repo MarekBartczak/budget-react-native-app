@@ -8,16 +8,17 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../../constants/Colors";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as favoritePlaceAction from "../../../store/actions/favoritePlace";
 
 const ApiElement = (props) => {
+  const userId = useSelector((state) => state.auth.userID);
   const dispatch = useDispatch();
   return (
     <TouchableOpacity
       style={styles.element}
       onPress={() => {
-        dispatch(favoritePlaceAction.editPlace(props.name, props.logo));
+        dispatch(favoritePlaceAction.editPlace(props.name, props.logo, userId));
         props.closeWindow();
       }}
     >

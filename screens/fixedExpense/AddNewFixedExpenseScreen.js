@@ -34,6 +34,8 @@ const AddNewFixedExpenseScreen = (props) => {
   const [recipient, setRecipient] = useState();
   const [interval, setInterval] = useState("");
   const [description, setDescription] = useState("");
+  const userId = useSelector((state) => state.auth.userID);
+
   const intervalList = [
     { id: "00", title: "co 10 dni", value: { days: 10, months: 0, years: 0 } },
     { id: "01", title: "co 7 dni", value: { days: 7, months: 0, years: 0 } },
@@ -74,7 +76,7 @@ const AddNewFixedExpenseScreen = (props) => {
     if (validateChecker(list) && typeof interval === "object") {
       const obj = newFixedExpense();
       dispatch(fixedExpenseActions.addCost(obj));
-      saveDataToTheCloud.fixedExpense(obj, listOfFixedExpense.length);
+      saveDataToTheCloud.fixedExpense(obj, listOfFixedExpense.length, userId);
       cleanState();
       props.navigation.navigate("FixedExpense");
     } else {

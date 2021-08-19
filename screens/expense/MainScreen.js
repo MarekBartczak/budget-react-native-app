@@ -38,14 +38,14 @@ const MainScreen = (props) => {
             />
           </View>
           <View style={styles.favoritePlace}>
-            {/* <FavoritePlaces
+            <FavoritePlaces
               onPress={() => props.navigation.navigate("FavoritePlace")}
               pressToAddMultiItems={() =>
                 props.navigation.navigate("AddMultipleItem", {
                   favPlaceName: selectedPlace,
                 })
               }
-            /> */}
+            />
           </View>
           <View style={styles.addNewItem}>
             <AddNewItem

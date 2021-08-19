@@ -25,7 +25,6 @@ const FavoritePlaces = (props) => {
   );
 
   const dispatch = useDispatch();
-  // console.log(favPlaceList);
   const favPlace = (favPlaceList) => {
     return (
       <FavPlaceElement

@@ -4,15 +4,14 @@ import {
   SELECT_LOGO,
   LOADING_FAVORITE_PLACE_FROM_DB,
 } from "../actions/favoritePlace";
-import favoritePlace from "../../data/Dummy-FavPlace";
+// import favoritePlace from "../../data/Dummy-FavPlace";
 import favoritePlaceEmpty from "../../data/Dummy-FavPlaceEmpty";
-
-const data = { lidl: "www.lidl.de" };
+import updateFavoritePlace from "../../functions/cloud/updateFavoritePlace";
 
 const initialState = {
   // favoritePlace: [...favoritePlace],
-  // favoritePlace: [...favoritePlaceEmpty],
-  favoritePlace: [],
+  favoritePlace: [...favoritePlaceEmpty],
+  // favoritePlace: [],
   selected: "",
   toSearchIn: [],
 };
@@ -33,6 +32,7 @@ export default (state = initialState, action) => {
 
       newState[index].name = action.place;
       newState[index].logo = action.logo;
+      updateFavoritePlace(newState, action.userId);
 
       return { ...state, favoritePlace: [...newState] };
   }

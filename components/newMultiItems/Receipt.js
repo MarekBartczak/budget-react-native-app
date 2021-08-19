@@ -35,6 +35,7 @@ const Receipt = (props) => {
   const showReceipt = useSelector((state) => state.item.receipt);
   const receiptItem = useSelector((state) => state.item.receipt.items);
   const allElements = useSelector((state) => state.item.items);
+  const userId = useSelector((state) => state.auth.userID);
   // console.log(allElements.length);
   const dispatch = useDispatch();
   const sumOf = (total, sum) => total + sum;
@@ -185,7 +186,7 @@ const Receipt = (props) => {
                             itemsAction.addItemsFromReceipt(itemToSaved)
                           );
                           // console.log(itemToSaved);
-                          saveDataToTheCloud.expense(itemToSaved);
+                          saveDataToTheCloud.expense(itemToSaved, userId);
                           props.backToHome();
                         } else {
                           alert("Dodaj pozycje do paragonu");

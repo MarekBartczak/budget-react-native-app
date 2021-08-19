@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
       // console.log(state.items);
       const filteredItem = state.items.find((el) => el.id === action.itemId);
       // console.log(filteredItem.firebaseId);
-      deleteDataInCloud.expense(filteredItem.firebaseId);
+      deleteDataInCloud.expense(filteredItem.firebaseId, action.userId);
       if (state.items.length > 0) {
         let current = [...state.items];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);

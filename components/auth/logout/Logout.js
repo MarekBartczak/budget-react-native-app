@@ -5,9 +5,11 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import * as authActions from "../../../store/actions/auth";
 import { MaterialIcons } from "@expo/vector-icons";
+
 const Logout = (props) => {
   const dispatch = useDispatch();
   const logout = () => {
+    dispatch(authActions.showIndicator(false));
     firebase
       .auth()
       .signOut()

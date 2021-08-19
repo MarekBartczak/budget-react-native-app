@@ -12,14 +12,15 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../constants/Colors";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import * as fixedIncomeAction from "../../../store/actions/fixedIncome";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const FixedIncomeDetails = (props) => {
   const { id, cost, title, date, recipient } = props.route.params;
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.auth.userID);
 
   const removeIncome = () => {
-    dispatch(fixedIncomeAction.delItem(id));
+    dispatch(fixedIncomeAction.delItem(id, userId));
     props.navigation.navigate("FixedIncome");
   };
   return (

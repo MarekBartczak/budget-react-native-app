@@ -1,6 +1,18 @@
 import * as Google from "expo-google-app-auth";
 import firebase from "firebase";
 
+const createFavPlaceDefault = (userId) => {
+  const favPlaceObject = {
+    logo: "",
+    name: "",
+  };
+  const ref = firebase
+    .database()
+    .ref(`users/${userId}/favoritePlace/`)
+    .push(favPlaceObject)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
 const onSignIn = (googleUser, signinFunction) => {
   // console.log("Google Auth Response", googleUser);
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
@@ -21,13 +33,19 @@ const onSignIn = (googleUser, signinFunction) => {
         .auth()
         .signInWithCredential(credential)
         .then((result) => {
-          console.log(result.user.lastLoginAt);
-          //   console.log(result.user.displayName);
-          console.log(result.user.stsTokenManager.accessToken);
-          console.log(result.user.stsTokenManager.expirationTime);
-          console.log(result.user.stsTokenManager.refreshToken);
+          let isNewUser = result.additionalUserInfo.isNewUser;
+          let userId = result.user.uid;
+          console.log(userId);
 
+          if (isNewUser) {
+            for (let i = 0; i < 6; i++) {
+              createFavPlaceDefault(userId);
+            }
+          }
           signinFunction();
+        })
+        .then(() => {
+          console.log("sign in completed");
         })
         .catch((error) => {
           // Handle Errors here.
@@ -67,11 +85,11 @@ export default signInWithGoogleAsync = async (signinFunction) => {
     const result = await Google.logInAsync({
       // androidClientId: YOUR_CLIENT_ID_HERE,
       // behavior: "web",
+
       iosClientId:
         "506404078923-nrctlraih104rdme13i095b96ee3l6f6.apps.googleusercontent.com",
       scopes: ["profile", "email"],
     });
-
     if (result.type === "success") {
       onSignIn(result, signinFunction);
       return result.accessToken;

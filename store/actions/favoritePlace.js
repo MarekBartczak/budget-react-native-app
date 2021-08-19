@@ -4,8 +4,8 @@ export const selectPlace = (place) => {
 };
 
 export const EDIT_PLACE = "EDIT_PLACE";
-export const editPlace = (place, logo) => {
-  return { type: EDIT_PLACE, place: place, logo: logo };
+export const editPlace = (place, logo, userId) => {
+  return { type: EDIT_PLACE, place: place, logo: logo, userId: userId };
 };
 
 export const SELECT_LOGO = "SELECT_LOGO";

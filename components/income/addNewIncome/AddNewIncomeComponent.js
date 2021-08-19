@@ -14,6 +14,7 @@ const AddNewIncomeComponent = (props) => {
   const [cost, setCost] = useState();
   const [title, setTitle] = useState();
   const [contractor, setContractor] = useState();
+  const userId = useSelector((state) => state.auth.userID);
 
   const dispatch = useDispatch();
 
@@ -44,7 +45,7 @@ const AddNewIncomeComponent = (props) => {
     if (validateChecker(list)) {
       const obj = newIncome();
       dispatch(incomeAction.addIncome(obj));
-      saveDataToTheCloud.income(obj, listOfIncome.length);
+      saveDataToTheCloud.income(obj, listOfIncome.length, userId);
       cleanState();
     } else {
       alert("dane nie zostaly uzupelnione");

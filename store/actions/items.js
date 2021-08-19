@@ -1,6 +1,6 @@
 export const DEL_ITEM = "DEL_ITEM";
-export const delItem = (id) => {
-  return { type: DEL_ITEM, itemId: id };
+export const delItem = (id, userId) => {
+  return { type: DEL_ITEM, itemId: id, userId: userId };
 };
 
 export const ADD_ITEM_TO_THE_RECEIPT = "ADD_ITEM_TO_THE_RECEIPT";

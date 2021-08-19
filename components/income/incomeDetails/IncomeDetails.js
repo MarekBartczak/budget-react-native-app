@@ -11,15 +11,17 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../constants/Colors";
 import * as intemActions from "../../../store/actions/income";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 const IncomeDetails = (props) => {
+  const userId = useSelector((state) => state.auth.userID);
+
   const { id, cost, title, date, recipient } = props.route.params;
   const dispatch = useDispatch();
 
   const removeIncome = () => {
-    dispatch(intemActions.delItem(id));
+    dispatch(intemActions.delItem(id, userId));
     props.navigation.navigate("Income");
   };
   return (

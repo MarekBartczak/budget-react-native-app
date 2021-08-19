@@ -2,16 +2,18 @@ import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as itemsAction from "../../store/actions/items";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const DetailsScreen = (props) => {
   const { date, place, category, name, cost, id } = props.route.params;
+  const userId = useSelector((state) => state.auth.userID);
+
   const dispatch = useDispatch();
 
   const deleteItem = () => {
-    dispatch(itemsAction.delItem(id));
+    dispatch(itemsAction.delItem(id, userId));
     // console.log(id);
     props.navigation.navigate("Home");
   };

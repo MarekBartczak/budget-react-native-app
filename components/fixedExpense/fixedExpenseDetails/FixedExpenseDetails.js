@@ -19,6 +19,8 @@ const FixedExpenseDetails = (props) => {
   const { id, cost, title, date, recipient, isPaid } = props.route.params;
   const dispatch = useDispatch();
   const history = useSelector((state) => state.fixedExpense.history);
+  const userId = useSelector((state) => state.auth.userID);
+
   const historyEl = history.filter((el) => el.originId === id);
   const showIsPaid = () => {
     return (
@@ -57,7 +59,7 @@ const FixedExpenseDetails = (props) => {
   };
 
   const removeIncome = () => {
-    dispatch(fixedExpenseActions.delItem(id));
+    dispatch(fixedExpenseActions.delItem(id, userId));
     props.navigation.navigate("FixedExpense");
   };
 

@@ -1,26 +1,26 @@
 const favoritePlaceEmpty = [
   {
-    name: "Dodaj",
+    name: "Pusty",
     logo: "",
   },
   {
-    name: "Dodaj",
+    name: "Pusty",
     logo: "",
   },
   {
-    name: "Dodaj",
+    name: "Pusty",
     logo: "",
   },
   {
-    name: "Dodaj",
+    name: "Pusty",
     logo: "",
   },
   {
-    name: "Dodaj",
+    name: "Pusty",
     logo: "",
   },
   {
-    name: "Dodaj",
+    name: "Pusty",
     logo: "",
   },
 ];

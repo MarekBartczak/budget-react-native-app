@@ -7,6 +7,7 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
   Keyboard,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import DrawerNavigator from "../../navigation/DrawerNavigator";
@@ -26,6 +27,7 @@ const AuthScreen = (props) => {
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
   const userStatus = useSelector((state) => state.auth.isLogin);
+  const showIndicator = useSelector((state) => state.auth.showIndicator);
   const dispatch = useDispatch();
   const login = () => {
     dispatch(authActions.isLogin(true));
@@ -34,6 +36,7 @@ const AuthScreen = (props) => {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      // dispatch(authActions.showIndicator(false));
       const userData = firebase.auth().currentUser;
       // console.log(userData);
       login();
@@ -52,67 +55,89 @@ const AuthScreen = (props) => {
         photoURL: user.photoURL,
       })
       .catch((err) => console.log(err));
-    testReadData(user.uid);
+    dispatch(authActions.saveUserId(user.uid));
+    // testReadData(user.uid);
   };
 
-  const testReadData = (uid) => {
-    const itemRef = firebase.database().ref(`users/${uid}`);
-    itemRef.on("value", (data) => {
-      const items = data.val();
-      // console.log(items);
-    });
-  };
+  // const testReadData = (uid) => {
+  //   const itemRef = firebase.database().ref(`users/${uid}`);
+  //   itemRef.on("value", (data) => {
+  //     const items = data.val();
+  //     // console.log(items);
+  //   });
+  // };
 
   if (userStatus) {
     return <DrawerNavigator />;
   } else {
-    return (
-      <ExternalComponent>
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-          <View style={styles.screen}>
-            <View style={styles.loginScreen}>
-              <Input
-                style={styles.input}
-                placeholder={"email"}
-                value={userEmail}
-                keyboardType={"email-address"}
-                onChangeText={setUserEmail}
-              />
-              <Input
-                style={styles.input}
-                placeholder={"hasło"}
-                secureTextEntry={true}
-                value={userPassword}
-                onChangeText={setUserPassword}
-              />
-              <TouchableOpacity
-                onPress={() =>
-                  signInWithEmailAndPassowrd(() => login(), config.url)
-                }
-              >
-                <Text style={styles.loginBtn}>Zaloguj</Text>
-              </TouchableOpacity>
+    if (showIndicator) {
+      return (
+        <View
+          style={{
+            width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text>
+            <ActivityIndicator size="large" />
+          </Text>
+        </View>
+      );
+    } else {
+      return (
+        <ExternalComponent>
+          <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.screen}>
+              <View style={styles.loginScreen}>
+                <Input
+                  style={styles.input}
+                  placeholder={"email"}
+                  value={userEmail}
+                  keyboardType={"email-address"}
+                  onChangeText={setUserEmail}
+                />
+                <Input
+                  style={styles.input}
+                  placeholder={"hasło"}
+                  secureTextEntry={true}
+                  value={userPassword}
+                  onChangeText={setUserPassword}
+                />
+                <TouchableOpacity
+                  onPress={() =>
+                    signInWithEmailAndPassowrd(() => login(), config.url)
+                  }
+                >
+                  <Text style={styles.loginBtn}>Zaloguj</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.otherMethodLogin}>
+                <TouchableOpacity
+                  style={styles.loginWithGoogle}
+                  onPress={() => {
+                    signInWithGoogleAsync(() => login());
+                  }}
+                >
+                  <AntDesign name="google" size={34} color="white" />
+                  <Text style={styles.loginWithText}>Zaloguj przez Google</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.loginWithFacebook}
+                  onPress={() => {}}
+                >
+                  <AntDesign name="facebook-square" size={34} color="white" />
+                  <Text style={styles.loginWithText}>
+                    Zaloguj przez Facebook
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <View style={styles.otherMethodLogin}>
-              <TouchableOpacity
-                style={styles.loginWithGoogle}
-                onPress={() => signInWithGoogleAsync(() => login())}
-              >
-                <AntDesign name="google" size={34} color="white" />
-                <Text style={styles.loginWithText}>Zaloguj przez Google</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.loginWithFacebook}
-                onPress={() => {}}
-              >
-                <AntDesign name="facebook-square" size={34} color="white" />
-                <Text style={styles.loginWithText}>Zaloguj przez Facebook</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </TouchableWithoutFeedback>
-      </ExternalComponent>
-    );
+          </TouchableWithoutFeedback>
+        </ExternalComponent>
+      );
+    }
   }
 };
 

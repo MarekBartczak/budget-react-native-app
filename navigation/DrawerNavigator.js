@@ -32,6 +32,7 @@ import {
 const Drawer = createDrawerNavigator();
 const isNotPadid = false;
 const DrawerNavigator = (props) => {
+  const userId = useSelector((state) => state.auth.userID);
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
@@ -59,15 +60,29 @@ const DrawerNavigator = (props) => {
         return;
     }
   };
-  const loadingData = (type) => {
-    const uid = "U5FPqWVHfEYKXvhNPUNiAeY0XSB3";
-    const itemRef = firebase.database().ref(`users/${uid}/items/${type}`);
+
+  const loadingFavoritePlace = () => {
+    const itemRef = firebase.database().ref(`users/${userId}/favoritePlace`);
     let list;
     itemRef.on("value", async (data) => {
       let obj = await data.val();
       if (obj != null) {
         let objKeyList = Object.keys(obj);
         let list = Object.values(obj);
+        list.forEach((el, index) => (el.firebaseId = objKeyList[index]));
+        dispatch(favoritePlaceActions.loadingFavoritePlaceFromDB(list));
+      }
+    });
+  };
+  const loadingData = (type) => {
+    const uid = userId;
+    const itemRef = firebase.database().ref(`users/${uid}/items/${type}`);
+    let list;
+    itemRef.on("value", async (data) => {
+      let obj = await data.val();
+      if (obj != null) {
+        let objKeyList = Object.keys(obj);
+        list = Object.values(obj);
         list.forEach((el, index) => (el.firebaseId = objKeyList[index]));
         dispatchSwitcher(type, list);
       }
@@ -77,6 +92,7 @@ const DrawerNavigator = (props) => {
   };
   useEffect(() => {
     const fetchData = () => {
+      loadingFavoritePlace();
       loadingData("income");
       loadingData("expense");
       loadingData("fixedExpense");
@@ -84,7 +100,7 @@ const DrawerNavigator = (props) => {
     };
 
     fetchData();
-  }, []);
+  });
 
   if (status) {
     return (
