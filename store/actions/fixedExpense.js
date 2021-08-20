@@ -13,8 +13,8 @@ export const archive = (id) => {
 };
 
 export const DEL_EXPENSE = "DEL_EXPENSE";
-export const delItem = (id) => {
-  return { type: DEL_EXPENSE, itemId: id };
+export const delItem = (id, userId) => {
+  return { type: DEL_EXPENSE, itemId: id, userId: userId };
 };
 
 export const LOADING_FIXED_EXPENSE_FROM_DB = "LOADING_FIXED_EXPENSE_FROM_DB";

@@ -16,3 +16,7 @@ export const SAVE_USER_DATA = "SAVE_USER_DATA";
 export const saveUserData = (userData) => {
   return { type: SAVE_USER_DATA, userData: userData };
 };
+export const FETCHED_DATA = "FETCHED_DATA";
+export const fetchData = (status) => {
+  return { type: FETCHED_DATA, status: status };
+};

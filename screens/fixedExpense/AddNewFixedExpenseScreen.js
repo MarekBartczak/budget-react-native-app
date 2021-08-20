@@ -76,7 +76,7 @@ const AddNewFixedExpenseScreen = (props) => {
     if (validateChecker(list) && typeof interval === "object") {
       const obj = newFixedExpense();
       dispatch(fixedExpenseActions.addCost(obj));
-      saveDataToTheCloud.fixedExpense(obj, listOfFixedExpense.length, userId);
+      saveDataToTheCloud.fixedExpense(obj, userId);
       cleanState();
       props.navigation.navigate("FixedExpense");
     } else {

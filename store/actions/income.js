@@ -5,8 +5,8 @@ export const addIncome = (income) => {
 };
 
 export const DELETE_INCOME = "DELETE_INCOME";
-export const delItem = (id) => {
-  return { type: DELETE_INCOME, itemId: id };
+export const delItem = (id, userId) => {
+  return { type: DELETE_INCOME, itemId: id, userId: userId };
 };
 
 export const LOADING_INCOME_FROM_DB = "LOADING_INCOME_FROM_DB";

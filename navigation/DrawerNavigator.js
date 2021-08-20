@@ -24,6 +24,7 @@ import * as fixedExpenseActions from "../store/actions/fixedExpense";
 import * as fixedIncomeActions from "../store/actions/fixedIncome";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
+import * as authActions from "../store/actions/auth";
 import firebase from "firebase";
 
 import {
@@ -37,6 +38,7 @@ const DrawerNavigator = (props) => {
   const userId = useSelector((state) => state.auth.userID);
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
   const userDisplayName = useSelector((state) => state.auth.userName);
+  const fetchedData = useSelector((state) => state.auth.fetchedData);
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
@@ -78,7 +80,7 @@ const DrawerNavigator = (props) => {
       }
     });
   };
-  const loadingData = (type) => {
+  const loadingData = async (type) => {
     const uid = userId;
     const itemRef = firebase.database().ref(`users/${uid}/items/${type}`);
     let list;
@@ -95,16 +97,20 @@ const DrawerNavigator = (props) => {
     return list;
   };
   useEffect(() => {
-    const fetchData = () => {
-      loadingFavoritePlace();
-      loadingData("income");
-      loadingData("expense");
-      loadingData("fixedExpense");
-      loadingData("fixedIncome");
+    const fetchData = async () => {
+      // console.log("fetching...");
+      await loadingFavoritePlace();
+      await loadingData("income");
+      await loadingData("expense");
+      await loadingData("fixedExpense");
+      await loadingData("fixedIncome");
     };
-
+    // console.log(fetchedData);
     fetchData();
-  });
+    // if (!fetchedData) {
+    //   dispatch(authActions.fetchData(true));
+    // }
+  }, [status]);
 
   if (status) {
     return (

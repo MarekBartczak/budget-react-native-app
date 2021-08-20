@@ -13,6 +13,7 @@ const createFavPlaceDefault = (userId) => {
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
+
 const onSignIn = (googleUser, signinFunction) => {
   // console.log("Google Auth Response", googleUser);
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
@@ -35,7 +36,7 @@ const onSignIn = (googleUser, signinFunction) => {
         .then((result) => {
           let isNewUser = result.additionalUserInfo.isNewUser;
           let userId = result.user.uid;
-          console.log(userId);
+          //   console.log(userId);
 
           if (isNewUser) {
             for (let i = 0; i < 6; i++) {
@@ -45,7 +46,7 @@ const onSignIn = (googleUser, signinFunction) => {
           signinFunction();
         })
         .then(() => {
-          console.log("sign in completed");
+          //   console.log("sign in completed");
         })
         .catch((error) => {
           // Handle Errors here.

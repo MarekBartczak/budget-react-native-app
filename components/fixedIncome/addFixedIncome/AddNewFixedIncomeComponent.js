@@ -46,7 +46,7 @@ const AddNewFixedIncomeComponent = (props) => {
     if (validateChecker(list)) {
       const obj = newFixedIncome();
       dispatch(fixedIncomeAction.addFixedIncome(obj));
-      saveDataToTheCloud.fixedIncome(obj, listOFFixedIncome.length, userId);
+      saveDataToTheCloud.fixedIncome(obj, userId);
       cleanState();
     } else {
       alert("dane nie zostaly uzupelnione");

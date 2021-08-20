@@ -3,6 +3,7 @@ import {
   LOGOUT,
   SHOW_INDICATOR,
   SAVE_USER_DATA,
+  FETCHED_DATA,
 } from "../actions/auth";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   userName: "",
   userEmail: "",
   userPhotoUrl: "",
+  fetchedData: false,
 };
 
 export default (state = initialState, action) => {
@@ -31,6 +33,8 @@ export default (state = initialState, action) => {
         userEmail: userData.email,
         userPhotoUrl: userData.photoURL,
       };
+    case FETCHED_DATA:
+      return { ...state, fetchedData: action.status };
   }
   return state;
 };

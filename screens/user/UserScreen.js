@@ -23,6 +23,10 @@ const UserScreen = (props) => {
           <View style={styles.userEmailView}>
             <Text style={styles.userEmail}>{userEmail}</Text>
           </View>
+          <View style={styles.familyAccountWith}>
+            <Text style={styles.family}>Konto rodzinne </Text>
+            <Text style={styles.userEmail}>nie</Text>
+          </View>
         </View>
       </View>
     </ExternalComponent>
@@ -32,6 +36,14 @@ const UserScreen = (props) => {
 export default UserScreen;
 
 const styles = StyleSheet.create({
+  familyAccountWith: {
+    flexDirection: "row",
+  },
+  family: {
+    // fontWeight: "bold",
+    // color: Colors.backGroundChart,
+    fontSize: 15,
+  },
   userNameView: {
     backgroundColor: Colors.accent,
     paddingVertical: 10,

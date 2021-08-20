@@ -52,7 +52,7 @@ export default (state = initialState, action) => {
       const filteredItem = state.fixedExpense.find(
         (el) => el.id === action.itemId
       );
-      deleteDataInCloud.fixedExpense(filteredItem.firebaseId);
+      deleteDataInCloud.fixedExpense(filteredItem.firebaseId, action.userId);
 
       if (state.fixedExpense.length > 0) {
         let current = [...state.fixedExpense];

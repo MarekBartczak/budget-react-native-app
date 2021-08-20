@@ -45,7 +45,7 @@ const AddNewIncomeComponent = (props) => {
     if (validateChecker(list)) {
       const obj = newIncome();
       dispatch(incomeAction.addIncome(obj));
-      saveDataToTheCloud.income(obj, listOfIncome.length, userId);
+      saveDataToTheCloud.income(obj, userId);
       cleanState();
     } else {
       alert("dane nie zostaly uzupelnione");

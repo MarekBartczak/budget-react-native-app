@@ -20,6 +20,7 @@ import { AntDesign } from "@expo/vector-icons";
 import config from "./config/firebase";
 import signInWithEmailAndPassowrd from "./authMethods/withEmailAndPassword";
 import signInWithGoogleAsync from "./authMethods/withGoogle";
+import signInWithFacebook from "./authMethods/withFacebook";
 import firebaseInit from "./firebaseInit";
 
 const AuthScreen = (props) => {
@@ -130,7 +131,7 @@ const AuthScreen = (props) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.loginWithFacebook}
-                  onPress={() => {}}
+                  onPress={() => signInWithFacebook(() => login())}
                 >
                   <AntDesign name="facebook-square" size={34} color="white" />
                   <Text style={styles.loginWithText}>
