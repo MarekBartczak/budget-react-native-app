@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ActivityIndicator,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import DrawerNavigator from "../../navigation/DrawerNavigator";
@@ -36,6 +37,7 @@ const AuthScreen = (props) => {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      console.log(user);
       // dispatch(authActions.showIndicator(false));
       const userData = firebase.auth().currentUser;
       // console.log(userData);
@@ -129,15 +131,16 @@ const AuthScreen = (props) => {
                   <AntDesign name="google" size={34} color="white" />
                   <Text style={styles.loginWithText}>Zaloguj przez Google</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   style={styles.loginWithFacebook}
-                  onPress={() => signInWithFacebook(() => login())}
+                  // onPress={() => signInWithFacebook(() => login())}
+                  onPress={() => signInWithFacebook()}
                 >
                   <AntDesign name="facebook-square" size={34} color="white" />
                   <Text style={styles.loginWithText}>
                     Zaloguj przez Facebook
                   </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </TouchableWithoutFeedback>

@@ -85,10 +85,11 @@ export default signInWithGoogleAsync = async (signinFunction) => {
   try {
     const result = await Google.logInAsync({
       // androidClientId: YOUR_CLIENT_ID_HERE,
-      // behavior: "web",
+      iosStandaloneAppClientId:
+        "https://budget-reactnative-app.firebaseapp.com/__/auth/handler",
 
       iosClientId:
-        "506404078923-nrctlraih104rdme13i095b96ee3l6f6.apps.googleusercontent.com",
+        "506404078923-n0o0rasbikpkccr3rrglt9qda03mnrlv.apps.googleusercontent.com",
       scopes: ["profile", "email"],
     });
     if (result.type === "success") {
