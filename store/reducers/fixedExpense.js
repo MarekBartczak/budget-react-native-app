@@ -4,6 +4,7 @@ import {
   ARCHIVE,
   DEL_EXPENSE,
   LOADING_FIXED_EXPENSE_FROM_DB,
+  CLEAR_STATE_AFTER_LOGOUT,
 } from "../actions/fixedExpense";
 import Expense from "../../data/Dummy-FixedExpense";
 import uuid from "react-native-uuid";
@@ -65,6 +66,8 @@ export default (state = initialState, action) => {
       } else {
         return { ...state };
       }
+    case CLEAR_STATE_AFTER_LOGOUT:
+      return { ...state, fixedExpense: [] };
   }
   return state;
 };

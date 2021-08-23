@@ -6,6 +6,7 @@ import {
   SET_RECEIPT_DATE,
   ADD_ITEMS_FROM_RECEIPT,
   LOADING_EXPENSE_FROM_DB,
+  CLEAR_STATE_AFTER_LOGOUT,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
@@ -25,21 +26,16 @@ export default (state = initialState, action) => {
     case LOADING_EXPENSE_FROM_DB:
       return { ...state, items: [...action.array] };
     case DEL_ITEM:
-      // console.log(action.itemId);
-      // console.log(state.items);
       const filteredItem = state.items.find((el) => el.id === action.itemId);
-      // console.log(filteredItem.firebaseId);
       deleteDataInCloud.expense(filteredItem.firebaseId, action.userId);
       if (state.items.length > 0) {
         let current = [...state.items];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);
         current.splice(removeItem, 1);
-        // deleteDataInCloud.expense({ ...state, items: current }.items);
         return { ...state, items: current };
       } else {
         return { ...state };
       }
-
     case ADD_ITEM_TO_THE_RECEIPT:
       return {
         ...state,
@@ -58,6 +54,8 @@ export default (state = initialState, action) => {
         items: [...state.items, ...action.list],
         receipt: { place: "", date: "", items: [] },
       };
+    case CLEAR_STATE_AFTER_LOGOUT:
+      return { ...state, items: [] };
   }
   return state;
 };

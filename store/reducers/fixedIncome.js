@@ -2,6 +2,7 @@ import {
   ADD_FIXED_INCOME,
   DELETE_FIXED_INCOME,
   LOADING_FIXED_INCOME_FROM_DB,
+  CLEAR_STATE_AFTER_LOGOUT,
 } from "../actions/fixedIncome";
 import FixedIncome from "../../data/Dummy-FixedIncome";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
@@ -32,6 +33,8 @@ export default (state = initialState, action) => {
       } else {
         return { ...state };
       }
+    case CLEAR_STATE_AFTER_LOGOUT:
+      return { ...state, fixedIncome: [] };
   }
 
   return state;

@@ -27,3 +27,7 @@ export const LOADING_EXPENSE_FROM_DB = "LOADING_EXPENSE_FROM_DB";
 export const loadingExpensefromDB = (array) => {
   return { type: LOADING_EXPENSE_FROM_DB, array: array };
 };
+export const CLEAR_STATE_AFTER_LOGOUT = "CLEAR_STATE_AFTER_LOGOUT";
+export const clearStateAfterLogout = () => {
+  return { type: CLEAR_STATE_AFTER_LOGOUT };
+};

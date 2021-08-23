@@ -3,6 +3,7 @@ import {
   EDIT_PLACE,
   SELECT_LOGO,
   LOADING_FAVORITE_PLACE_FROM_DB,
+  CLEAR_STATE_AFTER_LOGOUT,
 } from "../actions/favoritePlace";
 // import favoritePlace from "../../data/Dummy-FavPlace";
 import favoritePlaceEmpty from "../../data/Dummy-FavPlaceEmpty";
@@ -35,6 +36,8 @@ export default (state = initialState, action) => {
       updateFavoritePlace(newState, action.userId);
 
       return { ...state, favoritePlace: [...newState] };
+    case CLEAR_STATE_AFTER_LOGOUT:
+      return { ...state, favoritePlace: [...favoritePlaceEmpty] };
   }
   return state;
 };

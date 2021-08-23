@@ -13,3 +13,7 @@ export const LOADING_FIXED_INCOME_FROM_DB = "LOADING_FIXED_INCOME_FROM_DB";
 export const loadingFixedIncomefromDB = (array) => {
   return { type: LOADING_FIXED_INCOME_FROM_DB, array: array };
 };
+export const CLEAR_STATE_AFTER_LOGOUT = "CLEAR_STATE_AFTER_LOGOUT";
+export const clearStateAfterLogout = () => {
+  return { type: CLEAR_STATE_AFTER_LOGOUT };
+};
