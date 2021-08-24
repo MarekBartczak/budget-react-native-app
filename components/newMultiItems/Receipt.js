@@ -51,8 +51,9 @@ const Receipt = (props) => {
     let cost = numberInputValidation(props.cost);
     let costLength = !props.cost.length > 0 ? false : true;
     let nameLength = !props.itemName.length > 0 ? false : true;
+    let multiply = !props.multiply.length > 0 ? false : true;
 
-    if (category && cost && costLength && nameLength) {
+    if (category && cost && costLength && nameLength && multiply) {
       return true;
     } else {
       return false;
@@ -126,6 +127,7 @@ const Receipt = (props) => {
                       cost={item.item.cost}
                       itemName={item.item.name}
                       category={item.item.category}
+                      multiply={item.item.multiply}
                     />
                   )}
                 />
@@ -147,6 +149,8 @@ const Receipt = (props) => {
                     category={props.category}
                     onSetCost={props.onSetCost}
                     onChangeCategory={props.setCategory}
+                    multiply={props.multiply}
+                    onSetMultiply={props.setMultiply}
                   />
                   <View style={styles.buttons}>
                     <Button

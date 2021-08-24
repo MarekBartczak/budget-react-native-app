@@ -7,14 +7,14 @@ import * as itemsAction from "../../store/actions/items";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const DetailsScreen = (props) => {
-  const { date, place, category, name, cost, id } = props.route.params;
+  const { date, place, category, name, cost, id, multiply } =
+    props.route.params;
   const userId = useSelector((state) => state.auth.userID);
 
   const dispatch = useDispatch();
 
   const deleteItem = () => {
     dispatch(itemsAction.delItem(id, userId));
-    // console.log(id);
     props.navigation.navigate("Home");
   };
   return (
@@ -75,10 +75,18 @@ const DetailsScreen = (props) => {
           {/* middle column */}
           <View style={styles.detailsMiddleCenter}>
             <View style={styles.nameView}>
-              <Text style={styles.name}>{name}</Text>
+              <Text style={styles.name}>
+                {name}{" "}
+                <Text style={{ fontWeight: "normal" }}>[x{multiply}]</Text>
+              </Text>
             </View>
             <View style={styles.costView}>
-              <Text style={styles.cost}>{cost}zł</Text>
+              <Text style={styles.cost}>
+                {cost}zł{" "}
+                <Text style={{ fontWeight: "normal" }}>
+                  [{cost * multiply}zł]
+                </Text>
+              </Text>
             </View>
           </View>
           {/* third column */}

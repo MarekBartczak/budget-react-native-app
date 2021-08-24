@@ -31,6 +31,7 @@ const AddMultiItemsScreen = (props) => {
   const [itemName, setItemName] = useState("");
   const [cost, setCost] = useState("");
   const [category, setCategory] = useState("");
+  const [multiply, setMultiply] = useState("");
 
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -51,6 +52,7 @@ const AddMultiItemsScreen = (props) => {
     setCategory("");
     setCost("");
     setItemName("");
+    setMultiply("");
   };
 
   const getPlaceInfo = (data) => {
@@ -63,7 +65,8 @@ const AddMultiItemsScreen = (props) => {
       uuid.v4(),
       category,
       itemName,
-      Number(switchComaToDot(cost))
+      Number(switchComaToDot(cost)),
+      multiply
     );
     dispatch(itemsAction.addItemToTheReceipt(itemObj));
     clearState();
@@ -104,6 +107,8 @@ const AddMultiItemsScreen = (props) => {
               onSetName={setItemName}
               setCategory={setCategory}
               category={category}
+              multiply={multiply}
+              setMultiply={setMultiply}
               addItemToTheRecipt={() => addIntoTheReceipt()}
               backToHome={() => props.navigation.navigate("Home")}
             />

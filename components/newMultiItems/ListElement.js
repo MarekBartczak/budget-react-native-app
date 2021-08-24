@@ -6,16 +6,22 @@ const ListElement = (props) => {
     <View style={styles.ListElement}>
       <View style={styles.item}>
         <View style={styles.textStyle}>
-          <Text style={styles.itemName}>{props.itemName}</Text>
+          <Text style={styles.itemName}>
+            {props.itemName}{" "}
+            <Text style={styles.multiply}> [x{props.multiply}]</Text>
+          </Text>
           <Text style={styles.category}>{props.category}</Text>
         </View>
-        <Text style={styles.cost}>{props.cost}zł</Text>
+        <Text style={styles.cost}>{props.cost * props.multiply}zł</Text>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  multiply: {
+    fontWeight: "normal",
+  },
   ListElement: {
     width: "100%",
     justifyContent: "center",

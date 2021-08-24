@@ -46,12 +46,17 @@ const DateScreen = (props) => {
   const filteredCost = filteredItem.map((el) => {
     return el.cost;
   });
-
+  const filteredCostWithMultiple = filteredItem.map((el) => {
+    return el.cost * el.multiply;
+  });
   const sumOf = (total, sum) => total + sum;
 
   let sum = 0;
-  if (filteredCost.length > 0) {
+  let multiplySum = 0;
+
+  if (filteredCost.length > 0 && filteredCostWithMultiple.length > 0) {
     sum = filteredCost.reduce(sumOf);
+    multiplySum = filteredCostWithMultiple.reduce(sumOf);
   }
 
   const callBack = (data) => {
@@ -73,7 +78,9 @@ const DateScreen = (props) => {
           </TouchableOpacity>
         </View>
         <View>
-          <Text>Razem {sum.toFixed(2)}zł</Text>
+          <Text>
+            Razem {sum.toFixed(2)}zł [{multiplySum.toFixed(2)}zł]
+          </Text>
         </View>
         <View style={styles.items}>
           <FlatList
@@ -83,6 +90,7 @@ const DateScreen = (props) => {
               <SimplyItems
                 name={itemData.item.name}
                 cost={itemData.item.cost}
+                multiply={itemData.item.multiply}
                 press={() =>
                   props.navigation.navigate("Details", {
                     date: itemData.item.date,
@@ -91,6 +99,7 @@ const DateScreen = (props) => {
                     cost: itemData.item.cost,
                     name: itemData.item.name,
                     id: itemData.item.id,
+                    multiply: itemData.item.multiply,
                   })
                 }
               />

@@ -4,6 +4,7 @@ import {
   Text,
   Keyboard,
   TouchableWithoutFeedback,
+  Dimensions,
 } from "react-native";
 import Input from "../input/Input";
 import React from "react";
@@ -27,13 +28,22 @@ const NewElement = (props) => {
         </View>
 
         <View style={styles.inputs}>
-          <Input
-            style={styles.input}
-            value={props.itemName}
-            placeholder={"Nazwa produktu"}
-            keyboardType={"default"}
-            onChangeText={props.onSetName}
-          />
+          <View style={{ flexDirection: "row" }}>
+            <Input
+              style={styles.input}
+              value={props.itemName}
+              placeholder={"Nazwa produktu"}
+              keyboardType={"default"}
+              onChangeText={props.onSetName}
+            />
+            <Input
+              style={styles.multiply}
+              value={props.multiply}
+              placeholder={"ilość"}
+              keyboardType={"numeric"}
+              onChangeText={props.onSetMultiply}
+            />
+          </View>
 
           <Input
             style={styles.input}
@@ -65,6 +75,7 @@ const styles = StyleSheet.create({
   },
   inputs: {
     alignItems: "center",
+    width: Dimensions.get("window").width * 0.9,
   },
   input: {
     textAlign: "center",
@@ -75,7 +86,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     margin: 5,
     margin: 10,
-    color: Colors.primary,
+    color: "black",
+    borderColor: Colors.primary,
+  },
+  multiply: {
+    textAlign: "center",
+    height: 40,
+    fontSize: 20,
+    width: 50,
+    borderBottomWidth: 3,
+    fontWeight: "bold",
+    margin: 5,
+    margin: 10,
+    color: "black",
     borderColor: Colors.primary,
   },
 });

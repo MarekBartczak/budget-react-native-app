@@ -16,7 +16,6 @@ const MainScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
   const chartEl = chartElement(itemsFromRedux, 7);
   const dispatch = useDispatch();
-
   return (
     <ExternalComponent>
       <View

@@ -7,8 +7,15 @@ const details = (props) => {
     <TouchableOpacity onPress={props.press}>
       <View style={styles.details}>
         <View style={styles.info}>
-          <Text>{props.name}</Text>
-          <Text style={styles.cost}>{props.cost}zł</Text>
+          <Text>
+            {props.name} [x{props.multiply}]
+          </Text>
+          <Text style={styles.cost}>
+            {props.cost}zł{" "}
+            <Text style={{ fontWeight: "normal" }}>
+              [{props.cost * props.multiply}zł]
+            </Text>
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

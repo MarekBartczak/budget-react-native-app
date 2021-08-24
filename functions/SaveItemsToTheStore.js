@@ -1,7 +1,15 @@
 import Item from "../models/Item";
 
 const createItem = (place, date, item) => {
-  return new Item(item.id, date, place, item.category, item.name, item.cost);
+  return new Item(
+    item.id,
+    date,
+    place,
+    item.category,
+    item.name,
+    item.cost,
+    item.multiply
+  );
 };
 
 const SaveItemsToTheStore = (receipt) => {
