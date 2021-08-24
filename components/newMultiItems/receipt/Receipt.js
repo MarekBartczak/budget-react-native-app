@@ -15,17 +15,19 @@ import {
   TouchableOpacity,
 } from "react-native-gesture-handler";
 import React, { useState } from "react";
-import Colors from "../../constants/Colors";
+import Colors from "../../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
-import Input from "../input/Input";
+import Input from "../../input/Input";
 import { MaterialIcons } from "@expo/vector-icons";
-import NewElement from "./NewElement";
-import ListElement from "./ListElement";
+
+import NewElement from "../NewElement";
+import ListElement from "../ListElement";
 import { useSelector, useDispatch } from "react-redux";
-import * as itemsAction from "../../store/actions/items";
-import SaveItemsToTheStore from "../../functions/SaveItemsToTheStore";
-import numberInputValidation from "../../functions/NumberInputValidation";
-import saveDataToTheCloud from "../../functions/cloud/saveDataToTheCloud";
+import * as itemsAction from "../../../store/actions/items";
+import SaveItemsToTheStore from "../../../functions/SaveItemsToTheStore";
+import numberInputValidation from "../../../functions/NumberInputValidation";
+import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";
+import NewElements from "../receipt/NewElement/NewElements";
 const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
   const [modal, showModal] = useState(false);
@@ -141,7 +143,8 @@ const Receipt = (props) => {
                 onRequestClose={() => showAddItemModal(false)}
               >
                 <View style={styles.addItemModalView}>
-                  <NewElement
+                  <NewElements category={props.category} />
+                  {/* <NewElement
                     place={props.place}
                     itemName={props.itemName}
                     onSetName={props.onSetName}
@@ -151,16 +154,66 @@ const Receipt = (props) => {
                     onChangeCategory={props.setCategory}
                     multiply={props.multiply}
                     onSetMultiply={props.setMultiply}
-                  />
+                  /> */}
                   <View style={styles.buttons}>
-                    <Button
-                      title="Anuluj"
-                      color="red"
-                      onPress={() => {
-                        showAddItemModal(!addItemModal);
-                      }}
-                    />
-                    <Button
+                    <View>
+                      <TouchableOpacity
+                        style={{
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: Dimensions.get("window").width * 0.4,
+                        }}
+                        onPress={() => {
+                          showAddItemModal(!addItemModal);
+                        }}
+                      >
+                        <MaterialIcons name="cancel" size={54} color="red" />
+                        <Text style={{ color: "red" }}>Anuluj</Text>
+                      </TouchableOpacity>
+                    </View>
+                    <View>
+                      {addValidate() ? (
+                        <TouchableOpacity
+                          style={{
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width: Dimensions.get("window").width * 0.4,
+                          }}
+                          onPress={() => {
+                            props.addItemToTheRecipt();
+                            showAddItemModal(!addItemModal);
+                          }}
+                        >
+                          <MaterialIcons
+                            name="add-box"
+                            size={54}
+                            color="green"
+                          />
+                          <Text style={{ color: "green" }}>Dodaj</Text>
+                        </TouchableOpacity>
+                      ) : (
+                        <View>
+                          <View
+                            style={{
+                              justifyContent: "center",
+                              alignItems: "center",
+                              width: Dimensions.get("window").width * 0.4,
+                            }}
+                          >
+                            <MaterialIcons
+                              name="add-box"
+                              size={54}
+                              color={Colors.placeholder}
+                            />
+                            <Text style={{ color: Colors.placeholder }}>
+                              Dodaj
+                            </Text>
+                          </View>
+                        </View>
+                      )}
+                    </View>
+
+                    {/* <Button
                       disabled={!addValidate()}
                       color={Colors.primary}
                       title="Dodaj"
@@ -168,7 +221,7 @@ const Receipt = (props) => {
                         props.addItemToTheRecipt();
                         showAddItemModal(!addItemModal);
                       }}
-                    />
+                    /> */}
                   </View>
                 </View>
               </Modal>

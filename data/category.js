@@ -17,7 +17,7 @@ const Category = {
     dogFood: "jedzenie dla psa",
   },
   householdChemistryExpense: {
-    name: "chemia",
+    name: "chemia domowa",
     cosmetics: "kosmetyki",
     medicines: "leki",
     cleaningProducts: "środki czystości",
@@ -37,7 +37,7 @@ const Category = {
     parts: "części samochodowe",
   },
   housingExpense: {
-    name: "wydatki domowe",
+    name: "utrzymanie domowe",
     renovations: "remonty",
     furniture: "meble",
     electronicsHome: "RTV i AGD",

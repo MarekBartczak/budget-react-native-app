@@ -15,6 +15,8 @@ import numberInputValidation from "../../functions/NumberInputValidation";
 const ErrorCostValidation = () => {
   return <Text style={{ color: "red" }}> Proszę wpisać poprawną kwotę </Text>;
 };
+{
+}
 
 const NewElement = (props) => {
   return (

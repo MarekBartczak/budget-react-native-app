@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ApiElement from "./apiElement/ApiElement";
+import uuid from "react-native-uuid";
 
 const ApiList = (props) => {
   const [sourceList, setSourceList] = useState("");
@@ -12,9 +13,13 @@ const ApiList = (props) => {
       axios
         .get(url + placeYouLookingFor)
         .then((res) => {
+          setSourceList("");
           setSourceList(res.data);
         })
         .catch((err) => console.log(err.message));
+    }
+    if (placeYouLookingFor.length === 0) {
+      setSourceList("");
     }
   };
 
@@ -24,7 +29,7 @@ const ApiList = (props) => {
   return (
     <View style={styles.apiList}>
       <FlatList
-        keyExtractor={(item) => item.domain}
+        keyExtractor={(item) => item.domain + uuid.v4().toString()}
         data={sourceList}
         renderItem={(item) => (
           <ApiElement

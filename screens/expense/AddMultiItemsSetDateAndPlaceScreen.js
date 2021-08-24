@@ -8,7 +8,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "../../components/DatePicker";
 import PlaceList from "../../components/place/PlaceList";
 import Colors from "../../constants/Colors";
-import Receipt from "../../components/newMultiItems/Receipt";
+import Receipt from "../../components/newMultiItems/receipt/Receipt";
 import MultiItem from "../../models/MultiItem";
 import uuid from "react-native-uuid";
 import switchComaToDot from "../../functions/switchCompaToDot";

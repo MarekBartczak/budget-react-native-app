@@ -55,39 +55,39 @@ const FavoritePlaces = (props) => {
 
       <Modal
         animationType="slide"
-        transparent={true}
+        transparent={false}
         visible={showEdit}
         onRequestClose={() => setShowEdit(false)}
       >
         <View style={styles.modalEdit}>
-          <LinearGradient
+          {/* <LinearGradient
             colors={[
               Colors.gradientBackground.primary,
               Colors.gradientBackground.secondary,
             ]}
             style={styles.background}
-          >
-            <TouchableOpacity onPress={() => setShowEdit(false)}>
-              <View>
-                <Input
-                  style={styles.input}
-                  value={favPlaceName}
-                  placeholder={"nazwa"}
-                  keyboardType="default"
-                  onChangeText={setFavPlaceName}
+          > */}
+          <TouchableOpacity onPress={() => setShowEdit(false)}>
+            <View style={styles.closeModalBtn}>
+              <Text style={styles.closeModalText}>Zamknij</Text>
+            </View>
+            <View>
+              <Input
+                style={styles.input}
+                value={favPlaceName}
+                placeholder={"nazwa"}
+                keyboardType="default"
+                onChangeText={setFavPlaceName}
+              />
+              <View style={styles.apiList}>
+                <ApiList
+                  source={favPlaceName}
+                  closeWindow={() => setShowEdit(false)}
                 />
-                <View style={styles.apiList}>
-                  <ApiList
-                    source={favPlaceName}
-                    closeWindow={() => setShowEdit(false)}
-                  />
-                </View>
               </View>
-              <View style={styles.closeModalBtn}>
-                <Text style={styles.closeModalText}>Zamknij</Text>
-              </View>
-            </TouchableOpacity>
-          </LinearGradient>
+            </View>
+          </TouchableOpacity>
+          {/* </LinearGradient> */}
         </View>
       </Modal>
     </View>
@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
   icon: {
     height: "40%",
     width: "30%",
-    backgroundColor: "red",
   },
   row: {
     flexDirection: "row",
@@ -128,8 +127,10 @@ const styles = StyleSheet.create({
   modalEdit: {
     width: "100%",
     height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: Colors.gradientBackground.primary,
+    paddingTop: 100,
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   input: {
     height: 40,
@@ -168,6 +169,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     height: Dimensions.get("window").height,
+    backgroundColor: Colors.gradientBackground.primary,
   },
 });
 
