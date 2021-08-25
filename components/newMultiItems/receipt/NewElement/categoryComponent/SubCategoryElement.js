@@ -48,20 +48,26 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 5,
     marginBottom: 5,
+    fontSize: 10,
   },
   subCategoryTextSelected: {
     marginLeft: 10,
     marginTop: 5,
     marginBottom: 5,
+    fontSize: 10,
+
     color: Colors.accent,
   },
   subCategoryElement: {
     margin: 2,
+    padding: 5,
     backgroundColor: Colors.accent,
     borderTopLeftRadius: 10,
   },
   subCategoryElementSelected: {
     margin: 2,
+    padding: 5,
+
     backgroundColor: Colors.selected,
     borderTopLeftRadius: 10,
   },

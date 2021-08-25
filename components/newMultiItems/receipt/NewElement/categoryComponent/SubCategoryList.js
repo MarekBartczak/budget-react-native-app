@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
   list: {
     marginTop: 20,
     width: Dimensions.get("window").width * 0.9,
-    maxHeight: Dimensions.get("window").height < 700 ? 140 : 300,
+    maxHeight: Dimensions.get("window").height * 0.9,
+    paddingBottom: 140,
   },
 });

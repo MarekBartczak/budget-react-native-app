@@ -42,7 +42,7 @@ const AddItemToTheReceiptScreen = (props) => {
           /> */}
       <View style={styles.buttons}>
         <View>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -54,7 +54,7 @@ const AddItemToTheReceiptScreen = (props) => {
           >
             <MaterialIcons name="cancel" size={54} color="red" />
             <Text style={{ color: "red" }}>Anuluj</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View>
           {addValidate() ? (
@@ -101,9 +101,9 @@ export default AddItemToTheReceiptScreen;
 
 const styles = StyleSheet.create({
   buttons: {
-    flexDirection: "row",
-    width: "100%",
+    // flexDirection: "row",
+    width: Dimensions.get("window").width * 0.45,
     height: Dimensions.get("window").height * 0.25,
-    justifyContent: "center",
+    marginLeft: Dimensions.get("window").width * 0.55,
   },
 });

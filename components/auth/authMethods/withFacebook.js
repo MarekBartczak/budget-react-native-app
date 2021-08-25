@@ -6,9 +6,7 @@ import firebase from "firebase";
 
 // firebase.auth().onAuthStateChanged((user) => {
 //   if (user != null) {
-//     console.log("We are authenticated now!");
 //   } else {
-//     console.log("not");
 //   }
 // });
 
@@ -35,8 +33,7 @@ async function logIn() {
       //   .auth()
       //   .signInWithPopup(provider)
       //   .then(function (result) {
-      //     console.log(token);
-      //     console.log(user);
+
       //     // This gives you a Facebook Access Token.
       //     var token = result.credential.accessToken;
       //     // The signed-in user info.
@@ -45,7 +42,6 @@ async function logIn() {
       // const response = await fetch(
       //   `https://graph.facebook.com/me?access_token=${token}`
       // );
-      // console.log(await response.json());
       // checkLoginState(response)
       const credential = firebase.auth.FacebookAuthProvider.credential(token);
       firebase
@@ -62,15 +58,13 @@ async function logIn() {
           //     // The firebase.auth.AuthCredential type that was used.
           //     var credential = error.credential;
         });
-      // console.log(token);
-      // console.log(credential.accessToken);
+
       // Sign in with credential from the Facebook user.
       // firebase
       //   .auth()
       //   .signInWithCredential(credential)
       //   .then((res) => console.log(res))
       //   .catch((error) => {
-      //     console.log(error);
       //     // alert(error);
       //     // Handle Errors here.
       //   });

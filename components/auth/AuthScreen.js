@@ -37,13 +37,10 @@ const AuthScreen = (props) => {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      // console.log(user);
       // dispatch(authActions.showIndicator(false));
       const userData = firebase.auth().currentUser;
-      // console.log(userData);
       login();
       createUserInfo(userData);
-      // console.log(userData.uid);
     }
   });
 

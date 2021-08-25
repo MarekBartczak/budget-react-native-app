@@ -9,6 +9,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../../../../constants/Colors";
 import * as itemActions from "../../../../../store/actions/items";
+
 const MainCategoryElement = (props) => {
   const dispatch = useDispatch();
   const selectedCategory = useSelector((state) => state.item.category.main);
@@ -33,8 +34,16 @@ const MainCategoryElement = (props) => {
           ...{ backgroundColor: getColor() },
         }}
       >
-        <View style={styles.icon}>{props.icon}</View>
-        <Text style={styles.title}>{props.title}</Text>
+        <View
+          style={{
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View style={styles.icon}>{props.icon}</View>
+          <Text style={styles.title}>{props.title}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -44,9 +53,9 @@ export default MainCategoryElement;
 
 const styles = StyleSheet.create({
   mainCategoryElement: {
-    margin: 5,
-    width: Dimensions.get("window").width * 0.2,
-    height: Dimensions.get("window").width * 0.2,
+    margin: 2,
+    width: Dimensions.get("window").width * 0.3,
+    height: Dimensions.get("window").width * 0.15,
     backgroundColor: Colors.placeholder,
     justifyContent: "center",
     alignItems: "center",
@@ -54,8 +63,9 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    marginTop: 9,
+    // marginTop: 9,
     color: Colors.default,
     fontSize: 10,
+    maxWidth: 100,
   },
 });
