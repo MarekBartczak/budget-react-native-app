@@ -9,7 +9,7 @@ import {
   Button,
   Dimensions,
 } from "react-native";
-
+import { useNavigation } from "@react-navigation/native";
 import {
   TouchableWithoutFeedback,
   TouchableOpacity,
@@ -30,6 +30,7 @@ import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";
 import NewElements from "../receipt/NewElement/NewElements";
 const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
+  const navigation = useNavigation();
   const [modal, showModal] = useState(false);
   const [addItemModal, showAddItemModal] = useState(false);
   const receiptDate = useSelector((state) => state.item.receipt.date);
@@ -47,20 +48,6 @@ const Receipt = (props) => {
     costList = receiptItem.map((item) => item.cost);
     sum = costList.reduce(sumOf);
   }
-
-  const addValidate = () => {
-    let category = !props.category.length > 0 ? false : true;
-    let cost = numberInputValidation(props.cost);
-    let costLength = !props.cost.length > 0 ? false : true;
-    let nameLength = !props.itemName.length > 0 ? false : true;
-    let multiply = !props.multiply.length > 0 ? false : true;
-
-    if (category && cost && costLength && nameLength && multiply) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   numberInputValidation(props.cost);
   return (
@@ -136,96 +123,6 @@ const Receipt = (props) => {
               </View>
             </View>
             <View style={styles.addBtnView}>
-              <Modal
-                animationType="slide"
-                transparent={false}
-                visible={addItemModal}
-                onRequestClose={() => showAddItemModal(false)}
-              >
-                <View style={styles.addItemModalView}>
-                  <NewElements category={props.category} />
-                  {/* <NewElement
-                    place={props.place}
-                    itemName={props.itemName}
-                    onSetName={props.onSetName}
-                    cost={props.cost}
-                    category={props.category}
-                    onSetCost={props.onSetCost}
-                    onChangeCategory={props.setCategory}
-                    multiply={props.multiply}
-                    onSetMultiply={props.setMultiply}
-                  /> */}
-                  <View style={styles.buttons}>
-                    <View>
-                      <TouchableOpacity
-                        style={{
-                          justifyContent: "center",
-                          alignItems: "center",
-                          width: Dimensions.get("window").width * 0.4,
-                        }}
-                        onPress={() => {
-                          showAddItemModal(!addItemModal);
-                        }}
-                      >
-                        <MaterialIcons name="cancel" size={54} color="red" />
-                        <Text style={{ color: "red" }}>Anuluj</Text>
-                      </TouchableOpacity>
-                    </View>
-                    <View>
-                      {addValidate() ? (
-                        <TouchableOpacity
-                          style={{
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: Dimensions.get("window").width * 0.4,
-                          }}
-                          onPress={() => {
-                            props.addItemToTheRecipt();
-                            showAddItemModal(!addItemModal);
-                          }}
-                        >
-                          <MaterialIcons
-                            name="add-box"
-                            size={54}
-                            color="green"
-                          />
-                          <Text style={{ color: "green" }}>Dodaj</Text>
-                        </TouchableOpacity>
-                      ) : (
-                        <View>
-                          <View
-                            style={{
-                              justifyContent: "center",
-                              alignItems: "center",
-                              width: Dimensions.get("window").width * 0.4,
-                            }}
-                          >
-                            <MaterialIcons
-                              name="add-box"
-                              size={54}
-                              color={Colors.placeholder}
-                            />
-                            <Text style={{ color: Colors.placeholder }}>
-                              Dodaj
-                            </Text>
-                          </View>
-                        </View>
-                      )}
-                    </View>
-
-                    {/* <Button
-                      disabled={!addValidate()}
-                      color={Colors.primary}
-                      title="Dodaj"
-                      onPress={() => {
-                        props.addItemToTheRecipt();
-                        showAddItemModal(!addItemModal);
-                      }}
-                    /> */}
-                  </View>
-                </View>
-              </Modal>
-
               <View style={styles.bottomPartOfRecipt}>
                 <View style={styles.sumView}>
                   <Text style={styles.sum}>Razem {sum.toFixed(2)}zł</Text>
@@ -257,7 +154,12 @@ const Receipt = (props) => {
                     <TouchableOpacity
                       onPress={() => {
                         if (GetSelectedPlace.length > 0) {
-                          showAddItemModal(!addItemModal);
+                          // showAddItemModal(!addItemModal);
+                          navigation.navigate("AddToReceipt");
+
+                          // props.navigation.goBack();
+
+                          // console.log("test");
                         } else {
                           alert("Wybierz Sklep");
                         }

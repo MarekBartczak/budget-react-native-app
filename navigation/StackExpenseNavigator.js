@@ -5,13 +5,15 @@ import PlaceScreen from "../screens/expense/PlaceScreen";
 import CategoryScreen from "../screens/expense/CategoryScreen";
 import FavoritePlaceScreen from "../screens/expense/FavoritePlaceScreen";
 import AddMultipleItemScreen from "../screens/expense/AddMultiItemsSetDateAndPlaceScreen";
+import AddItemToTheReceiptScreen from "../screens/expense/AddItemToTheReceiptScreen";
+import EditCategories from "../screens/expense/EditCategories";
 import Colors from "../constants/Colors";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Logout from "../components/auth/logout/Logout";
 import React from "react";
-
+import { Feather } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 
 const StackExpenseNavigator = (props) => {
@@ -77,11 +79,29 @@ const StackExpenseNavigator = (props) => {
       {stackScreen("FavoritePlace", FavoritePlaceScreen, {
         title: "Ulubione",
       })}
+      {stackScreen("editCategories", EditCategories, {
+        title: "Edycja Kategori",
+      })}
       {stackScreen(
         "AddMultipleItem",
         AddMultipleItemScreen,
         ({ navigation }) => ({
           headerTitle: "Cały paragon",
+        })
+      )}
+      {stackScreen(
+        "AddToReceipt",
+        AddItemToTheReceiptScreen,
+        ({ navigation }) => ({
+          headerTitle: "Dodaj do paragonu",
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 20 }}
+              onPress={() => navigation.navigate("editCategories")}
+            >
+              <Feather name="edit" size={24} color="black" />
+            </TouchableOpacity>
+          ),
         })
       )}
     </Stack.Navigator>

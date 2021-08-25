@@ -8,6 +8,7 @@ import {
   LOADING_EXPENSE_FROM_DB,
   CLEAR_STATE_AFTER_LOGOUT,
   SELECT_MAIN_CATEGORY,
+  SELECT_SUB_CATEGORY,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
@@ -65,6 +66,8 @@ export default (state = initialState, action) => {
       return { ...state, items: [] };
     case SELECT_MAIN_CATEGORY:
       return { ...state, category: { main: action.title, sub: "" } };
+    case SELECT_SUB_CATEGORY:
+      return { ...state, category: { ...state.category, sub: action.title } };
   }
   return state;
 };

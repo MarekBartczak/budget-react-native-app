@@ -51,7 +51,6 @@ const StackRaportNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
-        // headerRight: () => <Logout />,
 
         headerRight: () => (
           <TouchableOpacity

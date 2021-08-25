@@ -8,11 +8,7 @@ const NewElements = (props) => {
   //   console.log(props);
   return (
     <View style={styles.screen}>
-      {showCategory ? (
-        <Category categoryList={props.category} />
-      ) : (
-        <InputData />
-      )}
+      {showCategory ? <Category /> : <InputData />}
     </View>
   );
 };
@@ -21,6 +17,6 @@ export default NewElements;
 
 const styles = StyleSheet.create({
   screen: {
-    height: Dimensions.get("window").height * 0.8,
+    height: Dimensions.get("window").height * 0.75,
   },
 });
