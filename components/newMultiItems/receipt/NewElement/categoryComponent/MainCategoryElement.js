@@ -5,12 +5,36 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../../../../constants/Colors";
+import * as itemActions from "../../../../../store/actions/items";
 const MainCategoryElement = (props) => {
+  //   const [selected, setSelected] = useState("");
+  const dispatch = useDispatch();
+  const selectedCategory = useSelector((state) => state.item.category.main);
+  const getColor = () => {
+    if (props.title === selectedCategory) {
+      return Colors.selected;
+    } else {
+      return Colors.placeholder;
+    }
+  };
+
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={styles.mainCategoryElement}>
+    <TouchableOpacity
+      onPress={() => {
+        props.onPress;
+        dispatch(itemActions.selectMainCategory(props.title));
+        // setSelected(props.title);
+      }}
+    >
+      <View
+        style={{
+          ...styles.mainCategoryElement,
+          ...{ backgroundColor: getColor() },
+        }}
+      >
         <View style={styles.icon}>{props.icon}</View>
         <Text style={styles.title}>{props.title}</Text>
       </View>

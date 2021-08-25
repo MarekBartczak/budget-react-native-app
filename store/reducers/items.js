@@ -7,6 +7,7 @@ import {
   ADD_ITEMS_FROM_RECEIPT,
   LOADING_EXPENSE_FROM_DB,
   CLEAR_STATE_AFTER_LOGOUT,
+  SELECT_MAIN_CATEGORY,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
@@ -18,6 +19,10 @@ const initialState = {
     place: "",
     date: "",
     items: [],
+  },
+  category: {
+    main: "",
+    sub: "",
   },
 };
 
@@ -58,6 +63,8 @@ export default (state = initialState, action) => {
       };
     case CLEAR_STATE_AFTER_LOGOUT:
       return { ...state, items: [] };
+    case SELECT_MAIN_CATEGORY:
+      return { ...state, category: { main: action.title, sub: "" } };
   }
   return state;
 };

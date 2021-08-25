@@ -31,3 +31,12 @@ export const CLEAR_STATE_AFTER_LOGOUT = "CLEAR_STATE_AFTER_LOGOUT";
 export const clearStateAfterLogout = () => {
   return { type: CLEAR_STATE_AFTER_LOGOUT };
 };
+
+export const SELECT_MAIN_CATEGORY = "SELECT_MAIN_CATEGORY";
+export const selectMainCategory = (title) => {
+  return { type: SELECT_MAIN_CATEGORY, title: title };
+};
+export const SELECT_SUB_CATEGORY = "SELECT_SUB_CATEGORY";
+export const selectSubCategory = (title) => {
+  return { type: SELECT_SUB_CATEGORY, title: title };
+};

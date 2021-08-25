@@ -49,12 +49,14 @@ const Categories = (props) => {
         </View>
         <View style={styles.categoryRow}>
           <MainCategoryElement
+            selected={Colors.selected}
             title={mainCategoryList[3]}
             icon={
               <FontAwesome name="automobile" size={54} color={Colors.default} />
             }
           />
           <MainCategoryElement
+            selected={null}
             title={mainCategoryList[4]}
             icon={<Entypo name="home" size={54} color={Colors.default} />}
           />

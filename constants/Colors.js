@@ -1,6 +1,7 @@
 export default {
   primary: "rgb(1,1,1)",
   placeholder: "rgb(160,160,160)",
+  selected: "rgb(0,100,0)",
   // primary: "rgb(255,255,255)",
   primaryLight: "rgb(100, 70, 190)",
   accent: "rgb(220,220,220)",
