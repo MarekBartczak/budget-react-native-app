@@ -9,6 +9,7 @@ import {
   CLEAR_STATE_AFTER_LOGOUT,
   SELECT_MAIN_CATEGORY,
   SELECT_SUB_CATEGORY,
+  SET_SELECTED_CATEGORY,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
@@ -22,6 +23,7 @@ const initialState = {
     items: [],
   },
   category: {
+    selected: false,
     main: "",
     sub: "",
   },
@@ -66,6 +68,11 @@ export default (state = initialState, action) => {
       return { ...state, category: { main: action.title, sub: "" } };
     case SELECT_SUB_CATEGORY:
       return { ...state, category: { ...state.category, sub: action.title } };
+    case SET_SELECTED_CATEGORY:
+      return {
+        ...state,
+        category: { ...state.category, selected: action.isSelected },
+      };
   }
   return state;
 };

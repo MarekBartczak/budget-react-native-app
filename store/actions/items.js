@@ -40,3 +40,8 @@ export const SELECT_SUB_CATEGORY = "SELECT_SUB_CATEGORY";
 export const selectSubCategory = (title) => {
   return { type: SELECT_SUB_CATEGORY, title: title };
 };
+
+export const SET_SELECTED_CATEGORY = "SET_SELECTED_CATEGORY";
+export const setSelectedCategory = (isSelected) => {
+  return { type: SET_SELECTED_CATEGORY, isSelected: isSelected };
+};

@@ -10,14 +10,16 @@ import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/Colors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
+import * as itemsActions from "../../store/actions/items";
 
 const AddItemToTheReceiptScreen = (props) => {
   const selectedCategory = useSelector((state) => state.item.category.main);
   const selectedSubCategory = useSelector((state) => state.item.category.sub);
 
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const addValidate = () => {
     if (selectedCategory != "" && selectedSubCategory != "") {
@@ -66,10 +68,10 @@ const AddItemToTheReceiptScreen = (props) => {
               }}
               onPress={() => {
                 // props.addItemToTheRecipt();
+                dispatch(itemsActions.setSelectedCategory(true));
               }}
             >
               <Ionicons name="arrow-forward-circle" size={54} color="green" />
-              {/* <MaterialIcons name="add-box" size={54} color="green" /> */}
               <Text style={{ color: "green" }}>Dalej</Text>
             </TouchableOpacity>
           ) : (

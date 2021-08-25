@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import ExternalComponent from "../../../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 const InputData = (props) => {
   return (
-    <View>
-      <Text>input</Text>
-    </View>
+    <ExternalComponent>
+      <View>
+        <Text>input</Text>
+      </View>
+    </ExternalComponent>
   );
 };
 
