@@ -9,6 +9,8 @@ import React from "react";
 import Colors from "../../../../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import * as itemActions from "../../../../../store/actions/items";
+import { FontAwesome5 } from "@expo/vector-icons";
+
 const SubCategoryElement = (props) => {
   const dispatch = useDispatch();
   const selectedSubCategory = useSelector((state) => state.item.category.sub);
@@ -16,26 +18,33 @@ const SubCategoryElement = (props) => {
     <TouchableOpacity
       onPress={() => dispatch(itemActions.selectSubCategory(props.item))}
     >
-      <View
-        style={
-          styles[
-            selectedSubCategory === props.item
-              ? "subCategoryElementSelected"
-              : "subCategoryElement"
-          ]
-        }
-      >
-        <Text
+      <View>
+        <View
           style={
             styles[
               selectedSubCategory === props.item
-                ? "subCategoryTextSelected"
-                : "subCategoryText"
+                ? "subCategoryElementSelected"
+                : "subCategoryElement"
             ]
           }
         >
-          {props.item}
-        </Text>
+          <FontAwesome5
+            name="dot-circle"
+            size={24}
+            color={selectedSubCategory === props.item ? Colors.accent : "black"}
+          />
+          <Text
+            style={
+              styles[
+                selectedSubCategory === props.item
+                  ? "subCategoryTextSelected"
+                  : "subCategoryText"
+              ]
+            }
+          >
+            {props.item}
+          </Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -63,10 +72,12 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: Colors.accent,
     borderTopLeftRadius: 10,
+    flexDirection: "row",
   },
   subCategoryElementSelected: {
     margin: 2,
     padding: 5,
+    flexDirection: "row",
 
     backgroundColor: Colors.selected,
     borderTopLeftRadius: 10,
