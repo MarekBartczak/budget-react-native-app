@@ -16,17 +16,77 @@ import Colors from "../../constants/Colors";
 import numberInputValidation from "../../functions/NumberInputValidation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import uuid from "react-native-uuid";
+import MultiItem from "../../models/MultiItem";
+import { useNavigation } from "@react-navigation/native";
+import switchComaToDot from "../../functions/switchCompaToDot";
 
 const InputData = (props) => {
+  const navigation = useNavigation();
+
   const [cost, setCost] = useState("");
   const [multiply, setMultiply] = useState("");
   const [itemName, setItemName] = useState("");
   const mainCategory = useSelector((state) => state.item.category.main);
   const subCategory = useSelector((state) => state.item.category.sub);
+
   const dispatch = useDispatch();
+
   const ErrorCostValidation = () => {
     return <Text style={{ color: "red" }}> Proszę wpisać poprawną kwotę </Text>;
   };
+
+  const checkFilledForm = () => {
+    if (
+      cost != "" &&
+      multiply != "" &&
+      itemName != "" &&
+      numberInputValidation(cost)
+    ) {
+      return true;
+    }
+  };
+  const clearState = () => {
+    setCost("");
+    setItemName("");
+    setMultiply("");
+  };
+  addToReceipt = () => {
+    const itemObj = new MultiItem(
+      uuid.v4(),
+      subCategory,
+      itemName,
+      Number(switchComaToDot(cost)),
+      multiply
+    );
+    dispatch(itemActions.addItemToTheReceipt(itemObj));
+    clearState();
+    navigation.navigate("AddMultipleItem");
+  };
+
+  const addToReceiptButtonActive = () => {
+    return (
+      <TouchableOpacity onPress={addToReceipt}>
+        <View style={styles.addButton}>
+          <View style={styles.innerButton}>
+            <Entypo name="add-to-list" size={54} color="green" />
+            <Text>Dodaj do paragonu</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+  const addToReceiptButtonInactive = () => {
+    return (
+      <View style={styles.addButton}>
+        <View style={styles.innerButton}>
+          <Entypo name="add-to-list" size={54} color={Colors.primary} />
+          <Text>Dodaj do paragonu</Text>
+        </View>
+      </View>
+    );
+  };
+
   return (
     <ExternalComponent>
       <View style={styles.category}>
@@ -90,14 +150,9 @@ const InputData = (props) => {
               )}
             </View>
           </View>
-          <TouchableOpacity onPress={() => {}}>
-            <View style={styles.addButton}>
-              <View style={styles.innerButton}>
-                <Entypo name="add-to-list" size={54} color="green" />
-                <Text>Dodaj do paragonu</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
+          {checkFilledForm()
+            ? addToReceiptButtonActive()
+            : addToReceiptButtonInactive()}
         </View>
       </TouchableWithoutFeedback>
     </ExternalComponent>
