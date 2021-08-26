@@ -34,7 +34,7 @@ const AddNewItem = (props) => {
 const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get("window").width * 0.9,
-    height: 100,
+    height: 80,
     backgroundColor: Colors.defaultThemeLight.buttton,
     borderRadius: 10,
     justifyContent: "center",
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: "88%",
     width: "96%",
-    borderWidth: 3,
-    borderColor: Colors.defaultThemeLight.primary,
+    // borderWidth: 3,
+    // borderColor: Colors.defaultThemeLight.primary,
   },
   addBtn: {
     justifyContent: "space-around",
@@ -58,9 +58,10 @@ const styles = StyleSheet.create({
   add: {
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 5,
+    marginBottom: 4,
   },
   btnText: {
+    fontSize: 12,
     marginBottom: -10,
     fontWeight: "bold",
     paddingHorizontal: 10,

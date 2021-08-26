@@ -62,7 +62,7 @@ const MainScreen = (props) => {
               icon={
                 <Ionicons
                   name="ios-cart-outline"
-                  size={62}
+                  size={44}
                   color={Colors.defaultThemeLight.primary}
                 />
               }

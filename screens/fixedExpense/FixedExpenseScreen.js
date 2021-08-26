@@ -50,8 +50,8 @@ const FixedExpenseScreen = (props) => {
           icon={
             <MaterialCommunityIcons
               name="credit-card-clock-outline"
-              size={62}
-              color={Colors.primary}
+              size={44}
+              color={Colors.defaultThemeLight.primary}
             />
           }
         />
