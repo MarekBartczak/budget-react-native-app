@@ -257,6 +257,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   inner: {
+    overflow: "hidden",
     height: 40,
     width: Dimensions.get("window").width * 0.85,
     borderWidth: 3,
