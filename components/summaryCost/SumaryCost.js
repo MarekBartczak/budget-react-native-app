@@ -16,7 +16,8 @@ export default SumaryCost;
 
 const styles = StyleSheet.create({
   summaryCost: {
-    backgroundColor: Colors.accent,
+    marginTop: 10,
+    backgroundColor: Colors.defaultThemeLight.buttton,
     width: Dimensions.get("window").width * 0.9,
     height: 50,
 
@@ -28,13 +29,13 @@ const styles = StyleSheet.create({
     height: "70%",
     width: "95%",
     borderRadius: 7,
-    borderWidth: 3,
-    borderColor: Colors.gradientBackground.third,
+    // borderWidth: 3,
+    // borderColor: Colors.gradientBackground.third,
     alignItems: "center",
     justifyContent: "center",
   },
   textCost: {
-    color: Colors.primary,
+    color: Colors.defaultThemeLight.primary,
     fontWeight: "bold",
     fontSize: 20,
   },

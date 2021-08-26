@@ -47,6 +47,10 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width / 4,
     alignItems: "center",
     justifyContent: "flex-end",
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.3,
   },
   text: {
     width: "80%",
@@ -57,7 +61,8 @@ const styles = StyleSheet.create({
     height: "80%",
     width: "80%",
     borderRadius: 10,
-    borderColor: Colors.banner,
-    borderWidth: 3,
+
+    borderColor: Colors.defaultThemeLight.accent,
+    borderWidth: 1,
   },
 });

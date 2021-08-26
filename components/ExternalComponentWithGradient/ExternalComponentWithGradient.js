@@ -8,8 +8,9 @@ const ExternalComponentWithGradient = (props) => {
     <View>
       <LinearGradient
         colors={[
-          Colors.gradientBackground.primary,
-          Colors.gradientBackground.secondary,
+          Colors.defaultThemeLight.backGroundOne,
+          Colors.defaultThemeLight.backGroundOne,
+          // Colors.gradientBackground.secondary,
         ]}
         style={styles.background}
       />

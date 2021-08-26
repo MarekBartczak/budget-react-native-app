@@ -9,7 +9,7 @@ const Chart = (props) => {
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   return (
-    <View>
+    <View style={styles.chartView}>
       <TouchableOpacity onPress={props.press}>
         <LineChart
           data={{
@@ -27,13 +27,13 @@ const Chart = (props) => {
           width={Dimensions.get("window").width * 0.9}
           height={180}
           chartConfig={{
-            labelColor: () => Colors.primary,
+            labelColor: () => Colors.defaultThemeLight.primaryDark,
             backgroundGradientFromOpacity: 1,
             backgroundGradientToOpacity: 1,
             backgroundGradientFrom: Colors.gradientBackground.primary,
             backgroundGradientTo: Colors.gradientBackground.primary,
             decimalPlaces: 2,
-            color: () => Colors.primary,
+            color: () => Colors.defaultThemeLight.primaryDark,
           }}
           bezier
           style={styles.chart}
@@ -52,5 +52,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width * 0.9,
+  },
+  chartView: {
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
 });

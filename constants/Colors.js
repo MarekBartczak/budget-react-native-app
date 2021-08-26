@@ -3,6 +3,7 @@ export default {
   placeholder: "rgb(160,160,160)",
   selected: "rgb(0,100,0)",
   primaryLight: "rgb(100, 70, 190)",
+  // accent: "rgb(220,220,220)",
   accent: "rgb(220,220,220)",
   accentOpacity: "rgba(240,143,60,0.5)",
   banner: "#DFDFDF",
@@ -16,8 +17,17 @@ export default {
   facebook: "rgb(59,89,152)",
   google: "#ea4335",
   gradientBackground: {
-    primary: "rgb(200, 200,200)",
+    // primary: "rgb(200, 200,200)",
+    // secondary: "rgb(200,200,200)",
+    primary: "rgb(255, 255,255)",
     secondary: "rgb(200,200,200)",
-    third: "rgb(200,200,200)",
+    third: "rgb(250,250,250)",
+  },
+  defaultThemeLight: {
+    buttton: "rgb(47,97,217)",
+    primary: "rgb(230,232,233)",
+    primaryDark: "rgb(30,32,39)",
+    backGroundOne: "rgb(241,243,246)",
+    accent: "rgb(222,95,43)",
   },
 };

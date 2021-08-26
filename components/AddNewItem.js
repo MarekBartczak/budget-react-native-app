@@ -35,19 +35,19 @@ const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get("window").width * 0.9,
     height: 100,
-    backgroundColor: Colors.accent,
+    backgroundColor: Colors.defaultThemeLight.buttton,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
   },
   inner: {
-    backgroundColor: Colors.accent,
+    backgroundColor: Colors.defaultThemeLight.buttton,
     borderRadius: 10,
     height: "88%",
     width: "96%",
     borderWidth: 3,
-    borderColor: Colors.gradientBackground.primary,
+    borderColor: Colors.defaultThemeLight.primary,
   },
   addBtn: {
     justifyContent: "space-around",
@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
     marginBottom: -10,
     fontWeight: "bold",
     paddingHorizontal: 10,
-    backgroundColor: Colors.accent,
+    backgroundColor: Colors.defaultThemeLight.buttton,
+    color: Colors.defaultThemeLight.primary,
   },
 });
 

@@ -26,7 +26,7 @@ const StackRaportNavigator = (props) => {
       screenOptions={{
         headerTintColor: Colors.primary,
         headerStyle: {
-          backgroundColor: Colors.gradientBackground.primary,
+          backgroundColor: Colors.defaultThemeLight.backGroundOne,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,

@@ -26,7 +26,15 @@ const MainScreen = (props) => {
         }}
       >
         <View style={styles.screen}>
-          <View style={{ marginBottom: 20 }}>
+          <View
+            style={{
+              marginBottom: 20,
+              shadowOffset: { height: 0, width: 0 },
+              shadowRadius: 7,
+              shadowColor: "black",
+              shadowOpacity: 0.2,
+            }}
+          >
             <SummaryCost cost={summaryCostCounter(itemsFromRedux)} />
           </View>
           <View>
@@ -55,7 +63,7 @@ const MainScreen = (props) => {
                 <Ionicons
                   name="ios-cart-outline"
                   size={62}
-                  color={Colors.primary}
+                  color={Colors.defaultThemeLight.primary}
                 />
               }
             />
@@ -72,9 +80,17 @@ const styles = StyleSheet.create({
   },
   favoritePlace: {
     alignItems: "center",
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
   addNewItem: {
     alignItems: "center",
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
   raport: {
     alignItems: "center",
