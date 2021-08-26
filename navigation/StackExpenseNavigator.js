@@ -7,6 +7,7 @@ import FavoritePlaceScreen from "../screens/expense/FavoritePlaceScreen";
 import AddMultipleItemScreen from "../screens/expense/AddMultiItemsSetDateAndPlaceScreen";
 import AddItemToTheReceiptScreen from "../screens/expense/AddItemToTheReceiptScreen";
 import EditCategories from "../screens/expense/EditCategories";
+import InputDataScreen from "../screens/expense/InputDataScreen";
 import Colors from "../constants/Colors";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
@@ -71,6 +72,9 @@ const StackExpenseNavigator = (props) => {
       )}
       {stackScreen("Place", PlaceScreen, ({ navigation }) =>
         filter("Miejsce", "Place")
+      )}
+      {stackScreen("InputData", InputDataScreen, ({ navigation }) =>
+        filter("Wpisz dane", "InputData")
       )}
       {stackScreen("Category", CategoryScreen, ({ navigation }) =>
         filter("Kategoria", "Category")

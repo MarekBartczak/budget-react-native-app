@@ -17,7 +17,9 @@ import * as itemsActions from "../../store/actions/items";
 const AddItemToTheReceiptScreen = (props) => {
   const selectedCategory = useSelector((state) => state.item.category.main);
   const selectedSubCategory = useSelector((state) => state.item.category.sub);
-
+  const isCategorySelected = useSelector(
+    (state) => state.item.category.selected
+  );
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -28,73 +30,75 @@ const AddItemToTheReceiptScreen = (props) => {
       return false;
     }
   };
-  return (
-    <View style={styles.addItemModalView}>
-      <NewElements />
-      {/* <NewElement
-            place={props.place}
-            itemName={props.itemName}
-            onSetName={props.onSetName}
-            cost={props.cost}
-            category={props.category}
-            onSetCost={props.onSetCost}
-            onChangeCategory={props.setCategory}
-            multiply={props.multiply}
-            onSetMultiply={props.setMultiply}
-          /> */}
+  const navigateToInputData = () => {
+    navigation.navigate("InputData");
+  };
+  const nextButton = () => {
+    return (
       <View style={styles.buttons}>
-        <View>
-          {/* <TouchableOpacity
+        {addValidate() ? (
+          <TouchableOpacity
             style={{
               justifyContent: "center",
               alignItems: "center",
               width: Dimensions.get("window").width * 0.4,
             }}
             onPress={() => {
-              navigation.goBack();
+              // props.addItemToTheRecipt();
+              navigateToInputData();
             }}
           >
-            <MaterialIcons name="cancel" size={54} color="red" />
-            <Text style={{ color: "red" }}>Anuluj</Text>
-          </TouchableOpacity> */}
-        </View>
-        <View>
-          {addValidate() ? (
-            <TouchableOpacity
+            <Ionicons name="arrow-forward-circle" size={54} color="green" />
+            <Text style={{ color: "green" }}>Dalej</Text>
+          </TouchableOpacity>
+        ) : (
+          <View>
+            <View
               style={{
                 justifyContent: "center",
                 alignItems: "center",
                 width: Dimensions.get("window").width * 0.4,
               }}
-              onPress={() => {
-                // props.addItemToTheRecipt();
-                dispatch(itemsActions.setSelectedCategory(true));
-              }}
             >
-              <Ionicons name="arrow-forward-circle" size={54} color="green" />
-              <Text style={{ color: "green" }}>Dalej</Text>
-            </TouchableOpacity>
-          ) : (
-            <View>
-              <View
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: Dimensions.get("window").width * 0.4,
-                }}
-              >
-                <Ionicons
-                  name="arrow-forward-circle"
-                  size={54}
-                  color={Colors.placeholder}
-                />
+              <Ionicons
+                name="arrow-forward-circle"
+                size={54}
+                color={Colors.placeholder}
+              />
 
-                <Text style={{ color: Colors.placeholder }}>Dalej</Text>
-              </View>
+              <Text style={{ color: Colors.placeholder }}>Dalej</Text>
             </View>
-          )}
-        </View>
+          </View>
+        )}
       </View>
+    );
+  };
+
+  const backButton = () => {
+    return (
+      <View style={styles.buttons}>
+        <TouchableOpacity
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            width: Dimensions.get("window").width * 0.4,
+          }}
+          onPress={() => {
+            // props.addItemToTheRecipt();
+            dispatch(itemsActions.setSelectedCategory(false));
+          }}
+        >
+          <Ionicons name="arrow-back-circle" size={4} color="red" />
+          <Text style={{ color: "red" }}>cofnij</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  return (
+    <View style={styles.addItemModalView}>
+      <NewElements />
+      {nextButton()}
     </View>
   );
 };

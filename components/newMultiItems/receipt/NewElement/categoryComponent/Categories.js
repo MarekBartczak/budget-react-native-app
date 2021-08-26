@@ -12,6 +12,7 @@ import { Feather } from "@expo/vector-icons";
 import SubCategoryList from "./SubCategoryList";
 import ExternalComponent from "../../../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { useHeaderHeight } from "@react-navigation/stack";
+
 const Categories = (props) => {
   const [headerHeight, setHeaderHeight] = useState(useHeaderHeight());
   const categoriesListObjectKeys = Object.keys(CategoriesList);

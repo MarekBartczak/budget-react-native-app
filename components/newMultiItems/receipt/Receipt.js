@@ -14,7 +14,7 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from "react-native-gesture-handler";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
 import Input from "../../input/Input";
@@ -40,7 +40,9 @@ const Receipt = (props) => {
   const allElements = useSelector((state) => state.item.items);
   const userId = useSelector((state) => state.auth.userID);
   // console.log(allElements.length);
+
   const dispatch = useDispatch();
+
   const sumOf = (total, sum) => total + sum;
   let costList = [];
   let sum = 0;

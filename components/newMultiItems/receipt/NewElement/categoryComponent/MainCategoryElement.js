@@ -53,13 +53,16 @@ export default MainCategoryElement;
 
 const styles = StyleSheet.create({
   mainCategoryElement: {
-    margin: 2,
+    marginBottom: 4,
+    left: -5,
     width: Dimensions.get("window").width * 0.3,
     height: Dimensions.get("window").width * 0.15,
     backgroundColor: Colors.placeholder,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
+    // borderRadius: 10,
+    // borderBottomRightRadius: 10,
+    borderTopRightRadius: 10,
   },
   title: {
     textAlign: "center",
