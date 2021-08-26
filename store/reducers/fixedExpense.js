@@ -4,6 +4,7 @@ import {
   ARCHIVE,
   DEL_EXPENSE,
   LOADING_FIXED_EXPENSE_FROM_DB,
+  LOADING_HISTORY_FROM_DB,
   CLEAR_STATE_AFTER_LOGOUT,
 } from "../actions/fixedExpense";
 import Expense from "../../data/Dummy-FixedExpense";
@@ -21,6 +22,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_FIXED_EXPENSE_FROM_DB:
       return { ...state, fixedExpense: [...action.array] };
+    case LOADING_HISTORY_FROM_DB:
+      return { ...state, history: [...action.array] };
     case ADD_COST:
       return { ...state, fixedExpense: [...state.fixedExpense, action.cost] };
     case IS_PAID:
@@ -59,9 +62,6 @@ export default (state = initialState, action) => {
         let current = [...state.fixedExpense];
         let removeItem = current.map((el) => el.id).indexOf(action.itemId);
         current.splice(removeItem, 1);
-        // deleteDataInCloud.fixedExpense(
-        //   { ...state, fixedExpense: current }.fixedExpense
-        // );
         return { ...state, fixedExpense: current };
       } else {
         return { ...state };

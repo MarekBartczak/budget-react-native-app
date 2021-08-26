@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
       const filteredItem = state.fixedIncome.find(
         (el) => el.id === action.itemId
       );
-      deleteDataInCloud.fixedIncome(filteredItem.firebaseId), action.userId;
+      deleteDataInCloud.fixedIncome(filteredItem.firebaseId, action.userId);
 
       if (state.fixedIncome.length > 0) {
         let current = [...state.fixedIncome];

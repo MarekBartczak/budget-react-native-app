@@ -1,8 +1,6 @@
 import firebase from "firebase";
 
 const removeFromFirebaseBySet = (id, type, userId) => {
-  // console.log(userId);
-  // console.log(id);
   firebase.database().ref(`users/${userId}/items/${type}/${id}`).set(null);
 };
 const deleteDataInCloud = {
@@ -16,7 +14,7 @@ const deleteDataInCloud = {
     removeFromFirebaseBySet(id, "fixedExpense", userId);
   },
   fixedIncome: (id, userId) => {
-    removeFromFirebaseBySet(id, "firebase", userId);
+    removeFromFirebaseBySet(id, "fixedIncome", userId);
   },
 };
 

@@ -21,6 +21,10 @@ export const LOADING_FIXED_EXPENSE_FROM_DB = "LOADING_FIXED_EXPENSE_FROM_DB";
 export const loadingFixedExpensefromDB = (array) => {
   return { type: LOADING_FIXED_EXPENSE_FROM_DB, array: array };
 };
+export const LOADING_HISTORY_FROM_DB = "LOADING_HISTORY_FROM_DB";
+export const loadingHistoryFromDb = (array) => {
+  return { type: LOADING_HISTORY_FROM_DB, array: array };
+};
 export const CLEAR_STATE_AFTER_LOGOUT = "CLEAR_STATE_AFTER_LOGOUT";
 export const clearStateAfterLogout = () => {
   return { type: CLEAR_STATE_AFTER_LOGOUT };
