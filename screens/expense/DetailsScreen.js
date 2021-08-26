@@ -162,7 +162,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   name: {
-    fontSize: 30,
+    fontSize: 15,
+    // backgroundColor: Colors.gradientBackground.third,
+    padding: 20,
     fontWeight: "bold",
     color: Colors.primary,
     margin: 10,
@@ -175,7 +177,7 @@ const styles = StyleSheet.create({
   cost: {
     fontWeight: "bold",
     color: "black",
-    fontSize: 24,
+    fontSize: 15,
     paddingVertical: 10,
   },
   detailsMiddleCenter: {
