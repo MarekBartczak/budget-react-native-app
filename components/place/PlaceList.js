@@ -62,7 +62,7 @@ const PlaceList = (props) => {
         >
           <View>
             <Text style={{ fontWeight: setBtnColor(!isFavoritePlaceShow) }}>
-              Wszystkie
+              Zapisane
             </Text>
           </View>
         </TouchableOpacity>
