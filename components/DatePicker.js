@@ -7,7 +7,7 @@ const DatePicker = (props) => {
     <View style={styles.pickADate}>
       <RNDateTimePicker
         style={{
-          height: 50,
+          height: 90,
           width: "90%",
           alignItems: "center",
           justifyContent: "center",
