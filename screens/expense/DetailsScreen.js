@@ -44,7 +44,11 @@ const DetailsScreen = (props) => {
                 );
               }}
             >
-              <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+              <Ionicons
+                name="ios-trash"
+                size={24}
+                color={Colors.defaultThemeLight.primary}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -108,7 +112,7 @@ const styles = StyleSheet.create({
   },
   dateView: {
     alignItems: "center",
-    backgroundColor: Colors.accent,
+    backgroundColor: Colors.defaultThemeLight.buttton,
     padding: 10,
     borderRadius: 10,
     flexDirection: "row",
@@ -118,14 +122,18 @@ const styles = StyleSheet.create({
   date: {
     fontWeight: "bold",
     fontSize: 24,
-    color: Colors.primary,
+    color: Colors.defaultThemeLight.primary,
   },
   middleSection: {
     marginVertical: 20,
     height: 180,
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.defaultThemeLight.white,
     borderRadius: 10,
     padding: 10,
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
 
     flexDirection: "column",
     justifyContent: "space-between",

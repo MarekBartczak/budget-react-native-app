@@ -68,13 +68,21 @@ const DateScreen = (props) => {
       <View style={styles.screen}>
         <View style={styles.top}>
           <TouchableOpacity onPress={() => switchDate(-1)}>
-            <Ionicons name="ios-arrow-back" size={43} color="black" />
+            <Ionicons
+              name="ios-arrow-back"
+              size={43}
+              color={Colors.defaultThemeLight.primaryDark}
+            />
           </TouchableOpacity>
           <Text style={styles.showDate}>{currentDate}</Text>
           <FilterList listData={workingDateList} callBack={callBack} />
 
           <TouchableOpacity onPress={() => switchDate(1)}>
-            <Ionicons name="ios-arrow-forward" size={43} color="black" />
+            <Ionicons
+              name="ios-arrow-forward"
+              size={43}
+              color={Colors.defaultThemeLight.primaryDark}
+            />
           </TouchableOpacity>
         </View>
         <View>

@@ -1,5 +1,5 @@
 import firebase from "firebase";
-
+import Colors from "../../../constants/Colors";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -41,7 +41,11 @@ const Logout = (props) => {
   };
   return (
     <TouchableOpacity style={styles.logout} onPress={logout}>
-      <MaterialIcons name="logout" size={24} color="black" />
+      <MaterialIcons
+        name="logout"
+        size={24}
+        color={Colors.defaultThemeLight.primaryDark}
+      />
     </TouchableOpacity>
   );
 };

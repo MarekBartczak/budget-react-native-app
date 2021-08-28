@@ -40,7 +40,7 @@ const StackExpenseNavigator = (props) => {
           <MaterialCommunityIcons
             name="menu"
             size={34}
-            color={Colors.primary}
+            color={Colors.defaultThemeLight.primaryDark}
           />
         </TouchableOpacity>
       ),
@@ -54,7 +54,7 @@ const StackExpenseNavigator = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: Colors.primary,
+        headerTintColor: Colors.defaultThemeLight.primaryDark,
         headerStyle: {
           backgroundColor: Colors.defaultThemeLight.backGroundOne,
           elevation: 0,

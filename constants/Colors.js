@@ -29,5 +29,6 @@ export default {
     primaryDark: "rgb(30,32,39)",
     backGroundOne: "rgb(241,243,246)",
     accent: "rgb(222,95,43)",
+    white: "rgb(255,255,255)",
   },
 };

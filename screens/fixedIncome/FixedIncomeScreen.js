@@ -34,6 +34,10 @@ const FixedIncomeScreen = (props) => {
 const styles = StyleSheet.create({
   component: {
     marginBottom: 20,
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
 });
 

@@ -118,7 +118,9 @@ const DrawerNavigator = (props) => {
         <Drawer.Navigator
           initialRouteName="Home"
           drawerType="back"
-          drawerStyle={{ backgroundColor: Colors.banner }}
+          drawerStyle={{
+            backgroundColor: Colors.defaultThemeLight.white,
+          }}
           drawerContentOptions={{
             activeTintColor: Colors.primary,
             labelStyle: { color: Colors.primary, fontSize: 15 },
@@ -149,7 +151,7 @@ const DrawerNavigator = (props) => {
                 <MaterialCommunityIcons
                   name="cash-minus"
                   size={34}
-                  color={Colors.primary}
+                  color={Colors.defaultThemeLight.primaryDark}
                 />
               ),
               drawerLabel: "Wydatki",
@@ -164,7 +166,7 @@ const DrawerNavigator = (props) => {
                   <MaterialCommunityIcons
                     name="calendar-arrow-left"
                     size={34}
-                    color={Colors.primary}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                   <Text style={{ position: "absolute", marginLeft: 40 }}>
                     {isAllPaid.length > 0 ? (
@@ -188,7 +190,7 @@ const DrawerNavigator = (props) => {
                 <MaterialCommunityIcons
                   name="cash-plus"
                   size={34}
-                  color={Colors.primary}
+                  color={Colors.defaultThemeLight.primaryDark}
                 />
               ),
               drawerLabel: "Wpływy",
@@ -202,7 +204,7 @@ const DrawerNavigator = (props) => {
                 <MaterialCommunityIcons
                   name="calendar-arrow-right"
                   size={34}
-                  color={Colors.primary}
+                  color={Colors.defaultThemeLight.primaryDark}
                 />
               ),
               drawerLabel: "Stałe wpływy",
@@ -216,7 +218,7 @@ const DrawerNavigator = (props) => {
                 <MaterialCommunityIcons
                   name="file-document"
                   size={34}
-                  color={Colors.primary}
+                  color={Colors.defaultThemeLight.primaryDark}
                 />
               ),
               drawerLabel: "Raport",
@@ -230,7 +232,7 @@ const DrawerNavigator = (props) => {
                 <Ionicons
                   name="ios-settings"
                   size={34}
-                  color={Colors.primary}
+                  color={Colors.defaultThemeLight.primaryDark}
                 />
               ),
               drawerLabel: "Ustawienia",
