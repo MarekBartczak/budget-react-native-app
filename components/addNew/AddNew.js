@@ -84,18 +84,16 @@ const styles = StyleSheet.create({
   datePickerView: { marginTop: 10 },
 
   inner: {
-    backgroundColor: Colors.gradientBackground.third,
+    // backgroundColor: Colors.gradientBackground.third,
     borderRadius: 10,
     height: "95%",
     width: "95%",
-    borderWidth: 3,
-    borderColor: Colors.gradientBackground.primary,
     alignItems: "center",
   },
   descriptionComponent: {
     marginLeft: 10,
-    marginTop: -10,
-    backgroundColor: Colors.gradientBackground.third,
+    // marginTop: -10,
+    // backgroundColor: Colors.gradientBackground.third,
     width: 150,
     alignItems: "center",
   },

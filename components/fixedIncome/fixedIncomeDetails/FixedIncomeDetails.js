@@ -44,7 +44,11 @@ const FixedIncomeDetails = (props) => {
                 );
               }}
             >
-              <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+              <Ionicons
+                name="ios-trash"
+                size={24}
+                color={Colors.defaultThemeLight.primary}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
   title: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: Colors.accent,
+    backgroundColor: Colors.defaultThemeLight.buttton,
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 20,
@@ -84,6 +88,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     marginTop: 40,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
   trash: {
     alignItems: "center",
@@ -91,15 +99,19 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     textAlign: "center",
-    color: Colors.primary,
+    color: Colors.defaultThemeLight.primary,
     fontWeight: "bold",
     fontSize: 20,
   },
   details: {
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.defaultThemeLight.white,
     borderRadius: 10,
     height: 200,
     marginBottom: 20,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
   top: {
     flexDirection: "row",

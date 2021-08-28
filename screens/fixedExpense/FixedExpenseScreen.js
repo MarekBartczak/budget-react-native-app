@@ -64,6 +64,10 @@ const styles = StyleSheet.create({
   component: {
     // marginTop: 20,
     marginBottom: 20,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
 });
 

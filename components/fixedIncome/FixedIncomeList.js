@@ -37,7 +37,7 @@ export default FixedIncomeList;
 
 const styles = StyleSheet.create({
   list: {
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
     height: Dimensions.get("window").height * 0.9,
   },
 });

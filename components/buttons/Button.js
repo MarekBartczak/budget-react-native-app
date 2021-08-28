@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   button: {
     width: Dimensions.get("window").width * 0.9,
     height: 50,
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.defaultThemeLight.buttton,
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 10,
@@ -37,12 +37,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inner: {
-    backgroundColor: Colors.accent,
+    // backgroundColor: Colors.accent,
     borderRadius: 7,
     height: "70%",
     width: "95%",
-    borderWidth: 3,
-    borderColor: Colors.gradientBackground.primary,
+    // borderColor: Colors.gradientBackground.primary,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   text: {
-    color: Colors.primary,
+    color: Colors.defaultThemeLight.primary,
     fontWeight: "bold",
     fontSize: 20,
   },

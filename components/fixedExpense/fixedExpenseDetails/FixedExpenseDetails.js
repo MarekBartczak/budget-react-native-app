@@ -7,6 +7,7 @@ import {
   FlatList,
   Alert,
 } from "react-native";
+import History from "./history/History";
 import React, { useState, useEffect } from "react";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Colors from "../../../constants/Colors";
@@ -26,12 +27,15 @@ const FixedExpenseDetails = (props) => {
     return (
       <TouchableOpacity
         style={{
-          borderColor: Colors.gradientBackground.third,
-          borderWidth: 3,
+          backgroundColor: Colors.defaultThemeLight.buttton,
           borderRadius: 10,
           padding: 5,
           paddingLeft: 20,
           paddingRight: 20,
+          shadowOffset: { height: 0, width: 0 },
+          shadowColor: "black",
+          shadowOpacity: 0.2,
+          shadowRadius: 7,
         }}
         onPress={() => {
           Alert.alert(
@@ -45,7 +49,11 @@ const FixedExpenseDetails = (props) => {
           );
         }}
       >
-        <MaterialCommunityIcons name="cash-register" size={34} color="black" />
+        <MaterialCommunityIcons
+          name="cash-register"
+          size={34}
+          color={Colors.defaultThemeLight.primary}
+        />
       </TouchableOpacity>
     );
   };
@@ -84,7 +92,11 @@ const FixedExpenseDetails = (props) => {
                 );
               }}
             >
-              <Ionicons name="ios-trash" size={24} color={Colors.primary} />
+              <Ionicons
+                name="ios-trash"
+                size={24}
+                color={Colors.defaultThemeLight.primary}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -116,18 +128,19 @@ const FixedExpenseDetails = (props) => {
               archiwizuj opłacony rachunek{" "}
             </Text>
             <Text>{showIsPaid()}</Text>
-
-            {/* {isPaid ? archive() : null} */}
           </View>
         </View>
         <View style={styles.history}>
           <FlatList
             data={historyEl}
             renderItem={(item) => (
-              <Text>
-                {item.item.title} {item.item.cost}zł{" "}
-                {item.item.date.replaceAll("-", ".")}
-              </Text>
+              <History
+                title={item.item.title}
+                cost={item.item.cost}
+                date={item.item.date}
+                // {item.item.title} {item.item.cost}zł{" "}
+                // {item.item.date.replaceAll("-", ".")}
+              />
             )}
           />
         </View>
@@ -142,7 +155,7 @@ const styles = StyleSheet.create({
   title: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: Colors.accent,
+    backgroundColor: Colors.defaultThemeLight.buttton,
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 20,
@@ -150,17 +163,29 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     marginTop: 40,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
   details: {
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.defaultThemeLight.white,
     borderRadius: 10,
     height: 200,
     marginBottom: 20,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
   history: {
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.defaultThemeLight.white,
     borderRadius: 10,
     height: 200,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
   trash: {
     alignItems: "center",
@@ -168,7 +193,7 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     textAlign: "center",
-    color: Colors.primary,
+    color: Colors.defaultThemeLight.primary,
     fontWeight: "bold",
     fontSize: 20,
   },

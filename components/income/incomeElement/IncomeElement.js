@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import React from "react";
 import Colors from "../../../constants/Colors";
 
@@ -25,10 +31,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 20,
     borderRadius: 10,
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.defaultThemeLight.white,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+    width: Dimensions.get("window").width * 0.9,
+    marginHorizontal: Dimensions.get("window").width * 0.05,
   },
   textTitle: {
     color: "black",
