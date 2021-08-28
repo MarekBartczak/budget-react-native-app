@@ -54,9 +54,9 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.9,
   },
   chartView: {
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.2,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.2,
   },
 });

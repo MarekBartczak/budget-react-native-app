@@ -37,7 +37,7 @@ const MainScreen = (props) => {
           >
             <SummaryCost cost={summaryCostCounter(itemsFromRedux)} />
           </View>
-          <View>
+          <View style={styles.component}>
             <Chart
               press={() => props.navigation.navigate("Date")}
               label={chartEl.label}
@@ -94,6 +94,12 @@ const styles = StyleSheet.create({
   },
   raport: {
     alignItems: "center",
+  },
+  component: {
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
 });
 
