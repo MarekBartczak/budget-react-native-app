@@ -14,10 +14,12 @@ import filteredList from "./filteredList";
 import emailTemplate from "./emailTemplate";
 
 const Send = (props) => {
+  const email = useSelector((state) => state.auth.userEmail);
   const emailSender = () => {
     let templateForm = {
       new_date: new Date().toISOString().slice(0, 10),
       header: message.head,
+      recipient: email,
       message: [
         "<b>Wydatki</b><br/>",
         message.Expense,
