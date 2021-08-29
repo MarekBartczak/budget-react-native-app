@@ -53,8 +53,12 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.7,
     padding: 5,
     color: Colors.primary,
-    backgroundColor: Colors.banner,
+    backgroundColor: Colors.defaultThemeLight.white,
     marginVertical: 3,
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
 
     paddingLeft: 20,
   },

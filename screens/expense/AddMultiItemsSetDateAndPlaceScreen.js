@@ -76,25 +76,25 @@ const AddMultiItemsScreen = (props) => {
     <KeyboardAvoidingView>
       <View style={styles.screen}>
         <ExternalComponent>
+          <View style={styles.place}>
+            <View style={styles.placeList}>
+              {/* <View style={styles.inner}> */}
+              <PlaceList
+                favData={favListNames}
+                data={workingPlaceList}
+                getPlaceInfo={getPlaceInfo}
+                place={place}
+                imageUrl={filteredFavList}
+              />
+            </View>
+            {/* </View> */}
+          </View>
           <View style={styles.datePicker}>
             <DatePicker
               date={date}
               onChange={onChangeDate}
               maxDate={new Date()}
             />
-          </View>
-          <View style={styles.place}>
-            <View style={styles.placeList}>
-              <View style={styles.inner}>
-                <PlaceList
-                  favData={favListNames}
-                  data={workingPlaceList}
-                  getPlaceInfo={getPlaceInfo}
-                  place={place}
-                  imageUrl={filteredFavList}
-                />
-              </View>
-            </View>
           </View>
           <View style={styles.receipt}>
             <Receipt
@@ -129,9 +129,14 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height * 0.2,
     width: "90%",
     borderRadius: 10,
-    backgroundColor: Colors.accent,
+    // backgroundColor: Colors.accent,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: Colors.defaultThemeLight.white,
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
   inner: {
     height: "95%",
@@ -146,7 +151,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.accent,
   },
   receipt: {
-    marginTop: 30,
+    // marginTop: 30,
     height: Dimensions.get("window").height * 0.5,
     width: "100%",
     flexDirection: "column",

@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
+import Colors from "../constants/Colors";
 
 const DatePicker = (props) => {
   return (
@@ -20,7 +21,7 @@ const DatePicker = (props) => {
         mode={"date"}
         is24Hour={true}
         display="spinner"
-        textColor={"black"}
+        textColor={Colors.defaultThemeLight.primaryDark}
         onChange={props.onChange}
       />
     </View>

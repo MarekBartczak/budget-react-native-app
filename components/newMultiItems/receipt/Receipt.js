@@ -39,7 +39,6 @@ const Receipt = (props) => {
   const receiptItem = useSelector((state) => state.item.receipt.items);
   const allElements = useSelector((state) => state.item.items);
   const userId = useSelector((state) => state.auth.userID);
-  // console.log(allElements.length);
 
   const dispatch = useDispatch();
 
@@ -75,7 +74,11 @@ const Receipt = (props) => {
 
                 <View style={styles.editBtn}>
                   <TouchableOpacity onPress={() => showModal(true)}>
-                    <Feather name="edit" size={15} color="black" />
+                    <Feather
+                      name="edit"
+                      size={15}
+                      color={Colors.defaultThemeLight.white}
+                    />
                   </TouchableOpacity>
                   <Modal
                     animationType="slide"
@@ -130,50 +133,51 @@ const Receipt = (props) => {
                   <Text style={styles.sum}>Razem {sum.toFixed(2)}zł</Text>
                 </View>
                 <View style={styles.buttons}>
-                  <View style={styles.saveBtn}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        if (receiptItem.length > 0) {
-                          let currentDate = receiptDate;
-                          dispatch(itemsAction.setReceiptDate(currentDate));
-                          let itemToSaved;
-                          itemToSaved = SaveItemsToTheStore(showReceipt);
-                          dispatch(
-                            itemsAction.addItemsFromReceipt(itemToSaved)
-                          );
-                          // console.log(itemToSaved);
-                          saveDataToTheCloud.expense(itemToSaved, userId);
-                          props.backToHome();
-                        } else {
-                          alert("Dodaj pozycje do paragonu");
-                        }
-                      }}
-                    >
-                      <Feather name="save" size={44} color={Colors.primary} />
-                    </TouchableOpacity>
-                  </View>
-                  <View style={styles.addBtn}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        if (GetSelectedPlace.length > 0) {
-                          // showAddItemModal(!addItemModal);
-                          navigation.navigate("AddToReceipt");
+                  <TouchableOpacity
+                    style={styles.saveBtn}
+                    onPress={() => {
+                      if (receiptItem.length > 0) {
+                        let currentDate = receiptDate;
+                        dispatch(itemsAction.setReceiptDate(currentDate));
+                        let itemToSaved;
+                        itemToSaved = SaveItemsToTheStore(showReceipt);
+                        dispatch(itemsAction.addItemsFromReceipt(itemToSaved));
+                        // console.log(itemToSaved);
+                        saveDataToTheCloud.expense(itemToSaved, userId);
+                        props.backToHome();
+                      } else {
+                        alert("Dodaj pozycje do paragonu");
+                      }
+                    }}
+                  >
+                    <Feather
+                      name="save"
+                      size={24}
+                      color={Colors.defaultThemeLight.white}
+                    />
+                  </TouchableOpacity>
 
-                          // props.navigation.goBack();
+                  <TouchableOpacity
+                    style={styles.addBtn}
+                    onPress={() => {
+                      if (GetSelectedPlace.length > 0) {
+                        // showAddItemModal(!addItemModal);
+                        navigation.navigate("AddToReceipt");
 
-                          // console.log("test");
-                        } else {
-                          alert("Wybierz Sklep");
-                        }
-                      }}
-                    >
-                      <MaterialIcons
-                        name="playlist-add"
-                        size={44}
-                        color={Colors.primary}
-                      />
-                    </TouchableOpacity>
-                  </View>
+                        // props.navigation.goBack();
+
+                        // console.log("test");
+                      } else {
+                        alert("Wybierz Sklep");
+                      }
+                    }}
+                  >
+                    <MaterialIcons
+                      name="playlist-add"
+                      size={24}
+                      color={Colors.defaultThemeLight.white}
+                    />
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -190,18 +194,22 @@ const styles = StyleSheet.create({
   receipt: {
     width: "90%",
     height: "100%",
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.defaultThemeLight.white,
     borderRadius: 10,
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
-  inner: {
-    backgroundColor: Colors.accent,
-    borderRadius: 7,
-    height: "96%",
-    width: "96%",
-    borderWidth: 3,
-    borderColor: Colors.gradientBackground.primary,
-    margin: "2%",
-  },
+  // inner: {
+  //   backgroundColor: Colors.accent,
+  //   borderRadius: 7,
+  //   height: "96%",
+  //   width: "96%",
+  //   borderWidth: 3,
+  //   borderColor: Colors.gradientBackground.primary,
+  //   margin: "2%",
+  // },
   modalView: {
     height: "100%",
     backgroundColor: "rgba(255, 255, 255,0.9)",
@@ -216,6 +224,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 40,
   },
+  editBtn: {
+    backgroundColor: Colors.defaultThemeLight.buttton,
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 7,
+    marginLeft: 10,
+  },
   inputModal: {
     height: 40,
     fontSize: 20,
@@ -228,13 +248,15 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
   },
   place: {
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     marginTop: 10,
   },
   placeText: {
     fontSize: 25,
     fontWeight: "bold",
-    color: Colors.primary,
+    color: Colors.defaultThemeLight.primaryDark,
   },
   date: {
     alignItems: "center",
@@ -242,13 +264,35 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontWeight: "bold",
+    color: Colors.defaultThemeLight.primaryDark,
   },
   addBtnView: {
     marginVertical: 10,
     marginHorizontal: 10,
     alignItems: "flex-end",
   },
-  addBtn: {},
+  addBtn: {
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 7,
+    backgroundColor: Colors.defaultThemeLight.buttton,
+    padding: 5,
+    borderRadius: 10,
+    width: Dimensions.get("window").width * 0.2,
+    alignItems: "center",
+  },
+  saveBtn: {
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 7,
+    backgroundColor: Colors.defaultThemeLight.buttton,
+    padding: 5,
+    borderRadius: 10,
+    width: Dimensions.get("window").width * 0.2,
+    alignItems: "center",
+  },
   list: {
     marginTop: 5,
     height: heightWindow < 900 ? heightWindow / 5 : heightWindow / 4,

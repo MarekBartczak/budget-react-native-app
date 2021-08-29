@@ -61,7 +61,14 @@ const PlaceList = (props) => {
           }}
         >
           <View>
-            <Text style={{ fontWeight: setBtnColor(!isFavoritePlaceShow) }}>
+            <Text
+              style={{
+                fontWeight: setBtnColor(!isFavoritePlaceShow),
+                color: Colors.defaultThemeLight.white,
+                textAlign: "center",
+                paddingVertical: 3,
+              }}
+            >
               Zapisane
             </Text>
           </View>
@@ -73,7 +80,14 @@ const PlaceList = (props) => {
           }}
         >
           <View>
-            <Text style={{ fontWeight: setBtnColor(isFavoritePlaceShow) }}>
+            <Text
+              style={{
+                fontWeight: setBtnColor(isFavoritePlaceShow),
+                color: Colors.defaultThemeLight.white,
+                textAlign: "center",
+                paddingVertical: 3,
+              }}
+            >
               Ulubione
             </Text>
           </View>
@@ -89,10 +103,17 @@ export default PlaceList;
 const styles = StyleSheet.create({
   switchBtns: {
     flexDirection: "row",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
   btn: {
+    margin: 10,
     width: 100,
     marginBottom: 10,
+    backgroundColor: Colors.defaultThemeLight.buttton,
+    borderRadius: 10,
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
 });
