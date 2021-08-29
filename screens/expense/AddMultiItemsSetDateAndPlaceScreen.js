@@ -124,6 +124,15 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
+  datePicker: {
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+    backgroundColor: Colors.defaultThemeLight.white,
+    marginVertical: 10,
+    borderRadius: 10,
+  },
   placeList: {
     marginTop: 10,
     height: Dimensions.get("window").height * 0.2,

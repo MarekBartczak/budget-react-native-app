@@ -97,17 +97,7 @@ const AddNewFixedExpenseScreen = (props) => {
         >
           <View style={styles.AddNewComponent}>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-              <View style={styles.inner}>
-                <View style={styles.descriptionComponent}>
-                  <Text style={styles.defaultText}>{props.title}</Text>
-                </View>
-                <View style={styles.datePickerView}>
-                  <DatePicker
-                    date={date}
-                    onChange={onChangeDate}
-                    maxDate={null}
-                  />
-                </View>
+              <View style={styles.descriptionComponent}>
                 <View style={styles.inputView}>
                   <Input
                     style={styles.input}
@@ -138,45 +128,50 @@ const AddNewFixedExpenseScreen = (props) => {
                     keyboardType={"default"}
                     onChangeText={setDescription}
                   />
-
-                  <View style={styles.interval}>
-                    <View style={styles.inner}>
-                      <Text
-                        style={{
-                          textAlign: "center",
-                          marginTop: -10,
-                          backgroundColor: Colors.accent,
-                          width: 150,
-                        }}
-                      >
-                        Częstotliwość opłat
-                      </Text>
-                      <View style={styles.intervalOptions}>
-                        <FlatList
-                          data={intervalList}
-                          renderItem={(item) => (
-                            <TouchableOpacity
-                              onPress={() => setInterval(item.item)}
+                </View>
+                <View style={styles.datePickerView}>
+                  <DatePicker
+                    date={date}
+                    onChange={onChangeDate}
+                    maxDate={null}
+                  />
+                </View>
+                <View style={styles.interval}>
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      marginTop: -10,
+                      // backgroundColor: Colors.accent,
+                      width: 150,
+                      color: Colors.defaultThemeLight.primaryDark,
+                    }}
+                  >
+                    Częstotliwość opłat
+                  </Text>
+                  <View style={styles.intervalOptions}>
+                    <FlatList
+                      data={intervalList}
+                      renderItem={(item) => (
+                        <TouchableOpacity
+                          onPress={() => setInterval(item.item)}
+                        >
+                          <View style={styles.intervalListElement}>
+                            <Text
+                              style={
+                                styles[
+                                  interval.id === item.item.id
+                                    ? "selectedIntervalText"
+                                    : "intervalText"
+                                ]
+                              }
                             >
-                              <View style={styles.intervalListElement}>
-                                <Text
-                                  style={
-                                    styles[
-                                      interval.id === item.item.id
-                                        ? "selectedIntervalText"
-                                        : "intervalText"
-                                    ]
-                                  }
-                                >
-                                  {item.item.title}
-                                </Text>
-                              </View>
-                            </TouchableOpacity>
-                          )}
-                          keyExtractor={(item) => item.title.toString()}
-                        />
-                      </View>
-                    </View>
+                              {item.item.title}
+                            </Text>
+                          </View>
+                        </TouchableOpacity>
+                      )}
+                      keyExtractor={(item) => item.title.toString()}
+                    />
                   </View>
                 </View>
                 <View style={styles.buttonView}>
@@ -199,45 +194,46 @@ export default AddNewFixedExpenseScreen;
 
 const styles = StyleSheet.create({
   AddNewComponent: {
-    width: Dimensions.get("window").width * 0.9,
-    height: Dimensions.get("window").height * 0.45,
-    borderRadius: 10,
-    backgroundColor: Colors.gradientBackground.third,
+    // width: Dimensions.get("window").width * 0.9,
+    // height: Dimensions.get("window").height * 0.45,
+    // borderRadius: 10,
+    // backgroundColor: Colors.gradientBackground.third,
     justifyContent: "center",
     alignItems: "center",
   },
   datePickerView: {
-    marginTop: 10,
     width: Dimensions.get("window").width * 0.9,
+    marginHorizontal: Dimensions.get("window").width * 0.05,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+    backgroundColor: Colors.defaultThemeLight.white,
+    borderRadius: 10,
+    marginVertical: 10,
   },
 
-  inner: {
-    backgroundColor: Colors.gradientBackground.third,
-    borderRadius: 10,
-    height: "95%",
-    width: "95%",
-    borderWidth: 3,
-    borderColor: Colors.gradientBackground.primary,
-    alignItems: "center",
-  },
-  descriptionComponent: {
-    marginLeft: 10,
-    marginTop: -10,
-    backgroundColor: Colors.gradientBackground.third,
-    width: 150,
-    alignItems: "center",
-  },
   defaultText: {
     fontWeight: "bold",
   },
   inputView: {
-    marginTop: 40,
+    marginTop: 10,
+    width: Dimensions.get("window").width * 0.9,
+    marginHorizontal: Dimensions.get("window").width * 0.05,
+    // marginTop: 40,
     alignItems: "center",
     justifyContent: "center",
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+    backgroundColor: Colors.defaultThemeLight.white,
+    borderRadius: 10,
+    // back
   },
   input: {
     height: 25,
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width * 0.8,
     borderBottomWidth: 1,
     margin: 5,
     margin: 10,
@@ -245,8 +241,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
   },
   descriptionInput: {
-    height: 75,
-    width: Dimensions.get("window").width * 0.9,
+    height: 50,
+    width: Dimensions.get("window").width * 0.8,
     borderBottomWidth: 1,
     margin: 5,
     margin: 10,
@@ -254,38 +250,35 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
   },
   buttonView: {
-    marginTop: 50,
+    // marginTop: 50,
     justifyContent: "center",
     alignItems: "center",
   },
   interval: {
-    marginTop: 20,
-    backgroundColor: Colors.accent,
+    // marginTop: 20,
+    backgroundColor: Colors.defaultThemeLight.white,
     width: Dimensions.get("window").width * 0.9,
+    marginHorizontal: Dimensions.get("window").width * 0.05,
     height: 160,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
-  inner: {
-    height: "90%",
-    width: "95%",
-    borderRadius: 7,
-    borderWidth: 3,
-    borderColor: Colors.gradientBackground.third,
-    alignItems: "center",
-    // justifyContent: "center",
-  },
+
   intervalOptions: {
     // alignItems: "flex-start",
-    backgroundColor: Colors.accent,
+    // backgroundColor: Colors.accent,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
   },
   intervalListElement: {
     marginVertical: 2,
-    backgroundColor: Colors.gradientBackground.third,
+    backgroundColor: Colors.defaultThemeLight.primary,
     // marginLeft: 10,
     width: Dimensions.get("window").width * 0.8,
     // width: "100%",
@@ -294,7 +287,7 @@ const styles = StyleSheet.create({
   },
   selectetIntervalListElement: {
     marginVertical: 2,
-    backgroundColor: Colors.gradientBackground.third,
+    backgroundColor: Colors.defaultThemeLight.primary,
     marginLeft: 10,
     width: Dimensions.get("window").width * 0.6,
     paddingLeft: 20,
