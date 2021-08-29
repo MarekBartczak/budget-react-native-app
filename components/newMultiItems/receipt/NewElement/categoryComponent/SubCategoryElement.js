@@ -31,7 +31,11 @@ const SubCategoryElement = (props) => {
           <FontAwesome5
             name="dot-circle"
             size={24}
-            color={selectedSubCategory === props.item ? Colors.accent : "black"}
+            color={
+              selectedSubCategory === props.item
+                ? Colors.defaultThemeLight.white
+                : Colors.defaultThemeLight.primaryDark
+            }
           />
           <Text
             style={
@@ -58,6 +62,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     fontSize: 10,
+    color: Colors.defaultThemeLight.primaryDark,
   },
   subCategoryTextSelected: {
     marginLeft: 10,
@@ -65,21 +70,29 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 10,
 
-    color: Colors.accent,
+    color: Colors.defaultThemeLight.white,
   },
   subCategoryElement: {
-    margin: 2,
+    margin: 5,
     padding: 5,
-    backgroundColor: Colors.accent,
+    backgroundColor: Colors.defaultThemeLight.white,
     borderTopLeftRadius: 10,
     flexDirection: "row",
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
   subCategoryElementSelected: {
-    margin: 2,
+    margin: 5,
     padding: 5,
     flexDirection: "row",
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    backgroundColor: Colors.defaultThemeLight.buttton,
 
-    backgroundColor: Colors.selected,
     borderTopLeftRadius: 10,
   },
 });

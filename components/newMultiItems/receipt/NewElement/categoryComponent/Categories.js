@@ -38,7 +38,7 @@ const Categories = (props) => {
                   <MaterialCommunityIcons
                     name="food-variant"
                     size={iconSize}
-                    color={Colors.default}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                 }
               />
@@ -48,7 +48,7 @@ const Categories = (props) => {
                   <FontAwesome5
                     name="pump-soap"
                     size={iconSize}
-                    color={Colors.default}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                 }
               />
@@ -58,7 +58,7 @@ const Categories = (props) => {
                   <MaterialIcons
                     name="home-repair-service"
                     size={iconSize}
-                    color={Colors.default}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                 }
               />
@@ -70,7 +70,7 @@ const Categories = (props) => {
                   <FontAwesome
                     name="automobile"
                     size={iconSize}
-                    color={Colors.default}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                 }
               />
@@ -78,7 +78,11 @@ const Categories = (props) => {
                 selected={null}
                 title={mainCategoryList[4]}
                 icon={
-                  <Entypo name="home" size={iconSize} color={Colors.default} />
+                  <Entypo
+                    name="home"
+                    size={iconSize}
+                    color={Colors.defaultThemeLight.primaryDark}
+                  />
                 }
               />
               <MainCategoryElement
@@ -87,7 +91,7 @@ const Categories = (props) => {
                   <MaterialIcons
                     name="computer"
                     size={iconSize}
-                    color={Colors.default}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                 }
               />
@@ -98,7 +102,7 @@ const Categories = (props) => {
                   <FontAwesome5
                     name="redhat"
                     size={iconSize}
-                    color={Colors.default}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                 }
               />
@@ -108,7 +112,7 @@ const Categories = (props) => {
                   <Feather
                     name="pen-tool"
                     size={iconSize}
-                    color={Colors.default}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                 }
               />
@@ -118,7 +122,7 @@ const Categories = (props) => {
                   <MaterialIcons
                     name="family-restroom"
                     size={iconSize}
-                    color={Colors.default}
+                    color={Colors.defaultThemeLight.primaryDark}
                   />
                 }
               />

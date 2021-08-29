@@ -41,15 +41,27 @@ const AddItemToTheReceiptScreen = (props) => {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              width: Dimensions.get("window").width * 0.4,
+              width: Dimensions.get("window").width * 0.3,
+              paddingVertical: 10,
+              marginRight: 20,
+              backgroundColor: Colors.defaultThemeLight.buttton,
+              borderRadius: 10,
+              shadowOffset: { height: 0, width: 0 },
+              shadowColor: "black",
+              shadowOpacity: 0.5,
+              shadowRadius: 7,
             }}
             onPress={() => {
               // props.addItemToTheRecipt();
               navigateToInputData();
             }}
           >
-            <Ionicons name="arrow-forward-circle" size={54} color="green" />
-            <Text style={{ color: "green" }}>Dalej</Text>
+            <Ionicons
+              name="arrow-forward-circle"
+              size={34}
+              color={Colors.defaultThemeLight.white}
+            />
+            <Text style={{ color: Colors.defaultThemeLight.white }}>Dalej</Text>
           </TouchableOpacity>
         ) : (
           <View>
@@ -57,12 +69,20 @@ const AddItemToTheReceiptScreen = (props) => {
               style={{
                 justifyContent: "center",
                 alignItems: "center",
-                width: Dimensions.get("window").width * 0.4,
+                width: Dimensions.get("window").width * 0.3,
+                paddingVertical: 10,
+                marginRight: 20,
+                backgroundColor: Colors.defaultThemeLight.primary,
+                borderRadius: 10,
+                // shadowOffset: { height: 0, width: 0 },
+                // shadowColor: "black",
+                // shadowOpacity: 0.5,
+                // shadowRadius: 7,
               }}
             >
               <Ionicons
                 name="arrow-forward-circle"
-                size={54}
+                size={34}
                 color={Colors.placeholder}
               />
 

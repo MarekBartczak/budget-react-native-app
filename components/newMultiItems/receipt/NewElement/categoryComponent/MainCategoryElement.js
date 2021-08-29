@@ -15,9 +15,9 @@ const MainCategoryElement = (props) => {
   const selectedCategory = useSelector((state) => state.item.category.main);
   const getColor = () => {
     if (props.title === selectedCategory) {
-      return Colors.selected;
+      return Colors.defaultThemeLight.buttton;
     } else {
-      return Colors.placeholder;
+      return Colors.defaultThemeLight.white;
     }
   };
 
@@ -63,11 +63,15 @@ const styles = StyleSheet.create({
     // borderRadius: 10,
     // borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
   title: {
     textAlign: "center",
     // marginTop: 9,
-    color: Colors.default,
+    color: Colors.defaultThemeLight.primaryDark,
     fontSize: 10,
     maxWidth: 100,
   },
