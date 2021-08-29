@@ -47,13 +47,6 @@ const FixedExpenseScreen = (props) => {
           }
           setPlace={() => {}}
           text={"Nowe stałe wydatki"}
-          icon={
-            <MaterialCommunityIcons
-              name="credit-card-clock-outline"
-              size={44}
-              color={Colors.defaultThemeLight.primary}
-            />
-          }
         />
       </View>
     </ExternalComponent>
@@ -66,7 +59,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     shadowOffset: { height: 0, width: 0 },
     shadowColor: "black",
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.5,
     shadowRadius: 7,
   },
 });
