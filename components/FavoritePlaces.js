@@ -66,14 +66,37 @@ const FavoritePlaces = (props) => {
         visible={showEdit}
         onRequestClose={() => setShowEdit(false)}
       >
-        <View style={styles.modalEdit}>
+        <View
+          style={{
+            ...styles.modalEdit,
+            ...{ backgroundColor: Colors[scheme].primary },
+          }}
+        >
           <TouchableOpacity onPress={() => setShowEdit(false)}>
-            <View style={styles.closeModalBtn}>
-              <Text style={styles.closeModalText}>Zamknij</Text>
+            <View
+              style={{
+                ...styles.closeModalBtn,
+                ...{ backgroundColor: Colors[scheme].button },
+              }}
+            >
+              <Text
+                style={{
+                  ...styles.closeModalText,
+                  ...{ color: Colors[scheme].primary },
+                }}
+              >
+                Zamknij
+              </Text>
             </View>
             <View>
               <Input
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  ...{
+                    color: Colors[scheme].primarySecond,
+                    borderColor: Colors[scheme].primarySecond,
+                  },
+                }}
                 value={favPlaceName}
                 placeholder={"nazwa"}
                 keyboardType="default"
@@ -126,10 +149,7 @@ const styles = StyleSheet.create({
   modalEdit: {
     width: "100%",
     height: "100%",
-    backgroundColor: Colors.gradientBackground.primary,
     paddingTop: 100,
-    // justifyContent: "center",
-    // alignItems: "center",
   },
   input: {
     height: 40,
@@ -140,8 +160,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     fontWeight: "bold",
     margin: "10%",
-    color: Colors.primary,
-    borderColor: Colors.primary,
   },
   ModalViewImage: {
     height: Dimensions.get("window").width / 2,
@@ -152,7 +170,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.light.button,
     width: Dimensions.get("window").width * 0.5,
     height: 30,
     marginHorizontal: Dimensions.get("window").width * 0.25,
@@ -163,22 +180,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   closeModalText: {
-    color: Colors.light.primary,
     fontWeight: "bold",
   },
   apiList: {
     width: Dimensions.get("window").width,
     alignItems: "center",
-  },
-  background: {
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: Dimensions.get("window").height,
-    backgroundColor: Colors.gradientBackground.primary,
   },
 });
 

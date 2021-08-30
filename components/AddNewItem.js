@@ -7,8 +7,11 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../constants/Colors";
+import { useSelector } from "react-redux";
 
 const AddNewItem = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   return (
     <TouchableOpacity
       style={styles.add}
@@ -17,10 +20,29 @@ const AddNewItem = (props) => {
         props.setPlace();
       }}
     >
-      <View style={styles.screen}>
-        <View style={styles.addBtn}>
+      <View
+        style={{
+          ...styles.screen,
+          ...{ backgroundColor: Colors[scheme].button },
+        }}
+      >
+        <View
+          style={{
+            ...styles.addBtn,
+          }}
+        >
           <View>
-            <Text style={styles.btnText}>{props.text}</Text>
+            <Text
+              style={{
+                ...styles.btnText,
+                ...{
+                  backgroundColor: Colors[scheme].button,
+                  color: Colors[scheme].primary,
+                },
+              }}
+            >
+              {props.text}
+            </Text>
           </View>
         </View>
       </View>
@@ -32,7 +54,6 @@ const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get("window").width * 0.5,
     height: 40,
-    backgroundColor: Colors.light.button,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -51,12 +72,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   btnText: {
-    // fontSize: 12,
-    // marginBottom: -10,
     fontWeight: "bold",
-    // paddingHorizontal: 10,
-    backgroundColor: Colors.light.button,
-    color: Colors.light.primary,
   },
 });
 

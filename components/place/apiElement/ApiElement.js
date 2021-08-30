@@ -12,17 +12,26 @@ import { useDispatch, useSelector } from "react-redux";
 import * as favoritePlaceAction from "../../../store/actions/favoritePlace";
 
 const ApiElement = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const userId = useSelector((state) => state.auth.userID);
   const dispatch = useDispatch();
   return (
     <TouchableOpacity
-      style={styles.element}
+      style={{
+        ...styles.element,
+        ...{ backgroundColor: Colors[scheme].primaryThird },
+      }}
       onPress={() => {
         dispatch(favoritePlaceAction.editPlace(props.name, props.logo, userId));
         props.closeWindow();
       }}
     >
-      <Text style={styles.name}>{props.name}</Text>
+      <Text
+        style={{ ...styles.name, ...{ color: Colors[scheme].primarySecond } }}
+      >
+        {props.name}
+      </Text>
       <Image style={styles.logo} source={{ url: props.logo }} />
     </TouchableOpacity>
   );
@@ -38,19 +47,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 15,
-    backgroundColor: Colors.transparent,
     borderRadius: 10,
     marginVertical: 10,
     overflow: "hidden",
   },
   name: {
     fontWeight: "bold",
-    color: Colors.primary,
     fontSize: 12,
   },
   logo: {
     height: Dimensions.get("window").width / 10,
     width: Dimensions.get("window").width / 10,
-    borderRadius: 3,
+    borderRadius: Dimensions.get("window").width / 10,
   },
 });
