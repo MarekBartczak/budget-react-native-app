@@ -1,4 +1,4 @@
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, useColorScheme } from "react-native";
 import React, { useState } from "react";
 import Category from "../../data/category";
 import CategoryElementList from "./CategoryElementList";

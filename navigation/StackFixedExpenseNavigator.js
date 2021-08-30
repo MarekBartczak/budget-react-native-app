@@ -9,19 +9,22 @@ import FixedExpensesList from "../components/fixedExpense/FixedExpensesList";
 import FixedExpenseDetails from "../components/fixedExpense/fixedExpenseDetails/FixedExpenseDetails";
 import AddNewFixedExpenseScreen from "../screens/fixedExpense/AddNewFixedExpenseScreen";
 import Logout from "../components/auth/logout/Logout";
+import { useSelector } from "react-redux";
 
 const Stack = createStackNavigator();
 
 const StackFixedExpenseNavigator = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: Colors.primary,
+        headerTintColor: Colors[scheme].primarySecond,
         headerStyle: {
-          backgroundColor: Colors.defaultThemeLight.backGroundOne,
+          backgroundColor: Colors[scheme].primary,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,
@@ -43,7 +46,7 @@ const StackFixedExpenseNavigator = (props) => {
             <MaterialCommunityIcons
               name="menu"
               size={34}
-              color={Colors.primary}
+              color={Colors[scheme].primarySecond}
             />
           </TouchableOpacity>
         ),

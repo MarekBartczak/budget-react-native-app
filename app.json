@@ -1,5 +1,7 @@
 {
   "expo": {
+    "userInterfaceStyle": "automatic",
+
     "name": "budget-react-native-app",
     "slug": "budget-react-native-app",
     "version": "1.0.0",
@@ -15,6 +17,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "userInterfaceStyle": "automatic",
+
       "bundleIdentifier": "com.marek.bartczak.budgetreactnativeapp",
       "supportsTablet": false,
       "config": {
@@ -25,6 +29,8 @@
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
+      "userInterfaceStyle": "automatic",
+
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, useColorScheme } from "react-native";
 import React from "react";
 import summaryCostCounter from "../../../functions/summaryCostCounter";
 import Colors from "../../../constants/Colors";

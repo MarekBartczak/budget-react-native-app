@@ -27,7 +27,7 @@ const FixedExpenseDetails = (props) => {
     return (
       <TouchableOpacity
         style={{
-          backgroundColor: Colors.defaultThemeLight.buttton,
+          backgroundColor: Colors.light.button,
           borderRadius: 10,
           padding: 5,
           paddingLeft: 20,
@@ -52,7 +52,7 @@ const FixedExpenseDetails = (props) => {
         <MaterialCommunityIcons
           name="cash-register"
           size={34}
-          color={Colors.defaultThemeLight.primary}
+          color={Colors.light.primary}
         />
       </TouchableOpacity>
     );
@@ -95,7 +95,7 @@ const FixedExpenseDetails = (props) => {
               <Ionicons
                 name="ios-trash"
                 size={24}
-                color={Colors.defaultThemeLight.primary}
+                color={Colors.light.primary}
               />
             </TouchableOpacity>
           </View>
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   title: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 20,
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
   },
   details: {
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
     height: 200,
     marginBottom: 20,
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
   },
   history: {
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
     height: 200,
     shadowOffset: { height: 0, width: 0 },
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     textAlign: "center",
-    color: Colors.defaultThemeLight.primary,
+    color: Colors.light.primary,
     fontWeight: "bold",
     fontSize: 20,
   },

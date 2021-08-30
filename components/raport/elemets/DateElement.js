@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 import Colors from "../../../constants/Colors";
 import React from "react";
 const DateElement = (props) => {

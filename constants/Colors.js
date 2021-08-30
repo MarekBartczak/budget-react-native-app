@@ -23,12 +23,29 @@ export default {
     secondary: "rgb(200,200,200)",
     third: "rgb(250,250,250)",
   },
-  defaultThemeLight: {
-    buttton: "rgb(47,97,217)",
+  light: {
     primary: "rgb(230,232,233)",
-    primaryDark: "rgb(30,32,39)",
-    backGroundOne: "rgb(241,243,246)",
+    primarySecond: "rgb(30,32,39)",
+    primaryThird: "rgb(255,255,255)",
+
+    button: "rgb(47,97,217)",
     accent: "rgb(222,95,43)",
-    white: "rgb(255,255,255)",
+
+    backGroundOne: "rgb(241,243,246)",
+  },
+  dark: {
+    primary: "rgb(30,32,39)",
+    primarySecond: "rgb(195,195,198)",
+    primaryThird: "rgb(68,69,71)",
+
+    button: "rgb(222,95,43)",
+    accent: "rgb(47,97,217)",
+
+    backGroundOne: "rgb(30,32,39)",
   },
 };
+// primaryThird: "rgb(241,243,246)",
+
+// [`_${scheme}`]
+// const scheme = useSelector((state) => state.config.scheme);
+// import { useSelector } from "react-redux";

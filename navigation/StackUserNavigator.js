@@ -3,13 +3,16 @@ import { createStackNavigator } from "@react-navigation/stack";
 import UserScreen from "../screens/user/UserScreen";
 import Colors from "../constants/Colors";
 import Logout from "../components/auth/logout/Logout";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, useColorScheme } from "react-native";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Stack = createStackNavigator();
 
 const StackUserNavigator = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const filter = (title, screenName) => {
     return {
       title: title,
@@ -32,7 +35,7 @@ const StackUserNavigator = (props) => {
           <MaterialCommunityIcons
             name="menu"
             size={34}
-            color={Colors.primary}
+            color={Colors[scheme].primarySecond}
           />
         </TouchableOpacity>
       ),
@@ -46,9 +49,9 @@ const StackUserNavigator = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: Colors.primary,
+        headerTintColor: Colors[scheme].primarySecond,
         headerStyle: {
-          backgroundColor: Colors.defaultThemeLight.backGroundOne,
+          backgroundColor: Colors[scheme].backGroundOne,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,

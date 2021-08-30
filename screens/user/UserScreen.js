@@ -4,6 +4,8 @@ import Colors from "../../constants/Colors";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { useSelector } from "react-redux";
 const UserScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const userName = useSelector((state) => state.auth.userName);
   const userEmail = useSelector((state) => state.auth.userEmail);
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
@@ -12,20 +14,20 @@ const UserScreen = (props) => {
     <ExternalComponent>
       <View style={styles.screen}>
         <View style={styles.photoView}>
-          <View style={styles.photoExternal}>
+          <View style={styles[`photoExternal_${scheme}`]}>
             <Image style={styles.photo} source={{ url: userPhotoUrl }} />
           </View>
         </View>
         <View style={styles.userDataView}>
-          <View style={styles.userNameView}>
-            <Text style={styles.userName}>{userName}</Text>
+          <View style={styles[`userNameView_${scheme}`]}>
+            <Text style={styles[`userName_${scheme}`]}>{userName}</Text>
           </View>
-          <View style={styles.userEmailView}>
-            <Text style={styles.userEmail}>{userEmail}</Text>
+          <View style={styles[`userEmailView_${scheme}`]}>
+            <Text style={styles[`userEmail_${scheme}`]}>{userEmail}</Text>
           </View>
           <View style={styles.familyAccountWith}>
-            <Text style={styles.family}>Konto rodzinne </Text>
-            <Text style={styles.userEmail}>nie</Text>
+            <Text style={styles[`family_${scheme}`]}>Konto rodzinne </Text>
+            <Text style={styles[`userEmail_${scheme}`]}>nie</Text>
           </View>
         </View>
       </View>
@@ -39,13 +41,16 @@ const styles = StyleSheet.create({
   familyAccountWith: {
     flexDirection: "row",
   },
-  family: {
-    // fontWeight: "bold",
-    // color: Colors.backGroundChart,
+  family_light: {
     fontSize: 15,
+    color: Colors.light.primarySecond,
   },
-  userNameView: {
-    backgroundColor: Colors.defaultThemeLight.white,
+  family_dark: {
+    fontSize: 15,
+    color: Colors.dark.primarySecond,
+  },
+  userNameView_light: {
+    backgroundColor: Colors.light.primaryThird,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: "90%",
@@ -57,14 +62,32 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 7,
   },
-  userName: {
+  userNameView_dark: {
+    backgroundColor: Colors.dark.primaryThird,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    width: "90%",
+    borderRadius: 10,
+    alignItems: "center",
+    marginBottom: 50,
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+  },
+  userName_light: {
     fontWeight: "bold",
-    color: Colors.defaultThemeLight.accent,
+    color: Colors.light.primarySecond,
+    fontSize: 25,
+  },
+  userName_dark: {
+    fontWeight: "bold",
+    color: Colors.dark.primarySecond,
     fontSize: 25,
   },
 
-  userEmailView: {
-    backgroundColor: Colors.defaultThemeLight.white,
+  userEmailView_light: {
+    backgroundColor: Colors.light.primaryThird,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: "90%",
@@ -76,9 +99,27 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 7,
   },
-  userEmail: {
+  userEmailView_dark: {
+    backgroundColor: Colors.dark.primaryThird,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    width: "90%",
+    borderRadius: 10,
+    alignItems: "center",
+    marginBottom: 50,
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+  },
+  userEmail_light: {
     fontWeight: "bold",
-    color: Colors.backGroundChart,
+    color: Colors.light.primarySecond,
+    fontSize: 15,
+  },
+  userEmail_dark: {
+    fontWeight: "bold",
+    color: Colors.dark.primarySecond,
     fontSize: 15,
   },
   screen: {
@@ -92,11 +133,24 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  photoExternal: {
+  photoExternal_light: {
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
+    width: Dimensions.get("window").width * 0.7,
+    height: Dimensions.get("window").width * 0.7,
+    borderRadius: Dimensions.get("window").width * 0.35,
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+  },
+  photoExternal_dark: {
+    width: Dimensions.get("window").width,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.dark.primaryThird,
     width: Dimensions.get("window").width * 0.7,
     height: Dimensions.get("window").width * 0.7,
     borderRadius: Dimensions.get("window").width * 0.35,

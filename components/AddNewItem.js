@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get("window").width * 0.5,
     height: 40,
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     // marginBottom: -10,
     fontWeight: "bold",
     // paddingHorizontal: 10,
-    backgroundColor: Colors.defaultThemeLight.buttton,
-    color: Colors.defaultThemeLight.primary,
+    backgroundColor: Colors.light.button,
+    color: Colors.light.primary,
   },
 });
 

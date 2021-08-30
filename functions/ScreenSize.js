@@ -1,4 +1,4 @@
-import { Dimensions } from "react-native";
+import { Dimensions, useColorScheme } from "react-native";
 const getScreenSize = () => {
   const screenSize = {
     height: Dimensions.get("window").height,

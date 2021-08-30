@@ -9,6 +9,8 @@ import IncomeReducer from "./store/reducers/income";
 import RaportReducer from "./store/reducers/raport";
 import AuthScreen from "./components/auth/AuthScreen";
 import AuthReducer from "./store/reducers/auth";
+import Config from "./store/reducers/config";
+// import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
@@ -18,13 +20,19 @@ const rootReducer = combineReducers({
   income: IncomeReducer,
   fixedIncome: FixedIncomeReducer,
   raport: RaportReducer,
+  config: Config,
 });
 
 const store = createStore(rootReducer);
 const App = () => {
+  //
+  // console.log(colorScheme);
+
   return (
     <Provider store={store}>
+      {/* <AppearanceProvider> */}
       <AuthScreen />
+      {/* </AppearanceProvider> */}
     </Provider>
   );
 };

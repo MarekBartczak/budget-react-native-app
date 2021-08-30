@@ -77,7 +77,7 @@ const Receipt = (props) => {
                     <Feather
                       name="edit"
                       size={15}
-                      color={Colors.defaultThemeLight.white}
+                      color={Colors.light.primaryThird}
                     />
                   </TouchableOpacity>
                   <Modal
@@ -153,7 +153,7 @@ const Receipt = (props) => {
                     <Feather
                       name="save"
                       size={24}
-                      color={Colors.defaultThemeLight.white}
+                      color={Colors.light.primaryThird}
                     />
                   </TouchableOpacity>
 
@@ -175,7 +175,7 @@ const Receipt = (props) => {
                     <MaterialIcons
                       name="playlist-add"
                       size={24}
-                      color={Colors.defaultThemeLight.white}
+                      color={Colors.light.primaryThird}
                     />
                   </TouchableOpacity>
                 </View>
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
   receipt: {
     width: "90%",
     height: "100%",
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
   },
   editBtn: {
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
   placeText: {
     fontSize: 25,
     fontWeight: "bold",
-    color: Colors.defaultThemeLight.primaryDark,
+    color: Colors.light.primarySecond,
   },
   date: {
     alignItems: "center",
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontWeight: "bold",
-    color: Colors.defaultThemeLight.primaryDark,
+    color: Colors.light.primarySecond,
   },
   addBtnView: {
     marginVertical: 10,
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 7,
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
     padding: 5,
     borderRadius: 10,
     width: Dimensions.get("window").width * 0.2,
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 7,
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
     padding: 5,
     borderRadius: 10,
     width: Dimensions.get("window").width * 0.2,

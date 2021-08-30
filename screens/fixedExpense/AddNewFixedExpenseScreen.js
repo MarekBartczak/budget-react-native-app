@@ -143,7 +143,7 @@ const AddNewFixedExpenseScreen = (props) => {
                       marginTop: -10,
                       // backgroundColor: Colors.accent,
                       width: 150,
-                      color: Colors.defaultThemeLight.primaryDark,
+                      color: Colors.light.primarySecond,
                     }}
                   >
                     Częstotliwość opłat
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.2,
     shadowRadius: 7,
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
     marginVertical: 10,
   },
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.2,
     shadowRadius: 7,
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
     // back
   },
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
   },
   interval: {
     // marginTop: 20,
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
     width: Dimensions.get("window").width * 0.9,
     marginHorizontal: Dimensions.get("window").width * 0.05,
     height: 160,
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
   },
   intervalListElement: {
     marginVertical: 2,
-    backgroundColor: Colors.defaultThemeLight.primary,
+    backgroundColor: Colors.light.primary,
     // marginLeft: 10,
     width: Dimensions.get("window").width * 0.8,
     // width: "100%",
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
   },
   selectetIntervalListElement: {
     marginVertical: 2,
-    backgroundColor: Colors.defaultThemeLight.primary,
+    backgroundColor: Colors.light.primary,
     marginLeft: 10,
     width: Dimensions.get("window").width * 0.6,
     paddingLeft: 20,

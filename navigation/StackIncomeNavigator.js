@@ -7,10 +7,12 @@ import IncomeScreen from "../screens/income/IncomeScreen";
 import IncomeDetails from "../components/income/incomeDetails/IncomeDetails";
 import IncomeList from "../components/income/IncomeList";
 import Logout from "../components/auth/logout/Logout";
-
+import { useSelector } from "react-redux";
 const Stack = createStackNavigator();
 
 const StackIncomeNavigator = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
@@ -18,9 +20,9 @@ const StackIncomeNavigator = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: Colors.primary,
+        headerTintColor: Colors[scheme].primarySecond,
         headerStyle: {
-          backgroundColor: Colors.defaultThemeLight.backGroundOne,
+          backgroundColor: Colors[scheme].primary,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,
@@ -42,7 +44,7 @@ const StackIncomeNavigator = (props) => {
             <MaterialCommunityIcons
               name="menu"
               size={34}
-              color={Colors.primary}
+              color={Colors[scheme].primarySecond}
             />
           </TouchableOpacity>
         ),

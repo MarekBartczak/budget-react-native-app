@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 import uuid from "react-native-uuid";
 import AddNew from "../../addNew/AddNew";
 import React, { useState } from "react";

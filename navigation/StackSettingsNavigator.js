@@ -9,6 +9,7 @@ import React from "react";
 import Colors from "../constants/Colors";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 import SettingsScreen from "../screens/settings/SettingsScreen";
 import Logout from "../components/auth/logout/Logout";
@@ -16,6 +17,8 @@ import Logout from "../components/auth/logout/Logout";
 const Stack = createStackNavigator();
 
 const StackSettingsNavigator = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
@@ -23,9 +26,9 @@ const StackSettingsNavigator = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: Colors.primary,
+        headerTintColor: Colors[scheme].primarySecond,
         headerStyle: {
-          backgroundColor: Colors.defaultThemeLight.backGroundOne,
+          backgroundColor: Colors[scheme].backGroundOne,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,
@@ -47,7 +50,7 @@ const StackSettingsNavigator = (props) => {
             <MaterialCommunityIcons
               name="menu"
               size={34}
-              color={Colors.primary}
+              color={Colors[scheme].primarySecond}
             />
           </TouchableOpacity>
         ),

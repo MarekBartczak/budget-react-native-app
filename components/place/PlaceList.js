@@ -64,7 +64,7 @@ const PlaceList = (props) => {
             <Text
               style={{
                 fontWeight: setBtnColor(!isFavoritePlaceShow),
-                color: Colors.defaultThemeLight.white,
+                color: Colors.light.primaryThird,
                 textAlign: "center",
                 paddingVertical: 3,
               }}
@@ -83,7 +83,7 @@ const PlaceList = (props) => {
             <Text
               style={{
                 fontWeight: setBtnColor(isFavoritePlaceShow),
-                color: Colors.defaultThemeLight.white,
+                color: Colors.light.primaryThird,
                 textAlign: "center",
                 paddingVertical: 3,
               }}
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 100,
     marginBottom: 10,
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
     borderRadius: 10,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,

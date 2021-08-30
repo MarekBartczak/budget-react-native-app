@@ -1,12 +1,15 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
+import { useSelector } from "react-redux";
 
 const SumaryCost = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   return (
-    <View style={styles.summaryCost}>
+    <View style={styles[`summaryCost_${scheme}`]}>
       <View style={styles.inner}>
-        <Text style={styles.textCost}>{props.cost}zł</Text>
+        <Text style={styles[`textCost_${scheme}`]}>{props.cost}zł</Text>
       </View>
     </View>
   );
@@ -15,12 +18,20 @@ const SumaryCost = (props) => {
 export default SumaryCost;
 
 const styles = StyleSheet.create({
-  summaryCost: {
+  summaryCost_light: {
     marginTop: 10,
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
     width: Dimensions.get("window").width * 0.9,
     height: 50,
-
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  summaryCost_dark: {
+    marginTop: 10,
+    backgroundColor: Colors.dark.button,
+    width: Dimensions.get("window").width * 0.9,
+    height: 50,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
@@ -29,13 +40,16 @@ const styles = StyleSheet.create({
     height: "70%",
     width: "95%",
     borderRadius: 7,
-    // borderWidth: 3,
-    // borderColor: Colors.gradientBackground.third,
     alignItems: "center",
     justifyContent: "center",
   },
-  textCost: {
-    color: Colors.defaultThemeLight.primary,
+  textCost_light: {
+    color: Colors.light.primary,
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  textCost_dark: {
+    color: Colors.dark.primary,
     fontWeight: "bold",
     fontSize: 20,
   },

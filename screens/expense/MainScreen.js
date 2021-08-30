@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions, useColorScheme } from "react-native";
 import React, { useState, useEffect } from "react";
 import Chart from "../../components/chart/Chart";
 import FavoritePlaces from "../../components/FavoritePlaces";
@@ -63,7 +63,7 @@ const MainScreen = (props) => {
               //   <Ionicons
               //     name="ios-cart-outline"
               //     size={44}
-              //     color={Colors.defaultThemeLight.primary}
+              //     color={Colors.light.primary}
               //   />
               // }
             />

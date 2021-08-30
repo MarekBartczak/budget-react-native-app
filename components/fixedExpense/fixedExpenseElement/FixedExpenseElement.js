@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 20,
     borderRadius: 10,
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
+import { useSelector } from "react-redux";
 const FilterList = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   return (
     <TouchableOpacity
       onPress={() => {
@@ -9,8 +11,17 @@ const FilterList = (props) => {
         props.close();
       }}
     >
-      <View style={styles.element}>
-        <Text style={styles.text}>{props.data}</Text>
+      <View
+        style={{
+          ...styles.element,
+          ...{ backgroundColor: Colors[scheme].primaryThird },
+        }}
+      >
+        <Text
+          style={{ ...styles.text, ...{ color: Colors[scheme].primarySecond } }}
+        >
+          {props.data}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -23,7 +34,6 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
     height: 40,
-    backgroundColor: Colors.defaultThemeLight.white,
     paddingVertical: 3,
     justifyContent: "center",
     shadowColor: "black",
@@ -34,6 +44,5 @@ const styles = StyleSheet.create({
   text: {
     paddingLeft: 20,
     fontSize: 19,
-    color: Colors.defaultThemeLight.primaryDark,
   },
 });

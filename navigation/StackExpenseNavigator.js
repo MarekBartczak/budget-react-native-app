@@ -10,14 +10,17 @@ import EditCategories from "../screens/expense/EditCategories";
 import InputDataScreen from "../screens/expense/InputDataScreen";
 import Colors from "../constants/Colors";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, useColorScheme } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Logout from "../components/auth/logout/Logout";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 const Stack = createStackNavigator();
 
 const StackExpenseNavigator = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const filter = (title, screenName) => {
     return {
       title: title,
@@ -40,7 +43,7 @@ const StackExpenseNavigator = (props) => {
           <MaterialCommunityIcons
             name="menu"
             size={34}
-            color={Colors.defaultThemeLight.primaryDark}
+            color={Colors[scheme].primarySecond}
           />
         </TouchableOpacity>
       ),
@@ -54,9 +57,9 @@ const StackExpenseNavigator = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: Colors.defaultThemeLight.primaryDark,
+        headerTintColor: Colors[scheme].primarySecond,
         headerStyle: {
-          backgroundColor: Colors.defaultThemeLight.backGroundOne,
+          backgroundColor: Colors[scheme].backGroundOne,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,

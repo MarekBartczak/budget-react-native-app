@@ -44,7 +44,7 @@ const AddItemToTheReceiptScreen = (props) => {
               width: Dimensions.get("window").width * 0.3,
               paddingVertical: 10,
               marginRight: 20,
-              backgroundColor: Colors.defaultThemeLight.buttton,
+              backgroundColor: Colors.light.button,
               borderRadius: 10,
               shadowOffset: { height: 0, width: 0 },
               shadowColor: "black",
@@ -59,9 +59,9 @@ const AddItemToTheReceiptScreen = (props) => {
             <Ionicons
               name="arrow-forward-circle"
               size={34}
-              color={Colors.defaultThemeLight.white}
+              color={Colors.light.primaryThird}
             />
-            <Text style={{ color: Colors.defaultThemeLight.white }}>Dalej</Text>
+            <Text style={{ color: Colors.light.primaryThird }}>Dalej</Text>
           </TouchableOpacity>
         ) : (
           <View>
@@ -72,7 +72,7 @@ const AddItemToTheReceiptScreen = (props) => {
                 width: Dimensions.get("window").width * 0.3,
                 paddingVertical: 10,
                 marginRight: 20,
-                backgroundColor: Colors.defaultThemeLight.primary,
+                backgroundColor: Colors.light.primary,
                 borderRadius: 10,
                 // shadowOffset: { height: 0, width: 0 },
                 // shadowColor: "black",

@@ -7,16 +7,18 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
+import { useSelector } from "react-redux";
 
 const Button = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   return (
     <TouchableOpacity
       onPress={props.onPress}
-      style={{ ...styles.button, ...props.style }}
+      style={{ ...styles[`button_${scheme}`], ...props.style }}
     >
       <View style={styles.inner}>
         <View style={styles.btn}>
-          <Text style={styles.text}>{props.text}</Text>
+          <Text style={styles[`text_${scheme}`]}>{props.text}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -26,10 +28,20 @@ const Button = (props) => {
 export default Button;
 
 const styles = StyleSheet.create({
-  button: {
+  button_light: {
     width: Dimensions.get("window").width * 0.9,
     height: 50,
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
+    marginTop: 20,
+    marginBottom: 20,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button_dark: {
+    width: Dimensions.get("window").width * 0.9,
+    height: 50,
+    backgroundColor: Colors.dark.button,
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 10,
@@ -37,11 +49,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inner: {
-    // backgroundColor: Colors.accent,
     borderRadius: 7,
     height: "70%",
     width: "95%",
-    // borderColor: Colors.gradientBackground.primary,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -52,8 +62,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
   },
-  text: {
-    color: Colors.defaultThemeLight.primary,
+  text_light: {
+    color: Colors.light.primary,
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  text_dark: {
+    color: Colors.dark.primary,
     fontWeight: "bold",
     fontSize: 20,
   },

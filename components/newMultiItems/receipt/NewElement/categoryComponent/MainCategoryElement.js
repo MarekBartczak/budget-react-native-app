@@ -15,9 +15,9 @@ const MainCategoryElement = (props) => {
   const selectedCategory = useSelector((state) => state.item.category.main);
   const getColor = () => {
     if (props.title === selectedCategory) {
-      return Colors.defaultThemeLight.buttton;
+      return Colors.light.button;
     } else {
-      return Colors.defaultThemeLight.white;
+      return Colors.light.primaryThird;
     }
   };
 
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     // marginTop: 9,
-    color: Colors.defaultThemeLight.primaryDark,
+    color: Colors.light.primarySecond,
     fontSize: 10,
     maxWidth: 100,
   },

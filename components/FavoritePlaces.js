@@ -17,6 +17,8 @@ import ApiList from "../components/place/ApiList";
 import { LinearGradient } from "expo-linear-gradient";
 
 const FavoritePlaces = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const [showEdit, setShowEdit] = useState(false);
   const [favPlaceName, setFavPlaceName] = useState("");
 
@@ -40,7 +42,12 @@ const FavoritePlaces = (props) => {
     );
   };
   return (
-    <View style={styles.screen}>
+    <View
+      style={{
+        ...styles.screen,
+        ...{ backgroundColor: Colors[scheme].primaryThird },
+      }}
+    >
       <View style={styles.row}>
         {favPlace(favPlaceList[0])}
         {favPlace(favPlaceList[1])}
@@ -60,13 +67,6 @@ const FavoritePlaces = (props) => {
         onRequestClose={() => setShowEdit(false)}
       >
         <View style={styles.modalEdit}>
-          {/* <LinearGradient
-            colors={[
-              Colors.gradientBackground.primary,
-              Colors.gradientBackground.secondary,
-            ]}
-            style={styles.background}
-          > */}
           <TouchableOpacity onPress={() => setShowEdit(false)}>
             <View style={styles.closeModalBtn}>
               <Text style={styles.closeModalText}>Zamknij</Text>
@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: Dimensions.get("window").width * 0.9,
     height: 200,
-    backgroundColor: Colors.gradientBackground.primary,
     marginTop: 20,
     paddingTop: 10,
     borderRadius: 10,
@@ -153,7 +152,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.defaultThemeLight.buttton,
+    backgroundColor: Colors.light.button,
     width: Dimensions.get("window").width * 0.5,
     height: 30,
     marginHorizontal: Dimensions.get("window").width * 0.25,
@@ -164,7 +163,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   closeModalText: {
-    color: Colors.defaultThemeLight.primary,
+    color: Colors.light.primary,
     fontWeight: "bold",
   },
   apiList: {

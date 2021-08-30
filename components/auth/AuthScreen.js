@@ -9,11 +9,13 @@ import {
   Keyboard,
   ActivityIndicator,
   Alert,
+  useColorScheme,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DrawerNavigator from "../../navigation/DrawerNavigator";
 import { useDispatch, useSelector } from "react-redux";
 import * as authActions from "../../store/actions/auth";
+import * as configActions from "../../store/actions/config";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Input from "../input/Input";
 import Colors from "../../constants/Colors";
@@ -25,15 +27,25 @@ import signInWithFacebook from "./authMethods/withFacebook";
 import firebaseInit from "./firebaseInit";
 
 const AuthScreen = (props) => {
+  const colorScheme = useColorScheme();
+  // const sheme = Appearance.getColorScheme();
+  // console.log(Appearance);
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
   const userStatus = useSelector((state) => state.auth.isLogin);
   const showIndicator = useSelector((state) => state.auth.showIndicator);
+  const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
+  useEffect(() => {
+    // console.log(÷);
+
+    dispatch(configActions.getScheme(colorScheme));
+  });
   const login = () => {
     dispatch(authActions.isLogin(true));
   };
   firebaseInit();
+  // console.log(scheme);
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -94,39 +106,50 @@ const AuthScreen = (props) => {
       return (
         <ExternalComponent>
           <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-            <View style={styles.screen}>
+            <View style={styles[`screen_${scheme}`]}>
               <View style={styles.loginScreen}>
+                <Text style={styles[`credential_${scheme}`]}>Adres email</Text>
                 <Input
-                  style={styles.input}
-                  placeholder={"email"}
+                  style={styles[`input_${scheme}`]}
+                  // placeholder={"email"}
                   value={userEmail}
                   keyboardType={"email-address"}
                   onChangeText={setUserEmail}
                 />
+                <Text style={styles[`credential_${scheme}`]}>Hasło</Text>
+
                 <Input
-                  style={styles.input}
-                  placeholder={"hasło"}
+                  style={styles[`input_${scheme}`]}
+                  // placeholder={"hasło"}
                   secureTextEntry={true}
                   value={userPassword}
                   onChangeText={setUserPassword}
                 />
+
                 <TouchableOpacity
                   onPress={() =>
                     signInWithEmailAndPassowrd(() => login(), config.url)
                   }
                 >
-                  <Text style={styles.loginBtn}>Zaloguj</Text>
+                  <View style={styles[`loginButton_${scheme}`]}>
+                    <Text style={styles[`loginBtnText_${scheme}`]}>
+                      Zaloguj
+                    </Text>
+                  </View>
                 </TouchableOpacity>
               </View>
               <View style={styles.otherMethodLogin}>
                 <TouchableOpacity
-                  style={styles.loginWithGoogle}
                   onPress={() => {
                     signInWithGoogleAsync(() => login());
                   }}
                 >
-                  <AntDesign name="google" size={34} color="white" />
-                  <Text style={styles.loginWithText}>Zaloguj przez Google</Text>
+                  <View style={styles.loginWithGoogle}>
+                    <AntDesign name="google" size={24} color="white" />
+                    <Text style={styles.loginWithText}>
+                      Zaloguj przez Google
+                    </Text>
+                  </View>
                 </TouchableOpacity>
                 {/* <TouchableOpacity
                   style={styles.loginWithFacebook}
@@ -150,36 +173,102 @@ const AuthScreen = (props) => {
 export default AuthScreen;
 
 const styles = StyleSheet.create({
-  screen: {
+  screen_light: {
     width: "100%",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: Colors.light.primary,
   },
-  input: {
-    fontSize: 20,
+  screen_dark: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.dark.primary,
+  },
+  input_light: {
+    fontSize: 15,
     padding: 10,
-    marginBottom: 30,
-    backgroundColor: Colors.accent,
+    marginBottom: 10,
+    backgroundColor: Colors.light.primaryThird,
     width: Dimensions.get("window").width * 0.9,
     height: 40,
     justifyContent: "center",
     alignItems: "center",
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+    borderRadius: 10,
+  },
+  input_dark: {
+    fontSize: 15,
+    padding: 10,
+    marginBottom: 10,
+    backgroundColor: Colors.dark.primaryThird,
+    color: Colors.dark.primarySecond,
+    width: Dimensions.get("window").width * 0.9,
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+    borderRadius: 10,
   },
   loginScreen: {
     height: 200,
     marginBottom: 40,
   },
-  loginBtn: {
+  credential_light: {
+    marginLeft: 10,
+    color: Colors.light.primarySecond,
+  },
+  credential_dark: {
+    marginLeft: 10,
+    color: Colors.dark.primarySecond,
+  },
+
+  loginButton_light: {
+    marginTop: 40,
+    backgroundColor: Colors.light.button,
+    borderRadius: 10,
+    // borderColor: Colors.light.button,
+    // borderWidth: 2,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.3,
+    shadowRadius: 7,
+  },
+  loginButton_dark: {
+    marginTop: 40,
+    backgroundColor: Colors.dark.button,
+    borderRadius: 10,
+    // borderColor: Colors.dark.button,
+    // borderWidth: 2,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.3,
+    shadowRadius: 7,
+  },
+
+  loginBtnText_light: {
     fontSize: 20,
-    // height: 50,
     textAlign: "center",
     width: Dimensions.get("window").width * 0.9,
-    borderWidth: 3,
-    borderColor: Colors.shadowColor,
-    padding: 15,
-    borderRadius: 5,
+    padding: 10,
+    color: Colors.light.primaryThird,
   },
+  loginBtnText_dark: {
+    fontSize: 20,
+    textAlign: "center",
+    width: Dimensions.get("window").width * 0.9,
+    padding: 10,
+    color: Colors.dark.primarySecond,
+  },
+
   otherMethodLogin: {
     width: Dimensions.get("window").width * 0.9,
   },
@@ -191,22 +280,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 10,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   loginWithGoogle: {
     backgroundColor: Colors.google,
     flexDirection: "row",
-    marginTop: 20,
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 10,
-    borderRadius: 5,
+    borderRadius: 10,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
   },
+
   loginWithText: {
     color: "white",
-    // backgroundColor: "red",
-    // height: "100%",
     width: "80%",
     justifyContent: "center",
     alignItems: "center",

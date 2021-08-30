@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 import React, { useState } from "react";
 
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";

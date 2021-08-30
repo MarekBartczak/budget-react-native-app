@@ -7,6 +7,8 @@ import * as itemsAction from "../../store/actions/items";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const DetailsScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const { date, place, category, name, cost, id, multiply } =
     props.route.params;
   const userId = useSelector((state) => state.auth.userID);
@@ -20,14 +22,23 @@ const DetailsScreen = (props) => {
   return (
     <ExternalComponent>
       <View style={styles.screen}>
-        <View style={styles.dateView}>
+        <View
+          style={{
+            ...styles.dateView,
+            ...{ backgroundColor: Colors[scheme].button },
+          }}
+        >
           <View style={styles.trash}></View>
           <TouchableOpacity
             onPress={() =>
               props.navigation.navigate("Date", { selectedDate: date })
             }
           >
-            <Text style={styles.date}>{date}</Text>
+            <Text
+              style={{ ...styles.date, ...{ color: Colors[scheme].primary } }}
+            >
+              {date}
+            </Text>
           </TouchableOpacity>
 
           <View style={styles.trash}>
@@ -47,45 +58,86 @@ const DetailsScreen = (props) => {
               <Ionicons
                 name="ios-trash"
                 size={24}
-                color={Colors.defaultThemeLight.primary}
+                color={Colors[scheme].primary}
               />
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.middleSection}>
+        <View
+          style={{
+            ...styles.middleSection,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+        >
           {/* first column */}
           <View style={styles.placeAndCategory}>
             <View style={styles.placeView}>
-              <Text>Miejsce</Text>
+              <Text
+                style={{
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                Miejsce
+              </Text>
               <TouchableOpacity
                 onPress={() =>
                   props.navigation.navigate("Place", { place: place })
                 }
               >
-                <Text style={styles.place}>{place}</Text>
+                <Text
+                  style={{
+                    ...styles.place,
+                    ...{ color: Colors[scheme].primarySecond },
+                  }}
+                >
+                  {place}
+                </Text>
               </TouchableOpacity>
             </View>
             <View style={styles.categoryView}>
-              <Text>Kategoria</Text>
+              <Text
+                style={{
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                Kategoria
+              </Text>
               <TouchableOpacity
                 onPress={() =>
                   props.navigation.navigate("Category", { category: category })
                 }
               >
-                <Text style={styles.category}>{category}</Text>
+                <Text
+                  style={{
+                    ...styles.category,
+                    ...{ color: Colors[scheme].primarySecond },
+                  }}
+                >
+                  {category}
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
           {/* middle column */}
           <View style={styles.detailsMiddleCenter}>
             <View style={styles.nameView}>
-              <Text style={styles.name}>
+              <Text
+                style={{
+                  ...styles.name,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
                 {name}{" "}
                 <Text style={{ fontWeight: "normal" }}>[x{multiply}]</Text>
               </Text>
             </View>
             <View style={styles.costView}>
-              <Text style={styles.cost}>
+              <Text
+                style={{
+                  ...styles.cost,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
                 {cost}zł{" "}
                 <Text style={{ fontWeight: "normal" }}>
                   [{cost * multiply}zł]
@@ -112,7 +164,6 @@ const styles = StyleSheet.create({
   },
   dateView: {
     alignItems: "center",
-    backgroundColor: Colors.defaultThemeLight.buttton,
     padding: 10,
     borderRadius: 10,
     flexDirection: "row",
@@ -122,12 +173,10 @@ const styles = StyleSheet.create({
   date: {
     fontWeight: "bold",
     fontSize: 24,
-    color: Colors.defaultThemeLight.primary,
   },
   middleSection: {
     marginVertical: 20,
     height: 180,
-    backgroundColor: Colors.defaultThemeLight.white,
     borderRadius: 10,
     padding: 10,
     shadowColor: "black",
@@ -171,10 +220,9 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 15,
-    // backgroundColor: Colors.gradientBackground.third,
     padding: 20,
     fontWeight: "bold",
-    color: Colors.primary,
+    // color: Colors.primary,
     margin: 10,
     textAlign: "center",
   },
@@ -184,7 +232,7 @@ const styles = StyleSheet.create({
   },
   cost: {
     fontWeight: "bold",
-    color: "black",
+    // color: "black",
     fontSize: 15,
     paddingVertical: 10,
   },

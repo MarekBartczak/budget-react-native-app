@@ -8,8 +8,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Colors from "../../constants/Colors";
+import { useSelector } from "react-redux";
 
 const Chart = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // props.label and props.data shoud be same length
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -18,7 +20,12 @@ const Chart = (props) => {
     <View style={styles.chartView}>
       <TouchableOpacity onPress={props.press}>
         <View style={styles.valMax}>
-          <Text style={styles.valMaxText}>
+          <Text
+            style={{
+              ...styles.valMaxText,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
             {Math.max.apply(
               Math,
               props.data.map((el) => Number(el))
@@ -41,19 +48,24 @@ const Chart = (props) => {
           width={Dimensions.get("window").width * 0.9}
           height={180}
           chartConfig={{
-            labelColor: () => Colors.defaultThemeLight.primaryDark,
+            labelColor: () => Colors[scheme].primarySecond,
             backgroundGradientFromOpacity: 1,
             backgroundGradientToOpacity: 1,
-            backgroundGradientFrom: Colors.gradientBackground.primary,
-            backgroundGradientTo: Colors.gradientBackground.primary,
+            backgroundGradientFrom: Colors[scheme].primaryThird,
+            backgroundGradientTo: Colors[scheme].primaryThird,
             decimalPlaces: 2,
-            color: () => Colors.defaultThemeLight.primaryDark,
+            color: () => Colors[scheme].primarySecond,
           }}
           bezier
           style={styles.chart}
         />
         <View style={styles.valMin}>
-          <Text style={styles.valMinText}>
+          <Text
+            style={{
+              ...styles.valMinText,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
             {Math.min.apply(
               Math,
               props.data.map((el) => Number(el))
@@ -75,12 +87,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: Dimensions.get("window").width * 0.9,
   },
-  chartView: {
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowRadius: 7,
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-  },
+
   valMax: {
     position: "absolute",
     left: 10,

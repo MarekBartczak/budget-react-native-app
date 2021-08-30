@@ -1,15 +1,17 @@
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions, useColorScheme } from "react-native";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ExternalComponentWithGradient = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   return (
     <View>
       <LinearGradient
         colors={[
-          Colors.defaultThemeLight.backGroundOne,
-          Colors.defaultThemeLight.backGroundOne,
+          Colors[scheme].backGroundOne,
+          Colors[scheme].backGroundOne,
           // Colors.gradientBackground.secondary,
         ]}
         style={styles.background}

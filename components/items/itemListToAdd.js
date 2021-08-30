@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.7,
     padding: 5,
     color: Colors.primary,
-    backgroundColor: Colors.defaultThemeLight.white,
+    backgroundColor: Colors.light.primaryThird,
     marginVertical: 3,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,

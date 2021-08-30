@@ -15,6 +15,8 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 import FilterList from "../../components/items/FilterList";
 
 const PlaceScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const itemsFromRedux = useSelector((state) => state.item.items);
   const currentPlaceParam = props.route.params;
   const [currentPlace, setCurrentPlace] = useState(currentPlaceParam.place);
@@ -52,17 +54,34 @@ const PlaceScreen = (props) => {
       <View style={styles.screen}>
         <View style={styles.top}>
           <TouchableOpacity onPress={() => switchPlace(-1)}>
-            <Ionicons name="ios-arrow-back" size={43} color="black" />
+            <Ionicons
+              name="ios-arrow-back"
+              size={43}
+              color={Colors[scheme].primarySecond}
+            />
           </TouchableOpacity>
-          <Text style={styles.showPlace}>{currentPlace}</Text>
+          <Text
+            style={{
+              ...styles.showPlace,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
+            {currentPlace}
+          </Text>
           <FilterList listData={workingPlaceList} callBack={callBack} />
 
           <TouchableOpacity onPress={() => switchPlace(1)}>
-            <Ionicons name="ios-arrow-forward" size={43} color="black" />
+            <Ionicons
+              name="ios-arrow-forward"
+              size={43}
+              color={Colors[scheme].primarySecond}
+            />
           </TouchableOpacity>
         </View>
         <View>
-          <Text>Razem {sum.toFixed(2)}zł</Text>
+          <Text style={{ color: Colors[scheme].primarySecond }}>
+            Razem {sum.toFixed(2)}zł
+          </Text>
         </View>
         <View style={styles.items}>
           <FlatList
@@ -98,7 +117,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   showPlace: {
-    color: Colors.primary,
+    // color: Colors.primary,
     fontWeight: "bold",
     fontSize: 20,
   },

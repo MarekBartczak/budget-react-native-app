@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: 10,
 
-    borderColor: Colors.defaultThemeLight.accent,
+    borderColor: Colors.light.accent,
     borderWidth: 1,
   },
 });

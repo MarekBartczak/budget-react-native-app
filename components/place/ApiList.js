@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, useColorScheme } from "react-native";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ApiElement from "./apiElement/ApiElement";

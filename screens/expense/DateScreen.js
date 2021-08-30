@@ -12,8 +12,8 @@ import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import FilterList from "../../components/items/FilterList";
-
 const DateScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   const selectedDate = props.route.params;
   const itemsFromRedux = useSelector((state) => state.item.items);
   const dateList = itemsFromRedux.map((el) => {
@@ -71,22 +71,29 @@ const DateScreen = (props) => {
             <Ionicons
               name="ios-arrow-back"
               size={43}
-              color={Colors.defaultThemeLight.primaryDark}
+              color={Colors[scheme].primarySecond}
             />
           </TouchableOpacity>
-          <Text style={styles.showDate}>{currentDate}</Text>
+          <Text
+            style={{
+              ...styles.showDate,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
+            {currentDate}
+          </Text>
           <FilterList listData={workingDateList} callBack={callBack} />
 
           <TouchableOpacity onPress={() => switchDate(1)}>
             <Ionicons
               name="ios-arrow-forward"
               size={43}
-              color={Colors.defaultThemeLight.primaryDark}
+              color={Colors[scheme].primarySecond}
             />
           </TouchableOpacity>
         </View>
         <View>
-          <Text>
+          <Text style={{ color: Colors[scheme].primarySecond }}>
             Razem {sum.toFixed(2)}zł [{multiplySum.toFixed(2)}zł]
           </Text>
         </View>

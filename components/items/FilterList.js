@@ -10,8 +10,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import FilterElement from "./FilterElement";
 import Colors from "../../constants/Colors";
 import React, { useState } from "react";
-
+import { useSelector } from "react-redux";
 const FilterList = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   const [filter, showFilter] = useState(false);
 
   const close = () => {
@@ -22,24 +23,37 @@ const FilterList = (props) => {
       <MaterialIcons
         name="filter-list"
         size={30}
-        color={Colors.defaultThemeLight.primaryDark}
+        color={Colors[scheme].primarySecond}
       />
 
       <Modal animationType="slide" transparent={true} visible={filter}>
-        <View style={styles.filter}>
+        <View
+          style={{
+            ...styles.filter,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+        >
           <TouchableOpacity onPress={() => showFilter(!filter)}>
-            <View style={styles.closeBtn}>
-              <Text style={{ color: Colors.defaultThemeLight.primary }}>
-                zamknij
-              </Text>
+            <View
+              style={{
+                ...styles.closeBtn,
+                ...{ backgroundColor: Colors[scheme].button },
+              }}
+            >
+              <Text style={{ color: Colors[scheme].primary }}>zamknij</Text>
             </View>
           </TouchableOpacity>
           <View style={styles.filterContainer}>
-            <View style={styles.filterList}>
+            <View
+              style={{
+                ...styles.filterList,
+                ...{ backgroundColor: Colors[scheme].primaryThird },
+              }}
+            >
               <FlatList
                 contentContainerStyle={{
                   paddingBottom: 20,
-                  backgroundColor: Colors.defaultThemeLight.white,
+                  backgroundColor: Colors[scheme].primaryThird,
                 }}
                 data={props.listData}
                 keyExtractor={(item, index) => "item" + index}
@@ -63,7 +77,6 @@ export default FilterList;
 
 const styles = StyleSheet.create({
   filter: {
-    backgroundColor: Colors.defaultThemeLight.white,
     marginLeft: "10%",
     width: "80%",
     height: "80%",
@@ -77,7 +90,6 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
   },
   closeBtn: {
-    backgroundColor: Colors.defaultThemeLight.buttton,
     paddingHorizontal: 20,
     paddingVertical: 5,
     borderTopRightRadius: 10,
@@ -90,6 +102,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "98%",
     marginTop: 20,
-    backgroundColor: Colors.defaultThemeLight.white,
+    // backgroundColor: Colors.light.primaryThird,
   },
 });

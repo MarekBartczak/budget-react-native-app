@@ -15,6 +15,7 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 import FilterList from "../../components/items/FilterList";
 
 const CategoryScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   const itemsFromRedux = useSelector((state) => state.item.items);
   const currentCategoryParam = props.route.params;
   const [currentCategory, setCurrentCategory] = useState(
@@ -57,17 +58,34 @@ const CategoryScreen = (props) => {
       <View style={styles.screen}>
         <View style={styles.top}>
           <TouchableOpacity onPress={() => switchCategory(-1)}>
-            <Ionicons name="ios-arrow-back" size={43} color="black" />
+            <Ionicons
+              name="ios-arrow-back"
+              size={43}
+              color={Colors[scheme].primarySecond}
+            />
           </TouchableOpacity>
-          <Text style={styles.showCategory}>{currentCategory}</Text>
+          <Text
+            style={{
+              ...styles.showCategory,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
+            {currentCategory}
+          </Text>
           <FilterList listData={workingCategoryList} callBack={callBack} />
 
           <TouchableOpacity onPress={() => switchCategory(1)}>
-            <Ionicons name="ios-arrow-forward" size={43} color="black" />
+            <Ionicons
+              name="ios-arrow-forward"
+              size={43}
+              color={Colors[scheme].primarySecond}
+            />
           </TouchableOpacity>
         </View>
         <View>
-          <Text>Razem {sum.toFixed(2)}zł</Text>
+          <Text style={{ color: Colors[scheme].primarySecond }}>
+            Razem {sum.toFixed(2)}zł
+          </Text>
         </View>
         <View style={styles.items}>
           <FlatList
@@ -106,7 +124,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   showCategory: {
-    color: Colors.primary,
     fontWeight: "bold",
     fontSize: 20,
   },
