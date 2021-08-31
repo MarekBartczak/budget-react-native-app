@@ -6,7 +6,6 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   FlatList,
-  Button,
   Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -19,26 +18,23 @@ import Colors from "../../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
 import Input from "../../input/Input";
 import { MaterialIcons } from "@expo/vector-icons";
-import NewElement from "../NewElement";
 import ListElement from "../ListElement";
 import { useSelector, useDispatch } from "react-redux";
 import * as itemsAction from "../../../store/actions/items";
 import SaveItemsToTheStore from "../../../functions/SaveItemsToTheStore";
 import numberInputValidation from "../../../functions/NumberInputValidation";
 import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";
-import NewElements from "../receipt/NewElement/NewElements";
+
 const heightWindow = Dimensions.get("window").height;
+
 const Receipt = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
   const navigation = useNavigation();
   const [modal, showModal] = useState(false);
-  const [addItemModal, showAddItemModal] = useState(false);
   const receiptDate = useSelector((state) => state.item.receipt.date);
   const GetSelectedPlace = useSelector((state) => state.item.receipt.place);
   const showReceipt = useSelector((state) => state.item.receipt);
   const receiptItem = useSelector((state) => state.item.receipt.items);
-  const allElements = useSelector((state) => state.item.items);
   const userId = useSelector((state) => state.auth.userID);
 
   const dispatch = useDispatch();

@@ -154,30 +154,6 @@ const styles = StyleSheet.create({
   },
   elements: {
     marginTop: 5,
-    // backgroundColor: Colors.accent,
     padding: 5,
-    // borderRadius: 30,
-  },
-
-  //   inner: {
-  //     // width: "100%",
-  //     // height: "100%",
-  //     backgroundColor: Colors.accent,
-  //     // backgroundColor: "red",
-  //     padding: 20,
-  //     borderRadius: 30,
-  //     borderColor: Colors.gradientBackground.primary,
-  //     borderWidth: 5,
-  //     // shadowColor: "black",
-  //     // shadowOffset: { height: 0, width: 0 },
-  //     // shadowOpacity: 0.4,
-  //     // shadowRadius: 20,
-  //   },
-  categoryLeftColumn: {
-    // height: Dimensions.get("window").height - headerHeight,
-    // flexDirection: "column",
-    // alignItems: "flex-start",
-    // justifyContent: "space-around",
-    // alignItems: "center",
   },
 });
