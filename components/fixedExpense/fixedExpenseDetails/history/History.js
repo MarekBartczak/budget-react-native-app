@@ -5,7 +5,7 @@ const History = (props) => {
     <TouchableOpacity>
       <View>
         <Text>
-          {props.title} {props.cost}zł {props.date.replaceAll("-", ".")}
+          {props.title} {props.cost}zł {props.date}
         </Text>
       </View>
     </TouchableOpacity>

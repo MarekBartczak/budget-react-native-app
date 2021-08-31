@@ -1,4 +1,4 @@
-export default config = {
+const config = {
   firebase: {
     apiKey: "AIzaSyAqwJg7IR5BHLyn_oQpcViz0nKpdvrdAMo",
     authDomain: "budget-reactnative-app.firebaseapp.com",
@@ -10,3 +10,5 @@ export default config = {
   },
   url: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAqwJg7IR5BHLyn_oQpcViz0nKpdvrdAMo",
 };
+
+export default config;

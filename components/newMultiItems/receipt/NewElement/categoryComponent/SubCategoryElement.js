@@ -12,6 +12,8 @@ import * as itemActions from "../../../../../store/actions/items";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 const SubCategoryElement = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const dispatch = useDispatch();
   const selectedSubCategory = useSelector((state) => state.item.category.sub);
   return (
@@ -21,11 +23,15 @@ const SubCategoryElement = (props) => {
       <View>
         <View
           style={
-            styles[
-              selectedSubCategory === props.item
-                ? "subCategoryElementSelected"
-                : "subCategoryElement"
-            ]
+            selectedSubCategory === props.item
+              ? {
+                  ...styles.subCategoryElement,
+                  ...{ backgroundColor: Colors[scheme].button },
+                }
+              : {
+                  ...styles.subCategoryElement,
+                  ...{ backgroundColor: Colors[scheme].primaryThird },
+                }
           }
         >
           <FontAwesome5
@@ -33,17 +39,21 @@ const SubCategoryElement = (props) => {
             size={24}
             color={
               selectedSubCategory === props.item
-                ? Colors.light.primaryThird
-                : Colors.light.primarySecond
+                ? Colors[scheme].primaryThird
+                : Colors[scheme].primarySecond
             }
           />
           <Text
             style={
-              styles[
-                selectedSubCategory === props.item
-                  ? "subCategoryTextSelected"
-                  : "subCategoryText"
-              ]
+              selectedSubCategory === props.item
+                ? {
+                    ...styles.subCategoryText,
+                    ...{ color: Colors[scheme].primaryThird },
+                  }
+                : {
+                    ...styles.subCategoryText,
+                    ...{ color: Colors[scheme].primarySecond },
+                  }
             }
           >
             {props.item}
@@ -62,16 +72,17 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     fontSize: 10,
+
     color: Colors.light.primarySecond,
   },
-  subCategoryTextSelected: {
-    marginLeft: 10,
-    marginTop: 5,
-    marginBottom: 5,
-    fontSize: 10,
+  // subCategoryTextSelected: {
+  //   marginLeft: 10,
+  //   marginTop: 5,
+  //   marginBottom: 5,
+  //   fontSize: 10,
 
-    color: Colors.light.primaryThird,
-  },
+  //   color: Colors.light.primaryThird,
+  // },
   subCategoryElement: {
     margin: 5,
     padding: 5,
@@ -82,17 +93,5 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.2,
     shadowRadius: 4,
-  },
-  subCategoryElementSelected: {
-    margin: 5,
-    padding: 5,
-    flexDirection: "row",
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: "black",
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    backgroundColor: Colors.light.button,
-
-    borderTopLeftRadius: 10,
   },
 });

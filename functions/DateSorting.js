@@ -1,6 +1,6 @@
 const dateSorting = (dateList) => {
   const newList = [...dateList];
-  const numberList = newList.map((el) => Number(el.replaceAll("-", "")));
+  const numberList = newList.map((el) => Number(el.replace(/-/g, "")));
   const numberListSort = numberList.sort();
 
   const dateListSort = numberListSort.map((el) => {

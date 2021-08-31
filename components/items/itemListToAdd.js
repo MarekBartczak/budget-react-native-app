@@ -8,8 +8,11 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
+import { useSelector } from "react-redux";
 
 const ItemListToAdd = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const selected = {
     fontWeight: props.place === props.list ? "bold" : null,
   };
@@ -19,7 +22,15 @@ const ItemListToAdd = (props) => {
         onPress={() => props.setPlace(props.list)}
         style={{ alignItems: "center" }}
       >
-        <View style={styles.list}>
+        <View
+          style={{
+            ...styles.list,
+            ...{
+              color: Colors[scheme].primary,
+              backgroundColor: Colors[scheme].primaryThird,
+            },
+          }}
+        >
           <View style={styles.imageView}>
             <Image
               style={{
@@ -32,7 +43,12 @@ const ItemListToAdd = (props) => {
           </View>
           <Text
             testID="text"
-            style={{ ...{ fontWeight: selected.fontWeight } }}
+            style={{
+              ...{
+                fontWeight: selected.fontWeight,
+                color: Colors[scheme].primarySecond,
+              },
+            }}
           >
             {props.list}
           </Text>
@@ -45,15 +61,11 @@ const ItemListToAdd = (props) => {
 export default ItemListToAdd;
 
 const styles = StyleSheet.create({
-  text: {
-    color: Colors.backgroundColor,
-  },
   list: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.7,
     padding: 5,
-    color: Colors.primary,
-    backgroundColor: Colors.light.primaryThird,
+
     marginVertical: 3,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,

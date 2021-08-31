@@ -8,8 +8,11 @@ import {
 import React, { useState } from "react";
 import ItemListToAdd from "../items/itemListToAdd";
 import Colors from "../../constants/Colors";
+import { useSelector } from "react-redux";
 
 const PlaceList = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const [isFavoritePlaceShow, setIsFavoritePlaceShow] = useState(false);
 
   const setBtnColor = (state) => {
@@ -55,7 +58,10 @@ const PlaceList = (props) => {
     <View>
       <View style={styles.switchBtns}>
         <TouchableOpacity
-          style={styles.btn}
+          style={{
+            ...styles.btn,
+            ...{ backgroundColor: Colors[scheme].button },
+          }}
           onPress={() => {
             setIsFavoritePlaceShow(false);
           }}
@@ -64,7 +70,7 @@ const PlaceList = (props) => {
             <Text
               style={{
                 fontWeight: setBtnColor(!isFavoritePlaceShow),
-                color: Colors.light.primaryThird,
+                color: Colors[scheme].primaryThird,
                 textAlign: "center",
                 paddingVertical: 3,
               }}
@@ -74,7 +80,10 @@ const PlaceList = (props) => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.btn}
+          style={{
+            ...styles.btn,
+            ...{ backgroundColor: Colors[scheme].button },
+          }}
           onPress={() => {
             setIsFavoritePlaceShow(true);
           }}
@@ -83,7 +92,7 @@ const PlaceList = (props) => {
             <Text
               style={{
                 fontWeight: setBtnColor(isFavoritePlaceShow),
-                color: Colors.light.primaryThird,
+                color: Colors[scheme].primaryThird,
                 textAlign: "center",
                 paddingVertical: 3,
               }}
@@ -109,7 +118,6 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 100,
     marginBottom: 10,
-    backgroundColor: Colors.light.button,
     borderRadius: 10,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,

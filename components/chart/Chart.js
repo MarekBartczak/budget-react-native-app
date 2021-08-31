@@ -26,10 +26,12 @@ const Chart = (props) => {
               ...{ color: Colors[scheme].primarySecond },
             }}
           >
-            {Math.max.apply(
-              Math,
-              props.data.map((el) => Number(el))
-            )}
+            {props.data.length > 0
+              ? Math.max.apply(
+                  Math,
+                  props.data.map((el) => Number(el))
+                )
+              : 0}
           </Text>
         </View>
         <LineChart
@@ -66,10 +68,12 @@ const Chart = (props) => {
               ...{ color: Colors[scheme].primarySecond },
             }}
           >
-            {Math.min.apply(
-              Math,
-              props.data.map((el) => Number(el))
-            )}
+            {props.data > 0
+              ? Math.min.apply(
+                  Math,
+                  props.data.map((el) => Number(el))
+                )
+              : 0}
           </Text>
         </View>
       </TouchableOpacity>

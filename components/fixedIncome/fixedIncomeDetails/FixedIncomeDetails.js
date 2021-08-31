@@ -57,7 +57,7 @@ const FixedIncomeDetails = (props) => {
           <View style={styles.top}>
             <View style={styles.date}>
               <Text>Data</Text>
-              <Text style={styles.textDate}>{date.replaceAll("-", ".")}</Text>
+              <Text style={styles.textDate}>{date}</Text>
             </View>
             <View style={styles.costInfo}>
               <Text>Kwota</Text>

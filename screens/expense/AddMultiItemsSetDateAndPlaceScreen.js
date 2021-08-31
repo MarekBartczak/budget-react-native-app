@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const AddMultiItemsScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const favList = useSelector((state) => state.favoritePlace.favoritePlace);
   const itemsFromRedux = useSelector((state) => state.item.items);
@@ -77,8 +78,12 @@ const AddMultiItemsScreen = (props) => {
       <View style={styles.screen}>
         <ExternalComponent>
           <View style={styles.place}>
-            <View style={styles.placeList}>
-              {/* <View style={styles.inner}> */}
+            <View
+              style={{
+                ...styles.placeList,
+                ...{ backgroundColor: Colors[scheme].primaryThird },
+              }}
+            >
               <PlaceList
                 favData={favListNames}
                 data={workingPlaceList}
@@ -87,9 +92,13 @@ const AddMultiItemsScreen = (props) => {
                 imageUrl={filteredFavList}
               />
             </View>
-            {/* </View> */}
           </View>
-          <View style={styles.datePicker}>
+          <View
+            style={{
+              ...styles.datePicker,
+              ...{ backgroundColor: Colors[scheme].primaryThird },
+            }}
+          >
             <DatePicker
               date={date}
               onChange={onChangeDate}
@@ -129,7 +138,6 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.2,
     shadowRadius: 7,
-    backgroundColor: Colors.light.primaryThird,
     marginVertical: 10,
     borderRadius: 10,
   },
@@ -138,29 +146,15 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height * 0.2,
     width: "90%",
     borderRadius: 10,
-    // backgroundColor: Colors.accent,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Colors.light.primaryThird,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,
     shadowColor: "black",
     shadowOpacity: 0.2,
   },
-  inner: {
-    height: "95%",
-    width: "98%",
-    marginTop: 30,
-    marginBottom: 30,
-    paddingBottom: 40,
-    paddingHorizontal: 20,
-    borderWidth: 3,
-    borderRadius: 10,
-    borderColor: Colors.gradientBackground.primary,
-    backgroundColor: Colors.accent,
-  },
+
   receipt: {
-    // marginTop: 30,
     height: Dimensions.get("window").height * 0.5,
     width: "100%",
     flexDirection: "column",

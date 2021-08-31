@@ -12,8 +12,11 @@ import { Feather } from "@expo/vector-icons";
 import SubCategoryList from "./SubCategoryList";
 import ExternalComponent from "../../../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { useHeaderHeight } from "@react-navigation/stack";
+import { useSelector } from "react-redux";
 
 const Categories = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const [headerHeight, setHeaderHeight] = useState(useHeaderHeight());
   const categoriesListObjectKeys = Object.keys(CategoriesList);
   const mainCategoryList = categoriesListObjectKeys.map(
@@ -24,7 +27,7 @@ const Categories = (props) => {
     <ExternalComponent style={styles.screen}>
       <View style={styles.external}>
         <View style={styles.elements}>
-          <View style={styles.inner}>
+          <View>
             <View
               style={{
                 height: Dimensions.get("window").height - headerHeight,
@@ -38,7 +41,7 @@ const Categories = (props) => {
                   <MaterialCommunityIcons
                     name="food-variant"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />
@@ -48,7 +51,7 @@ const Categories = (props) => {
                   <FontAwesome5
                     name="pump-soap"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />
@@ -58,7 +61,7 @@ const Categories = (props) => {
                   <MaterialIcons
                     name="home-repair-service"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />
@@ -70,7 +73,7 @@ const Categories = (props) => {
                   <FontAwesome
                     name="automobile"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />
@@ -81,7 +84,7 @@ const Categories = (props) => {
                   <Entypo
                     name="home"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />
@@ -91,7 +94,7 @@ const Categories = (props) => {
                   <MaterialIcons
                     name="computer"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />
@@ -102,7 +105,7 @@ const Categories = (props) => {
                   <FontAwesome5
                     name="redhat"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />
@@ -112,7 +115,7 @@ const Categories = (props) => {
                   <Feather
                     name="pen-tool"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />
@@ -122,7 +125,7 @@ const Categories = (props) => {
                   <MaterialIcons
                     name="family-restroom"
                     size={iconSize}
-                    color={Colors.light.primarySecond}
+                    color={Colors[scheme].primarySecond}
                   />
                 }
               />

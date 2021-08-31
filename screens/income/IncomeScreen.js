@@ -9,8 +9,8 @@ import SummaryCost from "../../components/summaryCost/SumaryCost";
 import AddNewIncomeComponent from "../../components/income/addNewIncome/AddNewIncomeComponent";
 const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
-
   const chartEl = chartElement(incomeList);
+  console.log(incomeList);
   return (
     <ExternalComponent>
       <View style={styles.component}>

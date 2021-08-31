@@ -15,9 +15,7 @@ const IncomeElement = (props) => {
         <Text style={styles.textTitle}>{props.el.title}</Text>
       </View>
       <View style={styles.description}>
-        <Text style={styles.textDate}>
-          {props.el.date.replace("-", ".").replace("-", ".")}
-        </Text>
+        <Text style={styles.textDate}>{props.el.date}</Text>
         <Text style={styles.textCost}>{props.el.cost}zł</Text>
       </View>
     </TouchableOpacity>

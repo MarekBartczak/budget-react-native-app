@@ -7,14 +7,14 @@ import {
 } from "react-native";
 import NewElements from "../../components/newMultiItems/receipt/NewElement/NewElements";
 import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
-import * as itemsActions from "../../store/actions/items";
 
 const AddItemToTheReceiptScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const selectedCategory = useSelector((state) => state.item.category.main);
   const selectedSubCategory = useSelector((state) => state.item.category.sub);
   const isCategorySelected = useSelector(
@@ -44,7 +44,7 @@ const AddItemToTheReceiptScreen = (props) => {
               width: Dimensions.get("window").width * 0.3,
               paddingVertical: 10,
               marginRight: 20,
-              backgroundColor: Colors.light.button,
+              backgroundColor: Colors[scheme].button,
               borderRadius: 10,
               shadowOffset: { height: 0, width: 0 },
               shadowColor: "black",
@@ -59,9 +59,9 @@ const AddItemToTheReceiptScreen = (props) => {
             <Ionicons
               name="arrow-forward-circle"
               size={34}
-              color={Colors.light.primaryThird}
+              color={Colors[scheme].primaryThird}
             />
-            <Text style={{ color: Colors.light.primaryThird }}>Dalej</Text>
+            <Text style={{ color: Colors[scheme].primaryThird }}>Dalej</Text>
           </TouchableOpacity>
         ) : (
           <View>
@@ -72,7 +72,7 @@ const AddItemToTheReceiptScreen = (props) => {
                 width: Dimensions.get("window").width * 0.3,
                 paddingVertical: 10,
                 marginRight: 20,
-                backgroundColor: Colors.light.primary,
+                backgroundColor: Colors[scheme].primaryThird,
                 borderRadius: 10,
                 // shadowOffset: { height: 0, width: 0 },
                 // shadowColor: "black",
@@ -83,34 +83,13 @@ const AddItemToTheReceiptScreen = (props) => {
               <Ionicons
                 name="arrow-forward-circle"
                 size={34}
-                color={Colors.placeholder}
+                color={Colors[scheme].backGroundOne}
               />
 
-              <Text style={{ color: Colors.placeholder }}>Dalej</Text>
+              <Text style={{ color: Colors[scheme].backGroundOne }}>Dalej</Text>
             </View>
           </View>
         )}
-      </View>
-    );
-  };
-
-  const backButton = () => {
-    return (
-      <View style={styles.buttons}>
-        <TouchableOpacity
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            width: Dimensions.get("window").width * 0.4,
-          }}
-          onPress={() => {
-            // props.addItemToTheRecipt();
-            dispatch(itemsActions.setSelectedCategory(false));
-          }}
-        >
-          <Ionicons name="arrow-back-circle" size={4} color="red" />
-          <Text style={{ color: "red" }}>cofnij</Text>
-        </TouchableOpacity>
       </View>
     );
   };
@@ -127,7 +106,6 @@ export default AddItemToTheReceiptScreen;
 
 const styles = StyleSheet.create({
   buttons: {
-    // flexDirection: "row",
     width: Dimensions.get("window").width * 0.45,
     height: Dimensions.get("window").height * 0.25,
     marginLeft: Dimensions.get("window").width * 0.55,

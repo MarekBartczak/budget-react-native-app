@@ -7,12 +7,14 @@ import {
   Dimensions,
 } from "react-native";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as favoritePlaceAction from "../store/actions/favoritePlace";
 import * as itemsAction from "../store/actions/items";
 import Colors from "../constants/Colors";
 
 const FavPlaceElement = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const dispatch = useDispatch();
   return (
     <TouchableOpacity
@@ -31,7 +33,11 @@ const FavPlaceElement = (props) => {
     >
       <View style={styles.favBtn}>
         <Image style={styles.logo} source={{ url: props.favPlaceLogo }} />
-        <Text style={styles.text}> {props.favPlaceName}</Text>
+        <Text
+          style={{ ...styles.text, ...{ color: Colors[scheme].primarySecond } }}
+        >
+          {props.favPlaceName}
+        </Text>
       </View>
     </TouchableOpacity>
   );

@@ -11,13 +11,15 @@ import Colors from "../../../../../constants/Colors";
 import * as itemActions from "../../../../../store/actions/items";
 
 const MainCategoryElement = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const dispatch = useDispatch();
   const selectedCategory = useSelector((state) => state.item.category.main);
   const getColor = () => {
     if (props.title === selectedCategory) {
-      return Colors.light.button;
+      return Colors[scheme].button;
     } else {
-      return Colors.light.primaryThird;
+      return Colors[scheme].primaryThird;
     }
   };
 
@@ -42,7 +44,14 @@ const MainCategoryElement = (props) => {
           }}
         >
           <View style={styles.icon}>{props.icon}</View>
-          <Text style={styles.title}>{props.title}</Text>
+          <Text
+            style={{
+              ...styles.title,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
+            {props.title}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -57,11 +66,9 @@ const styles = StyleSheet.create({
     left: -5,
     width: Dimensions.get("window").width * 0.3,
     height: Dimensions.get("window").width * 0.15,
-    backgroundColor: Colors.placeholder,
     justifyContent: "center",
     alignItems: "center",
-    // borderRadius: 10,
-    // borderBottomRightRadius: 10,
+
     borderTopRightRadius: 10,
     shadowOffset: { height: 0, width: 0 },
     shadowColor: "black",
@@ -70,8 +77,6 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    // marginTop: 9,
-    color: Colors.light.primarySecond,
     fontSize: 10,
     maxWidth: 100,
   },

@@ -1,10 +1,10 @@
 import axios from "axios";
 const userData = {
   user: "bart2525@gmail.com",
-  password: "password1234",
+  password: "password",
 };
 
-export default signInWithEmailAndPassowrd = (signinFunction, url) => {
+const signInWithEmailAndPassowrd = (signinFunction, url) => {
   const auth = {
     email: userData.user,
     password: userData.password,
@@ -20,3 +20,5 @@ export default signInWithEmailAndPassowrd = (signinFunction, url) => {
       console.log(err.message);
     });
 };
+
+export default signInWithEmailAndPassowrd;

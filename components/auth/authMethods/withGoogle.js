@@ -81,10 +81,12 @@ const isUserEqual = (googleUser, firebaseUser) => {
   return false;
 };
 
-export default signInWithGoogleAsync = async (signinFunction) => {
+const signInWithGoogleAsync = async (signinFunction) => {
   try {
     const result = await Google.logInAsync({
-      // androidClientId: YOUR_CLIENT_ID_HERE,
+      androidClientId:
+        "com.googleusercontent.apps.506404078923-nrctlraih104rdme13i095b96ee3l6f6",
+
       iosStandaloneAppClientId:
         "com.googleusercontent.apps.506404078923-nrctlraih104rdme13i095b96ee3l6f6",
 
@@ -102,3 +104,5 @@ export default signInWithGoogleAsync = async (signinFunction) => {
     return { error: true };
   }
 };
+
+export default signInWithGoogleAsync;

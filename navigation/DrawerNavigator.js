@@ -100,7 +100,7 @@ const DrawerNavigator = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       // console.log("fetching...");
-      await loadingFavoritePlace();
+      loadingFavoritePlace();
       await loadingData("income");
       await loadingData("expense");
       await loadingData("fixedExpense");

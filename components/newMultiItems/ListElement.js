@@ -1,18 +1,44 @@
 import { StyleSheet, Text, View, useColorScheme } from "react-native";
 import React from "react";
+import { useSelector } from "react-redux";
+import Colors from "../../constants/Colors";
 
 const ListElement = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   return (
     <View style={styles.ListElement}>
       <View style={styles.item}>
         <View style={styles.textStyle}>
-          <Text style={styles.itemName}>
+          <Text
+            style={{
+              ...styles.itemName,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
             {props.itemName}{" "}
-            <Text style={styles.multiply}> [x{props.multiply}]</Text>
+            <Text
+              style={{
+                ...styles.multiply,
+                ...{ color: Colors[scheme].primarySecond },
+              }}
+            >
+              {" "}
+              [x{props.multiply}]
+            </Text>
           </Text>
-          <Text style={styles.category}>{props.category}</Text>
+          <Text
+            style={{
+              ...styles.category,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
+            {props.category}
+          </Text>
         </View>
-        <Text style={styles.cost}>{props.cost * props.multiply}zł</Text>
+        <Text style={{ color: Colors[scheme].primarySecond }}>
+          {props.cost * props.multiply}zł
+        </Text>
       </View>
     </View>
   );

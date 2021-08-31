@@ -19,7 +19,6 @@ import Colors from "../../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
 import Input from "../../input/Input";
 import { MaterialIcons } from "@expo/vector-icons";
-
 import NewElement from "../NewElement";
 import ListElement from "../ListElement";
 import { useSelector, useDispatch } from "react-redux";
@@ -30,6 +29,8 @@ import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";
 import NewElements from "../receipt/NewElement/NewElements";
 const heightWindow = Dimensions.get("window").height;
 const Receipt = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const navigation = useNavigation();
   const [modal, showModal] = useState(false);
   const [addItemModal, showAddItemModal] = useState(false);
@@ -55,9 +56,12 @@ const Receipt = (props) => {
     <KeyboardAvoidingView
       behavior="position"
       keyboardVerticalOffset={30}
-      style={styles.receipt}
+      style={{
+        ...styles.receipt,
+        ...{ backgroundColor: Colors[scheme].primaryThird },
+      }}
     >
-      <View style={styles.inner}>
+      <View>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <View
             style={{
@@ -68,16 +72,26 @@ const Receipt = (props) => {
           >
             <View>
               <View style={styles.place}>
-                <Text style={styles.placeText}>
+                <Text
+                  style={{
+                    ...styles.placeText,
+                    ...{ color: Colors[scheme].primarySecond },
+                  }}
+                >
                   {props.place ? props.place : "Wybierz sklep"}
                 </Text>
 
-                <View style={styles.editBtn}>
+                <View
+                  style={{
+                    ...styles.editBtn,
+                    ...{ backgroundColor: Colors[scheme].button },
+                  }}
+                >
                   <TouchableOpacity onPress={() => showModal(true)}>
                     <Feather
                       name="edit"
                       size={15}
-                      color={Colors.light.primaryThird}
+                      color={Colors[scheme].primaryThird}
                     />
                   </TouchableOpacity>
                   <Modal
@@ -86,9 +100,20 @@ const Receipt = (props) => {
                     visible={modal}
                     onRequestClose={() => showModal(false)}
                   >
-                    <View style={styles.modalView}>
+                    <View
+                      style={{
+                        ...styles.modalView,
+                        ...{ backgroundColor: Colors[scheme].primary },
+                      }}
+                    >
                       <Input
-                        style={styles.inputModal}
+                        style={{
+                          ...styles.inputModal,
+                          ...{
+                            color: Colors[scheme].primarySecond,
+                            borderColor: Colors[scheme].primarySecond,
+                          },
+                        }}
                         value={props.place}
                         placeholder="wpisz nowe miejsce"
                         keyboardType={"default"}
@@ -99,7 +124,7 @@ const Receipt = (props) => {
                           <Feather
                             name="save"
                             size={25}
-                            color={Colors.primary}
+                            color={Colors[scheme].primarySecond}
                           />
                         </TouchableOpacity>
                       </View>
@@ -109,7 +134,14 @@ const Receipt = (props) => {
               </View>
 
               <View style={styles.date}>
-                <Text style={styles.dateText}>{props.date}</Text>
+                <Text
+                  style={{
+                    ...styles.dateText,
+                    ...{ color: Colors[scheme].primarySecond },
+                  }}
+                >
+                  {props.date}
+                </Text>
               </View>
 
               <View style={styles.list}>
@@ -129,12 +161,22 @@ const Receipt = (props) => {
             </View>
             <View style={styles.addBtnView}>
               <View style={styles.bottomPartOfRecipt}>
-                <View style={styles.sumView}>
-                  <Text style={styles.sum}>Razem {sum.toFixed(2)}zł</Text>
+                <View
+                  style={{
+                    ...styles.sumView,
+                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                  }}
+                >
+                  <Text style={{ color: Colors[scheme].primarySecond }}>
+                    Razem {sum.toFixed(2)}zł
+                  </Text>
                 </View>
                 <View style={styles.buttons}>
                   <TouchableOpacity
-                    style={styles.saveBtn}
+                    style={{
+                      ...styles.saveBtn,
+                      ...{ backgroundColor: Colors[scheme].button },
+                    }}
                     onPress={() => {
                       if (receiptItem.length > 0) {
                         let currentDate = receiptDate;
@@ -142,7 +184,6 @@ const Receipt = (props) => {
                         let itemToSaved;
                         itemToSaved = SaveItemsToTheStore(showReceipt);
                         dispatch(itemsAction.addItemsFromReceipt(itemToSaved));
-                        // console.log(itemToSaved);
                         saveDataToTheCloud.expense(itemToSaved, userId);
                         props.backToHome();
                       } else {
@@ -153,20 +194,18 @@ const Receipt = (props) => {
                     <Feather
                       name="save"
                       size={24}
-                      color={Colors.light.primaryThird}
+                      color={Colors[scheme].primaryThird}
                     />
                   </TouchableOpacity>
 
                   <TouchableOpacity
-                    style={styles.addBtn}
+                    style={{
+                      ...styles.addBtn,
+                      ...{ backgroundColor: Colors[scheme].button },
+                    }}
                     onPress={() => {
                       if (GetSelectedPlace.length > 0) {
-                        // showAddItemModal(!addItemModal);
                         navigation.navigate("AddToReceipt");
-
-                        // props.navigation.goBack();
-
-                        // console.log("test");
                       } else {
                         alert("Wybierz Sklep");
                       }
@@ -175,7 +214,7 @@ const Receipt = (props) => {
                     <MaterialIcons
                       name="playlist-add"
                       size={24}
-                      color={Colors.light.primaryThird}
+                      color={Colors[scheme].primaryThird}
                     />
                   </TouchableOpacity>
                 </View>
@@ -194,38 +233,20 @@ const styles = StyleSheet.create({
   receipt: {
     width: "90%",
     height: "100%",
-    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,
     shadowColor: "black",
     shadowOpacity: 0.2,
   },
-  // inner: {
-  //   backgroundColor: Colors.accent,
-  //   borderRadius: 7,
-  //   height: "96%",
-  //   width: "96%",
-  //   borderWidth: 3,
-  //   borderColor: Colors.gradientBackground.primary,
-  //   margin: "2%",
-  // },
   modalView: {
     height: "100%",
-    backgroundColor: "rgba(255, 255, 255,0.9)",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
-  addItemModalView: {
-    height: "100%",
-    backgroundColor: "rgba(255, 255, 255,0.9)",
-    flexDirection: "column",
-    alignItems: "center",
-    paddingTop: 40,
-  },
+
   editBtn: {
-    backgroundColor: Colors.light.button,
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
@@ -244,8 +265,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     margin: 5,
     margin: 10,
-    color: Colors.primary,
-    borderColor: Colors.primary,
   },
   place: {
     flexDirection: "row",
@@ -256,7 +275,6 @@ const styles = StyleSheet.create({
   placeText: {
     fontSize: 25,
     fontWeight: "bold",
-    color: Colors.light.primarySecond,
   },
   date: {
     alignItems: "center",
@@ -264,7 +282,6 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontWeight: "bold",
-    color: Colors.light.primarySecond,
   },
   addBtnView: {
     marginVertical: 10,
@@ -276,7 +293,6 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 7,
-    backgroundColor: Colors.light.button,
     padding: 5,
     borderRadius: 10,
     width: Dimensions.get("window").width * 0.2,
@@ -287,7 +303,6 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 7,
-    backgroundColor: Colors.light.button,
     padding: 5,
     borderRadius: 10,
     width: Dimensions.get("window").width * 0.2,
@@ -309,7 +324,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   sumView: {
-    backgroundColor: Colors.banner,
     padding: 5,
     alignItems: "flex-end",
     marginVertical: 5,
