@@ -55,7 +55,7 @@ const FixedExpenseScreen = (props) => {
           </Text>
         ) : (
           <Text style={{ color: Colors[scheme].primarySecond }}>
-            Rahunki zaległe na kwotę:{" "}
+            Zaległe rachunki na kwotę:{" "}
             <Text style={{ color: "red" }}> {delayCost}zł </Text>
           </Text>
         )}

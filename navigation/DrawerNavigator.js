@@ -197,7 +197,7 @@ const DrawerNavigator = (props) => {
               drawerLabel: "Wpływy",
             }}
           />
-          <Drawer.Screen
+          {/* <Drawer.Screen
             name="Stałe wpływy"
             component={StackFixedIncomeNavigator}
             options={{
@@ -210,7 +210,7 @@ const DrawerNavigator = (props) => {
               ),
               drawerLabel: "Stałe wpływy",
             }}
-          />
+          /> */}
           <Drawer.Screen
             name="Raport"
             component={StackRaportNavigator}

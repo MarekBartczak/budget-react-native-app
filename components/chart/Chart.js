@@ -100,10 +100,8 @@ const styles = StyleSheet.create({
   },
   valMaxText: { fontSize: 10 },
   valMinText: { fontSize: 10 },
-
   valMin: {
     left: 10,
-
     top: 180 - 40,
     position: "absolute",
   },

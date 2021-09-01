@@ -12,7 +12,11 @@ import Colors from "../../constants/Colors";
 import Input from "../input/Input";
 import DatePicker from "../../components/DatePicker";
 import Button from "../../components/buttons/Button";
+import { useSelector } from "react-redux";
+
 const AddNewComponent = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   return (
     <KeyboardAvoidingView
       behavior={"position"}
@@ -22,34 +26,50 @@ const AddNewComponent = (props) => {
     >
       <View style={styles.AddNewComponent}>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-          <View style={styles.inner}>
-            <View style={styles.descriptionComponent}>
-              <Text style={styles.defaultText}>{props.title}</Text>
-            </View>
-            <View style={styles.datePickerView}>
+          <View>
+            <View
+              style={{
+                ...styles.datePickerView,
+                ...{ backgroundColor: Colors[scheme].primaryThird },
+              }}
+            >
               <DatePicker
                 date={props.date}
                 onChange={props.onChangeDate}
                 maxDate={null}
               />
             </View>
-            <View style={styles.inputView}>
+            <View
+              style={{
+                ...styles.inputView,
+                ...{ backgroundColor: Colors[scheme].primaryThird },
+              }}
+            >
               <Input
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
                 value={props.amountValue}
                 placeholder={props.placeHolderAmount}
                 keyboardType={"numeric"}
                 onChangeText={props.setAmountValue}
               />
               <Input
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
                 value={props.nameValue}
                 placeholder={props.placeHolderName}
                 keyboardType={"default"}
                 onChangeText={props.setNameValue}
               />
               <Input
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
                 value={props.contractor}
                 placeholder={props.placeHolderContractor}
                 keyboardType={"default"}
@@ -75,32 +95,27 @@ export default AddNewComponent;
 const styles = StyleSheet.create({
   AddNewComponent: {
     width: Dimensions.get("window").width * 0.9,
-    height: Dimensions.get("window").height * 0.45,
     borderRadius: 10,
-    backgroundColor: Colors.gradientBackground.third,
     justifyContent: "center",
     alignItems: "center",
   },
-  datePickerView: { marginTop: 10 },
-
-  inner: {
-    // backgroundColor: Colors.gradientBackground.third,
+  datePickerView: {
+    marginBottom: 10,
     borderRadius: 10,
-    height: "95%",
-    width: "95%",
-    alignItems: "center",
   },
+
   descriptionComponent: {
     marginLeft: 10,
-    // marginTop: -10,
-    // backgroundColor: Colors.gradientBackground.third,
-    width: 150,
+
     alignItems: "center",
   },
   defaultText: {
     fontWeight: "bold",
   },
   inputView: {
+    width: Dimensions.get("window").width * 0.9,
+    borderRadius: 10,
+
     alignItems: "center",
     justifyContent: "center",
   },
@@ -108,12 +123,10 @@ const styles = StyleSheet.create({
     height: 25,
     width: 200,
     borderBottomWidth: 1,
-    margin: 5,
     margin: 10,
-    color: Colors.primary,
-    borderColor: Colors.primary,
   },
   buttonView: {
+    // margin: 5,
     justifyContent: "center",
     alignItems: "center",
   },

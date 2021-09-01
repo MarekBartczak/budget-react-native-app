@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 const IncomeDetails = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const userId = useSelector((state) => state.auth.userID);
 
   const { id, cost, title, date, recipient } = props.route.params;
@@ -27,10 +29,22 @@ const IncomeDetails = (props) => {
   return (
     <ExternalComponent>
       <View>
-        <View style={styles.title}>
+        <View
+          style={{
+            ...styles.title,
+            ...{ backgroundColor: Colors[scheme].button },
+          }}
+        >
           <View style={styles.trash}></View>
 
-          <Text style={styles.textTitle}>{title}</Text>
+          <Text
+            style={{
+              ...styles.textTitle,
+              ...{ color: Colors[scheme].primarySecond },
+            }}
+          >
+            {title}
+          </Text>
           <View style={styles.trash}>
             <TouchableOpacity
               onPress={() => {
@@ -48,26 +62,52 @@ const IncomeDetails = (props) => {
               <Ionicons
                 name="ios-trash"
                 size={24}
-                color={Colors.light.primary}
+                color={Colors[scheme].primarySecond}
               />
             </TouchableOpacity>
           </View>
         </View>
 
-        <View style={styles.details}>
+        <View
+          style={{
+            ...styles.details,
+            ...{ ...{ backgroundColor: Colors[scheme].primaryThird } },
+          }}
+        >
           <View style={styles.top}>
             <View style={styles.date}>
-              <Text>Data</Text>
-              <Text style={styles.textDate}>{date}</Text>
+              <Text style={{ color: Colors[scheme].primarySecond }}>Data</Text>
+              <Text
+                style={{
+                  ...styles.textDate,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                {date}
+              </Text>
             </View>
             <View style={styles.costInfo}>
-              <Text>Kwota</Text>
-              <Text style={styles.textCost}>{cost}zł</Text>
+              <Text style={{ color: Colors[scheme].primarySecond }}>Kwota</Text>
+              <Text
+                style={{
+                  ...styles.textCost,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                {cost}zł
+              </Text>
             </View>
           </View>
 
           <View style={styles.middle}>
-            <Text style={styles.textRecipient}>{recipient}</Text>
+            <Text
+              style={{
+                ...styles.textRecipient,
+                ...{ color: Colors[scheme].primarySecond },
+              }}
+            >
+              {recipient}
+            </Text>
           </View>
         </View>
       </View>
@@ -81,7 +121,6 @@ const styles = StyleSheet.create({
   title: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: Colors.light.button,
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 20,
@@ -100,12 +139,10 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     textAlign: "center",
-    color: Colors.light.primary,
     fontWeight: "bold",
     fontSize: 20,
   },
   details: {
-    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
     height: 200,
     marginBottom: 20,
@@ -139,7 +176,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textRecipient: {
-    color: Colors.primary,
     fontWeight: "bold",
     fontSize: 20,
   },

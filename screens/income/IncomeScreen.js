@@ -10,7 +10,7 @@ import AddNewIncomeComponent from "../../components/income/addNewIncome/AddNewIn
 const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
   const chartEl = chartElement(incomeList);
-  console.log(incomeList);
+  // console.log(incomeList);
   return (
     <ExternalComponent>
       <View style={styles.component}>
@@ -32,7 +32,7 @@ const IncomeScreen = (props) => {
 
 const styles = StyleSheet.create({
   component: {
-    marginBottom: 20,
+    marginBottom: 10,
     shadowColor: "black",
     shadowOffset: { height: 0, width: 0 },
     shadowOpacity: 0.2,
