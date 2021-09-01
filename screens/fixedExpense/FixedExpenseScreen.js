@@ -10,14 +10,18 @@ import SummaryCost from "../../components/summaryCost/SumaryCost";
 import AddNewItem from "../../components/AddNewItem";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import UnpaidExpense from "../../components/fixedExpense/unpaidExpense/UnpaidExpense";
 const FixedExpenseScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const fixedExpenseShowList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
   const fixedExpenseHistory = useSelector(
     (state) => state.fixedExpense.history
   );
+
+  const delayCost = useSelector((state) => state.fixedExpense.delayCost);
 
   // const date = fixedExpenseHistory.map((el) => [el.date, el.cost]);
   // console.log("date", date);
@@ -37,8 +41,24 @@ const FixedExpenseScreen = (props) => {
       </View>
 
       <View style={styles.component}>
-        <Text>Stałe oplaty za dany miesiac</Text>
-        {/* <AddNewFixedExpenseComponent /> */}
+        <Text style={{ color: Colors[scheme].primarySecond }}>
+          Stałe oplaty za dany miesiac
+        </Text>
+      </View>
+      <View style={styles.component}>
+        <UnpaidExpense />
+      </View>
+      <View style={styles.component}>
+        {Number(delayCost) === 0 ? (
+          <Text style={{ color: Colors[scheme].primarySecond }}>
+            Brak zaległych rachunków
+          </Text>
+        ) : (
+          <Text style={{ color: Colors[scheme].primarySecond }}>
+            Rahunki zaległe na kwotę:{" "}
+            <Text style={{ color: "red" }}> {delayCost}zł </Text>
+          </Text>
+        )}
       </View>
       <View style={styles.component}>
         <AddNewItem
@@ -55,7 +75,6 @@ const FixedExpenseScreen = (props) => {
 
 const styles = StyleSheet.create({
   component: {
-    // marginTop: 20,
     marginBottom: 20,
     shadowOffset: { height: 0, width: 0 },
     shadowColor: "black",

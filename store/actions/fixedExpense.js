@@ -29,3 +29,7 @@ export const CLEAR_STATE_AFTER_LOGOUT = "CLEAR_STATE_AFTER_LOGOUT";
 export const clearStateAfterLogout = () => {
   return { type: CLEAR_STATE_AFTER_LOGOUT };
 };
+export const DELAY_COST = "DELAY_COST";
+export const delayCost = (cost) => {
+  return { type: DELAY_COST, cost: cost };
+};

@@ -6,6 +6,7 @@ import {
   LOADING_FIXED_EXPENSE_FROM_DB,
   LOADING_HISTORY_FROM_DB,
   CLEAR_STATE_AFTER_LOGOUT,
+  DELAY_COST,
 } from "../actions/fixedExpense";
 import Expense from "../../data/Dummy-FixedExpense";
 import uuid from "react-native-uuid";
@@ -15,6 +16,7 @@ import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 const initialState = {
   // fixedExpense: [...Expense],
   fixedExpense: [],
+  delayCost: 0,
   history: [],
 };
 
@@ -52,6 +54,8 @@ export default (state = initialState, action) => {
         fixedExpense: updateState,
         history: [...state.history, newEl],
       };
+    case DELAY_COST:
+      return { ...state, delayCost: action.cost };
     case DEL_EXPENSE:
       const filteredItem = state.fixedExpense.find(
         (el) => el.id === action.itemId

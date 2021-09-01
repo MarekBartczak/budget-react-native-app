@@ -7,22 +7,35 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../../constants/Colors";
+import { useSelector } from "react-redux";
 
 const checkPayDate = (date) => {
   return new Date() > new Date(date) ? "red" : "green";
 };
 
 const FixedExpenseElement = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   return (
-    <TouchableOpacity style={styles.element} onPress={props.press}>
+    <TouchableOpacity
+      style={{
+        ...styles.element,
+        ...{ backgroundColor: Colors[scheme].primaryThird },
+      }}
+      onPress={props.press}
+    >
       <View style={styles.title}>
-        <Text style={styles.textTitle}>{props.el.title}</Text>
+        <Text style={{ color: Colors[scheme].primarySecond }}>
+          {props.el.title}
+        </Text>
       </View>
       <View style={styles.description}>
         <Text style={{ color: checkPayDate(props.el.date) }}>
           {props.el.date}
         </Text>
-        <Text style={styles.textCost}>{props.el.cost}zł</Text>
+        <Text style={{ color: Colors[scheme].primarySecond }}>
+          {props.el.cost}zł
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -35,7 +48,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 20,
     borderRadius: 10,
-    backgroundColor: Colors.light.primaryThird,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -45,15 +57,5 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
     width: Dimensions.get("window").width * 0.9,
     marginHorizontal: Dimensions.get("window").width * 0.05,
-  },
-  textTitle: {
-    color: "black",
-  },
-  textCost: {
-    color: Colors.primary,
-    fontWeight: "bold",
-  },
-  description: {
-    alignItems: "center",
   },
 });

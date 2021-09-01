@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 
 const FixedExpenseDetails = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const { id, cost, title, date, recipient, isPaid } = props.route.params;
   const dispatch = useDispatch();
   const history = useSelector((state) => state.fixedExpense.history);
@@ -27,7 +29,7 @@ const FixedExpenseDetails = (props) => {
     return (
       <TouchableOpacity
         style={{
-          backgroundColor: Colors.light.button,
+          backgroundColor: Colors[scheme].button,
           borderRadius: 10,
           padding: 5,
           paddingLeft: 20,
@@ -52,7 +54,7 @@ const FixedExpenseDetails = (props) => {
         <MaterialCommunityIcons
           name="cash-register"
           size={34}
-          color={Colors.light.primary}
+          color={Colors[scheme].primary}
         />
       </TouchableOpacity>
     );
@@ -74,10 +76,22 @@ const FixedExpenseDetails = (props) => {
   return (
     <ExternalComponent>
       <View>
-        <View style={styles.title}>
+        <View
+          style={{
+            ...styles.title,
+            ...{ backgroundColor: Colors[scheme].button },
+          }}
+        >
           <View style={styles.trash}></View>
 
-          <Text style={styles.textTitle}>{title}</Text>
+          <Text
+            style={{
+              ...styles.textTitle,
+              ...{ color: Colors[scheme].primary },
+            }}
+          >
+            {title}
+          </Text>
           <View style={styles.trash}>
             <TouchableOpacity
               onPress={() => {
@@ -95,26 +109,64 @@ const FixedExpenseDetails = (props) => {
               <Ionicons
                 name="ios-trash"
                 size={24}
-                color={Colors.light.primary}
+                color={Colors[scheme].primary}
               />
             </TouchableOpacity>
           </View>
         </View>
 
-        <View style={styles.details}>
+        <View
+          style={{
+            ...styles.details,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+        >
           <View style={styles.top}>
             <View style={styles.paymentDate}>
-              <Text>Termin zapłaty</Text>
-              <Text style={styles.textDate}>{date}</Text>
+              <Text
+                style={{
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                Termin zapłaty
+              </Text>
+              <Text
+                style={{
+                  ...styles.textDate,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                {date}
+              </Text>
             </View>
             <View style={styles.costInfo}>
-              <Text>Kwota</Text>
-              <Text style={styles.textCost}>{cost}zł</Text>
+              <Text
+                style={{
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                Kwota
+              </Text>
+              <Text
+                style={{
+                  ...styles.textCost,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                {cost}zł
+              </Text>
             </View>
           </View>
 
           <View style={styles.middle}>
-            <Text style={styles.textRecipient}>{recipient}</Text>
+            <Text
+              style={{
+                ...styles.textRecipient,
+                ...{ color: Colors[scheme].primarySecond },
+              }}
+            >
+              {recipient}
+            </Text>
           </View>
           <View
             style={{
@@ -124,13 +176,22 @@ const FixedExpenseDetails = (props) => {
               justifyContent: "center",
             }}
           >
-            <Text style={{ marginRight: 20 }}>
+            <Text
+              style={{
+                ...{ marginRight: 20, color: Colors[scheme].primarySecond },
+              }}
+            >
               archiwizuj opłacony rachunek{" "}
             </Text>
             <Text>{showIsPaid()}</Text>
           </View>
         </View>
-        <View style={styles.history}>
+        <View
+          style={{
+            ...styles.history,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+        >
           <FlatList
             data={historyEl}
             renderItem={(item) => (
@@ -155,7 +216,6 @@ const styles = StyleSheet.create({
   title: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: Colors.light.button,
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 20,
