@@ -51,8 +51,8 @@ const Chart = (props) => {
           height={180}
           chartConfig={{
             labelColor: () => Colors[scheme].primarySecond,
-            backgroundGradientFromOpacity: 1,
-            backgroundGradientToOpacity: 1,
+            backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
+            backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
             backgroundGradientFrom: Colors[scheme].primaryThird,
             backgroundGradientTo: Colors[scheme].primaryThird,
             decimalPlaces: 2,

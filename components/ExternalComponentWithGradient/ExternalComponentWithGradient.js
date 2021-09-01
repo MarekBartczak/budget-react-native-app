@@ -1,4 +1,10 @@
-import { StyleSheet, View, Dimensions, useColorScheme } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  useColorScheme,
+  Image,
+} from "react-native";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
@@ -6,12 +12,29 @@ import { useSelector } from "react-redux";
 
 const ExternalComponentWithGradient = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+
+  let path;
+  if (scheme === "light") {
+    path = require("../../assets/dollar_light.jpeg");
+  }
+  if (scheme === "dark") {
+    path = require("../../assets/dollar_dark.jpeg");
+  }
   return (
     <View>
+      <Image
+        style={{
+          position: "absolute",
+          top: 0,
+          height: Dimensions.get("window").height,
+        }}
+        source={path}
+      />
       <LinearGradient
         colors={[
-          Colors[scheme].backGroundOne,
-          Colors[scheme].backGroundOne,
+          Colors[scheme].backGround,
+          Colors[scheme].backGround,
+
           // Colors.gradientBackground.secondary,
         ]}
         style={styles.background}

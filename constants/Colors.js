@@ -23,28 +23,28 @@ export default {
     secondary: "rgb(200,200,200)",
     third: "rgb(250,250,250)",
   },
+
   light: {
     primary: "rgb(230,232,233)",
     primarySecond: "rgb(30,32,39)",
-    primaryThird: "rgb(255,255,255)",
-
+    primaryThird: "rgba(255,255,255, 0.6)",
     button: "rgb(47,97,217)",
     accent: "rgb(222,95,43)",
-
-    backGroundOne: "rgb(241,243,246)",
+    backGround: "rgba(255, 255, 255, 0.95)",
+    backGroundOne: "rgba(255,255,255,1)",
+    backGroundTwo: "rgba(255,255,255,1)",
   },
   dark: {
     primary: "rgb(30,32,39)",
     primarySecond: "rgb(195,195,198)",
-    primaryThird: "rgb(68,69,71)",
-
+    primaryThird: "rgba(68,69,71, 0.8)",
     button: "rgb(222,95,43)",
     accent: "rgb(47,97,217)",
-
-    backGroundOne: "rgb(30,32,39)",
+    backGround: "rgba(1, 1, 1, 0.8)",
+    backGroundOne: "rgba(30,32,39, 1)",
+    backGroundTwo: "rgba(60,62,69, 1)",
   },
 };
-// primaryThird: "rgb(241,243,246)",
 
 // [`_${scheme}`]
 // const scheme = useSelector((state) => state.config.scheme);

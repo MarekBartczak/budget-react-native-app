@@ -22,7 +22,7 @@ const StackIncomeNavigator = (props) => {
       screenOptions={{
         headerTintColor: Colors[scheme].primarySecond,
         headerStyle: {
-          backgroundColor: Colors[scheme].primary,
+          backgroundColor: Colors[scheme].backGroundOne,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,
