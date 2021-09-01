@@ -101,14 +101,6 @@ const StackExpenseNavigator = (props) => {
         AddItemToTheReceiptScreen,
         ({ navigation }) => ({
           headerTitle: "Dodaj do paragonu",
-          headerRight: () => (
-            <TouchableOpacity
-              style={{ marginRight: 20 }}
-              onPress={() => navigation.navigate("editCategories")}
-            >
-              <Feather name="edit" size={24} color="black" />
-            </TouchableOpacity>
-          ),
         })
       )}
     </Stack.Navigator>

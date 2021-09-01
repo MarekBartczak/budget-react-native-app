@@ -8,7 +8,6 @@ import {
   Keyboard,
   FlatList,
   TouchableOpacity,
-  TextInput,
 } from "react-native";
 import FixedExpense from "../../models/FixedExpense";
 import uuid from "react-native-uuid";
@@ -24,6 +23,7 @@ import Colors from "../../constants/Colors";
 import ExternalComponentWithGradient from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import saveDataToTheCloud from "../../functions/cloud/saveDataToTheCloud";
 const AddNewFixedExpenseScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   const listOfFixedExpense = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
@@ -98,30 +98,59 @@ const AddNewFixedExpenseScreen = (props) => {
           <View style={styles.AddNewComponent}>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <View style={styles.descriptionComponent}>
-                <View style={styles.inputView}>
+                <View
+                  style={{
+                    ...styles.inputView,
+                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                  }}
+                >
                   <Input
-                    style={styles.input}
+                    style={{
+                      ...styles.input,
+                      ...{
+                        color: Colors[scheme].button,
+                        borderColor: Colors[scheme].button,
+                      },
+                    }}
                     value={cost}
                     placeholder={"Kwota"}
                     keyboardType={"numeric"}
                     onChangeText={setCost}
                   />
                   <Input
-                    style={styles.input}
+                    style={{
+                      ...styles.input,
+                      ...{
+                        color: Colors[scheme].button,
+                        borderColor: Colors[scheme].button,
+                      },
+                    }}
                     value={title}
                     placeholder={"Tytuł"}
                     keyboardType={"default"}
                     onChangeText={setTitle}
                   />
                   <Input
-                    style={styles.input}
+                    style={{
+                      ...styles.input,
+                      ...{
+                        color: Colors[scheme].primarySecond,
+                        borderColor: Colors[scheme].button,
+                      },
+                    }}
                     value={recipient}
                     placeholder={"Odbiorca"}
                     keyboardType={"default"}
                     onChangeText={setRecipient}
                   />
-                  <TextInput
-                    style={styles.descriptionInput}
+                  <Input
+                    style={{
+                      ...styles.descriptionInput,
+                      ...{
+                        color: Colors[scheme].primarySecond,
+                        borderColor: Colors[scheme].button,
+                      },
+                    }}
                     placeholder={"Opis"}
                     multiline
                     numberOfLines={3}
@@ -129,21 +158,31 @@ const AddNewFixedExpenseScreen = (props) => {
                     onChangeText={setDescription}
                   />
                 </View>
-                <View style={styles.datePickerView}>
+                <View
+                  style={{
+                    ...styles.datePickerView,
+                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                  }}
+                >
                   <DatePicker
                     date={date}
                     onChange={onChangeDate}
                     maxDate={null}
                   />
                 </View>
-                <View style={styles.interval}>
+                <View
+                  style={{
+                    ...styles.interval,
+                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                  }}
+                >
                   <Text
                     style={{
                       textAlign: "center",
                       marginTop: -10,
                       // backgroundColor: Colors.accent,
                       width: 150,
-                      color: Colors.light.primarySecond,
+                      color: Colors[scheme].primarySecond,
                     }}
                   >
                     Częstotliwość opłat
@@ -155,14 +194,29 @@ const AddNewFixedExpenseScreen = (props) => {
                         <TouchableOpacity
                           onPress={() => setInterval(item.item)}
                         >
-                          <View style={styles.intervalListElement}>
+                          <View
+                            style={{
+                              ...styles.intervalListElement,
+                              // ...{
+                              // color: Colors[scheme].primarySecond,
+                              // },
+                            }}
+                          >
                             <Text
                               style={
-                                styles[
-                                  interval.id === item.item.id
-                                    ? "selectedIntervalText"
-                                    : "intervalText"
-                                ]
+                                interval.id === item.item.id
+                                  ? {
+                                      ...styles.selectedIntervalText,
+                                      ...{
+                                        color: Colors[scheme].button,
+                                      },
+                                    }
+                                  : {
+                                      ...styles.intervalText,
+                                      ...{
+                                        color: Colors[scheme].primarySecond,
+                                      },
+                                    }
                               }
                             >
                               {item.item.title}
@@ -194,10 +248,6 @@ export default AddNewFixedExpenseScreen;
 
 const styles = StyleSheet.create({
   AddNewComponent: {
-    // width: Dimensions.get("window").width * 0.9,
-    // height: Dimensions.get("window").height * 0.45,
-    // borderRadius: 10,
-    // backgroundColor: Colors.gradientBackground.third,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -208,7 +258,6 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.2,
     shadowRadius: 7,
-    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
     marginVertical: 10,
   },
@@ -220,16 +269,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: Dimensions.get("window").width * 0.9,
     marginHorizontal: Dimensions.get("window").width * 0.05,
-    // marginTop: 40,
     alignItems: "center",
     justifyContent: "center",
     shadowOffset: { height: 0, width: 0 },
     shadowColor: "black",
     shadowOpacity: 0.2,
     shadowRadius: 7,
-    backgroundColor: Colors.light.primaryThird,
     borderRadius: 10,
-    // back
   },
   input: {
     height: 25,
@@ -237,8 +283,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     margin: 5,
     margin: 10,
-    color: Colors.primary,
-    borderColor: Colors.primary,
   },
   descriptionInput: {
     height: 50,
@@ -246,8 +290,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     margin: 5,
     margin: 10,
-    color: Colors.primary,
-    borderColor: Colors.primary,
   },
   buttonView: {
     // marginTop: 50,
@@ -256,7 +298,7 @@ const styles = StyleSheet.create({
   },
   interval: {
     // marginTop: 20,
-    backgroundColor: Colors.light.primaryThird,
+    // backgroundColor: Colors.light.primaryThird,
     width: Dimensions.get("window").width * 0.9,
     marginHorizontal: Dimensions.get("window").width * 0.05,
     height: 160,
@@ -278,21 +320,13 @@ const styles = StyleSheet.create({
   },
   intervalListElement: {
     marginVertical: 2,
-    backgroundColor: Colors.light.primary,
     // marginLeft: 10,
     width: Dimensions.get("window").width * 0.8,
     // width: "100%",
     paddingLeft: 20,
     height: 21,
   },
-  selectetIntervalListElement: {
-    marginVertical: 2,
-    backgroundColor: Colors.light.primary,
-    marginLeft: 10,
-    width: Dimensions.get("window").width * 0.6,
-    paddingLeft: 20,
-    height: 21,
-  },
+
   intervalText: {
     fontSize: 17,
   },
