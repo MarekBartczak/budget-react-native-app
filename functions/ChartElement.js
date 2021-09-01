@@ -27,7 +27,7 @@ const addingAmounts = (dateList, data) => {
 
   for (let i = 0; i < dateList.length; i++) {
     newList = filteredData.filter((el) => el.date === dateList[i]);
-    costList = newList.map((el) => el.cost);
+    costList = newList.map((el) => el.cost * (el.multiply ? el.multiply : 1));
     sum = costList.reduce(sumElementsValue);
     sumOfElements.push(sum);
   }

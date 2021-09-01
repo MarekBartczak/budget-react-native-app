@@ -91,6 +91,7 @@ const PlaceScreen = (props) => {
               <SimplyItems
                 name={itemData.item.name}
                 cost={itemData.item.cost}
+                multiply={itemData.item.multiply}
                 press={() =>
                   props.navigation.navigate("Details", {
                     date: itemData.item.date,
@@ -99,6 +100,7 @@ const PlaceScreen = (props) => {
                     cost: itemData.item.cost,
                     name: itemData.item.name,
                     id: itemData.item.id,
+                    multiply: itemData.item.multiply,
                   })
                 }
               />
