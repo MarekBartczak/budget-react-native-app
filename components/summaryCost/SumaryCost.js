@@ -20,7 +20,7 @@ export default SumaryCost;
 const styles = StyleSheet.create({
   summaryCost_light: {
     marginTop: 10,
-    backgroundColor: Colors.light.button,
+    backgroundColor: Colors.light.primaryThird,
     width: Dimensions.get("window").width * 0.9,
     height: 50,
     borderRadius: 10,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   summaryCost_dark: {
     marginTop: 10,
-    backgroundColor: Colors.dark.button,
+    backgroundColor: Colors.dark.primaryThird,
     width: Dimensions.get("window").width * 0.9,
     height: 50,
     borderRadius: 10,
@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   textCost_light: {
-    color: Colors.light.primary,
+    color: Colors.light.button,
     fontWeight: "bold",
     fontSize: 20,
   },
   textCost_dark: {
-    color: Colors.dark.primary,
+    color: Colors.dark.button,
     fontWeight: "bold",
     fontSize: 20,
   },
