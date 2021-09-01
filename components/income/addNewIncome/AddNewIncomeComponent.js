@@ -53,7 +53,6 @@ const AddNewIncomeComponent = (props) => {
   };
 
   const newelementProps = {
-    title: "Nowy wpływ",
     placeHolderAmount: "Kwota",
     placeHolderName: "Nazwa",
     placeHolderContractor: "kontrahent",
