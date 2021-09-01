@@ -16,11 +16,13 @@ import { useSelector } from "react-redux";
 
 const Categories = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
+  const categoriesList = useSelector((state) => state.item.categoryList)[0];
+  console.log(categoriesList);
+  // console.log(CategoriesList);
   const [headerHeight, setHeaderHeight] = useState(useHeaderHeight());
-  const categoriesListObjectKeys = Object.keys(CategoriesList);
+  const categoriesListObjectKeys = Object.keys(categoriesList);
   const mainCategoryList = categoriesListObjectKeys.map(
-    (el) => CategoriesList[el].name
+    (el) => categoriesList[el].name
   );
   let iconSize = 32;
   return (

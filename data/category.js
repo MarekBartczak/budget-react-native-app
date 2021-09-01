@@ -29,7 +29,7 @@ const Category = {
     beauty: "kosmetyczka",
   },
   automotiveExpense: {
-    name: "wydatki motoryzacyjne",
+    name: "motoryzacja",
     fuel: "paliwo",
     tolls: "opłaty autostradowe",
     repairs: "naprawy",
@@ -37,13 +37,13 @@ const Category = {
     parts: "części samochodowe",
   },
   housingExpense: {
-    name: "utrzymanie domowe",
+    name: "dom",
     renovations: "remonty",
     furniture: "meble",
     electronicsHome: "RTV i AGD",
   },
   itExpense: {
-    name: "wydatki IT",
+    name: "elektronika",
     software: "oprogramowanie",
     hardware: "części do komputerów",
     services: "usługi",

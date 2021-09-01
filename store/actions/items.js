@@ -45,3 +45,11 @@ export const SET_SELECTED_CATEGORY = "SET_SELECTED_CATEGORY";
 export const setSelectedCategory = (isSelected) => {
   return { type: SET_SELECTED_CATEGORY, isSelected: isSelected };
 };
+export const ADD_NEW_CATEGORY = "ADD_NEW_CATEGORY";
+export const addNewCategory = (mainCategory, newSubCategory) => {
+  return {
+    type: ADD_NEW_CATEGORY,
+    mainCategory: mainCategory,
+    newSubCategory: newSubCategory,
+  };
+};

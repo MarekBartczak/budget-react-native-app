@@ -9,8 +9,11 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../../../../constants/Colors";
 import * as itemActions from "../../../../../store/actions/items";
+import { useNavigation } from "@react-navigation/native";
 
 const MainCategoryElement = (props) => {
+  const navigation = useNavigation();
+
   const scheme = useSelector((state) => state.config.scheme);
 
   const dispatch = useDispatch();
@@ -28,6 +31,11 @@ const MainCategoryElement = (props) => {
       onPress={() => {
         props.onPress;
         dispatch(itemActions.selectMainCategory(props.title));
+      }}
+      onLongPress={() => {
+        navigation.navigate("EditCategories", {
+          title: props.title,
+        });
       }}
     >
       <View

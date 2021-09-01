@@ -9,8 +9,6 @@ import {
 import Input from "../input/Input";
 import React from "react";
 import Colors from "../../constants/Colors";
-import CategoryList from "../../components/newItems/CategoryList";
-// import numberInputValidation from "../../functions/NumberInputValidation";
 
 const ErrorCostValidation = () => {
   return <Text style={{ color: "red" }}> Proszę wpisać poprawną kwotę </Text>;
