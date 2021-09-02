@@ -19,7 +19,6 @@ const ListOfElements = (props) => {
     expense: useSelector((state) => state.item.items),
     fixedExpense: useSelector((state) => state.fixedExpense.fixedExpense),
     income: useSelector((state) => state.income.income),
-    fixedIncome: useSelector((state) => state.fixedIncome.fixedIncome),
   };
 
   var data = [

@@ -125,7 +125,9 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 10,
   },
-  list: {},
+  list: {
+    maxHeight: 150,
+  },
   button: {
     alignItems: "center",
     width: Dimensions.get("window").width / 4,

@@ -40,7 +40,7 @@ const AddNewIncomeComponent = (props) => {
     setContractor();
   };
 
-  const saveFixedIncome = () => {
+  const saveIncome = () => {
     const list = [title, cost, contractor];
     if (validateChecker(list)) {
       const obj = newIncome();
@@ -65,7 +65,7 @@ const AddNewIncomeComponent = (props) => {
     date: date,
     onChangeDate: onChangeDate,
     save: () => {
-      saveFixedIncome();
+      saveIncome();
     },
   };
 

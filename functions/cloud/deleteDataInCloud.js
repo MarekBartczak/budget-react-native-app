@@ -13,9 +13,6 @@ const deleteDataInCloud = {
   fixedExpense: (id, userId) => {
     removeFromFirebaseBySet(id, "fixedExpense", userId);
   },
-  fixedIncome: (id, userId) => {
-    removeFromFirebaseBySet(id, "fixedIncome", userId);
-  },
 };
 
 export default deleteDataInCloud;

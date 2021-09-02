@@ -14,17 +14,15 @@ import StackExpenseNavigator from "./StackExpenseNavigator";
 import StackIncomeNavigator from "./StackIncomeNavigator";
 import StackFixedExpenseNavigator from "./StackFixedExpenseNavigator";
 import StackRaportNavigator from "./StackRaportNavigator";
-import StackFixedIncomeNavigator from "./StackFixedIncomeNavigator";
 import StackSettingsNavigator from "./StackSettingsNavigator";
 import StackUserNavigator from "./StackUserNavigator";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as favoritePlaceActions from "../store/actions/favoritePlace";
 import * as fixedExpenseActions from "../store/actions/fixedExpense";
-import * as fixedIncomeActions from "../store/actions/fixedIncome";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
-import * as authActions from "../store/actions/auth";
+// import * as authActions from "../store/actions/auth";
 import firebase from "firebase";
 
 import {
@@ -61,9 +59,6 @@ const DrawerNavigator = (props) => {
         return;
       case "fixedExpense":
         dispatch(fixedExpenseActions.loadingFixedExpensefromDB(list));
-        return;
-      case "fixedIncome":
-        dispatch(fixedIncomeActions.loadingFixedIncomefromDB(list));
         return;
     }
   };
@@ -104,7 +99,6 @@ const DrawerNavigator = (props) => {
       await loadingData("income");
       await loadingData("expense");
       await loadingData("fixedExpense");
-      await loadingData("fixedIncome");
     };
     // console.log(fetchedData);
     fetchData();
@@ -197,20 +191,7 @@ const DrawerNavigator = (props) => {
               drawerLabel: "Wpływy",
             }}
           />
-          {/* <Drawer.Screen
-            name="Stałe wpływy"
-            component={StackFixedIncomeNavigator}
-            options={{
-              drawerIcon: () => (
-                <MaterialCommunityIcons
-                  name="calendar-arrow-right"
-                  size={34}
-                  color={Colors[scheme].primarySecond}
-                />
-              ),
-              drawerLabel: "Stałe wpływy",
-            }}
-          /> */}
+
           <Drawer.Screen
             name="Raport"
             component={StackRaportNavigator}

@@ -15,8 +15,7 @@ const SubCategoryList = (props) => {
   let subCategoryList = [];
   if (selectedObjectTitle.length > 0) {
     const subCategoryobj = Category[selectedObjectTitle];
-    subCategoryList = Object.values(subCategoryobj);
-    subCategoryList.shift();
+    subCategoryList = subCategoryobj.list;
   }
   return (
     <View style={styles.list}>

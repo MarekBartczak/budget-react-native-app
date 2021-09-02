@@ -4,7 +4,6 @@ import { createStore, combineReducers } from "redux";
 import itemReducer from "./store/reducers/items";
 import FavoritePlacesReducer from "./store/reducers/favoritePlace";
 import FixedExpenseReducer from "./store/reducers/fixedExpense";
-import FixedIncomeReducer from "./store/reducers/fixedIncome";
 import IncomeReducer from "./store/reducers/income";
 import RaportReducer from "./store/reducers/raport";
 import AuthScreen from "./components/auth/AuthScreen";
@@ -18,7 +17,6 @@ const rootReducer = combineReducers({
   favoritePlace: FavoritePlacesReducer,
   fixedExpense: FixedExpenseReducer,
   income: IncomeReducer,
-  fixedIncome: FixedIncomeReducer,
   raport: RaportReducer,
   config: Config,
 });

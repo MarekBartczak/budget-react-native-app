@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import * as authActions from "../../../store/actions/auth";
 import * as favoritePlaceActions from "../../../store/actions/favoritePlace";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
-import * as fixedIncomeActions from "../../../store/actions/fixedIncome";
 import * as incomeActions from "../../../store/actions/income";
 import * as expenseActions from "../../../store/actions/items";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -19,7 +18,6 @@ const Logout = (props) => {
   const clearStateAfterLogout = () => {
     dispatch(favoritePlaceActions.clearStateAfterLogout());
     dispatch(fixedExpenseActions.clearStateAfterLogout());
-    dispatch(fixedIncomeActions.clearStateAfterLogout());
     dispatch(incomeActions.clearStateAfterLogout());
     dispatch(expenseActions.clearStateAfterLogout());
   };

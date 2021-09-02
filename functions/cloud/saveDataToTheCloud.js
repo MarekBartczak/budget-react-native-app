@@ -31,7 +31,6 @@ const saveDataToTheCloud = {
   },
   fixedExpense: (obj, userId) => pushNewItem(obj, "fixedExpense", userId),
   income: (obj, userId) => pushNewItem(obj, "income", userId),
-  fixedIncome: (obj, userId) => pushNewItem(obj, "fixedIncome", userId),
 };
 
 export default saveDataToTheCloud;

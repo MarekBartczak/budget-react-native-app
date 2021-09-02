@@ -7,7 +7,6 @@ const emailTemplate = (list) => {
     Expense: [],
     FixedExpense: [],
     Income: [],
-    FixedIncome: [],
     footer: `<h5>Podsumowanie:</h5>
     <ul>
     <li>2021 maj: 2123zł</li>
@@ -21,8 +20,6 @@ const emailTemplate = (list) => {
       case "FixedExpense":
         return `<li> ${el.date} | ${el.title} | ${el.recipient} | <b>${el.cost}zł</b></li>`;
       case "Income":
-        return `<li> ${el.date} | ${el.title} | ${el.from} | <b>${el.cost}zł</b></li>`;
-      case "FixedIncome":
         return `<li> ${el.date} | ${el.title} | ${el.from} | <b>${el.cost}zł</b></li>`;
     }
   };
@@ -38,7 +35,6 @@ const emailTemplate = (list) => {
   NumberedList.Expense = createNumberedList("Expense").join("");
   NumberedList.FixedExpense = createNumberedList("FixedExpense").join("");
   NumberedList.Income = createNumberedList("Income").join("");
-  NumberedList.FixedIncome = createNumberedList("FixedIncome").join("");
 
   return NumberedList;
 };

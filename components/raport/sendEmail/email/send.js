@@ -32,7 +32,6 @@ const Send = (props) => {
         "<b>Wpływy</b><br/>",
         message.Income,
         "<hr>",
-        "<hr>",
       ].join(""),
       footer: message.footer,
     };

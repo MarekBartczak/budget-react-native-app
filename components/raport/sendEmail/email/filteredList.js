@@ -6,7 +6,6 @@ const filteredList = (raport, data) => {
     Expense: [],
     FixedExpense: [],
     Income: [],
-    FixedIncome: [],
   };
 
   const createList = (type) => {
