@@ -1,0 +1,75 @@
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Dimensions,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
+import React, { useState } from "react";
+import Colors from "../../constants/Colors";
+import { Entypo } from "@expo/vector-icons";
+
+import { useDispatch, useSelector } from "react-redux";
+import EditCategoryElement from "../../components/categories/EditCategoryElement";
+const EdidCategoriesScreen = (props) => {
+  const [newSubCategory, setNewSubCategory] = useState("");
+  const scheme = useSelector((state) => state.config.scheme);
+
+  const { title } = props.route.params;
+  const category = useSelector((state) => state.item.categoryList)[0];
+  const categoriesListObjectKeys = Object.keys(category);
+
+  const subCategoriesList =
+    category[
+      categoriesListObjectKeys.filter((el) => category[el].name === title)
+    ];
+  return (
+    <ExternalComponent>
+      <View style={styles.inputView}>
+        <TextInput
+          style={{
+            ...styles.input,
+            ...{
+              borderColor: Colors[scheme].button,
+              color: Colors[scheme].primarySecond,
+            },
+          }}
+          value={newSubCategory}
+          placeholder={"wpisz nową kategorię"}
+          onChangeText={setNewSubCategory}
+        />
+        <TouchableOpacity onPress={() => {}} style={{ marginLeft: 20 }}>
+          <Entypo name="add-to-list" size={34} color={Colors[scheme].button} />
+        </TouchableOpacity>
+      </View>
+
+      <View style={{ height: Dimensions.get("window").height * 0.5 }}>
+        <FlatList
+          data={subCategoriesList.list}
+          keyExtractor={(itemData) => itemData}
+          renderItem={(item) => <EditCategoryElement element={item.item} />}
+        />
+      </View>
+    </ExternalComponent>
+  );
+};
+
+export default EdidCategoriesScreen;
+
+const styles = StyleSheet.create({
+  inputView: {
+    marginVertical: 20,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  input: {
+    padding: 10,
+    height: 40,
+    width: Dimensions.get("window").width * 0.6,
+    borderWidth: 1,
+    borderTopLeftRadius: 10,
+  },
+});

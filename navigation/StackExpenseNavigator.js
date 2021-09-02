@@ -6,7 +6,7 @@ import CategoryScreen from "../screens/expense/CategoryScreen";
 import FavoritePlaceScreen from "../screens/expense/FavoritePlaceScreen";
 import AddMultipleItemScreen from "../screens/expense/AddMultiItemsSetDateAndPlaceScreen";
 import AddItemToTheReceiptScreen from "../screens/expense/AddItemToTheReceiptScreen";
-import EditCategories from "../screens/expense/EdidCategoriesScreen";
+import EditCategories from "../screens/expense/EditCategoriesScreen";
 import InputDataScreen from "../screens/expense/InputDataScreen";
 import Colors from "../constants/Colors";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
