@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import CategoriesList from "../../../../../data/category";
 import React, { useState } from "react";
 import Colors from "../../../../../constants/Colors";
 import MainCategoryElement from "./MainCategoryElement";

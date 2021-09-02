@@ -6,15 +6,23 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../../constants/Colors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
+import * as itemActions from "../../store/actions/items";
 
 const EditCategoryElement = (props) => {
+  const dispatch = useDispatch();
   const scheme = useSelector((state) => state.config.scheme);
   const [editCategory, setEditCategory] = useState(props.element);
   const [editState, setEditState] = useState(false);
+
+  const updateSubCategory = () => {
+    dispatch(
+      itemActions.editCategory(props.mainCategory, props.element, editCategory)
+    );
+  };
 
   return (
     <View
@@ -51,14 +59,20 @@ const EditCategoryElement = (props) => {
       {editState ? (
         <TouchableOpacity
           style={{ marginRight: 20 }}
-          onPress={() => setEditState(false)}
+          onPress={() => {
+            updateSubCategory();
+
+            setEditState(false);
+          }}
         >
           <MaterialIcons name="save" size={24} color={Colors[scheme].button} />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
           style={{ marginRight: 20 }}
-          onPress={() => setEditState(true)}
+          onPress={() => {
+            setEditState(true);
+          }}
         >
           <MaterialIcons
             name="edit"

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Category from "../../../../../data/category";
 import SubCategoryElement from "./SubCategoryElement";
 
 const SubCategoryList = (props) => {
+  const Category = useSelector((state) => state.item.categoryList)[0];
   const dispatch = useDispatch();
   const selectedMainCategory = useSelector((state) => state.item.category.main);
   const categoryList = Object.keys(Category);

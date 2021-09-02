@@ -11,6 +11,7 @@ import {
   SELECT_SUB_CATEGORY,
   SET_SELECTED_CATEGORY,
   ADD_NEW_CATEGORY,
+  EDIT_CATEGORY,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
@@ -79,6 +80,16 @@ export default (state = initialState, action) => {
       console.log(action.mainCategory);
       console.log(action.newSubCategory);
       return { ...state };
+    case EDIT_CATEGORY:
+      let newCategoryList = { ...state, ...state.categoryList };
+      const list = newCategoryList[0][action.mainCategory].list;
+      const index = list.indexOf(action.prevCategory);
+      list[index] = action.newCategory;
+
+      return {
+        ...state,
+        categoryList: newCategoryList,
+      };
   }
   return state;
 };

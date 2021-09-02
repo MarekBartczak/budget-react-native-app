@@ -21,11 +21,10 @@ const EdidCategoriesScreen = (props) => {
   const { title } = props.route.params;
   const category = useSelector((state) => state.item.categoryList)[0];
   const categoriesListObjectKeys = Object.keys(category);
-
-  const subCategoriesList =
-    category[
-      categoriesListObjectKeys.filter((el) => category[el].name === title)
-    ];
+  const categoryKey = categoriesListObjectKeys.filter(
+    (el) => category[el].name === title
+  );
+  const subCategoriesList = category[categoryKey];
   return (
     <ExternalComponent>
       <View style={styles.inputView}>
@@ -50,7 +49,12 @@ const EdidCategoriesScreen = (props) => {
         <FlatList
           data={subCategoriesList.list}
           keyExtractor={(itemData) => itemData}
-          renderItem={(item) => <EditCategoryElement element={item.item} />}
+          renderItem={(item) => (
+            <EditCategoryElement
+              element={item.item}
+              mainCategory={categoryKey[0]}
+            />
+          )}
         />
       </View>
     </ExternalComponent>

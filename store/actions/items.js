@@ -53,3 +53,12 @@ export const addNewCategory = (mainCategory, newSubCategory) => {
     newSubCategory: newSubCategory,
   };
 };
+export const EDIT_CATEGORY = "EDIT_CATEGORY";
+export const editCategory = (mainCategory, prevCategory, newCategory) => {
+  return {
+    type: EDIT_CATEGORY,
+    mainCategory: mainCategory,
+    prevCategory: prevCategory,
+    newCategory: newCategory,
+  };
+};
