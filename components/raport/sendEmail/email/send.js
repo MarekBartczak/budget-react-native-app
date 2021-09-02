@@ -14,6 +14,8 @@ import filteredList from "./filteredList";
 import emailTemplate from "./emailTemplate";
 
 const Send = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const email = useSelector((state) => state.auth.userEmail);
   const emailSender = () => {
     let templateForm = {
@@ -30,8 +32,6 @@ const Send = (props) => {
         "<b>Wpływy</b><br/>",
         message.Income,
         "<hr>",
-        "<b>Stałe wpływy</b><br/>",
-        message.FixedIncome,
         "<hr>",
       ].join(""),
       footer: message.footer,
@@ -51,16 +51,26 @@ const Send = (props) => {
     Expense: useSelector((state) => state.item.items),
     FixedExpense: useSelector((state) => state.fixedExpense.fixedExpense),
     Income: useSelector((state) => state.income.income),
-    FixedIncome: useSelector((state) => state.fixedIncome.fixedIncome),
   };
   const list = filteredList(raport, listObj);
   const message = emailTemplate(list);
-  //   console.log(message);
   return (
     <TouchableOpacity onPress={() => emailSender()}>
-      <View style={styles.send}>
-        <Feather name="send" size={24} color="black" />
-        <Text style={styles.sendText}>Wyślij raport</Text>
+      <View
+        style={{
+          ...styles.send,
+          ...{ backgroundColor: Colors[scheme].button },
+        }}
+      >
+        <Feather name="send" size={24} color={Colors[scheme].primary} />
+        <Text
+          style={{
+            ...styles.sendText,
+            ...{ color: Colors[scheme].primary },
+          }}
+        >
+          Wyślij raport
+        </Text>
       </View>
     </TouchableOpacity>
   );

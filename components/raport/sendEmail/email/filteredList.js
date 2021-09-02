@@ -30,7 +30,6 @@ const filteredList = (raport, data) => {
   createList("Expense");
   createList("FixedExpense");
   createList("Income");
-  createList("FixedIncome");
 
   return obj;
 };

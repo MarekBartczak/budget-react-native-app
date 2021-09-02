@@ -13,6 +13,8 @@ import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 
 const SelectEl = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const raportState = useSelector((state) => state.raport);
   const isSelected = raportState[props.el].isSelected;
   const dateList = raportState[props.el].dateList;
@@ -36,9 +38,11 @@ const SelectEl = (props) => {
           <Ionicons
             name={item.isSelected ? "radio-button-on" : "radio-button-off"}
             size={15}
-            color="black"
+            color={Colors[scheme].primarySecond}
           />
-          <Text>{item.date}</Text>
+          <Text style={{ color: Colors[scheme].primarySecond }}>
+            {item.date}
+          </Text>
         </View>
       </TouchableOpacity>
     );
@@ -58,25 +62,37 @@ const SelectEl = (props) => {
           />
         </View>
       );
+    } else {
+      return null;
     }
     return;
   };
 
   return (
-    <View>
-      <View style={styles.button}>
-        <TouchableOpacity onPress={() => setTypeInStore()}>
-          <View style={styles.select}>
-            <FontAwesome
-              name={isSelected ? "angle-double-up" : "angle-double-down"}
-              size={24}
-              color="black"
-            />
-            <Text style={styles.textName}> {props.name}</Text>
-          </View>
-        </TouchableOpacity>
-        {showDatePicker(isSelected)}
-      </View>
+    <View style={styles.element}>
+      <TouchableOpacity onPress={() => setTypeInStore()}>
+        <View
+          style={{
+            ...styles.button,
+            ...{ backgroundColor: Colors[scheme].button },
+          }}
+        >
+          <FontAwesome
+            name={isSelected ? "angle-double-up" : "angle-double-down"}
+            size={24}
+            color={Colors[scheme].primary}
+          />
+          <Text
+            style={{
+              ...styles.textName,
+              ...{ color: Colors[scheme].primary },
+            }}
+          >
+            {props.name}
+          </Text>
+        </View>
+      </TouchableOpacity>
+      {showDatePicker(isSelected)}
     </View>
   );
 };
@@ -84,13 +100,16 @@ const SelectEl = (props) => {
 export default SelectEl;
 
 const styles = StyleSheet.create({
+  element: {
+    marginHorizontal: 10,
+    height: 200,
+  },
   select: {
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
     margin: 5,
     borderRadius: 10,
-    backgroundColor: Colors.default,
   },
   el: {
     flexDirection: "row",
@@ -103,15 +122,15 @@ const styles = StyleSheet.create({
     fontSize: 8,
   },
   item: {
-    backgroundColor: Colors.banner,
-    margin: 3,
     padding: 5,
-    marginLeft: 20,
-    marginRight: 20,
     borderRadius: 10,
   },
-  list: {
+  list: {},
+  button: {
+    alignItems: "center",
+    width: Dimensions.get("window").width / 4,
     height: 50,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
-  button: {},
 });

@@ -43,7 +43,7 @@ const Receipt = (props) => {
   let costList = [];
   let sum = 0;
   if (receiptItem.length > 0) {
-    costList = receiptItem.map((item) => item.cost);
+    costList = receiptItem.map((item) => item.cost * item.multiply);
     sum = costList.reduce(sumOf);
   }
 
@@ -146,7 +146,7 @@ const Receipt = (props) => {
                   keyExtractor={(item, index) => "item" + index}
                   renderItem={(item) => (
                     <ListElement
-                      cost={item.item.cost}
+                      cost={item.item.cost.toFixed(2)}
                       itemName={item.item.name}
                       category={item.item.category}
                       multiply={item.item.multiply}

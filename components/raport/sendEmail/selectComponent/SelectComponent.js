@@ -7,12 +7,13 @@ import * as raportActions from "../../../../store/actions/raport";
 import Send from "../email/send";
 
 const SelectComponent = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const initialRaportState = useSelector((state) => state.raport);
 
   return (
     <View>
       <View style={styles.select}>
-        <Text style={styles.titleText}>Wybierz zawartość</Text>
         <SelectEl
           el={"Expense"}
           dateList={initialRaportState.Expense}
@@ -28,11 +29,6 @@ const SelectComponent = (props) => {
           dateList={initialRaportState.Income}
           name={"Wpływy"}
         />
-        <SelectEl
-          el={"FixedIncome"}
-          dateList={initialRaportState.FixedIncome}
-          name={"Stałe wpływy"}
-        />
       </View>
       <View style={styles.send}>
         <Send />
@@ -45,14 +41,20 @@ export default SelectComponent;
 
 const styles = StyleSheet.create({
   select: {
-    width: Dimensions.get("window").width * 0.9,
+    flexDirection: "row",
+    justifyContent: "center",
+    width: Dimensions.get("window").width,
   },
   titleText: {
     textAlign: "center",
     fontSize: 15,
   },
   send: {
-    marginTop: 40,
+    position: "absolute",
+    top: 200,
+    height: Dimensions.get("window").height - 400,
+    width: Dimensions.get("window").width,
+    justifyContent: "flex-end",
     alignItems: "center",
   },
 });

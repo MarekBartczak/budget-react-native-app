@@ -8,8 +8,8 @@ const SendRaportScreen = (props) => {
       <View>
         <View
           style={{
-            width: Dimensions.get("window").width * 0.9,
-            height: Dimensions.get("window").height * 0.9,
+            width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height,
           }}
         >
           <SelectComponent />

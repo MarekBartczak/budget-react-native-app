@@ -12,13 +12,13 @@ import Colors from "../../../constants/Colors";
 import months from "../../../constants/Months";
 import getDateList from "./GetDateList";
 
-import Expense from "../elemets/Expense";
-import FixedExpense from "../elemets/FixedExpense";
-import Income from "../elemets/Income";
-import FixedIncome from "../elemets/FixedIncome";
+import ListOfElements from "../elemets/ListOfElements";
+
 import DateElement from "../elemets/DateElement";
 import * as raportActions from "../../../store/actions/raport";
 const FilterComponent = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
+
   const flatListRef = useRef();
   const dispatch = useDispatch();
   const [year, setYear] = useState(new Date().getFullYear());
@@ -27,14 +27,12 @@ const FilterComponent = (props) => {
     Expense: useSelector((state) => state.item.items),
     FixedExpense: useSelector((state) => state.fixedExpense.fixedExpense),
     Income: useSelector((state) => state.income.income),
-    FixedIncome: useSelector((state) => state.fixedIncome.fixedIncome),
   };
 
   const dateList = {
     Expense: getDateList(listObj.Expense),
     FixedExpense: getDateList(listObj.FixedExpense),
     Income: getDateList(listObj.Income),
-    FixedIncome: getDateList(listObj.FixedIncome),
   };
   const createInitialRaportState = (dateList) => {
     return {
@@ -62,14 +60,6 @@ const FilterComponent = (props) => {
           }),
         ],
       },
-      FixedIncome: {
-        isSelected: false,
-        dateList: [
-          dateList.FixedIncome.map((el) => {
-            return { date: el, isSelected: false };
-          }),
-        ],
-      },
     };
   };
 
@@ -87,25 +77,34 @@ const FilterComponent = (props) => {
 
     switch (type) {
       case "Expense":
-        return <Expense filteredList={filteredList} />;
+        return <ListOfElements filteredList={filteredList} />;
       case "FixedExpense":
-        return <FixedExpense filteredList={filteredList} />;
+        return <ListOfElements filteredList={filteredList} />;
       case "Income":
-        return <Income filteredList={filteredList} />;
-      case "FixedIncome":
-        return <FixedIncome filteredList={filteredList} />;
+        return <ListOfElements filteredList={filteredList} />;
     }
   };
 
   const filterBtn = (type, name) => {
     return (
       <TouchableOpacity
+        style={{
+          ...styles.filterBtn,
+          ...{ backgroundColor: Colors[scheme].button },
+        }}
         onPress={() => {
           setFilterListType(type);
           setYear(dateList[type][0]);
         }}
       >
-        <Text style={styles.btnText}>{name}</Text>
+        <Text
+          style={{
+            ...styles.btnText,
+            ...{ color: Colors[scheme].primary },
+          }}
+        >
+          {name}
+        </Text>
       </TouchableOpacity>
     );
   };
@@ -113,17 +112,13 @@ const FilterComponent = (props) => {
   return (
     <View>
       <View style={styles.switch}>
-        <View style={styles.inner}>
-          {filterBtn("Expense", "Wydatki")}
-          {filterBtn("FixedExpense", "Stałe wydatki")}
-          {filterBtn("Income", "Wpływy")}
-          {filterBtn("FixedIncome", "Stałe wpływy")}
-        </View>
+        {filterBtn("Expense", "Wydatki")}
+        {filterBtn("FixedExpense", "Stałe wydatki")}
+        {filterBtn("Income", "Wpływy")}
       </View>
 
       <View style={styles.filterComponent}>
         <View style={styles.yearsListFilter}>
-          <Text> Wybierz date </Text>
           <FlatList
             ref={flatListRef}
             style={styles.listOfYears}
@@ -154,8 +149,6 @@ export default FilterComponent;
 const styles = StyleSheet.create({
   filterComponent: {
     flexDirection: "row",
-    // backgroundColor: Colors.accent,
-    height: 150,
   },
   listOfYears: {
     width: Dimensions.get("window").width * 0.9,
@@ -171,32 +164,24 @@ const styles = StyleSheet.create({
     height: 100,
     width: 200,
   },
+  filterBtn: {
+    // marginTop: 10,
+    marginHorizontal: 20,
+    // height: 30,
+    padding: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
 
   switch: {
-    backgroundColor: Colors.accent,
+    flexDirection: "row",
     width: "100%",
-    height: 60,
 
-    alignItems: "center",
-    // padding: 10,
-    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
   },
-  inner: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
 
-    backgroundColor: Colors.accent,
-
-    borderRadius: 10,
-    height: "70%",
-    width: "96%",
-    borderWidth: 3,
-    borderColor: Colors.gradientBackground.primary,
-  },
   btnText: {
     // color: Colors.accent,
     fontWeight: "bold",
@@ -204,7 +189,6 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   list: {
-    backgroundColor: Colors.accent,
     marginTop: 10,
     padding: 10,
     height: Dimensions.get("window").height * 0.5,
