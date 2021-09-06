@@ -23,6 +23,9 @@ const EditCategoryElement = (props) => {
       itemActions.editCategory(props.mainCategory, props.element, editCategory)
     );
   };
+  const deleteSubcategory = () => {
+    dispatch(itemActions.deleteSubcategory(props.mainCategory, props.element));
+  };
 
   return (
     <View
@@ -82,7 +85,11 @@ const EditCategoryElement = (props) => {
         </TouchableOpacity>
       )}
 
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity
+        onPress={() => {
+          deleteSubcategory();
+        }}
+      >
         <MaterialIcons
           name="delete"
           size={24}

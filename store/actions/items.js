@@ -45,10 +45,10 @@ export const SET_SELECTED_CATEGORY = "SET_SELECTED_CATEGORY";
 export const setSelectedCategory = (isSelected) => {
   return { type: SET_SELECTED_CATEGORY, isSelected: isSelected };
 };
-export const ADD_NEW_CATEGORY = "ADD_NEW_CATEGORY";
-export const addNewCategory = (mainCategory, newSubCategory) => {
+export const ADD_NEW_SUBCATEGORY = "ADD_NEW_SUBCATEGORY";
+export const addNewSubCategory = (mainCategory, newSubCategory) => {
   return {
-    type: ADD_NEW_CATEGORY,
+    type: ADD_NEW_SUBCATEGORY,
     mainCategory: mainCategory,
     newSubCategory: newSubCategory,
   };
@@ -60,5 +60,14 @@ export const editCategory = (mainCategory, prevCategory, newCategory) => {
     mainCategory: mainCategory,
     prevCategory: prevCategory,
     newCategory: newCategory,
+  };
+};
+
+export const DELETE_SUBCATEGORY = "DELETE_SUBCATEGORY";
+export const deleteSubcategory = (mainCategory, subCategory) => {
+  return {
+    type: DELETE_SUBCATEGORY,
+    mainCategory: mainCategory,
+    subCategory: subCategory,
   };
 };

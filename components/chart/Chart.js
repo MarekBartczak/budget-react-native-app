@@ -27,10 +27,12 @@ const Chart = (props) => {
             }}
           >
             {props.data.length > 0
-              ? Math.max.apply(
-                  Math,
-                  props.data.map((el) => Number(el))
-                )
+              ? Math.max
+                  .apply(
+                    Math,
+                    props.data.map((el) => Number(el))
+                  )
+                  .toFixed(2)
               : 0}
           </Text>
         </View>
@@ -69,10 +71,12 @@ const Chart = (props) => {
             }}
           >
             {props.data > 0
-              ? Math.min.apply(
-                  Math,
-                  props.data.map((el) => Number(el))
-                )
+              ? Math.min
+                  .apply(
+                    Math,
+                    props.data.map((el) => Number(el))
+                  )
+                  .toFixed(2)
               : 0}
           </Text>
         </View>

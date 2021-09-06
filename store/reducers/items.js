@@ -10,8 +10,9 @@ import {
   SELECT_MAIN_CATEGORY,
   SELECT_SUB_CATEGORY,
   SET_SELECTED_CATEGORY,
-  ADD_NEW_CATEGORY,
+  ADD_NEW_SUBCATEGORY,
   EDIT_CATEGORY,
+  DELETE_SUBCATEGORY,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
@@ -76,10 +77,28 @@ export default (state = initialState, action) => {
         ...state,
         category: { ...state.category, selected: action.isSelected },
       };
-    case ADD_NEW_CATEGORY:
-      console.log(action.mainCategory);
-      console.log(action.newSubCategory);
-      return { ...state };
+    case ADD_NEW_SUBCATEGORY:
+      let newCategory = { ...state, ...state.categoryList };
+      let listCategory = newCategory.categoryList[0][action.mainCategory].list;
+      listCategory.push(action.newSubCategory);
+
+      return { ...state, categoryList: newCategory };
+
+    case DELETE_SUBCATEGORY:
+      let categoryList = {
+        ...state,
+        ...state.categoryList,
+      };
+      const subCategoryList =
+        categoryList.categoryList[0][action.mainCategory].list;
+      const indexOfSubCategoryElement = subCategoryList.indexOf(
+        action.subCategory
+      );
+      subCategoryList.splice(indexOfSubCategoryElement, 1);
+      return {
+        ...state,
+        categoryList: categoryList,
+      };
     case EDIT_CATEGORY:
       let newCategoryList = { ...state, ...state.categoryList };
       const list = newCategoryList[0][action.mainCategory].list;

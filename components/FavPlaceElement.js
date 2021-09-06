@@ -15,19 +15,30 @@ import Colors from "../constants/Colors";
 const FavPlaceElement = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
+  const newFavPlace = () => {
+    props.selectPlace();
+    props.setFavPlaceName();
+    props.showEdit();
+  };
+  const addNewElementToReceipt = () => {
+    props.selectPlace();
+    dispatch(favoritePlaceAction.selectPlace(props.favPlaceName));
+    dispatch(itemsAction.setReceiptPlace(props.favPlaceName));
+    props.pressToAddMultiItems();
+  };
+
   const dispatch = useDispatch();
   return (
     <TouchableOpacity
       onPress={() => {
-        props.selectPlace();
-        dispatch(favoritePlaceAction.selectPlace(props.favPlaceName));
-        dispatch(itemsAction.setReceiptPlace(props.favPlaceName));
-        props.pressToAddMultiItems();
+        if (props.favPlaceName) {
+          addNewElementToReceipt();
+        } else {
+          newFavPlace();
+        }
       }}
       onLongPress={() => {
-        props.selectPlace();
-        props.setFavPlaceName();
-        props.showEdit();
+        newFavPlace();
       }}
       delayLongPress="500"
     >

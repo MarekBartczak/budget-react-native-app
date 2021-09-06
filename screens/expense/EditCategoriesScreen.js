@@ -8,23 +8,33 @@ import {
   TouchableOpacity,
 } from "react-native";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../../constants/Colors";
 import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import { useDispatch, useSelector } from "react-redux";
 import EditCategoryElement from "../../components/categories/EditCategoryElement";
+import * as itemActions from "../../store/actions/items";
 const EdidCategoriesScreen = (props) => {
+  const navigation = useNavigation();
+
+  const dispatch = useDispatch();
+  const { title } = props.route.params;
+
   const [newSubCategory, setNewSubCategory] = useState("");
   const scheme = useSelector((state) => state.config.scheme);
-
-  const { title } = props.route.params;
   const category = useSelector((state) => state.item.categoryList)[0];
+
   const categoriesListObjectKeys = Object.keys(category);
   const categoryKey = categoriesListObjectKeys.filter(
     (el) => category[el].name === title
   );
   const subCategoriesList = category[categoryKey];
+  const addNew = () => {
+    dispatch(itemActions.addNewSubCategory(categoryKey[0], newSubCategory));
+    navigation.goBack();
+  };
   return (
     <ExternalComponent>
       <View style={styles.inputView}>
@@ -40,7 +50,7 @@ const EdidCategoriesScreen = (props) => {
           placeholder={"wpisz nową kategorię"}
           onChangeText={setNewSubCategory}
         />
-        <TouchableOpacity onPress={() => {}} style={{ marginLeft: 20 }}>
+        <TouchableOpacity onPress={() => addNew()} style={{ marginLeft: 20 }}>
           <Entypo name="add-to-list" size={34} color={Colors[scheme].button} />
         </TouchableOpacity>
       </View>
