@@ -59,13 +59,6 @@ const MainScreen = (props) => {
               navigateTo={() => props.navigation.navigate("AddMultipleItem")}
               setPlace={() => dispatch(favoritePlaceAction.selectPlace(""))}
               text={"Nowe Wydatki"}
-              // icon={
-              //   <Ionicons
-              //     name="ios-cart-outline"
-              //     size={44}
-              //     color={Colors.light.primary}
-              //   />
-              // }
             />
           </View>
         </View>
@@ -86,6 +79,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
   addNewItem: {
+    position: "absolute",
+    bottom: 40,
+    marginLeft: Dimensions.get("window").width * 0.2,
+
     alignItems: "center",
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,

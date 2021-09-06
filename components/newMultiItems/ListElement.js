@@ -37,7 +37,7 @@ const ListElement = (props) => {
           </Text>
         </View>
         <Text style={{ color: Colors[scheme].primarySecond }}>
-          {props.cost * props.multiply}zł
+          {(props.cost * props.multiply).toFixed(2)}zł
         </Text>
       </View>
     </View>

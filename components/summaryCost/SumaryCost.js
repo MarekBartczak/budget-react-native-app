@@ -1,16 +1,38 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
+import { Ionicons } from "@expo/vector-icons";
 
 const SumaryCost = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
   return (
     <View style={styles[`summaryCost_${scheme}`]}>
-      <View style={styles.inner}>
+      <TouchableOpacity onPress={() => {}}>
+        <Ionicons
+          name="ios-arrow-back"
+          size={43}
+          color={Colors[scheme].primarySecond}
+        />
+      </TouchableOpacity>
+      <View>
         <Text style={styles[`textCost_${scheme}`]}>{props.cost}zł</Text>
+        <Text style={styles[`textDate_${scheme}`]}>Luty</Text>
       </View>
+      <TouchableOpacity onPress={() => {}}>
+        <Ionicons
+          name="ios-arrow-forward"
+          size={43}
+          color={Colors[scheme].primarySecond}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -26,6 +48,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   summaryCost_dark: {
     marginTop: 10,
@@ -35,14 +60,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-  },
-  inner: {
-    height: "70%",
-    width: "95%",
-    borderRadius: 7,
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "center",
   },
+
   textCost_light: {
     color: Colors.light.button,
     fontWeight: "bold",
@@ -52,5 +74,17 @@ const styles = StyleSheet.create({
     color: Colors.dark.button,
     fontWeight: "bold",
     fontSize: 20,
+  },
+  textDate_light: {
+    color: Colors.light.primarySecond,
+    fontWeight: "bold",
+    fontSize: 15,
+    textAlign: "center",
+  },
+  textDate_dark: {
+    color: Colors.dark.primarySecond,
+    fontWeight: "bold",
+    fontSize: 15,
+    textAlign: "center",
   },
 });

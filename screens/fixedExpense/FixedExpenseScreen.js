@@ -1,5 +1,11 @@
-import { StyleSheet, View, Text, useColorScheme } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  useColorScheme,
+  Dimensions,
+} from "react-native";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import Chart from "../../components/chart/Chart";
@@ -11,20 +17,15 @@ import AddNewItem from "../../components/AddNewItem";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import UnpaidExpense from "../../components/fixedExpense/unpaidExpense/UnpaidExpense";
+
 const FixedExpenseScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
   const fixedExpenseShowList = useSelector(
     (state) => state.fixedExpense.fixedExpense
-  );
-  const fixedExpenseHistory = useSelector(
-    (state) => state.fixedExpense.history
   );
 
   const delayCost = useSelector((state) => state.fixedExpense.delayCost);
 
-  // const date = fixedExpenseHistory.map((el) => [el.date, el.cost]);
-  // console.log("date", date);
   const chartEl = chartElement(fixedExpenseShowList);
 
   return (
@@ -60,7 +61,7 @@ const FixedExpenseScreen = (props) => {
           </Text>
         )}
       </View>
-      <View style={styles.component}>
+      <View style={styles.buttonComponent}>
         <AddNewItem
           navigateTo={() =>
             props.navigation.navigate("AddNewFixedExpenseScreen")
@@ -76,6 +77,14 @@ const FixedExpenseScreen = (props) => {
 const styles = StyleSheet.create({
   component: {
     marginBottom: 20,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 7,
+  },
+  buttonComponent: {
+    position: "absolute",
+    bottom: 40,
     shadowOffset: { height: 0, width: 0 },
     shadowColor: "black",
     shadowOpacity: 0.5,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import { useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
@@ -6,6 +6,7 @@ import Chart from "../../components/chart/BarChart";
 import chartElement from "../../functions/ChartElement";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import SummaryCost from "../../components/summaryCost/SumaryCost";
+import Button from "../../components/buttons/Button";
 import AddNewIncomeComponent from "../../components/income/addNewIncome/AddNewIncomeComponent";
 const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
@@ -26,6 +27,13 @@ const IncomeScreen = (props) => {
       <View style={styles.component}>
         <AddNewIncomeComponent />
       </View>
+      <View style={styles.buttonComponent}>
+        <Button
+          onPress={() => {}}
+          text="Zapisz"
+          style={{ width: Dimensions.get("window").width * 0.7 }}
+        />
+      </View>
     </ExternalComponent>
   );
 };
@@ -33,6 +41,14 @@ const IncomeScreen = (props) => {
 const styles = StyleSheet.create({
   component: {
     marginBottom: 10,
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+  },
+  buttonComponent: {
+    position: "absolute",
+    bottom: 20,
     shadowColor: "black",
     shadowOffset: { height: 0, width: 0 },
     shadowOpacity: 0.2,

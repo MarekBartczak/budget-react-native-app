@@ -6,12 +6,13 @@ import {
   TouchableOpacity,
   FlatList,
   Alert,
+  Clipboard,
 } from "react-native";
 import History from "./history/History";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Colors from "../../../constants/Colors";
-import { Ionicons, Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import setNextPayDay from "../../../functions/SetNextPayDay";
 import { useDispatch, useSelector } from "react-redux";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
@@ -25,6 +26,10 @@ const FixedExpenseDetails = (props) => {
   const userId = useSelector((state) => state.auth.userID);
 
   const historyEl = history.filter((el) => el.originId === id);
+  const copyToClipboard = () => {
+    Clipboard.setString(title);
+  };
+
   const showIsPaid = () => {
     return (
       <TouchableOpacity
@@ -83,15 +88,16 @@ const FixedExpenseDetails = (props) => {
           }}
         >
           <View style={styles.trash}></View>
-
-          <Text
-            style={{
-              ...styles.textTitle,
-              ...{ color: Colors[scheme].primary },
-            }}
-          >
-            {title}
-          </Text>
+          <TouchableOpacity onPress={copyToClipboard}>
+            <Text
+              style={{
+                ...styles.textTitle,
+                ...{ color: Colors[scheme].primary },
+              }}
+            >
+              {title}
+            </Text>
+          </TouchableOpacity>
           <View style={styles.trash}>
             <TouchableOpacity
               onPress={() => {

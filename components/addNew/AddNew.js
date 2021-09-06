@@ -77,11 +77,11 @@ const AddNewComponent = (props) => {
               />
             </View>
             <View style={styles.buttonView}>
-              <Button
+              {/* <Button
                 onPress={props.save}
                 text="Zapisz"
                 style={{ width: Dimensions.get("window").width * 0.7 }}
-              />
+              /> */}
             </View>
           </View>
         </TouchableWithoutFeedback>
