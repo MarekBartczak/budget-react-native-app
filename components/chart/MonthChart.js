@@ -1,4 +1,4 @@
-import { LineChart } from "react-native-chart-kit";
+import { BarChart } from "react-native-chart-kit";
 import React from "react";
 import {
   StyleSheet,
@@ -36,7 +36,7 @@ const Chart = (props) => {
               : 0}
           </Text>
         </View>
-        <LineChart
+        <BarChart
           data={{
             labels: props.label,
             datasets: [
@@ -45,12 +45,14 @@ const Chart = (props) => {
               },
             ],
           }}
+          flatColor={true}
+          withInnerLines={false}
           withHorizontalLines={false}
           withVerticalLines={false}
           withHorizontalLabels={false}
           withShadow={false}
           width={Dimensions.get("window").width * 0.9}
-          height={80}
+          height={180}
           chartConfig={{
             labelColor: () => Colors[scheme].primarySecond,
             backgroundGradientFromOpacity: 0,
@@ -90,9 +92,10 @@ const Chart = (props) => {
 export default Chart;
 
 const styles = StyleSheet.create({
+  chartView: { marginTop: 20 },
   chart: {
     borderRadius: 16,
-    padding: 0,
+    // padding: 0,
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width * 0.9,
@@ -108,7 +111,7 @@ const styles = StyleSheet.create({
   valMinText: { fontSize: 10 },
   valMin: {
     left: 10,
-    top: 80 - 10,
+    top: 180 - 40,
     position: "absolute",
   },
 });

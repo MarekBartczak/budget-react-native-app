@@ -13,6 +13,7 @@ import {
   ADD_NEW_SUBCATEGORY,
   EDIT_CATEGORY,
   DELETE_SUBCATEGORY,
+  SET_FILTERED_MONTH,
 } from "../actions/items";
 import Items from "../../data/dummy-data";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
@@ -21,6 +22,9 @@ const initialState = {
   categoryList: [categories],
   // items: [...Items],
   items: [],
+  view: {
+    month: "",
+  },
   receipt: {
     place: "",
     date: "",
@@ -109,6 +113,8 @@ export default (state = initialState, action) => {
         ...state,
         categoryList: newCategoryList,
       };
+    case SET_FILTERED_MONTH:
+      return { ...state, view: { month: action.month } };
   }
   return state;
 };

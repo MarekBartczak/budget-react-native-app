@@ -15,7 +15,10 @@ const IncomeScreen = (props) => {
   return (
     <ExternalComponent>
       <View style={styles.component}>
-        <SummaryCost cost={summaryCostCounter(incomeList)} />
+        <SummaryCost
+          cost={summaryCostCounter(incomeList)}
+          dateList={incomeList}
+        />
       </View>
       <View style={styles.component}>
         <Chart

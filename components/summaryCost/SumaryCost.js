@@ -5,17 +5,49 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
+import months from "../../data/months";
 
 const SumaryCost = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const date = new Date();
+  const currentMonthNumber = date.getMonth();
+  const currentYear = date.getFullYear();
+  const [month, setMonth] = useState(months[currentMonthNumber]);
+  const [year, setYear] = useState(currentYear);
+  const [index, setIndex] = useState(0);
+
+  const dateList = [...new Set(props.dateList.map((el) => el.date.slice(0, 7)))]
+    .sort()
+    .map((el) => el + "-01");
+
+  const dateListWithObj = dateList
+    .map((el) => {
+      return {
+        year: el.slice(0, 4),
+        monthNumber: el.slice(5, 7),
+        monthName: months[Number(el.slice(5, 7))],
+      };
+    })
+    .sort();
+
+  const switchMonth = (change) => {
+    setIndex(
+      index + change < [dateListWithObj.length] && index + change >= 0
+        ? index + change
+        : 0
+    );
+
+    setYear(dateListWithObj[index].year);
+    setMonth(dateListWithObj[index].monthName);
+  };
 
   return (
     <View style={styles[`summaryCost_${scheme}`]}>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => switchMonth(-1)}>
         <Ionicons
           name="ios-arrow-back"
           size={43}
@@ -24,9 +56,11 @@ const SumaryCost = (props) => {
       </TouchableOpacity>
       <View>
         <Text style={styles[`textCost_${scheme}`]}>{props.cost}zł</Text>
-        <Text style={styles[`textDate_${scheme}`]}>Luty</Text>
+        <Text style={styles[`textDate_${scheme}`]}>
+          {year} {month}
+        </Text>
       </View>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => switchMonth(1)}>
         <Ionicons
           name="ios-arrow-forward"
           size={43}
@@ -69,11 +103,13 @@ const styles = StyleSheet.create({
     color: Colors.light.button,
     fontWeight: "bold",
     fontSize: 20,
+    textAlign: "center",
   },
   textCost_dark: {
     color: Colors.dark.button,
     fontWeight: "bold",
     fontSize: 20,
+    textAlign: "center",
   },
   textDate_light: {
     color: Colors.light.primarySecond,

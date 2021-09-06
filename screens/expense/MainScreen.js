@@ -1,6 +1,7 @@
 import { StyleSheet, View, Dimensions, useColorScheme } from "react-native";
 import React, { useState, useEffect } from "react";
 import Chart from "../../components/chart/Chart";
+import MonthChart from "../../components/chart/MonthChart";
 import FavoritePlaces from "../../components/FavoritePlaces";
 import AddNewItem from "../../components/AddNewItem";
 import { useSelector, useDispatch } from "react-redux";
@@ -35,10 +36,20 @@ const MainScreen = (props) => {
               shadowOpacity: 0.2,
             }}
           >
-            <SummaryCost cost={summaryCostCounter(itemsFromRedux)} />
+            <SummaryCost
+              cost={summaryCostCounter(itemsFromRedux)}
+              dateList={itemsFromRedux}
+            />
           </View>
           <View style={styles.component}>
             <Chart
+              press={() => props.navigation.navigate("Date")}
+              label={chartEl.label}
+              data={chartEl.data}
+            />
+          </View>
+          <View style={styles.component}>
+            <MonthChart
               press={() => props.navigation.navigate("Date")}
               label={chartEl.label}
               data={chartEl.data}

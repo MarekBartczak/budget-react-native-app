@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import Chart from "../../components/chart/Chart";
+import MonthChart from "../../components/chart/MonthChart";
 import Colors from "../../constants/Colors";
 import AddNewFixedExpenseComponent from "../../components/fixedExpense/addNewFixedExpense/AddNewFixedExpenseComponent";
 import chartElement from "../../functions/ChartElement";
@@ -31,7 +32,10 @@ const FixedExpenseScreen = (props) => {
   return (
     <ExternalComponent>
       <View style={styles.component}>
-        <SummaryCost cost={summaryCostCounter(fixedExpenseShowList)} />
+        <SummaryCost
+          cost={summaryCostCounter(fixedExpenseShowList)}
+          dateList={fixedExpenseShowList}
+        />
       </View>
       <View style={styles.component}>
         <Chart
@@ -43,7 +47,7 @@ const FixedExpenseScreen = (props) => {
 
       <View style={styles.component}>
         <Text style={{ color: Colors[scheme].primarySecond }}>
-          Stałe oplaty za dany miesiac
+          Stałe oplaty
         </Text>
       </View>
       <View style={styles.component}>
@@ -60,6 +64,13 @@ const FixedExpenseScreen = (props) => {
             <Text style={{ color: "red" }}> {delayCost}zł </Text>
           </Text>
         )}
+      </View>
+      <View style={styles.component}>
+        <MonthChart
+          press={() => props.navigation.navigate("FixedExpensesList")}
+          label={chartEl.label}
+          data={chartEl.data}
+        />
       </View>
       <View style={styles.buttonComponent}>
         <AddNewItem

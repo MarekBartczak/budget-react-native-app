@@ -71,3 +71,8 @@ export const deleteSubcategory = (mainCategory, subCategory) => {
     subCategory: subCategory,
   };
 };
+
+export const SET_FILTERED_MONTH = "SET_FILTERED_MONTH";
+export const setFilteredMonth = (month) => {
+  return { type: SET_FILTERED_MONTH, month: month };
+};
