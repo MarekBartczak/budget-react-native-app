@@ -25,10 +25,10 @@ const UserScreen = (props) => {
           <View style={styles[`userEmailView_${scheme}`]}>
             <Text style={styles[`userEmail_${scheme}`]}>{userEmail}</Text>
           </View>
-          <View style={styles.familyAccountWith}>
+          {/* <View style={styles.familyAccountWith}>
             <Text style={styles[`family_${scheme}`]}>Konto rodzinne </Text>
             <Text style={styles[`userEmail_${scheme}`]}>nie</Text>
-          </View>
+          </View> */}
         </View>
       </View>
     </ExternalComponent>

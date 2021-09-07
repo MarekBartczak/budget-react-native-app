@@ -1,5 +1,5 @@
 import { LineChart } from "react-native-chart-kit";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -12,10 +12,53 @@ import { useSelector } from "react-redux";
 
 const Chart = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const selectedDate = useSelector((state) => state.item.view);
+  const date = new Date();
+  const currentMonthNumber = date.getMonth() + 1;
+  const currentYear = date.getFullYear();
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // props.label and props.data shoud be same length
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // console.log(props.data);
+  const getMonthNumber = () => {
+    if (currentMonthNumber < 10) {
+      return `0${currentMonthNumber}`;
+    } else {
+      return currentMonthNumber;
+    }
+  };
+  let currentDateFormat;
+  if (selectedDate.year === "" && selectedDate.month === "") {
+    currentDateFormat = `${currentYear}-${getMonthNumber()}-`;
+  } else {
+    currentDateFormat = `${selectedDate.year}-${selectedDate.month}-`;
+  }
+  let filteredData;
+  if (props.label.length > 0) {
+    const indexList = props.label.map((el) => el.includes(currentDateFormat));
+
+    filteredData = {
+      label: indexList
+        .map((el, i) => {
+          if (el) {
+            return props.label[i];
+          }
+        })
+        .filter((el) => el !== undefined),
+      data: indexList
+        .map((el, i) => {
+          if (el) {
+            return props.data[i];
+          }
+        })
+        .filter((el) => el !== undefined),
+    };
+  }
+  let label = props.label;
+  let data = props.label;
+  if (filteredData !== undefined) {
+    label = filteredData.label.map((el) => el.slice(8));
+    data = filteredData.data;
+  }
   return (
     <View style={styles.chartView}>
       <TouchableOpacity onPress={props.press}>
@@ -26,11 +69,11 @@ const Chart = (props) => {
               ...{ color: Colors[scheme].primarySecond },
             }}
           >
-            {props.data.length > 0
+            {data.length > 0
               ? Math.max
                   .apply(
                     Math,
-                    props.data.map((el) => Number(el))
+                    data.map((el) => Number(el))
                   )
                   .toFixed(2)
               : 0}
@@ -38,17 +81,19 @@ const Chart = (props) => {
         </View>
         <LineChart
           data={{
-            labels: props.label,
+            labels: label,
             datasets: [
               {
-                data: props.data,
+                data: data,
               },
             ],
           }}
+          // verticalLabelRotation={-90}
           withHorizontalLines={false}
           withVerticalLines={false}
           withHorizontalLabels={false}
           withShadow={false}
+          withInnerLines={false}
           width={Dimensions.get("window").width * 0.9}
           height={180}
           chartConfig={{
@@ -72,11 +117,11 @@ const Chart = (props) => {
               ...{ color: Colors[scheme].primarySecond },
             }}
           >
-            {props.data > 0
+            {data > 0
               ? Math.min
                   .apply(
                     Math,
-                    props.data.map((el) => Number(el))
+                    data.map((el) => Number(el))
                   )
                   .toFixed(2)
               : 0}

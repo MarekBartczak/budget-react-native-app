@@ -24,6 +24,7 @@ const initialState = {
   items: [],
   view: {
     month: "",
+    year: "",
   },
   receipt: {
     place: "",
@@ -114,7 +115,9 @@ export default (state = initialState, action) => {
         categoryList: newCategoryList,
       };
     case SET_FILTERED_MONTH:
-      return { ...state, view: { month: action.month } };
+      // console.log(action.year);
+      // console.log(action.month);
+      return { ...state, view: { month: action.month, year: action.year } };
   }
   return state;
 };

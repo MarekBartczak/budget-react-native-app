@@ -44,7 +44,7 @@ const chartElement = (data, range) => {
   const sum = addingAmounts(finalDateList, data);
   return {
     label: reduceArrayToMaxRange(
-      finalDateList.map((el) => el.slice(5)),
+      finalDateList.map((el) => el),
       finalRange
     ),
     data: reduceArrayToMaxRange(sum, finalRange),

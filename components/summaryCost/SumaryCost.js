@@ -4,21 +4,26 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
+  Modal,
+  FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../../constants/Colors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import months from "../../data/months";
+import * as itemsActions from "../../store/actions/items";
 
 const SumaryCost = (props) => {
+  const dispatch = useDispatch();
   const scheme = useSelector((state) => state.config.scheme);
   const date = new Date();
   const currentMonthNumber = date.getMonth();
   const currentYear = date.getFullYear();
-  const [month, setMonth] = useState(months[currentMonthNumber]);
+  const selectedDate = useSelector((state) => state.item.view);
+  const [month, setMonth] = useState();
   const [year, setYear] = useState(currentYear);
-  const [index, setIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   const dateList = [...new Set(props.dateList.map((el) => el.date.slice(0, 7)))]
     .sort()
@@ -29,44 +34,105 @@ const SumaryCost = (props) => {
       return {
         year: el.slice(0, 4),
         monthNumber: el.slice(5, 7),
-        monthName: months[Number(el.slice(5, 7))],
+        monthName: months[Number(el.slice(5, 7) - 1)],
       };
     })
     .sort();
 
-  const switchMonth = (change) => {
-    setIndex(
-      index + change < [dateListWithObj.length] && index + change >= 0
-        ? index + change
-        : 0
-    );
+  useEffect(() => {
+    if (selectedDate.year === "" && selectedDate.month === "") {
+      setMonth(months[currentMonthNumber]);
+      setYear(currentYear);
+    } else {
+      setMonth(months[Number(selectedDate.month - 1)]);
+      setYear(selectedDate.year);
+    }
+  });
+  // console.log(selectedDate);
 
-    setYear(dateListWithObj[index].year);
-    setMonth(dateListWithObj[index].monthName);
+  const openModalWithDates = () => {
+    return (
+      <View>
+        <Modal animationType="slide" transparent={true} visible={showModal}>
+          <View
+            style={{
+              marginTop: 80,
+              marginHorizontal: Dimensions.get("window").width / 6,
+              width: Dimensions.get("window").width / 1.5,
+              height: Dimensions.get("window").height,
+              backgroundColor: Colors[scheme].primaryThird,
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => setShowModal(false)}
+              style={{
+                marginTop: -30,
+                height: 50,
+                backgroundColor: Colors[scheme].button,
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: 10,
+              }}
+            >
+              <Text
+                style={{ color: Colors[scheme].primary, fontWeight: "bold" }}
+              >
+                Zamknij
+              </Text>
+            </TouchableOpacity>
+            <FlatList
+              data={dateListWithObj}
+              keyExtractor={(item) => item.year + item.monthNumber}
+              renderItem={(item) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    dispatch(
+                      itemsActions.setFilteredMonth(
+                        item.item.monthNumber,
+                        item.item.year
+                      )
+                    );
+                    setShowModal(false);
+                  }}
+                  style={{
+                    marginTop: 10,
+                    width: Dimensions.get("window").width / 1.5,
+                    backgroundColor: Colors[scheme].primaryThird,
+                    shadowOffset: { height: 0, width: 0 },
+                    shadowRadius: 7,
+                    shadowColor: "black",
+                    shadowOpacity: 0.5,
+                    padding: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: Colors[scheme].primarySecond,
+                      marginLeft: 20,
+                    }}
+                  >
+                    {item.item.year} - {item.item.monthName}
+                  </Text>
+                </TouchableOpacity>
+              )}
+            />
+          </View>
+        </Modal>
+      </View>
+    );
   };
 
   return (
     <View style={styles[`summaryCost_${scheme}`]}>
-      <TouchableOpacity onPress={() => switchMonth(-1)}>
-        <Ionicons
-          name="ios-arrow-back"
-          size={43}
-          color={Colors[scheme].primarySecond}
-        />
-      </TouchableOpacity>
       <View>
         <Text style={styles[`textCost_${scheme}`]}>{props.cost}zł</Text>
-        <Text style={styles[`textDate_${scheme}`]}>
-          {year} {month}
-        </Text>
+        <TouchableOpacity onPress={() => setShowModal(!showModal)}>
+          <Text style={styles[`textDate_${scheme}`]}>
+            {year} {month}
+          </Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => switchMonth(1)}>
-        <Ionicons
-          name="ios-arrow-forward"
-          size={43}
-          color={Colors[scheme].primarySecond}
-        />
-      </TouchableOpacity>
+      {openModalWithDates()}
     </View>
   );
 };
@@ -83,7 +149,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
   },
   summaryCost_dark: {
@@ -95,30 +161,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
   },
 
   textCost_light: {
-    color: Colors.light.button,
+    color: Colors.light.primarySecond,
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
   },
   textCost_dark: {
-    color: Colors.dark.button,
+    color: Colors.dark.primarySecond,
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
   },
   textDate_light: {
-    color: Colors.light.primarySecond,
+    color: Colors.light.button,
     fontWeight: "bold",
     fontSize: 15,
     textAlign: "center",
   },
   textDate_dark: {
-    color: Colors.dark.primarySecond,
+    color: Colors.dark.button,
     fontWeight: "bold",
     fontSize: 15,
     textAlign: "center",

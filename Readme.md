@@ -13,13 +13,13 @@ and not finished yet...
 
 ## installation
 
-first install dependencies
+install dependencies
 
 ```bash
 npm install
 ```
 
-after that you can run it
+then you can run it
 
 ```bash
 npm run start
