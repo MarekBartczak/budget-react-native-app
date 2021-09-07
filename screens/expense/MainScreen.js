@@ -15,6 +15,7 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 const MainScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
+  const category = useSelector((state) => state.item);
   const chartEl = chartElement(itemsFromRedux);
   const dispatch = useDispatch();
   return (

@@ -1,11 +1,11 @@
 import {
-  ADD_ITEM,
   DEL_ITEM,
   ADD_ITEM_TO_THE_RECEIPT,
   SET_RECEIPT_PLACE,
   SET_RECEIPT_DATE,
   ADD_ITEMS_FROM_RECEIPT,
   LOADING_EXPENSE_FROM_DB,
+  LOADING_CATEGORY_FROM_DB,
   CLEAR_STATE_AFTER_LOGOUT,
   SELECT_MAIN_CATEGORY,
   SELECT_SUB_CATEGORY,
@@ -15,12 +15,9 @@ import {
   DELETE_SUBCATEGORY,
   SET_FILTERED_MONTH,
 } from "../actions/items";
-import Items from "../../data/dummy-data";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
-import categories from "../../data/category";
 const initialState = {
-  categoryList: [categories],
-  // items: [...Items],
+  categoryList: [],
   items: [],
   view: {
     month: "",
@@ -42,6 +39,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_EXPENSE_FROM_DB:
       return { ...state, items: [...action.array] };
+    case LOADING_CATEGORY_FROM_DB:
+      return { ...state, categoryList: [action.array] };
     case DEL_ITEM:
       const filteredItem = state.items.find((el) => el.id === action.itemId);
       deleteDataInCloud.expense(filteredItem.firebaseId, action.userId);

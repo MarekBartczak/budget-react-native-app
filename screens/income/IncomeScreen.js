@@ -30,13 +30,13 @@ const IncomeScreen = (props) => {
       <View style={styles.component}>
         <AddNewIncomeComponent />
       </View>
-      <View style={styles.component}>
+      {/* <View style={styles.component}>
         <Button
           onPress={() => {}}
           text="Zapisz"
           style={{ width: Dimensions.get("window").width * 0.7 }}
         />
-      </View>
+      </View> */}
     </ExternalComponent>
   );
 };

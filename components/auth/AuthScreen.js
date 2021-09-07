@@ -25,9 +25,10 @@ import signInWithEmailAndPassowrd from "./authMethods/withEmailAndPassword";
 import signInWithGoogleAsync from "./authMethods/withGoogle";
 import signInWithFacebook from "./authMethods/withFacebook";
 import firebaseInit from "./firebaseInit";
-
+import Category from "../../data/category";
 const AuthScreen = (props) => {
   const colorScheme = useColorScheme();
+  const categoryList = { ...Category };
   // const sheme = Appearance.getColorScheme();
   // console.log(Appearance);
   const [userEmail, setUserEmail] = useState();
@@ -73,16 +74,7 @@ const AuthScreen = (props) => {
       })
       .catch((err) => console.log(err));
     dispatch(authActions.saveUserData(userDataObj));
-    // testReadData(user.uid);
   };
-
-  // const testReadData = (uid) => {
-  //   const itemRef = firebase.database().ref(`users/${uid}`);
-  //   itemRef.on("value", (data) => {
-  //     const items = data.val();
-  //     // console.log(items);
-  //   });
-  // };
 
   if (userStatus) {
     return <DrawerNavigator />;
@@ -141,7 +133,7 @@ const AuthScreen = (props) => {
               <View style={styles.otherMethodLogin}>
                 <TouchableOpacity
                   onPress={() => {
-                    signInWithGoogleAsync(() => login());
+                    signInWithGoogleAsync(() => login(), categoryList);
                   }}
                 >
                   <View style={styles.loginWithGoogle}>

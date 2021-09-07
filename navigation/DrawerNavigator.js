@@ -92,10 +92,23 @@ const DrawerNavigator = (props) => {
     setStatus(true);
     return list;
   };
+
+  const loadingCategory = async () => {
+    const uid = userId;
+    const itemRef = firebase.database().ref(`users/${uid}/categories`);
+    let list;
+    itemRef.on("value", async (data) => {
+      let obj = await data.val();
+      list = Object.values(obj);
+      // console.log(list);
+      dispatch(expenseActions.loadingCategoriesFromDB(list[0]));
+    });
+  };
   useEffect(() => {
     const fetchData = async () => {
       // console.log("fetching...");
       loadingFavoritePlace();
+      await loadingCategory();
       await loadingData("income");
       await loadingData("expense");
       await loadingData("fixedExpense");

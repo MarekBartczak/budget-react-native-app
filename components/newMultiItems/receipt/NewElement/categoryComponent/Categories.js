@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../../../../../constants/Colors";
 import MainCategoryElement from "./MainCategoryElement";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -22,6 +22,7 @@ const Categories = (props) => {
     (el) => categoriesList[el].name
   );
   let iconSize = 32;
+
   return (
     <ExternalComponent style={styles.screen}>
       <View style={styles.external}>
