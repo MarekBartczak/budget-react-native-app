@@ -8,13 +8,11 @@ import {
   CLEAR_STATE_AFTER_LOGOUT,
   DELAY_COST,
 } from "../actions/fixedExpense";
-import Expense from "../../data/Dummy-FixedExpense";
 import uuid from "react-native-uuid";
 import setNextPayDay from "../../functions/SetNextPayDay";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
-
+import updateHistory from "../../functions/cloud/updateHistory";
 const initialState = {
-  // fixedExpense: [...Expense],
   fixedExpense: [],
   delayCost: 0,
   history: [],
@@ -48,7 +46,8 @@ export default (state = initialState, action) => {
 
       const index = updateState.findIndex((el) => el.id === action.id);
       updateState[index] = updateEl;
-
+      // console.log(newEl);
+      updateHistory(newEl, action.userId);
       return {
         ...state,
         fixedExpense: updateState,

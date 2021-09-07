@@ -8,8 +8,8 @@ export const isPaid = (stat, id) => {
 };
 
 export const ARCHIVE = "ARCHIVE";
-export const archive = (id) => {
-  return { type: ARCHIVE, id: id };
+export const archive = (id, userId) => {
+  return { type: ARCHIVE, id: id, userId: userId };
 };
 
 export const DEL_EXPENSE = "DEL_EXPENSE";
@@ -22,8 +22,8 @@ export const loadingFixedExpensefromDB = (array) => {
   return { type: LOADING_FIXED_EXPENSE_FROM_DB, array: array };
 };
 export const LOADING_HISTORY_FROM_DB = "LOADING_HISTORY_FROM_DB";
-export const loadingHistoryFromDb = (array) => {
-  return { type: LOADING_HISTORY_FROM_DB, array: array };
+export const loadingHistoryFromDb = (array, userId) => {
+  return { type: LOADING_HISTORY_FROM_DB, array: array, userId: userId };
 };
 export const CLEAR_STATE_AFTER_LOGOUT = "CLEAR_STATE_AFTER_LOGOUT";
 export const clearStateAfterLogout = () => {
