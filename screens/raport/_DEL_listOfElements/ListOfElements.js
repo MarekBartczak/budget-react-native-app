@@ -128,8 +128,6 @@ const ListOfElements = (props) => {
 
   //   const contentWidth = useWindowDimensions().width;
 
-  //   //   console.log(listObj.expense);
-
   return (
     <View>
       <TouchableOpacity onPress={() => faxeXLSX()}>

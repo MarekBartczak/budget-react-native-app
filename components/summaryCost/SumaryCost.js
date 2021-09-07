@@ -48,7 +48,6 @@ const SumaryCost = (props) => {
       setYear(selectedDate.year);
     }
   });
-  // console.log(selectedDate);
 
   const openModalWithDates = () => {
     return (

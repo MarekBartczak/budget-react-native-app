@@ -22,7 +22,6 @@ const UnpaidExpense = (props) => {
     (state) => state.fixedExpense.fixedExpense
   );
   const today = new Date();
-  //   console.log(fixedExpensesList);
   const dateList = fixedExpensesList.filter((el) => new Date(el.date) < today);
   const summaryCost = (total, sum) => total + sum;
 

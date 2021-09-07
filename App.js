@@ -24,7 +24,6 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 const App = () => {
   //
-  // console.log(colorScheme);
 
   return (
     <Provider store={store}>

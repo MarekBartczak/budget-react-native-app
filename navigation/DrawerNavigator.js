@@ -106,14 +106,12 @@ const DrawerNavigator = (props) => {
   };
   useEffect(() => {
     const fetchData = async () => {
-      // console.log("fetching...");
       loadingFavoritePlace();
       await loadingCategory();
       await loadingData("income");
       await loadingData("expense");
       await loadingData("fixedExpense");
     };
-    // console.log(fetchedData);
     fetchData();
     // if (!fetchedData) {
     //   dispatch(authActions.fetchData(true));

@@ -20,7 +20,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_FAVORITE_PLACE_FROM_DB:
-      // console.log(action.array);
       return { ...state, favoritePlace: [...action.array] };
     case SELECT_PLACE:
       return { ...state, selected: action.place };

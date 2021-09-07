@@ -24,7 +24,6 @@ const createCategoryList = (userId, categoryList) => {
 };
 
 const onSignIn = (googleUser, signinFunction, categoryList) => {
-  // console.log("Google Auth Response", googleUser);
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
   var unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
     unsubscribe();
@@ -45,7 +44,6 @@ const onSignIn = (googleUser, signinFunction, categoryList) => {
         .then((result) => {
           let isNewUser = result.additionalUserInfo.isNewUser;
           let userId = result.user.uid;
-          //   console.log(userId);
 
           if (isNewUser) {
             createCategoryList(userId, categoryList);
@@ -55,9 +53,7 @@ const onSignIn = (googleUser, signinFunction, categoryList) => {
           }
           signinFunction();
         })
-        .then(() => {
-          //   console.log("sign in completed");
-        })
+        .then(() => {})
         .catch((error) => {
           // Handle Errors here.
           var errorCode = error.code;

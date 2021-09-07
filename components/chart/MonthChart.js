@@ -15,7 +15,6 @@ const Chart = (props) => {
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // props.label and props.data shoud be same length
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // console.log(props.data);
   return (
     <View style={styles.chartView}>
       <TouchableOpacity onPress={props.press}>

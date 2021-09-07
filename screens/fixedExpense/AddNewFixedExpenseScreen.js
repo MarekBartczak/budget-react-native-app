@@ -45,7 +45,6 @@ const AddNewFixedExpenseScreen = (props) => {
   ];
 
   //   const isSelected = ()
-  //   console.log(interval);
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setDate(currentDate);

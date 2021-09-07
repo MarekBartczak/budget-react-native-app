@@ -11,7 +11,6 @@ import AddNewIncomeComponent from "../../components/income/addNewIncome/AddNewIn
 const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
   const chartEl = chartElement(incomeList);
-  // console.log(incomeList);
   return (
     <ExternalComponent>
       <View style={styles.component}>

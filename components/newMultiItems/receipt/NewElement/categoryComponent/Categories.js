@@ -22,7 +22,6 @@ const Categories = (props) => {
     (el) => categoriesList[el].name
   );
   let iconSize = 32;
-
   return (
     <ExternalComponent style={styles.screen}>
       <View style={styles.external}>
@@ -36,7 +35,19 @@ const Categories = (props) => {
               }}
             >
               <MainCategoryElement
+                selected={Colors.selected}
                 title={mainCategoryList[0]}
+                icon={
+                  <FontAwesome
+                    name="automobile"
+                    size={iconSize}
+                    color={Colors[scheme].primarySecond}
+                  />
+                }
+              />
+
+              <MainCategoryElement
+                title={mainCategoryList[3]}
                 icon={
                   <MaterialCommunityIcons
                     name="food-variant"
@@ -46,7 +57,7 @@ const Categories = (props) => {
                 }
               />
               <MainCategoryElement
-                title={mainCategoryList[1]}
+                title={mainCategoryList[4]}
                 icon={
                   <FontAwesome5
                     name="pump-soap"
@@ -56,7 +67,7 @@ const Categories = (props) => {
                 }
               />
               <MainCategoryElement
-                title={mainCategoryList[2]}
+                title={mainCategoryList[8]}
                 icon={
                   <MaterialIcons
                     name="home-repair-service"
@@ -67,19 +78,8 @@ const Categories = (props) => {
               />
 
               <MainCategoryElement
-                selected={Colors.selected}
-                title={mainCategoryList[3]}
-                icon={
-                  <FontAwesome
-                    name="automobile"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
-              />
-              <MainCategoryElement
                 selected={null}
-                title={mainCategoryList[4]}
+                title={mainCategoryList[5]}
                 icon={
                   <Entypo
                     name="home"
@@ -89,7 +89,7 @@ const Categories = (props) => {
                 }
               />
               <MainCategoryElement
-                title={mainCategoryList[5]}
+                title={mainCategoryList[6]}
                 icon={
                   <MaterialIcons
                     name="computer"
@@ -100,7 +100,7 @@ const Categories = (props) => {
               />
 
               <MainCategoryElement
-                title={mainCategoryList[6]}
+                title={mainCategoryList[1]}
                 icon={
                   <FontAwesome5
                     name="redhat"
@@ -120,7 +120,7 @@ const Categories = (props) => {
                 }
               />
               <MainCategoryElement
-                title={mainCategoryList[8]}
+                title={mainCategoryList[2]}
                 icon={
                   <MaterialIcons
                     name="family-restroom"

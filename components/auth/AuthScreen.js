@@ -30,7 +30,6 @@ const AuthScreen = (props) => {
   const colorScheme = useColorScheme();
   const categoryList = { ...Category };
   // const sheme = Appearance.getColorScheme();
-  // console.log(Appearance);
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
   const userStatus = useSelector((state) => state.auth.isLogin);
@@ -38,15 +37,12 @@ const AuthScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
   useEffect(() => {
-    // console.log(÷);
-
     dispatch(configActions.getScheme(colorScheme));
   });
   const login = () => {
     dispatch(authActions.isLogin(true));
   };
   firebaseInit();
-  // console.log(scheme);
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {

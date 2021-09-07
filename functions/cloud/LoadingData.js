@@ -8,7 +8,6 @@ const loadingData = async (type) => {
     let obj = await data.val();
     if (obj != null) {
       list = Object.keys(obj).map((key) => obj[key]);
-      // console.log(list);
       return list;
     }
   });
