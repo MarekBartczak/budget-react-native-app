@@ -48,13 +48,13 @@ const MainScreen = (props) => {
               data={chartEl.data}
             />
           </View>
-          <View style={styles.component}>
+          {/* <View style={styles.component}>
             <MonthChart
               press={() => props.navigation.navigate("Date")}
               label={chartEl.label}
               data={chartEl.data}
             />
-          </View>
+          </View> */}
           <View style={styles.favoritePlace}>
             <FavoritePlaces
               onPress={() => props.navigation.navigate("FavoritePlace")}

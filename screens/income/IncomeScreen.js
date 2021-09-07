@@ -30,7 +30,7 @@ const IncomeScreen = (props) => {
       <View style={styles.component}>
         <AddNewIncomeComponent />
       </View>
-      <View style={styles.buttonComponent}>
+      <View style={styles.component}>
         <Button
           onPress={() => {}}
           text="Zapisz"

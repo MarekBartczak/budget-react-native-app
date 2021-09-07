@@ -50,13 +50,13 @@ const Chart = (props) => {
           withHorizontalLabels={false}
           withShadow={false}
           width={Dimensions.get("window").width * 0.9}
-          height={80}
+          height={180}
           chartConfig={{
             labelColor: () => Colors[scheme].primarySecond,
-            backgroundGradientFromOpacity: 0,
-            backgroundGradientToOpacity: 0,
-            // backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
-            // backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
+            // backgroundGradientFromOpacity: 0,
+            // backgroundGradientToOpacity: 0,
+            backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
+            backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
             backgroundGradientFrom: Colors[scheme].primaryThird,
             backgroundGradientTo: Colors[scheme].primaryThird,
             decimalPlaces: 2,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   valMinText: { fontSize: 10 },
   valMin: {
     left: 10,
-    top: 80 - 10,
+    top: 180 - 40,
     position: "absolute",
   },
 });

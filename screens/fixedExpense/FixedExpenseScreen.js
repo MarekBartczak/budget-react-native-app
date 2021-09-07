@@ -65,13 +65,13 @@ const FixedExpenseScreen = (props) => {
           </Text>
         )}
       </View>
-      <View style={styles.component}>
+      {/* <View style={styles.component}>
         <MonthChart
           press={() => props.navigation.navigate("FixedExpensesList")}
           label={chartEl.label}
           data={chartEl.data}
         />
-      </View>
+      </View> */}
       <View style={styles.buttonComponent}>
         <AddNewItem
           navigateTo={() =>
