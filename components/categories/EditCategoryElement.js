@@ -13,18 +13,32 @@ import { MaterialIcons } from "@expo/vector-icons";
 import * as itemActions from "../../store/actions/items";
 
 const EditCategoryElement = (props) => {
+  const userId = useSelector((state) => state.auth.userID);
+  const categoryId = useSelector((state) => state.item.categoryID);
   const dispatch = useDispatch();
   const scheme = useSelector((state) => state.config.scheme);
   const [editCategory, setEditCategory] = useState(props.element);
   const [editState, setEditState] = useState(false);
-
   const updateSubCategory = () => {
     dispatch(
-      itemActions.editCategory(props.mainCategory, props.element, editCategory)
+      itemActions.editCategory(
+        props.mainCategory,
+        props.element,
+        editCategory,
+        userId,
+        categoryId
+      )
     );
   };
   const deleteSubcategory = () => {
-    dispatch(itemActions.deleteSubcategory(props.mainCategory, props.element));
+    dispatch(
+      itemActions.deleteSubcategory(
+        props.mainCategory,
+        props.element,
+        userId,
+        categoryId
+      )
+    );
   };
 
   return (

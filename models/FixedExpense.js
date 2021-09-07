@@ -8,8 +8,8 @@ class FixedExpense {
     isPaid,
     cost,
     interval,
-    description,
-    bankAccountNumber
+    description
+    // bankAccountNumber
   ) {
     this.id = id;
     this.date = date;
@@ -20,7 +20,7 @@ class FixedExpense {
     this.cost = cost;
     this.interval = interval;
     this.description = description;
-    this.bankAccountNumber = bankAccountNumber;
+    // this.bankAccountNumber = bankAccountNumber;
   }
 }
 

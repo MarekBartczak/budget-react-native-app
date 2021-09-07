@@ -29,13 +29,9 @@ const Logout = (props) => {
       .signOut()
       .then(() => {
         clearStateAfterLogout();
-        console.log("logged out");
         // Sign-out successful.
       })
-      .catch((error) => {
-        // An error happened.
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
 
     dispatch(authActions.logout(false));
   };

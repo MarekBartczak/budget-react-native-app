@@ -18,7 +18,8 @@ import EditCategoryElement from "../../components/categories/EditCategoryElement
 import * as itemActions from "../../store/actions/items";
 const EdidCategoriesScreen = (props) => {
   const navigation = useNavigation();
-
+  const userId = useSelector((state) => state.auth.userID);
+  const categoryId = useSelector((state) => state.item.categoryID);
   const dispatch = useDispatch();
   const { title } = props.route.params;
 
@@ -32,7 +33,14 @@ const EdidCategoriesScreen = (props) => {
   );
   const subCategoriesList = category[categoryKey];
   const addNew = () => {
-    dispatch(itemActions.addNewSubCategory(categoryKey[0], newSubCategory));
+    dispatch(
+      itemActions.addNewSubCategory(
+        categoryKey[0],
+        newSubCategory,
+        userId,
+        categoryId
+      )
+    );
     navigation.goBack();
   };
   return (
@@ -57,6 +65,7 @@ const EdidCategoriesScreen = (props) => {
 
       <View style={{ height: Dimensions.get("window").height * 0.5 }}>
         <FlatList
+          style={{ paddingBottom: 100, marginBottom: 50, height: 400 }}
           data={subCategoriesList.list}
           keyExtractor={(itemData) => itemData}
           renderItem={(item) => (

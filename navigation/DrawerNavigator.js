@@ -100,7 +100,7 @@ const DrawerNavigator = (props) => {
     itemRef.on("value", async (data) => {
       let obj = await data.val();
       list = Object.values(obj);
-      // console.log(list);
+      dispatch(expenseActions.setCategoryId(Object.keys(obj)[0]));
       dispatch(expenseActions.loadingCategoriesFromDB(list[0]));
     });
   };
