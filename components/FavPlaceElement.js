@@ -43,7 +43,10 @@ const FavPlaceElement = (props) => {
       delayLongPress="500"
     >
       <View style={styles.favBtn}>
-        <Image style={styles.logo} source={{ url: props.favPlaceLogo }} />
+        <Image
+          style={{ ...styles.logo, ...{ borderColor: Colors[scheme].primary } }}
+          source={{ url: props.favPlaceLogo }}
+        />
         <Text
           style={{ ...styles.text, ...{ color: Colors[scheme].primarySecond } }}
         >
@@ -67,7 +70,7 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,
     shadowColor: "black",
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.7,
   },
   text: {
     width: "80%",
@@ -77,9 +80,8 @@ const styles = StyleSheet.create({
   logo: {
     height: "80%",
     width: "80%",
-    borderRadius: 10,
+    borderRadius: 3,
 
-    borderColor: Colors.light.accent,
     borderWidth: 1,
   },
 });

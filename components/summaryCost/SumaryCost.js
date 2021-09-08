@@ -55,11 +55,10 @@ const SumaryCost = (props) => {
         <Modal animationType="slide" transparent={true} visible={showModal}>
           <View
             style={{
-              marginTop: 80,
-              marginHorizontal: Dimensions.get("window").width / 6,
-              width: Dimensions.get("window").width / 1.5,
-              height: Dimensions.get("window").height,
-              backgroundColor: Colors[scheme].primaryThird,
+              marginTop: Dimensions.get("window").height / 2,
+              width: Dimensions.get("window").width,
+              height: Dimensions.get("window").height - 140,
+              backgroundColor: Colors[scheme].backGround,
             }}
           >
             <TouchableOpacity
@@ -67,14 +66,19 @@ const SumaryCost = (props) => {
               style={{
                 marginTop: -30,
                 height: 50,
-                backgroundColor: Colors[scheme].button,
+                backgroundColor: Colors[scheme].primary,
                 alignItems: "center",
                 justifyContent: "center",
-                borderRadius: 10,
+                borderRadius: 0,
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20,
               }}
             >
               <Text
-                style={{ color: Colors[scheme].primary, fontWeight: "bold" }}
+                style={{
+                  color: Colors[scheme].primarySecond,
+                  fontWeight: "bold",
+                }}
               >
                 Zamknij
               </Text>
@@ -94,14 +98,16 @@ const SumaryCost = (props) => {
                     setShowModal(false);
                   }}
                   style={{
-                    marginTop: 10,
-                    width: Dimensions.get("window").width / 1.5,
-                    backgroundColor: Colors[scheme].primaryThird,
+                    width: Dimensions.get("window").width,
+                    backgroundColor: Colors[scheme].backGround,
+                    borderBottomColor: Colors[scheme].primary,
+                    borderBottomWidth: 1,
                     shadowOffset: { height: 0, width: 0 },
                     shadowRadius: 7,
                     shadowColor: "black",
                     shadowOpacity: 0.5,
                     padding: 10,
+                    paddingTop: 20,
                   }}
                 >
                   <Text
@@ -141,10 +147,11 @@ export default SumaryCost;
 const styles = StyleSheet.create({
   summaryCost_light: {
     marginTop: 10,
-    backgroundColor: Colors.light.primaryThird,
-    width: Dimensions.get("window").width * 0.9,
+    // backgroundColor: Colors.light.primary,
+    borderBottomColor: Colors.light.primary,
+    width: Dimensions.get("window").width,
     height: 50,
-    borderRadius: 10,
+    borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
@@ -153,10 +160,13 @@ const styles = StyleSheet.create({
   },
   summaryCost_dark: {
     marginTop: 10,
-    backgroundColor: Colors.dark.primaryThird,
-    width: Dimensions.get("window").width * 0.9,
+    // backgroundColor: Colors.dark.primary,
+    borderBottomColor: Colors.dark.primary,
+    borderBottomWidth: 1,
+
+    width: Dimensions.get("window").width,
     height: 50,
-    borderRadius: 10,
+    borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",

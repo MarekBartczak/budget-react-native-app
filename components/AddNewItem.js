@@ -23,7 +23,10 @@ const AddNewItem = (props) => {
       <View
         style={{
           ...styles.screen,
-          ...{ backgroundColor: Colors[scheme].button },
+          ...{
+            borderColor: Colors[scheme].primary,
+            backgroundColor: Colors[scheme].primary,
+          },
         }}
       >
         <View
@@ -36,8 +39,8 @@ const AddNewItem = (props) => {
               style={{
                 ...styles.btnText,
                 ...{
-                  backgroundColor: Colors[scheme].button,
-                  color: Colors[scheme].primary,
+                  // backgroundColor: Colors[scheme].button,
+                  color: Colors[scheme].button,
                 },
               }}
             >
@@ -54,10 +57,11 @@ const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get("window").width * 0.5,
     height: 40,
-    borderRadius: 10,
+    borderRadius: 3,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
+    borderWidth: 1,
   },
 
   addBtn: {

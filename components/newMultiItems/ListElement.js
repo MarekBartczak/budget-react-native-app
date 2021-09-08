@@ -8,7 +8,12 @@ const ListElement = (props) => {
 
   return (
     <View style={styles.ListElement}>
-      <View style={styles.item}>
+      <View
+        style={{
+          ...styles.item,
+          ...{ borderBottomColor: Colors[scheme].primaryThird },
+        }}
+      >
         <View style={styles.textStyle}>
           <Text
             style={{
@@ -59,7 +64,6 @@ const styles = StyleSheet.create({
   textStyle: { flexDirection: "column" },
   item: {
     borderBottomWidth: 1,
-    borderBottomColor: "rgb(190,190,190)",
     width: "90%",
     flexDirection: "row",
     justifyContent: "space-between",

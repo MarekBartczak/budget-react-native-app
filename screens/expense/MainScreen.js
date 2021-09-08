@@ -82,6 +82,7 @@ const MainScreen = (props) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    // alignItems: "center",
   },
   favoritePlace: {
     alignItems: "center",
@@ -91,9 +92,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
   addNewItem: {
-    position: "absolute",
-    bottom: 40,
-    marginLeft: Dimensions.get("window").width * 0.2,
+    // position: "absolute",
+    bottom: 0,
+    // marginHorizontal: Dimensions.get("window").width * 0.4,
 
     alignItems: "center",
     shadowOffset: { height: 0, width: 0 },

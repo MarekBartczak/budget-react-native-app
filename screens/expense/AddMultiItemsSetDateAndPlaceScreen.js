@@ -81,7 +81,7 @@ const AddMultiItemsScreen = (props) => {
             <View
               style={{
                 ...styles.placeList,
-                ...{ backgroundColor: Colors[scheme].primaryThird },
+                ...{ borderColor: Colors[scheme].primaryThird },
               }}
             >
               <PlaceList
@@ -96,7 +96,7 @@ const AddMultiItemsScreen = (props) => {
           <View
             style={{
               ...styles.datePicker,
-              ...{ backgroundColor: Colors[scheme].primaryThird },
+              ...{ borderColor: Colors[scheme].primaryThird },
             }}
           >
             <DatePicker
@@ -139,24 +139,26 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 7,
     marginVertical: 10,
-    borderRadius: 10,
+    width: Dimensions.get("window").width,
+    borderBottomWidth: 1,
   },
   placeList: {
     marginTop: 10,
     height: Dimensions.get("window").height * 0.2,
-    width: "90%",
-    borderRadius: 10,
+    width: Dimensions.get("window").width,
+    // borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,
     shadowColor: "black",
     shadowOpacity: 0.2,
+    borderBottomWidth: 1,
   },
 
   receipt: {
     height: Dimensions.get("window").height * 0.5,
-    width: "100%",
+    width: Dimensions.get("window").width,
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",

@@ -20,7 +20,10 @@ const ApiElement = (props) => {
     <TouchableOpacity
       style={{
         ...styles.element,
-        ...{ backgroundColor: Colors[scheme].primaryThird },
+        ...{
+          borderColor: Colors[scheme].primaryThird,
+          backgroundColor: Colors[scheme].primary,
+        },
       }}
       onPress={() => {
         dispatch(favoritePlaceAction.editPlace(props.name, props.logo, userId));
@@ -47,9 +50,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 15,
-    borderRadius: 10,
     marginVertical: 10,
     overflow: "hidden",
+    // borderBottomWidth: 1,
   },
   name: {
     fontWeight: "bold",

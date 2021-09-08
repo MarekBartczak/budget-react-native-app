@@ -125,7 +125,7 @@ const DrawerNavigator = (props) => {
           initialRouteName="Home"
           drawerType="back"
           drawerStyle={{
-            backgroundColor: Colors[scheme].primary,
+            backgroundColor: Colors[scheme].backGround,
           }}
           drawerContentOptions={{
             activeTintColor: Colors[scheme].accent,

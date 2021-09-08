@@ -60,7 +60,7 @@ const PlaceList = (props) => {
         <TouchableOpacity
           style={{
             ...styles.btn,
-            ...{ backgroundColor: Colors[scheme].button },
+            ...{ backgroundColor: Colors[scheme].primaryThird },
           }}
           onPress={() => {
             setIsFavoritePlaceShow(false);
@@ -70,7 +70,7 @@ const PlaceList = (props) => {
             <Text
               style={{
                 fontWeight: setBtnColor(!isFavoritePlaceShow),
-                color: Colors[scheme].primaryThird,
+                color: Colors[scheme].button,
                 textAlign: "center",
                 paddingVertical: 3,
               }}
@@ -82,7 +82,7 @@ const PlaceList = (props) => {
         <TouchableOpacity
           style={{
             ...styles.btn,
-            ...{ backgroundColor: Colors[scheme].button },
+            ...{ backgroundColor: Colors[scheme].primaryThird },
           }}
           onPress={() => {
             setIsFavoritePlaceShow(true);
@@ -92,7 +92,7 @@ const PlaceList = (props) => {
             <Text
               style={{
                 fontWeight: setBtnColor(isFavoritePlaceShow),
-                color: Colors[scheme].primaryThird,
+                color: Colors[scheme].button,
                 textAlign: "center",
                 paddingVertical: 3,
               }}
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 100,
     marginBottom: 10,
-    borderRadius: 10,
+    borderRadius: 1,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,
     shadowColor: "black",

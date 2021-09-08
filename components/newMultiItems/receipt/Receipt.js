@@ -54,7 +54,7 @@ const Receipt = (props) => {
       keyboardVerticalOffset={30}
       style={{
         ...styles.receipt,
-        ...{ backgroundColor: Colors[scheme].primaryThird },
+        ...{ borderColor: Colors[scheme].primaryThird },
       }}
     >
       <View>
@@ -67,7 +67,12 @@ const Receipt = (props) => {
             }}
           >
             <View>
-              <View style={styles.place}>
+              <View
+                style={{
+                  ...styles.place,
+                  ...{ backgroundColor: Colors[scheme].primaryThird },
+                }}
+              >
                 <Text
                   style={{
                     ...styles.placeText,
@@ -80,14 +85,14 @@ const Receipt = (props) => {
                 <View
                   style={{
                     ...styles.editBtn,
-                    ...{ backgroundColor: Colors[scheme].button },
+                    ...{ backgroundColor: Colors[scheme].primary },
                   }}
                 >
                   <TouchableOpacity onPress={() => showModal(true)}>
                     <Feather
                       name="edit"
                       size={15}
-                      color={Colors[scheme].primaryThird}
+                      color={Colors[scheme].button}
                     />
                   </TouchableOpacity>
                   <Modal
@@ -99,30 +104,57 @@ const Receipt = (props) => {
                     <View
                       style={{
                         ...styles.modalView,
-                        ...{ backgroundColor: Colors[scheme].primary },
+                        ...{ backgroundColor: Colors[scheme].backGround },
                       }}
                     >
-                      <Input
+                      <TouchableOpacity onPress={() => showModal(!modal)}>
+                        <View
+                          style={{
+                            width: Dimensions.get("window").width / 2,
+                            borderColor: Colors[scheme].primaryThird,
+                            borderWidth: 1,
+                            padding: 10,
+                            paddingHorizontal: 30,
+                            borderRadius: 3,
+                            alignItems: "center",
+                          }}
+                        >
+                          <Text style={{ color: Colors[scheme].button }}>
+                            Zamknij
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                      <View
                         style={{
-                          ...styles.inputModal,
-                          ...{
-                            color: Colors[scheme].primarySecond,
-                            borderColor: Colors[scheme].primarySecond,
-                          },
+                          marginTop: 100,
+
+                          flexDirection: "row",
+                          justifyContent: "center",
+                          alignItems: "center",
                         }}
-                        value={props.place}
-                        placeholder="wpisz nowe miejsce"
-                        keyboardType={"default"}
-                        onChangeText={props.setPlace}
-                      />
-                      <View>
-                        <TouchableOpacity onPress={() => showModal(!modal)}>
-                          <Feather
-                            name="save"
-                            size={25}
-                            color={Colors[scheme].primarySecond}
-                          />
-                        </TouchableOpacity>
+                      >
+                        <Input
+                          style={{
+                            ...styles.inputModal,
+                            ...{
+                              color: Colors[scheme].primarySecond,
+                              borderColor: Colors[scheme].primaryThird,
+                            },
+                          }}
+                          value={props.place}
+                          placeholder="wpisz nowe miejsce"
+                          keyboardType={"default"}
+                          onChangeText={props.setPlace}
+                        />
+                        <View>
+                          <TouchableOpacity onPress={() => showModal(!modal)}>
+                            <Feather
+                              name="save"
+                              size={25}
+                              color={Colors[scheme].button}
+                            />
+                          </TouchableOpacity>
+                        </View>
                       </View>
                     </View>
                   </Modal>
@@ -171,7 +203,7 @@ const Receipt = (props) => {
                   <TouchableOpacity
                     style={{
                       ...styles.saveBtn,
-                      ...{ backgroundColor: Colors[scheme].button },
+                      ...{ backgroundColor: Colors[scheme].primaryThird },
                     }}
                     onPress={() => {
                       if (receiptItem.length > 0) {
@@ -190,14 +222,14 @@ const Receipt = (props) => {
                     <Feather
                       name="save"
                       size={24}
-                      color={Colors[scheme].primaryThird}
+                      color={Colors[scheme].button}
                     />
                   </TouchableOpacity>
 
                   <TouchableOpacity
                     style={{
                       ...styles.addBtn,
-                      ...{ backgroundColor: Colors[scheme].button },
+                      ...{ backgroundColor: Colors[scheme].primaryThird },
                     }}
                     onPress={() => {
                       if (GetSelectedPlace.length > 0) {
@@ -210,7 +242,7 @@ const Receipt = (props) => {
                     <MaterialIcons
                       name="playlist-add"
                       size={24}
-                      color={Colors[scheme].primaryThird}
+                      color={Colors[scheme].button}
                     />
                   </TouchableOpacity>
                 </View>
@@ -227,7 +259,7 @@ export default Receipt;
 
 const styles = StyleSheet.create({
   receipt: {
-    width: "90%",
+    width: "100%",
     height: "100%",
     borderRadius: 10,
     shadowOffset: { height: 0, width: 0 },
@@ -236,21 +268,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
   modalView: {
-    height: "100%",
-    flexDirection: "row",
+    height: Dimensions.get("window").height,
+    // flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
 
   editBtn: {
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: "black",
-    shadowOpacity: 0.5,
-    shadowRadius: 7,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowColor: "black",
+    // shadowOpacity: 0.5,
+    // shadowRadius: 7,
     marginLeft: 10,
   },
   inputModal: {
@@ -263,6 +295,9 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   place: {
+    paddingVertical: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -290,7 +325,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 7,
     padding: 5,
-    borderRadius: 10,
+    borderRadius: 1,
     width: Dimensions.get("window").width * 0.2,
     alignItems: "center",
   },
@@ -300,7 +335,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 7,
     padding: 5,
-    borderRadius: 10,
+    borderRadius: 1,
     width: Dimensions.get("window").width * 0.2,
     alignItems: "center",
   },

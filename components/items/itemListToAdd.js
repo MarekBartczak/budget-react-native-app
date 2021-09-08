@@ -27,7 +27,7 @@ const ItemListToAdd = (props) => {
             ...styles.list,
             ...{
               color: Colors[scheme].primary,
-              backgroundColor: Colors[scheme].primaryThird,
+              backgroundColor: Colors[scheme].primary,
             },
           }}
         >
@@ -63,7 +63,7 @@ export default ItemListToAdd;
 const styles = StyleSheet.create({
   list: {
     flexDirection: "row",
-    width: Dimensions.get("window").width * 0.7,
+    width: Dimensions.get("window").width * 0.9,
     padding: 5,
 
     marginVertical: 3,

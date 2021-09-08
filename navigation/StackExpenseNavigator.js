@@ -59,7 +59,7 @@ const StackExpenseNavigator = (props) => {
       screenOptions={{
         headerTintColor: Colors[scheme].primarySecond,
         headerStyle: {
-          backgroundColor: Colors[scheme].backGroundOne,
+          backgroundColor: Colors[scheme].backGround,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,

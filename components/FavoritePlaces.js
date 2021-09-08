@@ -45,7 +45,7 @@ const FavoritePlaces = (props) => {
     <View
       style={{
         ...styles.screen,
-        ...{ backgroundColor: Colors[scheme].primaryThird },
+        ...{ borderColor: Colors[scheme].primary },
       }}
     >
       <View style={styles.row}>
@@ -62,27 +62,27 @@ const FavoritePlaces = (props) => {
 
       <Modal
         animationType="slide"
-        transparent={false}
+        transparent={true}
         visible={showEdit}
         onRequestClose={() => setShowEdit(false)}
       >
         <View
           style={{
             ...styles.modalEdit,
-            ...{ backgroundColor: Colors[scheme].primary },
+            ...{ backgroundColor: Colors[scheme].backGround },
           }}
         >
           <TouchableOpacity onPress={() => setShowEdit(false)}>
             <View
               style={{
                 ...styles.closeModalBtn,
-                ...{ backgroundColor: Colors[scheme].button },
+                ...{ borderColor: Colors[scheme].primaryThird },
               }}
             >
               <Text
                 style={{
                   ...styles.closeModalText,
-                  ...{ color: Colors[scheme].primary },
+                  ...{ color: Colors[scheme].button },
                 }}
               >
                 Zamknij
@@ -94,7 +94,7 @@ const FavoritePlaces = (props) => {
                   ...styles.input,
                   ...{
                     color: Colors[scheme].primarySecond,
-                    borderColor: Colors[scheme].primarySecond,
+                    borderColor: Colors[scheme].primaryThird,
                   },
                 }}
                 value={favPlaceName}
@@ -122,11 +122,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: Dimensions.get("window").width * 0.9,
-    height: 200,
+    width: Dimensions.get("window").width,
+    height: 220,
     marginTop: 20,
     paddingTop: 10,
-    borderRadius: 10,
+    borderRadius: 3,
+    borderBottomWidth: 1,
   },
 
   icon: {
@@ -147,9 +148,10 @@ const styles = StyleSheet.create({
   },
 
   modalEdit: {
-    width: "100%",
-    height: "100%",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
     paddingTop: 100,
+    alignItems: "center",
   },
   input: {
     height: 40,
@@ -157,7 +159,7 @@ const styles = StyleSheet.create({
     width: "80%",
     alignItems: "center",
     justifyContent: "center",
-    borderBottomWidth: 3,
+    borderBottomWidth: 1,
     fontWeight: "bold",
     margin: "10%",
   },
@@ -167,17 +169,20 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   closeModalBtn: {
-    marginTop: 30,
+    // marginTop: 30,
+    width: Dimensions.get("window").width / 2,
+    alignItems: "center",
+    marginHorizontal: Dimensions.get("window").width / 4,
     justifyContent: "center",
     alignItems: "center",
-    width: Dimensions.get("window").width * 0.5,
-    height: 30,
-    marginHorizontal: Dimensions.get("window").width * 0.25,
-    borderRadius: 10,
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.5,
+    borderRadius: 3,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.5,
+    borderWidth: 1,
+    padding: 10,
+    paddingHorizontal: 30,
   },
   closeModalText: {
     fontWeight: "bold",

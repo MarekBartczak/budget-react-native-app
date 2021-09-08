@@ -92,29 +92,36 @@ const Chart = (props) => {
           withHorizontalLines={false}
           withVerticalLines={false}
           withHorizontalLabels={false}
-          withShadow={false}
+          withShadow={true}
           withInnerLines={false}
-          width={Dimensions.get("window").width * 0.9}
+          width={Dimensions.get("window").width}
           height={180}
           chartConfig={{
             labelColor: () => Colors[scheme].primarySecond,
-            // backgroundGradientFromOpacity: 0,
-            // backgroundGradientToOpacity: 0,
-            backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
-            backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
+            backgroundGradientFromOpacity: 0,
+            backgroundGradientToOpacity: 0,
+            // backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
+            // backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
             backgroundGradientFrom: Colors[scheme].primaryThird,
             backgroundGradientTo: Colors[scheme].primaryThird,
+            fillShadowGradient: Colors[scheme].button,
+            fillShadowGradientOpacity: 0.3,
             decimalPlaces: 2,
-            color: () => Colors[scheme].button,
+            color: () => Colors[scheme].primarySecond,
           }}
           bezier
-          style={styles.chart}
+          style={{
+            ...styles.chart,
+            ...{ borderColor: Colors[scheme].primary },
+          }}
         />
         <View style={styles.valMin}>
           <Text
             style={{
               ...styles.valMinText,
-              ...{ color: Colors[scheme].primarySecond },
+              ...{
+                color: Colors[scheme].primarySecond,
+              },
             }}
           >
             {data > 0
@@ -136,11 +143,13 @@ export default Chart;
 
 const styles = StyleSheet.create({
   chart: {
-    borderRadius: 16,
+    // borderRadius: 3,
+    borderBottomWidth: 1,
+
     padding: 0,
     justifyContent: "center",
     alignItems: "center",
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
   },
 
   valMax: {

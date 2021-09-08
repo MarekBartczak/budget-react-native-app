@@ -4,7 +4,7 @@ import firebase from "firebase";
 const createFavPlaceDefault = (userId) => {
   const favPlaceObject = {
     logo: "",
-    name: "",
+    name: "dodaj",
   };
   const ref = firebase
     .database()
