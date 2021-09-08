@@ -78,9 +78,10 @@ const SumaryCost = (props) => {
                 style={{
                   color: Colors[scheme].primarySecond,
                   fontWeight: "bold",
+                  fontFamily: "Kanit_600SemiBold",
                 }}
               >
-                Zamknij
+                ZAMKNIJ
               </Text>
             </TouchableOpacity>
             <FlatList
@@ -179,23 +180,27 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
+    fontFamily: "Kanit_600SemiBold",
   },
   textCost_dark: {
     color: Colors.dark.primarySecond,
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
+    fontFamily: "Kanit_600SemiBold",
   },
   textDate_light: {
     color: Colors.light.button,
     fontWeight: "bold",
     fontSize: 15,
     textAlign: "center",
+    fontFamily: "Kanit_600SemiBold",
   },
   textDate_dark: {
     color: Colors.dark.button,
     fontWeight: "bold",
     fontSize: 15,
     textAlign: "center",
+    fontFamily: "Kanit_600SemiBold",
   },
 });

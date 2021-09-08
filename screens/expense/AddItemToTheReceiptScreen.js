@@ -44,8 +44,8 @@ const AddItemToTheReceiptScreen = (props) => {
               width: Dimensions.get("window").width * 0.3,
               paddingVertical: 10,
               marginRight: 20,
-              backgroundColor: Colors[scheme].button,
-              borderRadius: 10,
+              backgroundColor: Colors[scheme].primaryThird,
+              borderRadius: 1,
               shadowOffset: { height: 0, width: 0 },
               shadowColor: "black",
               shadowOpacity: 0.5,
@@ -59,9 +59,16 @@ const AddItemToTheReceiptScreen = (props) => {
             <Ionicons
               name="arrow-forward-circle"
               size={34}
-              color={Colors[scheme].primaryThird}
+              color={Colors[scheme].button}
             />
-            <Text style={{ color: Colors[scheme].primaryThird }}>Dalej</Text>
+            <Text
+              style={{
+                color: Colors[scheme].button,
+                fontFamily: "Kanit_600SemiBold",
+              }}
+            >
+              DALEJ
+            </Text>
           </TouchableOpacity>
         ) : (
           <View>
@@ -73,7 +80,7 @@ const AddItemToTheReceiptScreen = (props) => {
                 paddingVertical: 10,
                 marginRight: 20,
                 backgroundColor: Colors[scheme].primaryThird,
-                borderRadius: 10,
+                borderRadius: 1,
                 // shadowOffset: { height: 0, width: 0 },
                 // shadowColor: "black",
                 // shadowOpacity: 0.5,
@@ -86,7 +93,14 @@ const AddItemToTheReceiptScreen = (props) => {
                 color={Colors[scheme].backGroundOne}
               />
 
-              <Text style={{ color: Colors[scheme].backGroundOne }}>Dalej</Text>
+              <Text
+                style={{
+                  color: Colors[scheme].backGroundOne,
+                  fontFamily: "Kanit_600SemiBold",
+                }}
+              >
+                DALEJ
+              </Text>
             </View>
           </View>
         )}

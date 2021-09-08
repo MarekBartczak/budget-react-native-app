@@ -10,7 +10,7 @@ import EditCategories from "../screens/expense/EditCategoriesScreen";
 import InputDataScreen from "../screens/expense/InputDataScreen";
 import Colors from "../constants/Colors";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import { TouchableOpacity, useColorScheme } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Logout from "../components/auth/logout/Logout";
 import React from "react";
@@ -29,7 +29,18 @@ const StackExpenseNavigator = (props) => {
 
   const toggleDrawer = (navigation) => {
     return {
-      headerTitle: "Wydatki",
+      headerTitle: () => (
+        <Text
+          style={{
+            fontFamily: "Kanit_600SemiBold",
+            fontSize: 20,
+            color: Colors[scheme].primarySecond,
+          }}
+        >
+          WYDATKI
+        </Text>
+      ),
+
       headerLeft: () => (
         <TouchableOpacity
           style={{
@@ -58,6 +69,7 @@ const StackExpenseNavigator = (props) => {
     <Stack.Navigator
       screenOptions={{
         headerTintColor: Colors[scheme].primarySecond,
+
         headerStyle: {
           backgroundColor: Colors[scheme].backGround,
           elevation: 0,

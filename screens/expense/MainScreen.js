@@ -70,7 +70,7 @@ const MainScreen = (props) => {
             <AddNewItem
               navigateTo={() => props.navigation.navigate("AddMultipleItem")}
               setPlace={() => dispatch(favoritePlaceAction.selectPlace(""))}
-              text={"Nowe Wydatki"}
+              text={"Nowe Wydatki".toUpperCase()}
             />
           </View>
         </View>

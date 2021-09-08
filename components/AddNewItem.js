@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontWeight: "bold",
+    fontFamily: "Kanit_600SemiBold",
   },
 });
 

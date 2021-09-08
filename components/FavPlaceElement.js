@@ -50,7 +50,7 @@ const FavPlaceElement = (props) => {
         <Text
           style={{ ...styles.text, ...{ color: Colors[scheme].primarySecond } }}
         >
-          {props.favPlaceName}
+          {props.favPlaceName.toUpperCase()}
         </Text>
       </View>
     </TouchableOpacity>
@@ -75,7 +75,9 @@ const styles = StyleSheet.create({
   text: {
     width: "80%",
     height: 20,
+    fontSize: 12,
     textAlign: "center",
+    fontFamily: "Kanit_400Regular",
   },
   logo: {
     height: "80%",

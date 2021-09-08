@@ -9,6 +9,13 @@ import RaportReducer from "./store/reducers/raport";
 import AuthScreen from "./components/auth/AuthScreen";
 import AuthReducer from "./store/reducers/auth";
 import Config from "./store/reducers/config";
+import AppLoading from "expo-app-loading";
+import {
+  useFonts,
+  Kanit_400Regular,
+  Kanit_600SemiBold,
+} from "@expo-google-fonts/kanit";
+
 // import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 
 const rootReducer = combineReducers({
@@ -24,14 +31,21 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 const App = () => {
   //
-
-  return (
-    <Provider store={store}>
-      {/* <AppearanceProvider> */}
-      <AuthScreen />
-      {/* </AppearanceProvider> */}
-    </Provider>
-  );
+  let [fontsLoaded] = useFonts({
+    Kanit_400Regular,
+    Kanit_600SemiBold,
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <Provider store={store}>
+        {/* <AppearanceProvider> */}
+        <AuthScreen />
+        {/* </AppearanceProvider> */}
+      </Provider>
+    );
+  }
 };
 
 export default App;
