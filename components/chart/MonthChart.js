@@ -49,7 +49,7 @@ const Chart = (props) => {
           withHorizontalLines={false}
           withVerticalLines={false}
           withHorizontalLabels={false}
-          withShadow={false}
+          with // shadow={false}
           width={Dimensions.get("window").width * 0.9}
           height={180}
           chartConfig={{

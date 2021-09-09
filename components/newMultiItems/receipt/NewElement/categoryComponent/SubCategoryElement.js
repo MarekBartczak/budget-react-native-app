@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.light.primaryThird,
     borderTopLeftRadius: 10,
     flexDirection: "row",
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: "black",
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowColor: "black",
+    // shadowOpacity: 0.2,
+    // shadowRadius: 4,
   },
 });

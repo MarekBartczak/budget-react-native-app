@@ -121,9 +121,9 @@ const styles = StyleSheet.create({
     width: 100,
     marginBottom: 10,
     borderRadius: 1,
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.2,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.2,
   },
 });

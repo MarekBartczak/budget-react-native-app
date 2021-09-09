@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
   summary: {
     paddingVertical: 10,
     marginBottom: 20,
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.5,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.5,
   },
   summaryTest: {
     marginRight: 20,

@@ -31,10 +31,10 @@ const MainScreen = (props) => {
           <View
             style={{
               marginBottom: 20,
-              shadowOffset: { height: 0, width: 0 },
-              shadowRadius: 7,
-              shadowColor: "black",
-              shadowOpacity: 0.2,
+              // shadowOffset: { height: 0, width: 0 },
+              // shadowRadius: 7,
+              // shadowColor: "black",
+              // shadowOpacity: 0.2,
             }}
           >
             <SummaryCost
@@ -86,10 +86,10 @@ const styles = StyleSheet.create({
   },
   favoritePlace: {
     alignItems: "center",
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.2,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.2,
   },
   addNewItem: {
     // position: "absolute",
@@ -97,19 +97,19 @@ const styles = StyleSheet.create({
     // marginHorizontal: Dimensions.get("window").width * 0.4,
 
     alignItems: "center",
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.5,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.5,
   },
   raport: {
     alignItems: "center",
   },
   component: {
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: "black",
-    shadowOpacity: 0.2,
-    shadowRadius: 7,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowColor: "black",
+    // shadowOpacity: 0.2,
+    // shadowRadius: 7,
   },
 });
 

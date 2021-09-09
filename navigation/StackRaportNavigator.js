@@ -31,7 +31,7 @@ const StackRaportNavigator = (props) => {
         headerStyle: {
           backgroundColor: Colors[scheme].backGroundOne,
           elevation: 0,
-          shadowOpacity: 0,
+          // shadowOpacity: 0,
           borderBottomWidth: 0,
         },
       }}

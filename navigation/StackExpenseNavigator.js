@@ -73,7 +73,7 @@ const StackExpenseNavigator = (props) => {
         headerStyle: {
           backgroundColor: Colors[scheme].backGround,
           elevation: 0,
-          shadowOpacity: 0,
+          // shadowOpacity: 0,
           borderBottomWidth: 0,
         },
       }}

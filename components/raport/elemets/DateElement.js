@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
   element: {
     margin: 5,
     padding: 5,
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.3,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.3,
 
     // borderRadius: 10,
   },

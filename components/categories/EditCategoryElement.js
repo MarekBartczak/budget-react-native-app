@@ -45,7 +45,7 @@ const EditCategoryElement = (props) => {
     <View
       style={{
         ...styles.element,
-        ...{ backgroundColor: Colors[scheme].primaryThird },
+        ...{ backgroundColor: Colors[scheme].primary },
       }}
     >
       {editState ? (
@@ -54,28 +54,32 @@ const EditCategoryElement = (props) => {
             value={editCategory}
             onChangeText={setEditCategory}
             style={{
-              backgroundColor: Colors[scheme].primary,
+              borderColor: Colors[scheme].button,
+              borderBottomWidth: 1,
               width: Dimensions.get("window").width * 0.5,
               color: Colors[scheme].primarySecond,
               padding: 5,
-              shadowOffset: { height: 0, width: 0 },
-              shadowRadius: 7,
-              shadowColor: "black",
-              shadowOpacity: 0.3,
             }}
           />
         </View>
       ) : (
         <View style={styles.textElement}>
-          <Text style={{ color: Colors[scheme].primarySecond }}>
-            {props.element}
+          <Text
+            style={{
+              color: Colors[scheme].primaryThird,
+              fontFamily: "Kanit_600SemiBold",
+            }}
+          >
+            {props.element.toUpperCase()}
           </Text>
         </View>
       )}
 
       {editState ? (
         <TouchableOpacity
-          style={{ marginRight: 20 }}
+          style={{
+            marginRight: 20,
+          }}
           onPress={() => {
             updateSubCategory();
 
@@ -86,7 +90,9 @@ const EditCategoryElement = (props) => {
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
-          style={{ marginRight: 20 }}
+          style={{
+            marginRight: 20,
+          }}
           onPress={() => {
             setEditState(true);
           }}
@@ -100,6 +106,7 @@ const EditCategoryElement = (props) => {
       )}
 
       <TouchableOpacity
+        style={{}}
         onPress={() => {
           deleteSubcategory();
         }}
@@ -124,10 +131,10 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 50,
     flexDirection: "row",
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.2,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.2,
     alignItems: "center",
   },
   textElement: {

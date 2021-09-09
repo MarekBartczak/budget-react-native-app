@@ -68,10 +68,10 @@ const styles = StyleSheet.create({
     padding: 5,
 
     marginVertical: 3,
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.2,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOpacity: 0.2,
 
     paddingLeft: 20,
   },

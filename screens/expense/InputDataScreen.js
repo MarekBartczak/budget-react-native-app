@@ -69,16 +69,16 @@ const InputData = (props) => {
       <View
         style={{
           ...styles.addToReceiptButton,
-          ...{ backgroundColor: Colors[scheme].button },
+          ...{ backgroundColor: Colors[scheme].primary },
         }}
       >
         <Text
           style={{
             ...styles.addToReceiptButtonText,
-            ...{ color: Colors[scheme].primary },
+            ...{ color: Colors[scheme].button },
           }}
         >
-          Dodaj do paragonu
+          {"Dodaj do paragonu".toUpperCase()}
         </Text>
       </View>
     );
@@ -100,29 +100,29 @@ const InputData = (props) => {
       <View
         style={{
           ...styles.category,
-          ...{ backgroundColor: Colors[scheme].button },
+          ...{ borderColor: Colors[scheme].primary },
         }}
       >
         <Text
           style={{
             ...styles.categoryText,
-            ...{ color: Colors[scheme].primary },
+            ...{ color: Colors[scheme].primarySecond, fontSize: 16 },
           }}
         >
-          {mainCategory}
+          {mainCategory.toUpperCase()}
         </Text>
-        {/* <MaterialCommunityIcons
-          name="slash-forward"
-          size={24}
-          color={Colors[scheme].primary}
-        /> */}
+
         <Text
           style={{
             ...styles.categoryText,
-            ...{ color: Colors[scheme].primary },
+            ...{
+              color: Colors[scheme].primarySecond,
+              fontSize: 12,
+              marginBottom: 5,
+            },
           }}
         >
-          {subCategory}
+          {subCategory.toUpperCase()}
         </Text>
       </View>
 
@@ -137,7 +137,7 @@ const InputData = (props) => {
           <View
             style={{
               ...styles.inputViewArea,
-              ...{ backgroundColor: Colors[scheme].primaryThird },
+              ...{ borderColor: Colors[scheme].primary },
             }}
           >
             <View style={styles.inputView}>
@@ -145,7 +145,11 @@ const InputData = (props) => {
               <Input
                 style={{
                   ...styles.input,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primarySecond,
+                    borderColor: Colors[scheme].button,
+                    paddingBottom: 10,
+                  },
                 }}
                 value={itemName}
                 placeholder={"Nazwa produktu"}
@@ -159,7 +163,11 @@ const InputData = (props) => {
               <Input
                 style={{
                   ...styles.input,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primarySecond,
+                    borderColor: Colors[scheme].button,
+                    paddingBottom: 10,
+                  },
                 }}
                 value={multiply}
                 placeholder={"ilość"}
@@ -173,7 +181,11 @@ const InputData = (props) => {
               <Input
                 style={{
                   ...styles.input,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primarySecond,
+                    borderColor: Colors[scheme].button,
+                    paddingBottom: 10,
+                  },
                 }}
                 value={cost}
                 placeholder={"Kwota"}
@@ -206,30 +218,34 @@ const styles = StyleSheet.create({
     marginTop: 40,
     width: Dimensions.get("window").width * 0.6,
     height: 50,
-    borderRadius: 10,
+    borderRadius: 3,
     justifyContent: "center",
     alignItems: "center",
   },
   addToReceiptButtonText: {
     fontSize: 15,
+    fontFamily: "Kanit_600SemiBold",
   },
 
   category: {
-    marginTop: 20,
-    width: Dimensions.get("window").width * 0.9,
-    height: 50,
-    borderRadius: 10,
+    marginTop: 10,
+    width: Dimensions.get("window").width,
+    borderBottomWidth: 1,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
   },
-  categoryText: { fontWeight: "bold", fontSize: 14 },
+  categoryText: {
+    fontWeight: "bold",
+    fontFamily: "Kanit_600SemiBold",
+  },
 
   inputViewArea: {
+    borderBottomWidth: 1,
     marginTop: 20,
     alignItems: "center",
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
     borderRadius: 10,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 7,
@@ -237,104 +253,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   inputView: {
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     paddingVertical: 20,
   },
   input: {
     marginTop: 20,
-    borderBottomWidth: 3,
+    borderBottomWidth: 1,
     width: Dimensions.get("window").width * 0.6,
     fontSize: 20,
   },
   validationView: {
     height: 50,
   },
-
-  // nameAndMultiplyTextView: {
-  //   marginTop: 40,
-  //   width: Dimensions.get("window").width * 0.9,
-  //   flexDirection: "row",
-  //   justifyContent: "space-between",
-  //   paddingHorizontal: 10,
-  //   // backgroundColor: Colors.accent,
-  //   borderTopLeftRadius: 10,
-  //   borderTopRightRadius: 10,
-  //   paddingTop: 3,
-  // },
-  // NameAndMultiply: {
-  //   flexDirection: "row",
-  //   width: Dimensions.get("window").width * 0.9,
-  //   borderBottomLeftRadius: 10,
-  //   borderBottomRightRadius: 10,
-  //   justifyContent: "space-between",
-  //   // backgroundColor: Colors.accent,
-  // },
-  // newElement: {
-  //   alignItems: "center",
-  //   width: Dimensions.get("window").width,
-  //   marginBottom: 20,
-  // },
-  // amountText: {
-  //   paddingHorizontal: 10,
-  // },
-  // amountInput: {
-  //   marginTop: 40,
-  //   borderRadius: 10,
-
-  //   width: Dimensions.get("window").width * 0.9,
-  //   // backgroundColor: Colors.accent,
-  // },
-
-  // inputs: {
-  //   alignItems: "center",
-  //   width: Dimensions.get("window").width * 0.9,
-  // },
-  // input: {
-  //   textAlign: "center",
-  //   height: 40,
-  //   fontSize: 20,
-  //   width: 200,
-  //   borderBottomWidth: 3,
-  //   backgroundColor: Colors.accent,
-  //   fontWeight: "bold",
-  //   margin: 5,
-  //   margin: 10,
-  //   color: "black",
-  //   borderColor: Colors.primary,
-  // },
-  // multiply: {
-  //   backgroundColor: Colors.accent,
-
-  //   textAlign: "center",
-  //   height: 40,
-  //   fontSize: 20,
-  //   width: 50,
-  //   borderBottomWidth: 3,
-  //   fontWeight: "bold",
-  //   margin: 5,
-  //   margin: 10,
-  //   color: "black",
-  //   borderColor: Colors.primary,
-  // },
-  // category: {
-  //   backgroundColor: Colors.accent,
-  //   width: Dimensions.get("window").width * 0.9,
-  //   borderRadius: 10,
-  //   height: 50,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // inner: {
-  //   overflow: "hidden",
-  //   height: 40,
-  //   width: Dimensions.get("window").width * 0.85,
-  //   borderWidth: 3,
-  //   borderColor: Colors.gradientBackground.third,
-  //   borderRadius: 10,
-
-  //   flexDirection: "row",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
 });

@@ -1,4 +1,4 @@
-import { StyleSheet, View, TextInput, useColorScheme } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const Input = (props) => {
         autoCorrect={false}
         enablesReturnKeyAutomatically={true}
         onChangeText={props.onChangeText}
-        placeholderTextColor={Colors[scheme].primarySecond}
+        placeholderTextColor={Colors[scheme].primary}
         {...props}
       />
     </View>

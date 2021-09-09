@@ -88,18 +88,18 @@ const FixedExpenseScreen = (props) => {
 const styles = StyleSheet.create({
   component: {
     marginBottom: 20,
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: "black",
-    shadowOpacity: 0.5,
-    shadowRadius: 7,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowColor: "black",
+    // shadowOpacity: 0.5,
+    // shadowRadius: 7,
   },
   buttonComponent: {
     position: "absolute",
     bottom: 40,
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: "black",
-    shadowOpacity: 0.5,
-    shadowRadius: 7,
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowColor: "black",
+    // shadowOpacity: 0.5,
+    // shadowRadius: 7,
   },
 });
 

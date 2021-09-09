@@ -43,18 +43,18 @@ const IncomeScreen = (props) => {
 const styles = StyleSheet.create({
   component: {
     marginBottom: 10,
-    shadowColor: "black",
-    shadowOffset: { height: 0, width: 0 },
-    shadowOpacity: 0.2,
-    shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowOpacity: 0.2,
+    // shadowRadius: 7,
   },
   buttonComponent: {
     position: "absolute",
     bottom: 20,
-    shadowColor: "black",
-    shadowOffset: { height: 0, width: 0 },
-    shadowOpacity: 0.2,
-    shadowRadius: 7,
+    // shadowColor: "black",
+    // shadowOffset: { height: 0, width: 0 },
+    // shadowOpacity: 0.2,
+    // shadowRadius: 7,
   },
 });
 

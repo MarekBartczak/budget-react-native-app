@@ -50,7 +50,7 @@ const EdidCategoriesScreen = (props) => {
           style={{
             ...styles.input,
             ...{
-              borderColor: Colors[scheme].button,
+              borderColor: Colors[scheme].primary,
               color: Colors[scheme].primarySecond,
             },
           }}
@@ -58,8 +58,16 @@ const EdidCategoriesScreen = (props) => {
           placeholder={"wpisz nową kategorię"}
           onChangeText={setNewSubCategory}
         />
-        <TouchableOpacity onPress={() => addNew()} style={{ marginLeft: 20 }}>
-          <Entypo name="add-to-list" size={34} color={Colors[scheme].button} />
+        <TouchableOpacity
+          onPress={() => addNew()}
+          style={{
+            marginLeft: 20,
+            backgroundColor: Colors[scheme].primary,
+            paddingVertical: 10,
+            paddingHorizontal: 15,
+          }}
+        >
+          <Entypo name="add-to-list" size={25} color={Colors[scheme].button} />
         </TouchableOpacity>
       </View>
 
@@ -92,7 +100,6 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 40,
     width: Dimensions.get("window").width * 0.6,
-    borderWidth: 1,
-    borderTopLeftRadius: 10,
+    borderBottomWidth: 1,
   },
 });

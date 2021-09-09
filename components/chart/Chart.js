@@ -95,7 +95,7 @@ const Chart = (props) => {
           withHorizontalLines={false}
           withHorizontalLabels={false}
           withDots={true}
-          withShadow={true}
+          with // shadow={true}
           withInnerLines={false}
           width={Dimensions.get("window").width}
           height={Dimensions.get("window").height * 0.3}
@@ -107,8 +107,8 @@ const Chart = (props) => {
             // backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
             backgroundGradientFrom: Colors[scheme].primaryThird,
             backgroundGradientTo: Colors[scheme].primaryThird,
-            fillShadowGradient: Colors[scheme].button,
-            fillShadowGradientOpacity: 0.3,
+            fillshadowGradient: Colors[scheme].button,
+            fillshadowGradientOpacity: 0.3,
             propsForDots: {
               r: "2",
               strokeWidth: "2",
