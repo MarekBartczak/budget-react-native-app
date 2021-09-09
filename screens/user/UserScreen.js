@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   family_dark: {
     fontSize: 15,
-    color: Colors.dark.primarySecond,
+    color: Colors.dark.primary,
   },
   userNameView_light: {
     backgroundColor: Colors.light.primaryThird,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   userNameView_dark: {
-    backgroundColor: Colors.dark.primaryThird,
+    backgroundColor: Colors.dark.primary,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: "90%",
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   userEmailView_dark: {
-    backgroundColor: Colors.dark.primaryThird,
+    backgroundColor: Colors.dark.primary,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: "90%",

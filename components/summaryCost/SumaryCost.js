@@ -10,7 +10,6 @@ import {
 import React, { useState, useEffect } from "react";
 import Colors from "../../constants/Colors";
 import { useDispatch, useSelector } from "react-redux";
-import { Ionicons } from "@expo/vector-icons";
 import months from "../../data/months";
 import * as itemsActions from "../../store/actions/items";
 
