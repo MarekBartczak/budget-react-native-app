@@ -34,6 +34,7 @@ export default (state = initialState, action) => {
         userPhotoUrl: userData.photoURL,
       };
     case FETCHED_DATA:
+      console.log("ok");
       return { ...state, fetchedData: action.status };
   }
   return state;

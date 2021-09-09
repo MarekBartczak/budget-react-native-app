@@ -17,10 +17,10 @@ const PlaceList = (props) => {
 
   const setBtnColor = (state) => {
     if (state === false) {
-      return null;
+      return "Kanit_400Regular";
     }
     if (state === true) {
-      return "bold";
+      return "Kanit_600SemiBold";
     }
   };
 
@@ -60,7 +60,7 @@ const PlaceList = (props) => {
         <TouchableOpacity
           style={{
             ...styles.btn,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{ backgroundColor: Colors[scheme].primary },
           }}
           onPress={() => {
             setIsFavoritePlaceShow(false);
@@ -69,20 +69,21 @@ const PlaceList = (props) => {
           <View>
             <Text
               style={{
-                fontWeight: setBtnColor(!isFavoritePlaceShow),
+                fontFamily: setBtnColor(!isFavoritePlaceShow),
                 color: Colors[scheme].button,
                 textAlign: "center",
                 paddingVertical: 3,
+                // fontFamily: "Kanit_600SemiBold",
               }}
             >
-              Zapisane
+              {"Zapisane".toUpperCase()}
             </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
             ...styles.btn,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{ backgroundColor: Colors[scheme].primary },
           }}
           onPress={() => {
             setIsFavoritePlaceShow(true);
@@ -91,13 +92,14 @@ const PlaceList = (props) => {
           <View>
             <Text
               style={{
-                fontWeight: setBtnColor(isFavoritePlaceShow),
+                fontFamily: setBtnColor(isFavoritePlaceShow),
                 color: Colors[scheme].button,
                 textAlign: "center",
                 paddingVertical: 3,
+                // fontFamily: "Kanit_600SemiBold",
               }}
             >
-              Ulubione
+              {"Ulubione".toUpperCase()}
             </Text>
           </View>
         </TouchableOpacity>

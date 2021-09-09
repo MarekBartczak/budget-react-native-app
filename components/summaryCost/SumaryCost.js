@@ -161,6 +161,7 @@ const styles = StyleSheet.create({
   },
   summaryCost_dark: {
     marginTop: 10,
+
     // backgroundColor: Colors.dark.primary,
     borderBottomColor: Colors.dark.primary,
     borderBottomWidth: 1,
@@ -190,6 +191,7 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit_600SemiBold",
   },
   textDate_light: {
+    marginBottom: 10,
     color: Colors.light.button,
     fontWeight: "bold",
     fontSize: 15,
@@ -197,6 +199,7 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit_600SemiBold",
   },
   textDate_dark: {
+    marginBottom: 10,
     color: Colors.dark.button,
     fontWeight: "bold",
     fontSize: 15,

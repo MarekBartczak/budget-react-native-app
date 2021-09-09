@@ -55,8 +55,8 @@ const AddNewItem = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    width: Dimensions.get("window").width * 0.5,
-    height: 40,
+    width: Dimensions.get("screen").width * 0.5,
+    height: Dimensions.get("screen").height * 0.05,
     borderRadius: 3,
     justifyContent: "center",
     alignItems: "center",
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   btnText: {
-    fontWeight: "bold",
+    fontSize: 15,
     fontFamily: "Kanit_600SemiBold",
   },
 });

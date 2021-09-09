@@ -22,7 +22,7 @@ import * as favoritePlaceActions from "../store/actions/favoritePlace";
 import * as fixedExpenseActions from "../store/actions/fixedExpense";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
-// import * as authActions from "../store/actions/auth";
+import * as authActions from "../store/actions/auth";
 import firebase from "firebase";
 
 import {
@@ -113,8 +113,8 @@ const DrawerNavigator = (props) => {
       await loadingData("fixedExpense");
     };
     fetchData();
-    // if (!fetchedData) {
-    //   dispatch(authActions.fetchData(true));
+    // if () {
+    // dispatch(authActions.fetchData(true));
     // }
   }, [status]);
 

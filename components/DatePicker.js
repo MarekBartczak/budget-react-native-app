@@ -24,7 +24,7 @@ const DatePicker = (props) => {
         mode={"date"}
         is24Hour={true}
         display="spinner"
-        textColor={Colors[scheme].primarySecond}
+        textColor={Colors[scheme].button}
         onChange={props.onChange}
       />
     </View>

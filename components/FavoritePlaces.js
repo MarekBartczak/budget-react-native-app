@@ -123,17 +123,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width,
-    height: 220,
+    height: Dimensions.get("window").height * 0.3,
     marginTop: 20,
     paddingTop: 10,
     borderRadius: 3,
     borderBottomWidth: 1,
   },
 
-  icon: {
-    height: "40%",
-    width: "30%",
-  },
   row: {
     flexDirection: "row",
     justifyContent: "space-around",

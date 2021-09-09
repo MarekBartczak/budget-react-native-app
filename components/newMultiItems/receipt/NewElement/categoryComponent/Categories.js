@@ -2,12 +2,14 @@ import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React, { useState, useEffect } from "react";
 import Colors from "../../../../../constants/Colors";
 import MainCategoryElement from "./MainCategoryElement";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+// import {
+//   Entypo,
+//   Feather,
+//   FontAwesome,
+//   FontAwesome5,
+//   MaterialCommunityIcons,
+//   MaterialIcons,
+// } from "@expo/vector-icons";
 import SubCategoryList from "./SubCategoryList";
 import ExternalComponent from "../../../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { useHeaderHeight } from "@react-navigation/stack";
@@ -22,6 +24,7 @@ const Categories = (props) => {
     (el) => categoriesList[el].name
   );
   let iconSize = 32;
+
   return (
     <ExternalComponent style={styles.screen}>
       <View style={styles.external}>
@@ -35,99 +38,53 @@ const Categories = (props) => {
               }}
             >
               <MainCategoryElement
-                selected={Colors.selected}
                 title={mainCategoryList[0]}
-                icon={
-                  <FontAwesome
-                    name="automobile"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"automobile"}
+                iconSize={iconSize}
               />
 
               <MainCategoryElement
+                iconSize={iconSize}
                 title={mainCategoryList[3]}
-                icon={
-                  <MaterialCommunityIcons
-                    name="food-variant"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"food-variant"}
               />
+
               <MainCategoryElement
+                iconSize={iconSize}
                 title={mainCategoryList[4]}
-                icon={
-                  <FontAwesome5
-                    name="pump-soap"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"pump-soap"}
               />
               <MainCategoryElement
+                iconSize={iconSize}
                 title={mainCategoryList[8]}
-                icon={
-                  <MaterialIcons
-                    name="home-repair-service"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"home-repair-service"}
               />
 
               <MainCategoryElement
-                selected={null}
+                iconSize={iconSize}
                 title={mainCategoryList[5]}
-                icon={
-                  <Entypo
-                    name="home"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"home"}
               />
               <MainCategoryElement
+                iconSize={iconSize}
                 title={mainCategoryList[6]}
-                icon={
-                  <MaterialIcons
-                    name="computer"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"computer"}
               />
 
               <MainCategoryElement
+                iconSize={iconSize}
                 title={mainCategoryList[1]}
-                icon={
-                  <FontAwesome5
-                    name="redhat"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"redhat"}
               />
               <MainCategoryElement
+                iconSize={iconSize}
                 title={mainCategoryList[7]}
-                icon={
-                  <Feather
-                    name="pen-tool"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"pen-tool"}
               />
               <MainCategoryElement
+                iconSize={iconSize}
                 title={mainCategoryList[2]}
-                icon={
-                  <MaterialIcons
-                    name="family-restroom"
-                    size={iconSize}
-                    color={Colors[scheme].primarySecond}
-                  />
-                }
+                icon={"family-restroom"}
               />
             </View>
           </View>

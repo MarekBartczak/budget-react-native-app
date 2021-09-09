@@ -119,8 +119,13 @@ const Receipt = (props) => {
                             alignItems: "center",
                           }}
                         >
-                          <Text style={{ color: Colors[scheme].button }}>
-                            Zamknij
+                          <Text
+                            style={{
+                              color: Colors[scheme].button,
+                              fontFamily: "Kanit_600SemiBold",
+                            }}
+                          >
+                            {"Zamknij".toUpperCase()}
                           </Text>
                         </View>
                       </TouchableOpacity>
@@ -203,7 +208,7 @@ const Receipt = (props) => {
                   <TouchableOpacity
                     style={{
                       ...styles.saveBtn,
-                      ...{ backgroundColor: Colors[scheme].primaryThird },
+                      ...{ backgroundColor: Colors[scheme].primary },
                     }}
                     onPress={() => {
                       if (receiptItem.length > 0) {
@@ -229,7 +234,7 @@ const Receipt = (props) => {
                   <TouchableOpacity
                     style={{
                       ...styles.addBtn,
-                      ...{ backgroundColor: Colors[scheme].primaryThird },
+                      ...{ backgroundColor: Colors[scheme].primary },
                     }}
                     onPress={() => {
                       if (GetSelectedPlace.length > 0) {

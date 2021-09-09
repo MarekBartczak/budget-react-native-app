@@ -1,4 +1,4 @@
-import { LineChart } from "react-native-chart-kit";
+import { LineChart, BarChart } from "react-native-chart-kit";
 import React, { useEffect } from "react";
 import {
   StyleSheet,
@@ -53,12 +53,13 @@ const Chart = (props) => {
         .filter((el) => el !== undefined),
     };
   }
-  let label = props.label;
-  let data = props.label;
+  let label = ["0"];
+  let data = [0];
   if (filteredData !== undefined) {
     label = filteredData.label.map((el) => el.slice(8));
     data = filteredData.data;
   }
+
   return (
     <View style={styles.chartView}>
       <TouchableOpacity onPress={props.press}>
@@ -89,13 +90,15 @@ const Chart = (props) => {
             ],
           }}
           // verticalLabelRotation={-90}
-          withHorizontalLines={false}
           withVerticalLines={false}
+          withVerticalLabels={true}
+          withHorizontalLines={false}
           withHorizontalLabels={false}
+          withDots={true}
           withShadow={true}
           withInnerLines={false}
           width={Dimensions.get("window").width}
-          height={180}
+          height={Dimensions.get("window").height * 0.3}
           chartConfig={{
             labelColor: () => Colors[scheme].primarySecond,
             backgroundGradientFromOpacity: 0,
@@ -106,14 +109,20 @@ const Chart = (props) => {
             backgroundGradientTo: Colors[scheme].primaryThird,
             fillShadowGradient: Colors[scheme].button,
             fillShadowGradientOpacity: 0.3,
-            decimalPlaces: 2,
+            propsForDots: {
+              r: "2",
+              strokeWidth: "2",
+              stroke: Colors[scheme].button,
+            },
+
+            decimalPlaces: 0,
             color: () => Colors[scheme].primarySecond,
           }}
-          bezier
           style={{
             ...styles.chart,
             ...{ borderColor: Colors[scheme].primary },
           }}
+          bezier
         />
         <View style={styles.valMin}>
           <Text
@@ -146,7 +155,10 @@ const styles = StyleSheet.create({
     // borderRadius: 3,
     borderBottomWidth: 1,
 
-    padding: 0,
+    // padding: 0,
+    // paddingRight: 60,
+    paddingTop: 0,
+
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width,
@@ -155,14 +167,14 @@ const styles = StyleSheet.create({
   valMax: {
     position: "absolute",
     left: 10,
-    top: 10,
+    top: -10,
     zIndex: 1,
   },
   valMaxText: { fontSize: 10 },
   valMinText: { fontSize: 10 },
   valMin: {
     left: 10,
-    top: 180 - 40,
+    top: Dimensions.get("window").height * 0.3 - 50,
     position: "absolute",
   },
 });

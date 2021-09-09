@@ -44,7 +44,7 @@ const AddItemToTheReceiptScreen = (props) => {
               width: Dimensions.get("window").width * 0.3,
               paddingVertical: 10,
               marginRight: 20,
-              backgroundColor: Colors[scheme].primaryThird,
+              backgroundColor: Colors[scheme].primary,
               borderRadius: 1,
               shadowOffset: { height: 0, width: 0 },
               shadowColor: "black",
@@ -56,11 +56,6 @@ const AddItemToTheReceiptScreen = (props) => {
               navigateToInputData();
             }}
           >
-            <Ionicons
-              name="arrow-forward-circle"
-              size={34}
-              color={Colors[scheme].button}
-            />
             <Text
               style={{
                 color: Colors[scheme].button,
@@ -79,7 +74,7 @@ const AddItemToTheReceiptScreen = (props) => {
                 width: Dimensions.get("window").width * 0.3,
                 paddingVertical: 10,
                 marginRight: 20,
-                backgroundColor: Colors[scheme].primaryThird,
+                backgroundColor: Colors[scheme].primary,
                 borderRadius: 1,
                 // shadowOffset: { height: 0, width: 0 },
                 // shadowColor: "black",
@@ -87,15 +82,9 @@ const AddItemToTheReceiptScreen = (props) => {
                 // shadowRadius: 7,
               }}
             >
-              <Ionicons
-                name="arrow-forward-circle"
-                size={34}
-                color={Colors[scheme].backGroundOne}
-              />
-
               <Text
                 style={{
-                  color: Colors[scheme].backGroundOne,
+                  color: Colors[scheme].primaryThird,
                   fontFamily: "Kanit_600SemiBold",
                 }}
               >

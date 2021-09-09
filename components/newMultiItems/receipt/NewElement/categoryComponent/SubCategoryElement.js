@@ -10,6 +10,7 @@ import Colors from "../../../../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import * as itemActions from "../../../../../store/actions/items";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 const SubCategoryElement = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -22,41 +23,35 @@ const SubCategoryElement = (props) => {
     >
       <View>
         <View
-          style={
-            selectedSubCategory === props.item
-              ? {
-                  ...styles.subCategoryElement,
-                  ...{ backgroundColor: Colors[scheme].button },
-                }
-              : {
-                  ...styles.subCategoryElement,
-                  ...{ backgroundColor: Colors[scheme].primaryThird },
-                }
-          }
+          style={{
+            ...styles.subCategoryElement,
+            ...{ backgroundColor: Colors[scheme].primary },
+          }}
         >
-          <FontAwesome5
-            name="dot-circle"
+          <AntDesign
+            name="doubleright"
             size={24}
             color={
               selectedSubCategory === props.item
-                ? Colors[scheme].primaryThird
-                : Colors[scheme].primarySecond
+                ? Colors[scheme].button
+                : Colors[scheme].primary
             }
           />
+
           <Text
             style={
               selectedSubCategory === props.item
                 ? {
                     ...styles.subCategoryText,
-                    ...{ color: Colors[scheme].primaryThird },
+                    ...{ color: Colors[scheme].button },
                   }
                 : {
                     ...styles.subCategoryText,
-                    ...{ color: Colors[scheme].primarySecond },
+                    ...{ color: Colors[scheme].primaryThird },
                   }
             }
           >
-            {props.item}
+            {props.item.toUpperCase()}
           </Text>
         </View>
       </View>
@@ -68,21 +63,14 @@ export default SubCategoryElement;
 
 const styles = StyleSheet.create({
   subCategoryText: {
+    fontFamily: "Kanit_400Regular",
     marginLeft: 10,
     marginTop: 5,
     marginBottom: 5,
-    fontSize: 10,
+    fontSize: 12,
 
     color: Colors.light.primarySecond,
   },
-  // subCategoryTextSelected: {
-  //   marginLeft: 10,
-  //   marginTop: 5,
-  //   marginBottom: 5,
-  //   fontSize: 10,
-
-  //   color: Colors.light.primaryThird,
-  // },
   subCategoryElement: {
     margin: 5,
     padding: 5,

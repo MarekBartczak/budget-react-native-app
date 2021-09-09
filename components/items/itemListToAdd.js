@@ -26,8 +26,8 @@ const ItemListToAdd = (props) => {
           style={{
             ...styles.list,
             ...{
-              color: Colors[scheme].primary,
-              backgroundColor: Colors[scheme].primary,
+              borderColor: Colors[scheme].primary,
+              borderBottomWidth: 1,
             },
           }}
         >
@@ -47,10 +47,11 @@ const ItemListToAdd = (props) => {
               ...{
                 fontWeight: selected.fontWeight,
                 color: Colors[scheme].primarySecond,
+                fontFamily: "Kanit_400Regular",
               },
             }}
           >
-            {props.list}
+            {props.list.toUpperCase()}
           </Text>
         </View>
       </TouchableOpacity>

@@ -11,6 +11,14 @@ import Colors from "../../../../../constants/Colors";
 import * as itemActions from "../../../../../store/actions/items";
 import { useNavigation } from "@react-navigation/native";
 
+import {
+  Entypo,
+  Feather,
+  FontAwesome,
+  FontAwesome5,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 const MainCategoryElement = (props) => {
   const navigation = useNavigation();
 
@@ -24,6 +32,46 @@ const MainCategoryElement = (props) => {
     } else {
       return Colors[scheme].primaryThird;
     }
+  };
+
+  const iconsObj = {
+    automobile: (
+      <FontAwesome name="automobile" size={props.iconSize} color={getColor()} />
+    ),
+    "food-variant": (
+      <MaterialCommunityIcons
+        name="food-variant"
+        size={props.iconSize}
+        color={getColor()}
+      />
+    ),
+    "pump-soap": (
+      <FontAwesome5 name="pump-soap" size={props.iconSize} color={getColor()} />
+    ),
+    "home-repair-service": (
+      <MaterialIcons
+        name="home-repair-service"
+        size={props.iconSize}
+        color={getColor()}
+      />
+    ),
+    home: <Entypo name="home" size={props.iconSize} color={getColor()} />,
+    computer: (
+      <MaterialIcons name="computer" size={props.iconSize} color={getColor()} />
+    ),
+    redhat: (
+      <FontAwesome5 name="redhat" size={props.iconSize} color={getColor()} />
+    ),
+    "pen-tool": (
+      <Feather name="pen-tool" size={props.iconSize} color={getColor()} />
+    ),
+    "family-restroom": (
+      <MaterialIcons
+        name="family-restroom"
+        size={props.iconSize}
+        color={getColor()}
+      />
+    ),
   };
 
   return (
@@ -41,7 +89,7 @@ const MainCategoryElement = (props) => {
       <View
         style={{
           ...styles.mainCategoryElement,
-          ...{ backgroundColor: getColor() },
+          ...{ backgroundColor: Colors[scheme].primary },
         }}
       >
         <View
@@ -51,14 +99,14 @@ const MainCategoryElement = (props) => {
             alignItems: "center",
           }}
         >
-          <View style={styles.icon}>{props.icon}</View>
+          <View style={styles.icon}>{iconsObj[props.icon]}</View>
           <Text
             style={{
               ...styles.title,
-              ...{ color: Colors[scheme].primarySecond },
+              ...{ color: getColor() },
             }}
           >
-            {props.title}
+            {props.title.toUpperCase()}
           </Text>
         </View>
       </View>
@@ -84,6 +132,7 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
   },
   title: {
+    fontFamily: "Kanit_400Regular",
     textAlign: "center",
     fontSize: 10,
     maxWidth: 100,
