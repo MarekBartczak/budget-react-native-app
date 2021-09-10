@@ -5,10 +5,9 @@ const createItem = (place, date, item) => {
     item.id,
     date,
     place,
-    item.category,
-    item.name,
-    item.cost,
-    item.multiply
+    item.mainCategory,
+    item.subCategory,
+    item.cost
   );
 };
 

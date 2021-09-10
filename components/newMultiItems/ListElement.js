@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useSelector } from "react-redux";
 import Colors from "../../constants/Colors";
@@ -17,19 +17,19 @@ const ListElement = (props) => {
         <View style={styles.textStyle}>
           <Text
             style={{
-              ...styles.itemName,
-              ...{ color: Colors[scheme].primarySecond },
+              color: Colors[scheme].primarySecond,
+              fontFamily: "Kanit_600SemiBold",
             }}
           >
-            {props.itemName}{" "}
+            {props.mainCategory.toUpperCase()}{" "}
             <Text
               style={{
-                ...styles.multiply,
-                ...{ color: Colors[scheme].primarySecond },
+                color: Colors[scheme].primarySecond,
+                fontFamily: "Kanit_400Regular",
               }}
             >
               {" "}
-              [x{props.multiply}]
+              {props.subCategory.toUpperCase()}
             </Text>
           </Text>
           <Text
@@ -42,7 +42,7 @@ const ListElement = (props) => {
           </Text>
         </View>
         <Text style={{ color: Colors[scheme].primarySecond }}>
-          {(props.cost * props.multiply).toFixed(2)}zł
+          {Number(props.cost).toFixed(2)}zł
         </Text>
       </View>
     </View>
@@ -50,9 +50,6 @@ const ListElement = (props) => {
 };
 
 const styles = StyleSheet.create({
-  multiply: {
-    fontWeight: "normal",
-  },
   ListElement: {
     width: "100%",
     justifyContent: "center",
@@ -69,9 +66,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 5,
     marginVertical: 3,
-  },
-  itemName: {
-    fontWeight: "bold",
   },
 });
 

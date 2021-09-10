@@ -15,7 +15,7 @@ const details = (props) => {
       >
         <View style={{ ...styles.info }}>
           <Text style={{ color: Colors[scheme].primarySecond }}>
-            {props.name} [x{props.multiply}]
+            {props.subCategory}
           </Text>
           <Text
             style={{
@@ -24,14 +24,6 @@ const details = (props) => {
             }}
           >
             {props.cost}zł{" "}
-            <Text
-              style={{
-                fontWeight: "normal",
-                color: Colors[scheme].primarySecond,
-              }}
-            >
-              [{props.cost * props.multiply}zł]
-            </Text>
           </Text>
         </View>
       </View>

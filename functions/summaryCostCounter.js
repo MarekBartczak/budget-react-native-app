@@ -6,9 +6,7 @@ const filteredCost = (total, sum) => total + sum;
 
 const summaryCostCounter = (list) => {
   if (list.length > 0) {
-    const costList = list.map(
-      (el) => el.cost * (isNaN(el.multiply) ? 1 : el.multiply)
-    );
+    const costList = list.map((el) => el.cost);
     return costList.reduce(filteredCost).toFixed(2);
   } else {
     return "0";

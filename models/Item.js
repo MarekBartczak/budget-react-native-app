@@ -1,12 +1,11 @@
 class Item {
-  constructor(id, date, place, category, name, cost, multiply) {
+  constructor(id, date, place, mainCategory, subCategory, cost) {
     this.id = id;
     this.date = date;
     this.place = place;
-    this.category = category;
-    this.name = name;
+    this.mainCategory = mainCategory;
+    this.subCategory = subCategory;
     this.cost = cost;
-    this.multiply = multiply;
   }
 }
 

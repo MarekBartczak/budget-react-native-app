@@ -25,8 +25,6 @@ const InputData = (props) => {
   const navigation = useNavigation();
 
   const [cost, setCost] = useState("");
-  const [multiply, setMultiply] = useState("");
-  const [itemName, setItemName] = useState("");
   const mainCategory = useSelector((state) => state.item.category.main);
   const subCategory = useSelector((state) => state.item.category.sub);
 
@@ -37,27 +35,19 @@ const InputData = (props) => {
   };
 
   const checkFilledForm = () => {
-    if (
-      cost != "" &&
-      multiply != "" &&
-      itemName != "" &&
-      numberInputValidation(cost)
-    ) {
+    if (cost != "" && numberInputValidation(cost)) {
       return true;
     }
   };
   const clearState = () => {
     setCost("");
-    setItemName("");
-    setMultiply("");
   };
   addToReceipt = () => {
     const itemObj = new MultiItem(
       uuid.v4(),
+      mainCategory,
       subCategory,
-      itemName,
-      Number(switchComaToDot(cost)),
-      multiply
+      Number(switchComaToDot(cost))
     );
     dispatch(itemActions.addItemToTheReceipt(itemObj));
     clearState();
@@ -141,43 +131,6 @@ const InputData = (props) => {
             }}
           >
             <View style={styles.inputView}>
-              {/* <Text>Nazwa</Text> */}
-              <Input
-                style={{
-                  ...styles.input,
-                  ...{
-                    color: Colors[scheme].primarySecond,
-                    borderColor: Colors[scheme].button,
-                    paddingBottom: 10,
-                  },
-                }}
-                value={itemName}
-                placeholder={"Nazwa produktu"}
-                keyboardType={"default"}
-                onChangeText={setItemName}
-              />
-            </View>
-
-            <View style={styles.inputView}>
-              {/* <Text>Ilość</Text> */}
-              <Input
-                style={{
-                  ...styles.input,
-                  ...{
-                    color: Colors[scheme].primarySecond,
-                    borderColor: Colors[scheme].button,
-                    paddingBottom: 10,
-                  },
-                }}
-                value={multiply}
-                placeholder={"ilość"}
-                keyboardType={"numeric"}
-                onChangeText={setMultiply}
-              />
-            </View>
-
-            <View style={styles.inputView}>
-              {/* <Text>Kwota</Text> */}
               <Input
                 style={{
                   ...styles.input,

@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  Dimensions,
+} from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
@@ -9,7 +16,7 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 const DetailsScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
-  const { date, place, category, name, cost, id, multiply } =
+  const { date, place, mainCategory, subCategory, cost, id } =
     props.route.params;
   const userId = useSelector((state) => state.auth.userID);
 
@@ -25,23 +32,30 @@ const DetailsScreen = (props) => {
         <View
           style={{
             ...styles.dateView,
-            ...{ backgroundColor: Colors[scheme].button },
+            ...{ borderColor: Colors[scheme].primary },
           }}
         >
-          <View style={styles.trash}></View>
           <TouchableOpacity
             onPress={() =>
               props.navigation.navigate("Date", { selectedDate: date })
             }
           >
             <Text
-              style={{ ...styles.date, ...{ color: Colors[scheme].primary } }}
+              style={{
+                ...styles.date,
+                ...{ color: Colors[scheme].button },
+              }}
             >
-              {date}
+              {date.replace(/-/g, ".")}
             </Text>
           </TouchableOpacity>
 
-          <View style={styles.trash}>
+          <View
+            style={{
+              ...styles.trash,
+              ...{ backgroundColor: Colors[scheme].primary, padding: 10 },
+            }}
+          >
             <TouchableOpacity
               onPress={() => {
                 Alert.alert(
@@ -58,7 +72,7 @@ const DetailsScreen = (props) => {
               <Ionicons
                 name="ios-trash"
                 size={24}
-                color={Colors[scheme].primary}
+                color={Colors[scheme].button}
               />
             </TouchableOpacity>
           </View>
@@ -66,7 +80,7 @@ const DetailsScreen = (props) => {
         <View
           style={{
             ...styles.middleSection,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{ borderColor: Colors[scheme].primaryThird },
           }}
         >
           {/* first column */}
@@ -74,10 +88,13 @@ const DetailsScreen = (props) => {
             <View style={styles.placeView}>
               <Text
                 style={{
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primaryThird,
+                    fontFamily: "Kanit_600SemiBold",
+                  },
                 }}
               >
-                Miejsce
+                {"Miejsce".toUpperCase()}
               </Text>
               <TouchableOpacity
                 onPress={() =>
@@ -87,7 +104,7 @@ const DetailsScreen = (props) => {
                 <Text
                   style={{
                     ...styles.place,
-                    ...{ color: Colors[scheme].primarySecond },
+                    ...{ color: Colors[scheme].button },
                   }}
                 >
                   {place}
@@ -97,55 +114,51 @@ const DetailsScreen = (props) => {
             <View style={styles.categoryView}>
               <Text
                 style={{
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...styles.category,
+                  ...{
+                    color: Colors[scheme].primaryThird,
+                    fontFamily: "Kanit_600SemiBold",
+                  },
                 }}
               >
-                Kategoria
+                {mainCategory.toUpperCase()}
               </Text>
               <TouchableOpacity
                 onPress={() =>
-                  props.navigation.navigate("Category", { category: category })
+                  props.navigation.navigate("Category", {
+                    subCategory: subCategory,
+                  })
                 }
               >
                 <Text
                   style={{
                     ...styles.category,
-                    ...{ color: Colors[scheme].primarySecond },
+                    ...{
+                      color: Colors[scheme].button,
+                      fontFamily: "Kanit_400Regular",
+                    },
                   }}
                 >
-                  {category}
+                  {subCategory.toUpperCase()}
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
-          {/* middle column */}
           <View style={styles.detailsMiddleCenter}>
-            <View style={styles.nameView}>
-              <Text
-                style={{
-                  ...styles.name,
-                  ...{ color: Colors[scheme].primarySecond },
-                }}
-              >
-                {name}{" "}
-                <Text style={{ fontWeight: "normal" }}>[x{multiply}]</Text>
-              </Text>
-            </View>
             <View style={styles.costView}>
               <Text
                 style={{
                   ...styles.cost,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primarySecond,
+                    fontFamily: "Kanit_600SemiBold",
+                  },
                 }}
               >
                 {cost}zł{" "}
-                <Text style={{ fontWeight: "normal" }}>
-                  [{cost * multiply}zł]
-                </Text>
               </Text>
             </View>
           </View>
-          {/* third column */}
           <View style={styles.thirdColumn}></View>
         </View>
       </View>
@@ -158,27 +171,28 @@ export default DetailsScreen;
 const styles = StyleSheet.create({
   screen: {
     alignContent: "center",
-    padding: 30,
     borderRadius: 10,
-    width: "100%",
+    width: Dimensions.get("window").width,
   },
   dateView: {
     alignItems: "center",
-    padding: 10,
+    padding: 30,
     borderRadius: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    borderBottomWidth: 1,
   },
   date: {
-    fontWeight: "bold",
-    fontSize: 24,
+    fontFamily: "Kanit_600SemiBold",
+    fontSize: 20,
   },
   middleSection: {
-    marginVertical: 20,
+    marginTop: 10,
     height: 180,
+    width: Dimensions.get("window").width,
     borderRadius: 10,
-    padding: 10,
+    borderBottomWidth: 1,
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,
@@ -193,7 +207,7 @@ const styles = StyleSheet.create({
   },
   placeView: {
     flexDirection: "column",
-    marginLeft: 10,
+    marginLeft: 20,
     alignItems: "center",
   },
   place: {
@@ -201,7 +215,7 @@ const styles = StyleSheet.create({
   },
   categoryView: {
     flexDirection: "column",
-    marginRight: 10,
+    marginRight: 20,
     alignItems: "center",
   },
   thirdColumn: {
@@ -209,8 +223,8 @@ const styles = StyleSheet.create({
   },
   trash: {
     alignItems: "center",
-    width: 30,
   },
+
   category: {
     fontWeight: "bold",
   },
@@ -231,9 +245,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   cost: {
-    fontWeight: "bold",
     // color: "black",
-    fontSize: 15,
+    fontSize: 25,
     paddingVertical: 10,
   },
   detailsMiddleCenter: {

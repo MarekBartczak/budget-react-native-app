@@ -29,10 +29,9 @@ const AddMultiItemsScreen = (props) => {
   const favListNames = filteredFavList.map((el) => el.name);
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState(selectedPlace);
-  const [itemName, setItemName] = useState("");
   const [cost, setCost] = useState("");
-  const [category, setCategory] = useState("");
-  const [multiply, setMultiply] = useState("");
+  const [mainCategory, setMainCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("");
 
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -50,10 +49,9 @@ const AddMultiItemsScreen = (props) => {
   const workingPlaceList = newList(placeList);
 
   const clearState = () => {
-    setCategory("");
+    setMainCategory("");
+    setSubCategory("");
     setCost("");
-    setItemName("");
-    setMultiply("");
   };
 
   const getPlaceInfo = (data) => {
@@ -64,10 +62,9 @@ const AddMultiItemsScreen = (props) => {
   const addIntoTheReceipt = () => {
     const itemObj = new MultiItem(
       uuid.v4(),
-      category,
-      itemName,
-      Number(switchComaToDot(cost)),
-      multiply
+      mainCategory,
+      subCategory,
+      Number(switchComaToDot(cost))
     );
     dispatch(itemsAction.addItemToTheReceipt(itemObj));
     clearState();
@@ -112,12 +109,10 @@ const AddMultiItemsScreen = (props) => {
               setPlace={getPlaceInfo}
               cost={cost}
               onSetCost={setCost}
-              itemName={itemName}
-              onSetName={setItemName}
-              setCategory={setCategory}
-              category={category}
-              multiply={multiply}
-              setMultiply={setMultiply}
+              setMainCategory={setMainCategory}
+              mainCategory={mainCategory}
+              setSubCategory={setSubCategory}
+              subCategory={subCategory}
               addItemToTheRecipt={() => addIntoTheReceipt()}
               backToHome={() => props.navigation.navigate("Home")}
             />

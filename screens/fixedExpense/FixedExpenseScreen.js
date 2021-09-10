@@ -46,8 +46,13 @@ const FixedExpenseScreen = (props) => {
       </View>
 
       <View style={styles.component}>
-        <Text style={{ color: Colors[scheme].primarySecond }}>
-          Stałe oplaty
+        <Text
+          style={{
+            color: Colors[scheme].primarySecond,
+            fontFamily: "Kanit_400Regular",
+          }}
+        >
+          {"Stałe oplaty".toUpperCase()}
         </Text>
       </View>
       <View style={styles.component}>
@@ -55,13 +60,26 @@ const FixedExpenseScreen = (props) => {
       </View>
       <View style={styles.component}>
         {Number(delayCost) === 0 ? (
-          <Text style={{ color: Colors[scheme].primarySecond }}>
-            Brak zaległych rachunków
+          <Text
+            style={{
+              color: Colors[scheme].primarySecond,
+              fontFamily: "Kanit_400Regular",
+            }}
+          >
+            {"Brak zaległych rachunków".toUpperCase()}
           </Text>
         ) : (
-          <Text style={{ color: Colors[scheme].primarySecond }}>
-            Zaległe rachunki na kwotę:{" "}
-            <Text style={{ color: "red" }}> {delayCost}zł </Text>
+          <Text
+            style={{
+              color: Colors[scheme].primarySecond,
+              fontFamily: "Kanit_400Regular",
+            }}
+          >
+            {"Zaległe rachunki na kwotę:".toUpperCase()}{" "}
+            <Text style={{ color: "red", fontFamily: "Kanit_400Regular" }}>
+              {" "}
+              {delayCost}zł{" "}
+            </Text>
           </Text>
         )}
       </View>

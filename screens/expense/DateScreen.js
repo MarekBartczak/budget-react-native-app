@@ -43,20 +43,12 @@ const DateScreen = (props) => {
     }
   };
 
-  const filteredCost = filteredItem.map((el) => {
-    return el.cost;
-  });
-  const filteredCostWithMultiple = filteredItem.map((el) => {
-    return el.cost * el.multiply;
-  });
+  const filteredCost = filteredItem.map((el) => el.cost);
   const sumOf = (total, sum) => total + sum;
-
   let sum = 0;
-  let multiplySum = 0;
 
-  if (filteredCost.length > 0 && filteredCostWithMultiple.length > 0) {
+  if (filteredCost.length > 0) {
     sum = filteredCost.reduce(sumOf);
-    multiplySum = filteredCostWithMultiple.reduce(sumOf);
   }
 
   const callBack = (data) => {
@@ -94,7 +86,7 @@ const DateScreen = (props) => {
         </View>
         <View>
           <Text style={{ color: Colors[scheme].primarySecond }}>
-            Razem {sum.toFixed(2)}zł [{multiplySum.toFixed(2)}zł]
+            Razem {sum.toFixed(2)}zł
           </Text>
         </View>
         <View style={styles.items}>
@@ -103,18 +95,16 @@ const DateScreen = (props) => {
             data={filteredItem}
             renderItem={(itemData) => (
               <SimplyItems
-                name={itemData.item.name}
                 cost={itemData.item.cost}
-                multiply={itemData.item.multiply}
+                subCategory={itemData.item.subCategory}
                 press={() =>
                   props.navigation.navigate("Details", {
                     date: itemData.item.date,
                     place: itemData.item.place,
-                    category: itemData.item.category,
+                    mainCategory: itemData.item.mainCategory,
+                    subCategory: itemData.item.subCategory,
                     cost: itemData.item.cost,
-                    name: itemData.item.name,
                     id: itemData.item.id,
-                    multiply: itemData.item.multiply,
                   })
                 }
               />

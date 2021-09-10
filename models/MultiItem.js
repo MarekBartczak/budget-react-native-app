@@ -1,10 +1,9 @@
 class MultiItem {
-  constructor(id, category, name, cost, multiply) {
+  constructor(id, mainCategory, subCategory, cost) {
     this.id = id;
-    this.category = category;
-    this.name = name;
+    this.mainCategory = mainCategory;
+    this.subCategory = subCategory;
     this.cost = cost;
-    this.multiply = multiply;
   }
 }
 

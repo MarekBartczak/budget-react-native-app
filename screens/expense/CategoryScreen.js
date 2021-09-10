@@ -93,18 +93,16 @@ const CategoryScreen = (props) => {
             data={filteredItem}
             renderItem={(itemData) => (
               <SimplyItems
-                name={itemData.item.name}
                 cost={itemData.item.cost}
-                multiply={itemData.item.multiply}
+                subCategory={itemData.item.subCategory}
                 press={() =>
                   props.navigation.navigate("Details", {
                     date: itemData.item.date,
                     place: itemData.item.place,
-                    category: itemData.item.category,
+                    mainCategory: itemData.item.mainCategory,
+                    subCategory: itemData.item.subCategory,
                     cost: itemData.item.cost,
-                    name: itemData.item.name,
                     id: itemData.item.id,
-                    multiply: itemData.item.multiply,
                   })
                 }
               />

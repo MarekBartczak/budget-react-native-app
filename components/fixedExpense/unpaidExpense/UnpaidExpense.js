@@ -37,7 +37,7 @@ const UnpaidExpense = (props) => {
     <View
       style={{
         ...styles.unpaidExpenseComponent,
-        ...{ backgroundColor: Colors[scheme].primaryThird },
+        ...{ borderColor: Colors[scheme].primaryThird },
       }}
     >
       <FlatList
@@ -56,13 +56,28 @@ const UnpaidExpense = (props) => {
               });
             }}
           >
-            <Text style={{ color: Colors[scheme].primarySecond }}>
+            <Text
+              style={{
+                color: Colors[scheme].primarySecond,
+                fontFamily: "Kanit_400Regular",
+              }}
+            >
               {item.item.date.replace(/-/g, ".")}{" "}
             </Text>
-            <Text style={{ color: Colors[scheme].primarySecond }}>
-              {item.item.title}{" "}
+            <Text
+              style={{
+                color: Colors[scheme].primarySecond,
+                fontFamily: "Kanit_400Regular",
+              }}
+            >
+              {item.item.title.toUpperCase()}{" "}
             </Text>
-            <Text style={{ color: Colors[scheme].primarySecond }}>
+            <Text
+              style={{
+                color: Colors[scheme].primarySecond,
+                fontFamily: "Kanit_400Regular",
+              }}
+            >
               {item.item.cost}zł{" "}
             </Text>
           </TouchableOpacity>
@@ -80,6 +95,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.9,
     borderRadius: 10,
     height: 100,
+    borderBottomWidth: 1,
   },
   overDateList: {
     marginTop: 5,
