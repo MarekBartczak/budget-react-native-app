@@ -58,17 +58,19 @@ const Send = (props) => {
       <View
         style={{
           ...styles.send,
-          ...{ backgroundColor: Colors[scheme].button },
+          ...{ backgroundColor: Colors[scheme].primary },
         }}
       >
-        <Feather name="send" size={24} color={Colors[scheme].primary} />
         <Text
           style={{
             ...styles.sendText,
-            ...{ color: Colors[scheme].primary },
+            ...{
+              color: Colors[scheme].button,
+              fontFamily: "Kanit_600SemiBold",
+            },
           }}
         >
-          Wyślij raport
+          {"Wyślij raport".toUpperCase()}
         </Text>
       </View>
     </TouchableOpacity>
@@ -79,13 +81,11 @@ export default Send;
 
 const styles = StyleSheet.create({
   send: {
-    backgroundColor: Colors.backGround2,
-    height: 60,
-    width: 120,
-    textAlign: "center",
+    width: Dimensions.get("screen").width * 0.5,
+    height: Dimensions.get("screen").height * 0.05,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 10,
+    borderRadius: 3,
   },
   sendText: {
     textAlign: "center",

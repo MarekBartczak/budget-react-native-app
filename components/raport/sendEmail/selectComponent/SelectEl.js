@@ -34,15 +34,18 @@ const SelectEl = (props) => {
         style={styles.item}
         onPress={() => isDateSelectedToggle(item.date, !item.isSelected)}
       >
-        <View style={styles.el}>
+        <View
+          style={{
+            ...styles.el,
+            ...{ backgroundColor: Colors[scheme].primary },
+          }}
+        >
           <Ionicons
             name={item.isSelected ? "radio-button-on" : "radio-button-off"}
             size={15}
-            color={Colors[scheme].primarySecond}
+            color={Colors[scheme].button}
           />
-          <Text style={{ color: Colors[scheme].primarySecond }}>
-            {item.date}
-          </Text>
+          <Text style={{ color: Colors[scheme].button }}>{item.date}</Text>
         </View>
       </TouchableOpacity>
     );
@@ -70,28 +73,28 @@ const SelectEl = (props) => {
 
   return (
     <View style={styles.element}>
-      <TouchableOpacity onPress={() => setTypeInStore()}>
+      <View>
         <View
           style={{
             ...styles.button,
-            ...{ backgroundColor: Colors[scheme].button },
+            ...{},
           }}
         >
           <FontAwesome
-            name={isSelected ? "angle-double-up" : "angle-double-down"}
+            name={"angle-double-down"}
             size={24}
-            color={Colors[scheme].primary}
+            color={Colors[scheme].primarySecond}
           />
           <Text
             style={{
               ...styles.textName,
-              ...{ color: Colors[scheme].primary },
+              ...{ color: Colors[scheme].primarySecond },
             }}
           >
             {props.name}
           </Text>
         </View>
-      </TouchableOpacity>
+      </View>
       {showDatePicker(isSelected)}
     </View>
   );
@@ -112,6 +115,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   el: {
+    padding: 10,
+    borderRadius: 3,
     flexDirection: "row",
     alignItems: "center",
   },

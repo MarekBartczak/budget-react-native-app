@@ -12,18 +12,19 @@ const Expense = (props) => {
       <View
         style={{
           ...styles.summary,
-          ...{ backgroundColor: Colors[scheme].primaryThird },
+          ...{ borderColor: Colors[scheme].primary },
         }}
       >
         <Text
           style={{
             ...styles.summaryTest,
             ...{
-              color: Colors[scheme].primarySecond,
+              color: Colors[scheme].primaryThird,
+              fontFamily: "Kanit_600SemiBold",
             },
           }}
         >
-          razem: {summaryCostCounter(props.filteredList)}zł
+          {"razem:".toUpperCase()} {summaryCostCounter(props.filteredList)}zł
         </Text>
       </View>
       <View>
@@ -33,10 +34,11 @@ const Expense = (props) => {
           renderItem={(item) => (
             <View
               style={{
-                backgroundColor: Colors[scheme].primaryThird,
+                borderColor: Colors[scheme].primary,
                 marginBottom: 20,
                 padding: 10,
                 width: "100%",
+                borderBottomWidth: 1,
               }}
             >
               <View
@@ -45,9 +47,15 @@ const Expense = (props) => {
                   justifyContent: "space-between",
                 }}
               >
-                <Text style={{ color: Colors[scheme].primarySecond }}>
-                  {item.item.date}
+                <Text
+                  style={{
+                    color: Colors[scheme].primarySecond,
+                    fontFamily: "Kanit_600SemiBold",
+                  }}
+                >
+                  {item.item.place.toUpperCase()}
                 </Text>
+
                 <Text style={{ color: Colors[scheme].primarySecond }}>
                   {item.item.cost}zł
                 </Text>
@@ -59,11 +67,8 @@ const Expense = (props) => {
                   justifyContent: "space-between",
                 }}
               >
-                <Text style={{ color: Colors[scheme].primarySecond }}>
-                  {item.item.place}
-                </Text>
-                <Text style={{ color: Colors[scheme].primarySecond }}>
-                  {item.item.name}
+                <Text style={{ color: Colors[scheme].primaryThird }}>
+                  {item.item.date}
                 </Text>
               </View>
             </View>
@@ -80,6 +85,7 @@ const styles = StyleSheet.create({
   summary: {
     paddingVertical: 10,
     marginBottom: 20,
+    borderBottomWidth: 1,
     // shadowOffset: { height: 0, width: 0 },
     // shadowRadius: 7,
     // shadowColor: "black",

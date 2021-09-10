@@ -90,7 +90,7 @@ const FilterComponent = (props) => {
       <TouchableOpacity
         style={{
           ...styles.filterBtn,
-          ...{ backgroundColor: Colors[scheme].button },
+          ...{ backgroundColor: Colors[scheme].primary },
         }}
         onPress={() => {
           setFilterListType(type);
@@ -100,7 +100,7 @@ const FilterComponent = (props) => {
         <Text
           style={{
             ...styles.btnText,
-            ...{ color: Colors[scheme].primary },
+            ...{ color: Colors[scheme].button },
           }}
         >
           {name}
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   listOfYears: {
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
 
     // backgroundColor: Colors.backGround,
   },
@@ -190,7 +190,6 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop: 10,
-    padding: 10,
     height: Dimensions.get("window").height * 0.5,
   },
 });
