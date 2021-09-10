@@ -9,7 +9,7 @@ const UserScreen = (props) => {
   const userName = useSelector((state) => state.auth.userName);
   const userEmail = useSelector((state) => state.auth.userEmail);
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
-
+  console.log(userPhotoUrl);
   return (
     <ExternalComponent>
       <View style={styles.screen}>
@@ -20,15 +20,13 @@ const UserScreen = (props) => {
         </View>
         <View style={styles.userDataView}>
           <View style={styles[`userNameView_${scheme}`]}>
-            <Text style={styles[`userName_${scheme}`]}>{userName}</Text>
+            <Text style={styles[`userName_${scheme}`]}>
+              {userName.toUpperCase()}
+            </Text>
           </View>
           <View style={styles[`userEmailView_${scheme}`]}>
             <Text style={styles[`userEmail_${scheme}`]}>{userEmail}</Text>
           </View>
-          {/* <View style={styles.familyAccountWith}>
-            <Text style={styles[`family_${scheme}`]}>Konto rodzinne </Text>
-            <Text style={styles[`userEmail_${scheme}`]}>nie</Text>
-          </View> */}
         </View>
       </View>
     </ExternalComponent>
@@ -50,7 +48,7 @@ const styles = StyleSheet.create({
     color: Colors.dark.primary,
   },
   userNameView_light: {
-    backgroundColor: Colors.light.primaryThird,
+    backgroundColor: Colors.light.primary,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: "90%",
@@ -63,11 +61,11 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   userNameView_dark: {
-    backgroundColor: Colors.dark.primary,
+    borderColor: Colors.dark.primary,
+    borderBottomWidth: 1,
     paddingVertical: 10,
     paddingHorizontal: 10,
-    width: "90%",
-    borderRadius: 10,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     marginBottom: 50,
     // shadowColor: "black",
@@ -76,22 +74,22 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   userName_light: {
-    fontWeight: "bold",
+    fontFamily: "Kanit_600SemiBold",
     color: Colors.light.primarySecond,
-    fontSize: 25,
+    fontSize: 20,
   },
   userName_dark: {
-    fontWeight: "bold",
-    color: Colors.dark.primarySecond,
-    fontSize: 25,
+    fontFamily: "Kanit_600SemiBold",
+    color: Colors.dark.primaryThird,
+    fontSize: 20,
   },
 
   userEmailView_light: {
-    backgroundColor: Colors.light.primaryThird,
+    borderColor: Colors.light.primary,
+    borderBottomWidth: 1,
     paddingVertical: 10,
     paddingHorizontal: 10,
-    width: "90%",
-    borderRadius: 10,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     marginBottom: 50,
     // shadowColor: "black",
@@ -100,11 +98,11 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   userEmailView_dark: {
-    backgroundColor: Colors.dark.primary,
+    borderColor: Colors.dark.primary,
+    borderBottomWidth: 1,
     paddingVertical: 10,
     paddingHorizontal: 10,
-    width: "90%",
-    borderRadius: 10,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     marginBottom: 50,
     // shadowColor: "black",
@@ -118,8 +116,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   userEmail_dark: {
-    fontWeight: "bold",
-    color: Colors.dark.primarySecond,
+    fontFamily: "Kanit_600SemiBold",
+
+    color: Colors.dark.primary,
     fontSize: 15,
   },
   screen: {
@@ -150,10 +149,11 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.dark.primaryThird,
-    width: Dimensions.get("window").width * 0.7,
+    borderColor: Colors.dark.primary,
+    width: Dimensions.get("window").width,
     height: Dimensions.get("window").width * 0.7,
-    borderRadius: Dimensions.get("window").width * 0.35,
+    // borderRadius: Dimensions.get("window").width * 0.35,
+    borderBottomWidth: 1,
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,
