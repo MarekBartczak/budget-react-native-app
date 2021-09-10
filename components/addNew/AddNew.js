@@ -30,7 +30,7 @@ const AddNewComponent = (props) => {
             <View
               style={{
                 ...styles.datePickerView,
-                ...{ backgroundColor: Colors[scheme].primaryThird },
+                ...{ borderColor: Colors[scheme].primary },
               }}
             >
               <DatePicker
@@ -42,7 +42,7 @@ const AddNewComponent = (props) => {
             <View
               style={{
                 ...styles.inputView,
-                ...{ backgroundColor: Colors[scheme].primaryThird },
+                ...{ borderColor: Colors[scheme].primary },
               }}
             >
               <Input
@@ -80,7 +80,10 @@ const AddNewComponent = (props) => {
               <Button
                 onPress={props.save}
                 text="Zapisz"
-                style={{ width: Dimensions.get("window").width * 0.7 }}
+                style={{
+                  width: Dimensions.get("window").width * 0.5,
+                  height: Dimensions.get("screen").height * 0.05,
+                }}
               />
             </View>
           </View>
@@ -94,14 +97,14 @@ export default AddNewComponent;
 
 const styles = StyleSheet.create({
   AddNewComponent: {
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
   },
   datePickerView: {
     marginBottom: 10,
-    borderRadius: 10,
+    borderBottomWidth: 1,
   },
 
   descriptionComponent: {
@@ -113,11 +116,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputView: {
-    width: Dimensions.get("window").width * 0.9,
-    borderRadius: 10,
-
+    width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "center",
+    borderBottomWidth: 1,
   },
   input: {
     height: 25,
@@ -126,7 +128,6 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonView: {
-    // margin: 5,
     justifyContent: "center",
     alignItems: "center",
   },

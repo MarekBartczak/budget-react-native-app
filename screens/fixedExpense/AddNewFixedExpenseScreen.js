@@ -100,15 +100,15 @@ const AddNewFixedExpenseScreen = (props) => {
                 <View
                   style={{
                     ...styles.inputView,
-                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                    ...{ borderColor: Colors[scheme].primary },
                   }}
                 >
                   <Input
                     style={{
                       ...styles.input,
                       ...{
-                        color: Colors[scheme].button,
-                        borderColor: Colors[scheme].button,
+                        color: Colors[scheme].primarySecond,
+                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={cost}
@@ -120,8 +120,8 @@ const AddNewFixedExpenseScreen = (props) => {
                     style={{
                       ...styles.input,
                       ...{
-                        color: Colors[scheme].button,
-                        borderColor: Colors[scheme].button,
+                        color: Colors[scheme].primarySecond,
+                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={title}
@@ -134,7 +134,7 @@ const AddNewFixedExpenseScreen = (props) => {
                       ...styles.input,
                       ...{
                         color: Colors[scheme].primarySecond,
-                        borderColor: Colors[scheme].button,
+                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={recipient}
@@ -147,7 +147,7 @@ const AddNewFixedExpenseScreen = (props) => {
                       ...styles.descriptionInput,
                       ...{
                         color: Colors[scheme].primarySecond,
-                        borderColor: Colors[scheme].button,
+                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     placeholder={"Opis"}
@@ -160,7 +160,7 @@ const AddNewFixedExpenseScreen = (props) => {
                 <View
                   style={{
                     ...styles.datePickerView,
-                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                    ...{ borderColor: Colors[scheme].primary },
                   }}
                 >
                   <DatePicker
@@ -172,7 +172,7 @@ const AddNewFixedExpenseScreen = (props) => {
                 <View
                   style={{
                     ...styles.interval,
-                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                    ...{ borderColor: Colors[scheme].primaryThird },
                   }}
                 >
                   <Text
@@ -231,7 +231,14 @@ const AddNewFixedExpenseScreen = (props) => {
                   <Button
                     onPress={saveFixedExpense}
                     text="Zapisz"
-                    style={{ width: Dimensions.get("window").width * 0.7 }}
+                    style={{
+                      width: Dimensions.get("window").width * 0.5,
+                      height: Dimensions.get("screen").height * 0.05,
+                      borderRadius: 3,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginTop: 20,
+                    }}
                   />
                 </View>
               </View>
@@ -251,14 +258,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   datePickerView: {
-    width: Dimensions.get("window").width * 0.9,
-    marginHorizontal: Dimensions.get("window").width * 0.05,
+    marginTop: 20,
+
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
-    borderRadius: 10,
-    marginVertical: 10,
+    borderBottomWidth: 1,
   },
 
   defaultText: {
@@ -266,15 +272,14 @@ const styles = StyleSheet.create({
   },
   inputView: {
     marginTop: 10,
-    width: Dimensions.get("window").width * 0.9,
-    marginHorizontal: Dimensions.get("window").width * 0.05,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "center",
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
-    borderRadius: 10,
+    borderBottomWidth: 1,
   },
   input: {
     height: 25,
@@ -296,10 +301,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   interval: {
-    // marginTop: 20,
+    marginTop: 20,
     // backgroundColor: Colors.light.primaryThird,
-    width: Dimensions.get("window").width * 0.9,
-    marginHorizontal: Dimensions.get("window").width * 0.05,
+    width: Dimensions.get("window").width,
     height: 160,
     justifyContent: "center",
     alignItems: "center",
@@ -311,6 +315,7 @@ const styles = StyleSheet.create({
   },
 
   intervalOptions: {
+    marginTop: 20,
     // alignItems: "flex-start",
     // backgroundColor: Colors.accent,
     justifyContent: "center",
@@ -328,9 +333,10 @@ const styles = StyleSheet.create({
 
   intervalText: {
     fontSize: 17,
+    fontFamily: "Kanit_400Regular",
   },
   selectedIntervalText: {
     fontSize: 17,
-    fontWeight: "bold",
+    fontFamily: "Kanit_400Regular",
   },
 });

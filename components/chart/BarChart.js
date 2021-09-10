@@ -98,17 +98,20 @@ const Chart = (props) => {
           height={180}
           chartConfig={{
             labelColor: () => Colors[scheme].primarySecond,
-            // backgroundGradientFromOpacity: 0,
-            // backgroundGradientToOpacity: 0,
-            backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
-            backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
+            backgroundGradientFromOpacity: 0,
+            backgroundGradientToOpacity: 0,
+            // backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
+            // backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
             backgroundGradientFrom: Colors[scheme].primaryThird,
             backgroundGradientTo: Colors[scheme].primaryThird,
             decimalPlaces: 2,
             color: () => Colors[scheme].button,
           }}
           bezier
-          style={styles.chart}
+          style={{
+            ...styles.chart,
+            ...{ borderColor: Colors[scheme].primary },
+          }}
         />
         <View style={styles.valMin}>
           <Text
@@ -136,11 +139,11 @@ export default Chart;
 
 const styles = StyleSheet.create({
   chart: {
-    borderRadius: 16,
-    padding: 0,
+    borderBottomWidth: 1,
+    paddingTop: 0,
     justifyContent: "center",
     alignItems: "center",
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
   },
 
   valMax: {

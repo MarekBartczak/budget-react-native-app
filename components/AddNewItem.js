@@ -39,12 +39,11 @@ const AddNewItem = (props) => {
               style={{
                 ...styles.btnText,
                 ...{
-                  // backgroundColor: Colors[scheme].button,
                   color: Colors[scheme].button,
                 },
               }}
             >
-              {props.text}
+              {props.text.toUpperCase()}
             </Text>
           </View>
         </View>

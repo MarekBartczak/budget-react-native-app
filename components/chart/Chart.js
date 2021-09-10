@@ -152,13 +152,8 @@ export default Chart;
 
 const styles = StyleSheet.create({
   chart: {
-    // borderRadius: 3,
     borderBottomWidth: 1,
-
-    // padding: 0,
-    // paddingRight: 60,
     paddingTop: 0,
-
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width,

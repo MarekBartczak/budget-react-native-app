@@ -16,10 +16,8 @@ const Button = (props) => {
       onPress={props.onPress}
       style={{ ...styles[`button_${scheme}`], ...props.style }}
     >
-      <View style={styles.inner}>
-        <View style={styles.btn}>
-          <Text style={styles[`text_${scheme}`]}>{props.text}</Text>
-        </View>
+      <View style={styles.btn}>
+        <Text style={styles[`text_${scheme}`]}>{props.text.toUpperCase()}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -29,9 +27,7 @@ export default Button;
 
 const styles = StyleSheet.create({
   button_light: {
-    width: Dimensions.get("window").width * 0.9,
-    height: 50,
-    backgroundColor: Colors.light.button,
+    backgroundColor: Colors.light.primary,
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 3,
@@ -39,22 +35,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   button_dark: {
-    width: Dimensions.get("window").width * 0.9,
-    height: 50,
-    backgroundColor: Colors.dark.button,
+    backgroundColor: Colors.dark.primary,
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
   },
-  inner: {
-    borderRadius: 7,
-    height: "70%",
-    width: "95%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+
   btn: {
     height: "100%",
     width: "100%",
@@ -63,13 +51,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   text_light: {
-    color: Colors.light.primary,
-    fontWeight: "bold",
-    fontSize: 20,
+    color: Colors.light.button,
+    fontFamily: "Kanit_600SemiBold",
+    fontSize: 15,
   },
   text_dark: {
-    color: Colors.dark.primary,
-    fontWeight: "bold",
-    fontSize: 20,
+    color: Colors.dark.button,
+    fontFamily: "Kanit_600SemiBold",
+    fontSize: 15,
   },
 });

@@ -37,7 +37,7 @@ const UnpaidExpense = (props) => {
     <View
       style={{
         ...styles.unpaidExpenseComponent,
-        ...{ borderColor: Colors[scheme].primaryThird },
+        ...{ borderColor: Colors[scheme].primary },
       }}
     >
       <FlatList
@@ -53,25 +53,29 @@ const UnpaidExpense = (props) => {
                 date: item.item.date,
                 recipient: item.item.recipient,
                 isPaid: item.item.isPaid,
+                description: item.item.description,
               });
             }}
           >
-            <Text
-              style={{
-                color: Colors[scheme].primarySecond,
-                fontFamily: "Kanit_400Regular",
-              }}
-            >
-              {item.item.date.replace(/-/g, ".")}{" "}
-            </Text>
-            <Text
-              style={{
-                color: Colors[scheme].primarySecond,
-                fontFamily: "Kanit_400Regular",
-              }}
-            >
-              {item.item.title.toUpperCase()}{" "}
-            </Text>
+            <View style={{ flexDirection: "row" }}>
+              <Text
+                style={{
+                  color: Colors[scheme].primarySecond,
+                  fontFamily: "Kanit_400Regular",
+                }}
+              >
+                {item.item.date.replace(/-/g, ".")}{" "}
+              </Text>
+              <Text
+                style={{
+                  color: Colors[scheme].primarySecond,
+                  fontFamily: "Kanit_400Regular",
+                }}
+              >
+                {item.item.title.toUpperCase()}{" "}
+              </Text>
+            </View>
+
             <Text
               style={{
                 color: Colors[scheme].primarySecond,
@@ -92,14 +96,14 @@ export default UnpaidExpense;
 
 const styles = StyleSheet.create({
   unpaidExpenseComponent: {
-    width: Dimensions.get("window").width * 0.9,
-    borderRadius: 10,
+    width: Dimensions.get("window").width,
     height: 100,
     borderBottomWidth: 1,
   },
   overDateList: {
     marginTop: 5,
     marginLeft: 10,
+    justifyContent: "space-between",
     flexDirection: "row",
   },
 });
