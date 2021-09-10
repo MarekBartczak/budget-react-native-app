@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import { StyleSheet, Dimensions, TouchableOpacity, Text } from "react-native";
 import React from "react";
 import Colors from "../constants/Colors";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -30,7 +30,17 @@ const StackIncomeNavigator = (props) => {
       }}
     >
       {stackScreen("Income", IncomeScreen, ({ navigation }) => ({
-        headerTitle: "Wpływy",
+        headerTitle: () => (
+          <Text
+            style={{
+              fontFamily: "Kanit_600SemiBold",
+              fontSize: 15,
+              color: Colors[scheme].primarySecond,
+            }}
+          >
+            WPŁYWY
+          </Text>
+        ),
         headerLeft: () => (
           <TouchableOpacity
             style={{

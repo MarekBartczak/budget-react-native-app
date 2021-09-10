@@ -63,7 +63,7 @@ const DateScreen = (props) => {
             <Ionicons
               name="ios-arrow-back"
               size={43}
-              color={Colors[scheme].primarySecond}
+              color={Colors[scheme].button}
             />
           </TouchableOpacity>
           <Text
@@ -72,7 +72,7 @@ const DateScreen = (props) => {
               ...{ color: Colors[scheme].primarySecond },
             }}
           >
-            {currentDate}
+            {currentDate.replace(/-/g, ".")}
           </Text>
           <FilterList listData={workingDateList} callBack={callBack} />
 
@@ -80,13 +80,18 @@ const DateScreen = (props) => {
             <Ionicons
               name="ios-arrow-forward"
               size={43}
-              color={Colors[scheme].primarySecond}
+              color={Colors[scheme].button}
             />
           </TouchableOpacity>
         </View>
         <View>
-          <Text style={{ color: Colors[scheme].primarySecond }}>
-            Razem {sum.toFixed(2)}zł
+          <Text
+            style={{
+              color: Colors[scheme].primarySecond,
+              fontFamily: "Kanit_400Regular",
+            }}
+          >
+            {"Razem".toUpperCase()} {sum.toFixed(2)}zł
           </Text>
         </View>
         <View style={styles.items}>

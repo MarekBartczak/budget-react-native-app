@@ -23,7 +23,7 @@ const FilterList = (props) => {
       <MaterialIcons
         name="filter-list"
         size={30}
-        color={Colors[scheme].primarySecond}
+        color={Colors[scheme].button}
       />
 
       <Modal animationType="slide" transparent={true} visible={filter}>

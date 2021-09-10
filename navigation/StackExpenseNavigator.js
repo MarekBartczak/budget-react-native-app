@@ -9,12 +9,11 @@ import AddItemToTheReceiptScreen from "../screens/expense/AddItemToTheReceiptScr
 import EditCategories from "../screens/expense/EditCategoriesScreen";
 import InputDataScreen from "../screens/expense/InputDataScreen";
 import Colors from "../constants/Colors";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Logout from "../components/auth/logout/Logout";
 import React from "react";
-import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 const Stack = createStackNavigator();
 
@@ -33,7 +32,7 @@ const StackExpenseNavigator = (props) => {
         <Text
           style={{
             fontFamily: "Kanit_600SemiBold",
-            fontSize: 20,
+            fontSize: 15,
             color: Colors[scheme].primarySecond,
           }}
         >
@@ -71,7 +70,7 @@ const StackExpenseNavigator = (props) => {
         headerTintColor: Colors[scheme].primarySecond,
 
         headerStyle: {
-          backgroundColor: Colors[scheme].backGround,
+          backgroundColor: Colors[scheme].backGroundOne,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,

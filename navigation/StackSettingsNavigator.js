@@ -36,7 +36,17 @@ const StackSettingsNavigator = (props) => {
       }}
     >
       {stackScreen("Ustawienia", SettingsScreen, ({ navigation }) => ({
-        headerTitle: "Ustawienia",
+        headerTitle: () => (
+          <Text
+            style={{
+              fontFamily: "Kanit_600SemiBold",
+              fontSize: 15,
+              color: Colors[scheme].primarySecond,
+            }}
+          >
+            USTAWIENIA
+          </Text>
+        ),
         headerLeft: () => (
           <TouchableOpacity
             style={{

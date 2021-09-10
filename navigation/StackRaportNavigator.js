@@ -37,6 +37,17 @@ const StackRaportNavigator = (props) => {
       }}
     >
       {stackScreen("Raport", RaportScreen, ({ navigation }) => ({
+        headerTitle: () => (
+          <Text
+            style={{
+              fontFamily: "Kanit_600SemiBold",
+              fontSize: 15,
+              color: Colors[scheme].primarySecond,
+            }}
+          >
+            RAPORT
+          </Text>
+        ),
         headerLeft: () => (
           <TouchableOpacity
             style={{

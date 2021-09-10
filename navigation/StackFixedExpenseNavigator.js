@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import { StyleSheet, Dimensions, TouchableOpacity, Text } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
@@ -32,7 +32,17 @@ const StackFixedExpenseNavigator = (props) => {
       }}
     >
       {stackScreen("FixedExpense", FixedExpenseScreen, ({ navigation }) => ({
-        headerTitle: "Stałe wydatki",
+        headerTitle: () => (
+          <Text
+            style={{
+              fontFamily: "Kanit_600SemiBold",
+              fontSize: 15,
+              color: Colors[scheme].primarySecond,
+            }}
+          >
+            STAŁE WYDATKI
+          </Text>
+        ),
         headerLeft: () => (
           <TouchableOpacity
             style={{

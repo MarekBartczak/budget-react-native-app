@@ -10,17 +10,22 @@ const details = (props) => {
       <View
         style={{
           ...styles.details,
-          ...{ backgroundColor: Colors[scheme].primaryThird },
+          ...{ borderColor: Colors[scheme].primaryThird },
         }}
       >
         <View style={{ ...styles.info }}>
-          <Text style={{ color: Colors[scheme].primarySecond }}>
-            {props.subCategory}
+          <Text
+            style={{
+              color: Colors[scheme].primarySecond,
+              fontFamily: "Kanit_600SemiBold",
+            }}
+          >
+            {props.subCategory.toUpperCase()}
           </Text>
           <Text
             style={{
-              ...styles.cost,
-              ...{ color: Colors[scheme].primarySecond },
+              color: Colors[scheme].primarySecond,
+              fontFamily: "Kanit_600SemiBold",
             }}
           >
             {props.cost}zł{" "}
@@ -36,6 +41,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 20,
     borderRadius: 10,
+    borderBottomWidth: 1,
     // backgroundColor: Colors.light.primaryThird,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
@@ -47,10 +53,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "space-between",
     paddingHorizontal: 10,
-  },
-  cost: {
-    // color: Colors.primary,
-    fontWeight: "bold",
   },
 });
 
