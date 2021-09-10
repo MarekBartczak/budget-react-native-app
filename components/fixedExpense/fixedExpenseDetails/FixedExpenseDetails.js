@@ -20,25 +20,27 @@ import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 const FixedExpenseDetails = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
-  const { id, cost, title, date, recipient, isPaid } = props.route.params;
+  const { id, cost, title, date, recipient, isPaid, description } =
+    props.route.params;
   const dispatch = useDispatch();
   const history = useSelector((state) => state.fixedExpense.history);
   const userId = useSelector((state) => state.auth.userID);
 
   const historyEl = history.filter((el) => el.originId === id);
-  const copyToClipboard = () => {
-    Clipboard.setString(title);
-  };
-
+  // const copyToClipboard = () => {
+  //   Clipboard.setString(title);
+  // };
   const showIsPaid = () => {
     return (
       <TouchableOpacity
         style={{
-          backgroundColor: Colors[scheme].button,
-          borderRadius: 10,
+          backgroundColor: Colors[scheme].primary,
+          borderRadius: 2,
           padding: 5,
           paddingLeft: 20,
           paddingRight: 20,
+          justifyContent: "center",
+          alignItems: "center",
           // shadowOffset: { height: 0, width: 0 },
           // shadowColor: "black",
           // shadowOpacity: 0.2,
@@ -59,7 +61,7 @@ const FixedExpenseDetails = (props) => {
         <MaterialCommunityIcons
           name="cash-register"
           size={34}
-          color={Colors[scheme].primary}
+          color={Colors[scheme].button}
         />
       </TouchableOpacity>
     );
@@ -84,21 +86,28 @@ const FixedExpenseDetails = (props) => {
         <View
           style={{
             ...styles.title,
-            ...{ backgroundColor: Colors[scheme].button },
+            ...{ borderColor: Colors[scheme].primaryThird },
           }}
         >
-          <View style={styles.trash}></View>
-          <TouchableOpacity onPress={copyToClipboard}>
+          <TouchableOpacity onPress={() => {}}>
             <Text
               style={{
                 ...styles.textTitle,
-                ...{ color: Colors[scheme].primary },
+                ...{
+                  color: Colors[scheme].primarySecond,
+                  fontFamily: "Kanit_600SemiBold",
+                },
               }}
             >
-              {title}
+              {title.toUpperCase()}
             </Text>
           </TouchableOpacity>
-          <View style={styles.trash}>
+          <View
+            style={{
+              ...styles.trash,
+              ...{ backgroundColor: Colors[scheme].primary, padding: 10 },
+            }}
+          >
             <TouchableOpacity
               onPress={() => {
                 Alert.alert(
@@ -115,7 +124,7 @@ const FixedExpenseDetails = (props) => {
               <Ionicons
                 name="ios-trash"
                 size={24}
-                color={Colors[scheme].primary}
+                color={Colors[scheme].button}
               />
             </TouchableOpacity>
           </View>
@@ -124,39 +133,55 @@ const FixedExpenseDetails = (props) => {
         <View
           style={{
             ...styles.details,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{
+              borderColor: Colors[scheme].primaryThird,
+              borderBottomWidth: 1,
+            },
           }}
         >
           <View style={styles.top}>
             <View style={styles.paymentDate}>
               <Text
                 style={{
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primarySecond,
+                    fontFamily: "Kanit_600SemiBold",
+                    color: Colors[scheme].primaryThird,
+                  },
                 }}
               >
-                Termin zapłaty
+                {"Termin zapłaty".toUpperCase()}
               </Text>
               <Text
                 style={{
                   ...styles.textDate,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primarySecond,
+                    fontFamily: "Kanit_400Regular",
+                  },
                 }}
               >
-                {date}
+                {date.replace(/-/g, ".")}
               </Text>
             </View>
             <View style={styles.costInfo}>
               <Text
                 style={{
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primaryThird,
+                    fontFamily: "Kanit_600SemiBold",
+                  },
                 }}
               >
-                Kwota
+                {"Kwota".toUpperCase()}
               </Text>
               <Text
                 style={{
                   ...styles.textCost,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].primarySecond,
+                    fontFamily: "Kanit_400Regular",
+                  },
                 }}
               >
                 {cost}zł
@@ -168,16 +193,32 @@ const FixedExpenseDetails = (props) => {
             <Text
               style={{
                 ...styles.textRecipient,
-                ...{ color: Colors[scheme].primarySecond },
+                ...{
+                  color: Colors[scheme].primarySecond,
+                  fontFamily: "Kanit_600SemiBold",
+                },
               }}
             >
-              {recipient}
+              {recipient.toUpperCase()}
+            </Text>
+            <Text
+              style={{
+                ...styles.textRecipient,
+                ...{
+                  color: Colors[scheme].primaryThird,
+                  fontFamily: "Kanit_400Regular",
+                  fontSize: 14,
+                },
+              }}
+            >
+              {description.toUpperCase()}
             </Text>
           </View>
           <View
             style={{
               alignItems: "center",
               marginTop: 20,
+              marginBottom: 10,
               flexDirection: "row",
               justifyContent: "center",
             }}
@@ -195,9 +236,22 @@ const FixedExpenseDetails = (props) => {
         <View
           style={{
             ...styles.history,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{
+              borderColor: Colors[scheme].primaryThird,
+              borderBottomWidth: 1,
+            },
           }}
         >
+          <Text
+            style={{
+              color: Colors[scheme].primaryThird,
+              width: Dimensions.get("window").width,
+              textAlign: "center",
+              fontFamily: "Kanit_600SemiBold",
+            }}
+          >
+            {"opłacone".toUpperCase()}
+          </Text>
           <FlatList
             data={historyEl}
             renderItem={(item) => (
@@ -221,23 +275,20 @@ export default FixedExpenseDetails;
 const styles = StyleSheet.create({
   title: {
     flexDirection: "row",
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-    borderRadius: 10,
-    marginBottom: 20,
-    marginTop: 40,
+    padding: 30,
+
+    borderBottomWidth: 1,
+
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
   },
   details: {
-    backgroundColor: Colors.light.primaryThird,
-    borderRadius: 10,
-    height: 200,
+    // height: 200,
     marginBottom: 20,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
@@ -245,8 +296,7 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   history: {
-    backgroundColor: Colors.light.primaryThird,
-    borderRadius: 10,
+    marginTop: 10,
     height: 200,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
@@ -255,7 +305,6 @@ const styles = StyleSheet.create({
   },
   trash: {
     alignItems: "center",
-    width: 30,
   },
   textTitle: {
     textAlign: "center",

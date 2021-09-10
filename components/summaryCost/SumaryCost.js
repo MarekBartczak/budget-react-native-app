@@ -75,8 +75,7 @@ const SumaryCost = (props) => {
             >
               <Text
                 style={{
-                  color: Colors[scheme].primarySecond,
-                  fontWeight: "bold",
+                  color: Colors[scheme].button,
                   fontFamily: "Kanit_600SemiBold",
                 }}
               >

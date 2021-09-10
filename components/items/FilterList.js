@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
   Modal,
+  Dimensions,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import FilterElement from "./FilterElement";
@@ -30,31 +31,35 @@ const FilterList = (props) => {
         <View
           style={{
             ...styles.filter,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{},
           }}
         >
           <TouchableOpacity onPress={() => showFilter(!filter)}>
             <View
               style={{
                 ...styles.closeBtn,
-                ...{ backgroundColor: Colors[scheme].button },
+                ...{ backgroundColor: Colors[scheme].primary },
               }}
             >
-              <Text style={{ color: Colors[scheme].primary }}>zamknij</Text>
+              <Text
+                style={{
+                  color: Colors[scheme].button,
+
+                  fontFamily: "Kanit_600SemiBold",
+                }}
+              >
+                {"zamknij".toUpperCase()}
+              </Text>
             </View>
           </TouchableOpacity>
           <View style={styles.filterContainer}>
             <View
               style={{
                 ...styles.filterList,
-                ...{ backgroundColor: Colors[scheme].primaryThird },
+                ...{},
               }}
             >
               <FlatList
-                contentContainerStyle={{
-                  paddingBottom: 20,
-                  backgroundColor: Colors[scheme].primaryThird,
-                }}
                 data={props.listData}
                 keyExtractor={(item, index) => "item" + index}
                 renderItem={(itemData) => (
@@ -77,22 +82,26 @@ export default FilterList;
 
 const styles = StyleSheet.create({
   filter: {
-    marginLeft: "10%",
-    width: "80%",
-    height: "80%",
-    marginTop: "10%",
+    width: Dimensions.get("window").width,
+    // height: "50%",
+    marginTop: Dimensions.get("window").height / 2,
     alignItems: "flex-end",
     borderRadius: 10,
-    paddingBottom: 70,
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
   },
   closeBtn: {
-    paddingHorizontal: 20,
-    paddingVertical: 5,
-    borderTopRightRadius: 10,
+    height: 50,
+
+    width: Dimensions.get("window").width,
+    marginTop: -30,
+
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
   filterContainer: {
     width: "100%",
@@ -101,7 +110,6 @@ const styles = StyleSheet.create({
   filterList: {
     width: "100%",
     height: "98%",
-    marginTop: 20,
     // backgroundColor: Colors.light.primaryThird,
   },
 });

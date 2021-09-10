@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
@@ -14,12 +20,13 @@ const FilterList = (props) => {
       <View
         style={{
           ...styles.element,
-          ...{ backgroundColor: Colors[scheme].primaryThird },
+          ...{
+            backgroundColor: Colors[scheme].backGround,
+            borderBottomColor: Colors[scheme].primary,
+          },
         }}
       >
-        <Text
-          style={{ ...styles.text, ...{ color: Colors[scheme].primarySecond } }}
-        >
+        <Text style={{ color: Colors[scheme].primarySecond, marginLeft: 20 }}>
           {props.data}
         </Text>
       </View>
@@ -31,18 +38,14 @@ export default FilterList;
 
 const styles = StyleSheet.create({
   element: {
-    margin: 10,
-    borderRadius: 5,
-    height: 40,
-    paddingVertical: 3,
-    justifyContent: "center",
-    // shadowColor: "black",
+    width: Dimensions.get("window").width,
+
+    borderBottomWidth: 1,
     // shadowOffset: { height: 0, width: 0 },
-    // shadowOpacity: 0.2,
     // shadowRadius: 7,
-  },
-  text: {
-    paddingLeft: 20,
-    fontSize: 19,
+    // shadowColor: "black",
+    // shadowOpacity: 0.5,
+    padding: 10,
+    paddingTop: 20,
   },
 });

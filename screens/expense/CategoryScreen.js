@@ -16,15 +16,14 @@ import FilterList from "../../components/items/FilterList";
 
 const CategoryScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+
   const itemsFromRedux = useSelector((state) => state.item.items);
   const currentCategoryParam = props.route.params;
   const [currentCategory, setCurrentCategory] = useState(
     currentCategoryParam.category
   );
 
-  const categoryList = itemsFromRedux.map((el) => {
-    return el.category;
-  });
+  const categoryList = itemsFromRedux.map((el) => el.subCategory);
 
   const newList = (categoryList) =>
     categoryList.filter((a, b) => categoryList.indexOf(a) === b);
