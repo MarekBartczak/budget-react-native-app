@@ -26,11 +26,16 @@ const FixedExpenseElement = (props) => {
     >
       <View style={styles.title}>
         <Text style={{ color: Colors[scheme].primarySecond }}>
-          {props.el.title}
+          {props.el.title.toUpperCase()}
         </Text>
       </View>
       <View style={styles.description}>
-        <Text style={{ color: checkPayDate(props.el.date) }}>
+        <Text
+          style={{
+            color: checkPayDate(props.el.date),
+            fontFamily: "Kanit_600SemiBold",
+          }}
+        >
           {props.el.date}
         </Text>
         <Text style={{ color: Colors[scheme].primarySecond }}>

@@ -16,7 +16,10 @@ const IncomeElement = (props) => {
     <TouchableOpacity
       style={{
         ...styles.element,
-        ...{ backgroundColor: Colors[scheme].primaryThird },
+        ...{
+          borderColor: Colors[scheme].primary,
+          // shadowColor: Colors[scheme].button,
+        },
       }}
       onPress={props.press}
     >
@@ -27,7 +30,7 @@ const IncomeElement = (props) => {
             ...{ color: Colors[scheme].primarySecond },
           }}
         >
-          {props.el.title}
+          {props.el.title.toUpperCase()}
         </Text>
       </View>
       <View style={styles.description}>
@@ -57,20 +60,18 @@ export default IncomeElement;
 const styles = StyleSheet.create({
   element: {
     marginVertical: 10,
-    padding: 20,
-    borderRadius: 10,
+    padding: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    borderBottomWidth: 1,
     // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
-    width: Dimensions.get("window").width * 0.9,
-    marginHorizontal: Dimensions.get("window").width * 0.05,
+    // shadowOpacity: 0.9,
+    // shadowRadius: 10,
+    width: Dimensions.get("window").width,
   },
   textTitle: {
-    color: "black",
+    fontFamily: "Kanit_600SemiBold",
   },
   textCost: {
     color: Colors.primary,

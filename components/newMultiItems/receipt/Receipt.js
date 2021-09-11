@@ -70,7 +70,7 @@ const Receipt = (props) => {
               <View
                 style={{
                   ...styles.place,
-                  ...{ backgroundColor: Colors[scheme].primaryThird },
+                  ...{ backgroundColor: Colors[scheme].primary },
                 }}
               >
                 <Text
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
   },
 
   editBtn: {
-    padding: 10,
+    padding: 5,
     borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",

@@ -7,19 +7,44 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../../constants/Colors";
 import Input from "../input/Input";
 import DatePicker from "../../components/DatePicker";
 import Button from "../../components/buttons/Button";
-import { useSelector } from "react-redux";
+import * as configActions from "../../store/actions/config";
+import { useSelector, useDispatch } from "react-redux";
 
 const AddNewComponent = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  // const [keyboardStatus, setKeyboardStatus] = useState(undefined);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    const keyboardShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      keyboardShow
+    );
+    const keyboardHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      kedyboardHide
+    );
+
+    return () => {
+      keyboardShowListener.remove();
+      keyboardHideListener.remove();
+    };
+  });
+
+  const keyboardShow = () =>
+    dispatch(configActions.addIncomeKeyboardStatus(true));
+  const kedyboardHide = () =>
+    dispatch(configActions.addIncomeKeyboardStatus(false));
+
+  // console.log(keyboardStatus);
   return (
     <KeyboardAvoidingView
-      behavior={"position"}
+      // behavior={"position"}
       style={{ flex: 1 }}
       keyboardVerticalOffset={Dimensions.get("window").height < 670 ? 60 : -100}
       enabled

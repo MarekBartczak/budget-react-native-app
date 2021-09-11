@@ -10,7 +10,9 @@ import Button from "../../components/buttons/Button";
 import AddNewIncomeComponent from "../../components/income/addNewIncome/AddNewIncomeComponent";
 const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
+  const config = useSelector((state) => state.config);
   const chartEl = chartElement(incomeList);
+
   return (
     <ExternalComponent>
       <View style={styles.component}>
@@ -20,11 +22,13 @@ const IncomeScreen = (props) => {
         />
       </View>
       <View style={styles.component}>
-        <Chart
-          press={() => props.navigation.navigate("IncomeList")}
-          label={chartEl.label}
-          data={chartEl.data}
-        />
+        {!config.addIncomeKeyboardStatus && (
+          <Chart
+            press={() => props.navigation.navigate("IncomeList")}
+            label={chartEl.label}
+            data={chartEl.data}
+          />
+        )}
       </View>
       <View style={styles.component}>
         <AddNewIncomeComponent />

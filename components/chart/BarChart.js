@@ -1,4 +1,4 @@
-import { BarChart } from "react-native-chart-kit";
+import { BarChart, LineChart } from "react-native-chart-kit";
 import React, { useEffect } from "react";
 import {
   StyleSheet,
@@ -92,7 +92,7 @@ const Chart = (props) => {
           withHorizontalLines={false}
           withVerticalLines={false}
           withHorizontalLabels={false}
-          with // shadow={false}
+          withhadow={true}
           withInnerLines={false}
           width={Dimensions.get("window").width * 0.9}
           height={180}

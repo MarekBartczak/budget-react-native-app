@@ -9,7 +9,6 @@ const UserScreen = (props) => {
   const userName = useSelector((state) => state.auth.userName);
   const userEmail = useSelector((state) => state.auth.userEmail);
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
-  console.log(userPhotoUrl);
   return (
     <ExternalComponent>
       <View style={styles.screen}>
@@ -137,9 +136,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.light.primaryThird,
-    width: Dimensions.get("window").width * 0.7,
-    height: Dimensions.get("window").width * 0.7,
-    borderRadius: Dimensions.get("window").width * 0.35,
+    width: Dimensions.get("window").width * 0.6,
+    height: Dimensions.get("window").width * 0.6,
+    borderRadius: Dimensions.get("window").width * 0.3,
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,

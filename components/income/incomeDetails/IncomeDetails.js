@@ -32,20 +32,23 @@ const IncomeDetails = (props) => {
         <View
           style={{
             ...styles.title,
-            ...{ backgroundColor: Colors[scheme].button },
+            ...{ borderColor: Colors[scheme].primary },
           }}
         >
-          <View style={styles.trash}></View>
-
           <Text
             style={{
               ...styles.textTitle,
               ...{ color: Colors[scheme].primarySecond },
             }}
           >
-            {title}
+            {title.toUpperCase()}
           </Text>
-          <View style={styles.trash}>
+          <View
+            style={{
+              ...styles.trash,
+              ...{ backgroundColor: Colors[scheme].primary },
+            }}
+          >
             <TouchableOpacity
               onPress={() => {
                 Alert.alert(
@@ -62,7 +65,7 @@ const IncomeDetails = (props) => {
               <Ionicons
                 name="ios-trash"
                 size={24}
-                color={Colors[scheme].primarySecond}
+                color={Colors[scheme].button}
               />
             </TouchableOpacity>
           </View>
@@ -71,23 +74,37 @@ const IncomeDetails = (props) => {
         <View
           style={{
             ...styles.details,
-            ...{ ...{ backgroundColor: Colors[scheme].primaryThird } },
+            ...{ ...{ borderColor: Colors[scheme].primary } },
           }}
         >
           <View style={styles.top}>
             <View style={styles.date}>
-              <Text style={{ color: Colors[scheme].primarySecond }}>Data</Text>
+              <Text
+                style={{
+                  color: Colors[scheme].primary,
+                  fontFamily: "Kanit_600SemiBold",
+                }}
+              >
+                {"Data".toUpperCase()}
+              </Text>
               <Text
                 style={{
                   ...styles.textDate,
                   ...{ color: Colors[scheme].primarySecond },
                 }}
               >
-                {date}
+                {date.toUpperCase()}
               </Text>
             </View>
             <View style={styles.costInfo}>
-              <Text style={{ color: Colors[scheme].primarySecond }}>Kwota</Text>
+              <Text
+                style={{
+                  color: Colors[scheme].primary,
+                  fontFamily: "Kanit_600SemiBold",
+                }}
+              >
+                {"Kwota".toUpperCase()}
+              </Text>
               <Text
                 style={{
                   ...styles.textCost,
@@ -120,14 +137,13 @@ export default IncomeDetails;
 const styles = StyleSheet.create({
   title: {
     flexDirection: "row",
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 20,
     paddingHorizontal: 10,
-    borderRadius: 10,
     marginBottom: 20,
-    marginTop: 40,
+    borderBottomWidth: 1,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,
@@ -135,17 +151,20 @@ const styles = StyleSheet.create({
   },
   trash: {
     alignItems: "center",
-    width: 30,
+    padding: 10,
+    borderRadius: 3,
   },
   textTitle: {
     textAlign: "center",
-    fontWeight: "bold",
+    fontFamily: "Kanit_400Regular",
     fontSize: 20,
+    marginLeft: 10,
   },
   details: {
     borderRadius: 10,
     height: 200,
     marginBottom: 20,
+    borderBottomWidth: 1,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,
@@ -166,10 +185,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textDate: {
-    fontWeight: "bold",
+    fontFamily: "Kanit_600SemiBold",
   },
   textCost: {
-    fontWeight: "bold",
+    fontFamily: "Kanit_600SemiBold",
   },
   middle: {
     justifyContent: "center",
