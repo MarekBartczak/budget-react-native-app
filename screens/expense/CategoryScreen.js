@@ -20,7 +20,7 @@ const CategoryScreen = (props) => {
   const itemsFromRedux = useSelector((state) => state.item.items);
   const currentCategoryParam = props.route.params;
   const [currentCategory, setCurrentCategory] = useState(
-    currentCategoryParam.category
+    currentCategoryParam.subCategory
   );
 
   const categoryList = itemsFromRedux.map((el) => el.subCategory);
@@ -29,7 +29,7 @@ const CategoryScreen = (props) => {
     categoryList.filter((a, b) => categoryList.indexOf(a) === b);
   const workingCategoryList = newList(categoryList);
   const filteredItem = itemsFromRedux.filter(
-    (el) => el.category === currentCategory
+    (el) => el.subCategory === currentCategory
   );
 
   const switchCategory = (param) => {
@@ -88,7 +88,10 @@ const CategoryScreen = (props) => {
         </View>
         <View style={styles.items}>
           <FlatList
-            contentContainerStyle={{ paddingBottom: 150 }}
+            style={{
+              paddingBottom: 350,
+              height: Dimensions.get("window").height * 0.7,
+            }}
             data={filteredItem}
             renderItem={(itemData) => (
               <SimplyItems
