@@ -92,11 +92,13 @@ const AuthScreen = (props) => {
       );
     } else {
       return (
-        <ExternalComponent>
+        <ExternalComponent dimmer={true}>
           <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles[`screen_${scheme}`]}>
               <View style={styles.loginScreen}>
-                <Text style={styles[`credential_${scheme}`]}>Adres email</Text>
+                <Text style={styles[`credential_${scheme}`]}>
+                  {"Adres email".toUpperCase()}
+                </Text>
                 <Input
                   style={styles[`input_${scheme}`]}
                   // placeholder={"email"}
@@ -104,7 +106,9 @@ const AuthScreen = (props) => {
                   keyboardType={"email-address"}
                   onChangeText={setUserEmail}
                 />
-                <Text style={styles[`credential_${scheme}`]}>Hasło</Text>
+                <Text style={styles[`credential_${scheme}`]}>
+                  {"Hasło".toUpperCase()}
+                </Text>
 
                 <Input
                   style={styles[`input_${scheme}`]}
@@ -121,7 +125,7 @@ const AuthScreen = (props) => {
                 >
                   <View style={styles[`loginButton_${scheme}`]}>
                     <Text style={styles[`loginBtnText_${scheme}`]}>
-                      Zaloguj
+                      {"Zaloguj".toUpperCase()}
                     </Text>
                   </View>
                 </TouchableOpacity>
@@ -135,7 +139,7 @@ const AuthScreen = (props) => {
                   <View style={styles.loginWithGoogle}>
                     <AntDesign name="google" size={24} color="white" />
                     <Text style={styles.loginWithText}>
-                      Zaloguj przez Google
+                      {"Zaloguj przez Google".toUpperCase()}
                     </Text>
                   </View>
                 </TouchableOpacity>
@@ -166,14 +170,14 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.light.primary,
+    // backgroundColor: Colors.light.primary,
   },
   screen_dark: {
     width: "100%",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.dark.primary,
+    // backgroundColor: Colors.dark.primary,
   },
   input_light: {
     fontSize: 15,
@@ -191,10 +195,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   input_dark: {
+    fontFamily: "Kanit_400Regular",
+
     fontSize: 15,
     padding: 10,
     marginBottom: 10,
-    backgroundColor: Colors.dark.primaryThird,
+    backgroundColor: Colors.dark.primary,
     color: Colors.dark.primarySecond,
     width: Dimensions.get("window").width * 0.9,
     height: 40,
@@ -204,7 +210,7 @@ const styles = StyleSheet.create({
     // shadowColor: "black",
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
-    borderRadius: 10,
+    borderRadius: 3,
   },
   loginScreen: {
     height: 200,
@@ -217,6 +223,7 @@ const styles = StyleSheet.create({
   credential_dark: {
     marginLeft: 10,
     color: Colors.dark.primarySecond,
+    fontFamily: "Kanit_600SemiBold",
   },
 
   loginButton_light: {
@@ -232,8 +239,8 @@ const styles = StyleSheet.create({
   },
   loginButton_dark: {
     marginTop: 40,
-    backgroundColor: Colors.dark.button,
-    borderRadius: 10,
+    backgroundColor: Colors.dark.primary,
+    borderRadius: 3,
     // borderColor: Colors.dark.button,
     // borderWidth: 2,
     // shadowOffset: { height: 0, width: 0 },
@@ -254,7 +261,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: Dimensions.get("window").width * 0.9,
     padding: 10,
-    color: Colors.dark.primarySecond,
+    fontFamily: "Kanit_600SemiBold",
+
+    color: Colors.dark.button,
   },
 
   otherMethodLogin: {
@@ -277,7 +286,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 10,
-    borderRadius: 10,
+    borderRadius: 3,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,
@@ -287,6 +296,7 @@ const styles = StyleSheet.create({
   loginWithText: {
     color: "white",
     width: "80%",
+    fontFamily: "Kanit_600SemiBold",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",

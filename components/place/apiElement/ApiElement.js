@@ -21,8 +21,8 @@ const ApiElement = (props) => {
       style={{
         ...styles.element,
         ...{
-          borderColor: Colors[scheme].primaryThird,
-          backgroundColor: Colors[scheme].primary,
+          borderColor: Colors[scheme].primary,
+          // backgroundColor: Colors[scheme].primary,
         },
       }}
       onPress={() => {
@@ -44,7 +44,7 @@ export default ApiElement;
 
 const styles = StyleSheet.create({
   element: {
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width,
     height: 50,
     flexDirection: "row",
     alignItems: "center",
@@ -52,11 +52,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     marginVertical: 10,
     overflow: "hidden",
+    borderBottomWidth: 1,
     // borderBottomWidth: 1,
   },
   name: {
     fontWeight: "bold",
-    fontSize: 12,
+    fontSize: 15,
+    fontFamily: "Kanit_600SemiBold",
   },
   logo: {
     height: Dimensions.get("window").width / 10,

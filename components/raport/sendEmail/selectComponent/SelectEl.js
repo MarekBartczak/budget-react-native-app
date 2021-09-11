@@ -27,7 +27,6 @@ const SelectEl = (props) => {
   const isDateSelectedToggle = (date, isSelected) => {
     dispatch(raportActions.isSelectedDate(date, props.el, isSelected));
   };
-
   const renderDateList = (item) => {
     return (
       <TouchableOpacity
@@ -68,7 +67,6 @@ const SelectEl = (props) => {
     } else {
       return null;
     }
-    return;
   };
 
   return (
@@ -80,22 +78,25 @@ const SelectEl = (props) => {
             ...{},
           }}
         >
-          <FontAwesome
-            name={"angle-double-down"}
-            size={24}
-            color={Colors[scheme].primarySecond}
-          />
           <Text
             style={{
               ...styles.textName,
-              ...{ color: Colors[scheme].primarySecond },
+              ...{
+                color: Colors[scheme].primarySecond,
+                fontFamily: "Kanit_600SemiBold",
+              },
             }}
           >
-            {props.name}
+            {props.name.toUpperCase()}
           </Text>
+          <FontAwesome
+            name={"angle-double-down"}
+            size={24}
+            color={Colors[scheme].primary}
+          />
         </View>
       </View>
-      {showDatePicker(isSelected)}
+      {showDatePicker(true)}
     </View>
   );
 };
@@ -121,7 +122,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textName: {
-    fontSize: 10,
+    marginTop: 10,
+    fontSize: 12,
   },
   textDate: {
     fontSize: 8,

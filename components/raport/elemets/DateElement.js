@@ -36,8 +36,6 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
     // shadowColor: "black",
     // shadowOpacity: 0.3,
-
-    // borderRadius: 10,
   },
   text: {
     fontSize: 15,

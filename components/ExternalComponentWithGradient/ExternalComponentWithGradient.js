@@ -30,15 +30,12 @@ const ExternalComponentWithGradient = (props) => {
         }}
         source={path}
       />
-      <LinearGradient
-        colors={[
-          Colors[scheme].backGround,
-          Colors[scheme].backGround,
-
-          // Colors.gradientBackground.secondary,
-        ]}
-        style={styles.background}
-      />
+      {props.dimmer === undefined && (
+        <LinearGradient
+          colors={[Colors[scheme].backGround, Colors[scheme].backGround]}
+          style={styles.background}
+        />
+      )}
       <View
         style={{
           alignItems: "center",
