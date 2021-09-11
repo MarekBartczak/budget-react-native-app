@@ -53,7 +53,9 @@ const Expense = (props) => {
                     fontFamily: "Kanit_600SemiBold",
                   }}
                 >
-                  {item.item.place.toUpperCase()}
+                  {item.item.place
+                    ? item.item.place.toUpperCase()
+                    : item.item.title.toUpperCase()}
                 </Text>
 
                 <Text style={{ color: Colors[scheme].primarySecond }}>

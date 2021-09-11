@@ -11,7 +11,6 @@ const DateElement = (props) => {
   const year = date.slice(0, 4);
   const monthIndex = date.slice(5);
   const month = Months[Number(monthIndex - 1)];
-  console.log(month);
   return (
     <View
       style={{
