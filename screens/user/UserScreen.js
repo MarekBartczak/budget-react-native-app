@@ -47,13 +47,14 @@ const styles = StyleSheet.create({
     color: Colors.dark.primary,
   },
   userNameView_light: {
-    backgroundColor: Colors.light.primary,
+    borderColor: Colors.light.primary,
     paddingVertical: 10,
     paddingHorizontal: 10,
-    width: "90%",
-    borderRadius: 10,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     marginBottom: 50,
+    borderBottomWidth: 1,
+
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,
@@ -110,13 +111,12 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   userEmail_light: {
-    fontWeight: "bold",
+    fontFamily: "Kanit_600SemiBold",
     color: Colors.light.primarySecond,
     fontSize: 15,
   },
   userEmail_dark: {
     fontFamily: "Kanit_600SemiBold",
-
     color: Colors.dark.primary,
     fontSize: 15,
   },
@@ -135,10 +135,11 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.light.primaryThird,
-    width: Dimensions.get("window").width * 0.6,
-    height: Dimensions.get("window").width * 0.6,
-    borderRadius: Dimensions.get("window").width * 0.3,
+    borderColor: Colors.light.primary,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").width * 0.7,
+    borderBottomWidth: 1,
+
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,
