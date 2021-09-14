@@ -32,6 +32,7 @@ export default {
     backGround: "rgba(225, 225, 225, 1)",
     backGroundOne: "rgba(225, 225, 225, 0.5)",
     backGroundTwo: "rgba(255,255,255,1)",
+    separator: "rgba(1,1,1,0)",
   },
   dark: {
     primary: "rgb(30,32,39)",
@@ -42,6 +43,7 @@ export default {
     backGround: "rgba(1, 1, 1, 0.93)",
     backGroundOne: "rgba(30,32,39, 1)",
     backGroundTwo: "rgba(60,62,69, 1)",
+    separator: "rgb(30,32,39)",
   },
 };
 

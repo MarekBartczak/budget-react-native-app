@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   summaryCost_light: {
     marginTop: 10,
     // backgroundColor: Colors.light.primary,
-    borderBottomColor: Colors.light.primary,
+    borderBottomColor: Colors.light.separator,
     width: Dimensions.get("window").width,
     height: 50,
     borderRadius: 3,
@@ -156,12 +156,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    borderBottomWidth: 1,
   },
   summaryCost_dark: {
     marginTop: 10,
 
     // backgroundColor: Colors.dark.primary,
-    borderBottomColor: Colors.dark.primary,
+    borderBottomColor: Colors.dark.separator,
     borderBottomWidth: 1,
 
     width: Dimensions.get("window").width,

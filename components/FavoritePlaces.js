@@ -45,7 +45,13 @@ const FavoritePlaces = (props) => {
     <View
       style={{
         ...styles.screen,
-        ...{ borderColor: Colors[scheme].primary },
+        ...{
+          borderColor: Colors[scheme].separator,
+          // shadowOffset: { height: 0, width: 0 },
+          // shadowRadius: 10,
+          // shadowColor: Colors[scheme].button,
+          // shadowOpacity: 0.9,
+        },
       }}
     >
       <View style={styles.row}>

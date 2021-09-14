@@ -37,11 +37,12 @@ const UnpaidExpense = (props) => {
     <View
       style={{
         ...styles.unpaidExpenseComponent,
-        ...{ borderColor: Colors[scheme].primary },
+        ...{ borderColor: Colors[scheme].separator },
       }}
     >
       <FlatList
         data={dateList}
+        style={{ marginBottom: 10 }}
         renderItem={(item) => (
           <TouchableOpacity
             style={styles.overDateList}

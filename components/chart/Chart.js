@@ -120,7 +120,13 @@ const Chart = (props) => {
           }}
           style={{
             ...styles.chart,
-            ...{ borderColor: Colors[scheme].primary },
+            ...{
+              borderColor: Colors[scheme].separator,
+              shadowOffset: { height: -10, width: -10 },
+              shadowRadius: 1,
+              shadowColor: Colors[scheme].button,
+              shadowOpacity: 0.1,
+            },
           }}
           bezier
         />
