@@ -44,7 +44,8 @@ const MainScreen = (props) => {
           </View>
           <View style={styles.component}>
             <Chart
-              press={() => props.navigation.navigate("Date")}
+              // press={() => props.navigation.navigate("Date")}
+              press={() => props.navigation.navigate("ExpenseList")}
               label={chartEl.label}
               data={chartEl.data}
             />

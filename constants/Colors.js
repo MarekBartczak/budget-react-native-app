@@ -33,6 +33,7 @@ export default {
     backGroundOne: "rgba(225, 225, 225, 0.5)",
     backGroundTwo: "rgba(255,255,255,1)",
     separator: "rgba(1,1,1,0)",
+    dimmer: "rgba(255,255,255,0.5)",
   },
   dark: {
     primary: "rgb(30,32,39)",
@@ -44,6 +45,7 @@ export default {
     backGroundOne: "rgba(30,32,39, 1)",
     backGroundTwo: "rgba(60,62,69, 1)",
     separator: "rgb(30,32,39)",
+    dimmer: "rgba(1,1,1,0)",
   },
 };
 

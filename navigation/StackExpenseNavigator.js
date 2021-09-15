@@ -1,20 +1,22 @@
-import MainScreen from "../screens/expense/MainScreen";
-import DetailsScreen from "../screens/expense/DetailsScreen";
-import DateScreen from "../screens/expense/DateScreen";
-import PlaceScreen from "../screens/expense/PlaceScreen";
-import CategoryScreen from "../screens/expense/CategoryScreen";
-import FavoritePlaceScreen from "../screens/expense/FavoritePlaceScreen";
-import AddMultipleItemScreen from "../screens/expense/AddMultiItemsSetDateAndPlaceScreen";
-import AddItemToTheReceiptScreen from "../screens/expense/AddItemToTheReceiptScreen";
-import EditCategories from "../screens/expense/EditCategoriesScreen";
-import InputDataScreen from "../screens/expense/InputDataScreen";
-import Colors from "../constants/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Logout from "../components/auth/logout/Logout";
 import React from "react";
+import { Text, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
+import Logout from "../components/auth/logout/Logout";
+import Colors from "../constants/Colors";
+import AddItemToTheReceiptScreen from "../screens/expense/AddItemToTheReceiptScreen";
+import AddMultipleItemScreen from "../screens/expense/AddMultiItemsSetDateAndPlaceScreen";
+import CategoryScreen from "../screens/expense/CategoryScreen";
+import DateScreen from "../screens/expense/DateScreen";
+import DetailsScreen from "../screens/expense/DetailsScreen";
+import EditCategories from "../screens/expense/EditCategoriesScreen";
+import ExpenseListScreen from "../screens/expense/ExpenseListScreen";
+import FavoritePlaceScreen from "../screens/expense/FavoritePlaceScreen";
+import InputDataScreen from "../screens/expense/InputDataScreen";
+import MainScreen from "../screens/expense/MainScreen";
+import PlaceScreen from "../screens/expense/PlaceScreen";
+
 const Stack = createStackNavigator();
 
 const StackExpenseNavigator = (props) => {
@@ -84,6 +86,19 @@ const StackExpenseNavigator = (props) => {
       {stackScreen("Date", DateScreen, ({ navigation }) =>
         filter("Data", "Date")
       )}
+      {stackScreen("ExpenseList", ExpenseListScreen, ({ navigation }) => ({
+        headerTitle: () => (
+          <Text
+            style={{
+              fontFamily: "Kanit_600SemiBold",
+              fontSize: 15,
+              color: Colors[scheme].primarySecond,
+            }}
+          >
+            LISTA WYDATKÓW
+          </Text>
+        ),
+      }))}
       {stackScreen("Place", PlaceScreen, ({ navigation }) =>
         filter("Miejsce", "Place")
       )}
