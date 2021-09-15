@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import Colors from "../../../constants/Colors";
 
 import SelectFilterType from "./modalFilter/SelectFilterType";
-
+import ExpenseFilter from "../expenseFilter/ExpenseFilter";
 const ExpenseHeaderModalFilter = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -62,6 +62,7 @@ const ExpenseHeaderModalFilter = (props) => {
         </View>
         <View style={{ ...styles.filterArea, ...{} }}>
           <SelectFilterType />
+          <ExpenseFilter />
         </View>
       </View>
     </View>

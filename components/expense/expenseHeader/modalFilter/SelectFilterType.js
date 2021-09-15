@@ -11,7 +11,6 @@ import { useSelector, useDispatch } from "react-redux";
 import * as itemsActions from "../../../../store/actions/items";
 const SelectFilterType = () => {
   const scheme = useSelector((state) => state.config.scheme);
-  const filterType = useSelector((state) => state.item.filter);
   const [select, setSelect] = useState("");
   const dispatch = useDispatch();
 
