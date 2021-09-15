@@ -22,6 +22,7 @@ import updateCategory from "../../functions/cloud/updateCategory";
 const initialState = {
   filter: {
     filterType: "date",
+    selectedFilter: { place: "", category: "", date: "" },
   },
   categoryList: [],
   categoryID: "",
