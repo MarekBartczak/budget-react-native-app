@@ -2,14 +2,6 @@ import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React, { useState, useEffect } from "react";
 import Colors from "../../../../../constants/Colors";
 import MainCategoryElement from "./MainCategoryElement";
-// import {
-//   Entypo,
-//   Feather,
-//   FontAwesome,
-//   FontAwesome5,
-//   MaterialCommunityIcons,
-//   MaterialIcons,
-// } from "@expo/vector-icons";
 import SubCategoryList from "./SubCategoryList";
 import ExternalComponent from "../../../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { useHeaderHeight } from "@react-navigation/stack";

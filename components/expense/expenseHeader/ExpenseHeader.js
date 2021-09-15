@@ -15,7 +15,6 @@ import ExpenseHeaderModalFilter from "./ExpenseHeaderModalFilter";
 
 const ExpenseHeader = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-  const date = new Date().toISOString().slice(0, 10).replace(/-/g, ".");
   const [toggleModal, setToggleModal] = useState(false);
 
   const modalHandler = (state) => {
@@ -31,14 +30,14 @@ const ExpenseHeader = (props) => {
       >
         <ExpenseHeaderModalFilter modalHandler={modalHandler} />
       </Modal>
-      <View style={{ ...styles.date, ...{} }}>
+      <View style={{ ...styles.cost, ...{} }}>
         <Text
           style={{
-            ...styles.dateText,
+            ...styles.costText,
             ...{ color: Colors[scheme].primarySecond },
           }}
         >
-          {date}
+          {props.cost.toFixed(2)}zł
         </Text>
       </View>
       <View>
@@ -70,13 +69,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  date: {
+  cost: {
     width: Dimensions.get("window").width * 0.8,
   },
   filterButton: { borderRadius: 3, padding: 10, marginRight: 10 },
-  dateText: {
-    fontFamily: "Kanit_400Regular",
+  costText: {
+    fontFamily: "Kanit_600SemiBold",
     fontSize: 25,
-    marginLeft: 10,
+    textAlign: "center",
+    // marginLeft: 30,
   },
 });

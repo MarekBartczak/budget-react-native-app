@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
 import React from "react";
 import { useSelector } from "react-redux";
 import Colors from "../../../constants/Colors";
@@ -7,12 +7,19 @@ const ExpenseList = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const filter = useSelector((state) => state.item.filter.selectedFilter);
   const items = useSelector((state) => state.item.items);
-  //   console.log(items);
+
+  const summary = (list) => {
+    const countSum = (total, sum) => total + sum;
+    const costList = list.map((el) => el.cost);
+    return costList.reduce(countSum);
+  };
+  props.getCost(summary(items));
   return (
-    <View style={{ ...styles.expenseList, ...{} }}>
+    <View style={{ ...styles.expenseList, ...{ flex: 1 } }}>
       <FlatList
         data={items}
         keyExtractor={(item) => item.id}
+        style={{ marginBottom: Dimensions.get("window").height * 0.2 }}
         renderItem={(item) => (
           <ExpenseListElement
             cost={item.item.cost}
