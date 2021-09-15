@@ -112,3 +112,7 @@ export const SET_FILTERED_MONTH = "SET_FILTERED_MONTH";
 export const setFilteredMonth = (month, year) => {
   return { type: SET_FILTERED_MONTH, month: month, year: year };
 };
+export const SET_FILTER_TYPE = "SET_FILTER_TYPE";
+export const setFilterType = (selected) => {
+  return { type: SET_FILTER_TYPE, selected: selected };
+};

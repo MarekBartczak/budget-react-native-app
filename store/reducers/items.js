@@ -15,10 +15,14 @@ import {
   DELETE_SUBCATEGORY,
   SET_FILTERED_MONTH,
   SET_CATEGORY_ID,
+  SET_FILTER_TYPE,
 } from "../actions/items";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 import updateCategory from "../../functions/cloud/updateCategory";
 const initialState = {
+  filter: {
+    filterType: "date",
+  },
   categoryList: [],
   categoryID: "",
   items: [],
@@ -148,6 +152,12 @@ export default (state = initialState, action) => {
 
     case SET_FILTERED_MONTH:
       return { ...state, view: { month: action.month, year: action.year } };
+
+    case SET_FILTER_TYPE:
+      return {
+        ...state,
+        filter: { ...state.filter, filterType: action.selected },
+      };
   }
   return state;
 };

@@ -9,6 +9,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Colors from "../../../constants/Colors";
 
+import SelectFilterType from "./modalFilter/SelectFilterType";
+
 const ExpenseHeaderModalFilter = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -26,7 +28,6 @@ const ExpenseHeaderModalFilter = (props) => {
           ...{ backgroundColor: Colors[scheme].dimmer },
         }}
       ></TouchableOpacity>
-      {/* <View */}
       <View
         style={{
           ...styles.expenseHeaderModalFilter,
@@ -38,7 +39,11 @@ const ExpenseHeaderModalFilter = (props) => {
         <View
           style={{
             ...styles.close,
-            ...{ backgroundColor: Colors[scheme].primary },
+            ...{
+              backgroundColor: Colors[scheme].backGround,
+              borderColor: Colors[scheme].primary,
+              borderWidth: 1,
+            },
           }}
         >
           <TouchableOpacity
@@ -55,7 +60,9 @@ const ExpenseHeaderModalFilter = (props) => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={{ ...styles.filterArea, ...{} }}></View>
+        <View style={{ ...styles.filterArea, ...{} }}>
+          <SelectFilterType />
+        </View>
       </View>
     </View>
   );
@@ -69,7 +76,6 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height,
   },
   expenseHeaderModalFilter: {
-    // marginTop: Dimensions.get("window").height * 0.4,
     height: Dimensions.get("window").height * 0.6,
   },
   dimmer: {
