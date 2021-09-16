@@ -6,29 +6,20 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 
 import ExpenseHeader from "../../components/expense/expenseHeader/ExpenseHeader";
 import ExpenseList from "../../components/expense/expenseList/ExpenseList";
-import SummaryCost from "../../components/expense/SummaryCost";
 
-import getElementToFilterBy from "../../functions/expenseFilter/getElementToFilterBy";
 const ExpenseListScreen = (props) => {
   const [cost, setCost] = useState(0);
-  const items = useSelector((state) => state.item.items);
-  const filter = useSelector((state) => state.item.filter.selectedFilter);
   const getCost = (cost) => {
     setTimeout(() => {
       setCost(cost);
     }, 200);
   };
 
-  //extrude this method from this file
-  const filterBy = (filter) => {
-    return null;
-  };
-
   return (
     <ExternalComponent>
       <View>
         <View>
-          <ExpenseHeader cost={cost} itemsList={filterBy(filter)} />
+          <ExpenseHeader cost={cost} />
         </View>
 
         <View>

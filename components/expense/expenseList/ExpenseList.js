@@ -1,19 +1,31 @@
 import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Colors from "../../../constants/Colors";
 import ExpenseListElement from "./ExpenseListElement";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import getFilteredListBySelectedFilter from "../../../functions/expenseFilter/getFilteredListBySelectedFilter";
 const ExpenseList = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-  const filter = useSelector((state) => state.item.filter.selectedFilter);
-  const items = useSelector((state) => state.item.items);
+  const filter = useSelector((state) => state.item.filter);
+  const bareItems = useSelector((state) => state.item.items);
+  const [filteredList, setFilterList] = useState(
+    getFilteredListBySelectedFilter(filter, bareItems)
+  );
 
+  useEffect(() => {
+    setFilterList(getFilteredListBySelectedFilter(filter, bareItems));
+  }, [filter]);
+
+  let items = filteredList;
   const summary = (list) => {
-    const countSum = (total, sum) => total + sum;
-    const costList = list.map((el) => el.cost);
-    return costList.reduce(countSum);
+    if (list.length > 0) {
+      const countSum = (total, sum) => total + sum;
+      const costList = list.map((el) => el.cost);
+      return costList.reduce(countSum);
+    } else {
+      return 0;
+    }
   };
   props.getCost(summary(items));
   return (

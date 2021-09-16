@@ -20,9 +20,10 @@ const SelectFilterType = (props) => {
   }, [select]);
 
   const clearFilterBy = () => {
-    dispatch(itemsActions.setFilter_date());
-    dispatch(itemsActions.setFilter_mainCategory());
-    dispatch(itemsActions.setFilter_place());
+    dispatch(itemsActions.setFilter_date(""));
+    dispatch(itemsActions.setFilter_mainCategory(""));
+    dispatch(itemsActions.setFilter_place(""));
+    dispatch(itemsActions.searchElement(""));
   };
 
   const selectFilter = (type, name) => {
