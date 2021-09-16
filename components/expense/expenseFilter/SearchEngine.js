@@ -1,10 +1,23 @@
-import { StyleSheet, Text, View, Dimensions, TextInput } from "react-native";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState, useEffect } from "react";
+import * as expenseActions from "../../../store/actions/items";
+import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../../constants/Colors";
 const SearchEngine = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const [search, setSearch] = useState();
+  const dispatch = useDispatch();
+
+  const setSearchFilter = () => {
+    dispatch(expenseActions.searchElement(search));
+  };
   return (
     <View style={{ ...styles.searchEngine, ...{} }}>
       <View style={{ ...styles.input, ...{} }}>
@@ -28,6 +41,22 @@ const SearchEngine = (props) => {
           placeholderTextColor={Colors[scheme].primaryThird}
           onChangeText={setSearch}
         />
+        <TouchableOpacity
+          onPress={() => setSearchFilter()}
+          style={{
+            ...styles.btn,
+            ...{ backgroundColor: Colors[scheme].primary },
+          }}
+        >
+          <Text
+            style={{
+              color: Colors[scheme].button,
+              fontFamily: "Kanit_600SemiBold",
+            }}
+          >
+            SZUKAJ
+          </Text>
+        </TouchableOpacity>
       </View>
       <View style={{ ...styles.result, ...{} }}>
         <Text
@@ -75,7 +104,7 @@ const styles = StyleSheet.create({
   searchEngine: {
     width: Dimensions.get("window").width,
     flexDirection: "column",
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "center",
   },
   result: {
@@ -88,9 +117,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   textInput: {
-    height: Dimensions.get("window").height * 0.05,
+    padding: 10,
+    borderRadius: 3,
+    width: Dimensions.get("window").width * 0.7,
+  },
+  input: {
+    width: Dimensions.get("window").width,
+    marginTop: 20,
+    justifyContent: "space-around",
+    flexDirection: "row",
+  },
+  btn: {
     padding: 10,
     borderRadius: 3,
   },
-  input: { width: Dimensions.get("window").width - 50, marginTop: 20 },
 });

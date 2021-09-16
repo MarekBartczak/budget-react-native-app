@@ -18,7 +18,7 @@ const ExpenseFilter = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const filterType = useSelector((state) => state.item.filter.filterType);
   const getFilterBy = useSelector((state) => state.item.filter.selectedFilter);
-
+  const search = useSelector((state) => state.item.filter.searchElement);
   const setFilterBy = (type, filter) => {
     dispatch(expenseActions[`setFilter_${type}`](filter));
   };

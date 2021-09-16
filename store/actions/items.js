@@ -129,3 +129,7 @@ export const SET_MAIN_CATEGORY_FILTER = "SET_MAIN_CATEGORY_FILTER";
 export const setFilter_mainCategory = (mainCategory) => {
   return { type: SET_MAIN_CATEGORY_FILTER, mainCategory: mainCategory };
 };
+export const SEARCH_ELEMENT = "SEARCH_ELEMENT";
+export const searchElement = (search) => {
+  return { type: SEARCH_ELEMENT, search: search };
+};

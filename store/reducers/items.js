@@ -19,12 +19,14 @@ import {
   SET_DATE_FILTER,
   SET_PLACE_FILTER,
   SET_MAIN_CATEGORY_FILTER,
+  SEARCH_ELEMENT,
 } from "../actions/items";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 import updateCategory from "../../functions/cloud/updateCategory";
 const initialState = {
   filter: {
     filterType: "date",
+    searchElement: "",
     selectedFilter: { place: "", mainCategory: "", date: "" },
   },
   categoryList: [],
@@ -190,6 +192,14 @@ export default (state = initialState, action) => {
             ...state.filter.selectedFilter,
             mainCategory: action.mainCategory,
           },
+        },
+      };
+    case SEARCH_ELEMENT:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          searchElement: action.search,
         },
       };
   }

@@ -10,7 +10,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../../../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import * as itemsActions from "../../../../store/actions/items";
-const SelectFilterType = () => {
+const SelectFilterType = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const [select, setSelect] = useState("");
   const dispatch = useDispatch();
