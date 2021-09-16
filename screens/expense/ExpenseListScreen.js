@@ -8,6 +8,7 @@ import ExpenseHeader from "../../components/expense/expenseHeader/ExpenseHeader"
 import ExpenseList from "../../components/expense/expenseList/ExpenseList";
 import SummaryCost from "../../components/expense/SummaryCost";
 
+import getElementToFilterBy from "../../functions/expenseFilter/getElementToFilterBy";
 const ExpenseListScreen = (props) => {
   const [cost, setCost] = useState(0);
   const items = useSelector((state) => state.item.items);

@@ -16,13 +16,16 @@ import {
   SET_FILTERED_MONTH,
   SET_CATEGORY_ID,
   SET_FILTER_TYPE,
+  SET_DATE_FILTER,
+  SET_PLACE_FILTER,
+  SET_MAIN_CATEGORY_FILTER,
 } from "../actions/items";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 import updateCategory from "../../functions/cloud/updateCategory";
 const initialState = {
   filter: {
     filterType: "date",
-    selectedFilter: { place: "", category: "", date: "" },
+    selectedFilter: { place: "", mainCategory: "", date: "" },
   },
   categoryList: [],
   categoryID: "",
@@ -158,6 +161,36 @@ export default (state = initialState, action) => {
       return {
         ...state,
         filter: { ...state.filter, filterType: action.selected },
+      };
+    case SET_DATE_FILTER:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          selectedFilter: { ...state.filter.selectedFilter, date: action.date },
+        },
+      };
+    case SET_PLACE_FILTER:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          selectedFilter: {
+            ...state.filter.selectedFilter,
+            place: action.place,
+          },
+        },
+      };
+    case SET_MAIN_CATEGORY_FILTER:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          selectedFilter: {
+            ...state.filter.selectedFilter,
+            mainCategory: action.mainCategory,
+          },
+        },
       };
   }
   return state;

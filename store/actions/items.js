@@ -44,7 +44,7 @@ export const clearStateAfterLogout = () => {
 };
 
 export const SELECT_MAIN_CATEGORY = "SELECT_MAIN_CATEGORY";
-export const selectMainCategory = (title) => {
+export const selectMainCategoryset = (title) => {
   return { type: SELECT_MAIN_CATEGORY, title: title };
 };
 
@@ -115,4 +115,17 @@ export const setFilteredMonth = (month, year) => {
 export const SET_FILTER_TYPE = "SET_FILTER_TYPE";
 export const setFilterType = (selected) => {
   return { type: SET_FILTER_TYPE, selected: selected };
+};
+
+export const SET_DATE_FILTER = "SET_DATE_FILTER";
+export const setFilter_date = (date) => {
+  return { type: SET_DATE_FILTER, date: date };
+};
+export const SET_PLACE_FILTER = "SET_PLACE_FILTER";
+export const setFilter_place = (place) => {
+  return { type: SET_PLACE_FILTER, place: place };
+};
+export const SET_MAIN_CATEGORY_FILTER = "SET_MAIN_CATEGORY_FILTER";
+export const setFilter_mainCategory = (mainCategory) => {
+  return { type: SET_MAIN_CATEGORY_FILTER, mainCategory: mainCategory };
 };

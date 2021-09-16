@@ -6,6 +6,7 @@ import {
   Dimensions,
 } from "react-native";
 import React, { useEffect, useState } from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../../../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import * as itemsActions from "../../../../store/actions/items";
@@ -17,6 +18,12 @@ const SelectFilterType = () => {
   useEffect(() => {
     dispatch(itemsActions.setFilterType(select));
   }, [select]);
+
+  const clearFilterBy = () => {
+    dispatch(itemsActions.setFilter_date());
+    dispatch(itemsActions.setFilter_mainCategory());
+    dispatch(itemsActions.setFilter_place());
+  };
 
   const selectFilter = (type, name) => {
     return (
@@ -51,10 +58,22 @@ const SelectFilterType = () => {
         {selectFilter("date", "DATA")}
       </View>
       <View style={{ ...styles.categoryFilter, ...{} }}>
-        {selectFilter("category", "KATEGORIA")}
+        {selectFilter("mainCategory", "KATEGORIA")}
       </View>
       <View style={{ ...styles.placeFilter, ...{} }}>
         {selectFilter("place", "MIEJSCE")}
+      </View>
+      <View style={{ ...styles.clear, ...{} }}>
+        <TouchableOpacity
+          style={{
+            backgroundColor: Colors[scheme].primary,
+            borderRadius: 3,
+            padding: 1,
+          }}
+          onPress={() => clearFilterBy()}
+        >
+          <MaterialIcons name="clear" size={24} color={Colors[scheme].button} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -72,4 +91,7 @@ const styles = StyleSheet.create({
   dateFilter: {},
   categoryFilter: {},
   placeFilter: {},
+  clear: {
+    justifyContent: "center",
+  },
 });
