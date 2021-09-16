@@ -12,13 +12,17 @@ import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import ExpenseHeaderModalFilter from "./ExpenseHeaderModalFilter";
-
+import ExpenseSearch from "../expenseFilter/ExpenseSearch";
 const ExpenseHeader = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const [toggleModal, setToggleModal] = useState(false);
+  const [toggleModalSearch, setToggleModalSearch] = useState(false);
 
   const modalHandler = (state) => {
     setToggleModal(state);
+  };
+  const modalHandlerSearch = (state) => {
+    setToggleModalSearch(state);
   };
   return (
     <View style={{ ...styles.expenseHeader, ...{} }}>
@@ -30,6 +34,14 @@ const ExpenseHeader = (props) => {
       >
         <ExpenseHeaderModalFilter modalHandler={modalHandler} />
       </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={toggleModalSearch}
+        onDismiss={setToggleModalSearch}
+      >
+        <ExpenseSearch modalHandlerSearch={modalHandlerSearch} />
+      </Modal>
       <View style={{ ...styles.cost, ...{} }}>
         <Text
           style={{
@@ -40,7 +52,20 @@ const ExpenseHeader = (props) => {
           {props.cost.toFixed(2)}zł
         </Text>
       </View>
-      <View>
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity
+          onPress={() => setToggleModalSearch(true)}
+          style={{
+            ...styles.filterButton,
+            ...{ backgroundColor: Colors[scheme].primary },
+          }}
+        >
+          <MaterialIcons
+            name="search"
+            size={30}
+            color={Colors[scheme].button}
+          />
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setToggleModal(true)}
           style={{
@@ -70,7 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   cost: {
-    width: Dimensions.get("window").width * 0.8,
+    marginLeft: 50,
   },
   filterButton: { borderRadius: 3, padding: 10, marginRight: 10 },
   costText: {
