@@ -5,6 +5,7 @@ import Colors from "../../../constants/Colors";
 import ExpenseListElement from "./ExpenseListElement";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import getFilteredListBySelectedFilter from "../../../functions/expenseFilter/getFilteredListBySelectedFilter";
+import getFilteredListBySearchInput from "../../../functions/expenseFilter/getFilteredListBySearchInput";
 const ExpenseList = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const filter = useSelector((state) => state.item.filter);
@@ -17,16 +18,24 @@ const ExpenseList = (props) => {
     setFilterList(getFilteredListBySelectedFilter(filter, bareItems));
   }, [filter]);
 
-  let items = filteredList;
+  let filteredByInput = getFilteredListBySearchInput(
+    filter.searchElement,
+    filteredList
+  );
+
+  let items = filteredByInput;
+
   const summary = (list) => {
     if (list.length > 0) {
       const countSum = (total, sum) => total + sum;
       const costList = list.map((el) => el.cost);
+
       return costList.reduce(countSum);
     } else {
       return 0;
     }
   };
+  props.getListLength(items.length);
   props.getCost(summary(items));
   return (
     <View style={{ ...styles.expenseList, ...{ flex: 1 } }}>

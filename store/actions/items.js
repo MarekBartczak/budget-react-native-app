@@ -133,3 +133,13 @@ export const SEARCH_ELEMENT = "SEARCH_ELEMENT";
 export const searchElement = (search) => {
   return { type: SEARCH_ELEMENT, search: search };
 };
+
+export const COUNT_FILTERED_ITEMS_AND_SUMMARY_COST =
+  "COUNT_FILTERED_ITEMS_AND_SUMMARY_COST";
+export const CountFilteredItemsAndSummaryCost = (count, cost) => {
+  return {
+    type: COUNT_FILTERED_ITEMS_AND_SUMMARY_COST,
+    count: count,
+    cost: cost,
+  };
+};

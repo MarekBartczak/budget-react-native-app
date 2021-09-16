@@ -17,12 +17,12 @@ const ExpenseFilter = (props) => {
 
   const scheme = useSelector((state) => state.config.scheme);
   const filterType = useSelector((state) => state.item.filter.filterType);
+  const filterCount = useSelector((state) => state.item.filter.count);
   const getFilterBy = useSelector((state) => state.item.filter.selectedFilter);
   const search = useSelector((state) => state.item.filter.searchElement);
   const setFilterBy = (type, filter) => {
     dispatch(expenseActions[`setFilter_${type}`](filter));
   };
-
   const filteredBy = {
     date: getElementToFilterBy(items, "date"),
     mainCategory: getElementToFilterBy(items, "mainCategory"),
@@ -53,7 +53,7 @@ const ExpenseFilter = (props) => {
           textAlign: "center",
         }}
       >
-        ZNALEZIONO: 0
+        ZNALEZIONO: {filterCount.items}
       </Text>
       <FlatList
         style={{

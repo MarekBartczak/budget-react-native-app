@@ -20,11 +20,16 @@ import {
   SET_PLACE_FILTER,
   SET_MAIN_CATEGORY_FILTER,
   SEARCH_ELEMENT,
+  COUNT_FILTERED_ITEMS_AND_SUMMARY_COST,
 } from "../actions/items";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 import updateCategory from "../../functions/cloud/updateCategory";
 const initialState = {
   filter: {
+    count: {
+      items: 0,
+      cost: 0,
+    },
     filterType: "date",
     searchElement: "",
     selectedFilter: { place: "", mainCategory: "", date: "" },
@@ -200,6 +205,15 @@ export default (state = initialState, action) => {
         filter: {
           ...state.filter,
           searchElement: action.search,
+        },
+      };
+
+    case COUNT_FILTERED_ITEMS_AND_SUMMARY_COST:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          count: { items: action.count, cost: action.cost },
         },
       };
   }

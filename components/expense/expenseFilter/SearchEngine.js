@@ -9,12 +9,20 @@ import {
 import React, { useState, useEffect } from "react";
 import * as expenseActions from "../../../store/actions/items";
 import { useSelector, useDispatch } from "react-redux";
+import { MaterialIcons } from "@expo/vector-icons";
+
 import Colors from "../../../constants/Colors";
 const SearchEngine = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const filterCount = useSelector((state) => state.item.filter.count);
+
   const [search, setSearch] = useState();
   const dispatch = useDispatch();
 
+  const clearFilterBy = () => {
+    setSearch("");
+    dispatch(expenseActions.searchElement(""));
+  };
   const setSearchFilter = () => {
     dispatch(expenseActions.searchElement(search));
   };
@@ -57,6 +65,17 @@ const SearchEngine = (props) => {
             SZUKAJ
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            justifyContent: "center",
+            backgroundColor: Colors[scheme].primary,
+            borderRadius: 3,
+            padding: 5,
+          }}
+          onPress={() => clearFilterBy()}
+        >
+          <MaterialIcons name="clear" size={24} color={Colors[scheme].button} />
+        </TouchableOpacity>
       </View>
       <View style={{ ...styles.result, ...{} }}>
         <Text
@@ -73,7 +92,7 @@ const SearchEngine = (props) => {
               fontSize: 20,
             }}
           >
-            10
+            {filterCount.items}
           </Text>
         </Text>
         <Text
@@ -90,7 +109,8 @@ const SearchEngine = (props) => {
               fontSize: 20,
             }}
           >
-            123 <Text>zł</Text>
+            {filterCount.cost}
+            <Text>zł</Text>
           </Text>
         </Text>
       </View>
