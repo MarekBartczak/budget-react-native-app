@@ -24,6 +24,16 @@ import {
 } from "../actions/items";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 import updateCategory from "../../functions/cloud/updateCategory";
+
+const getMonth = () => {
+  const month = new Date().getMonth() + 1;
+  if (month < 10) {
+    return `0${month}`;
+  }
+
+  return month.toString();
+};
+
 const initialState = {
   filter: {
     count: {
@@ -38,8 +48,10 @@ const initialState = {
   categoryID: "",
   items: [],
   view: {
-    month: "",
-    year: "",
+    // month: "",
+    // year: "",
+    month: getMonth(),
+    year: new Date().getFullYear().toString(),
   },
   receipt: {
     place: "",

@@ -23,11 +23,9 @@ const SumaryCost = (props) => {
   const [month, setMonth] = useState();
   const [year, setYear] = useState(currentYear);
   const [showModal, setShowModal] = useState(false);
-
   const dateList = [...new Set(props.dateList.map((el) => el.date.slice(0, 7)))]
     .sort()
     .map((el) => el + "-01");
-
   const dateListWithObj = dateList
     .map((el) => {
       return {
@@ -125,7 +123,6 @@ const SumaryCost = (props) => {
       </View>
     );
   };
-
   return (
     <View style={styles[`summaryCost_${scheme}`]}>
       <View>

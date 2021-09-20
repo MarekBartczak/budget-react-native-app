@@ -15,9 +15,11 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 const MainScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
-  const category = useSelector((state) => state.item);
+  const summryCostView = useSelector((state) => state.item.view);
   const chartEl = chartElement(itemsFromRedux);
   const dispatch = useDispatch();
+  const selectedDate = `${summryCostView.year}-${summryCostView.month}`;
+
   return (
     <ExternalComponent>
       <View
@@ -38,9 +40,14 @@ const MainScreen = (props) => {
             }}
           >
             <SummaryCost
-              cost={summaryCostCounter(itemsFromRedux)}
+              cost={summaryCostCounter(
+                itemsFromRedux.filter((item) =>
+                  item.date.includes(selectedDate)
+                )
+              )}
               dateList={itemsFromRedux}
             />
+            {/* {console.log(itemsFromRedux)} */}
           </View>
           <View style={styles.component}>
             <Chart

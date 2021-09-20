@@ -12,12 +12,17 @@ const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
   const config = useSelector((state) => state.config);
   const chartEl = chartElement(incomeList);
+  const summryCostView = useSelector((state) => state.item.view);
+
+  const selectedDate = `${summryCostView.year}-${summryCostView.month}`;
 
   return (
     <ExternalComponent>
       <View style={styles.component}>
         <SummaryCost
-          cost={summaryCostCounter(incomeList)}
+          cost={summaryCostCounter(
+            incomeList.filter((item) => item.date.includes(selectedDate))
+          )}
           dateList={incomeList}
         />
       </View>
