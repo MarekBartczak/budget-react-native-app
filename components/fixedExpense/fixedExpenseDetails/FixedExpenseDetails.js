@@ -71,8 +71,9 @@ const FixedExpenseDetails = (props) => {
   const setPaid = () => {
     dispatch(fixedExpenseActions.isPaid(!isPaid, id));
     dispatch(fixedExpenseActions.archive(id, userId));
+    props.navigation.navigate("FixedExpense");
 
-    props.navigation.goBack();
+    // props.navigation.goBack();
   };
 
   const removeIncome = () => {

@@ -4,45 +4,127 @@ import {
   View,
   TouchableOpacity,
   Dimensions,
+  Alert,
 } from "react-native";
 import React from "react";
 import Colors from "../../../constants/Colors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Swipeable from "react-native-gesture-handler/Swipeable";
+import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
+import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 const checkPayDate = (date) => {
   return new Date() > new Date(date) ? "red" : "green";
 };
 
 const FixedExpenseElement = (props) => {
-  const scheme = useSelector((state) => state.config.scheme);
+  const navigation = useNavigation();
+  const userId = useSelector((state) => state.auth.userID);
 
-  return (
-    <TouchableOpacity
-      style={{
-        ...styles.element,
-        ...{ borderColor: Colors[scheme].primaryThird },
-      }}
-      onPress={props.press}
-    >
-      <View style={styles.title}>
-        <Text style={{ color: Colors[scheme].primarySecond }}>
-          {props.el.title.toUpperCase()}
-        </Text>
-      </View>
-      <View style={styles.description}>
+  const dispatch = useDispatch();
+  const scheme = useSelector((state) => state.config.scheme);
+  const deleteItem = () => {
+    dispatch(fixedExpenseActions.delItem(props.el.id, userId));
+    navigation.navigate("FixedExpense");
+  };
+  const rightSwipeActions = () => {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          Alert.alert(
+            "Uwaga!",
+            "Czy usunąć?",
+            [
+              { text: "Nie", style: "cancel" },
+              { text: "Tak", onPress: () => deleteItem() },
+            ],
+            { cancelable: false }
+          );
+        }}
+        style={{
+          backgroundColor: Colors[scheme].delete,
+          justifyContent: "center",
+          alignItems: "flex-end",
+          marginVertical: 10,
+        }}
+      >
         <Text
           style={{
-            color: checkPayDate(props.el.date),
-            fontFamily: "Kanit_600SemiBold",
+            paddingHorizontal: 30,
+            paddingVertical: 20,
           }}
         >
-          {props.el.date}
+          <Ionicons
+            name="ios-trash"
+            size={44}
+            color={Colors[scheme].primarySecond}
+          />
         </Text>
-        <Text style={{ color: Colors[scheme].primarySecond }}>
-          {props.el.cost}zł
+      </TouchableOpacity>
+    );
+  };
+
+  const leftSwipeActions = () => {
+    return (
+      <TouchableOpacity
+        onPress={props.press}
+        style={{
+          backgroundColor: Colors[scheme].details,
+          justifyContent: "center",
+          alignItems: "flex-end",
+          marginVertical: 10,
+        }}
+      >
+        <Text
+          style={{
+            paddingHorizontal: 20,
+            color: Colors[scheme].primary,
+            fontFamily: "Kanit_600SemiBold",
+            fontSize: 18,
+          }}
+        >
+          SZCZEGÓŁY
         </Text>
+      </TouchableOpacity>
+    );
+  };
+  return (
+    <Swipeable
+      renderRightActions={rightSwipeActions}
+      renderLeftActions={leftSwipeActions}
+      overshootLeft={false}
+      onSwipeableLeftOpen={props.press}
+    >
+      <View
+        style={{
+          ...styles.element,
+          ...{
+            borderColor: Colors[scheme].backGroundOne,
+            backgroundColor: Colors[scheme].backGroundOne,
+          },
+        }}
+      >
+        <View style={styles.title}>
+          <Text style={{ color: Colors[scheme].primarySecond }}>
+            {props.el.title.toUpperCase()}
+          </Text>
+        </View>
+        <View style={styles.description}>
+          <Text
+            style={{
+              color: checkPayDate(props.el.date),
+              fontFamily: "Kanit_600SemiBold",
+            }}
+          >
+            {props.el.date}
+          </Text>
+          <Text style={{ color: Colors[scheme].primarySecond }}>
+            {props.el.cost}zł
+          </Text>
+        </View>
       </View>
-    </TouchableOpacity>
+    </Swipeable>
   );
 };
 
@@ -60,5 +142,7 @@ const styles = StyleSheet.create({
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
     width: Dimensions.get("window").width,
+    borderBottomWidth: 1,
+    marginVertical: 10,
   },
 });

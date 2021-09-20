@@ -35,6 +35,7 @@ export default {
     separator: "rgba(1,1,1,0)",
     dimmer: "rgba(255,255,255,0)",
     delete: "rgb(110,0,0)",
+    details: "rgb(115,199,196)",
   },
   dark: {
     primary: "rgb(30,32,39)",
@@ -48,6 +49,7 @@ export default {
     separator: "rgb(30,32,39)",
     dimmer: "rgba(1,1,1,0)",
     delete: "rgb(110,0,0)",
+    details: "rgb(185,159,06)",
   },
 };
 
