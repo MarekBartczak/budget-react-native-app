@@ -1,4 +1,6 @@
 import React from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import itemReducer from "./store/reducers/items";
@@ -39,11 +41,13 @@ const App = () => {
     return <AppLoading />;
   } else {
     return (
-      <Provider store={store}>
-        {/* <AppearanceProvider> */}
-        <AuthScreen />
-        {/* </AppearanceProvider> */}
-      </Provider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Provider store={store}>
+          {/* <AppearanceProvider> */}
+          <AuthScreen />
+          {/* </AppearanceProvider> */}
+        </Provider>
+      </GestureHandlerRootView>
     );
   }
 };

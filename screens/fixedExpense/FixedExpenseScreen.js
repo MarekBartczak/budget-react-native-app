@@ -13,7 +13,7 @@ import MonthChart from "../../components/chart/MonthChart";
 import Colors from "../../constants/Colors";
 import AddNewFixedExpenseComponent from "../../components/fixedExpense/addNewFixedExpense/AddNewFixedExpenseComponent";
 import chartElement from "../../functions/ChartElement";
-import SummaryCost from "../../components/summaryCost/SumaryCost";
+import SummaryCost from "../../components/summaryCost/SummaryCost";
 import AddNewItem from "../../components/AddNewItem";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";

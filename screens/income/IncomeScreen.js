@@ -5,7 +5,7 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 import Chart from "../../components/chart/BarChart";
 import chartElement from "../../functions/ChartElement";
 import summaryCostCounter from "../../functions/summaryCostCounter";
-import SummaryCost from "../../components/summaryCost/SumaryCost";
+import SummaryCost from "../../components/summaryCost/SummaryCost";
 import Button from "../../components/buttons/Button";
 import AddNewIncomeComponent from "../../components/income/addNewIncome/AddNewIncomeComponent";
 const IncomeScreen = (props) => {

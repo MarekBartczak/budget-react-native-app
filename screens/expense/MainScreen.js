@@ -8,8 +8,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 import * as favoritePlaceAction from "../../store/actions/favoritePlace";
+import * as itemsActions from "../../store/actions/items";
 import chartElement from "../../functions/ChartElement";
-import SummaryCost from "../../components/summaryCost/SumaryCost";
+import SummaryCost from "../../components/summaryCost/SummaryCost";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 const MainScreen = (props) => {
@@ -19,6 +20,17 @@ const MainScreen = (props) => {
   const chartEl = chartElement(itemsFromRedux);
   const dispatch = useDispatch();
   const selectedDate = `${summryCostView.year}-${summryCostView.month}`;
+
+  // dispatch(
+  //   itemsActions.setFilteredMonth(() => {
+  //     const month = new Date().getMonth() + 1;
+  //     if (month < 10) {
+  //       return `0${month}`;
+  //     }
+
+  //     return month.toString();
+  //   }, new Date().getFullYear().toString())
+  // );
 
   return (
     <ExternalComponent>
