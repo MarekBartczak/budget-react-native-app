@@ -27,7 +27,6 @@ const ItemListToAdd = (props) => {
             ...styles.list,
             ...{
               borderColor: Colors[scheme].primary,
-              borderBottomWidth: 1,
             },
           }}
         >
@@ -46,7 +45,7 @@ const ItemListToAdd = (props) => {
             style={{
               ...{
                 fontWeight: selected.fontWeight,
-                color: Colors[scheme].primarySecond,
+                color: Colors[scheme].headerTintColor,
                 fontFamily: "Kanit_400Regular",
               },
             }}

@@ -18,7 +18,7 @@ const Categories = (props) => {
   let iconSize = 32;
 
   return (
-    <ExternalComponent style={styles.screen}>
+    <ExternalComponent style={{ ...styles.screen, ...{} }}>
       <View style={styles.external}>
         <View style={styles.elements}>
           <View>

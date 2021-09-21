@@ -54,7 +54,7 @@ const Receipt = (props) => {
       keyboardVerticalOffset={30}
       style={{
         ...styles.receipt,
-        ...{ borderColor: Colors[scheme].primaryThird },
+        ...{ backgroundColor: Colors[scheme].light },
       }}
     >
       <View>

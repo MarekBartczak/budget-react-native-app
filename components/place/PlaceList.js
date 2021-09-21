@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
 import ItemListToAdd from "../items/itemListToAdd";
@@ -55,8 +56,20 @@ const PlaceList = (props) => {
     />
   );
   return (
-    <View>
-      <View style={styles.switchBtns}>
+    <View
+      style={{
+        backgroundColor: Colors[scheme].backGroundOne,
+        paddingBottom: 40,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+      }}
+    >
+      <View
+        style={{
+          ...styles.switchBtns,
+          ...{ backgroundColor: Colors[scheme].backGroundOne },
+        }}
+      >
         <TouchableOpacity
           style={{
             ...styles.btn,
@@ -113,6 +126,7 @@ export default PlaceList;
 
 const styles = StyleSheet.create({
   switchBtns: {
+    width: Dimensions.get("window").width,
     flexDirection: "row",
     justifyContent: "center",
   },

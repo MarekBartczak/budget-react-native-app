@@ -126,10 +126,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
 
     borderTopRightRadius: 10,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
   title: {
     fontFamily: "Kanit_400Regular",

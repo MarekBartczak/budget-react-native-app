@@ -72,13 +72,18 @@ const AddMultiItemsScreen = (props) => {
 
   return (
     <KeyboardAvoidingView>
-      <View style={styles.screen}>
+      <View
+        style={{
+          ...styles.screen,
+          ...{ backgroundColor: Colors[scheme].light },
+        }}
+      >
         <ExternalComponent>
           <View style={styles.place}>
             <View
               style={{
                 ...styles.placeList,
-                ...{ borderColor: Colors[scheme].primaryThird },
+                ...{ backgroundColor: Colors[scheme].light },
               }}
             >
               <PlaceList
@@ -93,7 +98,7 @@ const AddMultiItemsScreen = (props) => {
           <View
             style={{
               ...styles.datePicker,
-              ...{ borderColor: Colors[scheme].primaryThird },
+              ...{ backgroundColor: Colors[scheme].light },
             }}
           >
             <DatePicker
@@ -133,12 +138,12 @@ const styles = StyleSheet.create({
     // shadowColor: "black",
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
-    marginVertical: 10,
+    // marginVertical: 10,
+    paddingVertical: 10,
     width: Dimensions.get("window").width,
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
   },
   placeList: {
-    marginTop: 10,
     height: Dimensions.get("window").height * 0.2,
     width: Dimensions.get("window").width,
     // borderRadius: 10,
@@ -148,7 +153,7 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
     // shadowColor: "black",
     // shadowOpacity: 0.2,
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
   },
 
   receipt: {
