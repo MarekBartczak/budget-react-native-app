@@ -54,7 +54,12 @@ const SelectFilterType = (props) => {
   };
 
   return (
-    <View style={{ ...styles.selectFilterType, ...{} }}>
+    <View
+      style={{
+        ...styles.selectFilterType,
+        ...{ backgroundColor: Colors[scheme].backGroundOne },
+      }}
+    >
       <View style={{ ...styles.dateFilter, ...{} }}>
         {selectFilter("date", "DATA")}
       </View>
@@ -87,7 +92,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: Dimensions.get("window").width,
-    marginTop: 10,
+    paddingVertical: 20,
+    // marginTop: 10,
   },
   dateFilter: {},
   categoryFilter: {},

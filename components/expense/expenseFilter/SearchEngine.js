@@ -27,8 +27,18 @@ const SearchEngine = (props) => {
     dispatch(expenseActions.searchElement(search));
   };
   return (
-    <View style={{ ...styles.searchEngine, ...{} }}>
-      <View style={{ ...styles.input, ...{} }}>
+    <View
+      style={{
+        ...styles.searchEngine,
+        ...{},
+      }}
+    >
+      <View
+        style={{
+          ...styles.input,
+          ...{ backgroundColor: Colors[scheme].backGroundOne },
+        }}
+      >
         <TextInput
           style={{
             ...styles.textInput,
@@ -143,7 +153,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: Dimensions.get("window").width,
-    marginTop: 20,
+    paddingVertical: 20,
     justifyContent: "space-around",
     flexDirection: "row",
   },

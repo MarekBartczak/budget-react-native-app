@@ -14,6 +14,7 @@ import SummaryCost from "../../components/summaryCost/SummaryCost";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 const MainScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
   const summryCostView = useSelector((state) => state.item.view);
@@ -39,17 +40,20 @@ const MainScreen = (props) => {
           flex: 1,
           justifyContent: "space-between",
           alignItems: "center",
+          backgroundColor: Colors[scheme].light,
         }}
       >
         <View style={styles.screen}>
           <View
-            style={{
-              marginBottom: 20,
-              // shadowOffset: { height: 0, width: 0 },
-              // shadowRadius: 7,
-              // shadowColor: "black",
-              // shadowOpacity: 0.2,
-            }}
+            style={
+              {
+                // marginBottom: 20,
+                // shadowOffset: { height: 0, width: 0 },
+                // shadowRadius: 7,
+                // shadowColor: "black",
+                // shadowOpacity: 0.2,
+              }
+            }
           >
             <SummaryCost
               cost={summaryCostCounter(

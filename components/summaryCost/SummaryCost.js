@@ -142,28 +142,21 @@ export default SumaryCost;
 
 const styles = StyleSheet.create({
   summaryCost_light: {
-    marginTop: 10,
-    // backgroundColor: Colors.light.primary,
-    borderBottomColor: Colors.light.separator,
+    backgroundColor: Colors.light.backGroundOne,
     width: Dimensions.get("window").width,
-    height: 50,
+    height: 70,
     borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderBottomWidth: 1,
   },
   summaryCost_dark: {
-    marginTop: 10,
-
-    // backgroundColor: Colors.dark.primary,
-    borderBottomColor: Colors.dark.separator,
-    borderBottomWidth: 1,
+    backgroundColor: Colors.dark.backGroundOne,
 
     width: Dimensions.get("window").width,
-    height: 50,
+    height: 70,
     borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
@@ -173,7 +166,7 @@ const styles = StyleSheet.create({
   },
 
   textCost_light: {
-    color: Colors.light.primarySecond,
+    color: Colors.light.headerTintColor,
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
@@ -187,8 +180,15 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit_600SemiBold",
   },
   textDate_light: {
+    marginTop: 10,
+    backgroundColor: Colors.light.headerTintColor,
+    paddingVertical: 3,
+    paddingHorizontal: 10,
+
+    borderRadius: 10,
+    overflow: "hidden",
     marginBottom: 10,
-    color: Colors.light.button,
+    color: Colors.light.backGroundOne,
     fontWeight: "bold",
     fontSize: 15,
     textAlign: "center",

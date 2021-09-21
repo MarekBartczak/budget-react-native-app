@@ -33,6 +33,8 @@ const ExpenseSearch = (props) => {
           style={{
             ...styles.expenseHeaderModalSearch,
             ...{
+              borderTopLeftRadius: 100,
+              borderTopRightRadius: 100,
               backgroundColor: Colors[scheme].backGround,
             },
           }}
@@ -41,9 +43,11 @@ const ExpenseSearch = (props) => {
             style={{
               ...styles.close,
               ...{
-                backgroundColor: Colors[scheme].backGround,
-                borderColor: Colors[scheme].primary,
-                borderWidth: 1,
+                borderTopLeftRadius: 100,
+                borderTopRightRadius: 100,
+                backgroundColor: Colors[scheme].backGroundOne,
+                // borderColor: Colors[scheme].primary,
+                // borderWidth: 1,
               },
             }}
           >
@@ -54,7 +58,14 @@ const ExpenseSearch = (props) => {
               <Text
                 style={{
                   ...styles.closeBtnText,
-                  ...{ color: Colors[scheme].button },
+                  ...{
+                    color: Colors[scheme].button,
+                    backgroundColor: Colors[scheme].light,
+                    paddingHorizontal: 10,
+                    paddingVertical: 3,
+                    borderRadius: 10,
+                    overflow: "hidden",
+                  },
                 }}
               >
                 ZAMKNIJ

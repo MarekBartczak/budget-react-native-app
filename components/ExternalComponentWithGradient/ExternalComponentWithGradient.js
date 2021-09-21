@@ -30,9 +30,13 @@ const ExternalComponentWithGradient = (props) => {
         }}
         source={path}
       />
+
       {props.dimmer === undefined && (
         <LinearGradient
-          colors={[Colors[scheme].backGround, Colors[scheme].backGround]}
+          colors={[
+            Colors[scheme].backGround_one,
+            Colors[scheme].backGround_one,
+          ]}
           style={styles.background}
         />
       )}

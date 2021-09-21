@@ -25,7 +25,12 @@ const ExpenseHeader = (props) => {
     setToggleModalSearch(state);
   };
   return (
-    <View style={{ ...styles.expenseHeader, ...{} }}>
+    <View
+      style={{
+        ...styles.expenseHeader,
+        ...{ backgroundColor: Colors[scheme].backGroundOne },
+      }}
+    >
       <Modal
         animationType="slide"
         transparent={true}
@@ -46,7 +51,7 @@ const ExpenseHeader = (props) => {
         <Text
           style={{
             ...styles.costText,
-            ...{ color: Colors[scheme].primarySecond },
+            ...{ color: Colors[scheme].headerTintColor },
           }}
         >
           {props.cost.toFixed(2)}zł
@@ -88,11 +93,14 @@ export default ExpenseHeader;
 
 const styles = StyleSheet.create({
   expenseHeader: {
-    marginVertical: 10,
+    // marginVertical: 10,
+    height: 80,
     flexDirection: "row",
     width: Dimensions.get("window").width,
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
   },
   cost: {
     marginLeft: 50,

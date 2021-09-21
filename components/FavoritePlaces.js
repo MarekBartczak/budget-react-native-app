@@ -46,11 +46,13 @@ const FavoritePlaces = (props) => {
       style={{
         ...styles.screen,
         ...{
-          borderColor: Colors[scheme].separator,
-          // shadowOffset: { height: 0, width: 0 },
-          // shadowRadius: 10,
-          // shadowColor: Colors[scheme].button,
-          // shadowOpacity: 0.9,
+          width: scheme === "dark" ? Dimensions.get("window").width : null,
+          backgroundColor: Colors[scheme].light,
+          shadowOffset: { height: 0, width: 0 },
+          shadowRadius: 2,
+          shadowColor: "black",
+          shadowOpacity: 0.2,
+          borderRadius: 10,
         },
       }}
     >
@@ -128,12 +130,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: Dimensions.get("window").width,
     height: Dimensions.get("window").height * 0.3,
     marginTop: 20,
     paddingTop: 10,
     borderRadius: 3,
-    borderBottomWidth: 1,
   },
 
   row: {

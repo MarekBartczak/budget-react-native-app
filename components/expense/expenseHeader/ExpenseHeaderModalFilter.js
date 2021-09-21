@@ -32,6 +32,8 @@ const ExpenseHeaderModalFilter = (props) => {
         style={{
           ...styles.expenseHeaderModalFilter,
           ...{
+            borderTopLeftRadius: 100,
+            borderTopRightRadius: 100,
             backgroundColor: Colors[scheme].backGround,
           },
         }}
@@ -40,9 +42,11 @@ const ExpenseHeaderModalFilter = (props) => {
           style={{
             ...styles.close,
             ...{
-              backgroundColor: Colors[scheme].backGround,
-              borderColor: Colors[scheme].primary,
-              borderWidth: 1,
+              borderTopLeftRadius: 100,
+              borderTopRightRadius: 100,
+              backgroundColor: Colors[scheme].backGroundOne,
+              // borderColor: Colors[scheme].primary,
+              // borderWidth: 1,
             },
           }}
         >
@@ -53,14 +57,26 @@ const ExpenseHeaderModalFilter = (props) => {
             <Text
               style={{
                 ...styles.closeBtnText,
-                ...{ color: Colors[scheme].button },
+                ...{
+                  color: Colors[scheme].button,
+                  backgroundColor: Colors[scheme].light,
+                  paddingHorizontal: 10,
+                  paddingVertical: 3,
+                  borderRadius: 10,
+                  overflow: "hidden",
+                },
               }}
             >
               ZAMKNIJ
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={{ ...styles.filterArea, ...{} }}>
+        <View
+          style={{
+            ...styles.filterArea,
+            ...{ backgroundColor: Colors[scheme].light, height: "100%" },
+          }}
+        >
           <SelectFilterType />
           <ExpenseFilter />
         </View>

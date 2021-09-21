@@ -11,8 +11,18 @@ const UserScreen = (props) => {
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
   return (
     <ExternalComponent>
-      <View style={styles.screen}>
-        <View style={styles.photoView}>
+      <View
+        style={{
+          ...styles.screen,
+          ...{ backgroundColor: Colors[scheme].backGround },
+        }}
+      >
+        <View
+          style={{
+            ...styles.photoView,
+            ...{ backgroundColor: Colors[scheme].backGroundOne },
+          }}
+        >
           <View style={styles[`photoExternal_${scheme}`]}>
             <Image style={styles.photo} source={{ url: userPhotoUrl }} />
           </View>
@@ -47,13 +57,11 @@ const styles = StyleSheet.create({
     color: Colors.dark.primary,
   },
   userNameView_light: {
-    borderColor: Colors.light.primary,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: Dimensions.get("window").width,
     alignItems: "center",
     marginBottom: 50,
-    borderBottomWidth: 1,
 
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
@@ -62,7 +70,7 @@ const styles = StyleSheet.create({
   },
   userNameView_dark: {
     borderColor: Colors.dark.primary,
-    borderBottomWidth: 1,
+
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: Dimensions.get("window").width,
@@ -85,8 +93,6 @@ const styles = StyleSheet.create({
   },
 
   userEmailView_light: {
-    borderColor: Colors.light.primary,
-    borderBottomWidth: 1,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: Dimensions.get("window").width,
@@ -98,8 +104,6 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   userEmailView_dark: {
-    borderColor: Colors.dark.primary,
-    borderBottomWidth: 1,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: Dimensions.get("window").width,
@@ -126,19 +130,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   photoView: {
-    marginTop: 40,
+    // marginTop: 40,
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
+    paddingBottom: 60,
+    borderBottomRightRadius: Dimensions.get("window").width,
+    borderBottomLeftRadius: Dimensions.get("window").width,
   },
   photoExternal_light: {
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: Colors.light.primary,
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").width * 0.7,
-    borderBottomWidth: 1,
 
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
@@ -153,7 +158,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").width * 0.7,
     // borderRadius: Dimensions.get("window").width * 0.35,
-    borderBottomWidth: 1,
+
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,

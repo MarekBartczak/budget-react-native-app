@@ -8,6 +8,7 @@ import ExpenseHeader from "../../components/expense/expenseHeader/ExpenseHeader"
 import ExpenseList from "../../components/expense/expenseList/ExpenseList";
 import * as expenseActions from "../../store/actions/items";
 const ExpenseListScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
   const [cost, setCost] = useState(0);
   const [listLength, setListLength] = useState(0);
@@ -28,7 +29,7 @@ const ExpenseListScreen = (props) => {
 
   return (
     <ExternalComponent>
-      <View>
+      <View style={{ backgroundColor: Colors[scheme].light }}>
         <View>
           <ExpenseHeader cost={cost} />
         </View>

@@ -24,7 +24,6 @@ const AddNewItem = (props) => {
         style={{
           ...styles.screen,
           ...{
-            borderColor: Colors[scheme].primary,
             backgroundColor: Colors[scheme].primary,
           },
         }}
@@ -60,7 +59,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
-    borderWidth: 1,
   },
 
   addBtn: {

@@ -40,7 +40,7 @@ const Logout = (props) => {
       <MaterialIcons
         name="logout"
         size={24}
-        color={Colors[scheme].primarySecond}
+        color={Colors[scheme].headerTintColor}
       />
     </TouchableOpacity>
   );

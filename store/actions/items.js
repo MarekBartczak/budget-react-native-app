@@ -44,7 +44,7 @@ export const clearStateAfterLogout = () => {
 };
 
 export const SELECT_MAIN_CATEGORY = "SELECT_MAIN_CATEGORY";
-export const selectMainCategoryset = (title) => {
+export const selectMainCategory = (title) => {
   return { type: SELECT_MAIN_CATEGORY, title: title };
 };
 

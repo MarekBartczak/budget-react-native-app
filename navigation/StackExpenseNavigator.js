@@ -35,7 +35,7 @@ const StackExpenseNavigator = (props) => {
           style={{
             fontFamily: "Kanit_600SemiBold",
             fontSize: 15,
-            color: Colors[scheme].primarySecond,
+            color: Colors[scheme].headerTintColor,
           }}
         >
           WYDATKI
@@ -55,7 +55,7 @@ const StackExpenseNavigator = (props) => {
           <MaterialCommunityIcons
             name="menu"
             size={34}
-            color={Colors[scheme].primarySecond}
+            color={Colors[scheme].headerTintColor}
           />
         </TouchableOpacity>
       ),
@@ -69,7 +69,7 @@ const StackExpenseNavigator = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: Colors[scheme].primarySecond,
+        headerTintColor: Colors[scheme].headerTintColor,
 
         headerStyle: {
           backgroundColor: Colors[scheme].backGroundOne,
@@ -92,7 +92,7 @@ const StackExpenseNavigator = (props) => {
             style={{
               fontFamily: "Kanit_600SemiBold",
               fontSize: 15,
-              color: Colors[scheme].primarySecond,
+              color: Colors[scheme].headerTintColor,
             }}
           >
             LISTA WYDATKÓW

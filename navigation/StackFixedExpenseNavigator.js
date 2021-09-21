@@ -22,7 +22,7 @@ const StackFixedExpenseNavigator = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: Colors[scheme].primarySecond,
+        headerTintColor: Colors[scheme].headerTintColor,
         headerStyle: {
           backgroundColor: Colors[scheme].backGroundOne,
           elevation: 0,

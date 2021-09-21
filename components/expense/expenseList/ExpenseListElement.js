@@ -126,6 +126,10 @@ const ExpenseListElement = (props) => {
           justifyContent: "center",
           alignItems: "flex-end",
           marginVertical: 10,
+          shadowOffset: { height: 0, width: 0 },
+          shadowRadius: 6,
+          shadowColor: "black",
+          shadowOpacity: 0.2,
         }}
       >
         <Text
@@ -137,7 +141,7 @@ const ExpenseListElement = (props) => {
           <Ionicons
             name="ios-trash"
             size={44}
-            color={Colors[scheme].primarySecond}
+            color={Colors[scheme].headerTintColor}
           />
         </Text>
       </TouchableOpacity>
@@ -152,8 +156,12 @@ const ExpenseListElement = (props) => {
         style={{
           ...styles.element,
           ...{
-            borderColor: Colors[scheme].backGroundOne,
-            backgroundColor: Colors[scheme].backGroundOne,
+            // borderColor: Colors[scheme].backGroundOne,
+            backgroundColor: Colors[scheme].backGroundList,
+            shadowOffset: { height: 0, width: 0 },
+            shadowRadius: 6,
+            shadowColor: "black",
+            shadowOpacity: 0.2,
           },
         }}
       >
@@ -246,7 +254,7 @@ export default ExpenseListElement;
 
 const styles = StyleSheet.create({
   element: {
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
     marginVertical: 10,
   },
   container: {

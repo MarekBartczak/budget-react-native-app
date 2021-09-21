@@ -128,7 +128,7 @@ const DrawerNavigator = (props) => {
             backgroundColor: Colors[scheme].backGround,
           }}
           drawerContentOptions={{
-            activeTintColor: Colors[scheme].primarySecond,
+            activeTintColor: Colors[scheme].drawerActive,
             labelStyle: { color: Colors[scheme].primarySecond, fontSize: 15 },
           }}
         >
