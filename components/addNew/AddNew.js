@@ -114,6 +114,10 @@ const AddNewComponent = (props) => {
                 style={{
                   width: Dimensions.get("window").width * 0.5,
                   height: Dimensions.get("screen").height * 0.05,
+                  shadowColor: "black",
+                  shadowOffset: { height: 0, width: 0 },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 5,
                 }}
               />
             </View>

@@ -18,7 +18,9 @@ const DateElement = (props) => {
         ...{ borderColor: Colors[scheme].primary },
       }}
     >
-      <Text style={{ ...styles.text, ...{ color: Colors[scheme].button } }}>
+      <Text
+        style={{ ...styles.text, ...{ color: Colors[scheme].headerTintColor } }}
+      >
         {month.toUpperCase()} {year.toUpperCase()}
       </Text>
     </View>
@@ -29,9 +31,8 @@ export default DateElement;
 
 const styles = StyleSheet.create({
   element: {
-    borderBottomWidth: 1,
-    margin: 5,
-    padding: 5,
+    margin: 2,
+    padding: 2,
     // shadowOffset: { height: 0, width: 0 },
     // shadowRadius: 7,
     // shadowColor: "black",

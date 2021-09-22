@@ -58,7 +58,13 @@ const Send = (props) => {
       <View
         style={{
           ...styles.send,
-          ...{ backgroundColor: Colors[scheme].primary },
+          ...{
+            backgroundColor: Colors[scheme].primary,
+            shadowColor: "black",
+            shadowOffset: { height: 0, width: 0 },
+            shadowOpacity: 0.25,
+            shadowRadius: 5,
+          },
         }}
       >
         <Text

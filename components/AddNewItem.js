@@ -14,7 +14,16 @@ const AddNewItem = (props) => {
 
   return (
     <TouchableOpacity
-      style={styles.add}
+      style={{
+        ...styles.add,
+        ...{
+          backgroundColor: Colors[scheme].primary,
+          shadowColor: "black",
+          shadowOffset: { height: 0, width: 0 },
+          shadowOpacity: 0.25,
+          shadowRadius: 5,
+        },
+      }}
       onPress={() => {
         props.navigateTo();
         props.setPlace();
@@ -58,7 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
+    // marginTop: 20,
   },
 
   addBtn: {
@@ -70,7 +79,7 @@ const styles = StyleSheet.create({
   add: {
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 4,
+    // marginBottom: 4,
   },
   btnText: {
     fontSize: 15,

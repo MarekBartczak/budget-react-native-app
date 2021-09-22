@@ -12,7 +12,7 @@ const Expense = (props) => {
       <View
         style={{
           ...styles.summary,
-          ...{ borderColor: Colors[scheme].primary },
+          ...{ backgroundColor: Colors[scheme].light },
         }}
       >
         <Text
@@ -34,11 +34,15 @@ const Expense = (props) => {
           renderItem={(item) => (
             <View
               style={{
-                borderColor: Colors[scheme].primary,
+                backgroundColor: Colors[scheme].light,
+                shadowColor: "black",
+                shadowOffset: { height: 0, width: 0 },
+                shadowOpacity: 0.25,
+                shadowRadius: 5,
+                paddingBottom: 5,
                 marginBottom: 20,
                 padding: 10,
                 width: "100%",
-                borderBottomWidth: 1,
               }}
             >
               <View
@@ -87,7 +91,6 @@ const styles = StyleSheet.create({
   summary: {
     paddingVertical: 10,
     marginBottom: 20,
-    borderBottomWidth: 1,
     // shadowOffset: { height: 0, width: 0 },
     // shadowRadius: 7,
     // shadowColor: "black",

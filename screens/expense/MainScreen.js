@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     // shadowOpacity: 0.2,
   },
   addNewItem: {
+    marginTop: 25,
     // position: "absolute",
     bottom: 0,
     // marginHorizontal: Dimensions.get("window").width * 0.4,

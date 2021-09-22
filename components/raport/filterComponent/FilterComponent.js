@@ -110,32 +110,52 @@ const FilterComponent = (props) => {
   };
 
   return (
-    <View>
-      <View style={styles.switch}>
+    <View style={{}}>
+      <View
+        style={{
+          ...styles.switch,
+          ...{ backgroundColor: Colors[scheme].backGroundOne },
+        }}
+      >
         {filterBtn("Expense", "Wydatki")}
         {filterBtn("FixedExpense", "Stałe wydatki")}
         {filterBtn("Income", "Wpływy")}
       </View>
-
-      <View style={styles.filterComponent}>
-        <View style={styles.yearsListFilter}>
-          <FlatList
-            ref={flatListRef}
-            style={styles.listOfYears}
-            data={dateList[filterListType]}
-            renderItem={(item) => {
-              return (
-                <TouchableOpacity
-                  onPress={() => {
-                    setYear(item.item);
-                  }}
-                >
-                  <DateElement element={item.item} />
-                </TouchableOpacity>
-              );
-            }}
-            keyExtractor={(key) => key}
-          />
+      <View style={{ overflow: "hidden", marginBottom: 10, paddingBottom: 10 }}>
+        <View
+          style={{
+            ...styles.filterComponent,
+            ...{
+              backgroundColor: Colors[scheme].backGroundOne,
+              borderBottomLeftRadius: 100,
+              borderBottomRightRadius: 100,
+              shadowColor: "black",
+              shadowOffset: { height: 1, width: 0 },
+              shadowOpacity: 1,
+              shadowRadius: 5,
+              paddingBottom: 5,
+            },
+          }}
+        >
+          <View style={styles.yearsListFilter}>
+            <FlatList
+              ref={flatListRef}
+              style={styles.listOfYears}
+              data={dateList[filterListType]}
+              renderItem={(item) => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => {
+                      setYear(item.item);
+                    }}
+                  >
+                    <DateElement element={item.item} />
+                  </TouchableOpacity>
+                );
+              }}
+              keyExtractor={(key) => key}
+            />
+          </View>
         </View>
       </View>
 
@@ -156,7 +176,7 @@ const styles = StyleSheet.create({
     // backgroundColor: Colors.backGround,
   },
   yearsListFilter: {
-    height: 150,
+    height: 100,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -179,7 +199,7 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 20,
+    // marginBottom: 20,
   },
 
   btnText: {
@@ -189,7 +209,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   list: {
-    marginTop: 10,
+    // marginTop: 10,
     height: Dimensions.get("window").height * 0.5,
   },
 });

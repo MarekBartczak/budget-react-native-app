@@ -13,7 +13,21 @@ const SelectComponent = (props) => {
 
   return (
     <View>
-      <View style={styles.select}>
+      <View
+        style={{
+          ...styles.select,
+          ...{
+            backgroundColor: Colors[scheme].backGroundOne,
+            shadowColor: "black",
+            shadowOffset: { height: 1, width: 0 },
+            shadowOpacity: 1,
+            shadowRadius: 5,
+            paddingBottom: 5,
+            borderBottomLeftRadius: 100,
+            borderBottomRightRadius: 100,
+          },
+        }}
+      >
         <SelectEl
           el={"Expense"}
           dateList={initialRaportState.Expense}
@@ -30,7 +44,12 @@ const SelectComponent = (props) => {
           name={"Wpływy"}
         />
       </View>
-      <View style={styles.send}>
+      <View
+        style={{
+          ...styles.send,
+          ...{},
+        }}
+      >
         <Send />
       </View>
     </View>
@@ -44,6 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height * 0.5,
   },
   titleText: {
     textAlign: "center",
