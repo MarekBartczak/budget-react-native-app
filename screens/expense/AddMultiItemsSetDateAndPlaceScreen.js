@@ -107,7 +107,12 @@ const AddMultiItemsScreen = (props) => {
               maxDate={new Date()}
             />
           </View>
-          <View style={styles.receipt}>
+          <View
+            style={{
+              ...styles.receipt,
+              ...{ backgroundColor: Colors[scheme].light },
+            }}
+          >
             <Receipt
               place={place}
               date={date.toISOString().slice(0, 10)}
@@ -157,7 +162,8 @@ const styles = StyleSheet.create({
   },
 
   receipt: {
-    height: Dimensions.get("window").height * 0.5,
+    height: Dimensions.get("window").height * 0.6,
+    paddingBottom: Dimensions.get("window").height * 0.1,
     width: Dimensions.get("window").width,
     flexDirection: "column",
     justifyContent: "space-between",

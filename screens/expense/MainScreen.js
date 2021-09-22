@@ -130,6 +130,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   component: {
+    overflow: "hidden",
+    paddingBottom: 5,
+
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,

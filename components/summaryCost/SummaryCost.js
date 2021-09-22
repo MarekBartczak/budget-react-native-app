@@ -52,7 +52,7 @@ const SumaryCost = (props) => {
         <Modal animationType="slide" transparent={true} visible={showModal}>
           <View
             style={{
-              marginTop: Dimensions.get("window").height / 2,
+              marginTop: Dimensions.get("window").height * 0.75,
               width: Dimensions.get("window").width,
               height: Dimensions.get("window").height - 140,
               backgroundColor: Colors[scheme].backGround,
@@ -63,18 +63,23 @@ const SumaryCost = (props) => {
               style={{
                 marginTop: -30,
                 height: 50,
-                backgroundColor: Colors[scheme].primary,
+                backgroundColor: Colors[scheme].backGroundOne,
                 alignItems: "center",
                 justifyContent: "center",
                 borderRadius: 0,
-                borderTopLeftRadius: 20,
-                borderTopRightRadius: 20,
+                borderTopLeftRadius: 100,
+                borderTopRightRadius: 100,
               }}
             >
               <Text
                 style={{
                   color: Colors[scheme].button,
                   fontFamily: "Kanit_600SemiBold",
+                  backgroundColor: Colors[scheme].light,
+                  borderRadius: 10,
+                  overflow: "hidden",
+                  paddingVertical: 3,
+                  paddingHorizontal: 10,
                 }}
               >
                 ZAMKNIJ
@@ -145,7 +150,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.light.backGroundOne,
     width: Dimensions.get("window").width,
     height: 70,
-    borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
@@ -157,7 +161,6 @@ const styles = StyleSheet.create({
 
     width: Dimensions.get("window").width,
     height: 70,
-    borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",

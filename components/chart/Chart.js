@@ -66,6 +66,11 @@ const Chart = (props) => {
         backgroundColor: Colors[scheme].backGroundOne,
         borderBottomLeftRadius: 100,
         borderBottomRightRadius: 100,
+        shadowColor: "black",
+        shadowOffset: { height: 1, width: 0 },
+        shadowOpacity: 1,
+        shadowRadius: 5,
+        paddingBottom: 5,
       }}
     >
       <TouchableOpacity onPress={props.press}>

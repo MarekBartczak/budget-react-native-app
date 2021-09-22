@@ -30,7 +30,7 @@ const MainCategoryElement = (props) => {
     if (props.title === selectedCategory) {
       return Colors[scheme].button;
     } else {
-      return Colors[scheme].primaryThird;
+      return Colors[scheme].primarySecond;
     }
   };
 

@@ -34,7 +34,7 @@ const SubCategoryElement = (props) => {
             color={
               selectedSubCategory === props.item
                 ? Colors[scheme].button
-                : Colors[scheme].primary
+                : Colors[scheme].primaryThird
             }
           />
 
@@ -47,7 +47,7 @@ const SubCategoryElement = (props) => {
                   }
                 : {
                     ...styles.subCategoryText,
-                    ...{ color: Colors[scheme].primaryThird },
+                    ...{ color: Colors[scheme].primarySecond },
                   }
             }
           >

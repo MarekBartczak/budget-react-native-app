@@ -37,7 +37,7 @@ const UnpaidExpense = (props) => {
     <View
       style={{
         ...styles.unpaidExpenseComponent,
-        ...{ borderColor: Colors[scheme].separator },
+        ...{ backgroundColor: Colors[scheme].light },
       }}
     >
       <FlatList
@@ -97,9 +97,13 @@ export default UnpaidExpense;
 
 const styles = StyleSheet.create({
   unpaidExpenseComponent: {
-    width: Dimensions.get("window").width,
-    height: 100,
-    borderBottomWidth: 1,
+    width: Dimensions.get("window").width * 0.9,
+    height: 150,
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.23,
+    shadowRadius: 1,
+    paddingBottom: 5,
   },
   overDateList: {
     marginTop: 5,

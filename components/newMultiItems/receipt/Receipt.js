@@ -263,13 +263,13 @@ export default Receipt;
 
 const styles = StyleSheet.create({
   receipt: {
-    width: "100%",
+    width: "90%",
     height: "100%",
     borderRadius: 10,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowRadius: 7,
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 7,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
   modalView: {
     height: Dimensions.get("window").height,

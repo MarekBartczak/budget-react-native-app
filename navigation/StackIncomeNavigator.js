@@ -35,7 +35,7 @@ const StackIncomeNavigator = (props) => {
             style={{
               fontFamily: "Kanit_600SemiBold",
               fontSize: 15,
-              color: Colors[scheme].primarySecond,
+              color: Colors[scheme].headerTintColor,
             }}
           >
             WPŁYWY
@@ -54,7 +54,7 @@ const StackIncomeNavigator = (props) => {
             <MaterialCommunityIcons
               name="menu"
               size={34}
-              color={Colors[scheme].primarySecond}
+              color={Colors[scheme].headerTintColor}
             />
           </TouchableOpacity>
         ),

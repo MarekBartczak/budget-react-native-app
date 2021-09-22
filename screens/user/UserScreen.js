@@ -135,8 +135,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: 60,
-    borderBottomRightRadius: Dimensions.get("window").width,
-    borderBottomLeftRadius: Dimensions.get("window").width,
+    borderBottomRightRadius: 100,
+    borderBottomLeftRadius: 100,
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 5,
   },
   photoExternal_light: {
     width: Dimensions.get("window").width,
@@ -144,11 +148,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").width * 0.7,
-
-    // shadowColor: "black",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
   },
   photoExternal_dark: {
     width: Dimensions.get("window").width,

@@ -66,7 +66,7 @@ const EditCategoryElement = (props) => {
         <View style={styles.textElement}>
           <Text
             style={{
-              color: Colors[scheme].primaryThird,
+              color: Colors[scheme].primarySecond,
               fontFamily: "Kanit_600SemiBold",
             }}
           >
@@ -92,6 +92,7 @@ const EditCategoryElement = (props) => {
         <TouchableOpacity
           style={{
             marginRight: 20,
+            marginLeft: 10,
           }}
           onPress={() => {
             setEditState(true);

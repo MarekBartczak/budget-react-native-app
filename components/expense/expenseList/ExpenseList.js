@@ -43,7 +43,7 @@ const ExpenseList = (props) => {
         <FlatList
           data={items}
           keyExtractor={(item) => item.id}
-          style={{ marginBottom: Dimensions.get("window").height * 0.2 }}
+          style={{ marginBottom: Dimensions.get("window").height * 0.25 }}
           renderItem={(item) => (
             <ExpenseListElement
               cost={item.item.cost}

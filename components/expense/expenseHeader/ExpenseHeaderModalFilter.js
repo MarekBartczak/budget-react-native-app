@@ -61,7 +61,7 @@ const ExpenseHeaderModalFilter = (props) => {
                   color: Colors[scheme].button,
                   backgroundColor: Colors[scheme].light,
                   paddingHorizontal: 10,
-                  paddingVertical: 3,
+                  paddingVertical: 0,
                   borderRadius: 10,
                   overflow: "hidden",
                 },

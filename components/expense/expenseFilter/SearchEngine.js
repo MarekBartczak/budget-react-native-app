@@ -43,7 +43,7 @@ const SearchEngine = (props) => {
           style={{
             ...styles.textInput,
             ...{
-              borderColor: Colors[scheme].primarySecond,
+              // borderColor: Colors[scheme].primarySecond,
               backgroundColor: Colors[scheme].primary,
               color: Colors[scheme].primarySecond,
             },
@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
   searchEngine: {
     width: Dimensions.get("window").width,
     flexDirection: "column",
-    // alignItems: "center",
     justifyContent: "center",
+    marginTop: -1,
   },
   result: {
     width: Dimensions.get("window").width,

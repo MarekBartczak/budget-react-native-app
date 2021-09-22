@@ -67,7 +67,10 @@ const AddNewComponent = (props) => {
             <View
               style={{
                 ...styles.inputView,
-                ...{ borderColor: Colors[scheme].primary },
+                ...{
+                  borderColor: Colors[scheme].primary,
+                  backgroundColor: Colors[scheme].light,
+                },
               }}
             >
               <Input
@@ -79,6 +82,7 @@ const AddNewComponent = (props) => {
                 placeholder={props.placeHolderAmount}
                 keyboardType={"numeric"}
                 onChangeText={props.setAmountValue}
+                placeholderTextColor={Colors[scheme].primarySecond}
               />
               <Input
                 style={{
@@ -89,6 +93,7 @@ const AddNewComponent = (props) => {
                 placeholder={props.placeHolderName}
                 keyboardType={"default"}
                 onChangeText={props.setNameValue}
+                placeholderTextColor={Colors[scheme].primarySecond}
               />
               <Input
                 style={{
@@ -99,6 +104,7 @@ const AddNewComponent = (props) => {
                 placeholder={props.placeHolderContractor}
                 keyboardType={"default"}
                 onChangeText={props.setContractor}
+                placeholderTextColor={Colors[scheme].primarySecond}
               />
             </View>
             <View style={styles.buttonView}>
@@ -129,7 +135,6 @@ const styles = StyleSheet.create({
   },
   datePickerView: {
     marginBottom: 10,
-    borderBottomWidth: 1,
   },
 
   descriptionComponent: {
@@ -141,10 +146,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputView: {
-    width: Dimensions.get("window").width,
+    width: Dimensions.get("window").width * 0.9,
     alignItems: "center",
     justifyContent: "center",
-    borderBottomWidth: 1,
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+    paddingBottom: 10,
   },
   input: {
     height: 25,

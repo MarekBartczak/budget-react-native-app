@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
-    borderBottomWidth: 1,
     marginBottom: 10,
   },
   summaryCostText: {

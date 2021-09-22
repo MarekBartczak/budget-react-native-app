@@ -83,11 +83,13 @@ const FixedExpenseDetails = (props) => {
 
   return (
     <ExternalComponent>
-      <View>
+      <View style={{ alignItems: "center" }}>
         <View
           style={{
             ...styles.title,
-            ...{ borderColor: Colors[scheme].primaryThird },
+            ...{
+              backgroundColor: Colors[scheme].backGroundOne,
+            },
           }}
         >
           <TouchableOpacity onPress={() => {}}>
@@ -95,7 +97,7 @@ const FixedExpenseDetails = (props) => {
               style={{
                 ...styles.textTitle,
                 ...{
-                  color: Colors[scheme].primarySecond,
+                  color: Colors[scheme].headerTintColor,
                   fontFamily: "Kanit_600SemiBold",
                 },
               }}
@@ -135,8 +137,7 @@ const FixedExpenseDetails = (props) => {
           style={{
             ...styles.details,
             ...{
-              borderColor: Colors[scheme].primaryThird,
-              borderBottomWidth: 1,
+              backgroundColor: Colors[scheme].light,
             },
           }}
         >
@@ -238,8 +239,7 @@ const FixedExpenseDetails = (props) => {
           style={{
             ...styles.history,
             ...{
-              borderColor: Colors[scheme].primaryThird,
-              borderBottomWidth: 1,
+              backgroundColor: Colors[scheme].light,
             },
           }}
         >
@@ -278,10 +278,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: Dimensions.get("window").width,
     alignItems: "center",
-    justifyContent: "space-between",
-    padding: 30,
-
-    borderBottomWidth: 1,
+    justifyContent: "space-around",
+    // padding: 30,
+    height: 100,
+    marginBottom: 10,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    paddingBottom: 5,
 
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
@@ -289,8 +296,14 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   details: {
+    marginTop: 25,
+    width: Dimensions.get("window").width * 0.9,
     // height: 200,
     marginBottom: 20,
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,
@@ -299,10 +312,15 @@ const styles = StyleSheet.create({
   history: {
     marginTop: 10,
     height: 200,
+    width: Dimensions.get("window").width * 0.9,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
   },
   trash: {
     alignItems: "center",

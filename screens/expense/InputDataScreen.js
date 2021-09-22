@@ -90,13 +90,13 @@ const InputData = (props) => {
       <View
         style={{
           ...styles.category,
-          ...{ borderColor: Colors[scheme].primary },
+          ...{ backgroundColor: Colors[scheme].backGroundOne },
         }}
       >
         <Text
           style={{
             ...styles.categoryText,
-            ...{ color: Colors[scheme].primarySecond, fontSize: 16 },
+            ...{ color: Colors[scheme].headerTintColor, fontSize: 16 },
           }}
         >
           {mainCategory.toUpperCase()}
@@ -106,7 +106,7 @@ const InputData = (props) => {
           style={{
             ...styles.categoryText,
             ...{
-              color: Colors[scheme].primarySecond,
+              color: Colors[scheme].headerTintColor,
               fontSize: 12,
               marginBottom: 5,
             },
@@ -119,9 +119,17 @@ const InputData = (props) => {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View
           style={{
+            width: Dimensions.get("window").width * 0.9,
+            marginTop: 50,
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            backgroundColor: Colors[scheme].light,
+            shadowColor: "black",
+            shadowOffset: { height: 0, width: 0 },
+            shadowOpacity: 0.25,
+            shadowRadius: 3,
+            paddingBottom: 5,
           }}
         >
           <View
@@ -144,6 +152,7 @@ const InputData = (props) => {
                 placeholder={"Kwota"}
                 keyboardType={"numeric"}
                 onChangeText={setCost}
+                placeholderTextColor={Colors[scheme].primarySecond}
               />
             </View>
 
@@ -181,13 +190,21 @@ const styles = StyleSheet.create({
   },
 
   category: {
-    marginTop: 10,
+    // marginTop: 10,
     width: Dimensions.get("window").width,
     borderBottomWidth: 1,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "hidden",
+    marginBottom: 5,
+    // overflow: "hidden",
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    paddingBottom: 5,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
   },
   categoryText: {
     fontWeight: "bold",
@@ -195,15 +212,10 @@ const styles = StyleSheet.create({
   },
 
   inputViewArea: {
-    borderBottomWidth: 1,
     marginTop: 20,
     alignItems: "center",
     width: Dimensions.get("window").width,
     borderRadius: 10,
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 7,
-    shadowColor: "black",
-    shadowOpacity: 0.5,
   },
   inputView: {
     width: Dimensions.get("window").width,

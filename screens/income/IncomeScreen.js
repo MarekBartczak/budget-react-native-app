@@ -26,7 +26,7 @@ const IncomeScreen = (props) => {
           dateList={incomeList}
         />
       </View>
-      <View style={styles.component}>
+      <View style={styles.chartComponent}>
         {!config.addIncomeKeyboardStatus && (
           <Chart
             press={() => props.navigation.navigate("IncomeList")}
@@ -51,11 +51,15 @@ const IncomeScreen = (props) => {
 
 const styles = StyleSheet.create({
   component: {
-    marginBottom: 10,
+    // marginBottom: 10,
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
+  },
+  chartComponent: {
+    overflow: "hidden",
+    paddingBottom: 5,
   },
   buttonComponent: {
     position: "absolute",

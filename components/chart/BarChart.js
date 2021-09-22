@@ -60,9 +60,20 @@ const Chart = (props) => {
     data = filteredData.data;
   }
   return (
-    <View style={styles.chartView}>
+    <View
+      style={{
+        backgroundColor: Colors[scheme].backGroundOne,
+        borderBottomLeftRadius: 100,
+        borderBottomRightRadius: 100,
+        shadowColor: "black",
+        shadowOffset: { height: 1, width: 0 },
+        shadowOpacity: 1,
+        shadowRadius: 5,
+        paddingBottom: 5,
+      }}
+    >
       <TouchableOpacity onPress={props.press}>
-        <View style={styles.valMax}>
+        {/* <View style={styles.valMax}>
           <Text
             style={{
               ...styles.valMaxText,
@@ -78,7 +89,7 @@ const Chart = (props) => {
                   .toFixed(2)
               : 0}
           </Text>
-        </View>
+        </View> */}
         <BarChart
           data={{
             labels: label,
@@ -95,9 +106,9 @@ const Chart = (props) => {
           withhadow={true}
           withInnerLines={false}
           width={Dimensions.get("window").width * 0.9}
-          height={180}
+          height={Dimensions.get("window").height * 0.3}
           chartConfig={{
-            labelColor: () => Colors[scheme].primarySecond,
+            labelColor: () => Colors[scheme].headerTintColor,
             backgroundGradientFromOpacity: 0,
             backgroundGradientToOpacity: 0,
             // backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
@@ -105,15 +116,21 @@ const Chart = (props) => {
             backgroundGradientFrom: Colors[scheme].primaryThird,
             backgroundGradientTo: Colors[scheme].primaryThird,
             decimalPlaces: 2,
-            color: () => Colors[scheme].button,
+            color: () => Colors[scheme].headerTintColor,
           }}
           bezier
           style={{
             ...styles.chart,
-            ...{ borderColor: Colors[scheme].primary },
+            ...{
+              marginTop: 10,
+              shadowOffset: { height: -10, width: -10 },
+              shadowRadius: 1,
+              shadowColor: Colors[scheme].headerTintColor,
+              shadowOpacity: 0.1,
+            },
           }}
         />
-        <View style={styles.valMin}>
+        {/* <View style={styles.valMin}>
           <Text
             style={{
               ...styles.valMinText,
@@ -129,7 +146,7 @@ const Chart = (props) => {
                   .toFixed(2)
               : 0}
           </Text>
-        </View>
+        </View> */}
       </TouchableOpacity>
     </View>
   );
@@ -139,7 +156,6 @@ export default Chart;
 
 const styles = StyleSheet.create({
   chart: {
-    borderBottomWidth: 1,
     paddingTop: 0,
     justifyContent: "center",
     alignItems: "center",

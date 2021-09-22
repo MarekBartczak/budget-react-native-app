@@ -45,13 +45,18 @@ const EdidCategoriesScreen = (props) => {
   };
   return (
     <ExternalComponent>
-      <View style={styles.inputView}>
+      <View
+        style={{
+          ...styles.inputView,
+          ...{ backgroundColor: Colors[scheme].backGroundOne },
+        }}
+      >
         <TextInput
           style={{
             ...styles.input,
             ...{
               borderColor: Colors[scheme].primary,
-              color: Colors[scheme].primarySecond,
+              color: Colors[scheme].primaryThird,
             },
           }}
           value={newSubCategory}
@@ -71,9 +76,13 @@ const EdidCategoriesScreen = (props) => {
         </TouchableOpacity>
       </View>
 
-      <View style={{ height: Dimensions.get("window").height * 0.5 }}>
+      <View style={{ height: Dimensions.get("window").height * 0.7 }}>
         <FlatList
-          style={{ paddingBottom: 100, marginBottom: 50, height: 400 }}
+          style={{
+            paddingBottom: 100,
+            marginBottom: 10,
+            height: Dimensions.get("window").height * 0.9,
+          }}
           data={subCategoriesList.list}
           keyExtractor={(itemData) => itemData}
           renderItem={(item) => (
@@ -92,9 +101,19 @@ export default EdidCategoriesScreen;
 
 const styles = StyleSheet.create({
   inputView: {
-    marginVertical: 20,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height * 0.1,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    paddingBottom: 5,
+    marginBottom: 5,
   },
   input: {
     padding: 10,

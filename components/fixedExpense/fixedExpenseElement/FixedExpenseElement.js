@@ -100,8 +100,8 @@ const FixedExpenseElement = (props) => {
         style={{
           ...styles.element,
           ...{
-            borderColor: Colors[scheme].backGroundOne,
-            backgroundColor: Colors[scheme].backGroundOne,
+            // borderColor: Colors[scheme].backGroundOne,
+            backgroundColor: Colors[scheme].light,
           },
         }}
       >
@@ -136,13 +136,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottomWidth: 1,
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
     width: Dimensions.get("window").width,
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
     marginVertical: 10,
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
   },
 });

@@ -56,8 +56,8 @@ const IncomeElement = (props) => {
         >
           <Ionicons
             name="ios-trash"
-            size={44}
-            color={Colors[scheme].primarySecond}
+            size={40}
+            color={Colors[scheme].headerTintColor}
           />
         </Text>
       </TouchableOpacity>
@@ -74,8 +74,7 @@ const IncomeElement = (props) => {
         style={{
           ...styles.element,
           ...{
-            borderColor: Colors[scheme].backGroundOne,
-            backgroundColor: Colors[scheme].backGroundOne,
+            backgroundColor: Colors[scheme].light,
             // shadowColor: Colors[scheme].button,
           },
         }}
@@ -124,8 +123,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottomWidth: 1,
-    // shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
     // shadowOpacity: 0.9,
     // shadowRadius: 10,
     width: Dimensions.get("window").width,

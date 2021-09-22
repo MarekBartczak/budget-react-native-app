@@ -43,7 +43,7 @@ const FixedExpenseScreen = (props) => {
           dateList={fixedExpenseShowList}
         />
       </View>
-      <View style={styles.component}>
+      <View style={styles.chartCcomponent}>
         <Chart
           press={() => props.navigation.navigate("FixedExpensesList")}
           label={chartEl.label}
@@ -51,7 +51,11 @@ const FixedExpenseScreen = (props) => {
         />
       </View>
 
-      <View style={styles.component}>
+      <View
+        style={{
+          ...styles.component,
+        }}
+      >
         <Text
           style={{
             color: Colors[scheme].primarySecond,
@@ -104,12 +108,25 @@ const FixedExpenseScreen = (props) => {
 };
 
 const styles = StyleSheet.create({
+  fixedComponent: {
+    width: Dimensions.get("window").width * 0.9,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 7,
+  },
   component: {
+    // backgroundColor: "red",
+    // paddingBottom: 5,
     // marginBottom: 20,
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.5,
     // shadowRadius: 7,
+  },
+  chartCcomponent: {
+    overflow: "hidden",
+    paddingBottom: 5,
   },
   buttonComponent: {
     position: "absolute",

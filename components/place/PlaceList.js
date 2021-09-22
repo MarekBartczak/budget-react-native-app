@@ -59,9 +59,15 @@ const PlaceList = (props) => {
     <View
       style={{
         backgroundColor: Colors[scheme].backGroundOne,
-        paddingBottom: 40,
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
+        paddingBottom: 10,
+        borderBottomLeftRadius: 100,
+        borderBottomRightRadius: 100,
+        shadowColor: "black",
+        shadowOffset: { height: 1, width: 0 },
+        shadowOpacity: 1,
+        shadowRadius: 5,
+        // paddingBottom: 5,
+        marginBottom: 5,
       }}
     >
       <View
