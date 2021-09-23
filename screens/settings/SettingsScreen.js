@@ -1,20 +1,23 @@
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React, { useState } from "react";
-
+import Settings from "../../components/settings/Settings";
+import Colors from "../../constants/Colors";
+import { useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 const SettingsScreen = (props) => {
+  const scheme = useSelector((state) => state.config.scheme);
   return (
     <ExternalComponent>
-      <View>
+      <View style={{ backgroundColor: Colors[scheme].light }}>
         <View
           style={{
-            justifyContent: "center",
+            marginTop: Dimensions.get("window").height * 0.1,
             alignItems: "center",
-            width: "100%",
-            height: "100%",
+            width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height,
           }}
         >
-          <Text>Ustawienia</Text>
+          <Settings />
         </View>
       </View>
     </ExternalComponent>

@@ -10,6 +10,8 @@ import Colors from "../constants/Colors";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
+import ViewSettingsScreen from "../screens/settings/ViewSettingsScreen";
+import AccountSettingsScreen from "../screens/settings/AccountSettingsScreen";
 
 import SettingsScreen from "../screens/settings/SettingsScreen";
 import Logout from "../components/auth/logout/Logout";
@@ -41,7 +43,7 @@ const StackSettingsNavigator = (props) => {
             style={{
               fontFamily: "Kanit_600SemiBold",
               fontSize: 15,
-              color: Colors[scheme].primarySecond,
+              color: Colors[scheme].headerTintColor,
             }}
           >
             USTAWIENIA
@@ -60,11 +62,43 @@ const StackSettingsNavigator = (props) => {
             <MaterialCommunityIcons
               name="menu"
               size={34}
-              color={Colors[scheme].primarySecond}
+              color={Colors[scheme].headerTintColor}
             />
           </TouchableOpacity>
         ),
         headerRight: () => <Logout />,
+      }))}
+
+      {stackScreen(
+        "AccountSettings",
+        AccountSettingsScreen,
+        ({ navigation }) => ({
+          headerTitle: () => (
+            <Text
+              style={{
+                fontFamily: "Kanit_600SemiBold",
+                fontSize: 15,
+                color: Colors[scheme].headerTintColor,
+              }}
+            >
+              USTAWIENIA KONTA
+            </Text>
+          ),
+        })
+      )}
+
+      {stackScreen("ViewSettings", ViewSettingsScreen, ({ navigation }) => ({
+        headerTitle: () => (
+          <Text
+            style={{
+              fontFamily: "Kanit_600SemiBold",
+              fontSize: 15,
+              color: Colors[scheme].headerTintColor,
+            }}
+          >
+            USTAWIENIA WIDOKU
+          </Text>
+        ),
       }))}
     </Stack.Navigator>
   );

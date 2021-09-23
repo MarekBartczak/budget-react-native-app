@@ -51,6 +51,7 @@ export default {
     primarySecond: "rgb(195,195,198)",
     drawerActive: "rgb(255,255,255)",
     backGroundOne: "rgba(10,12,19, 1)",
+    // backGroundOne: "rgba(20,2,9, 1)",
     backGround_one: "rgba(1,1,1, 0.93)",
     light: "rgba(255, 255, 255, 0)",
     backGroundList: "rgba(1, 1, 1,1)",
@@ -58,6 +59,8 @@ export default {
     backGround_two: "rgba(1,1,1, 1)",
     primaryThird: "rgba(68,69,71, 0.8)",
     button: "rgb(115,199,196)",
+    // button: "rgb(115,69,96)",
+
     accent: "rgb(47,97,217)",
     backGround: "rgba(1, 1, 1, 0.93)",
 

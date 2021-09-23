@@ -51,7 +51,7 @@ const FixedExpenseScreen = (props) => {
         />
       </View>
 
-      <View
+      {/* <View
         style={{
           ...styles.component,
         }}
@@ -64,8 +64,8 @@ const FixedExpenseScreen = (props) => {
         >
           {"Stałe oplaty".toUpperCase()}
         </Text>
-      </View>
-      <View style={styles.component}>
+      </View> */}
+      <View style={styles.unPaidComponent}>
         <UnpaidExpense />
       </View>
       <View style={styles.component}>
@@ -114,6 +114,9 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 7,
+  },
+  unPaidComponent: {
+    marginTop: 50,
   },
   component: {
     // backgroundColor: "red",
