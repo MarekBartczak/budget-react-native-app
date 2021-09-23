@@ -95,24 +95,40 @@ const AuthScreen = (props) => {
       return (
         <ExternalComponent dimmer={true}>
           <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-            <View style={styles[`screen_${scheme}`]}>
+            <View style={{ ...styles.screen, ...{} }}>
               <View style={styles.loginScreen}>
-                <Text style={styles[`credential_${scheme}`]}>
+                <Text
+                  style={{
+                    ...styles.credential,
+                    ...{ color: Colors[scheme].primarySecond },
+                  }}
+                >
                   {"Adres email".toUpperCase()}
                 </Text>
                 <Input
-                  style={styles[`input_${scheme}`]}
+                  style={{
+                    ...styles.input,
+                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                  }}
                   // placeholder={"email"}
                   value={userEmail}
                   keyboardType={"email-address"}
                   onChangeText={setUserEmail}
                 />
-                <Text style={styles[`credential_${scheme}`]}>
+                <Text
+                  style={{
+                    ...styles.credential,
+                    ...{ color: Colors[scheme].primarySecond },
+                  }}
+                >
                   {"Hasło".toUpperCase()}
                 </Text>
 
                 <Input
-                  style={styles[`input_${scheme}`]}
+                  style={{
+                    ...styles.input,
+                    ...{ backgroundColor: Colors[scheme].primaryThird },
+                  }}
                   // placeholder={"hasło"}
                   secureTextEntry={true}
                   value={userPassword}
@@ -124,8 +140,18 @@ const AuthScreen = (props) => {
                     signInWithEmailAndPassowrd(() => login(), config.url)
                   }
                 >
-                  <View style={styles[`loginButton_${scheme}`]}>
-                    <Text style={styles[`loginBtnText_${scheme}`]}>
+                  <View
+                    style={{
+                      ...styles.loginButton,
+                      ...{ backgroundColor: Colors[scheme].button },
+                    }}
+                  >
+                    <Text
+                      style={{
+                        ...styles.loginBtnText,
+                        ...{ color: Colors[scheme].primaryThird },
+                      }}
+                    >
                       {"Zaloguj".toUpperCase()}
                     </Text>
                   </View>
@@ -171,25 +197,18 @@ const AuthScreen = (props) => {
 export default AuthScreen;
 
 const styles = StyleSheet.create({
-  screen_light: {
+  screen: {
     width: "100%",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
     // backgroundColor: Colors.light.primary,
   },
-  screen_dark: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    // backgroundColor: Colors.dark.primary,
-  },
-  input_light: {
+
+  input: {
     fontSize: 15,
     padding: 10,
     marginBottom: 10,
-    backgroundColor: Colors.light.primaryThird,
     width: Dimensions.get("window").width * 0.9,
     height: 40,
     justifyContent: "center",
@@ -200,41 +219,17 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
     borderRadius: 10,
   },
-  input_dark: {
-    fontFamily: "Kanit_400Regular",
 
-    fontSize: 15,
-    padding: 10,
-    marginBottom: 10,
-    backgroundColor: Colors.dark.primary,
-    color: Colors.dark.primarySecond,
-    width: Dimensions.get("window").width * 0.9,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
-    borderRadius: 3,
-  },
   loginScreen: {
     height: 200,
     marginBottom: 40,
   },
-  credential_light: {
+  credential: {
     marginLeft: 10,
-    color: Colors.light.primarySecond,
-  },
-  credential_dark: {
-    marginLeft: 10,
-    color: Colors.dark.primarySecond,
-    fontFamily: "Kanit_600SemiBold",
   },
 
-  loginButton_light: {
+  loginButton: {
     marginTop: 40,
-    backgroundColor: Colors.light.button,
     borderRadius: 10,
     // borderColor: Colors.light.button,
     // borderWidth: 2,
@@ -243,33 +238,12 @@ const styles = StyleSheet.create({
     // shadowOpacity: 0.3,
     // shadowRadius: 7,
   },
-  loginButton_dark: {
-    marginTop: 40,
-    backgroundColor: Colors.dark.primary,
-    borderRadius: 3,
-    // borderColor: Colors.dark.button,
-    // borderWidth: 2,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.3,
-    // shadowRadius: 7,
-  },
 
-  loginBtnText_light: {
+  loginBtnText: {
     fontSize: 20,
     textAlign: "center",
     width: Dimensions.get("window").width * 0.9,
     padding: 10,
-    color: Colors.light.primaryThird,
-  },
-  loginBtnText_dark: {
-    fontSize: 20,
-    textAlign: "center",
-    width: Dimensions.get("window").width * 0.9,
-    padding: 10,
-    fontFamily: "Kanit_600SemiBold",
-
-    color: Colors.dark.button,
   },
 
   otherMethodLogin: {

@@ -46,10 +46,10 @@ const AddItemToTheReceiptScreen = (props) => {
               marginRight: 20,
               backgroundColor: Colors[scheme].primary,
               borderRadius: 1,
-              // shadowOffset: { height: 0, width: 0 },
-              // shadowColor: "black",
-              // shadowOpacity: 0.5,
-              // shadowRadius: 7,
+              shadowOffset: { height: 0, width: 0 },
+              shadowColor: "black",
+              shadowOpacity: 0.25,
+              shadowRadius: 3,
             }}
             onPress={() => {
               // props.addItemToTheRecipt();
@@ -76,10 +76,10 @@ const AddItemToTheReceiptScreen = (props) => {
                 marginRight: 20,
                 backgroundColor: Colors[scheme].primary,
                 borderRadius: 1,
-                // // shadowOffset: { height: 0, width: 0 },
-                // // shadowColor: "black",
-                // // shadowOpacity: 0.5,
-                // // shadowRadius: 7,
+                shadowOffset: { height: 0, width: 0 },
+                shadowColor: "black",
+                shadowOpacity: 0.25,
+                shadowRadius: 3,
               }}
             >
               <Text
