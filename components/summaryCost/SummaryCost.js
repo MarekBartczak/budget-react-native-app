@@ -129,11 +129,31 @@ const SumaryCost = (props) => {
     );
   };
   return (
-    <View style={styles[`summaryCost_${scheme}`]}>
+    <View
+      style={{
+        ...styles.summaryCost,
+        ...{ backgroundColor: Colors[scheme].backGroundOne },
+      }}
+    >
       <View>
-        <Text style={styles[`textCost_${scheme}`]}>{props.cost}zł</Text>
+        <Text
+          style={{
+            ...styles.textCost,
+            ...{ color: Colors[scheme].headerTintColor },
+          }}
+        >
+          {props.cost}zł
+        </Text>
         <TouchableOpacity onPress={() => setShowModal(!showModal)}>
-          <Text style={styles[`textDate_${scheme}`]}>
+          <Text
+            style={{
+              ...styles.textDate,
+              ...{
+                backgroundColor: Colors[scheme].headerTintColor,
+                color: Colors[scheme].backGroundOne,
+              },
+            }}
+          >
             {year} {month}
           </Text>
         </TouchableOpacity>
@@ -146,19 +166,7 @@ const SumaryCost = (props) => {
 export default SumaryCost;
 
 const styles = StyleSheet.create({
-  summaryCost_light: {
-    backgroundColor: Colors.light.backGroundOne,
-    width: Dimensions.get("window").width,
-    height: 70,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  summaryCost_dark: {
-    backgroundColor: Colors.dark.backGroundOne,
-
+  summaryCost: {
     width: Dimensions.get("window").width,
     height: 70,
     alignItems: "center",
@@ -168,38 +176,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  textCost_light: {
-    color: Colors.light.headerTintColor,
+  textCost: {
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
     fontFamily: "Kanit_600SemiBold",
   },
-  textCost_dark: {
-    color: Colors.dark.primarySecond,
-    fontWeight: "bold",
-    fontSize: 20,
-    textAlign: "center",
-    fontFamily: "Kanit_600SemiBold",
-  },
-  textDate_light: {
+
+  textDate: {
     marginTop: 10,
-    backgroundColor: Colors.light.headerTintColor,
     paddingVertical: 3,
     paddingHorizontal: 10,
 
     borderRadius: 10,
     overflow: "hidden",
     marginBottom: 10,
-    color: Colors.light.backGroundOne,
-    fontWeight: "bold",
-    fontSize: 15,
-    textAlign: "center",
-    fontFamily: "Kanit_600SemiBold",
-  },
-  textDate_dark: {
-    marginBottom: 10,
-    color: Colors.dark.button,
     fontWeight: "bold",
     fontSize: 15,
     textAlign: "center",

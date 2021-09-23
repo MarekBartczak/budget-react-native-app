@@ -6,3 +6,8 @@ export const ADD_INCOME_KEYBOARD_STATUS = "ADD_INCOME_KEYBOARD_STATUS";
 export const addIncomeKeyboardStatus = (status) => {
   return { type: ADD_INCOME_KEYBOARD_STATUS, status: status };
 };
+
+export const TOGGLE_CUSTOM_THEME = "TOGGLE_CUSTOM_THEME";
+export const toggleCustomTheme = (status) => {
+  return { type: TOGGLE_CUSTOM_THEME, status: status };
+};

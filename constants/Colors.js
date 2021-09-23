@@ -1,28 +1,4 @@
 export default {
-  primary: "rgb(1,1,1)",
-  placeholder: "rgb(160,160,160)",
-  selected: "rgb(0,100,0)",
-  primaryLight: "rgb(100, 70, 190)",
-  // accent: "rgb(220,220,220)",
-  accent: "rgb(220,220,220)",
-  accentOpacity: "rgba(240,143,60,0.5)",
-  banner: "#DFDFDF",
-  backGround2: "rgb(227, 227, 228)",
-  default: "rgb(242, 242, 242)",
-  backGround: "rgb(109,94,200)",
-  transparent: "rgba(255,255,255,0.3)",
-  // shadowColor: "rgb(120, 140, 184)",
-  // shadowColorLight: "rgb(110, 130, 170)",
-  facebook: "rgb(59,89,152)",
-  google: "#ea4335",
-  gradientBackground: {
-    // primary: "rgb(200, 200,200)",
-    // secondary: "rgb(200,200,200)",
-    primary: "rgb(255, 255,255)",
-    secondary: "rgb(200,200,200)",
-    third: "rgb(250,250,250)",
-  },
-
   light: {
     headerTintColor: "rgb(255,255,255)",
     primary: "rgba(255,255,255, 1)",
@@ -32,10 +8,8 @@ export default {
     backGroundOne: "rgba(98, 172, 147, 1)",
     backGroundList: "rgba(255, 255, 255,1)",
     accent: "rgba(98, 172, 147, 1)",
-
     button: "rgb(98,172,147)",
     light: "rgb(255, 255, 255)",
-
     primaryThird: "rgba(1,1,1, 0.2)",
     backGround: "rgba(225, 225, 225, 1)",
     backGround_two: "rgba(225, 225, 225, 1)",
@@ -70,9 +44,45 @@ export default {
     delete: "rgb(110,0,0)",
     details: "rgb(185,159,06)",
   },
-};
 
-// [`_${scheme}`]
-// const scheme = useSelector((state) => state.config.scheme);
-// import { useSelector } from "react-redux";
-//
+  light_Blue: {
+    headerTintColor: "rgb(255,255,255)",
+    primary: "rgba(255,255,255, 1)",
+    primarySecond: "rgb(111,111,111)",
+    drawerActive: "rgb(100,100,100)",
+    backGround_one: "rgba(255, 255, 255, 0.93)",
+    backGroundOne: "rgba(98, 172, 247, 1)",
+    backGroundList: "rgba(255, 255, 255,1)",
+    accent: "rgba(98, 172, 147, 1)",
+    button: "rgba(98, 172, 247, 1)",
+    light: "rgb(255, 255, 255)",
+    primaryThird: "rgba(1,1,1, 0.2)",
+    backGround: "rgba(225, 225, 225, 1)",
+    backGround_two: "rgba(225, 225, 225, 1)",
+    backGroundTwo: "rgba(255,255,255,1)",
+    separator: "rgba(1,1,1,0)",
+    dimmer: "rgba(255,255,255,0)",
+    delete: "rgb(110,0,0)",
+    details: "rgb(115,199,196)",
+  },
+  light_Pink: {
+    headerTintColor: "rgb(255,255,255)",
+    primary: "rgba(255,255,255, 1)",
+    primarySecond: "rgb(111,111,111)",
+    drawerActive: "rgb(100,100,100)",
+    backGround_one: "rgba(255, 255, 255, 0.93)",
+    backGroundOne: "rgba(258, 72, 147, 1)",
+    backGroundList: "rgba(255, 255, 255,1)",
+    accent: "rgba(258, 72, 147, 1)",
+    button: "rgba(258, 72, 147, 1)",
+    light: "rgb(255, 255, 255)",
+    primaryThird: "rgba(1,1,1, 0.2)",
+    backGround: "rgba(225, 225, 225, 1)",
+    backGround_two: "rgba(225, 225, 225, 1)",
+    backGroundTwo: "rgba(255,255,255,1)",
+    separator: "rgba(1,1,1,0)",
+    dimmer: "rgba(255,255,255,0)",
+    delete: "rgb(110,0,0)",
+    details: "rgba(258, 72, 147, 1)",
+  },
+};

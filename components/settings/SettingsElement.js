@@ -58,19 +58,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   textView: {
-    height: Dimensions.get("window").width * 0.15,
+    height: Dimensions.get("window").width * 0.1,
     justifyContent: "center",
     alignItems: "center",
   },
   iconArrow: {
-    height: Dimensions.get("window").width * 0.15,
+    height: Dimensions.get("window").width * 0.1,
     justifyContent: "center",
     alignItems: "center",
   },
   icon: {
-    padding: 10,
-    width: Dimensions.get("window").width * 0.15,
-    height: Dimensions.get("window").width * 0.15,
+    width: Dimensions.get("window").width * 0.1,
+    height: Dimensions.get("window").width * 0.1,
     justifyContent: "center",
     alignItems: "center",
   },

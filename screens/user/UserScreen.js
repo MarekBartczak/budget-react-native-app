@@ -23,18 +23,30 @@ const UserScreen = (props) => {
             ...{ backgroundColor: Colors[scheme].backGroundOne },
           }}
         >
-          <View style={styles[`photoExternal_${scheme}`]}>
+          <View style={{ ...styles.photoExternal, ...{} }}>
             <Image style={styles.photo} source={{ url: userPhotoUrl }} />
           </View>
         </View>
         <View style={styles.userDataView}>
-          <View style={styles[`userNameView_${scheme}`]}>
-            <Text style={styles[`userName_${scheme}`]}>
+          <View style={{ ...styles.userNameView, ...{} }}>
+            <Text
+              style={{
+                ...styles.userName,
+                ...{ color: Colors[scheme].primarySecond },
+              }}
+            >
               {userName.toUpperCase()}
             </Text>
           </View>
-          <View style={styles[`userEmailView_${scheme}`]}>
-            <Text style={styles[`userEmail_${scheme}`]}>{userEmail}</Text>
+          <View style={{ ...styles.userEmailView, ...{} }}>
+            <Text
+              style={{
+                ...styles.userEmail,
+                ...{ color: Colors[scheme].primarySecond },
+              }}
+            >
+              {userEmail}
+            </Text>
           </View>
         </View>
       </View>
@@ -48,15 +60,12 @@ const styles = StyleSheet.create({
   familyAccountWith: {
     flexDirection: "row",
   },
-  family_light: {
+  family: {
     fontSize: 15,
     color: Colors.light.primarySecond,
   },
-  family_dark: {
-    fontSize: 15,
-    color: Colors.dark.primary,
-  },
-  userNameView_light: {
+
+  userNameView: {
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: Dimensions.get("window").width,
@@ -68,31 +77,13 @@ const styles = StyleSheet.create({
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
   },
-  userNameView_dark: {
-    borderColor: Colors.dark.primary,
 
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    width: Dimensions.get("window").width,
-    alignItems: "center",
-    marginBottom: 50,
-    // shadowColor: "black",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
-  },
-  userName_light: {
+  userName: {
     fontFamily: "Kanit_600SemiBold",
-    color: Colors.light.primarySecond,
-    fontSize: 20,
-  },
-  userName_dark: {
-    fontFamily: "Kanit_600SemiBold",
-    color: Colors.dark.primaryThird,
     fontSize: 20,
   },
 
-  userEmailView_light: {
+  userEmailView: {
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: Dimensions.get("window").width,
@@ -103,27 +94,12 @@ const styles = StyleSheet.create({
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
   },
-  userEmailView_dark: {
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    width: Dimensions.get("window").width,
-    alignItems: "center",
-    marginBottom: 50,
-    // shadowColor: "black",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
-  },
-  userEmail_light: {
+
+  userEmail: {
     fontFamily: "Kanit_600SemiBold",
-    color: Colors.light.primarySecond,
     fontSize: 15,
   },
-  userEmail_dark: {
-    fontFamily: "Kanit_600SemiBold",
-    color: Colors.dark.primary,
-    fontSize: 15,
-  },
+
   screen: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
@@ -142,27 +118,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 5,
   },
-  photoExternal_light: {
+  photoExternal: {
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").width * 0.7,
   },
-  photoExternal_dark: {
-    width: Dimensions.get("window").width,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: Colors.dark.primary,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").width * 0.7,
-    // borderRadius: Dimensions.get("window").width * 0.35,
 
-    // shadowColor: "black",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
-  },
   photo: {
     width: Dimensions.get("window").width * 0.6,
     height: Dimensions.get("window").width * 0.6,

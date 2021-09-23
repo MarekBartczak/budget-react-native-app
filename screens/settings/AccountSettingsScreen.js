@@ -6,9 +6,11 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 const AccountSettings = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   return (
-    <View>
-      <Text>konto</Text>
-    </View>
+    <ExternalComponent>
+      <View>
+        <Text>konto</Text>
+      </View>
+    </ExternalComponent>
   );
 };
 

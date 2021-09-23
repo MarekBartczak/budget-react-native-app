@@ -32,12 +32,13 @@ const AuthScreen = (props) => {
   // const sheme = Appearance.getColorScheme();
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
+  const customTheme = useSelector((state) => state.config.customScheme);
   const userStatus = useSelector((state) => state.auth.isLogin);
   const showIndicator = useSelector((state) => state.auth.showIndicator);
   const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(configActions.getScheme(colorScheme));
+    !customTheme && dispatch(configActions.getScheme(colorScheme));
   });
   const login = () => {
     dispatch(authActions.isLogin(true));
