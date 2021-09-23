@@ -137,7 +137,12 @@ const AuthScreen = (props) => {
                     signInWithGoogleAsync(() => login(), categoryList);
                   }}
                 >
-                  <View style={styles.loginWithGoogle}>
+                  <View
+                    style={{
+                      ...styles.loginWithGoogle,
+                      ...{ backgroundColor: Colors[scheme].google },
+                    }}
+                  >
                     <AntDesign name="google" size={24} color="white" />
                     <Text style={styles.loginWithText}>
                       {"Zaloguj przez Google".toUpperCase()}
@@ -281,7 +286,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   loginWithGoogle: {
-    backgroundColor: Colors.google,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",

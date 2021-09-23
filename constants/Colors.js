@@ -18,6 +18,7 @@ export default {
     dimmer: "rgba(255,255,255,0)",
     delete: "rgb(110,0,0)",
     details: "rgb(115,199,196)",
+    google: "rgb(255,62,48)",
   },
   dark: {
     headerTintColor: "rgb(195,195,198)",
@@ -43,6 +44,7 @@ export default {
     dimmer: "rgba(1,1,1,0)",
     delete: "rgb(110,0,0)",
     details: "rgb(185,159,06)",
+    google: "rgb(255,62,48)",
   },
 
   light_Blue: {
@@ -64,6 +66,7 @@ export default {
     dimmer: "rgba(255,255,255,0)",
     delete: "rgb(110,0,0)",
     details: "rgb(115,199,196)",
+    google: "rgb(255,62,48)",
   },
   light_Pink: {
     headerTintColor: "rgb(255,255,255)",
@@ -84,5 +87,27 @@ export default {
     dimmer: "rgba(255,255,255,0)",
     delete: "rgb(110,0,0)",
     details: "rgba(258, 72, 147, 1)",
+    google: "rgb(255,62,48)",
+  },
+  light_Gold: {
+    headerTintColor: "rgb(255,255,255)",
+    primary: "rgba(255,255,255, 1)",
+    primarySecond: "rgb(111,111,111)",
+    drawerActive: "rgb(100,100,100)",
+    backGround_one: "rgba(255, 255, 255, 0.93)",
+    backGroundOne: "rgba(217, 175, 55, 1)",
+    backGroundList: "rgba(255, 255, 255,1)",
+    accent: "rgba(217, 175, 55, 1)",
+    button: "rgba(217, 175, 55, 1)",
+    light: "rgb(255, 255, 255)",
+    primaryThird: "rgba(1,1,1, 0.2)",
+    backGround: "rgba(225, 225, 225, 1)",
+    backGround_two: "rgba(225, 225, 225, 1)",
+    backGroundTwo: "rgba(255,255,255,1)",
+    separator: "rgba(1,1,1,0)",
+    dimmer: "rgba(255,255,255,0)",
+    delete: "rgb(110,0,0)",
+    details: "rgba(217, 175, 55, 1)",
+    google: "rgb(255,62,48)",
   },
 };
