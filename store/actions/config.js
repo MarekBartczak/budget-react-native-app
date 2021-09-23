@@ -11,3 +11,11 @@ export const TOGGLE_CUSTOM_THEME = "TOGGLE_CUSTOM_THEME";
 export const toggleCustomTheme = (status) => {
   return { type: TOGGLE_CUSTOM_THEME, status: status };
 };
+export const TOGGLE_DANGER_ZONE = "TOGGLE_DANGER_ZONE";
+export const toggleDangerZone = (status) => {
+  return { type: TOGGLE_DANGER_ZONE, status: status };
+};
+export const TOGGLE_DELETE_ACCOUNT = "TOGGLE_DELETE_ACCOUNT";
+export const toggleDeleteAccount = (status) => {
+  return { type: TOGGLE_DELETE_ACCOUNT, status: status };
+};

@@ -2,12 +2,16 @@ import {
   GET_SCHEME,
   ADD_INCOME_KEYBOARD_STATUS,
   TOGGLE_CUSTOM_THEME,
+  TOGGLE_DANGER_ZONE,
+  TOGGLE_DELETE_ACCOUNT,
 } from "../actions/config";
 
 const initialState = {
   scheme: "light",
   customScheme: false,
   addIncomeKeyboardStatus: false,
+  toogleDangerZone: false,
+  deleteAccount: false,
 };
 
 export default (state = initialState, action) => {
@@ -18,6 +22,10 @@ export default (state = initialState, action) => {
       return { ...state, addIncomeKeyboardStatus: action.status };
     case TOGGLE_CUSTOM_THEME:
       return { ...state, customScheme: action.status };
+    case TOGGLE_DANGER_ZONE:
+      return { ...state, toogleDangerZone: action.status };
+    case TOGGLE_DELETE_ACCOUNT:
+      return { ...state, deleteAccount: action.status };
   }
   return state;
 };

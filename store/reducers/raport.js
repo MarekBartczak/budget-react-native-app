@@ -2,9 +2,16 @@ import {
   INITIAL_RAPORT_STATE,
   IS_SELECTED_TYPE,
   IS_SELECTED_DATE,
+  TOOGLE_DEFAULT_EMAIL,
+  SET_EMAIL,
+  TOOGLE_MONTHLY_RAPORT,
 } from "../actions/raport";
 
-const initialState = {};
+const initialState = {
+  diffrentEmail: false,
+  sendRaportEveryMonth: false,
+  email: "",
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -23,6 +30,12 @@ export default (state = initialState, action) => {
       const index = dateObj.indexOf(filtered);
       dateObj[index].isSelected = action.isSelected;
       return { ...state };
+    case TOOGLE_DEFAULT_EMAIL:
+      return { ...state, diffrentEmail: action.status };
+    case SET_EMAIL:
+      return { ...state, email: action.email };
+    case TOOGLE_MONTHLY_RAPORT:
+      return { ...state, sendRaportEveryMonth: action.status };
   }
   return state;
 };

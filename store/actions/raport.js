@@ -18,6 +18,20 @@ export const isSelectedDate = (date, el, isSelected) => {
   };
 };
 
+export const TOOGLE_DEFAULT_EMAIL = "TOOGLE_DEFAULT_EMAIL";
+export const toggleDefaultEmail = (status) => {
+  return { type: TOOGLE_DEFAULT_EMAIL, status: status };
+};
+export const TOOGLE_MONTHLY_RAPORT = "TOOGLE_MONTHLY_RAPORT";
+export const toggleMonthlyRaport = (status) => {
+  return { type: TOOGLE_MONTHLY_RAPORT, status: status };
+};
+
+export const SET_EMAIL = "SET_EMAIL";
+export const setEmail = (email) => {
+  return { type: SET_EMAIL, email: email };
+};
+
 // export const SET_SELECTED_DATE = "SET_SELECTED_DATE";
 // export const setSelectedDate = (obj) => {
 //   return { type: SET_SELECTED_DATE, obj: obj };

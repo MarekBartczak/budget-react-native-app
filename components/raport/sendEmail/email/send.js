@@ -16,7 +16,15 @@ import emailTemplate from "./emailTemplate";
 const Send = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
-  const email = useSelector((state) => state.auth.userEmail);
+  let email = "";
+  const diffrentEmail = useSelector((state) => state.raport.diffrentEmail);
+
+  if (!diffrentEmail) {
+    email = useSelector((state) => state.auth.userEmail);
+  }
+  if (diffrentEmail) {
+    email = useSelector((state) => state.raport.email);
+  }
   const emailSender = () => {
     let templateForm = {
       new_date: new Date().toISOString().slice(0, 10),
