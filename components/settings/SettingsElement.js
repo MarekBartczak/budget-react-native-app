@@ -35,7 +35,14 @@ const Settings = (props) => {
         {props.icon}
       </View>
       <View style={styles.textView}>
-        <Text style={styles.textElement}>{props.title}</Text>
+        <Text
+          style={{
+            ...styles.textElement,
+            ...{ color: Colors[scheme].primarySecond },
+          }}
+        >
+          {props.title}
+        </Text>
       </View>
       <View style={styles.iconArrow}>
         <Feather

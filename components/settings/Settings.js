@@ -16,7 +16,7 @@ const Settings = (props) => {
           <MaterialCommunityIcons
             name="account-cog"
             size={24}
-            color={Colors[scheme].primarySecond}
+            color={Colors[scheme].headerTintColor}
           />
         }
         target={"AccountSettings"}
@@ -27,7 +27,7 @@ const Settings = (props) => {
           <MaterialCommunityIcons
             name="view-dashboard"
             size={24}
-            color={Colors[scheme].primarySecond}
+            color={Colors[scheme].headerTintColor}
           />
         }
         target={"ViewSettings"}
