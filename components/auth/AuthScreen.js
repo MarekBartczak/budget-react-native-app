@@ -93,7 +93,7 @@ const AuthScreen = (props) => {
       );
     } else {
       return (
-        <ExternalComponent dimmer={true}>
+        <ExternalComponent dimmer={0.8}>
           <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={{ ...styles.screen, ...{} }}>
               <View style={styles.loginScreen}>

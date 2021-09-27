@@ -20,6 +20,41 @@ const ExternalComponentWithGradient = (props) => {
   if (scheme === "dark") {
     path = require("../../assets/dollar_dark.jpeg");
   }
+
+  const showGradient = (dimmer) => {
+    if (dimmer === undefined) {
+      return (
+        <LinearGradient
+          colors={[
+            Colors[scheme].backGround_one,
+            Colors[scheme].backGround_one,
+          ]}
+          style={styles.background}
+        />
+      );
+    }
+    if (!isNaN(dimmer)) {
+      if (dimmer >= 0 && dimmer <= 1) {
+        const colorsInfo = Colors[scheme].backGround_one.split(",");
+        const colorsObj = {
+          r: Number(colorsInfo[0].slice(5)),
+          g: Number(colorsInfo[1]),
+          b: Number(colorsInfo[2]),
+          a: Number(colorsInfo[3].slice(0, -1)),
+        };
+
+        return (
+          <LinearGradient
+            colors={[
+              `rgba(${colorsObj.r}, ${colorsObj.g}, ${colorsObj.b}, ${dimmer})`,
+              `rgba(${colorsObj.r}, ${colorsObj.g}, ${colorsObj.b}, ${dimmer})`,
+            ]}
+            style={styles.background}
+          />
+        );
+      }
+    }
+  };
   return (
     <View>
       <Image
@@ -30,16 +65,8 @@ const ExternalComponentWithGradient = (props) => {
         }}
         source={path}
       />
+      {showGradient(props.dimmer)}
 
-      {props.dimmer === undefined && (
-        <LinearGradient
-          colors={[
-            Colors[scheme].backGround_one,
-            Colors[scheme].backGround_one,
-          ]}
-          style={styles.background}
-        />
-      )}
       <View
         style={{
           alignItems: "center",
