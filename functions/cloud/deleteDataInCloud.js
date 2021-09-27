@@ -13,6 +13,14 @@ const deleteDataInCloud = {
   fixedExpense: (id, userId) => {
     removeFromFirebaseBySet(id, "fixedExpense", userId);
   },
+  deleteUser: (userId) => {
+    firebase
+      .database()
+      .ref(`users/${userId}`)
+      .set(null)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  },
 };
 
 export default deleteDataInCloud;

@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import firebase from "firebase";
-
+import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 import React, { useEffect, useState } from "react";
 import Colors from "../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
@@ -69,12 +69,15 @@ const AccountSettings = (props) => {
             alignItems: "center",
           }}
           onPress={() => {
-            deleteAccountPermanently();
             dispatch(authActions.showIndicator(false));
+
+            deleteAccountPermanently();
             firebase
               .auth()
               .signOut()
-              .then(() => {
+              .then((res) => {
+                console.log("logout");
+
                 // clearStateAfterLogout();
                 // Sign-out successful.
               })

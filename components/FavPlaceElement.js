@@ -31,7 +31,7 @@ const FavPlaceElement = (props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        if (props.favPlaceName) {
+        if (props.favPlaceLogo) {
           addNewElementToReceipt();
         } else {
           newFavPlace();
