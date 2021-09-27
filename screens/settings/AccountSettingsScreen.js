@@ -10,12 +10,16 @@ import {
   Keyboard,
   TouchableOpacity,
 } from "react-native";
+import firebase from "firebase";
+
 import React, { useEffect, useState } from "react";
 import Colors from "../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import * as raportActions from "../../store/actions/raport";
 import * as configActions from "../../store/actions/config";
+import * as authActions from "../../store/actions/auth";
+import deleteAccountPermanently from "./deleteAccountPermanently";
 const AccountSettings = (props) => {
   const dispatch = useDispatch();
   const scheme = useSelector((state) => state.config.scheme);
@@ -43,16 +47,12 @@ const AccountSettings = (props) => {
   useEffect(() => {
     if (dangerZone === false) {
       dispatch(configActions.toggleDeleteAccount(false));
+      setDeleteAccountEmail();
     }
-  }, [dangerZone]);
-
-  const confirmDeleteAccount = (deleteAccountEmail, defaultEmail) => {
-    if (deleteAccountEmail === defaultEmail) {
-      return true;
-    } else {
-      return false;
+    if (deleteAccount === false) {
+      setDeleteAccountEmail();
     }
-  };
+  }, [dangerZone, deleteAccount]);
 
   const TouchableOpacityCustom = (props) => {
     if (deleteAccountEmail === defaultEmail) {
@@ -68,7 +68,20 @@ const AccountSettings = (props) => {
             backgroundColor: Colors[scheme].primary,
             alignItems: "center",
           }}
-          onPress={() => {}}
+          onPress={() => {
+            deleteAccountPermanently();
+            dispatch(authActions.showIndicator(false));
+            firebase
+              .auth()
+              .signOut()
+              .then(() => {
+                // clearStateAfterLogout();
+                // Sign-out successful.
+              })
+              .catch((error) => console.log(error));
+
+            dispatch(authActions.logout(false));
+          }}
         >
           {props.children}
         </TouchableOpacity>
@@ -287,7 +300,7 @@ const AccountSettings = (props) => {
                       padding: 4,
                     }}
                   >
-                    Aby usnąć konto przepisz ponizszy email
+                    Aby usnąć konto przepisz poniższy email
                   </Text>
                   <Text
                     style={{
