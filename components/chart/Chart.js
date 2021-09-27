@@ -66,11 +66,12 @@ const Chart = (props) => {
         backgroundColor: Colors[scheme].backGroundOne,
         borderBottomLeftRadius: 100,
         borderBottomRightRadius: 100,
+
         shadowColor: "black",
         shadowOffset: { height: 1, width: 0 },
         shadowOpacity: 1,
         shadowRadius: 5,
-        paddingBottom: 5,
+        paddingBottom: 45,
       }}
     >
       <TouchableOpacity onPress={props.press}>
@@ -109,7 +110,7 @@ const Chart = (props) => {
           withshadow={false}
           withInnerLines={false}
           width={Dimensions.get("window").width}
-          height={Dimensions.get("window").height * 0.3}
+          height={Dimensions.get("window").height * 0.25}
           chartConfig={{
             labelColor: () => Colors[scheme].headerTintColor,
             backgroundGradientFromOpacity: 0,

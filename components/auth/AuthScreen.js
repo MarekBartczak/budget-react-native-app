@@ -93,10 +93,15 @@ const AuthScreen = (props) => {
       );
     } else {
       return (
-        <ExternalComponent dimmer={0.8}>
+        <ExternalComponent dimmer={0.85}>
           <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={{ ...styles.screen, ...{} }}>
-              <View style={styles.loginScreen}>
+              {/* <View
+                style={{
+                  ...styles.loginScreen,
+                  ...{ backgroundColor: Colors[scheme].light },
+                }}
+              >
                 <Text
                   style={{
                     ...styles.credential,
@@ -134,7 +139,8 @@ const AuthScreen = (props) => {
                   value={userPassword}
                   onChangeText={setUserPassword}
                 />
-
+              </View> */}
+              {/* <View style={{ marginBottom: 20 }}>
                 <TouchableOpacity
                   onPress={() =>
                     signInWithEmailAndPassowrd(() => login(), config.url)
@@ -143,20 +149,37 @@ const AuthScreen = (props) => {
                   <View
                     style={{
                       ...styles.loginButton,
-                      ...{ backgroundColor: Colors[scheme].button },
+                      ...{ backgroundColor: Colors[scheme].primary },
                     }}
                   >
                     <Text
                       style={{
                         ...styles.loginBtnText,
-                        ...{ color: Colors[scheme].primaryThird },
+                        ...{ color: Colors[scheme].button },
                       }}
                     >
                       {"Zaloguj".toUpperCase()}
                     </Text>
                   </View>
                 </TouchableOpacity>
-              </View>
+                <TouchableOpacity>
+                  <View
+                    style={{
+                      ...styles.newAccount,
+                      ...{},
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: Colors[scheme].button,
+                        fontFamily: "Kanit_600SemiBold",
+                      }}
+                    >
+                      Zarejestruj
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View> */}
               <View style={styles.otherMethodLogin}>
                 <TouchableOpacity
                   onPress={() => {
@@ -204,39 +227,51 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // backgroundColor: Colors.light.primary,
   },
+  newAccount: {
+    padding: 10,
+    width: Dimensions.get("window").width * 0.9,
+    alignItems: "center",
+  },
 
   input: {
     fontSize: 15,
     padding: 10,
     marginBottom: 10,
-    width: Dimensions.get("window").width * 0.9,
+    borderRadius: 3,
+
+    // width: Dimensions.get("window").width * 0.7,
     height: 40,
     justifyContent: "center",
     alignItems: "center",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
+
     borderRadius: 10,
   },
 
   loginScreen: {
-    height: 200,
+    // height: 200,
     marginBottom: 40,
+
+    width: Dimensions.get("window").width * 0.9,
+
+    padding: 20,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
   },
   credential: {
     marginLeft: 10,
   },
 
   loginButton: {
-    marginTop: 40,
-    borderRadius: 10,
+    marginTop: 10,
+    borderRadius: 3,
     // borderColor: Colors.light.button,
     // borderWidth: 2,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.3,
-    // shadowRadius: 7,
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
   },
 
   loginBtnText: {
@@ -244,6 +279,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: Dimensions.get("window").width * 0.9,
     padding: 10,
+    fontFamily: "Kanit_600SemiBold",
   },
 
   otherMethodLogin: {
@@ -266,6 +302,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderRadius: 3,
+
     // shadowOffset: { height: 0, width: 0 },
     // shadowColor: "black",
     // shadowOpacity: 0.2,

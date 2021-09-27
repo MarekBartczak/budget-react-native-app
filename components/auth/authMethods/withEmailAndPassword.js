@@ -1,7 +1,7 @@
 import axios from "axios";
 const userData = {
-  user: "bart2525@gmail.com",
-  password: "password",
+  user: "test@test.pl",
+  password: "testtest",
 };
 
 const signInWithEmailAndPassowrd = (signinFunction, url) => {
@@ -13,8 +13,8 @@ const signInWithEmailAndPassowrd = (signinFunction, url) => {
   axios
     .post(url, auth)
     .then((res) => {
-      console.log(res.data.email);
-      signinFunction();
+      // console.log(res.data.localId);
+      signinFunction(res.data.localId);
     })
     .catch((err) => {
       console.log(err.message);
