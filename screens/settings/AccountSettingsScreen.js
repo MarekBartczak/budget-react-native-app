@@ -69,6 +69,7 @@ const AccountSettings = (props) => {
             alignItems: "center",
           }}
           onPress={() => {
+            dispatch(configActions.toggleDangerZone(!dangerZone));
             dispatch(authActions.showIndicator(false));
 
             deleteAccountPermanently();
