@@ -20,6 +20,22 @@ const updateConfigInClound = {
       },
     },
   },
+  account: {
+    set: {
+      updateDefaultEmail: (isEnabled, userId) => {
+        firebase
+          .database()
+          .ref(`users/${userId}/config/account/updateDefaultEmail`)
+          .set(isEnabled);
+      },
+      email: (email, userId) => {
+        firebase
+          .database()
+          .ref(`users/${userId}/config/account/raportEmail`)
+          .set(email);
+      },
+    },
+  },
 };
 
 export default updateConfigInClound;

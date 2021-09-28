@@ -20,7 +20,9 @@ import * as raportActions from "../../store/actions/raport";
 import * as configActions from "../../store/actions/config";
 import * as authActions from "../../store/actions/auth";
 import deleteAccountPermanently from "./deleteAccountPermanently";
+import updateConfigInClound from "../../functions/cloud/config/updateConfigInClound";
 const AccountSettings = (props) => {
+  const userId = useSelector((state) => state.auth.userID);
   const dispatch = useDispatch();
   const scheme = useSelector((state) => state.config.scheme);
   const defaultEmail = useSelector((state) => state.auth.userEmail);
@@ -40,6 +42,12 @@ const AccountSettings = (props) => {
   const updateEmail = () => {
     dispatch(raportActions.updateDefaultEmail(true));
     dispatch(raportActions.setEmail(newEmail));
+
+    updateConfigInClound.account.set.updateDefaultEmail(
+      changeDefaultEmail,
+      userId
+    );
+    updateConfigInClound.account.set.email(newEmail, userId);
   };
 
   const toggleDeleteAccount = () => {
@@ -53,6 +61,13 @@ const AccountSettings = (props) => {
   };
   const toggleDefaultEmail = () => {
     dispatch(raportActions.toggleDefaultEmail(!changeDefaultEmail));
+    updateConfigInClound.account.set.updateDefaultEmail(
+      !changeDefaultEmail,
+      userId
+    );
+    if (!changeDefaultEmail === false) {
+      updateConfigInClound.account.set.email("", userId);
+    }
   };
   useEffect(() => {
     if (dangerZone === false) {
@@ -67,8 +82,8 @@ const AccountSettings = (props) => {
   const showAdressEmail = () => {
     if (
       changeDefaultEmail === true &&
-      customEmailForRaport !== "" &&
-      setUpdateDefaultEmail === true
+      customEmailForRaport !== ""
+      // setUpdateDefaultEmail === true
     ) {
       return customEmailForRaport;
     } else {

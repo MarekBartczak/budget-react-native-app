@@ -24,6 +24,7 @@ import * as fixedExpenseActions from "../store/actions/fixedExpense";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
 import * as authActions from "../store/actions/auth";
+import * as raportActions from "../store/actions/raport";
 import * as configActions from "../store/actions/config";
 import firebase from "firebase";
 
@@ -82,7 +83,20 @@ const DrawerNavigator = (props) => {
       dispatch(configActions.getScheme(val));
     });
 
-    // console.log(colorSet);
+    let updateDefaultEmail = firebase
+      .database()
+      .ref(`users/${userId}/config/account/updateDefaultEmail`);
+    updateDefaultEmail.on("value", async (data) => {
+      let val = await data.val();
+      dispatch(raportActions.toggleDefaultEmail(val));
+    });
+    let email = firebase
+      .database()
+      .ref(`users/${userId}/config/account/raportEmail`);
+    email.on("value", async (data) => {
+      let val = await data.val();
+      dispatch(raportActions.setEmail(val));
+    });
   };
 
   const loadingFavoritePlace = () => {
