@@ -18,11 +18,13 @@ import StackSettingsNavigator from "./StackSettingsNavigator";
 import StackUserNavigator from "./StackUserNavigator";
 import { useSelector, useDispatch } from "react-redux";
 
+import updateConfigInClound from "../functions/cloud/config/updateConfigInClound";
 import * as favoritePlaceActions from "../store/actions/favoritePlace";
 import * as fixedExpenseActions from "../store/actions/fixedExpense";
 import * as expenseActions from "../store/actions/items";
 import * as incomeActions from "../store/actions/income";
 import * as authActions from "../store/actions/auth";
+import * as configActions from "../store/actions/config";
 import firebase from "firebase";
 
 import {
@@ -61,6 +63,26 @@ const DrawerNavigator = (props) => {
         dispatch(fixedExpenseActions.loadingFixedExpensefromDB(list));
         return;
     }
+  };
+
+  const loadingConfig = async () => {
+    let customScheme = firebase
+      .database()
+      .ref(`users/${userId}/config/view/customScheme`);
+    customScheme.on("value", async (data) => {
+      let val = await data.val();
+      dispatch(configActions.toggleCustomTheme(val));
+    });
+
+    let colorSet = firebase
+      .database()
+      .ref(`users/${userId}/config/view/colorSet`);
+    colorSet.on("value", async (data) => {
+      let val = await data.val();
+      dispatch(configActions.getScheme(val));
+    });
+
+    // console.log(colorSet);
   };
 
   const loadingFavoritePlace = () => {
@@ -106,6 +128,7 @@ const DrawerNavigator = (props) => {
   };
   useEffect(() => {
     const fetchData = async () => {
+      loadingConfig();
       loadingFavoritePlace();
       await loadingCategory();
       await loadingData("income");

@@ -26,6 +26,10 @@ export const TOOGLE_MONTHLY_RAPORT = "TOOGLE_MONTHLY_RAPORT";
 export const toggleMonthlyRaport = (status) => {
   return { type: TOOGLE_MONTHLY_RAPORT, status: status };
 };
+export const UPDATE_DEFAULT_EMAIL = "UPDATE_DEFAULT_EMAIL";
+export const updateDefaultEmail = (status) => {
+  return { type: UPDATE_DEFAULT_EMAIL, status: status };
+};
 
 export const SET_EMAIL = "SET_EMAIL";
 export const setEmail = (email) => {

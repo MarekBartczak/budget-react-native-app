@@ -74,7 +74,7 @@ const IncomeElement = (props) => {
         style={{
           ...styles.element,
           ...{
-            backgroundColor: Colors[scheme].light,
+            backgroundColor: Colors[scheme].backGroundList,
             // shadowColor: Colors[scheme].button,
           },
         }}

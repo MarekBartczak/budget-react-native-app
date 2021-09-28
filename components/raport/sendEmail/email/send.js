@@ -18,13 +18,33 @@ const Send = (props) => {
 
   let email = "";
   const diffrentEmail = useSelector((state) => state.raport.diffrentEmail);
+  const updatedDefaultEmail = useSelector((state) => state.raport.email);
+  const sendRaportEveryMonth = useSelector(
+    (state) => state.raport.sendRaportEveryMonth
+  );
+  const raportWasSentInCurrentMonth = useSelector(
+    (state) => state.raport.raportWasSentInCurrentMonth
+  );
 
-  if (!diffrentEmail) {
+  const currentDae = new Date().getMonth();
+  console.log(currentDae);
+
+  if (diffrentEmail === true && updatedDefaultEmail !== "") {
+    email = updatedDefaultEmail;
+  } else {
     email = useSelector((state) => state.auth.userEmail);
   }
-  if (diffrentEmail) {
-    email = useSelector((state) => state.raport.email);
-  }
+
+  const raport = useSelector((state) => state.raport);
+  const listObj = {
+    Expense: useSelector((state) => state.item.items),
+    FixedExpense: useSelector((state) => state.fixedExpense.fixedExpense),
+    Income: useSelector((state) => state.income.income),
+  };
+  const list = filteredList(raport, listObj);
+  const message = emailTemplate(list);
+  // console.log(list);
+
   const emailSender = () => {
     let templateForm = {
       new_date: new Date().toISOString().slice(0, 10),
@@ -47,47 +67,44 @@ const Send = (props) => {
     const service_template = "template_yy2v91e";
     const service_user = "user_8M89hEsl6TJjpKWX3rQDS";
 
-    emailjs
-      .send(service_id, service_template, templateForm, service_user)
-      .then((res) => alert("wiadomość wysłana"))
-      .catch((err) => console.log(err));
+    // emailjs
+    //   .send(service_id, service_template, templateForm, service_user)
+    //   .then((res) => alert("wiadomość wysłana"))
+    //   .catch((err) => console.log(err));
   };
 
-  const raport = useSelector((state) => state.raport);
-  const listObj = {
-    Expense: useSelector((state) => state.item.items),
-    FixedExpense: useSelector((state) => state.fixedExpense.fixedExpense),
-    Income: useSelector((state) => state.income.income),
-  };
-  const list = filteredList(raport, listObj);
-  const message = emailTemplate(list);
   return (
-    <TouchableOpacity onPress={() => emailSender()}>
-      <View
-        style={{
-          ...styles.send,
-          ...{
-            backgroundColor: Colors[scheme].primary,
-            shadowColor: "black",
-            shadowOffset: { height: 0, width: 0 },
-            shadowOpacity: 0.25,
-            shadowRadius: 5,
-          },
-        }}
-      >
-        <Text
+    <View>
+      <TouchableOpacity onPress={() => emailSender()}>
+        <View
           style={{
-            ...styles.sendText,
+            ...styles.send,
             ...{
-              color: Colors[scheme].button,
-              fontFamily: "Kanit_600SemiBold",
+              backgroundColor: Colors[scheme].primary,
+              shadowColor: "black",
+              shadowOffset: { height: 0, width: 0 },
+              shadowOpacity: 0.25,
+              shadowRadius: 5,
             },
           }}
         >
-          {"Wyślij raport".toUpperCase()}
-        </Text>
+          <Text
+            style={{
+              ...styles.sendText,
+              ...{
+                color: Colors[scheme].button,
+                fontFamily: "Kanit_600SemiBold",
+              },
+            }}
+          >
+            {"Wyślij raport".toUpperCase()}
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <View>
+        <Text>{email}</Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 

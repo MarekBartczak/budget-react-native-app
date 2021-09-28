@@ -5,11 +5,14 @@ import {
   TOOGLE_DEFAULT_EMAIL,
   SET_EMAIL,
   TOOGLE_MONTHLY_RAPORT,
+  UPDATE_DEFAULT_EMAIL,
 } from "../actions/raport";
 
 const initialState = {
   diffrentEmail: false,
+  updateDefaultEmail: false,
   sendRaportEveryMonth: false,
+  raportWasSentInCurrentMonth: false,
   email: "",
 };
 
@@ -34,6 +37,8 @@ export default (state = initialState, action) => {
       return { ...state, diffrentEmail: action.status };
     case SET_EMAIL:
       return { ...state, email: action.email };
+    case UPDATE_DEFAULT_EMAIL:
+      return { ...state, updateDefaultEmail: action.status };
     case TOOGLE_MONTHLY_RAPORT:
       return { ...state, sendRaportEveryMonth: action.status };
   }

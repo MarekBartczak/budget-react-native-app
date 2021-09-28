@@ -24,13 +24,23 @@ const AccountSettings = (props) => {
   const dispatch = useDispatch();
   const scheme = useSelector((state) => state.config.scheme);
   const defaultEmail = useSelector((state) => state.auth.userEmail);
-  const isEnabled = useSelector((state) => state.raport.diffrentEmail);
+  const changeDefaultEmail = useSelector((state) => state.raport.diffrentEmail);
+  const setUpdateDefaultEmail = useSelector(
+    (state) => state.raport.updateDefaultEmail
+  );
+  const customEmailForRaport = useSelector((state) => state.raport.email);
   const dangerZone = useSelector((state) => state.config.toogleDangerZone);
   const deleteAccount = useSelector((state) => state.config.deleteAccount);
   const [deleteAccountEmail, setDeleteAccountEmail] = useState();
+  const [newEmail, setNewEmail] = useState(customEmailForRaport);
   const sendRaportEveryMonth = useSelector(
     (state) => state.raport.sendRaportEveryMonth
   );
+
+  const updateEmail = () => {
+    dispatch(raportActions.updateDefaultEmail(true));
+    dispatch(raportActions.setEmail(newEmail));
+  };
 
   const toggleDeleteAccount = () => {
     dispatch(configActions.toggleDeleteAccount(!deleteAccount));
@@ -41,8 +51,8 @@ const AccountSettings = (props) => {
   const toggleSwitchMonthlyraport = () => {
     dispatch(raportActions.toggleMonthlyRaport(!sendRaportEveryMonth));
   };
-  const toggleSwitch = () => {
-    dispatch(raportActions.toggleDefaultEmail(!isEnabled));
+  const toggleDefaultEmail = () => {
+    dispatch(raportActions.toggleDefaultEmail(!changeDefaultEmail));
   };
   useEffect(() => {
     if (dangerZone === false) {
@@ -53,6 +63,18 @@ const AccountSettings = (props) => {
       setDeleteAccountEmail();
     }
   }, [dangerZone, deleteAccount]);
+
+  const showAdressEmail = () => {
+    if (
+      changeDefaultEmail === true &&
+      customEmailForRaport !== "" &&
+      setUpdateDefaultEmail === true
+    ) {
+      return customEmailForRaport;
+    } else {
+      return defaultEmail;
+    }
+  };
 
   const TouchableOpacityCustom = (props) => {
     if (deleteAccountEmail === defaultEmail) {
@@ -110,6 +132,54 @@ const AccountSettings = (props) => {
     }
   };
 
+  const updateDefaultEmail = () => {
+    if (changeDefaultEmail === true) {
+      return (
+        <View style={{ alignItems: "center" }}>
+          <TextInput
+            value={newEmail}
+            autoComplete="off"
+            autoCapitalize="none"
+            keyboardType="email-address"
+            autoCorrect={false}
+            onChangeText={setNewEmail}
+            placeholderTextColor={Colors[scheme].primaryThird}
+            placeholder="adres email"
+            style={{
+              backgroundColor: Colors[scheme].light,
+              margin: 20,
+              padding: 10,
+              width: Dimensions.get("window").width * 0.9,
+              shadowColor: "black",
+              shadowOffset: { height: 0, width: 0 },
+              shadowOpacity: 0.25,
+              shadowRadius: 5,
+              borderRadius: 3,
+            }}
+          />
+          <TouchableOpacity
+            onPress={() => updateEmail()}
+            style={{
+              padding: 10,
+              shadowColor: "black",
+              shadowOffset: { height: 0, width: 0 },
+              shadowOpacity: 0.25,
+              shadowRadius: 5,
+              backgroundColor: Colors[scheme].primary,
+              width: Dimensions.get("window").width * 0.3,
+              borderRadius: 3,
+              margin: 10,
+            }}
+          >
+            <Text style={{ color: Colors[scheme].button, textAlign: "center" }}>
+              ZMIEŃ
+            </Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={"position"}
@@ -140,11 +210,11 @@ const AccountSettings = (props) => {
                   ...{ color: Colors[scheme].primarySecond },
                 }}
               >
-                {defaultEmail}
+                {showAdressEmail()}
               </Text>
             </View>
 
-            <View>
+            {/* <View>
               <View
                 style={{
                   ...styles.customTheme,
@@ -168,7 +238,7 @@ const AccountSettings = (props) => {
                       true: Colors[scheme].button,
                     }}
                     thumbColor={
-                      isEnabled
+                      sendRaportEveryMonth
                         ? Colors[scheme].headerTintColor
                         : Colors[scheme].headerTintColor
                     }
@@ -178,7 +248,7 @@ const AccountSettings = (props) => {
                   />
                 </View>
               </View>
-            </View>
+            </View> */}
 
             <View>
               <View
@@ -194,7 +264,7 @@ const AccountSettings = (props) => {
                       ...{ color: Colors[scheme].primarySecond },
                     }}
                   >
-                    Zmień domyślny email
+                    Zmień domyślny adres email
                   </Text>
                 </View>
                 <View>
@@ -204,17 +274,18 @@ const AccountSettings = (props) => {
                       true: Colors[scheme].button,
                     }}
                     thumbColor={
-                      isEnabled
+                      changeDefaultEmail
                         ? Colors[scheme].headerTintColor
                         : Colors[scheme].headerTintColor
                     }
                     ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    onValueChange={toggleDefaultEmail}
+                    value={changeDefaultEmail}
                   />
                 </View>
               </View>
             </View>
+            <View>{updateDefaultEmail()}</View>
 
             <View>
               <View
@@ -240,7 +311,7 @@ const AccountSettings = (props) => {
                       true: Colors[scheme].google,
                     }}
                     thumbColor={
-                      isEnabled
+                      dangerZone
                         ? Colors[scheme].headerTintColor
                         : Colors[scheme].headerTintColor
                     }
@@ -277,7 +348,7 @@ const AccountSettings = (props) => {
                         true: Colors[scheme].google,
                       }}
                       thumbColor={
-                        isEnabled
+                        deleteAccount
                           ? Colors[scheme].headerTintColor
                           : Colors[scheme].headerTintColor
                       }

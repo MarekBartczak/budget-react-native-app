@@ -6,19 +6,25 @@ import {
   TouchableOpacity,
   Switch,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import CustomTheme from "../../components/settings/view/CustomTheme";
 import * as configActions from "../../store/actions/config";
+import updateConfigInClound from "../../functions/cloud/config/updateConfigInClound";
 const ViewSettings = (props) => {
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.auth.userID);
   const scheme = useSelector((state) => state.config.scheme);
   const isEnabled = useSelector((state) => state.config.customScheme);
   const toggleSwitch = () => {
     dispatch(configActions.toggleCustomTheme(!isEnabled));
   };
+
+  useEffect(() => {
+    updateConfigInClound.theme.set.customScheme(isEnabled, userId);
+  }, [isEnabled]);
   return (
     <ExternalComponent>
       <View

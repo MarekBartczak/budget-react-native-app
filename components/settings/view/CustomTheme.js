@@ -9,14 +9,18 @@ import React from "react";
 import Colors from "../../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import * as configActions from "../../../store/actions/config";
+import updateConfigInClound from "../../../functions/cloud/config/updateConfigInClound";
 const CustomTheme = (props) => {
+  const userId = useSelector((state) => state.auth.userID);
   const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
 
-  const customThemeList = ["light_Pink", "light_Blue"];
-
+  const updateInCloud = (title) => {
+    updateConfigInClound.theme.set.colorSet(title, userId);
+  };
   const setColors = (title) => {
     dispatch(configActions.getScheme(title));
+    updateInCloud(title);
   };
 
   const themeElement = (title, name) => {

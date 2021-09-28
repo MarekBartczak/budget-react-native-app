@@ -50,7 +50,6 @@ const SearchEngine = (props) => {
           }}
           value={search}
           autoComplete="off"
-          placeholder="WPISZ"
           autoCapitalize="none"
           keyboardType="default"
           placeholder="FILTRUJ"

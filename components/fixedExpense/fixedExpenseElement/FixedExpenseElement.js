@@ -101,7 +101,7 @@ const FixedExpenseElement = (props) => {
           ...styles.element,
           ...{
             // borderColor: Colors[scheme].backGroundOne,
-            backgroundColor: Colors[scheme].light,
+            backgroundColor: Colors[scheme].backGroundList,
           },
         }}
       >
