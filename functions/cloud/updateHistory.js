@@ -3,10 +3,10 @@ import firebase from "firebase";
 const updateHistory = (obj, userId) => {
   const ref = firebase
     .database()
-    .ref(`users/${userId}/items/fixedExpenseHistory/`)
-    .push(obj)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .ref(`users/${userId}/items/fixedExpense/${obj.firebaseId}`)
+    .set(obj);
+  // .then((res) => console.log(res))
+  // .catch((err) => console.log(err));
   //   console.log(obj);
   //   console.log(userId);
   //

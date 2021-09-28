@@ -34,25 +34,36 @@ export default (state = initialState, action) => {
       return { ...state, fixedExpense: [...newState] };
 
     case ARCHIVE:
-      let newStateToArchive = [...state.fixedExpense];
-      let newEl = { ...newStateToArchive.find((el) => el.id === action.id) };
-      let updateEl = { ...newStateToArchive.find((el) => el.id === action.id) };
-      let updateState = [...state.fixedExpense];
-      newEl.id = uuid.v4();
-      newEl.paidDate = new Date().toISOString().slice(0, 10);
-      newEl.originId = action.id;
-      updateEl.isPaid = false;
-      updateEl.date = setNextPayDay(newEl.date, newEl.interval);
+      const id = action.id;
+      let element = [...state.fixedExpense.filter((el) => el.id === id)][0];
+      const currentDate = new Date().toISOString().slice(0, 10);
 
-      const index = updateState.findIndex((el) => el.id === action.id);
-      updateState[index] = updateEl;
-      // console.log(newEl);
-      updateHistory(newEl, action.userId);
-      return {
-        ...state,
-        fixedExpense: updateState,
-        history: [...state.history, newEl],
+      const historyElement = {
+        wasPaidIn: currentDate,
       };
+
+      const interval = element.interval;
+      if (!element.history) {
+        element.history = [];
+      }
+
+      let date = new Date(element.date);
+
+      if (interval.months > 0) {
+        date = date.setMonth(date.getMonth() + interval.months);
+      }
+      if (interval.days > 0) {
+        date = date.setDate(date.getDate() + interval.days);
+      }
+      if (interval.years > 0) {
+        date = date.setFullYear(date.getFullYear() + interval.years);
+      }
+
+      element.date = new Date(date).toISOString().slice(0, 10);
+
+      element.history.push(historyElement);
+      updateHistory(element, action.userId);
+      return { ...state };
     case DELAY_COST:
       return { ...state, delayCost: action.cost };
     case DEL_EXPENSE:

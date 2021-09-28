@@ -70,6 +70,7 @@ const FixedExpenseDetails = (props) => {
   history.map((el) => setNextPayDay(el.date, el.interval));
   const setPaid = () => {
     dispatch(fixedExpenseActions.isPaid(!isPaid, id));
+
     dispatch(fixedExpenseActions.archive(id, userId));
     props.navigation.navigate("FixedExpense");
 

@@ -50,7 +50,7 @@ const AddNewFixedExpenseScreen = (props) => {
     setDate(currentDate);
   };
   const newFixedExpense = () => {
-    return new FixedExpense(
+    const obj = new FixedExpense(
       uuid.v4(),
       date.toISOString().slice(0, 10),
       null,
@@ -59,8 +59,11 @@ const AddNewFixedExpenseScreen = (props) => {
       false,
       Number(switchComaToDot(cost)),
       interval.value,
-      description
+      description,
+      []
     );
+
+    return obj;
   };
 
   const cleanState = () => {
