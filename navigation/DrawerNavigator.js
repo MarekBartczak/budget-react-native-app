@@ -18,6 +18,7 @@ import StackSettingsNavigator from "./StackSettingsNavigator";
 import StackUserNavigator from "./StackUserNavigator";
 import { useSelector, useDispatch } from "react-redux";
 
+import ExternalComponentWithGradient from "../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import updateConfigInClound from "../functions/cloud/config/updateConfigInClound";
 import * as favoritePlaceActions from "../store/actions/favoritePlace";
 import * as fixedExpenseActions from "../store/actions/fixedExpense";
@@ -168,6 +169,7 @@ const DrawerNavigator = (props) => {
     isIncomeLoaded === true &&
     isFixedExpenseLoaded === true &&
     isConfigLoaded === true
+    // false
   ) {
     return (
       <NavigationContainer>
@@ -286,18 +288,47 @@ const DrawerNavigator = (props) => {
     );
   } else {
     return (
-      <View
-        style={{
-          width: Dimensions.get("window").width,
-          height: Dimensions.get("window").height,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Text>
-          <ActivityIndicator size="large" />
-        </Text>
-      </View>
+      <ExternalComponentWithGradient dimmer={0.25}>
+        <View
+          style={{
+            width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: Colors[scheme].headerTintColor,
+              padding: 50,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 10,
+              shadowColor: "black",
+              shadowOffset: { height: 0, width: 0 },
+              shadowOpacity: 0.25,
+              shadowRadius: 5,
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: "Kanit_600SemiBold",
+                color: Colors[scheme].primaryThird,
+                fontSize: 20,
+                marginBottom: 20,
+              }}
+            >
+              Pobieranie danych...
+            </Text>
+            <Text>
+              <ActivityIndicator
+                color={Colors[scheme].primaryThird}
+                size="large"
+              />
+            </Text>
+          </View>
+        </View>
+      </ExternalComponentWithGradient>
     );
   }
 };
