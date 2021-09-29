@@ -25,7 +25,7 @@ const UnpaidExpense = (props) => {
   const dateList = fixedExpensesList.filter((el) => new Date(el.date) < today);
   const summaryCost = (total, sum) => total + sum;
 
-  const unpaidList = dateList.filter((el) => el.history === undefined);
+  const unpaidList = dateList.filter((el) => el.isPaid === false);
   const list = unpaidList.map((el) => el.cost);
   useEffect(() => {
     if (list.length > 0) {

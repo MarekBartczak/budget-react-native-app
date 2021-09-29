@@ -15,23 +15,27 @@ import updateHistory from "../../functions/cloud/updateHistory";
 const initialState = {
   fixedExpense: [],
   delayCost: 0,
-  history: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_FIXED_EXPENSE_FROM_DB:
       return { ...state, fixedExpense: [...action.array] };
-    case LOADING_HISTORY_FROM_DB:
-      return { ...state, history: [...action.array] };
+
     case ADD_COST:
       return { ...state, fixedExpense: [...state.fixedExpense, action.cost] };
     case IS_PAID:
-      let newState = [...state.fixedExpense];
-      newState.map((el) =>
-        el.id === action.id ? (el.isPaid = action.stat) : null
-      );
-      return { ...state, fixedExpense: [...newState] };
+      let elementToUpdate = [
+        ...state.fixedExpense.filter((el) => el.id === action.id),
+      ][0];
+      elementToUpdate.isPaid = action.stat;
+      // let newState = [...state.fixedExpense];
+      // newState.map((el) =>
+      //   el.id === action.id ? (el.isPaid = action.stat) : null
+      // );
+
+      updateHistory.setIsPadid(elementToUpdate, action.userId);
+      return { ...state };
 
     case ARCHIVE:
       const id = action.id;
@@ -44,26 +48,28 @@ export default (state = initialState, action) => {
       };
 
       const interval = element.interval;
-      if (!element.history) {
-        element.history = [];
+      // if (!element.history) {
+      //   element.history = [];
+      // }
+
+      let date = new Date(element.date);
+      element.id = uuid.v4();
+
+      if (interval.months > 0) {
+        date = date.setMonth(date.getMonth() + interval.months);
+      }
+      if (interval.days > 0) {
+        date = date.setDate(date.getDate() + interval.days);
+      }
+      if (interval.years > 0) {
+        date = date.setFullYear(date.getFullYear() + interval.years);
       }
 
-      // let date = new Date(element.date);
+      element.date = new Date(date).toISOString().slice(0, 10);
+      element.isPaid = false;
 
-      // if (interval.months > 0) {
-      //   date = date.setMonth(date.getMonth() + interval.months);
-      // }
-      // if (interval.days > 0) {
-      //   date = date.setDate(date.getDate() + interval.days);
-      // }
-      // if (interval.years > 0) {
-      //   date = date.setFullYear(date.getFullYear() + interval.years);
-      // }
-
-      // element.date = new Date(date).toISOString().slice(0, 10);
-
-      element.history.push(historyElement);
-      updateHistory(element, action.userId);
+      // element.history.push(historyElement);
+      updateHistory.addNew(element, action.userId);
       return { ...state };
     case DELAY_COST:
       return { ...state, delayCost: action.cost };

@@ -49,9 +49,9 @@ const DrawerNavigator = (props) => {
 
   const today = new Date();
 
-  const dateList = fixedExpensesList.map((el) => new Date(el.history) > today);
+  const dateList = fixedExpensesList.filter((el) => new Date(el.date) < today);
 
-  const isAllPaid = dateList.filter((el) => el === false);
+  const isAllPaid = dateList.filter((el) => el.isPaid === false);
 
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();

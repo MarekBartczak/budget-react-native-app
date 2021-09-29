@@ -29,7 +29,12 @@ const FixedExpenseScreen = (props) => {
 
   const delayCost = useSelector((state) => state.fixedExpense.delayCost);
 
-  const chartEl = chartElement(fixedExpenseShowList);
+  const chartEl = chartElement(
+    fixedExpenseShowList.filter((el) => el.isPaid === true)
+  );
+  // const chartEl = fixedExpenseChartElement(fixedExpenseShowList);
+  // console.log(fixedExpenseChartEl);
+  // console.log(chartEl);
 
   return (
     <ExternalComponent>

@@ -27,8 +27,8 @@ const FixedExpenseDetails = (props) => {
   const dispatch = useDispatch();
   const history = useSelector((state) => state.fixedExpense.fixedExpense);
   const userId = useSelector((state) => state.auth.userID);
-
   const filteredHistoryEl = history.filter((el) => el.id === id);
+  // console.log(filteredHistoryEl);
   const historyList = filteredHistoryEl
     .filter((el) => el.history)
     .map((el) => el.history);
@@ -38,16 +38,7 @@ const FixedExpenseDetails = (props) => {
   }
 
   const checkIfIsPaidIsCurrrentMonth = () => {
-    const currentMonth =
-      new Date().getMonth() + 1 < 10
-        ? "0" + (new Date().getMonth() + 1).toString()
-        : new Date().getMonth() + 1;
-    historyEl;
-    let paidMonth = null;
-    if (historyEl.length > 0) {
-      paidMonth = historyEl[historyEl.length - 1].wasPaidIn.split("-")[1];
-    }
-    return currentMonth === paidMonth;
+    return filteredHistoryEl[0].isPaid;
   };
 
   checkIfIsPaidIsCurrrentMonth();
@@ -115,9 +106,10 @@ const FixedExpenseDetails = (props) => {
 
   history.map((el) => setNextPayDay(el.date, el.interval));
   const setPaid = () => {
-    dispatch(fixedExpenseActions.isPaid(!isPaid, id));
+    dispatch(fixedExpenseActions.isPaid(!isPaid, id, userId));
 
     dispatch(fixedExpenseActions.archive(id, userId));
+
     props.navigation.navigate("FixedExpense");
 
     // props.navigation.goBack();
@@ -281,38 +273,6 @@ const FixedExpenseDetails = (props) => {
             </Text>
             <Text>{showIsPaid()}</Text>
           </View>
-        </View>
-        <View
-          style={{
-            ...styles.history,
-            ...{
-              backgroundColor: Colors[scheme].light,
-            },
-          }}
-        >
-          <Text
-            style={{
-              color: Colors[scheme].primaryThird,
-              width: Dimensions.get("window").width,
-              textAlign: "center",
-              fontFamily: "Kanit_600SemiBold",
-            }}
-          >
-            {"opłacone".toUpperCase()}
-          </Text>
-          <FlatList
-            data={historyEl}
-            keyExtractor={(item) => item + uuid.v4()}
-            renderItem={(item) => (
-              <History
-                title={item.item.title}
-                cost={item.item.cost}
-                date={item.item.wasPaidIn}
-                // {item.item.title} {item.item.cost}zł{" "}
-                // {item.item.date.replaceAll("-", ".")}
-              />
-            )}
-          />
         </View>
       </View>
     </ExternalComponent>

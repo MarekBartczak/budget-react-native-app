@@ -14,11 +14,11 @@ import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
-const checkPayDate = (date) => {
-  return new Date() > new Date(date) ? "red" : "green";
-};
 
 const FixedExpenseElement = (props) => {
+  const checkPayDate = (date) => {
+    return props.el.isPaid ? "green" : "red";
+  };
   const navigation = useNavigation();
   const userId = useSelector((state) => state.auth.userID);
 

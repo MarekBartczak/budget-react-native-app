@@ -3,8 +3,8 @@ export const addCost = (cost) => {
   return { type: ADD_COST, cost: cost };
 };
 export const IS_PAID = "IS_PAID";
-export const isPaid = (stat, id) => {
-  return { type: IS_PAID, stat: stat, id: id };
+export const isPaid = (stat, id, userId) => {
+  return { type: IS_PAID, stat: stat, id: id, userId: userId };
 };
 
 export const ARCHIVE = "ARCHIVE";
