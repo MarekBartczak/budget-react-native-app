@@ -41,12 +41,16 @@ const DrawerNavigator = (props) => {
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
   const userDisplayName = useSelector((state) => state.auth.userName);
   const fetchedData = useSelector((state) => state.auth.fetchedData);
+  const delayCost = useSelector((state) => state.fixedExpense.delayCost);
+
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
 
   const today = new Date();
-  const dateList = fixedExpensesList.map((el) => new Date(el.date) > today);
+
+  const dateList = fixedExpensesList.map((el) => new Date(el.history) > today);
+
   const isAllPaid = dateList.filter((el) => el === false);
 
   const [status, setStatus] = useState(false);

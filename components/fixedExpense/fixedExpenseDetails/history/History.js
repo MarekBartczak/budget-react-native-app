@@ -16,15 +16,21 @@ const History = (props) => {
     <TouchableOpacity
       style={{
         ...styles.historyEl,
-        ...{ borderColor: Colors[scheme].primaryThird },
+        ...{},
       }}
     >
       <View
         style={{
           justifyContent: "space-between",
+          alignItems: "center",
           flexDirection: "row",
           paddingHorizontal: 40,
-          width: Dimensions.get("window").width,
+          backgroundColor: Colors[scheme].light,
+          borderRadius: 3,
+          shadowColor: "black",
+          shadowOffset: { height: 0, width: 0 },
+          shadowOpacity: 0.25,
+          shadowRadius: 3,
         }}
       >
         <Text
@@ -53,6 +59,9 @@ export default History;
 const styles = StyleSheet.create({
   historyEl: {
     marginTop: 5,
+    alignContent: "center",
+    justifyContent: "center",
+    paddingHorizontal: 10,
     // borderBottomWidth: 1,
   },
 });

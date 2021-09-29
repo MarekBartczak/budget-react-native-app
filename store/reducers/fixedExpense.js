@@ -40,6 +40,7 @@ export default (state = initialState, action) => {
 
       const historyElement = {
         wasPaidIn: currentDate,
+        cost: element.cost,
       };
 
       const interval = element.interval;
@@ -47,19 +48,19 @@ export default (state = initialState, action) => {
         element.history = [];
       }
 
-      let date = new Date(element.date);
+      // let date = new Date(element.date);
 
-      if (interval.months > 0) {
-        date = date.setMonth(date.getMonth() + interval.months);
-      }
-      if (interval.days > 0) {
-        date = date.setDate(date.getDate() + interval.days);
-      }
-      if (interval.years > 0) {
-        date = date.setFullYear(date.getFullYear() + interval.years);
-      }
+      // if (interval.months > 0) {
+      //   date = date.setMonth(date.getMonth() + interval.months);
+      // }
+      // if (interval.days > 0) {
+      //   date = date.setDate(date.getDate() + interval.days);
+      // }
+      // if (interval.years > 0) {
+      //   date = date.setFullYear(date.getFullYear() + interval.years);
+      // }
 
-      element.date = new Date(date).toISOString().slice(0, 10);
+      // element.date = new Date(date).toISOString().slice(0, 10);
 
       element.history.push(historyElement);
       updateHistory(element, action.userId);

@@ -14,10 +14,16 @@ const Button = (props) => {
   return (
     <TouchableOpacity
       onPress={props.onPress}
-      style={{ ...styles[`button_${scheme}`], ...props.style }}
+      style={{
+        ...styles.button,
+        ...props.style,
+        ...{ backgroundColor: Colors[scheme].primary },
+      }}
     >
       <View style={styles.btn}>
-        <Text style={styles[`text_${scheme}`]}>{props.text.toUpperCase()}</Text>
+        <Text style={{ ...styles.text, ...{ color: Colors[scheme].button } }}>
+          {props.text.toUpperCase()}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -26,16 +32,7 @@ const Button = (props) => {
 export default Button;
 
 const styles = StyleSheet.create({
-  button_light: {
-    backgroundColor: Colors.light.primary,
-    marginTop: 20,
-    marginBottom: 20,
-    borderRadius: 3,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  button_dark: {
-    backgroundColor: Colors.dark.primary,
+  button: {
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 3,
@@ -50,13 +47,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
   },
-  text_light: {
-    color: Colors.light.button,
-    fontFamily: "Kanit_600SemiBold",
-    fontSize: 15,
-  },
-  text_dark: {
-    color: Colors.dark.button,
+  text: {
     fontFamily: "Kanit_600SemiBold",
     fontSize: 15,
   },

@@ -25,7 +25,8 @@ const UnpaidExpense = (props) => {
   const dateList = fixedExpensesList.filter((el) => new Date(el.date) < today);
   const summaryCost = (total, sum) => total + sum;
 
-  const list = dateList.map((el) => el.cost);
+  const unpaidList = dateList.filter((el) => el.history === undefined);
+  const list = unpaidList.map((el) => el.cost);
   useEffect(() => {
     if (list.length > 0) {
       dispatch(fixedExpenseActions.delayCost(list.reduce(summaryCost)));
@@ -33,6 +34,8 @@ const UnpaidExpense = (props) => {
       dispatch(fixedExpenseActions.delayCost(0));
     }
   });
+
+  // console.log(unpaidList);
   return (
     <View
       style={{
@@ -41,7 +44,7 @@ const UnpaidExpense = (props) => {
       }}
     >
       <FlatList
-        data={dateList}
+        data={unpaidList}
         style={{ marginBottom: 10 }}
         renderItem={(item) => (
           <TouchableOpacity

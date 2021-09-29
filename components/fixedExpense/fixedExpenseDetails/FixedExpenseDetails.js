@@ -8,6 +8,8 @@ import {
   Alert,
   Clipboard,
 } from "react-native";
+import uuid from "react-native-uuid";
+
 import History from "./history/History";
 import React from "react";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
@@ -23,48 +25,92 @@ const FixedExpenseDetails = (props) => {
   const { id, cost, title, date, recipient, isPaid, description } =
     props.route.params;
   const dispatch = useDispatch();
-  const history = useSelector((state) => state.fixedExpense.history);
+  const history = useSelector((state) => state.fixedExpense.fixedExpense);
   const userId = useSelector((state) => state.auth.userID);
 
-  const historyEl = history.filter((el) => el.originId === id);
+  const filteredHistoryEl = history.filter((el) => el.id === id);
+  const historyList = filteredHistoryEl
+    .filter((el) => el.history)
+    .map((el) => el.history);
+  let historyEl = [];
+  if (historyList.length > 0) {
+    historyEl = historyList[0];
+  }
+
+  const checkIfIsPaidIsCurrrentMonth = () => {
+    const currentMonth =
+      new Date().getMonth() + 1 < 10
+        ? "0" + (new Date().getMonth() + 1).toString()
+        : new Date().getMonth() + 1;
+    historyEl;
+    let paidMonth = null;
+    if (historyEl.length > 0) {
+      paidMonth = historyEl[historyEl.length - 1].wasPaidIn.split("-")[1];
+    }
+    return currentMonth === paidMonth;
+  };
+
+  checkIfIsPaidIsCurrrentMonth();
   // const copyToClipboard = () => {
   //   Clipboard.setString(title);
   // };
   const showIsPaid = () => {
-    return (
-      <TouchableOpacity
-        style={{
-          backgroundColor: Colors[scheme].primary,
-          borderRadius: 2,
-          padding: 5,
-          paddingLeft: 20,
-          paddingRight: 20,
-          justifyContent: "center",
-          alignItems: "center",
-          // shadowOffset: { height: 0, width: 0 },
-          // shadowColor: "black",
-          // shadowOpacity: 0.2,
-          // shadowRadius: 7,
-        }}
-        onPress={() => {
-          Alert.alert(
-            "Uwaga!",
-            "Czy opłacić?",
-            [
-              { text: "Nie", style: "cancel" },
-              { text: "Tak", onPress: () => setPaid() },
-            ],
-            { cancelable: false }
-          );
-        }}
-      >
-        <MaterialCommunityIcons
-          name="cash-register"
-          size={34}
-          color={Colors[scheme].button}
-        />
-      </TouchableOpacity>
-    );
+    if (!checkIfIsPaidIsCurrrentMonth()) {
+      return (
+        <TouchableOpacity
+          style={{
+            backgroundColor: Colors[scheme].primary,
+            borderRadius: 2,
+            padding: 5,
+            paddingLeft: 20,
+            paddingRight: 20,
+            justifyContent: "center",
+            alignItems: "center",
+            // shadowOffset: { height: 0, width: 0 },
+            // shadowColor: "black",
+            // shadowOpacity: 0.2,
+            // shadowRadius: 7,
+          }}
+          onPress={() => {
+            Alert.alert(
+              "Uwaga!",
+              "Czy opłacić?",
+              [
+                { text: "Nie", style: "cancel" },
+                { text: "Tak", onPress: () => setPaid() },
+              ],
+              { cancelable: false }
+            );
+          }}
+        >
+          <MaterialCommunityIcons
+            name="cash-register"
+            size={34}
+            color={Colors[scheme].button}
+          />
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <View
+          style={{
+            backgroundColor: Colors[scheme].primary,
+            borderRadius: 2,
+            padding: 5,
+            paddingLeft: 20,
+            paddingRight: 20,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <MaterialCommunityIcons
+            name="cash-register"
+            size={34}
+            color={Colors[scheme].primarySecond}
+          />
+        </View>
+      );
+    }
   };
 
   history.map((el) => setNextPayDay(el.date, el.interval));
@@ -256,11 +302,12 @@ const FixedExpenseDetails = (props) => {
           </Text>
           <FlatList
             data={historyEl}
+            keyExtractor={(item) => item + uuid.v4()}
             renderItem={(item) => (
               <History
                 title={item.item.title}
                 cost={item.item.cost}
-                date={item.item.date}
+                date={item.item.wasPaidIn}
                 // {item.item.title} {item.item.cost}zł{" "}
                 // {item.item.date.replaceAll("-", ".")}
               />

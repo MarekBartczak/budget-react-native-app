@@ -99,7 +99,7 @@ const AddNewFixedExpenseScreen = (props) => {
         >
           <View style={styles.AddNewComponent}>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-              <View style={styles.descriptionComponent}>
+              <View style={{ alignItems: "center" }}>
                 <View
                   style={{
                     ...styles.inputView,
@@ -111,46 +111,45 @@ const AddNewFixedExpenseScreen = (props) => {
                       ...styles.input,
                       ...{
                         color: Colors[scheme].primarySecond,
-                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={cost}
                     placeholder={"Kwota"}
                     keyboardType={"numeric"}
                     onChangeText={setCost}
+                    placeholderTextColor={Colors[scheme].primarySecond}
                   />
                   <Input
                     style={{
                       ...styles.input,
                       ...{
                         color: Colors[scheme].primarySecond,
-                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={title}
                     placeholder={"Tytuł"}
                     keyboardType={"default"}
                     onChangeText={setTitle}
+                    placeholderTextColor={Colors[scheme].primarySecond}
                   />
                   <Input
                     style={{
                       ...styles.input,
                       ...{
                         color: Colors[scheme].primarySecond,
-                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={recipient}
                     placeholder={"Odbiorca"}
                     keyboardType={"default"}
                     onChangeText={setRecipient}
+                    placeholderTextColor={Colors[scheme].primarySecond}
                   />
                   <Input
                     style={{
                       ...styles.descriptionInput,
                       ...{
-                        color: Colors[scheme].primarySecond,
-                        borderColor: Colors[scheme].primary,
+                        color: Colors[scheme].primaryThird,
                       },
                     }}
                     placeholder={"Opis"}
@@ -158,6 +157,7 @@ const AddNewFixedExpenseScreen = (props) => {
                     numberOfLines={3}
                     keyboardType={"default"}
                     onChangeText={setDescription}
+                    placeholderTextColor={Colors[scheme].primarySecond}
                   />
                 </View>
                 <View
@@ -175,13 +175,13 @@ const AddNewFixedExpenseScreen = (props) => {
                 <View
                   style={{
                     ...styles.interval,
-                    ...{ borderColor: Colors[scheme].primaryThird },
+                    ...{ backgroundColor: Colors[scheme].light },
                   }}
                 >
                   <Text
                     style={{
                       textAlign: "center",
-                      marginTop: -10,
+                      // marginTop: -10,
                       // backgroundColor: Colors.accent,
                       width: 150,
                       color: Colors[scheme].primarySecond,
@@ -237,6 +237,10 @@ const AddNewFixedExpenseScreen = (props) => {
                     style={{
                       width: Dimensions.get("window").width * 0.5,
                       height: Dimensions.get("screen").height * 0.05,
+                      shadowColor: "black",
+                      shadowOffset: { height: 0, width: 0 },
+                      shadowOpacity: 0.25,
+                      shadowRadius: 5,
                       borderRadius: 3,
                       justifyContent: "center",
                       alignItems: "center",
@@ -306,15 +310,17 @@ const styles = StyleSheet.create({
   interval: {
     marginTop: 20,
     // backgroundColor: Colors.light.primaryThird,
-    width: Dimensions.get("window").width,
-    height: 160,
+    width: Dimensions.get("window").width * 0.9,
+    // height: 160,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
+    borderRadius: 3,
+    padding: 10,
+
+    shadowOffset: { height: 0, width: 0 },
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
   },
 
   intervalOptions: {

@@ -68,7 +68,7 @@ const AddNewComponent = (props) => {
               style={{
                 ...styles.inputView,
                 ...{
-                  borderColor: Colors[scheme].primary,
+                  borderColor: Colors[scheme].primaryThird,
                   backgroundColor: Colors[scheme].light,
                 },
               }}
