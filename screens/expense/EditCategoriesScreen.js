@@ -61,6 +61,10 @@ const EdidCategoriesScreen = (props) => {
           }}
           value={newSubCategory}
           placeholder={"wpisz nową kategorię"}
+          autoCapitalize="none"
+          keyboardType="default"
+          autoCorrect={false}
+          autoComplete="off"
           onChangeText={setNewSubCategory}
         />
         <TouchableOpacity
