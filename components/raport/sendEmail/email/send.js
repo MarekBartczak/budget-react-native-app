@@ -4,8 +4,9 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Colors from "../../../../constants/Colors";
 import * as emailjs from "emailjs-com";
 import { Feather } from "@expo/vector-icons";
@@ -15,6 +16,8 @@ import emailTemplate from "./emailTemplate";
 
 const Send = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const [messageSendingInProgress, setMessageSendingInProgress] =
+    useState(false);
 
   let email = "";
   const diffrentEmail = useSelector((state) => state.raport.diffrentEmail);
@@ -27,7 +30,6 @@ const Send = (props) => {
   );
 
   const currentDae = new Date().getMonth();
-  console.log(currentDae);
 
   if (diffrentEmail === true && updatedDefaultEmail !== "") {
     email = updatedDefaultEmail;
@@ -66,41 +68,69 @@ const Send = (props) => {
     const service_id = "service_y6p8h4i";
     const service_template = "template_yy2v91e";
     const service_user = "user_8M89hEsl6TJjpKWX3rQDS";
+    const send = () => {
+      setMessageSendingInProgress(true);
 
-    // emailjs
-    //   .send(service_id, service_template, templateForm, service_user)
-    //   .then((res) => alert("wiadomość wysłana"))
-    //   .catch((err) => console.log(err));
+      emailjs
+        .send(service_id, service_template, templateForm, service_user)
+        .then((res) => {
+          setMessageSendingInProgress(false);
+          alert("wiadomość wysłana");
+        })
+        .catch((err) => {
+          console.log(err);
+          setMessageSendingInProgress(false);
+        });
+    };
+    send();
   };
 
   return (
     <View>
-      <TouchableOpacity onPress={() => emailSender()}>
+      {messageSendingInProgress ? (
         <View
           style={{
-            ...styles.send,
-            ...{
-              backgroundColor: Colors[scheme].primary,
-              shadowColor: "black",
-              shadowOffset: { height: 0, width: 0 },
-              shadowOpacity: 0.25,
-              shadowRadius: 5,
-            },
+            // width: Dimensions.get("window").width,
+            // height: Dimensions.get("window").height,
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <Text
+          <Text style={{ fontFamily: "Kanit_600SemiBold", marginBottom: 10 }}>
+            Wysyłanie wiadomości do...
+          </Text>
+          <Text>
+            <ActivityIndicator size="large" />
+          </Text>
+        </View>
+      ) : (
+        <TouchableOpacity onPress={() => emailSender()}>
+          <View
             style={{
-              ...styles.sendText,
+              ...styles.send,
               ...{
-                color: Colors[scheme].button,
-                fontFamily: "Kanit_600SemiBold",
+                backgroundColor: Colors[scheme].primary,
+                shadowColor: "black",
+                shadowOffset: { height: 0, width: 0 },
+                shadowOpacity: 0.25,
+                shadowRadius: 5,
               },
             }}
           >
-            {"Wyślij raport".toUpperCase()}
-          </Text>
-        </View>
-      </TouchableOpacity>
+            <Text
+              style={{
+                ...styles.sendText,
+                ...{
+                  color: Colors[scheme].button,
+                  fontFamily: "Kanit_600SemiBold",
+                },
+              }}
+            >
+              {"Wyślij raport".toUpperCase()}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      )}
       <View>
         <Text>{email}</Text>
       </View>
