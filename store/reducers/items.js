@@ -35,6 +35,7 @@ const getMonth = () => {
 };
 
 const initialState = {
+  isLoaded: false,
   filter: {
     count: {
       items: 0,
@@ -68,7 +69,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_EXPENSE_FROM_DB:
-      return { ...state, items: [...action.array] };
+      return { ...state, items: [...action.array], isLoaded: true };
 
     case LOADING_CATEGORY_FROM_DB:
       return { ...state, categoryList: [action.array] };

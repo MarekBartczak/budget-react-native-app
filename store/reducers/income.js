@@ -9,13 +9,14 @@ import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 
 const initialState = {
   // income: [...Income],
+  isLoaded: false,
   income: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_INCOME_FROM_DB:
-      return { ...state, income: [...action.array] };
+      return { ...state, income: [...action.array], isLoaded: true };
     case ADD_INCOME:
       return { ...state, income: [...state.income, action.income] };
     case DELETE_INCOME:

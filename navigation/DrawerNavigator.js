@@ -43,16 +43,21 @@ const DrawerNavigator = (props) => {
   const fetchedData = useSelector((state) => state.auth.fetchedData);
   const delayCost = useSelector((state) => state.fixedExpense.delayCost);
 
+  const isExpenseLoaded = useSelector((state) => state.item.isLoaded);
+  const isIncomeLoaded = useSelector((state) => state.income.isLoaded);
+  const isFixedExpenseLoaded = useSelector(
+    (state) => state.fixedExpense.isLoaded
+  );
+  const isConfigLoaded = useSelector((state) => state.config.isLoaded);
+  // const isIncomeLoaded = useSelector((state) => state.income.isLoaded);
+
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
 
   const today = new Date();
-
   const dateList = fixedExpensesList.filter((el) => new Date(el.date) < today);
-
   const isAllPaid = dateList.filter((el) => el.isPaid === false);
-
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
 
@@ -103,7 +108,7 @@ const DrawerNavigator = (props) => {
     });
   };
 
-  const loadingFavoritePlace = () => {
+  const loadingFavoritePlace = async () => {
     const itemRef = firebase.database().ref(`users/${userId}/favoritePlace`);
     let list;
     itemRef.on("value", async (data) => {
@@ -129,8 +134,6 @@ const DrawerNavigator = (props) => {
         dispatchSwitcher(type, list);
       }
     });
-    setStatus(true);
-    return list;
   };
 
   const loadingCategory = async () => {
@@ -144,22 +147,28 @@ const DrawerNavigator = (props) => {
       dispatch(expenseActions.loadingCategoriesFromDB(list[0]));
     });
   };
+  const fetchData = async () => {
+    await loadingConfig();
+    await loadingFavoritePlace();
+    await loadingCategory();
+    await loadingData("income");
+    await loadingData("expense");
+    await loadingData("fixedExpense");
+
+    setStatus(true);
+
+    // if(loaded)
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      loadingConfig();
-      loadingFavoritePlace();
-      await loadingCategory();
-      await loadingData("income");
-      await loadingData("expense");
-      await loadingData("fixedExpense");
-    };
     fetchData();
-    // if () {
-    // dispatch(authActions.fetchData(true));
-    // }
   }, [status]);
 
-  if (status) {
+  if (
+    isExpenseLoaded === true &&
+    isIncomeLoaded === true &&
+    isFixedExpenseLoaded === true &&
+    isConfigLoaded === true
+  ) {
     return (
       <NavigationContainer>
         <Drawer.Navigator

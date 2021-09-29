@@ -7,6 +7,8 @@ import {
 } from "../actions/config";
 
 const initialState = {
+  isLoaded: false,
+
   scheme: "light",
   customScheme: false,
   addIncomeKeyboardStatus: false,
@@ -17,7 +19,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_SCHEME:
-      return { ...state, scheme: action.scheme };
+      return { ...state, scheme: action.scheme, isLoaded: true };
     case ADD_INCOME_KEYBOARD_STATUS:
       return { ...state, addIncomeKeyboardStatus: action.status };
     case TOGGLE_CUSTOM_THEME:

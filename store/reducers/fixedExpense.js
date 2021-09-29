@@ -13,6 +13,8 @@ import setNextPayDay from "../../functions/SetNextPayDay";
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 import updateHistory from "../../functions/cloud/updateHistory";
 const initialState = {
+  isLoaded: false,
+
   fixedExpense: [],
   delayCost: 0,
 };
@@ -20,7 +22,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_FIXED_EXPENSE_FROM_DB:
-      return { ...state, fixedExpense: [...action.array] };
+      return { ...state, fixedExpense: [...action.array], isLoaded: true };
 
     case ADD_COST:
       return { ...state, fixedExpense: [...state.fixedExpense, action.cost] };
