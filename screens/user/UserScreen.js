@@ -10,6 +10,34 @@ const UserScreen = (props) => {
   const userEmail = useSelector((state) => state.auth.userEmail);
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
 
+  const expense = useSelector((state) => state.item.items);
+  const fixedExpense = useSelector((state) => state.fixedExpense.fixedExpense);
+  const income = useSelector((state) => state.income.income);
+
+  let accountSummary = 0;
+  const countSum = (total, sum) => total + sum;
+
+  const expenseCostList = expense.map((el) => el.cost);
+  let expenseSum = 0;
+  if (expenseCostList.length > 0) {
+    expenseSum = expenseCostList.reduce(countSum);
+  }
+
+  const incomeCostList = income.map((el) => el.cost);
+  let incomeSum = 0;
+  if (incomeCostList.length > 0) {
+    incomeSum = incomeCostList.reduce(countSum);
+  }
+
+  const fixedExpensePaidList = fixedExpense.filter((el) => el.isPaid === true);
+  const fixedExpenseCostList = fixedExpensePaidList.map((el) => el.cost);
+  let fiexedExpenseSummary = 0;
+  if (fixedExpenseCostList.length > 0) {
+    fiexedExpenseSummary = fixedExpenseCostList.reduce(countSum);
+  }
+
+  accountSummary = incomeSum - expenseSum - fiexedExpenseSummary;
+
   const showPhoto = () => {
     let photo = null;
 
@@ -40,6 +68,35 @@ const UserScreen = (props) => {
           }}
         >
           <View style={{ ...styles.photoExternal, ...{} }}>{showPhoto()}</View>
+          <View
+            style={{
+              backgroundColor: Colors[scheme].light,
+              padding: 3,
+              paddingHorizontal: 20,
+              borderRadius: 10,
+
+              flexDirection: "row",
+            }}
+          >
+            <Text
+              style={{
+                color: Colors[scheme].button,
+                fontFamily: "Kanit_400Regular",
+                fontSize: 15,
+              }}
+            >
+              STAN KONTA {"  "}
+            </Text>
+            <Text
+              style={{
+                color: Colors[scheme].button,
+                fontFamily: "Kanit_600SemiBold",
+                fontSize: 15,
+              }}
+            >
+              {accountSummary.toFixed(2)}zł
+            </Text>
+          </View>
         </View>
         <View style={styles.userDataView}>
           <View style={{ ...styles.userNameView, ...{} }}>
@@ -146,7 +203,7 @@ const styles = StyleSheet.create({
     borderRadius: Dimensions.get("window").width * 0.3,
   },
   userDataView: {
-    marginTop: 40,
+    marginTop: 20,
     // backgroundColor: Colors.banner,
     width: Dimensions.get("window").width * 0.9,
     height: Dimensions.get("window").height * 0.35,

@@ -35,7 +35,6 @@ const Chart = (props) => {
   let filteredData;
   if (props.label.length > 0) {
     const indexList = props.label.map((el) => el.includes(currentDateFormat));
-
     filteredData = {
       label: indexList
         .map((el, i) => {

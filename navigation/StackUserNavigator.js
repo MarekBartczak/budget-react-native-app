@@ -21,7 +21,17 @@ const StackUserNavigator = (props) => {
 
   const toggleDrawer = (navigation) => {
     return {
-      headerTitle: "Dane konta",
+      headerTitle: () => (
+        <Text
+          style={{
+            fontFamily: "Kanit_600SemiBold",
+            fontSize: 15,
+            color: Colors[scheme].headerTintColor,
+          }}
+        >
+          DANE KONTA
+        </Text>
+      ),
       headerLeft: () => (
         <TouchableOpacity
           style={{
