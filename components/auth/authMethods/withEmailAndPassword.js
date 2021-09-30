@@ -1,23 +1,15 @@
-import axios from "axios";
-const userData = {
-  user: "test@test.pl",
-  password: "testtest",
-};
+import firebase from "firebase";
 
-const signInWithEmailAndPassowrd = (signinFunction, url) => {
-  const auth = {
-    email: userData.user,
-    password: userData.password,
-    returnSecureToken: true,
-  };
-  axios
-    .post(url, auth)
+const signInWithEmailAndPassowrd = (email, password) => {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+
     .then((res) => {
-      // console.log(res.data.localId);
-      signinFunction(res.data.localId);
+      // console.log(res);
     })
     .catch((err) => {
-      console.log(err.message);
+      console.log(err);
     });
 };
 

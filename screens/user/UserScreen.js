@@ -9,6 +9,22 @@ const UserScreen = (props) => {
   const userName = useSelector((state) => state.auth.userName);
   const userEmail = useSelector((state) => state.auth.userEmail);
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
+
+  const showPhoto = () => {
+    let photo = null;
+
+    if (userPhotoUrl === null) {
+      return (
+        <Image
+          style={styles.photo}
+          source={require("../../assets/avatarList/woman.png")}
+        />
+      );
+    } else {
+      photo = userPhotoUrl;
+      return <Image style={styles.photo} source={{ url: photo }} />;
+    }
+  };
   return (
     <ExternalComponent>
       <View
@@ -23,9 +39,7 @@ const UserScreen = (props) => {
             ...{ backgroundColor: Colors[scheme].backGroundOne },
           }}
         >
-          <View style={{ ...styles.photoExternal, ...{} }}>
-            <Image style={styles.photo} source={{ url: userPhotoUrl }} />
-          </View>
+          <View style={{ ...styles.photoExternal, ...{} }}>{showPhoto()}</View>
         </View>
         <View style={styles.userDataView}>
           <View style={{ ...styles.userNameView, ...{} }}>

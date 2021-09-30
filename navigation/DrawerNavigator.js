@@ -39,11 +39,11 @@ const isNotPadid = false;
 const DrawerNavigator = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const userId = useSelector((state) => state.auth.userID);
+  // const userId = "e2d9R8E7hpRKOgIkjPq8XvHBgpz2";
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
   const userDisplayName = useSelector((state) => state.auth.userName);
   const fetchedData = useSelector((state) => state.auth.fetchedData);
   const delayCost = useSelector((state) => state.fixedExpense.delayCost);
-
   const isExpenseLoaded = useSelector((state) => state.item.isLoaded);
   const isIncomeLoaded = useSelector((state) => state.income.isLoaded);
   const isFixedExpenseLoaded = useSelector(
@@ -51,11 +51,45 @@ const DrawerNavigator = (props) => {
   );
   const isConfigLoaded = useSelector((state) => state.config.isLoaded);
   // const isIncomeLoaded = useSelector((state) => state.income.isLoaded);
+  let photo = null;
+  if (userPhotoUrl === null) {
+    photo = "./../assets/avatarList/woman.png";
+  } else {
+    photo = userPhotoUrl;
+  }
+
+  const showImage = () => {
+    let photo = null;
+
+    if (userPhotoUrl === null) {
+      return (
+        <Image
+          style={{
+            height: 40,
+            width: 40,
+            borderRadius: 20,
+          }}
+          source={require("./../assets/avatarList/woman.png")}
+        />
+      );
+    } else {
+      photo = userPhotoUrl;
+      return (
+        <Image
+          style={{
+            height: 40,
+            width: 40,
+            borderRadius: 20,
+          }}
+          source={{ url: photo }}
+        />
+      );
+    }
+  };
 
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
-
   const today = new Date();
   const dateList = fixedExpensesList.filter((el) => new Date(el.date) < today);
   const isAllPaid = dateList.filter((el) => el.isPaid === false);
@@ -163,11 +197,10 @@ const DrawerNavigator = (props) => {
   useEffect(() => {
     fetchData();
   }, [status]);
-
   if (
-    isExpenseLoaded === true &&
-    isIncomeLoaded === true &&
-    isFixedExpenseLoaded === true &&
+    // isExpenseLoaded === true &&
+    // isIncomeLoaded === true &&
+    // isFixedExpenseLoaded === true &&
     isConfigLoaded === true
     // false
   ) {
@@ -188,16 +221,7 @@ const DrawerNavigator = (props) => {
             name="UserData"
             component={StackUserNavigator}
             options={{
-              drawerIcon: () => (
-                <Image
-                  style={{
-                    height: 40,
-                    width: 40,
-                    borderRadius: 20,
-                  }}
-                  source={{ url: userPhotoUrl }}
-                />
-              ),
+              drawerIcon: () => showImage(),
               drawerLabel: userDisplayName,
             }}
           />

@@ -26,16 +26,22 @@ import signInWithGoogleAsync from "./authMethods/withGoogle";
 import signInWithFacebook from "./authMethods/withFacebook";
 import firebaseInit from "./firebaseInit";
 import Category from "../../data/category";
+import registerWithEmail from "./authMethods/registerWithEmail";
+
 const AuthScreen = (props) => {
   const colorScheme = useColorScheme();
   const categoryList = { ...Category };
   // const sheme = Appearance.getColorScheme();
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
+  const [signUp, setSignUp] = useState(false);
   const customTheme = useSelector((state) => state.config.customScheme);
   const userStatus = useSelector((state) => state.auth.isLogin);
   const showIndicator = useSelector((state) => state.auth.showIndicator);
   const scheme = useSelector((state) => state.config.scheme);
+  const [newUserEmail, setNewUserEmail] = useState();
+  const [newUserPassword, setNewUserPassword] = useState();
+  const [newUserPasswordRepeated, setNewUserPasswordRepeated] = useState();
   const dispatch = useDispatch();
   useEffect(() => {
     !customTheme && dispatch(configActions.getScheme(colorScheme));
@@ -53,6 +59,241 @@ const AuthScreen = (props) => {
       createUserInfo(userData);
     }
   });
+
+  const checkIfPassowrds = (a, b) => {
+    if (a === b) {
+      return a;
+    } else {
+      false;
+    }
+  };
+
+  const signUpButtons = () => {
+    return (
+      <View style={{ marginBottom: 20 }}>
+        <TouchableOpacity
+          onPress={() => {
+            registerWithEmail(
+              newUserEmail,
+              checkIfPassowrds(newUserPassword, newUserPasswordRepeated),
+              categoryList
+            );
+          }}
+        >
+          <View
+            style={{
+              ...styles.loginButton,
+              ...{ backgroundColor: Colors[scheme].primary },
+            }}
+          >
+            <Text
+              style={{
+                ...styles.loginBtnText,
+                ...{ color: Colors[scheme].button },
+              }}
+            >
+              {"Utwórz konto".toUpperCase()}
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => signUpToggle()}>
+          <View
+            style={{
+              ...styles.newAccount,
+              ...{},
+            }}
+          >
+            <Text
+              style={{
+                color: Colors[scheme].button,
+                fontFamily: "Kanit_600SemiBold",
+              }}
+            >
+              Zaloguj
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+  const signInButtons = () => {
+    return (
+      <View style={{ marginBottom: 20 }}>
+        <TouchableOpacity
+          onPress={() => signInWithEmailAndPassowrd(userEmail, userPassword)}
+        >
+          <View
+            style={{
+              ...styles.loginButton,
+              ...{ backgroundColor: Colors[scheme].primary },
+            }}
+          >
+            <Text
+              style={{
+                ...styles.loginBtnText,
+                ...{ color: Colors[scheme].button },
+              }}
+            >
+              {"Zaloguj".toUpperCase()}
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => signUpToggle()}>
+          <View
+            style={{
+              ...styles.newAccount,
+              ...{},
+            }}
+          >
+            <Text
+              style={{
+                color: Colors[scheme].button,
+                fontFamily: "Kanit_600SemiBold",
+              }}
+            >
+              Utwórz konto
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  const signUpCompontnt = () => {
+    return (
+      <View
+        style={{
+          ...styles.loginScreen,
+          ...{ backgroundColor: Colors[scheme].light },
+        }}
+      >
+        <Text
+          style={{
+            ...styles.credential,
+            ...{ color: Colors[scheme].primarySecond },
+          }}
+        >
+          {"Adres email".toUpperCase()}
+        </Text>
+        <Input
+          style={{
+            ...styles.input,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+          // placeholder={"email"}
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="default"
+          autoComplete="off"
+          value={newUserEmail}
+          keyboardType={"email-address"}
+          onChangeText={setNewUserEmail}
+        />
+        <Text
+          style={{
+            ...styles.credential,
+            ...{ color: Colors[scheme].primarySecond },
+          }}
+        >
+          {"Hasło".toUpperCase()}
+        </Text>
+
+        <Input
+          style={{
+            ...styles.input,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+          // placeholder={"hasło"}
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="default"
+          autoComplete="off"
+          secureTextEntry={true}
+          value={newUserPassword}
+          onChangeText={setNewUserPassword}
+        />
+        <Text
+          style={{
+            ...styles.credential,
+            ...{ color: Colors[scheme].primarySecond },
+          }}
+        >
+          {"Powtórz hasło".toUpperCase()}
+        </Text>
+
+        <Input
+          style={{
+            ...styles.input,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+          // placeholder={"hasło"}
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="default"
+          autoComplete="off"
+          secureTextEntry={true}
+          value={newUserPasswordRepeated}
+          onChangeText={setNewUserPasswordRepeated}
+        />
+      </View>
+    );
+  };
+  const signInComponent = () => {
+    return (
+      <View
+        style={{
+          ...styles.loginScreen,
+          ...{ backgroundColor: Colors[scheme].light },
+        }}
+      >
+        <Text
+          style={{
+            ...styles.credential,
+            ...{ color: Colors[scheme].primarySecond },
+          }}
+        >
+          {"Adres email".toUpperCase()}
+        </Text>
+        <Input
+          style={{
+            ...styles.input,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+          // placeholder={"email"}
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="default"
+          autoComplete="off"
+          value={userEmail}
+          keyboardType={"email-address"}
+          onChangeText={setUserEmail}
+        />
+        <Text
+          style={{
+            ...styles.credential,
+            ...{ color: Colors[scheme].primarySecond },
+          }}
+        >
+          {"Hasło".toUpperCase()}
+        </Text>
+
+        <Input
+          style={{
+            ...styles.input,
+            ...{ backgroundColor: Colors[scheme].primaryThird },
+          }}
+          // placeholder={"hasło"}
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="default"
+          autoComplete="off"
+          secureTextEntry={true}
+          value={userPassword}
+          onChangeText={setUserPassword}
+        />
+      </View>
+    );
+  };
 
   const createUserInfo = (user) => {
     const userDataObj = {
@@ -73,6 +314,9 @@ const AuthScreen = (props) => {
     dispatch(authActions.saveUserData(userDataObj));
   };
 
+  const signUpToggle = () => {
+    setSignUp(!signUp);
+  };
   if (userStatus) {
     return <DrawerNavigator />;
   } else {
@@ -96,90 +340,9 @@ const AuthScreen = (props) => {
         <ExternalComponent dimmer={0.85}>
           <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={{ ...styles.screen, ...{} }}>
-              {/* <View
-                style={{
-                  ...styles.loginScreen,
-                  ...{ backgroundColor: Colors[scheme].light },
-                }}
-              >
-                <Text
-                  style={{
-                    ...styles.credential,
-                    ...{ color: Colors[scheme].primarySecond },
-                  }}
-                >
-                  {"Adres email".toUpperCase()}
-                </Text>
-                <Input
-                  style={{
-                    ...styles.input,
-                    ...{ backgroundColor: Colors[scheme].primaryThird },
-                  }}
-                  // placeholder={"email"}
-                  value={userEmail}
-                  keyboardType={"email-address"}
-                  onChangeText={setUserEmail}
-                />
-                <Text
-                  style={{
-                    ...styles.credential,
-                    ...{ color: Colors[scheme].primarySecond },
-                  }}
-                >
-                  {"Hasło".toUpperCase()}
-                </Text>
+              {signUp ? signUpCompontnt() : signInComponent()}
+              {signUp ? signUpButtons() : signInButtons()}
 
-                <Input
-                  style={{
-                    ...styles.input,
-                    ...{ backgroundColor: Colors[scheme].primaryThird },
-                  }}
-                  // placeholder={"hasło"}
-                  secureTextEntry={true}
-                  value={userPassword}
-                  onChangeText={setUserPassword}
-                />
-              </View> */}
-              {/* <View style={{ marginBottom: 20 }}>
-                <TouchableOpacity
-                  onPress={() =>
-                    signInWithEmailAndPassowrd(() => login(), config.url)
-                  }
-                >
-                  <View
-                    style={{
-                      ...styles.loginButton,
-                      ...{ backgroundColor: Colors[scheme].primary },
-                    }}
-                  >
-                    <Text
-                      style={{
-                        ...styles.loginBtnText,
-                        ...{ color: Colors[scheme].button },
-                      }}
-                    >
-                      {"Zaloguj".toUpperCase()}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <View
-                    style={{
-                      ...styles.newAccount,
-                      ...{},
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: Colors[scheme].button,
-                        fontFamily: "Kanit_600SemiBold",
-                      }}
-                    >
-                      Zarejestruj
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </View> */}
               <View style={styles.otherMethodLogin}>
                 <TouchableOpacity
                   onPress={() => {
@@ -198,16 +361,6 @@ const AuthScreen = (props) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                {/* <TouchableOpacity
-                  style={styles.loginWithFacebook}
-                  // onPress={() => signInWithFacebook(() => login())}
-                  onPress={() => signInWithFacebook()}
-                >
-                  <AntDesign name="facebook-square" size={34} color="white" />
-                  <Text style={styles.loginWithText}>
-                    Zaloguj przez Facebook
-                  </Text>
-                </TouchableOpacity> */}
               </View>
             </View>
           </TouchableWithoutFeedback>
