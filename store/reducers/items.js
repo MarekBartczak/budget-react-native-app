@@ -25,14 +25,14 @@ import {
 import deleteDataInCloud from "../../functions/cloud/deleteDataInCloud";
 import updateCategory from "../../functions/cloud/updateCategory";
 
-const getMonth = () => {
-  const month = new Date().getMonth() + 1;
-  if (month < 10) {
-    return `0${month}`;
-  }
+// const getMonth = () => {
+//   const month = new Date().getMonth() + 1;
+//   if (month < 10) {
+//     return `0${month}`;
+//   }
 
-  return month.toString();
-};
+//   return month.toString();
+// };
 
 const initialState = {
   isLoaded: false,
@@ -48,12 +48,10 @@ const initialState = {
   categoryList: [],
   categoryID: "",
   items: [],
-  view: {
-    // month: "",
-    // year: "",
-    month: getMonth(),
-    year: new Date().getFullYear().toString(),
-  },
+  // view: {
+  //   month: getMonth(),
+  //   year: new Date().getFullYear().toString(),
+  // },
   receipt: {
     place: "",
     date: "",
@@ -174,8 +172,8 @@ export default (state = initialState, action) => {
         categoryList: newCategoryList,
       };
 
-    case SET_FILTERED_MONTH:
-      return { ...state, view: { month: action.month, year: action.year } };
+    // case SET_FILTERED_MONTH:
+    //   return { ...state, view: { month: action.month, year: action.year } };
 
     case SET_FILTER_TYPE:
       return {

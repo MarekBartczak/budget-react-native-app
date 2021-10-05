@@ -11,7 +11,9 @@ import React, { useState, useEffect } from "react";
 import Colors from "../../constants/Colors";
 import { useDispatch, useSelector } from "react-redux";
 import months from "../../data/months";
-import * as itemsActions from "../../store/actions/items";
+import summaryCostCounter from "../../functions/summaryCostCounter";
+import * as summmaryActions from "../../store/actions/summary";
+import uuid from "react-native-uuid";
 
 const SumaryCost = (props) => {
   const dispatch = useDispatch();
@@ -19,32 +21,104 @@ const SumaryCost = (props) => {
   const date = new Date();
   const currentMonthNumber = date.getMonth();
   const currentYear = date.getFullYear();
-  const selectedDate = useSelector((state) => state.item.view);
+  const filteredDate = useSelector((state) => state.summary);
+  const [monthNr, setMonthNr] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState(currentYear);
   const [showModal, setShowModal] = useState(false);
-  const dateList = [...new Set(props.dateList.map((el) => el.date.slice(0, 7)))]
-    .sort()
-    .map((el) => el + "-01");
-  const dateListWithObj = dateList
-    .map((el) => {
-      return {
-        year: el.slice(0, 4),
-        monthNumber: el.slice(5, 7),
-        monthName: months[Number(el.slice(5, 7) - 1)],
-      };
-    })
-    .sort();
+  const [dateListWithObj, setDateListWithObj] = useState([]);
+  const getType = props.type;
+  const itemsList = props.list;
+  let amount = 0;
+
+  let filteredByDate;
+  filteredByDate = itemsList.filter((el) =>
+    el.date.includes(`${year}-${monthNr}`)
+  );
+
+  amount = summaryCostCounter(filteredByDate);
+
+  const setDateIntoTheStore = () => {
+    const dateList = [
+      ...new Set(itemsList.map((el) => el.date.slice(0, 7))),
+    ].sort();
+
+    const createListForModal = (dateList) => {
+      return dateList.map((el) => {
+        const year = el.slice(0, 4);
+        const month = el.slice(5, 7);
+
+        return {
+          named: `${year} - ${months[month - 1]}`,
+          date: el,
+        };
+      });
+    };
+    switch (getType) {
+      case "expense":
+        setMonthName(dateList);
+        setDateListWithObj(createListForModal(dateList));
+
+        return;
+      case "income":
+        setMonthName(dateList);
+        setDateListWithObj(createListForModal(dateList));
+        return;
+      case "fixedExpense":
+        setMonthName(dateList);
+        setDateListWithObj(createListForModal(dateList));
+        return;
+    }
+  };
+
+  const setFilterDate = (item) => {
+    setYear(item.date.slice(0, 4));
+    setMonth(months[Number(item.date.slice(5.7)) - 1]);
+    switch (getType) {
+      case "expense":
+        dispatch(summmaryActions.setExpense(item.date));
+        return;
+      case "income":
+        dispatch(summmaryActions.setIncome(item.date));
+        return;
+      case "fixedExpense":
+        dispatch(summmaryActions.setFixedExpense(item.date));
+        return;
+    }
+  };
+
+  const setMonthName = (list) => {
+    const yearFilter = () => {
+      const yearList = list.map((el) => Number(el.slice(0, 4)));
+      const maxYear = Math.max(...yearList);
+      if (maxYear > 0) {
+        setYear(maxYear);
+        monthYear(maxYear, list);
+      }
+    };
+
+    const monthYear = (maxYear, list) => {
+      const filterByMaxYear = list.filter((el) => el.includes(maxYear));
+      const monthList = filterByMaxYear.map((el) => Number(el.slice(5, 7)));
+      const maxMonth = Math.max(...monthList);
+      setMonth(months[maxMonth - 1]);
+
+      if (maxMonth < 10) {
+        setMonthNr(`0${maxMonth}`);
+      } else {
+        setMonthNr(maxMonth);
+      }
+    };
+    yearFilter();
+  };
+
+  const prepareElements = () => {
+    setDateIntoTheStore(getType);
+  };
 
   useEffect(() => {
-    if (selectedDate.year === "" && selectedDate.month === "") {
-      setMonth(months[currentMonthNumber]);
-      setYear(currentYear);
-    } else {
-      setMonth(months[Number(selectedDate.month - 1)]);
-      setYear(selectedDate.year);
-    }
-  });
+    prepareElements();
+  }, [props.list]);
 
   const openModalWithDates = () => {
     return (
@@ -87,17 +161,12 @@ const SumaryCost = (props) => {
             </TouchableOpacity>
             <FlatList
               data={dateListWithObj}
-              keyExtractor={(item) => item.year + item.monthNumber}
+              keyExtractor={(item) => item + "_" + uuid.v4()}
               renderItem={(item) => (
                 <TouchableOpacity
                   onPress={() => {
-                    dispatch(
-                      itemsActions.setFilteredMonth(
-                        item.item.monthNumber,
-                        item.item.year
-                      )
-                    );
                     setShowModal(false);
+                    setFilterDate(item.item);
                   }}
                   style={{
                     width: Dimensions.get("window").width,
@@ -118,7 +187,7 @@ const SumaryCost = (props) => {
                       marginLeft: 20,
                     }}
                   >
-                    {item.item.year} - {item.item.monthName}
+                    {item.item.named}
                   </Text>
                 </TouchableOpacity>
               )}
@@ -142,7 +211,7 @@ const SumaryCost = (props) => {
             ...{ color: Colors[scheme].headerTintColor },
           }}
         >
-          {props.cost}zł
+          {amount}zł
         </Text>
         <TouchableOpacity onPress={() => setShowModal(!showModal)}>
           <Text

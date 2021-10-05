@@ -12,7 +12,8 @@ import { useSelector } from "react-redux";
 
 const Chart = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-  const selectedDate = useSelector((state) => state.item.view);
+  const selectedDate = useSelector((state) => state.summary);
+  // to fixed ^^^
   const date = new Date();
   const currentMonthNumber = date.getMonth() + 1;
   const currentYear = date.getFullYear();
@@ -27,33 +28,43 @@ const Chart = (props) => {
     }
   };
   let currentDateFormat;
-  if (selectedDate.year === "" && selectedDate.month === "") {
-    currentDateFormat = `${currentYear}-${getMonthNumber()}-`;
-  } else {
-    currentDateFormat = `${selectedDate.year}-${selectedDate.month}-`;
-  }
+  // if (selectedDate.year === "" && selectedDate.month === "") {
+  //   currentDateFormat = `${currentYear}-${getMonthNumber()}-`;
+  // } else {
+  //   currentDateFormat = `${selectedDate.year}-${selectedDate.month}-`;
+  // }
   let filteredData;
-  if (props.label.length > 0) {
-    const indexList = props.label.map((el) => el.includes(currentDateFormat));
-    filteredData = {
-      label: indexList
-        .map((el, i) => {
-          if (el) {
-            return props.label[i];
-          }
-        })
-        .filter((el) => el !== undefined),
-      data: indexList
-        .map((el, i) => {
-          if (el) {
-            return props.data[i];
-          }
-        })
-        .filter((el) => el !== undefined),
-    };
-  }
-  let label = ["0"];
-  let data = [0];
+  // if (props.label.length > 0) {
+  //   const indexList = props.label.map((el) => el.includes(currentDateFormat));
+  //   filteredData = {
+  //     label: indexList
+  //       .map((el, i) => {
+  //         if (el) {
+  //           return props.label[i];
+  //         }
+  //       })
+  //       .filter((el) => el !== undefined),
+  //     data: indexList
+  //       .map((el, i) => {
+  //         if (el) {
+  //           return props.data[i];
+  //         }
+  //       })
+  //       .filter((el) => el !== undefined),
+  //   };
+  // }
+  console.log(selectedDate);
+  const index = props.label.length;
+  let label = props.label;
+  let data = props.data;
+  // if (index > 0) {
+  //   label = props.label[index - 1];
+  //   data = props.data[index - 1];
+  // }
+
+  console.log(props.label);
+  console.log(props.data);
+
   if (filteredData !== undefined) {
     label = filteredData.label.map((el) => el.slice(8));
     data = filteredData.data;

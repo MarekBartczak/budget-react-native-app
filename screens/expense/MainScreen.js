@@ -13,15 +13,15 @@ import chartElement from "../../functions/ChartElement";
 import SummaryCost from "../../components/summaryCost/SummaryCost";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
+
 const MainScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
-  const summryCostView = useSelector((state) => state.item.view);
   const chartEl = chartElement(itemsFromRedux);
+  console.log(chartEl);
   const dispatch = useDispatch();
-  const selectedDate = `${summryCostView.year}-${summryCostView.month}`;
-
+  const type = "expense";
   // dispatch(
   //   itemsActions.setFilteredMonth(() => {
   //     const month = new Date().getMonth() + 1;
@@ -55,20 +55,12 @@ const MainScreen = (props) => {
               }
             }
           >
-            <SummaryCost
-              type="expense"
-              cost={summaryCostCounter(
-                itemsFromRedux.filter((item) =>
-                  item.date.includes(selectedDate)
-                )
-              )}
-              dateList={itemsFromRedux}
-            />
+            <SummaryCost type={type} list={itemsFromRedux} />
             {/* {console.log(itemsFromRedux)} */}
           </View>
           <View style={styles.component}>
             <Chart
-              // press={() => props.navigation.navigate("Date")}
+              type={type}
               press={() => props.navigation.navigate("ExpenseList")}
               label={chartEl.label}
               data={chartEl.data}

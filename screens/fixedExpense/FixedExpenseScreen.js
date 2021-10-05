@@ -24,8 +24,6 @@ const FixedExpenseScreen = (props) => {
   const fixedExpenseShowList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
-  const summryCostView = useSelector((state) => state.item.view);
-  const selectedDate = `${summryCostView.year}-${summryCostView.month}`;
 
   const delayCost = useSelector((state) => state.fixedExpense.delayCost);
 
@@ -39,14 +37,7 @@ const FixedExpenseScreen = (props) => {
   return (
     <ExternalComponent>
       <View style={styles.component}>
-        <SummaryCost
-          cost={summaryCostCounter(
-            fixedExpenseShowList.filter((item) =>
-              item.date.includes(selectedDate)
-            )
-          )}
-          dateList={fixedExpenseShowList}
-        />
+        <SummaryCost type="fixedExpense" list={fixedExpenseShowList} />
       </View>
       <View style={styles.chartCcomponent}>
         <Chart
