@@ -34,7 +34,6 @@ export default {
     backGround_two: "rgba(1,1,1, 1)",
     primaryThird: "rgba(68,69,71, 0.8)",
     button: "rgb(115,199,196)",
-    // button: "rgb(115,69,96)",
 
     accent: "rgb(47,97,217)",
     backGround: "rgba(1, 1, 1, 0.93)",

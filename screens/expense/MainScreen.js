@@ -56,6 +56,7 @@ const MainScreen = (props) => {
             }
           >
             <SummaryCost
+              type="expense"
               cost={summaryCostCounter(
                 itemsFromRedux.filter((item) =>
                   item.date.includes(selectedDate)

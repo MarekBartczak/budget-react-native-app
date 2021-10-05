@@ -12,6 +12,7 @@ import AuthScreen from "./components/auth/AuthScreen";
 import AuthReducer from "./store/reducers/auth";
 import Config from "./store/reducers/config";
 import AppLoading from "expo-app-loading";
+import Summary from "./store/reducers/summary";
 import {
   useFonts,
   Kanit_400Regular,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   income: IncomeReducer,
   raport: RaportReducer,
   config: Config,
+  summary: Summary,
 });
 
 const store = createStore(rootReducer);
