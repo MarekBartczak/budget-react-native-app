@@ -12,11 +12,29 @@ import { useSelector } from "react-redux";
 
 const Chart = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-  const selectedDate = useSelector((state) => state.summary);
+  let selectedDate;
   // to fixed ^^^
   const date = new Date();
   const currentMonthNumber = date.getMonth() + 1;
   const currentYear = date.getFullYear();
+  const getType = props.type;
+
+  let getObj = props.obj;
+
+  let dateList = getObj.map((el) => el.date);
+  let getLatestDate = dateList[dateList.length - 1];
+  let sliced = "";
+  if (getLatestDate !== undefined) {
+    sliced = getLatestDate.slice(0, 7);
+  }
+
+  let filteredObj = getObj.filter((el) => el.date.includes(sliced));
+  let label = filteredObj.map((el) => el.date.split("-")[2]);
+  let data = filteredObj.map((el) => el.cost);
+
+  // useEffect(() => {
+  //   checkIfDateIsSelected(getType);
+  // });
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // props.label and props.data shoud be same length
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -28,6 +46,31 @@ const Chart = (props) => {
     }
   };
   let currentDateFormat;
+
+  const checkIfDateIsSelected = (type) => {
+    switch (type) {
+      case "expense":
+        selectedDate = useSelector((state) => state.summary.expense);
+        if (selectedDate !== "") {
+          let getFilteredObj = getObj.filter((el) =>
+            el.date.includes(selectedDate)
+          );
+          label = getFilteredObj.map((el) => el.date.split("-")[2]);
+          data = getFilteredObj.map((el) => el.cost);
+          // console.log(selectedDate);
+          // console.log(props.label);
+          // let x = props.label.filter((el) => {
+          //   return el.includes(selectedDate);
+          // });
+          // console.log(x);
+          // label = props.label;
+          // data = props.data;
+        }
+    }
+  };
+
+  checkIfDateIsSelected(getType);
+
   // if (selectedDate.year === "" && selectedDate.month === "") {
   //   currentDateFormat = `${currentYear}-${getMonthNumber()}-`;
   // } else {
@@ -53,17 +96,16 @@ const Chart = (props) => {
   //       .filter((el) => el !== undefined),
   //   };
   // }
-  console.log(selectedDate);
-  const index = props.label.length;
-  let label = props.label;
-  let data = props.data;
+  // console.log(selectedDate);
+  // const index = props.label.length;
+
   // if (index > 0) {
   //   label = props.label[index - 1];
   //   data = props.data[index - 1];
   // }
 
-  console.log(props.label);
-  console.log(props.data);
+  // console.log(props.label);
+  // console.log(props.data);
 
   if (filteredData !== undefined) {
     label = filteredData.label.map((el) => el.slice(8));
@@ -115,7 +157,7 @@ const Chart = (props) => {
           withVerticalLines={false}
           withVerticalLabels={true}
           withHorizontalLines={false}
-          withHorizontalLabels={false}
+          withHorizontalLabels={true}
           withDots={true}
           withshadow={false}
           withInnerLines={false}

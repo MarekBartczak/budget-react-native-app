@@ -19,7 +19,7 @@ const MainScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
   const chartEl = chartElement(itemsFromRedux);
-  console.log(chartEl);
+  // console.log(chartEl);
   const dispatch = useDispatch();
   const type = "expense";
   // dispatch(
@@ -62,8 +62,7 @@ const MainScreen = (props) => {
             <Chart
               type={type}
               press={() => props.navigation.navigate("ExpenseList")}
-              label={chartEl.label}
-              data={chartEl.data}
+              obj={chartEl}
             />
           </View>
           {/* <View style={styles.component}>
