@@ -66,6 +66,15 @@ const Chart = (props) => {
           // label = props.label;
           // data = props.data;
         }
+      case "fixedExpense":
+        selectedDate = useSelector((state) => state.summary.fixedExpense);
+        if (selectedDate !== "") {
+          let getFilteredObj = getObj.filter((el) =>
+            el.date.includes(selectedDate)
+          );
+          label = getFilteredObj.map((el) => el.date.split("-")[2]);
+          data = getFilteredObj.map((el) => el.cost);
+        }
     }
   };
 

@@ -30,6 +30,7 @@ const FixedExpenseScreen = (props) => {
   const chartEl = chartElement(
     fixedExpenseShowList.filter((el) => el.isPaid === true)
   );
+  console.log(chartEl);
   // const chartEl = fixedExpenseChartElement(fixedExpenseShowList);
   // console.log(fixedExpenseChartEl);
   // console.log(chartEl);
@@ -41,9 +42,11 @@ const FixedExpenseScreen = (props) => {
       </View>
       <View style={styles.chartCcomponent}>
         <Chart
+          type="fixedExpense"
           press={() => props.navigation.navigate("FixedExpensesList")}
-          label={chartEl.label}
-          data={chartEl.data}
+          // label={chartEl.label}
+          // data={chartEl.data}
+          obj={chartEl}
         />
       </View>
 
