@@ -31,7 +31,7 @@ const SumaryCost = (props) => {
   const itemsList = props.list;
   let amount = 0;
 
-  console.log(itemsList);
+  // console.log(itemsList);
 
   let filteredByDate;
   filteredByDate = itemsList.filter((el) =>
@@ -39,7 +39,7 @@ const SumaryCost = (props) => {
   );
 
   if (filteredDate[getType] !== "") {
-    console.log(filteredDate[getType]);
+    // console.log(filteredDate[getType]);
     filteredByDate = itemsList.filter((el) =>
       el.date.includes(filteredDate[getType])
     );

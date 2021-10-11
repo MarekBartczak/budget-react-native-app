@@ -30,7 +30,6 @@ const FixedExpenseScreen = (props) => {
   const chartEl = chartElement(
     fixedExpenseShowList.filter((el) => el.isPaid === true)
   );
-  console.log(chartEl);
   // const chartEl = fixedExpenseChartElement(fixedExpenseShowList);
   // console.log(fixedExpenseChartEl);
   // console.log(chartEl);
@@ -38,7 +37,7 @@ const FixedExpenseScreen = (props) => {
   return (
     <ExternalComponent>
       <View style={styles.component}>
-        <SummaryCost type="fixedExpense" list={fixedExpenseShowList} />
+        <SummaryCost type="fixedExpense" list={chartEl} />
       </View>
       <View style={styles.chartCcomponent}>
         <Chart
