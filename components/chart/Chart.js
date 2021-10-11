@@ -14,9 +14,6 @@ const Chart = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   let selectedDate;
   // to fixed ^^^
-  const date = new Date();
-  const currentMonthNumber = date.getMonth() + 1;
-  const currentYear = date.getFullYear();
   const getType = props.type;
 
   let getObj = props.obj;
@@ -32,21 +29,6 @@ const Chart = (props) => {
   let label = filteredObj.map((el) => el.date.split("-")[2]);
   let data = filteredObj.map((el) => el.cost);
 
-  // useEffect(() => {
-  //   checkIfDateIsSelected(getType);
-  // });
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // props.label and props.data shoud be same length
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  const getMonthNumber = () => {
-    if (currentMonthNumber < 10) {
-      return `0${currentMonthNumber}`;
-    } else {
-      return currentMonthNumber;
-    }
-  };
-  let currentDateFormat;
-
   const checkIfDateIsSelected = (type) => {
     switch (type) {
       case "expense":
@@ -57,14 +39,6 @@ const Chart = (props) => {
           );
           label = getFilteredObj.map((el) => el.date.split("-")[2]);
           data = getFilteredObj.map((el) => el.cost);
-          // console.log(selectedDate);
-          // console.log(props.label);
-          // let x = props.label.filter((el) => {
-          //   return el.includes(selectedDate);
-          // });
-          // console.log(x);
-          // label = props.label;
-          // data = props.data;
         }
       case "fixedExpense":
         selectedDate = useSelector((state) => state.summary.fixedExpense);
@@ -80,41 +54,7 @@ const Chart = (props) => {
 
   checkIfDateIsSelected(getType);
 
-  // if (selectedDate.year === "" && selectedDate.month === "") {
-  //   currentDateFormat = `${currentYear}-${getMonthNumber()}-`;
-  // } else {
-  //   currentDateFormat = `${selectedDate.year}-${selectedDate.month}-`;
-  // }
   let filteredData;
-  // if (props.label.length > 0) {
-  //   const indexList = props.label.map((el) => el.includes(currentDateFormat));
-  //   filteredData = {
-  //     label: indexList
-  //       .map((el, i) => {
-  //         if (el) {
-  //           return props.label[i];
-  //         }
-  //       })
-  //       .filter((el) => el !== undefined),
-  //     data: indexList
-  //       .map((el, i) => {
-  //         if (el) {
-  //           return props.data[i];
-  //         }
-  //       })
-  //       .filter((el) => el !== undefined),
-  //   };
-  // }
-  // console.log(selectedDate);
-  // const index = props.label.length;
-
-  // if (index > 0) {
-  //   label = props.label[index - 1];
-  //   data = props.data[index - 1];
-  // }
-
-  // console.log(props.label);
-  // console.log(props.data);
 
   if (filteredData !== undefined) {
     label = filteredData.label.map((el) => el.slice(8));

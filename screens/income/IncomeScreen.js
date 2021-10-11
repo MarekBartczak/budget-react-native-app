@@ -12,18 +12,19 @@ const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
   const config = useSelector((state) => state.config);
   const chartEl = chartElement(incomeList);
+  const type = "income";
 
   return (
     <ExternalComponent>
       <View style={styles.component}>
-        <SummaryCost type="income" list={incomeList} />
+        <SummaryCost type={type} list={incomeList} />
       </View>
       <View style={styles.chartComponent}>
         {!config.addIncomeKeyboardStatus && (
           <Chart
+            type={type}
             press={() => props.navigation.navigate("IncomeList")}
-            label={chartEl.label}
-            data={chartEl.data}
+            obj={chartEl}
           />
         )}
       </View>
