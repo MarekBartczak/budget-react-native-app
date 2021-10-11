@@ -5,16 +5,18 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Text,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Colors from "../../constants/Colors";
 import Input from "../input/Input";
 import DatePicker from "../../components/DatePicker";
 import Button from "../../components/buttons/Button";
 import * as configActions from "../../store/actions/config";
 import { useSelector, useDispatch } from "react-redux";
-
+import numberInputValidation from "../../functions/NumberInputValidation";
 const AddNewComponent = (props) => {
+  const [validCost, setValidCost] = useState(false);
   const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
 
@@ -39,6 +41,9 @@ const AddNewComponent = (props) => {
   const kedyboardHide = () =>
     dispatch(configActions.addIncomeKeyboardStatus(false));
 
+  const ErrorCostValidation = () => {
+    return <Text style={{ color: "red" }}> Proszę wpisać poprawną kwotę </Text>;
+  };
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -80,6 +85,9 @@ const AddNewComponent = (props) => {
                 onChangeText={props.setAmountValue}
                 placeholderTextColor={Colors[scheme].primarySecond}
               />
+              {!numberInputValidation(props.amountValue) && (
+                <ErrorCostValidation />
+              )}
               <Input
                 style={{
                   ...styles.input,

@@ -14,7 +14,6 @@ import * as itemActions from "../../store/actions/items";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Colors from "../../constants/Colors";
 import numberInputValidation from "../../functions/NumberInputValidation";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import uuid from "react-native-uuid";
 import MultiItem from "../../models/MultiItem";
 import { useNavigation } from "@react-navigation/native";
