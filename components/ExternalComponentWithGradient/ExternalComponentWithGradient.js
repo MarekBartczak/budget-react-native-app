@@ -60,7 +60,6 @@ const ExternalComponentWithGradient = (props) => {
       <Image
         style={{
           position: "absolute",
-          // top: 0,
           height: Dimensions.get("window").height,
         }}
         source={path}

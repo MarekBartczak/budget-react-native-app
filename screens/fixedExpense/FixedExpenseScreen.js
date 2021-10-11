@@ -1,22 +1,12 @@
-import {
-  StyleSheet,
-  View,
-  Text,
-  useColorScheme,
-  Dimensions,
-} from "react-native";
-import React, { useState } from "react";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
+import React from "react";
 import { useSelector } from "react-redux";
-import summaryCostCounter from "../../functions/summaryCostCounter";
 import Chart from "../../components/chart/Chart";
-import MonthChart from "../../components/chart/MonthChart";
 import Colors from "../../constants/Colors";
-import AddNewFixedExpenseComponent from "../../components/fixedExpense/addNewFixedExpense/AddNewFixedExpenseComponent";
 import chartElement from "../../functions/ChartElement";
 import SummaryCost from "../../components/summaryCost/SummaryCost";
 import AddNewItem from "../../components/AddNewItem";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import UnpaidExpense from "../../components/fixedExpense/unpaidExpense/UnpaidExpense";
 
 const FixedExpenseScreen = (props) => {
@@ -30,9 +20,6 @@ const FixedExpenseScreen = (props) => {
   const chartEl = chartElement(
     fixedExpenseShowList.filter((el) => el.isPaid === true)
   );
-  // const chartEl = fixedExpenseChartElement(fixedExpenseShowList);
-  // console.log(fixedExpenseChartEl);
-  // console.log(chartEl);
 
   return (
     <ExternalComponent>
@@ -43,26 +30,9 @@ const FixedExpenseScreen = (props) => {
         <Chart
           type="fixedExpense"
           press={() => props.navigation.navigate("FixedExpensesList")}
-          // label={chartEl.label}
-          // data={chartEl.data}
           obj={chartEl}
         />
       </View>
-
-      {/* <View
-        style={{
-          ...styles.component,
-        }}
-      >
-        <Text
-          style={{
-            color: Colors[scheme].primarySecond,
-            fontFamily: "Kanit_400Regular",
-          }}
-        >
-          {"Stałe oplaty".toUpperCase()}
-        </Text>
-      </View> */}
       <View style={styles.unPaidComponent}>
         <UnpaidExpense />
       </View>
@@ -116,15 +86,7 @@ const styles = StyleSheet.create({
   unPaidComponent: {
     marginTop: 50,
   },
-  component: {
-    // backgroundColor: "red",
-    // paddingBottom: 5,
-    // marginBottom: 20,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.5,
-    // shadowRadius: 7,
-  },
+  component: {},
   chartCcomponent: {
     overflow: "hidden",
     paddingBottom: 5,
@@ -132,10 +94,6 @@ const styles = StyleSheet.create({
   buttonComponent: {
     position: "absolute",
     bottom: 40,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.5,
-    // shadowRadius: 7,
   },
 });
 

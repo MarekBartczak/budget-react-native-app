@@ -45,8 +45,6 @@ const ExpenseHeaderModalFilter = (props) => {
               borderTopLeftRadius: 100,
               borderTopRightRadius: 100,
               backgroundColor: Colors[scheme].backGroundOne,
-              // borderColor: Colors[scheme].primary,
-              // borderWidth: 1,
             },
           }}
         >

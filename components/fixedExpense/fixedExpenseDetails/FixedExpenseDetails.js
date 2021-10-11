@@ -4,13 +4,8 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
-  FlatList,
   Alert,
-  Clipboard,
 } from "react-native";
-import uuid from "react-native-uuid";
-
-import History from "./history/History";
 import React from "react";
 import ExternalComponent from "../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Colors from "../../../constants/Colors";
@@ -28,7 +23,6 @@ const FixedExpenseDetails = (props) => {
   const history = useSelector((state) => state.fixedExpense.fixedExpense);
   const userId = useSelector((state) => state.auth.userID);
   const filteredHistoryEl = history.filter((el) => el.id === id);
-  // console.log(filteredHistoryEl);
   const historyList = filteredHistoryEl
     .filter((el) => el.history)
     .map((el) => el.history);
@@ -42,9 +36,7 @@ const FixedExpenseDetails = (props) => {
   };
 
   checkIfIsPaidIsCurrrentMonth();
-  // const copyToClipboard = () => {
-  //   Clipboard.setString(title);
-  // };
+
   const showIsPaid = () => {
     if (!checkIfIsPaidIsCurrrentMonth()) {
       return (
@@ -57,10 +49,6 @@ const FixedExpenseDetails = (props) => {
             paddingRight: 20,
             justifyContent: "center",
             alignItems: "center",
-            // shadowOffset: { height: 0, width: 0 },
-            // shadowColor: "black",
-            // shadowOpacity: 0.2,
-            // shadowRadius: 7,
           }}
           onPress={() => {
             Alert.alert(
@@ -111,8 +99,6 @@ const FixedExpenseDetails = (props) => {
     dispatch(fixedExpenseActions.archive(id, userId));
 
     props.navigation.navigate("FixedExpense");
-
-    // props.navigation.goBack();
   };
 
   const removeIncome = () => {
@@ -287,7 +273,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "space-around",
-    // padding: 30,
     height: 100,
     marginBottom: 10,
     borderBottomLeftRadius: 100,
@@ -297,34 +282,20 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 5,
     paddingBottom: 5,
-
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
   },
   details: {
     marginTop: 25,
     width: Dimensions.get("window").width * 0.9,
-    // height: 200,
     marginBottom: 20,
     shadowColor: "black",
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 0.25,
     shadowRadius: 3,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
   },
   history: {
     marginTop: 10,
     height: 200,
     width: Dimensions.get("window").width * 0.9,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
     shadowColor: "black",
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 0.25,

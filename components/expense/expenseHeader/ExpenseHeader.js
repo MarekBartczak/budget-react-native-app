@@ -93,7 +93,6 @@ export default ExpenseHeader;
 
 const styles = StyleSheet.create({
   expenseHeader: {
-    // marginVertical: 10,
     height: 80,
     flexDirection: "row",
     width: Dimensions.get("window").width,
@@ -116,6 +115,5 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit_600SemiBold",
     fontSize: 25,
     textAlign: "center",
-    // marginLeft: 30,
   },
 });

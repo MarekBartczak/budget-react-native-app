@@ -1,23 +1,8 @@
 import * as Facebook from "expo-facebook";
 import firebase from "firebase";
 
-// import auth from '@react-native-firebase/auth';
-// import { LoginManager, AccessToken } from 'react-native-fbsdk';
-
-// firebase.auth().onAuthStateChanged((user) => {
-//   if (user != null) {
-//   } else {
-//   }
-// });
-
-// https://graph.facebook.com/10226230336455510/picture?type=large&width=720&height=720
 async function logIn() {
   try {
-    // const result = await LoginManager.logInWithPermissions([
-    //   "public_profile",
-    //   "email",
-    // ]);
-
     await Facebook.initializeAsync({
       appId: "566533791460990",
     });
@@ -26,23 +11,6 @@ async function logIn() {
         permissions: ["public_profile"],
       });
     if (type === "success") {
-      // Sign in using a popup.
-      // var provider = new firebase.auth.FacebookAuthProvider();
-      // provider.addScope("public_profile");
-      // firebase
-      //   .auth()
-      //   .signInWithPopup(provider)
-      //   .then(function (result) {
-
-      //     // This gives you a Facebook Access Token.
-      //     var token = result.credential.accessToken;
-      //     // The signed-in user info.
-      //     var user = result.user;
-      //   });
-      // const response = await fetch(
-      //   `https://graph.facebook.com/me?access_token=${token}`
-      // );
-      // checkLoginState(response)
       const credential = firebase.auth.FacebookAuthProvider.credential(token);
       firebase
         .auth()
@@ -50,24 +18,7 @@ async function logIn() {
         .then((res) => console.log(res))
         .catch((error) => {
           console.log(error);
-          // Handle Errors here.
-          var errorCode = error.code;
-          //     var errorMessage = error.message;
-          //     // The email of the user's account used.
-          //     var email = error.email;
-          //     // The firebase.auth.AuthCredential type that was used.
-          //     var credential = error.credential;
         });
-
-      // Sign in with credential from the Facebook user.
-      // firebase
-      //   .auth()
-      //   .signInWithCredential(credential)
-      //   .then((res) => console.log(res))
-      //   .catch((error) => {
-      //     // alert(error);
-      //     // Handle Errors here.
-      //   });
     } else {
       // type === 'cancel'
     }

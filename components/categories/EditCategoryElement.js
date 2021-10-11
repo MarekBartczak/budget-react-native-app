@@ -132,10 +132,6 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 50,
     flexDirection: "row",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowRadius: 7,
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
     alignItems: "center",
   },
   textElement: {

@@ -1,19 +1,12 @@
 import { LineChart, BarChart } from "react-native-chart-kit";
-import React, { useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Dimensions, TouchableOpacity } from "react-native";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 
 const Chart = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   let selectedDate;
-  // to fixed ^^^
   const getType = props.type;
 
   let getObj = props.obj;
@@ -85,23 +78,6 @@ const Chart = (props) => {
       }}
     >
       <TouchableOpacity onPress={props.press}>
-        {/* <View style={styles.valMax}>
-          <Text
-            style={{
-              ...styles.valMaxText,
-              ...{ color: Colors[scheme].primarySecond },
-            }}
-          >
-            {data.length > 0
-              ? Math.max
-                  .apply(
-                    Math,
-                    data.map((el) => Number(el))
-                  )
-                  .toFixed(2)
-              : 0}
-          </Text>
-        </View> */}
         <BarChart
           data={{
             labels: label,
@@ -111,7 +87,6 @@ const Chart = (props) => {
               },
             ],
           }}
-          // verticalLabelRotation={-90}
           withVerticalLines={false}
           withVerticalLabels={true}
           withHorizontalLines={false}
@@ -125,10 +100,6 @@ const Chart = (props) => {
             labelColor: () => Colors[scheme].headerTintColor,
             backgroundGradientFromOpacity: 0,
             backgroundGradientToOpacity: 0,
-            // backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
-            // backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
-            // backgroundGradientFrom: Colors[scheme].button,
-            // backgroundGradientTo: Colors[scheme].button,
 
             propsForDots: {
               r: "2",
@@ -151,25 +122,6 @@ const Chart = (props) => {
           }}
           bezier
         />
-        {/* <View style={styles.valMin}>
-          <Text
-            style={{
-              ...styles.valMinText,
-              ...{
-                color: Colors[scheme].primarySecond,
-              },
-            }}
-          >
-            {data > 0
-              ? Math.min
-                  .apply(
-                    Math,
-                    data.map((el) => Number(el))
-                  )
-                  .toFixed(2)
-              : 0}
-          </Text>
-        </View> */}
       </TouchableOpacity>
     </View>
   );

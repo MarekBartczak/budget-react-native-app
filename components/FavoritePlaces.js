@@ -171,17 +171,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   closeModalBtn: {
-    // marginTop: 30,
     width: Dimensions.get("window").width / 2,
     alignItems: "center",
     marginHorizontal: Dimensions.get("window").width / 4,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 3,
-    // // shadowOffset: { height: 0, width: 0 },
-    // // shadowRadius: 7,
-    // // shadowColor: "black",
-    // // shadowOpacity: 0.5,
+
     borderWidth: 1,
     padding: 10,
     paddingHorizontal: 30,

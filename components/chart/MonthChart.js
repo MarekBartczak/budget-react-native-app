@@ -12,9 +12,7 @@ import { useSelector } from "react-redux";
 
 const Chart = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // props.label and props.data shoud be same length
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   return (
     <View style={styles.chartView}>
       <TouchableOpacity onPress={props.press}>
@@ -49,15 +47,12 @@ const Chart = (props) => {
           withHorizontalLines={false}
           withVerticalLines={false}
           withHorizontalLabels={false}
-          with // shadow={false}
           width={Dimensions.get("window").width * 0.9}
           height={180}
           chartConfig={{
             labelColor: () => Colors[scheme].primarySecond,
             backgroundGradientFromOpacity: 0,
             backgroundGradientToOpacity: 0,
-            // backgroundGradientFromOpacity: scheme === "dark" ? 0.8 : 0.6,
-            // backgroundGradientToOpacity: scheme === "dark" ? 0.8 : 0.6,
             backgroundGradientFrom: Colors[scheme].primaryThird,
             backgroundGradientTo: Colors[scheme].primaryThird,
             decimalPlaces: 2,
@@ -94,7 +89,6 @@ const styles = StyleSheet.create({
   chartView: { marginTop: 20 },
   chart: {
     borderRadius: 16,
-    // padding: 0,
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width * 0.9,

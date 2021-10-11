@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     paddingVertical: 20,
     marginTop: -1,
-    // marginTop: 10,
   },
   dateFilter: {},
   categoryFilter: {},

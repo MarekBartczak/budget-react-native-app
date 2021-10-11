@@ -42,11 +42,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     borderBottomWidth: 1,
-    // backgroundColor: Colors.light.primaryThird,
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
   },
   info: {
     flexDirection: "row",

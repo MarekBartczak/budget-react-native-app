@@ -8,7 +8,6 @@ const FixedExpensesList = (props) => {
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
-  // const expenseById = fixedExpenseList.find((el) => el.id === id);
   return (
     <ExternalComponent>
       <View style={styles.fixedExpensesList}>

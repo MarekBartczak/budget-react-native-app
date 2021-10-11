@@ -5,9 +5,7 @@ const signInWithEmailAndPassowrd = (email, password) => {
     .auth()
     .signInWithEmailAndPassword(email, password)
 
-    .then((res) => {
-      // console.log(res);
-    })
+    .then((res) => {})
     .catch((err) => {
       console.log(err);
     });

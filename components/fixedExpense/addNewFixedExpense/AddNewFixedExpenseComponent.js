@@ -7,13 +7,6 @@ import switchComaToDot from "../../../functions/switchCompaToDot";
 import AddNew from "../../addNew/AddNew";
 import validateChecker from "../../undefinedListCheck/ValidateChecker";
 const AddNewFixedExpenseComponent = (props) => {
-  // const [date, setDate] = useState(new Date());
-  // const [cost, setCost] = useState();
-  // const [title, setTitle] = useState();
-  // const [recipient, setRecipient] = useState();
-
-  // const dispatch = useDispatch();
-
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setDate(currentDate);

@@ -104,7 +104,6 @@ const ExpenseListElement = (props) => {
   const deleteItem = () => {
     dispatch(itemsAction.delItem(props.id, userId));
     navigation.navigate("Home");
-    // console.log(props);
   };
 
   const rightSwipeActions = () => {
@@ -148,15 +147,11 @@ const ExpenseListElement = (props) => {
     );
   };
   return (
-    <Swipeable
-      renderRightActions={rightSwipeActions}
-      // onSwipeableRightOpen={() => deleteItem()}
-    >
+    <Swipeable renderRightActions={rightSwipeActions}>
       <View
         style={{
           ...styles.element,
           ...{
-            // borderColor: Colors[scheme].backGroundOne,
             backgroundColor: Colors[scheme].backGroundList,
             shadowOffset: { height: 0, width: 0 },
             shadowRadius: 6,
@@ -254,7 +249,6 @@ export default ExpenseListElement;
 
 const styles = StyleSheet.create({
   element: {
-    // borderBottomWidth: 1,
     marginVertical: 10,
   },
   container: {

@@ -43,7 +43,6 @@ const SearchEngine = (props) => {
           style={{
             ...styles.textInput,
             ...{
-              // borderColor: Colors[scheme].primarySecond,
               backgroundColor: Colors[scheme].primary,
               color: Colors[scheme].primarySecond,
             },

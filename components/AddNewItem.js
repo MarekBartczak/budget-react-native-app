@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     justifyContent: "center",
     alignItems: "center",
-    // marginTop: 20,
   },
 
   addBtn: {
@@ -79,7 +78,6 @@ const styles = StyleSheet.create({
   add: {
     justifyContent: "center",
     alignItems: "center",
-    // marginBottom: 4,
   },
   btnText: {
     fontSize: 15,

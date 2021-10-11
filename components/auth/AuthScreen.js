@@ -8,7 +8,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ActivityIndicator,
-  Alert,
   useColorScheme,
 } from "react-native";
 import React, { useState, useEffect } from "react";
@@ -20,10 +19,8 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 import Input from "../input/Input";
 import Colors from "../../constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
-import config from "./config/firebase";
 import signInWithEmailAndPassowrd from "./authMethods/withEmailAndPassword";
 import signInWithGoogleAsync from "./authMethods/withGoogle";
-import signInWithFacebook from "./authMethods/withFacebook";
 import firebaseInit from "./firebaseInit";
 import Category from "../../data/category";
 import registerWithEmail from "./authMethods/registerWithEmail";
@@ -31,7 +28,6 @@ import registerWithEmail from "./authMethods/registerWithEmail";
 const AuthScreen = (props) => {
   const colorScheme = useColorScheme();
   const categoryList = { ...Category };
-  // const sheme = Appearance.getColorScheme();
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
   const [signUp, setSignUp] = useState(false);
@@ -53,7 +49,6 @@ const AuthScreen = (props) => {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      // dispatch(authActions.showIndicator(false));
       const userData = firebase.auth().currentUser;
       login();
       createUserInfo(userData);
@@ -180,7 +175,6 @@ const AuthScreen = (props) => {
             ...styles.input,
             ...{ backgroundColor: Colors[scheme].primaryThird },
           }}
-          // placeholder={"email"}
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="default"
@@ -203,7 +197,6 @@ const AuthScreen = (props) => {
             ...styles.input,
             ...{ backgroundColor: Colors[scheme].primaryThird },
           }}
-          // placeholder={"hasło"}
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="default"
@@ -226,7 +219,6 @@ const AuthScreen = (props) => {
             ...styles.input,
             ...{ backgroundColor: Colors[scheme].primaryThird },
           }}
-          // placeholder={"hasło"}
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="default"
@@ -259,7 +251,6 @@ const AuthScreen = (props) => {
             ...styles.input,
             ...{ backgroundColor: Colors[scheme].primaryThird },
           }}
-          // placeholder={"email"}
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="default"
@@ -282,7 +273,6 @@ const AuthScreen = (props) => {
             ...styles.input,
             ...{ backgroundColor: Colors[scheme].primaryThird },
           }}
-          // placeholder={"hasło"}
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="default"
@@ -378,7 +368,6 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: Colors.light.primary,
   },
   newAccount: {
     padding: 10,
@@ -392,7 +381,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 3,
 
-    // width: Dimensions.get("window").width * 0.7,
     height: 40,
     justifyContent: "center",
     alignItems: "center",
@@ -401,7 +389,6 @@ const styles = StyleSheet.create({
   },
 
   loginScreen: {
-    // height: 200,
     marginBottom: 40,
 
     width: Dimensions.get("window").width * 0.9,
@@ -419,8 +406,7 @@ const styles = StyleSheet.create({
   loginButton: {
     marginTop: 10,
     borderRadius: 3,
-    // borderColor: Colors.light.button,
-    // borderWidth: 2,
+
     shadowOffset: { height: 0, width: 0 },
     shadowColor: "black",
     shadowOpacity: 0.25,
@@ -455,11 +441,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderRadius: 3,
-
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
   },
 
   loginWithText: {

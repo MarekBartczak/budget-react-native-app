@@ -1,17 +1,13 @@
-import { StyleSheet, View, Dimensions, useColorScheme } from "react-native";
-import React, { useState, useEffect } from "react";
+import { StyleSheet, View } from "react-native";
+import React from "react";
 import Chart from "../../components/chart/Chart";
-import MonthChart from "../../components/chart/MonthChart";
 import FavoritePlaces from "../../components/FavoritePlaces";
 import AddNewItem from "../../components/AddNewItem";
 import { useSelector, useDispatch } from "react-redux";
-import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 import * as favoritePlaceAction from "../../store/actions/favoritePlace";
-import * as itemsActions from "../../store/actions/items";
 import chartElement from "../../functions/ChartElement";
 import SummaryCost from "../../components/summaryCost/SummaryCost";
-import summaryCostCounter from "../../functions/summaryCostCounter";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const MainScreen = (props) => {
@@ -19,19 +15,8 @@ const MainScreen = (props) => {
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
   const chartEl = chartElement(itemsFromRedux);
-  // console.log(chartEl);
   const dispatch = useDispatch();
   const type = "expense";
-  // dispatch(
-  //   itemsActions.setFilteredMonth(() => {
-  //     const month = new Date().getMonth() + 1;
-  //     if (month < 10) {
-  //       return `0${month}`;
-  //     }
-
-  //     return month.toString();
-  //   }, new Date().getFullYear().toString())
-  // );
 
   return (
     <ExternalComponent>
@@ -44,19 +29,8 @@ const MainScreen = (props) => {
         }}
       >
         <View style={styles.screen}>
-          <View
-            style={
-              {
-                // marginBottom: 20,
-                // shadowOffset: { height: 0, width: 0 },
-                // shadowRadius: 7,
-                // shadowColor: "black",
-                // shadowOpacity: 0.2,
-              }
-            }
-          >
+          <View style={{}}>
             <SummaryCost type={type} list={itemsFromRedux} />
-            {/* {console.log(itemsFromRedux)} */}
           </View>
           <View style={styles.component}>
             <Chart
@@ -65,13 +39,7 @@ const MainScreen = (props) => {
               obj={chartEl}
             />
           </View>
-          {/* <View style={styles.component}>
-            <MonthChart
-              press={() => props.navigation.navigate("Date")}
-              label={chartEl.label}
-              data={chartEl.data}
-            />
-          </View> */}
+
           <View style={styles.favoritePlace}>
             <FavoritePlaces
               onPress={() => props.navigation.navigate("FavoritePlace")}
@@ -98,26 +66,15 @@ const MainScreen = (props) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    // alignItems: "center",
   },
   favoritePlace: {
     alignItems: "center",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowRadius: 7,
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
   },
   addNewItem: {
     marginTop: 25,
-    // position: "absolute",
     bottom: 0,
-    // marginHorizontal: Dimensions.get("window").width * 0.4,
 
     alignItems: "center",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowRadius: 7,
-    // shadowColor: "black",
-    // shadowOpacity: 0.5,
   },
   raport: {
     alignItems: "center",
@@ -125,11 +82,6 @@ const styles = StyleSheet.create({
   component: {
     overflow: "hidden",
     paddingBottom: 5,
-
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
   },
 });
 

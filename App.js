@@ -19,8 +19,6 @@ import {
   Kanit_600SemiBold,
 } from "@expo-google-fonts/kanit";
 
-// import { AppearanceProvider, useColorScheme } from "react-native-appearance";
-
 const rootReducer = combineReducers({
   auth: AuthReducer,
   item: itemReducer,

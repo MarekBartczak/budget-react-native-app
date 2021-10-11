@@ -1,13 +1,12 @@
 import {
   StyleSheet,
-  Text,
   View,
   Dimensions,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Colors from "../../constants/Colors";
 import Input from "../input/Input";
 import DatePicker from "../../components/DatePicker";
@@ -17,7 +16,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 const AddNewComponent = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-  // const [keyboardStatus, setKeyboardStatus] = useState(undefined);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,10 +39,8 @@ const AddNewComponent = (props) => {
   const kedyboardHide = () =>
     dispatch(configActions.addIncomeKeyboardStatus(false));
 
-  // console.log(keyboardStatus);
   return (
     <KeyboardAvoidingView
-      // behavior={"position"}
       style={{ flex: 1 }}
       keyboardVerticalOffset={Dimensions.get("window").height < 670 ? 60 : -100}
       enabled
