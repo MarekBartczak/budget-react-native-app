@@ -13,20 +13,18 @@ import FixedExpense from "../../models/FixedExpense";
 import uuid from "react-native-uuid";
 import DatePicker from "../../components/DatePicker";
 import Input from "../../components/input/Input";
-import Button from "../../components/buttons/Button";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as fixedExpenseActions from "../../store/actions/fixedExpense";
-import switchComaToDot from "../../functions/switchCompaToDot";
 import validateChecker from "../../components/undefinedListCheck/ValidateChecker";
 import Colors from "../../constants/Colors";
 import ExternalComponentWithGradient from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import saveDataToTheCloud from "../../functions/cloud/saveDataToTheCloud";
+import switchComaToDot from "../../functions/switchCompaToDot";
+import numberInputValidation from "../../functions/NumberInputValidation";
 const AddNewFixedExpenseScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-  const listOfFixedExpense = useSelector(
-    (state) => state.fixedExpense.fixedExpense
-  );
+
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
   const [cost, setCost] = useState();
@@ -43,6 +41,9 @@ const AddNewFixedExpenseScreen = (props) => {
     { id: "03", title: "co kwartał", value: { days: 0, months: 3, years: 0 } },
     { id: "04", title: "co rok", value: { days: 0, months: 0, years: 1 } },
   ];
+  const ErrorCostValidation = () => {
+    return <Text style={{ color: "red" }}> Proszę wpisać poprawną kwotę </Text>;
+  };
 
   //   const isSelected = ()
   const onChangeDate = (event, selectedDate) => {
@@ -119,6 +120,9 @@ const AddNewFixedExpenseScreen = (props) => {
                     onChangeText={setCost}
                     placeholderTextColor={Colors[scheme].primarySecond}
                   />
+                  {!numberInputValidation(switchComaToDot(cost)) && (
+                    <ErrorCostValidation />
+                  )}
                   <Input
                     style={{
                       ...styles.input,
@@ -230,23 +234,49 @@ const AddNewFixedExpenseScreen = (props) => {
                     />
                   </View>
                 </View>
-                <View style={styles.buttonView}>
-                  <Button
-                    onPress={saveFixedExpense}
-                    text="Zapisz"
-                    style={{
-                      width: Dimensions.get("window").width * 0.5,
-                      height: Dimensions.get("screen").height * 0.05,
-                      shadowColor: "black",
-                      shadowOffset: { height: 0, width: 0 },
-                      shadowOpacity: 0.25,
-                      shadowRadius: 5,
-                      borderRadius: 3,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      marginTop: 20,
-                    }}
-                  />
+                <View style={{ alignItems: "center" }}>
+                  {!numberInputValidation(switchComaToDot(cost)) ? (
+                    <View
+                      style={{
+                        ...styles.buttonView,
+                        ...{ backgroundColor: Colors[scheme].primary },
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontFamily: "Kanit_600SemiBold",
+                          fontSize: 15,
+                          color: Colors[scheme].primaryThird,
+                        }}
+                      >
+                        ZAPISZ
+                      </Text>
+                    </View>
+                  ) : (
+                    <TouchableOpacity
+                      style={{
+                        ...styles.buttonView,
+                        ...{
+                          backgroundColor: Colors[scheme].primary,
+                          shadowColor: "black",
+                          shadowOffset: { height: 0, width: 0 },
+                          shadowOpacity: 0.25,
+                          shadowRadius: 5,
+                        },
+                      }}
+                      onPress={saveFixedExpense}
+                    >
+                      <Text
+                        style={{
+                          fontFamily: "Kanit_600SemiBold",
+                          fontSize: 15,
+                          color: Colors[scheme].button,
+                        }}
+                      >
+                        ZAPISZ
+                      </Text>
+                    </TouchableOpacity>
+                  )}
                 </View>
               </View>
             </TouchableWithoutFeedback>
@@ -303,9 +333,14 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonView: {
-    // marginTop: 50,
-    justifyContent: "center",
+    marginTop: 20,
+    marginBottom: 20,
+    borderRadius: 3,
     alignItems: "center",
+    justifyContent: "center",
+
+    width: Dimensions.get("window").width * 0.5,
+    height: Dimensions.get("screen").height * 0.05,
   },
   interval: {
     marginTop: 20,
