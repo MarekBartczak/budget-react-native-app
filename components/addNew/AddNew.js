@@ -6,17 +6,17 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Text,
+  TouchableOpacity,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Colors from "../../constants/Colors";
 import Input from "../input/Input";
 import DatePicker from "../../components/DatePicker";
-import Button from "../../components/buttons/Button";
 import * as configActions from "../../store/actions/config";
 import { useSelector, useDispatch } from "react-redux";
 import numberInputValidation from "../../functions/NumberInputValidation";
+import switchComaToDot from "../../functions/switchCompaToDot";
 const AddNewComponent = (props) => {
-  const [validCost, setValidCost] = useState(false);
   const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
 
@@ -85,7 +85,7 @@ const AddNewComponent = (props) => {
                 onChangeText={props.setAmountValue}
                 placeholderTextColor={Colors[scheme].primarySecond}
               />
-              {!numberInputValidation(props.amountValue) && (
+              {!numberInputValidation(switchComaToDot(props.amountValue)) && (
                 <ErrorCostValidation />
               )}
               <Input
@@ -111,19 +111,49 @@ const AddNewComponent = (props) => {
                 placeholderTextColor={Colors[scheme].primarySecond}
               />
             </View>
-            <View style={styles.buttonView}>
-              <Button
-                onPress={props.save}
-                text="Zapisz"
-                style={{
-                  width: Dimensions.get("window").width * 0.5,
-                  height: Dimensions.get("screen").height * 0.05,
-                  shadowColor: "black",
-                  shadowOffset: { height: 0, width: 0 },
-                  shadowOpacity: 0.25,
-                  shadowRadius: 5,
-                }}
-              />
+            <View style={{ alignItems: "center" }}>
+              {!numberInputValidation(switchComaToDot(props.amountValue)) ? (
+                <View
+                  style={{
+                    ...styles.buttonView,
+                    ...{ backgroundColor: Colors[scheme].primary },
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontFamily: "Kanit_600SemiBold",
+                      fontSize: 15,
+                      color: Colors[scheme].primaryThird,
+                    }}
+                  >
+                    ZAPISZ
+                  </Text>
+                </View>
+              ) : (
+                <TouchableOpacity
+                  style={{
+                    ...styles.buttonView,
+                    ...{
+                      backgroundColor: Colors[scheme].primary,
+                      shadowColor: "black",
+                      shadowOffset: { height: 0, width: 0 },
+                      shadowOpacity: 0.25,
+                      shadowRadius: 5,
+                    },
+                  }}
+                  onPress={props.save}
+                >
+                  <Text
+                    style={{
+                      fontFamily: "Kanit_600SemiBold",
+                      fontSize: 15,
+                      color: Colors[scheme].button,
+                    }}
+                  >
+                    ZAPISZ
+                  </Text>
+                </TouchableOpacity>
+              )}
             </View>
           </View>
         </TouchableWithoutFeedback>
@@ -170,7 +200,13 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonView: {
-    justifyContent: "center",
+    marginTop: 20,
+    marginBottom: 20,
+    borderRadius: 3,
     alignItems: "center",
+    justifyContent: "center",
+
+    width: Dimensions.get("window").width * 0.5,
+    height: Dimensions.get("screen").height * 0.05,
   },
 });
