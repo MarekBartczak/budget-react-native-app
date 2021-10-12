@@ -198,9 +198,9 @@ const DrawerNavigator = (props) => {
     fetchData();
   }, [status]);
   if (
-    // isExpenseLoaded === true &&
-    // isIncomeLoaded === true &&
-    // isFixedExpenseLoaded === true &&
+    isExpenseLoaded === true &&
+    isIncomeLoaded === true &&
+    isFixedExpenseLoaded === true &&
     isConfigLoaded === true
     // false
   ) {
