@@ -18,15 +18,17 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "userInterfaceStyle": "automatic",
+      "buildNumber": "0.1.0",
 
-      "bundleIdentifier": "com.marek.bartczak.budgetreactnativeapp",
+      "bundleIdentifier": "com.marek.bartczak.financialApp",
+      "googleServicesFile": "./GoogleService-Info.plist",
+
       "supportsTablet": false,
       "config": {
         "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.506404078923-n0o0rasbikpkccr3rrglt9qda03mnrlv"
+          "reservedClientId": "com.googleusercontent.apps.712755376912-32lu7emovkkc8fo0tv97igt6cobh855a"
         }
-      },
-      "googleServicesFile": "./GoogleService-Info.plist"
+      }
     },
     "android": {
       "userInterfaceStyle": "automatic",

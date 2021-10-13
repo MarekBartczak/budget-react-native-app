@@ -90,14 +90,14 @@ const isUserEqual = (googleUser, firebaseUser) => {
 const signInWithGoogleAsync = async (signinFunction, categoryList) => {
   try {
     const result = await Google.logInAsync({
-      androidClientId:
-        "com.googleusercontent.apps.506404078923-nrctlraih104rdme13i095b96ee3l6f6",
+      // androidClientId:
+      //   "com.googleusercontent.apps.506404078923-nrctlraih104rdme13i095b96ee3l6f6",
 
       iosStandaloneAppClientId:
-        "com.googleusercontent.apps.506404078923-nrctlraih104rdme13i095b96ee3l6f6",
+        "712755376912-8qm9vlmvq4an1iqr2hqogfubhfglrn88.apps.googleusercontent.com",
 
       iosClientId:
-        "506404078923-nrctlraih104rdme13i095b96ee3l6f6.apps.googleusercontent.com",
+        "712755376912-32lu7emovkkc8fo0tv97igt6cobh855a.apps.googleusercontent.com",
       scopes: ["profile", "email"],
     });
     if (result.type === "success") {

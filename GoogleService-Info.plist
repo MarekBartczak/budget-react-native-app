@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>506404078923-n0o0rasbikpkccr3rrglt9qda03mnrlv.apps.googleusercontent.com</string>
+	<string>712755376912-d3n2miel04fqn5jn74h3mev0odsvc8p3.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.506404078923-n0o0rasbikpkccr3rrglt9qda03mnrlv</string>
+	<string>com.googleusercontent.apps.712755376912-d3n2miel04fqn5jn74h3mev0odsvc8p3</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCaf7d-sqNF8JWiQ_vgcPGRKT39PFq0xGw</string>
+	<string>AIzaSyA8-OXA8LklRpbMUUEUGnquYnxeQyIUjyM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>506404078923</string>
+	<string>712755376912</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.marek.bartczak.budgetreactnativeapp</string>
+	<string>com.marek.bartczak.financialApp</string>
 	<key>PROJECT_ID</key>
-	<string>budget-reactnative-app</string>
+	<string>simplybudgetapp</string>
 	<key>STORAGE_BUCKET</key>
-	<string>budget-reactnative-app.appspot.com</string>
+	<string>simplybudgetapp.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:506404078923:ios:65e8a1d138ebb078fed4ce</string>
-	<key>DATABASE_URL</key>
-	<string>https://budget-reactnative-app-default-rtdb.firebaseio.com</string>
+	<string>1:712755376912:ios:93d2a4850ec84b52c96b95</string>
 </dict>
 </plist>
