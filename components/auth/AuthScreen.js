@@ -9,13 +9,15 @@ import {
   Keyboard,
   ActivityIndicator,
   useColorScheme,
+  Image,
+  ImageBackground,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import DrawerNavigator from "../../navigation/DrawerNavigator";
 import { useDispatch, useSelector } from "react-redux";
 import * as authActions from "../../store/actions/auth";
 import * as configActions from "../../store/actions/config";
-import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
+// import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import Input from "../input/Input";
 import Colors from "../../constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
@@ -78,7 +80,7 @@ const AuthScreen = (props) => {
           <View
             style={{
               ...styles.loginButton,
-              ...{ backgroundColor: Colors[scheme].primary },
+              ...{ backgroundColor: Colors.dark.primary },
             }}
           >
             <Text
@@ -120,7 +122,7 @@ const AuthScreen = (props) => {
           <View
             style={{
               ...styles.loginButton,
-              ...{ backgroundColor: Colors[scheme].primary },
+              ...{ backgroundColor: Colors.dark.primary },
             }}
           >
             <Text
@@ -159,7 +161,7 @@ const AuthScreen = (props) => {
       <View
         style={{
           ...styles.loginScreen,
-          ...{ backgroundColor: Colors[scheme].light },
+          // ...{ backgroundColor: Colors[scheme].light },
         }}
       >
         <Text
@@ -173,7 +175,7 @@ const AuthScreen = (props) => {
         <Input
           style={{
             ...styles.input,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{ backgroundColor: "rgb(255, 255, 255)" },
           }}
           autoCapitalize="none"
           autoCorrect={false}
@@ -195,7 +197,7 @@ const AuthScreen = (props) => {
         <Input
           style={{
             ...styles.input,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{ backgroundColor: "rgb(255, 255, 255)" },
           }}
           autoCapitalize="none"
           autoCorrect={false}
@@ -217,7 +219,7 @@ const AuthScreen = (props) => {
         <Input
           style={{
             ...styles.input,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{ backgroundColor: "rgb(255, 255, 255)" },
           }}
           autoCapitalize="none"
           autoCorrect={false}
@@ -235,7 +237,7 @@ const AuthScreen = (props) => {
       <View
         style={{
           ...styles.loginScreen,
-          ...{ backgroundColor: Colors[scheme].light },
+          // ...{ backgroundColor: Colors[scheme].light },
         }}
       >
         <Text
@@ -249,7 +251,7 @@ const AuthScreen = (props) => {
         <Input
           style={{
             ...styles.input,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{ backgroundColor: "rgb(255, 255, 255)" },
           }}
           autoCapitalize="none"
           autoCorrect={false}
@@ -271,7 +273,7 @@ const AuthScreen = (props) => {
         <Input
           style={{
             ...styles.input,
-            ...{ backgroundColor: Colors[scheme].primaryThird },
+            ...{ backgroundColor: "rgb(255, 255, 255)" },
           }}
           autoCapitalize="none"
           autoCorrect={false}
@@ -327,8 +329,19 @@ const AuthScreen = (props) => {
       );
     } else {
       return (
-        <ExternalComponent dimmer={0.85}>
-          <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View>
+            <ImageBackground
+              style={{
+                position: "absolute",
+                width: Dimensions.get("window").width,
+                height: Dimensions.get("window").height,
+                // height: Dimensions.get("window").height,
+              }}
+              resizeMode="stretch"
+              source={require("../../assets/login_screen.png")}
+            />
+
             <View style={{ ...styles.screen, ...{} }}>
               {signUp ? signUpCompontnt() : signInComponent()}
               {signUp ? signUpButtons() : signInButtons()}
@@ -345,7 +358,7 @@ const AuthScreen = (props) => {
                       ...{ backgroundColor: Colors[scheme].google },
                     }}
                   >
-                    <AntDesign name="google" size={24} color="white" />
+                    <AntDesign name="google" size={10} color="white" />
                     <Text style={styles.loginWithText}>
                       {"Zaloguj przez Google".toUpperCase()}
                     </Text>
@@ -353,8 +366,8 @@ const AuthScreen = (props) => {
                 </TouchableOpacity>
               </View>
             </View>
-          </TouchableWithoutFeedback>
-        </ExternalComponent>
+          </View>
+        </TouchableWithoutFeedback>
       );
     }
   }
@@ -389,7 +402,7 @@ const styles = StyleSheet.create({
   },
 
   loginScreen: {
-    marginBottom: 40,
+    marginTop: 200,
 
     width: Dimensions.get("window").width * 0.9,
 
@@ -422,7 +435,7 @@ const styles = StyleSheet.create({
   },
 
   otherMethodLogin: {
-    width: Dimensions.get("window").width * 0.9,
+    // width: Dimensions.get("window").width * 0.9,
   },
   loginWithFacebook: {
     backgroundColor: Colors.facebook,
@@ -438,18 +451,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 10,
+    // paddingHorizontal: 10,
     paddingVertical: 10,
-    borderRadius: 3,
+    borderRadius: 10,
+    width: "100%",
   },
 
   loginWithText: {
     color: "white",
-    width: "80%",
+    width: "50%",
     fontFamily: "Kanit_600SemiBold",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 10,
   },
 });

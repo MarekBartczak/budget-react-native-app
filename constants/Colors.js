@@ -109,4 +109,5 @@ export default {
     details: "rgba(217, 175, 55, 1)",
     google: "rgb(255,62,48)",
   },
+  white: "rgba(255, 255, 255)",
 };
