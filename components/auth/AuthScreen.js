@@ -60,7 +60,6 @@ const AuthScreen = (props) => {
   });
 
   const createUserInfo = (user) => {
-    console.log(user);
     const userDataObj = {
       name: user.displayName ? user.displayName : user.providerData[0].email,
       email: user.providerData[0].email,

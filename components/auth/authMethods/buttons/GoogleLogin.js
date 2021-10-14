@@ -16,7 +16,7 @@ const AppleLogin = (props) => {
         alignItems: "center",
         flexDirection: "row",
         paddingVertical: 10,
-        borderRadius: 10,
+        borderRadius: 25,
       }}
     >
       <AntDesign name="google" size={24} color="white" />
