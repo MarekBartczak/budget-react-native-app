@@ -90,8 +90,8 @@ const isUserEqual = (googleUser, firebaseUser) => {
 const signInWithGoogleAsync = async (signinFunction, categoryList) => {
   try {
     const result = await Google.logInAsync({
-      // androidClientId:
-      //   "com.googleusercontent.apps.506404078923-nrctlraih104rdme13i095b96ee3l6f6",
+      androidClientId:
+        "712755376912-8qm9vlmvq4an1iqr2hqogfubhfglrn88.apps.googleusercontent.com",
 
       iosStandaloneAppClientId:
         "712755376912-8qm9vlmvq4an1iqr2hqogfubhfglrn88.apps.googleusercontent.com",

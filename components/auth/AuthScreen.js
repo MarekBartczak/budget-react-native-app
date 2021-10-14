@@ -26,7 +26,9 @@ import signInWithGoogleAsync from "./authMethods/withGoogle";
 import firebaseInit from "./firebaseInit";
 import Category from "../../data/category";
 import registerWithEmail from "./authMethods/registerWithEmail";
-
+import AppleLoginButton from "./authMethods/buttons/AppleLogin";
+import GoogleLoginButton from "./authMethods/buttons/GoogleLogin";
+import appleLogin from "./authMethods/withApple";
 const AuthScreen = (props) => {
   const colorScheme = useColorScheme();
   const categoryList = { ...Category };
@@ -57,239 +59,10 @@ const AuthScreen = (props) => {
     }
   });
 
-  const checkIfPassowrds = (a, b) => {
-    if (a === b) {
-      return a;
-    } else {
-      false;
-    }
-  };
-
-  const signUpButtons = () => {
-    return (
-      <View style={{ marginBottom: 20 }}>
-        <TouchableOpacity
-          onPress={() => {
-            registerWithEmail(
-              newUserEmail,
-              checkIfPassowrds(newUserPassword, newUserPasswordRepeated),
-              categoryList
-            );
-          }}
-        >
-          <View
-            style={{
-              ...styles.loginButton,
-              ...{ backgroundColor: Colors.dark.primary },
-            }}
-          >
-            <Text
-              style={{
-                ...styles.loginBtnText,
-                ...{ color: Colors[scheme].button },
-              }}
-            >
-              {"Utwórz konto".toUpperCase()}
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => signUpToggle()}>
-          <View
-            style={{
-              ...styles.newAccount,
-              ...{},
-            }}
-          >
-            <Text
-              style={{
-                color: Colors[scheme].button,
-                fontFamily: "Kanit_600SemiBold",
-              }}
-            >
-              Zaloguj
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-  const signInButtons = () => {
-    return (
-      <View style={{ marginBottom: 20 }}>
-        <TouchableOpacity
-          onPress={() => signInWithEmailAndPassowrd(userEmail, userPassword)}
-        >
-          <View
-            style={{
-              ...styles.loginButton,
-              ...{ backgroundColor: Colors.dark.primary },
-            }}
-          >
-            <Text
-              style={{
-                ...styles.loginBtnText,
-                ...{ color: Colors[scheme].button },
-              }}
-            >
-              {"Zaloguj".toUpperCase()}
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => signUpToggle()}>
-          <View
-            style={{
-              ...styles.newAccount,
-              ...{},
-            }}
-          >
-            <Text
-              style={{
-                color: Colors[scheme].button,
-                fontFamily: "Kanit_600SemiBold",
-              }}
-            >
-              Utwórz konto
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
-  const signUpCompontnt = () => {
-    return (
-      <View
-        style={{
-          ...styles.loginScreen,
-          // ...{ backgroundColor: Colors[scheme].light },
-        }}
-      >
-        <Text
-          style={{
-            ...styles.credential,
-            ...{ color: Colors[scheme].primarySecond },
-          }}
-        >
-          {"Adres email".toUpperCase()}
-        </Text>
-        <Input
-          style={{
-            ...styles.input,
-            ...{ backgroundColor: "rgb(255, 255, 255)" },
-          }}
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="default"
-          autoComplete="off"
-          value={newUserEmail}
-          keyboardType={"email-address"}
-          onChangeText={setNewUserEmail}
-        />
-        <Text
-          style={{
-            ...styles.credential,
-            ...{ color: Colors[scheme].primarySecond },
-          }}
-        >
-          {"Hasło".toUpperCase()}
-        </Text>
-
-        <Input
-          style={{
-            ...styles.input,
-            ...{ backgroundColor: "rgb(255, 255, 255)" },
-          }}
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="default"
-          autoComplete="off"
-          secureTextEntry={true}
-          value={newUserPassword}
-          onChangeText={setNewUserPassword}
-        />
-        <Text
-          style={{
-            ...styles.credential,
-            ...{ color: Colors[scheme].primarySecond },
-          }}
-        >
-          {"Powtórz hasło".toUpperCase()}
-        </Text>
-
-        <Input
-          style={{
-            ...styles.input,
-            ...{ backgroundColor: "rgb(255, 255, 255)" },
-          }}
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="default"
-          autoComplete="off"
-          secureTextEntry={true}
-          value={newUserPasswordRepeated}
-          onChangeText={setNewUserPasswordRepeated}
-        />
-      </View>
-    );
-  };
-  const signInComponent = () => {
-    return (
-      <View
-        style={{
-          ...styles.loginScreen,
-          // ...{ backgroundColor: Colors[scheme].light },
-        }}
-      >
-        <Text
-          style={{
-            ...styles.credential,
-            ...{ color: Colors[scheme].primarySecond },
-          }}
-        >
-          {"Adres email".toUpperCase()}
-        </Text>
-        <Input
-          style={{
-            ...styles.input,
-            ...{ backgroundColor: "rgb(255, 255, 255)" },
-          }}
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="default"
-          autoComplete="off"
-          value={userEmail}
-          keyboardType={"email-address"}
-          onChangeText={setUserEmail}
-        />
-        <Text
-          style={{
-            ...styles.credential,
-            ...{ color: Colors[scheme].primarySecond },
-          }}
-        >
-          {"Hasło".toUpperCase()}
-        </Text>
-
-        <Input
-          style={{
-            ...styles.input,
-            ...{ backgroundColor: "rgb(255, 255, 255)" },
-          }}
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="default"
-          autoComplete="off"
-          secureTextEntry={true}
-          value={userPassword}
-          onChangeText={setUserPassword}
-        />
-      </View>
-    );
-  };
-
   const createUserInfo = (user) => {
+    console.log(user);
     const userDataObj = {
-      name: user.displayName,
+      name: user.displayName ? user.displayName : user.providerData[0].email,
       email: user.providerData[0].email,
       photoURL: user.photoURL,
       id: user.uid,
@@ -298,7 +71,9 @@ const AuthScreen = (props) => {
       .database()
       .ref(`users/` + user.uid)
       .update({
-        username: user.displayName,
+        username: user.displayName
+          ? user.displayName
+          : user.providerData[0].email,
         email: user.providerData[0].email,
         photoURL: user.photoURL,
       })
@@ -338,32 +113,20 @@ const AuthScreen = (props) => {
                 height: Dimensions.get("window").height,
                 // height: Dimensions.get("window").height,
               }}
-              resizeMode="stretch"
+              resizeMode="cover"
               source={require("../../assets/login_screen.png")}
             />
 
             <View style={{ ...styles.screen, ...{} }}>
-              {signUp ? signUpCompontnt() : signInComponent()}
-              {signUp ? signUpButtons() : signInButtons()}
-
               <View style={styles.otherMethodLogin}>
-                <TouchableOpacity
-                  onPress={() => {
-                    signInWithGoogleAsync(() => login(), categoryList);
-                  }}
-                >
-                  <View
-                    style={{
-                      ...styles.loginWithGoogle,
-                      ...{ backgroundColor: Colors[scheme].google },
-                    }}
-                  >
-                    <AntDesign name="google" size={10} color="white" />
-                    <Text style={styles.loginWithText}>
-                      {"Zaloguj przez Google".toUpperCase()}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
+                <GoogleLoginButton
+                  press={() =>
+                    signInWithGoogleAsync(() => login(), categoryList)
+                  }
+                />
+                <AppleLoginButton
+                  press={() => appleLogin(() => login(), categoryList)}
+                />
               </View>
             </View>
           </View>
@@ -435,7 +198,9 @@ const styles = StyleSheet.create({
   },
 
   otherMethodLogin: {
-    // width: Dimensions.get("window").width * 0.9,
+    position: "absolute",
+    bottom: 100,
+    width: Dimensions.get("window").width * 0.9,
   },
   loginWithFacebook: {
     backgroundColor: Colors.facebook,
@@ -459,11 +224,11 @@ const styles = StyleSheet.create({
 
   loginWithText: {
     color: "white",
-    width: "50%",
+    width: "70%",
     fontFamily: "Kanit_600SemiBold",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    fontSize: 10,
+    fontSize: 15,
   },
 });

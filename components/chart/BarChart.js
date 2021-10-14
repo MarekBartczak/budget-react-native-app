@@ -19,29 +19,33 @@ const Chart = (props) => {
   }
 
   let filteredObj = getObj.filter((el) => el.date.includes(sliced));
-  let label = filteredObj.map((el) => el.date.split("-")[2]);
-  let data = filteredObj.map((el) => el.cost);
 
+  let label = ["0"];
+  let data = [0];
+  if (filteredObj.length > 0) {
+    label = filteredObj.map((el) => el.date.split("-")[2]);
+    data = filteredObj.map((el) => el.cost);
+  }
   const checkIfDateIsSelected = (type) => {
     switch (type) {
-      case "expense":
-        selectedDate = useSelector((state) => state.summary.expense);
-        if (selectedDate !== "") {
-          let getFilteredObj = getObj.filter((el) =>
-            el.date.includes(selectedDate)
-          );
-          label = getFilteredObj.map((el) => el.date.split("-")[2]);
-          data = getFilteredObj.map((el) => el.cost);
-        }
-      case "fixedExpense":
-        selectedDate = useSelector((state) => state.summary.fixedExpense);
-        if (selectedDate !== "") {
-          let getFilteredObj = getObj.filter((el) =>
-            el.date.includes(selectedDate)
-          );
-          label = getFilteredObj.map((el) => el.date.split("-")[2]);
-          data = getFilteredObj.map((el) => el.cost);
-        }
+      // case "expense":
+      //   selectedDate = useSelector((state) => state.summary.expense);
+      //   if (selectedDate !== "") {
+      //     let getFilteredObj = getObj.filter((el) =>
+      //       el.date.includes(selectedDate)
+      //     );
+      //     label = getFilteredObj.map((el) => el.date.split("-")[2]);
+      //     data = getFilteredObj.map((el) => el.cost);
+      //   }
+      // case "fixedExpense":
+      //   selectedDate = useSelector((state) => state.summary.fixedExpense);
+      //   if (selectedDate !== "") {
+      //     let getFilteredObj = getObj.filter((el) =>
+      //       el.date.includes(selectedDate)
+      //     );
+      //     label = getFilteredObj.map((el) => el.date.split("-")[2]);
+      //     data = getFilteredObj.map((el) => el.cost);
+      //   }
       case "income":
         selectedDate = useSelector((state) => state.summary.income);
         if (selectedDate !== "") {
@@ -56,12 +60,15 @@ const Chart = (props) => {
 
   checkIfDateIsSelected(getType);
 
-  let filteredData;
+  // let filteredData;
 
-  if (filteredData !== undefined) {
-    label = filteredData.label.map((el) => el.slice(8));
-    data = filteredData.data;
-  }
+  // if (filteredData !== undefined) {
+  //   label = filteredData.label.map((el) => el.slice(8));
+  //   data = filteredData.data;
+  // } else {
+  //   label = ["0"];
+  //   data = [0];
+  // }
 
   return (
     <View

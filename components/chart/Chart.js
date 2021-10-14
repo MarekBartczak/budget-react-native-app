@@ -25,13 +25,18 @@ const Chart = (props) => {
   }
 
   let filteredObj = getObj.filter((el) => el.date.includes(sliced));
-  let label = filteredObj.map((el) => el.date.split("-")[2]);
-  let data = filteredObj.map((el) => el.cost);
+  let label = ["0"];
+  let data = [0];
+  if (filteredObj.length > 0) {
+    label = filteredObj.map((el) => el.date.split("-")[2]);
+    data = filteredObj.map((el) => el.cost);
+  }
 
   const checkIfDateIsSelected = (type) => {
     switch (type) {
       case "expense":
         selectedDate = useSelector((state) => state.summary.expense);
+
         if (selectedDate !== "") {
           let getFilteredObj = getObj.filter((el) =>
             el.date.includes(selectedDate)

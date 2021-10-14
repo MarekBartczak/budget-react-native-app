@@ -168,6 +168,11 @@ const DrawerNavigator = (props) => {
         list.forEach((el, index) => (el.firebaseId = objKeyList[index]));
         dispatchSwitcher(type, list);
       }
+      // if (obj === null) {
+      //   list = [{ cost: "0" }];
+      //   console.log(list);
+      //   dispatchSwitcher(type, [0]);
+      // }
     });
   };
 
@@ -197,13 +202,17 @@ const DrawerNavigator = (props) => {
   useEffect(() => {
     fetchData();
   }, [status]);
+  // console.log(isExpenseLoaded);
+  // console.log(isIncomeLoaded);
+  // console.log(isFixedExpenseLoaded);
+  // console.log(isConfigLoaded);
   if (
     // isExpenseLoaded === true &&
     // isIncomeLoaded === true &&
-    // isFixedExpenseLoaded === true
-    // isConfigLoaded === true
+    // isFixedExpenseLoaded === true &&
+    isConfigLoaded === true
     // false
-    true
+    // true
   ) {
     return (
       <NavigationContainer>

@@ -66,7 +66,9 @@
     "react-native-web": "^0.13.12",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
-    "xlsx": "^0.17.0"
+    "xlsx": "^0.17.0",
+    "expo-apple-authentication": "~3.1.0",
+    "expo-crypto": "~9.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
