@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   component: {},
   chartCcomponent: {
     overflow: "hidden",
-    paddingBottom: 5,
+    paddingBottom: 15,
   },
   buttonComponent: {
     position: "absolute",

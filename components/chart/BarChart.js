@@ -102,7 +102,7 @@ const Chart = (props) => {
           withshadow={false}
           withInnerLines={false}
           width={Dimensions.get("window").width}
-          height={Dimensions.get("window").height * 0.25}
+          height={Dimensions.get("window").height * 0.24}
           chartConfig={{
             labelColor: () => Colors[scheme].headerTintColor,
             backgroundGradientFromOpacity: 0,
@@ -120,7 +120,7 @@ const Chart = (props) => {
           style={{
             ...styles.chart,
             ...{
-              marginTop: 10,
+              marginTop: 5,
               shadowOffset: { height: -10, width: -10 },
               shadowRadius: 1,
               shadowColor: Colors[scheme].headerTintColor,

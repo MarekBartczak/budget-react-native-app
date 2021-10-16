@@ -42,7 +42,12 @@ const AddNewFixedExpenseScreen = (props) => {
     { id: "04", title: "co rok", value: { days: 0, months: 0, years: 1 } },
   ];
   const ErrorCostValidation = () => {
-    return <Text style={{ color: "red" }}> Proszę wpisać poprawną kwotę </Text>;
+    return (
+      <Text style={{ color: "red", fontSize: 10 }}>
+        {" "}
+        Proszę wpisać poprawną kwotę{" "}
+      </Text>
+    );
   };
 
   //   const isSelected = ()

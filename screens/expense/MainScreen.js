@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   },
   component: {
     overflow: "hidden",
-    paddingBottom: 5,
+    paddingBottom: 15,
   },
 });
 

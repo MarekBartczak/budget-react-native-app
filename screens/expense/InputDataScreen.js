@@ -30,7 +30,12 @@ const InputData = (props) => {
   const dispatch = useDispatch();
 
   const ErrorCostValidation = () => {
-    return <Text style={{ color: "red" }}> Proszę wpisać poprawną kwotę </Text>;
+    return (
+      <Text style={{ color: "red", fontSize: 10 }}>
+        {" "}
+        Proszę wpisać poprawną kwotę{" "}
+      </Text>
+    );
   };
 
   const checkFilledForm = () => {
@@ -156,7 +161,7 @@ const InputData = (props) => {
             </View>
 
             <View style={styles.validationView}>
-              {!numberInputValidation(cost) ? (
+              {!numberInputValidation(switchComaToDot(cost)) ? (
                 <ErrorCostValidation />
               ) : (
                 <Text> </Text>
@@ -191,7 +196,6 @@ const styles = StyleSheet.create({
   category: {
     // marginTop: 10,
     width: Dimensions.get("window").width,
-    borderBottomWidth: 1,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -201,7 +205,7 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 1,
     shadowRadius: 5,
-    paddingBottom: 5,
+    paddingBottom: 15,
     borderBottomLeftRadius: 100,
     borderBottomRightRadius: 100,
   },
