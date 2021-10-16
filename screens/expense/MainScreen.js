@@ -9,7 +9,7 @@ import * as favoritePlaceAction from "../../store/actions/favoritePlace";
 import chartElement from "../../functions/ChartElement";
 import SummaryCost from "../../components/summaryCost/SummaryCost";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-
+import EmptyList from "../../components/emptyList/EmptyList";
 const MainScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
@@ -33,11 +33,15 @@ const MainScreen = (props) => {
             <SummaryCost type={type} list={itemsFromRedux} />
           </View>
           <View style={styles.component}>
-            <Chart
-              type={type}
-              press={() => props.navigation.navigate("ExpenseList")}
-              obj={chartEl}
-            />
+            {chartEl.length > 0 ? (
+              <Chart
+                type={type}
+                press={() => props.navigation.navigate("ExpenseList")}
+                obj={chartEl}
+              />
+            ) : (
+              <EmptyList />
+            )}
           </View>
 
           <View style={styles.favoritePlace}>

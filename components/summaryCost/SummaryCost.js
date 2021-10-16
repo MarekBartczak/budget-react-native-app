@@ -220,7 +220,7 @@ const SumaryCost = (props) => {
             ...{ color: Colors[scheme].headerTintColor },
           }}
         >
-          {amount}zł
+          {amount === "0" ? "0.00" : amount} PLN
         </Text>
         <TouchableOpacity onPress={() => setShowModal(!showModal)}>
           <Text

@@ -8,7 +8,7 @@ import SummaryCost from "../../components/summaryCost/SummaryCost";
 import AddNewItem from "../../components/AddNewItem";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import UnpaidExpense from "../../components/fixedExpense/unpaidExpense/UnpaidExpense";
-
+import EmptyList from "../../components/emptyList/EmptyList";
 const FixedExpenseScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const fixedExpenseShowList = useSelector(
@@ -27,11 +27,15 @@ const FixedExpenseScreen = (props) => {
         <SummaryCost type="fixedExpense" list={chartEl} />
       </View>
       <View style={styles.chartCcomponent}>
-        <Chart
-          type="fixedExpense"
-          press={() => props.navigation.navigate("FixedExpensesList")}
-          obj={chartEl}
-        />
+        {chartEl.length > 0 ? (
+          <Chart
+            type="fixedExpense"
+            press={() => props.navigation.navigate("FixedExpensesList")}
+            obj={chartEl}
+          />
+        ) : (
+          <EmptyList />
+        )}
       </View>
       <View style={styles.unPaidComponent}>
         <UnpaidExpense />

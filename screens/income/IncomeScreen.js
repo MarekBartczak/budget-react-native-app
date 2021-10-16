@@ -6,6 +6,7 @@ import Chart from "../../components/chart/BarChart";
 import chartElement from "../../functions/ChartElement";
 import SummaryCost from "../../components/summaryCost/SummaryCost";
 import AddNewIncomeComponent from "../../components/income/addNewIncome/AddNewIncomeComponent";
+import EmptyList from "../../components/emptyList/EmptyList";
 const IncomeScreen = (props) => {
   const incomeList = useSelector((state) => state.income.income);
   const config = useSelector((state) => state.config);
@@ -18,13 +19,16 @@ const IncomeScreen = (props) => {
         <SummaryCost type={type} list={incomeList} />
       </View>
       <View style={styles.chartComponent}>
-        {!config.addIncomeKeyboardStatus && (
-          <Chart
-            type={type}
-            press={() => props.navigation.navigate("IncomeList")}
-            obj={chartEl}
-          />
-        )}
+        {!config.addIncomeKeyboardStatus &&
+          (chartEl.length > 0 ? (
+            <Chart
+              type={type}
+              press={() => props.navigation.navigate("IncomeList")}
+              obj={chartEl}
+            />
+          ) : (
+            <EmptyList />
+          ))}
       </View>
       <View style={styles.component}>
         <AddNewIncomeComponent />
