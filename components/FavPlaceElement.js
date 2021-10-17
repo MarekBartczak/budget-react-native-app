@@ -28,6 +28,11 @@ const FavPlaceElement = (props) => {
   };
 
   const dispatch = useDispatch();
+  let path = require("../assets/default_fav_element.png");
+
+  if (scheme === "dark") {
+    path = require("../assets/default_fav_element_dark.png");
+  }
   return (
     <TouchableOpacity
       onPress={() => {
@@ -50,7 +55,7 @@ const FavPlaceElement = (props) => {
               ...{ borderColor: Colors[scheme].primary },
             }}
             // source={{ url: props.favPlaceLogo }}
-            source={require("../assets/default_fav_element.png")}
+            source={path}
           />
         ) : (
           <Image
