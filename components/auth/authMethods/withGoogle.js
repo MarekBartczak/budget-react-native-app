@@ -1,10 +1,11 @@
 import * as Google from "expo-google-app-auth";
 import firebase from "firebase";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const createFavPlaceDefault = (userId) => {
   const favPlaceObject = {
     logo: "",
-    name: "dodaj",
+    name: "DODAJ",
   };
   const ref = firebase
     .database()

@@ -55,7 +55,7 @@ const AddNewIncomeComponent = (props) => {
   const newelementProps = {
     placeHolderAmount: "Kwota",
     placeHolderName: "Nazwa",
-    placeHolderContractor: "kontrahent",
+    placeHolderContractor: "Kontrahent",
     amountValue: cost,
     setAmountValue: setCost,
     nameValue: title,

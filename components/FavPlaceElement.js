@@ -43,14 +43,30 @@ const FavPlaceElement = (props) => {
       delayLongPress="500"
     >
       <View style={styles.favBtn}>
-        <Image
-          style={{ ...styles.logo, ...{ borderColor: Colors[scheme].primary } }}
-          source={{ url: props.favPlaceLogo }}
-        />
+        {props.favPlaceLogo === "" ? (
+          <Image
+            style={{
+              ...styles.logo,
+              ...{ borderColor: Colors[scheme].primary },
+            }}
+            // source={{ url: props.favPlaceLogo }}
+            source={require("../assets/default_fav_element.png")}
+          />
+        ) : (
+          <Image
+            style={{
+              ...styles.logo,
+              ...{ borderColor: Colors[scheme].primary },
+            }}
+            source={{ url: props.favPlaceLogo }}
+          />
+        )}
         <Text
           style={{ ...styles.text, ...{ color: Colors[scheme].primarySecond } }}
         >
-          {props.favPlaceName.toUpperCase()}
+          {props.favPlaceName === "dodaj"
+            ? ""
+            : props.favPlaceName.toUpperCase()}
         </Text>
       </View>
     </TouchableOpacity>
@@ -76,10 +92,10 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit_400Regular",
   },
   logo: {
-    height: "80%",
-    width: "80%",
-    borderRadius: 3,
+    height: Dimensions.get("window").width / 5.6,
+    width: Dimensions.get("window").width / 5.6,
+    borderRadius: 10,
 
-    borderWidth: 1,
+    // borderWidth: 1,
   },
 });

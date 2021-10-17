@@ -105,14 +105,15 @@ const FavoritePlaces = (props) => {
                     borderColor: Colors[scheme].primaryThird,
                   },
                 }}
-                value={favPlaceName}
+                value={favPlaceName === "dodaj" ? "" : favPlaceName}
                 placeholder={"nazwa"}
                 keyboardType="default"
                 onChangeText={setFavPlaceName}
+                placeholderTextColor={Colors[scheme].button}
               />
               <View style={styles.apiList}>
                 <ApiList
-                  source={favPlaceName}
+                  source={favPlaceName === "dodaj" ? "" : favPlaceName}
                   closeWindow={() => setShowEdit(false)}
                 />
               </View>
