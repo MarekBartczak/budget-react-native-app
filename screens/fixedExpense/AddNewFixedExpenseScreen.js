@@ -42,12 +42,16 @@ const AddNewFixedExpenseScreen = (props) => {
     { id: "04", title: "co rok", value: { days: 0, months: 0, years: 1 } },
   ];
   const ErrorCostValidation = () => {
-    return (
-      <Text style={{ color: "red", fontSize: 10 }}>
-        {" "}
-        Proszę wpisać poprawną kwotę{" "}
-      </Text>
-    );
+    if (cost === undefined) {
+      return null;
+    } else {
+      return (
+        <Text style={{ color: "red", fontSize: 10 }}>
+          {" "}
+          Proszę wpisać poprawną kwotę{" "}
+        </Text>
+      );
+    }
   };
 
   //   const isSelected = ()
@@ -125,9 +129,10 @@ const AddNewFixedExpenseScreen = (props) => {
                     onChangeText={setCost}
                     placeholderTextColor={Colors[scheme].primarySecond}
                   />
-                  {!numberInputValidation(switchComaToDot(cost)) && (
-                    <ErrorCostValidation />
-                  )}
+                  {cost !== "" &&
+                    !numberInputValidation(switchComaToDot(cost)) && (
+                      <ErrorCostValidation />
+                    )}
                   <Input
                     style={{
                       ...styles.input,

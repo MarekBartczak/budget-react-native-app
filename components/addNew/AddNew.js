@@ -42,12 +42,16 @@ const AddNewComponent = (props) => {
     dispatch(configActions.addIncomeKeyboardStatus(false));
 
   const ErrorCostValidation = () => {
-    return (
-      <Text style={{ color: "red", fontSize: 10 }}>
-        {" "}
-        Proszę wpisać poprawną kwotę{" "}
-      </Text>
-    );
+    if (props.amountValue === undefined) {
+      return null;
+    } else {
+      return (
+        <Text style={{ color: "red", fontSize: 10 }}>
+          {" "}
+          Proszę wpisać poprawną kwotę{" "}
+        </Text>
+      );
+    }
   };
   return (
     <KeyboardAvoidingView
@@ -90,10 +94,12 @@ const AddNewComponent = (props) => {
                 onChangeText={props.setAmountValue}
                 placeholderTextColor={Colors[scheme].primarySecond}
               />
-              {(props.amountValue !== undefined || props.amountValue !== "") &&
+
+              {props.amountValue !== "" &&
                 !numberInputValidation(switchComaToDot(props.amountValue)) && (
                   <ErrorCostValidation />
                 )}
+              {console.log(props.amountValue)}
               <Input
                 style={{
                   ...styles.input,

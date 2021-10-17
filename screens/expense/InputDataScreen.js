@@ -30,12 +30,16 @@ const InputData = (props) => {
   const dispatch = useDispatch();
 
   const ErrorCostValidation = () => {
-    return (
-      <Text style={{ color: "red", fontSize: 10 }}>
-        {" "}
-        Proszę wpisać poprawną kwotę{" "}
-      </Text>
-    );
+    if (cost === undefined) {
+      return null;
+    } else {
+      return (
+        <Text style={{ color: "red", fontSize: 10 }}>
+          {" "}
+          Proszę wpisać poprawną kwotę{" "}
+        </Text>
+      );
+    }
   };
 
   const checkFilledForm = () => {
@@ -161,7 +165,7 @@ const InputData = (props) => {
             </View>
 
             <View style={styles.validationView}>
-              {!numberInputValidation(switchComaToDot(cost)) ? (
+              {cost !== "" && !numberInputValidation(switchComaToDot(cost)) ? (
                 <ErrorCostValidation />
               ) : (
                 <Text> </Text>
