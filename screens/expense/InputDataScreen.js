@@ -98,7 +98,10 @@ const InputData = (props) => {
       <View
         style={{
           ...styles.category,
-          ...{ backgroundColor: Colors[scheme].backGroundOne },
+          ...{
+            backgroundColor: Colors[scheme].backGroundOne,
+            shadowColor: Colors[scheme].drawerActive,
+          },
         }}
       >
         <Text
@@ -205,7 +208,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 5,
     // overflow: "hidden",
-    shadowColor: "black",
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 1,
     shadowRadius: 5,

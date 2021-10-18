@@ -28,7 +28,10 @@ const ExpenseHeader = (props) => {
     <View
       style={{
         ...styles.expenseHeader,
-        ...{ backgroundColor: Colors[scheme].backGroundOne },
+        ...{
+          backgroundColor: Colors[scheme].backGroundOne,
+          shadowColor: Colors[scheme].drawerActive,
+        },
       }}
     >
       <Modal
@@ -100,7 +103,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     borderBottomLeftRadius: 100,
     borderBottomRightRadius: 100,
-    shadowColor: "black",
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 1,
     shadowRadius: 5,

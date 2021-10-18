@@ -124,22 +124,26 @@ const AddNewFixedExpenseScreen = (props) => {
                 <View
                   style={{
                     ...styles.inputView,
-                    ...{ backgroundColor: Colors[scheme].button },
+                    ...{
+                      backgroundColor: Colors[scheme].backGroundOne,
+                      shadowColor: Colors[scheme].drawerActive,
+                    },
                   }}
                 >
                   <Input
                     style={{
                       ...styles.input,
                       ...{
-                        color: Colors[scheme].primary,
-                        borderColor: Colors[scheme].primary,
+                        color: Colors[scheme].headerTintColor,
+                        backgroundColor: Colors[scheme].backGroundOne,
+                        shadowColor: Colors[scheme].headerTintColor,
                       },
                     }}
                     value={cost}
                     placeholder={"Kwota"}
                     keyboardType={"numeric"}
                     onChangeText={setCost}
-                    placeholderTextColor={Colors[scheme].primary}
+                    placeholderTextColor={Colors[scheme].headerTintColor}
                   />
                   {cost !== "" &&
                     !numberInputValidation(switchComaToDot(cost)) && (
@@ -149,36 +153,39 @@ const AddNewFixedExpenseScreen = (props) => {
                     style={{
                       ...styles.input,
                       ...{
-                        color: Colors[scheme].primary,
-                        borderColor: Colors[scheme].primary,
+                        color: Colors[scheme].headerTintColor,
+                        backgroundColor: Colors[scheme].backGroundOne,
+                        shadowColor: Colors[scheme].headerTintColor,
                       },
                     }}
                     value={title}
                     placeholder={"Tytuł"}
                     keyboardType={"default"}
                     onChangeText={setTitle}
-                    placeholderTextColor={Colors[scheme].primary}
+                    placeholderTextColor={Colors[scheme].headerTintColor}
                   />
                   <Input
                     style={{
                       ...styles.input,
                       ...{
-                        color: Colors[scheme].primary,
-                        borderColor: Colors[scheme].primary,
+                        color: Colors[scheme].headerTintColor,
+                        backgroundColor: Colors[scheme].backGroundOne,
+                        shadowColor: Colors[scheme].headerTintColor,
                       },
                     }}
                     value={recipient}
                     placeholder={"Odbiorca"}
                     keyboardType={"default"}
                     onChangeText={setRecipient}
-                    placeholderTextColor={Colors[scheme].primary}
+                    placeholderTextColor={Colors[scheme].headerTintColor}
                   />
-                  <Input
+                  {/* <Input
                     style={{
                       ...styles.descriptionInput,
                       ...{
                         color: Colors[scheme].primary,
-                        borderColor: Colors[scheme].primary,
+                        backgroundColor: Colors[scheme].button,
+                        shadowColor: Colors[scheme].light,
                       },
                     }}
                     placeholder={"Opis"}
@@ -187,7 +194,7 @@ const AddNewFixedExpenseScreen = (props) => {
                     keyboardType={"default"}
                     onChangeText={setDescription}
                     placeholderTextColor={Colors[scheme].primary}
-                  />
+                  /> */}
                 </View>
                 <View
                   style={{
@@ -336,7 +343,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: "black",
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 1,
     shadowRadius: 5,
@@ -345,11 +351,16 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   input: {
-    height: 25,
+    // height: 25,
     width: Dimensions.get("window").width * 0.8,
-    borderBottomWidth: 1,
+    shadowOffset: { height: 1, width: 1 },
+    shadowOpacity: 0.85,
+    shadowRadius: 3,
     margin: 5,
     margin: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 10,
   },
   descriptionInput: {
     height: 40,

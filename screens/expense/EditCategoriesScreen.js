@@ -48,7 +48,10 @@ const EdidCategoriesScreen = (props) => {
       <View
         style={{
           ...styles.inputView,
-          ...{ backgroundColor: Colors[scheme].backGroundOne },
+          ...{
+            backgroundColor: Colors[scheme].backGroundOne,
+            shadowColor: Colors[scheme].drawerActive,
+          },
         }}
       >
         <TextInput
@@ -112,7 +115,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "black",
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 1,
     shadowRadius: 5,

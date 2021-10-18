@@ -32,8 +32,8 @@ const CustomTheme = (props) => {
           padding: 5,
           width: Dimensions.get("window").width * 0.9,
           flexDirection: "row",
-          backgroundColor: Colors[scheme].primary,
-          shadowColor: "black",
+          backgroundColor: Colors[scheme].backGround_one,
+          shadowColor: Colors[scheme].drawerActive,
           shadowOffset: { height: 0, width: 0 },
           shadowOpacity: 0.25,
           shadowRadius: 5,
@@ -70,7 +70,7 @@ const CustomTheme = (props) => {
             style={{
               height: 40,
               width: 20,
-              backgroundColor: Colors[title].primary,
+              backgroundColor: Colors[title].backGround_one,
             }}
           ></View>
         </View>

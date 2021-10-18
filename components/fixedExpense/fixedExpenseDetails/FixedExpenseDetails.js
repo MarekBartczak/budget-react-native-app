@@ -114,6 +114,7 @@ const FixedExpenseDetails = (props) => {
             ...styles.title,
             ...{
               backgroundColor: Colors[scheme].backGroundOne,
+              shadowColor: Colors[scheme].drawerActive,
             },
           }}
         >
@@ -277,7 +278,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderBottomLeftRadius: 100,
     borderBottomRightRadius: 100,
-    shadowColor: "black",
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 1,
     shadowRadius: 5,

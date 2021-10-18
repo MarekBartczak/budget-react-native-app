@@ -18,7 +18,7 @@ const SelectComponent = (props) => {
           ...styles.select,
           ...{
             backgroundColor: Colors[scheme].backGroundOne,
-            shadowColor: "black",
+            shadowColor: Colors[scheme].drawerActive,
             shadowOffset: { height: 1, width: 0 },
             shadowOpacity: 1,
             shadowRadius: 5,

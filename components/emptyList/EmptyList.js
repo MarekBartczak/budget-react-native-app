@@ -15,7 +15,7 @@ const EmptyList = (props) => {
         backgroundColor: Colors[scheme].backGroundOne,
         borderBottomLeftRadius: 100,
         borderBottomRightRadius: 100,
-        shadowColor: "black",
+        shadowColor: Colors[scheme].drawerActive,
         shadowOffset: { height: 1, width: 0 },
         shadowOpacity: 1,
         shadowRadius: 5,

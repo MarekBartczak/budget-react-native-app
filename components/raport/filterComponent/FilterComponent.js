@@ -126,14 +126,15 @@ const FilterComponent = (props) => {
           style={{
             ...styles.filterComponent,
             ...{
+              height: 200,
               backgroundColor: Colors[scheme].backGroundOne,
               borderBottomLeftRadius: 100,
               borderBottomRightRadius: 100,
-              shadowColor: "black",
-              shadowOffset: { height: 1, width: 0 },
+              shadowColor: Colors[scheme].drawerActive,
+              shadowOffset: { height: 0, width: 0 },
               shadowOpacity: 1,
               shadowRadius: 5,
-              paddingBottom: 5,
+              paddingBottom: 10,
             },
           }}
         >
@@ -189,8 +190,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     // height: 30,
     padding: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    // marginTop: 10,
+    borderRadius: 10,
   },
 
   switch: {

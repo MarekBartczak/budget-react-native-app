@@ -64,7 +64,11 @@ const UserScreen = (props) => {
         <View
           style={{
             ...styles.photoView,
-            ...{ backgroundColor: Colors[scheme].backGroundOne },
+            ...{
+              backgroundColor: Colors[scheme].backGroundOne,
+              borderColor: Colors[scheme].backGround_one,
+              shadowColor: Colors[scheme].drawerActive,
+            },
           }}
         >
           <View style={{ ...styles.photoExternal, ...{} }}>{showPhoto()}</View>
@@ -184,9 +188,11 @@ const styles = StyleSheet.create({
     paddingBottom: 60,
     borderBottomRightRadius: 100,
     borderBottomLeftRadius: 100,
-    shadowColor: "black",
+    // borderLeftWidth: 5,
+    // borderRightWidth: 5,
+    // borderBottomWidth: 5,
     shadowOffset: { height: 1, width: 0 },
-    shadowOpacity: 1,
+    shadowOpacity: 0.55,
     shadowRadius: 5,
   },
   photoExternal: {

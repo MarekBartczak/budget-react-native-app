@@ -62,7 +62,7 @@ const PlaceList = (props) => {
         paddingBottom: 15,
         borderBottomLeftRadius: 100,
         borderBottomRightRadius: 100,
-        shadowColor: "black",
+        shadowColor: Colors[scheme].drawerActive,
         shadowOffset: { height: 1, width: 0 },
         shadowOpacity: 1,
         shadowRadius: 5,
