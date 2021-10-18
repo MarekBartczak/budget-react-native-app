@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   FlatList,
+  Image,
   TouchableOpacity,
 } from "react-native";
 import FixedExpense from "../../models/FixedExpense";
@@ -34,13 +35,74 @@ const AddNewFixedExpenseScreen = (props) => {
   const [description, setDescription] = useState("");
   const userId = useSelector((state) => state.auth.userID);
 
-  const intervalList = [
-    { id: "00", title: "co 10 dni", value: { days: 10, months: 0, years: 0 } },
-    { id: "01", title: "co 7 dni", value: { days: 7, months: 0, years: 0 } },
-    { id: "02", title: "co miesiąc", value: { days: 0, months: 1, years: 0 } },
-    { id: "03", title: "co kwartał", value: { days: 0, months: 3, years: 0 } },
-    { id: "04", title: "co rok", value: { days: 0, months: 0, years: 1 } },
-  ];
+  const intervalPath = {
+    "7days": {
+      light: require("../../assets/interval/inverval_7days_light.png"),
+      dark: require("../../assets/interval/inverval_7days_dark.png"),
+      light_Gold: require("../../assets/interval/inverval_7days_light_Gold.png"),
+      light_Pink: require("../../assets/interval/inverval_7days_light_Pink.png"),
+      light_Blue: require("../../assets/interval/inverval_7days_light_Blue.png"),
+      value: { days: 7, months: 0, years: 0 },
+    },
+    "10days": {
+      light: require("../../assets/interval/inverval_10days_light.png"),
+      dark: require("../../assets/interval/inverval_10days_dark.png"),
+      light_Gold: require("../../assets/interval/inverval_10days_light_Gold.png"),
+      light_Pink: require("../../assets/interval/inverval_10days_light_Pink.png"),
+      light_Blue: require("../../assets/interval/inverval_10days_light_Blue.png"),
+      value: { days: 10, months: 0, years: 0 },
+    },
+    "1month": {
+      light: require("../../assets/interval/inverval_1month_light.png"),
+      dark: require("../../assets/interval/inverval_1month_dark.png"),
+      light_Gold: require("../../assets/interval/inverval_1month_light_Gold.png"),
+      light_Pink: require("../../assets/interval/inverval_1month_light_Pink.png"),
+      light_Blue: require("../../assets/interval/inverval_1month_light_Blue.png"),
+      value: { days: 0, months: 1, years: 0 },
+    },
+    "1quarter": {
+      light: require("../../assets/interval/inverval_1quarter_light.png"),
+      dark: require("../../assets/interval/inverval_1quarter_dark.png"),
+      light_Gold: require("../../assets/interval/inverval_1quarter_light_Gold.png"),
+      light_Pink: require("../../assets/interval/inverval_1quarter_light_Pink.png"),
+      light_Blue: require("../../assets/interval/inverval_1quarter_light_Blue.png"),
+      value: { days: 0, months: 3, years: 0 },
+    },
+    "1year": {
+      light: require("../../assets/interval/inverval_1year_light.png"),
+      dark: require("../../assets/interval/inverval_1year_dark.png"),
+      light_Gold: require("../../assets/interval/inverval_1year_light_Gold.png"),
+      light_Pink: require("../../assets/interval/inverval_1year_light_Pink.png"),
+      light_Blue: require("../../assets/interval/inverval_1year_light_Blue.png"),
+      value: { days: 0, months: 0, years: 1 },
+    },
+  };
+  const intervalImage = (type, path) => {
+    // path[type].value.days === interval.days &&
+    // path[type].value.months === interval.months &&
+    // path[type].value.years === interval.years
+    return (
+      <TouchableOpacity onPress={() => setInterval(path[type].value)}>
+        <Image
+          source={path[type][scheme]}
+          style={{
+            height: Dimensions.get("window").width / 7,
+            width: Dimensions.get("window").width / 7,
+
+            borderColor: Colors[scheme].button,
+            borderWidth:
+              path[type].value.days === interval.days &&
+              path[type].value.months === interval.months &&
+              path[type].value.years === interval.years
+                ? 2
+                : 0,
+            borderRadius: 10,
+          }}
+        />
+      </TouchableOpacity>
+    );
+  };
+
   const ErrorCostValidation = () => {
     if (cost === undefined) {
       return null;
@@ -179,22 +241,6 @@ const AddNewFixedExpenseScreen = (props) => {
                     onChangeText={setRecipient}
                     placeholderTextColor={Colors[scheme].headerTintColor}
                   />
-                  {/* <Input
-                    style={{
-                      ...styles.descriptionInput,
-                      ...{
-                        color: Colors[scheme].primary,
-                        backgroundColor: Colors[scheme].button,
-                        shadowColor: Colors[scheme].light,
-                      },
-                    }}
-                    placeholder={"Opis"}
-                    multiline
-                    numberOfLines={3}
-                    keyboardType={"default"}
-                    onChangeText={setDescription}
-                    placeholderTextColor={Colors[scheme].primary}
-                  /> */}
                 </View>
                 <View
                   style={{
@@ -226,44 +272,11 @@ const AddNewFixedExpenseScreen = (props) => {
                     Częstotliwość opłat
                   </Text>
                   <View style={styles.intervalOptions}>
-                    <FlatList
-                      data={intervalList}
-                      renderItem={(item) => (
-                        <TouchableOpacity
-                          onPress={() => setInterval(item.item)}
-                        >
-                          <View
-                            style={{
-                              ...styles.intervalListElement,
-                              // ...{
-                              // color: Colors[scheme].primarySecond,
-                              // },
-                            }}
-                          >
-                            <Text
-                              style={
-                                interval.id === item.item.id
-                                  ? {
-                                      ...styles.selectedIntervalText,
-                                      ...{
-                                        color: Colors[scheme].button,
-                                      },
-                                    }
-                                  : {
-                                      ...styles.intervalText,
-                                      ...{
-                                        color: Colors[scheme].primarySecond,
-                                      },
-                                    }
-                              }
-                            >
-                              {item.item.title}
-                            </Text>
-                          </View>
-                        </TouchableOpacity>
-                      )}
-                      keyExtractor={(item) => item.title.toString()}
-                    />
+                    <View>{intervalImage("7days", intervalPath)}</View>
+                    <View>{intervalImage("10days", intervalPath)}</View>
+                    <View>{intervalImage("1month", intervalPath)}</View>
+                    <View>{intervalImage("1quarter", intervalPath)}</View>
+                    <View>{intervalImage("1year", intervalPath)}</View>
                   </View>
                 </View>
                 <View style={{ alignItems: "center" }}>
@@ -382,7 +395,7 @@ const styles = StyleSheet.create({
   interval: {
     marginTop: 20,
     // backgroundColor: Colors.light.primaryThird,
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width * 0.95,
     // height: 160,
     justifyContent: "center",
     alignItems: "center",
@@ -397,11 +410,12 @@ const styles = StyleSheet.create({
 
   intervalOptions: {
     marginTop: 20,
+    flexDirection: "row",
     // alignItems: "flex-start",
     // backgroundColor: Colors.accent,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
-    width: "100%",
+    width: Dimensions.get("window").width * 0.9,
   },
   intervalListElement: {
     marginVertical: 2,
