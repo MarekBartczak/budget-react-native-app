@@ -24,7 +24,7 @@ const Expense = (props) => {
             },
           }}
         >
-          {"razem:".toUpperCase()} {summaryCostCounter(props.filteredList)}zł
+          {"razem:".toUpperCase()} {summaryCostCounter(props.filteredList)} PLN
         </Text>
       </View>
       <View>
@@ -63,7 +63,7 @@ const Expense = (props) => {
                 </Text>
 
                 <Text style={{ color: Colors[scheme].primarySecond }}>
-                  {item.item.cost}zł
+                  {item.item.cost} PLN
                 </Text>
               </View>
 

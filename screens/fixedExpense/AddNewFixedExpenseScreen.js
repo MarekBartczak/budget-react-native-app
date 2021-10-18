@@ -78,9 +78,6 @@ const AddNewFixedExpenseScreen = (props) => {
     },
   };
   const intervalImage = (type, path) => {
-    // path[type].value.days === interval.days &&
-    // path[type].value.months === interval.months &&
-    // path[type].value.years === interval.years
     return (
       <TouchableOpacity onPress={() => setInterval(path[type].value)}>
         <Image
@@ -175,9 +172,6 @@ const AddNewFixedExpenseScreen = (props) => {
         <KeyboardAvoidingView
           //   behavior={"position"}
           style={{ flex: 1 }}
-          //   keyboardVerticalOffset={
-          //     Dimensions.get("window").height < 670 ? 60 : -100
-          //   }
           enabled
         >
           <View style={styles.AddNewComponent}>
@@ -265,11 +259,12 @@ const AddNewFixedExpenseScreen = (props) => {
                       textAlign: "center",
                       // marginTop: -10,
                       // backgroundColor: Colors.accent,
-                      width: 150,
+                      width: Dimensions.get("window").width * 0.8,
                       color: Colors[scheme].primarySecond,
+                      fontFamily: "Kanit_600SemiBold",
                     }}
                   >
-                    Częstotliwość opłat
+                    {"Częstotliwość opłat".toUpperCase()}
                   </Text>
                   <View style={styles.intervalOptions}>
                     <View>{intervalImage("7days", intervalPath)}</View>

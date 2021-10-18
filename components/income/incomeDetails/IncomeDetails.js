@@ -111,7 +111,7 @@ const IncomeDetails = (props) => {
                   ...{ color: Colors[scheme].primarySecond },
                 }}
               >
-                {cost}zł
+                {cost} PLN
               </Text>
             </View>
           </View>

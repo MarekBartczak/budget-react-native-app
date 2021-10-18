@@ -86,7 +86,7 @@ const UnpaidExpense = (props) => {
                 fontFamily: "Kanit_400Regular",
               }}
             >
-              {item.item.cost}zł{" "}
+              {item.item.cost} PLN{" "}
             </Text>
           </TouchableOpacity>
         )}

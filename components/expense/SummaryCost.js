@@ -17,7 +17,7 @@ const SummaryCost = (props) => {
           ...{ color: Colors[scheme].primarySecond },
         }}
       >
-        {props.cost.toFixed(2)}zł
+        {props.cost.toFixed(2)} PLN
       </Text>
     </View>
   );

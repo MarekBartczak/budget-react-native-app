@@ -99,7 +99,9 @@ const Chart = (props) => {
           withHorizontalLines={false}
           withHorizontalLabels={true}
           withDots={true}
+          segments={data.length}
           withshadow={false}
+          fromZero={true}
           withInnerLines={false}
           width={Dimensions.get("window").width}
           height={Dimensions.get("window").height * 0.24}

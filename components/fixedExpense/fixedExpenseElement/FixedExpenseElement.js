@@ -120,7 +120,7 @@ const FixedExpenseElement = (props) => {
             {props.el.date}
           </Text>
           <Text style={{ color: Colors[scheme].primarySecond }}>
-            {props.el.cost}zł
+            {props.el.cost} PLN
           </Text>
         </View>
       </View>

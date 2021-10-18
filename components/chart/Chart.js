@@ -96,7 +96,9 @@ const Chart = (props) => {
           withDots={true}
           withshadow={false}
           withInnerLines={false}
-          width={Dimensions.get("window").width}
+          segments={data.length}
+          fromZero={true}
+          width={Dimensions.get("window").width * 1}
           height={Dimensions.get("window").height * 0.25}
           chartConfig={{
             labelColor: () => Colors[scheme].headerTintColor,

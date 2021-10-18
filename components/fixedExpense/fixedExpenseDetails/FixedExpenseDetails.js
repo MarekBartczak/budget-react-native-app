@@ -212,7 +212,7 @@ const FixedExpenseDetails = (props) => {
                   },
                 }}
               >
-                {cost}zł
+                {cost} PLN
               </Text>
             </View>
           </View>

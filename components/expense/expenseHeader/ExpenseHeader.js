@@ -57,7 +57,7 @@ const ExpenseHeader = (props) => {
             ...{ color: Colors[scheme].headerTintColor },
           }}
         >
-          {props.cost.toFixed(2)}zł
+          {props.cost.toFixed(2)} PLN
         </Text>
       </View>
       <View style={{ flexDirection: "row" }}>

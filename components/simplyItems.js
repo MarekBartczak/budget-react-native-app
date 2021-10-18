@@ -28,7 +28,7 @@ const details = (props) => {
               fontFamily: "Kanit_600SemiBold",
             }}
           >
-            {props.cost}zł{" "}
+            {props.cost} PLN{" "}
           </Text>
         </View>
       </View>

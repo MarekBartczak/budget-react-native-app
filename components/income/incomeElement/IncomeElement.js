@@ -105,7 +105,7 @@ const IncomeElement = (props) => {
               ...{ color: Colors[scheme].primarySecond },
             }}
           >
-            {props.el.cost}zł
+            {props.el.cost} PLN
           </Text>
         </View>
       </View>

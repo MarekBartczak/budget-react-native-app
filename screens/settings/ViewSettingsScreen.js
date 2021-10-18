@@ -36,17 +36,20 @@ const ViewSettings = (props) => {
         <View
           style={{
             ...styles.customTheme,
-            ...{ backgroundColor: Colors[scheme].primary },
+            ...{ backgroundColor: Colors[scheme].primary, marginBottom: 30 },
           }}
         >
           <View>
             <Text
               style={{
                 ...styles.customThemeText,
-                ...{ color: Colors[scheme].primarySecond },
+                ...{
+                  color: Colors[scheme].primarySecond,
+                  fontFamily: "Kanit_600SemiBold",
+                },
               }}
             >
-              Kolory niestandardowe?
+              {"Kolory niestandardowe".toUpperCase()}
             </Text>
           </View>
           <View>

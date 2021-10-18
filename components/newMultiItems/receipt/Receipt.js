@@ -200,7 +200,7 @@ const Receipt = (props) => {
                   }}
                 >
                   <Text style={{ color: Colors[scheme].primarySecond }}>
-                    Razem {sum.toFixed(2)}zł
+                    Razem {sum.toFixed(2)} PLN
                   </Text>
                 </View>
                 <View style={styles.buttons}>

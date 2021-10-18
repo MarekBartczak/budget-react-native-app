@@ -203,7 +203,7 @@ const ExpenseListElement = (props) => {
               marginRight: 10,
             }}
           >
-            {props.cost}zł
+            {props.cost} PLN
           </Text>
         </View>
         <View

@@ -118,7 +118,7 @@ const SearchEngine = (props) => {
             }}
           >
             {filterCount.cost.toFixed(2)}
-            <Text>zł</Text>
+            <Text> PLN</Text>
           </Text>
         </Text>
       </View>

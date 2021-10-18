@@ -60,7 +60,7 @@ const FixedExpenseScreen = (props) => {
             {"Zaległe rachunki na kwotę:".toUpperCase()}{" "}
             <Text style={{ color: "red", fontFamily: "Kanit_400Regular" }}>
               {" "}
-              {delayCost}zł{" "}
+              {delayCost} PLN{" "}
             </Text>
           </Text>
         )}
