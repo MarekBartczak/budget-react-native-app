@@ -28,7 +28,6 @@ const FavPlaceElement = (props) => {
   };
 
   const dispatch = useDispatch();
-  // let path = require(`../assets/default_fav_element_${scheme}.png`);
 
   let path = require("../assets/default_fav_element_dark.png");
   switch (scheme) {

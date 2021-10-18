@@ -94,7 +94,7 @@ const UserScreen = (props) => {
                 fontSize: 15,
               }}
             >
-              {accountSummary.toFixed(2)}zł
+              {accountSummary.toFixed(2)} PLN
             </Text>
           </View>
         </View>

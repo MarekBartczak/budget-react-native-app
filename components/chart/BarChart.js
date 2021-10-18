@@ -120,7 +120,8 @@ const Chart = (props) => {
           style={{
             ...styles.chart,
             ...{
-              marginTop: 5,
+              marginTop: 0,
+              paddingTop: 10,
               shadowOffset: { height: -10, width: -10 },
               shadowRadius: 1,
               shadowColor: Colors[scheme].headerTintColor,

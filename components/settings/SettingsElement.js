@@ -79,10 +79,12 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").width * 0.1,
     justifyContent: "center",
     alignItems: "center",
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
   },
   element: {
     marginBottom: 5,
-    width: Dimensions.get("window").width * 0.8,
+    width: Dimensions.get("window").width * 0.9,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start",

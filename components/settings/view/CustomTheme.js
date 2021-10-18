@@ -30,7 +30,7 @@ const CustomTheme = (props) => {
         style={{
           margin: 10,
           padding: 5,
-          width: Dimensions.get("window").width * 0.6,
+          width: Dimensions.get("window").width * 0.9,
           flexDirection: "row",
           backgroundColor: Colors[scheme].primary,
           shadowColor: "black",
@@ -39,6 +39,7 @@ const CustomTheme = (props) => {
           shadowRadius: 5,
           alignItems: "center",
           justifyContent: "space-between",
+          borderRadius: 20,
         }}
       >
         <Text
@@ -81,8 +82,8 @@ const CustomTheme = (props) => {
     <View style={styles.customTheme}>
       {themeElement("light_Blue", "Jasny niebieski")}
       {themeElement("light_Pink", "Jasny różowy")}
-      {themeElement("light_Gold", "Złoty")}
-      {themeElement("light", "Jasny")}
+      {themeElement("light_Gold", "Jasny złoty")}
+      {themeElement("light", "Jasny zielony")}
       {themeElement("dark", "Ciemny")}
     </View>
   );
