@@ -46,7 +46,18 @@ const AddNewFixedExpenseScreen = (props) => {
       return null;
     } else {
       return (
-        <Text style={{ color: "red", fontSize: 10 }}>
+        <Text
+          style={{
+            color: "rgb(255,1,1)",
+            fontSize: 10,
+            backgroundColor: "rgb(255,255,255)",
+            padding: 2,
+            paddingHorizontal: 10,
+            borderRadius: 10,
+            overflow: "hidden",
+            fontFamily: "Kanit_600SemiBold",
+          }}
+        >
           {" "}
           Proszę wpisać poprawną kwotę{" "}
         </Text>
@@ -113,21 +124,22 @@ const AddNewFixedExpenseScreen = (props) => {
                 <View
                   style={{
                     ...styles.inputView,
-                    ...{ borderColor: Colors[scheme].primary },
+                    ...{ backgroundColor: Colors[scheme].button },
                   }}
                 >
                   <Input
                     style={{
                       ...styles.input,
                       ...{
-                        color: Colors[scheme].primarySecond,
+                        color: Colors[scheme].primary,
+                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={cost}
                     placeholder={"Kwota"}
                     keyboardType={"numeric"}
                     onChangeText={setCost}
-                    placeholderTextColor={Colors[scheme].primarySecond}
+                    placeholderTextColor={Colors[scheme].primary}
                   />
                   {cost !== "" &&
                     !numberInputValidation(switchComaToDot(cost)) && (
@@ -137,33 +149,36 @@ const AddNewFixedExpenseScreen = (props) => {
                     style={{
                       ...styles.input,
                       ...{
-                        color: Colors[scheme].primarySecond,
+                        color: Colors[scheme].primary,
+                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={title}
                     placeholder={"Tytuł"}
                     keyboardType={"default"}
                     onChangeText={setTitle}
-                    placeholderTextColor={Colors[scheme].primarySecond}
+                    placeholderTextColor={Colors[scheme].primary}
                   />
                   <Input
                     style={{
                       ...styles.input,
                       ...{
-                        color: Colors[scheme].primarySecond,
+                        color: Colors[scheme].primary,
+                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     value={recipient}
                     placeholder={"Odbiorca"}
                     keyboardType={"default"}
                     onChangeText={setRecipient}
-                    placeholderTextColor={Colors[scheme].primarySecond}
+                    placeholderTextColor={Colors[scheme].primary}
                   />
                   <Input
                     style={{
                       ...styles.descriptionInput,
                       ...{
-                        color: Colors[scheme].primaryThird,
+                        color: Colors[scheme].primary,
+                        borderColor: Colors[scheme].primary,
                       },
                     }}
                     placeholder={"Opis"}
@@ -171,13 +186,13 @@ const AddNewFixedExpenseScreen = (props) => {
                     numberOfLines={3}
                     keyboardType={"default"}
                     onChangeText={setDescription}
-                    placeholderTextColor={Colors[scheme].primarySecond}
+                    placeholderTextColor={Colors[scheme].primary}
                   />
                 </View>
                 <View
                   style={{
                     ...styles.datePickerView,
-                    ...{ borderColor: Colors[scheme].primary },
+                    ...{},
                   }}
                 >
                   <DatePicker
@@ -311,22 +326,23 @@ const styles = StyleSheet.create({
     // shadowColor: "black",
     // shadowOpacity: 0.2,
     // shadowRadius: 7,
-    borderBottomWidth: 1,
   },
 
   defaultText: {
     fontWeight: "bold",
   },
   inputView: {
-    marginTop: 10,
+    // marginTop: 10,
     width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "center",
-    // shadowOffset: { height: 0, width: 0 },
-    // shadowColor: "black",
-    // shadowOpacity: 0.2,
-    // shadowRadius: 7,
-    borderBottomWidth: 1,
+    shadowColor: "black",
+    shadowOffset: { height: 1, width: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
+    paddingBottom: 20,
   },
   input: {
     height: 25,
@@ -336,7 +352,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   descriptionInput: {
-    height: 50,
+    height: 40,
     width: Dimensions.get("window").width * 0.8,
     borderBottomWidth: 1,
     margin: 5,
