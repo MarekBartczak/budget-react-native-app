@@ -28,11 +28,27 @@ const FavPlaceElement = (props) => {
   };
 
   const dispatch = useDispatch();
-  let path = require("../assets/default_fav_element.png");
+  // let path = require(`../assets/default_fav_element_${scheme}.png`);
 
-  if (scheme === "dark") {
-    path = require("../assets/default_fav_element_dark.png");
+  let path = require("../assets/default_fav_element_dark.png");
+  switch (scheme) {
+    case "dark":
+      path = require("../assets/default_fav_element_dark.png");
+      break;
+    case "light":
+      path = require("../assets/default_fav_element_light.png");
+      break;
+    case "light_Blue":
+      path = require("../assets/default_fav_element_light_Blue.png");
+      break;
+    case "light_Pink":
+      path = require("../assets/default_fav_element_light_Pink.png");
+      break;
+    case "light_Gold":
+      path = require("../assets/default_fav_element_light_Gold.png");
+      break;
   }
+
   return (
     <TouchableOpacity
       onPress={() => {

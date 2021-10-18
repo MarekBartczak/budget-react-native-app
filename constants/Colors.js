@@ -26,7 +26,6 @@ export default {
     primarySecond: "rgb(195,195,198)",
     drawerActive: "rgb(255,255,255)",
     backGroundOne: "rgba(10,12,19, 1)",
-    // backGroundOne: "rgba(20,2,9, 1)",
     backGround_one: "rgba(1,1,1, 0.93)",
     light: "rgba(255, 255, 255, 0)",
     backGroundList: "rgba(1, 1, 1,1)",
