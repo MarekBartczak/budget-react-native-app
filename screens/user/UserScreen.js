@@ -14,6 +14,10 @@ const UserScreen = (props) => {
   const fixedExpense = useSelector((state) => state.fixedExpense.fixedExpense);
   const income = useSelector((state) => state.income.income);
 
+  const appinfo = require("../../app.json");
+  console.log(appinfo.expo.ios.buildNumber);
+  console.log(appinfo.expo.version);
+
   let accountSummary = 0;
   const countSum = (total, sum) => total + sum;
 
@@ -121,6 +125,24 @@ const UserScreen = (props) => {
               }}
             >
               {userEmail}
+            </Text>
+          </View>
+          <View style={{ alignItems: "center" }}>
+            <Text
+              style={{
+                color: Colors[scheme].primaryThird,
+                fontFamily: "Kanit_400Regular",
+              }}
+            >
+              Wersja: {appinfo.expo.version}
+            </Text>
+            <Text
+              style={{
+                color: Colors[scheme].primaryThird,
+                fontFamily: "Kanit_400Regular",
+              }}
+            >
+              Kompilacja: {appinfo.expo.ios.buildNumber}
             </Text>
           </View>
         </View>

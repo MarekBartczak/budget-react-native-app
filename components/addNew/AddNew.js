@@ -65,7 +65,7 @@ const AddNewComponent = (props) => {
             <View
               style={{
                 ...styles.datePickerView,
-                ...{ borderColor: Colors[scheme].primary },
+                ...{},
               }}
             >
               <DatePicker
@@ -78,7 +78,6 @@ const AddNewComponent = (props) => {
               style={{
                 ...styles.inputView,
                 ...{
-                  borderColor: Colors[scheme].primaryThird,
                   backgroundColor: Colors[scheme].light,
                 },
               }}
@@ -86,7 +85,11 @@ const AddNewComponent = (props) => {
               <Input
                 style={{
                   ...styles.input,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].headerTintColor,
+                    backgroundColor: Colors[scheme].headerTintColor,
+                    shadowColor: Colors[scheme].backGroundOneDarkness,
+                  },
                 }}
                 value={props.amountValue}
                 placeholder={props.placeHolderAmount}
@@ -103,7 +106,11 @@ const AddNewComponent = (props) => {
               <Input
                 style={{
                   ...styles.input,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].headerTintColor,
+                    backgroundColor: Colors[scheme].headerTintColor,
+                    shadowColor: Colors[scheme].backGroundOneDarkness,
+                  },
                 }}
                 value={props.nameValue}
                 placeholder={props.placeHolderName}
@@ -114,7 +121,11 @@ const AddNewComponent = (props) => {
               <Input
                 style={{
                   ...styles.input,
-                  ...{ color: Colors[scheme].primarySecond },
+                  ...{
+                    color: Colors[scheme].headerTintColor,
+                    backgroundColor: Colors[scheme].headerTintColor,
+                    shadowColor: Colors[scheme].backGroundOneDarkness,
+                  },
                 }}
                 value={props.contractor}
                 placeholder={props.placeHolderContractor}
@@ -203,13 +214,19 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 0.25,
     shadowRadius: 3,
-    paddingBottom: 10,
+    // paddingBottom: 10,
+    borderRadius: 10,
+    padding: 10,
   },
   input: {
-    height: 25,
-    width: 200,
-    borderBottomWidth: 1,
+    width: Dimensions.get("window").width * 0.8,
+    shadowOffset: { height: 1, width: 1 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
     margin: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 10,
   },
   buttonView: {
     marginTop: 20,
