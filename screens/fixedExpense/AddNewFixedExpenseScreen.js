@@ -135,7 +135,7 @@ const AddNewFixedExpenseScreen = (props) => {
                       ...styles.input,
                       ...{
                         color: Colors[scheme].headerTintColor,
-                        backgroundColor: Colors[scheme].backGroundOne,
+                        backgroundColor: Colors[scheme].backGroundOneDarkness,
                         shadowColor: Colors[scheme].headerTintColor,
                       },
                     }}
@@ -154,7 +154,7 @@ const AddNewFixedExpenseScreen = (props) => {
                       ...styles.input,
                       ...{
                         color: Colors[scheme].headerTintColor,
-                        backgroundColor: Colors[scheme].backGroundOne,
+                        backgroundColor: Colors[scheme].backGroundOneDarkness,
                         shadowColor: Colors[scheme].headerTintColor,
                       },
                     }}
@@ -169,7 +169,7 @@ const AddNewFixedExpenseScreen = (props) => {
                       ...styles.input,
                       ...{
                         color: Colors[scheme].headerTintColor,
-                        backgroundColor: Colors[scheme].backGroundOne,
+                        backgroundColor: Colors[scheme].backGroundOneDarkness,
                         shadowColor: Colors[scheme].headerTintColor,
                       },
                     }}
@@ -348,13 +348,13 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     borderBottomLeftRadius: 100,
     borderBottomRightRadius: 100,
-    paddingBottom: 20,
+    paddingBottom: 40,
   },
   input: {
     // height: 25,
     width: Dimensions.get("window").width * 0.8,
     shadowOffset: { height: 1, width: 1 },
-    shadowOpacity: 0.85,
+    shadowOpacity: 0.55,
     shadowRadius: 3,
     margin: 5,
     margin: 10,

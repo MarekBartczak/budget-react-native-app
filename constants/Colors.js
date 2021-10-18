@@ -6,6 +6,7 @@ export default {
     drawerActive: "rgb(100,100,100)",
     backGround_one: "rgba(255, 255, 255, 0.93)",
     backGroundOne: "rgba(98, 172, 147, 1)",
+    backGroundOneDarkness: "rgba(78, 152, 127, 1)",
     backGroundList: "rgba(255, 255, 255,1)",
     accent: "rgba(98, 172, 147, 1)",
     button: "rgb(98,172,147)",
@@ -27,6 +28,8 @@ export default {
     drawerActive: "rgb(155,155,155)",
     // backGroundOne: "rgba(10,12,19, 1)",
     backGroundOne: "rgba(30,32,39, 1)",
+    backGroundOneDarkness: "rgba(20, 22, 29, 1)",
+
     backGround_one: "rgba(1,1,1, 0.93)",
     light: "rgba(255, 255, 255, 0)",
     backGroundList: "rgba(1, 1, 1,1)",
@@ -53,6 +56,8 @@ export default {
     drawerActive: "rgb(100,100,100)",
     backGround_one: "rgba(255, 255, 255, 0.93)",
     backGroundOne: "rgba(1, 120, 247, 1)",
+    backGroundOneDarkness: "rgba(1, 100, 220, 1)",
+
     backGroundList: "rgba(255, 255, 255,1)",
     accent: "rgba(1, 120, 147, 1)",
     button: "rgba(1, 120, 247, 1)",
@@ -74,6 +79,8 @@ export default {
     drawerActive: "rgb(100,100,100)",
     backGround_one: "rgba(255, 255, 255, 0.93)",
     backGroundOne: "rgba(258, 72, 147, 1)",
+    backGroundOneDarkness: "rgba(238, 52, 127, 1)",
+
     backGroundList: "rgba(255, 255, 255,1)",
     accent: "rgba(258, 72, 147, 1)",
     button: "rgba(258, 72, 147, 1)",
@@ -95,6 +102,8 @@ export default {
     drawerActive: "rgb(100,100,100)",
     backGround_one: "rgba(255, 255, 255, 0.93)",
     backGroundOne: "rgba(217, 175, 55, 1)",
+    backGroundOneDarkness: "rgba(197, 155, 35, 1)",
+
     backGroundList: "rgba(255, 255, 255,1)",
     accent: "rgba(217, 175, 55, 1)",
     button: "rgba(217, 175, 55, 1)",
