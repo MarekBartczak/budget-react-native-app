@@ -45,6 +45,7 @@ const DrawerNavigator = (props) => {
   const fetchedData = useSelector((state) => state.auth.fetchedData);
   const delayCost = useSelector((state) => state.fixedExpense.delayCost);
   const isExpenseLoaded = useSelector((state) => state.item.isLoaded);
+  const isCategoryLoadied = useSelector((state) => state.item.categoryList);
   const isIncomeLoaded = useSelector((state) => state.income.isLoaded);
   const isFixedExpenseLoaded = useSelector(
     (state) => state.fixedExpense.isLoaded
@@ -203,6 +204,8 @@ const DrawerNavigator = (props) => {
     fetchData();
   }, [status]);
   // console.log(isExpenseLoaded);
+  // console.log(userId);
+  // console.log(isCategoryLoadied.length);
   // console.log(isIncomeLoaded);
   // console.log(isFixedExpenseLoaded);
   // console.log(isConfigLoaded);
@@ -210,7 +213,8 @@ const DrawerNavigator = (props) => {
     // isExpenseLoaded === true &&
     // isIncomeLoaded === true &&
     // isFixedExpenseLoaded === true &&
-    isConfigLoaded === true
+    // isConfigLoaded === true
+    isCategoryLoadied.length === 1
     // false
     // true
   ) {
