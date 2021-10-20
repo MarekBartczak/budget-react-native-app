@@ -86,9 +86,9 @@ const AddNewComponent = (props) => {
                 style={{
                   ...styles.input,
                   ...{
-                    color: Colors[scheme].headerTintColor,
-                    backgroundColor: Colors[scheme].headerTintColor,
-                    shadowColor: Colors[scheme].backGroundOneDarkness,
+                    color: Colors[scheme].primarySecond,
+                    backgroundColor: Colors[scheme].primary,
+                    shadowColor: Colors[scheme].drawerActive,
                   },
                 }}
                 value={props.amountValue}
@@ -106,9 +106,9 @@ const AddNewComponent = (props) => {
                 style={{
                   ...styles.input,
                   ...{
-                    color: Colors[scheme].headerTintColor,
-                    backgroundColor: Colors[scheme].headerTintColor,
-                    shadowColor: Colors[scheme].backGroundOneDarkness,
+                    color: Colors[scheme].primarySecond,
+                    backgroundColor: Colors[scheme].primary,
+                    shadowColor: Colors[scheme].drawerActive,
                   },
                 }}
                 value={props.nameValue}
@@ -121,9 +121,9 @@ const AddNewComponent = (props) => {
                 style={{
                   ...styles.input,
                   ...{
-                    color: Colors[scheme].headerTintColor,
-                    backgroundColor: Colors[scheme].headerTintColor,
-                    shadowColor: Colors[scheme].backGroundOneDarkness,
+                    color: Colors[scheme].primarySecond,
+                    backgroundColor: Colors[scheme].primary,
+                    shadowColor: Colors[scheme].drawerActive,
                   },
                 }}
                 value={props.contractor}
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.8,
     shadowOffset: { height: 1, width: 1 },
     shadowOpacity: 0.25,
-    shadowRadius: 3,
+    shadowRadius: 1,
     margin: 10,
     paddingVertical: 5,
     paddingHorizontal: 10,
