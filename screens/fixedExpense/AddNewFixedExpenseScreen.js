@@ -138,7 +138,7 @@ const AddNewFixedExpenseScreen = (props) => {
       recipient,
       false,
       Number(switchComaToDot(cost)),
-      interval.value,
+      interval,
       description,
       []
     );

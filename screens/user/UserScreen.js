@@ -3,6 +3,8 @@ import React from "react";
 import Colors from "../../constants/Colors";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { useSelector } from "react-redux";
+import * as Application from "expo-application";
+
 const UserScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -15,8 +17,6 @@ const UserScreen = (props) => {
   const income = useSelector((state) => state.income.income);
 
   const appinfo = require("../../app.json");
-  console.log(appinfo.expo.ios.buildNumber);
-  console.log(appinfo.expo.version);
 
   let accountSummary = 0;
   const countSum = (total, sum) => total + sum;
@@ -39,7 +39,7 @@ const UserScreen = (props) => {
   if (fixedExpenseCostList.length > 0) {
     fiexedExpenseSummary = fixedExpenseCostList.reduce(countSum);
   }
-
+  console.log(Application);
   accountSummary = incomeSum - expenseSum - fiexedExpenseSummary;
 
   const showPhoto = () => {

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "712755376912",
+    "firebase_url": "https://simplybudgetapp-default-rtdb.firebaseio.com",
+    "project_id": "simplybudgetapp",
+    "storage_bucket": "simplybudgetapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712755376912:android:35dac96a8dff99f8c96b95",
+        "android_client_info": {
+          "package_name": "host.exp.Exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712755376912-lpkccuvomgjvn03albrofoe0gog6qlnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBx1j7oiKAxN9TZ46Spu5tSRSGN2lmocHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712755376912-lpkccuvomgjvn03albrofoe0gog6qlnl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "712755376912-32lu7emovkkc8fo0tv97igt6cobh855a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.exponent",
+                "app_store_id": "1589939598"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -43,7 +43,7 @@ const InputData = (props) => {
   };
 
   const checkFilledForm = () => {
-    if (cost != "" && numberInputValidation(cost)) {
+    if (cost != "" && numberInputValidation(switchComaToDot(cost))) {
       return true;
     }
   };

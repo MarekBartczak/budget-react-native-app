@@ -102,7 +102,6 @@ const AddNewComponent = (props) => {
                 !numberInputValidation(switchComaToDot(props.amountValue)) && (
                   <ErrorCostValidation />
                 )}
-              {console.log(props.amountValue)}
               <Input
                 style={{
                   ...styles.input,
