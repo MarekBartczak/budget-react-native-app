@@ -14,6 +14,7 @@ import months from "../../data/months";
 import summaryCostCounter from "../../functions/summaryCostCounter";
 import * as summmaryActions from "../../store/actions/summary";
 import uuid from "react-native-uuid";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const SumaryCost = (props) => {
   const dispatch = useDispatch();
@@ -31,13 +32,16 @@ const SumaryCost = (props) => {
   const itemsList = props.list;
   let amount = 0;
 
-  // console.log(itemsList);
-
   let filteredByDate;
   filteredByDate = itemsList.filter((el) =>
     el.date.includes(`${year}-${monthNr}`)
   );
 
+  // useEffect(() => {
+  // }, [chartFilter]);
+  const setChartFilterFunction = (filter) => {
+    props.getChartFilter(filter);
+  };
   if (filteredDate[getType] !== "") {
     // console.log(filteredDate[getType]);
     filteredByDate = itemsList.filter((el) =>
@@ -214,14 +218,60 @@ const SumaryCost = (props) => {
       }}
     >
       <View>
-        <Text
-          style={{
-            ...styles.textCost,
-            ...{ color: Colors[scheme].headerTintColor },
-          }}
-        >
-          {amount === "0" ? "0.00" : amount} PLN
-        </Text>
+        <View style={{ flexDirection: "column" }}>
+          {getType === "fixedExpense" ? (
+            <View
+              style={{
+                position: "absolute",
+                left: -Dimensions.get("window").width / 3.5,
+                top: 2,
+                flexDirection: "row",
+                backgroundColor: Colors[scheme].primary,
+                paddingHorizontal: 15,
+                paddingVertical: 3,
+                borderRadius: 10,
+                marginTop: 3,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TouchableOpacity onPress={() => setChartFilterFunction("all")}>
+                <MaterialIcons
+                  name="all-inclusive"
+                  size={24}
+                  color={Colors[scheme].button}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setChartFilterFunction("isPaid")}
+              >
+                <MaterialIcons
+                  name="attach-money"
+                  size={24}
+                  color={Colors[scheme].button}
+                />
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => setChartFilterFunction("isNotPaid")}
+              >
+                <MaterialIcons
+                  name="money-off"
+                  size={24}
+                  color={Colors[scheme].button}
+                />
+              </TouchableOpacity>
+            </View>
+          ) : null}
+          <Text
+            style={{
+              ...styles.textCost,
+              ...{ color: Colors[scheme].headerTintColor },
+            }}
+          >
+            {amount === "0" ? "0.00" : amount} PLN
+          </Text>
+        </View>
         <TouchableOpacity onPress={() => setShowModal(!showModal)}>
           <Text
             style={{

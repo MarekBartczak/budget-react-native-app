@@ -43,10 +43,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     paddingBottom: 15,
   },
-  buttonComponent: {
-    position: "absolute",
-    bottom: 20,
-  },
 });
 
 export default IncomeScreen;

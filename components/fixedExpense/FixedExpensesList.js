@@ -5,15 +5,18 @@ import { useSelector } from "react-redux";
 import ExternalComponent from "../ExternalComponentWithGradient/ExternalComponentWithGradient";
 
 const FixedExpensesList = (props) => {
+  const { filter } = props.route.params;
+
   const fixedExpensesList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
+
   return (
     <ExternalComponent>
       <View style={styles.fixedExpensesList}>
         <View>
           <FlatList
-            data={fixedExpensesList}
+            data={filter}
             renderItem={(itemData) => (
               <FixedExpenseElement
                 el={itemData.item}

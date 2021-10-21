@@ -127,7 +127,7 @@ const UserScreen = (props) => {
               {userEmail}
             </Text>
           </View>
-          <View style={{ alignItems: "center" }}>
+          <View style={{ alignItems: "center", marginBottom: 10 }}>
             <Text
               style={{
                 color: Colors[scheme].primaryThird,

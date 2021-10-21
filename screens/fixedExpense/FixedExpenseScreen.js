@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Dimensions } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Chart from "../../components/chart/Chart";
 import Colors from "../../constants/Colors";
@@ -14,23 +14,68 @@ const FixedExpenseScreen = (props) => {
   const fixedExpenseShowList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
+  const [chartEl, setChartEl] = useState(
+    chartElement(fixedExpenseShowList.filter((el) => true))
+  );
+  const [filter, setFilter] = useState(
+    fixedExpenseShowList.filter((el) => true)
+  );
 
   const delayCost = useSelector((state) => state.fixedExpense.delayCost);
 
-  const chartEl = chartElement(
-    fixedExpenseShowList.filter((el) => el.isPaid === true)
-  );
+  const chartElFilter = (filter) => {
+    switch (filter) {
+      case "isPaid":
+        setChartEl(
+          chartElement(fixedExpenseShowList.filter((el) => el.isPaid === true))
+        );
+        setFilter(fixedExpenseShowList.filter((el) => el.isPaid === true));
+
+        return;
+
+      case "isNotPaid":
+        setChartEl(
+          chartElement(fixedExpenseShowList.filter((el) => el.isPaid === false))
+        );
+        setFilter(fixedExpenseShowList.filter((el) => el.isPaid === false));
+
+        return;
+
+      case "all":
+        setChartEl(chartElement(fixedExpenseShowList.filter((el) => true)));
+        setFilter(fixedExpenseShowList.filter((el) => true));
+
+        return;
+      default:
+        setChartEl(chartElement(fixedExpenseShowList.filter((el) => true)));
+        setFilter(fixedExpenseShowList.filter((el) => true));
+
+        return;
+    }
+  };
+
+  const getChartFilter = (x) => {
+    chartElFilter(x);
+  };
 
   return (
     <ExternalComponent>
       <View style={styles.component}>
-        <SummaryCost type="fixedExpense" list={chartEl} />
+        <SummaryCost
+          getChartFilter={getChartFilter}
+          type="fixedExpense"
+          list={chartEl}
+        />
       </View>
       <View style={styles.chartCcomponent}>
         {chartEl.length > 0 ? (
           <Chart
             type="fixedExpense"
-            press={() => props.navigation.navigate("FixedExpensesList")}
+            press={() =>
+              props.navigation.navigate("FixedExpensesList", {
+                filter: filter,
+              })
+            }
             obj={chartEl}
           />
         ) : (
