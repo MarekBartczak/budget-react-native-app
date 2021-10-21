@@ -101,12 +101,14 @@ export default UnpaidExpense;
 const styles = StyleSheet.create({
   unpaidExpenseComponent: {
     width: Dimensions.get("window").width * 0.9,
-    height: 150,
-    shadowColor: "black",
+    height: 100,
     shadowOffset: { height: 0, width: 0 },
-    shadowOpacity: 0.23,
-    shadowRadius: 1,
-    paddingBottom: 5,
+    shadowRadius: 2,
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    padding: 5,
+    borderRadius: 10,
+    marginBottom: 10,
   },
   overDateList: {
     marginTop: 5,

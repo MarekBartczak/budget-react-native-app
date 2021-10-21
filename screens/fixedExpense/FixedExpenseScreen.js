@@ -11,6 +11,9 @@ import UnpaidExpense from "../../components/fixedExpense/unpaidExpense/UnpaidExp
 import EmptyList from "../../components/emptyList/EmptyList";
 const FixedExpenseScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const fixedExpenseMonthFilter = useSelector(
+    (state) => state.summary.fixedExpense
+  );
   const fixedExpenseShowList = useSelector(
     (state) => state.fixedExpense.fixedExpense
   );
@@ -68,7 +71,8 @@ const FixedExpenseScreen = (props) => {
         />
       </View>
       <View style={styles.chartCcomponent}>
-        {chartEl.length > 0 ? (
+        {chartEl.filter((el) => el.date.includes(fixedExpenseMonthFilter))
+          .length > 0 ? (
           <Chart
             type="fixedExpense"
             press={() =>

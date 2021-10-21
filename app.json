@@ -17,7 +17,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "userInterfaceStyle": "automatic",
-      "buildNumber": "0.1.7",
+      "buildNumber": "0.1.8",
       "usesAppleSignIn": true,
 
       "bundleIdentifier": "com.marek.bartczak.financialApp",
