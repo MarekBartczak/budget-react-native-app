@@ -1,4 +1,4 @@
-# BUDGET REACT NATIVE MOBILE APP (no beter name yet)
+# BUDGET CONTROL
 
 and not finished yet...
 
@@ -9,6 +9,9 @@ and not finished yet...
 ![picture b](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/b.png)
 
 ![picture c](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/c.png)
+![picture d](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/d.png)
+![picture e](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/e.png)
+![picture f](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/f.png)
 
 ## installation
 
