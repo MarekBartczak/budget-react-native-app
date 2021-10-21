@@ -1,4 +1,4 @@
-# BUDGET REACT NATIVE MOBILE APP (no beter name yet)
+# BUDGET CONTROL
 
 and not finished yet...
 
