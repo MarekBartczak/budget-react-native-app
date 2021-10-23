@@ -21,6 +21,7 @@ const EmptyList = (props) => {
         shadowRadius: 5,
         paddingBottom: 45,
         alignItems: "center",
+        elevation: 7,
       }}
     >
       <MaterialCommunityIcons

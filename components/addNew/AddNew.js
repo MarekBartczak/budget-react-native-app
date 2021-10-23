@@ -161,6 +161,7 @@ const AddNewComponent = (props) => {
                       shadowOffset: { height: 0, width: 0 },
                       shadowOpacity: 0.25,
                       shadowRadius: 5,
+                      elevation: 7,
                     },
                   }}
                   onPress={props.save}
@@ -213,6 +214,8 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 0.25,
     shadowRadius: 3,
+    elevation: 7,
+
     // paddingBottom: 10,
     borderRadius: 10,
     padding: 10,
@@ -227,6 +230,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 10,
+    elevation: 7,
   },
   buttonView: {
     marginTop: 10,

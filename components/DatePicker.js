@@ -1,14 +1,30 @@
-import { StyleSheet, View, useColorScheme } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Platform,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
+import React, { useState, useMemo } from "react";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import Colors from "../constants/Colors";
 import { useSelector } from "react-redux";
+import { Entypo } from "@expo/vector-icons";
 
 const DatePicker = (props) => {
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const scheme = useSelector((state) => state.config.scheme);
+  const show = Platform.OS === "ios";
+  const showAndroid = Platform.OS === "android";
+  const currentDate = new Date().toISOString().slice(0, 10);
 
-  return (
-    <View style={styles.pickADate}>
+  const androidDatePicker = () => {
+    return showDatePicker && datePicker();
+  };
+
+  const datePicker = () => {
+    return (
       <RNDateTimePicker
         style={{
           height: 90,
@@ -25,8 +41,48 @@ const DatePicker = (props) => {
         is24Hour={true}
         display="spinner"
         textColor={Colors[scheme].button}
-        onChange={props.onChange}
+        onChange={(event, date) => {
+          if (date !== undefined) {
+            props.onChange(event, date);
+            if (event.type === "set") {
+              setShowDatePicker(false);
+            }
+          }
+        }}
+        // onChange={props.onChange}
       />
+    );
+  };
+  return (
+    <View style={styles.pickADate}>
+      {show && datePicker()}
+      {showAndroid && (
+        <View>
+          <TouchableOpacity
+            onPress={() => setShowDatePicker(!showDatePicker)}
+            style={{
+              flexDirection: "row",
+              width: Dimensions.get("window").width * 0.8,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: "Kanit_600SemiBold",
+                fontSize: 30,
+                color: Colors[scheme].button,
+              }}
+            >
+              {props.date ? props.date.toISOString().slice(0, 10) : currentDate}
+            </Text>
+            <View style={{ marginLeft: 20 }}>
+              <Entypo name="calendar" size={34} color={Colors[scheme].button} />
+            </View>
+          </TouchableOpacity>
+          {androidDatePicker()}
+        </View>
+      )}
     </View>
   );
 };

@@ -67,6 +67,7 @@ const PlaceList = (props) => {
         shadowOpacity: 1,
         shadowRadius: 5,
         marginBottom: 15,
+        elevation: 7,
       }}
     >
       <View

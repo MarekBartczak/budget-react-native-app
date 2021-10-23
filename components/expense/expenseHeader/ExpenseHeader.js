@@ -104,6 +104,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 100,
     borderBottomRightRadius: 100,
     shadowOffset: { height: 1, width: 0 },
+    elevation: 7,
+
     shadowOpacity: 1,
     shadowRadius: 5,
     paddingBottom: 5,

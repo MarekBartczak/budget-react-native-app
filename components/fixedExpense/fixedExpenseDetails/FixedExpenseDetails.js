@@ -282,6 +282,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 5,
     paddingBottom: 5,
+    elevation: 7,
   },
   details: {
     marginTop: 25,
@@ -291,6 +292,7 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 0.25,
     shadowRadius: 3,
+    elevation: 7,
   },
   history: {
     marginTop: 10,
@@ -300,6 +302,7 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 0.25,
     shadowRadius: 3,
+    elevation: 7,
   },
   trash: {
     alignItems: "center",

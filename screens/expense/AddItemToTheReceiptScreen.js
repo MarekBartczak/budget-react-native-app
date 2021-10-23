@@ -50,6 +50,7 @@ const AddItemToTheReceiptScreen = (props) => {
               shadowColor: "black",
               shadowOpacity: 0.25,
               shadowRadius: 3,
+              elevation: 7,
             }}
             onPress={() => {
               // props.addItemToTheRecipt();
@@ -80,6 +81,7 @@ const AddItemToTheReceiptScreen = (props) => {
                 shadowColor: "black",
                 shadowOpacity: 0.25,
                 shadowRadius: 3,
+                elevation: 7,
               }}
             >
               <Text

@@ -210,10 +210,13 @@ const styles = StyleSheet.create({
     paddingBottom: 60,
     borderBottomRightRadius: 100,
     borderBottomLeftRadius: 100,
+    elevation: 7,
     // borderLeftWidth: 5,
     // borderRightWidth: 5,
     // borderBottomWidth: 5,
     shadowOffset: { height: 1, width: 0 },
+    elevation: 7,
+
     shadowOpacity: 0.55,
     shadowRadius: 5,
   },

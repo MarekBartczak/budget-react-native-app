@@ -129,6 +129,7 @@ const ExpenseListElement = (props) => {
           shadowRadius: 6,
           shadowColor: "black",
           shadowOpacity: 0.2,
+          elevation: 7,
         }}
       >
         <Text
@@ -157,6 +158,7 @@ const ExpenseListElement = (props) => {
             shadowRadius: 6,
             shadowColor: "black",
             shadowOpacity: 0.2,
+            elevation: 7,
           },
         }}
       >

@@ -53,6 +53,7 @@ const FavoritePlaces = (props) => {
           shadowColor: "black",
           shadowOpacity: 0.2,
           borderRadius: 10,
+          elevation: 5,
         },
       }}
     >

@@ -141,6 +141,7 @@ const InputData = (props) => {
             shadowOpacity: 0.25,
             shadowRadius: 3,
             paddingBottom: 5,
+            elevation: 7,
           }}
         >
           <View
@@ -209,6 +210,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     // overflow: "hidden",
     shadowOffset: { height: 1, width: 0 },
+    elevation: 7,
+
     shadowOpacity: 1,
     shadowRadius: 5,
     paddingBottom: 15,

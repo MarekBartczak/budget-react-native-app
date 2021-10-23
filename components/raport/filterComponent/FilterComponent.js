@@ -135,6 +135,7 @@ const FilterComponent = (props) => {
               shadowOpacity: 1,
               shadowRadius: 5,
               paddingBottom: 10,
+              elevation: 7,
             },
           }}
         >

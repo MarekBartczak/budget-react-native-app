@@ -31,6 +31,7 @@ const History = (props) => {
           shadowOffset: { height: 0, width: 0 },
           shadowOpacity: 0.25,
           shadowRadius: 3,
+          elevation: 7,
         }}
       >
         <Text

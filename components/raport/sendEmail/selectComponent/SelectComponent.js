@@ -25,6 +25,7 @@ const SelectComponent = (props) => {
             paddingBottom: 5,
             borderBottomLeftRadius: 100,
             borderBottomRightRadius: 100,
+            elevation: 7,
           },
         }}
       >

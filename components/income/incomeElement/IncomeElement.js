@@ -127,6 +127,8 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
     shadowOpacity: 0.25,
     shadowRadius: 3,
+    elevation: 7,
+
     // shadowOpacity: 0.9,
     // shadowRadius: 10,
     width: Dimensions.get("window").width,

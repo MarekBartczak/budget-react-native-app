@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Platform,
 } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -78,7 +79,7 @@ const FavPlaceElement = (props) => {
               ...styles.logo,
               ...{ borderColor: Colors[scheme].primary },
             }}
-            source={{ url: props.favPlaceLogo }}
+            source={{ uri: props.favPlaceLogo }}
           />
         )}
         <Text

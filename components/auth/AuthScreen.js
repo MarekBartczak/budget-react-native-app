@@ -186,6 +186,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.25,
     shadowRadius: 5,
+    elevation: 7,
   },
 
   loginBtnText: {

@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>CLIENT_ID</key>
-	<string>712755376912-d3n2miel04fqn5jn74h3mev0odsvc8p3.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.712755376912-d3n2miel04fqn5jn74h3mev0odsvc8p3</string>
-	<key>API_KEY</key>
-	<string>AIzaSyA8-OXA8LklRpbMUUEUGnquYnxeQyIUjyM</string>
-	<key>GCM_SENDER_ID</key>
-	<string>712755376912</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>com.marek.bartczak.financialApp</string>
-	<key>PROJECT_ID</key>
-	<string>simplybudgetapp</string>
-	<key>STORAGE_BUCKET</key>
-	<string>simplybudgetapp.appspot.com</string>
-	<key>IS_ADS_ENABLED</key>
-	<false></false>
-	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
-	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
-	<key>IS_GCM_ENABLED</key>
-	<true></true>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:712755376912:ios:93d2a4850ec84b52c96b95</string>
-</dict>
+	<dict>
+		<key>CLIENT_ID</key>
+		<string>712755376912-ns54gk53ascroi4osnei9tak3m7oq3nc.apps.googleusercontent.com</string>
+		<key>REVERSED_CLIENT_ID</key>
+		<string>com.googleusercontent.apps.712755376912-ns54gk53ascroi4osnei9tak3m7oq3nc</string>
+		<key>API_KEY</key>
+		<string>AIzaSyA8-OXA8LklRpbMUUEUGnquYnxeQyIUjyM</string>
+		<key>GCM_SENDER_ID</key>
+		<string>712755376912</string>
+		<key>PLIST_VERSION</key>
+		<string>1</string>
+		<key>BUNDLE_ID</key>
+		<string>com.marek.bartczak.financialApp</string>
+		<key>PROJECT_ID</key>
+		<string>simplybudgetapp</string>
+		<key>STORAGE_BUCKET</key>
+		<string>simplybudgetapp.appspot.com</string>
+		<key>IS_ADS_ENABLED</key>
+		<false></false>
+		<key>IS_ANALYTICS_ENABLED</key>
+		<false></false>
+		<key>IS_APPINVITE_ENABLED</key>
+		<true></true>
+		<key>IS_GCM_ENABLED</key>
+		<true></true>
+		<key>IS_SIGNIN_ENABLED</key>
+		<true></true>
+		<key>GOOGLE_APP_ID</key>
+		<string>1:712755376912:ios:93d2a4850ec84b52c96b95</string>
+	</dict>
 </plist>

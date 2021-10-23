@@ -302,6 +302,7 @@ const AddNewFixedExpenseScreen = (props) => {
                           shadowOffset: { height: 0, width: 0 },
                           shadowOpacity: 0.25,
                           shadowRadius: 5,
+                          elevation: 7,
                         },
                       }}
                       onPress={saveFixedExpense}
@@ -353,6 +354,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     shadowOffset: { height: 1, width: 0 },
     shadowOpacity: 1,
+    elevation: 7,
+
     shadowRadius: 5,
     borderBottomLeftRadius: 100,
     borderBottomRightRadius: 100,
@@ -363,6 +366,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.8,
     shadowOffset: { height: 1, width: 1 },
     shadowOpacity: 0.55,
+    elevation: 7,
+
     shadowRadius: 3,
     margin: 10,
     paddingVertical: 5,
@@ -397,6 +402,8 @@ const styles = StyleSheet.create({
     padding: 10,
 
     shadowOffset: { height: 0, width: 0 },
+    elevation: 7,
+
     shadowColor: "black",
     shadowOpacity: 0.25,
     shadowRadius: 3,

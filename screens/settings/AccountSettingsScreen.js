@@ -99,6 +99,8 @@ const AccountSettings = (props) => {
             marginBottom: 10,
             shadowColor: "black",
             shadowOffset: { height: 0, width: 0 },
+            elevation: 7,
+
             shadowOpacity: 0.25,
             shadowRadius: 5,
             marginTop: 10,
@@ -134,6 +136,8 @@ const AccountSettings = (props) => {
             marginBottom: 10,
             shadowColor: "white",
             shadowOffset: { height: 0, width: 0 },
+            elevation: 7,
+
             shadowOpacity: 0.25,
             shadowRadius: 5,
             marginTop: 10,
@@ -167,6 +171,8 @@ const AccountSettings = (props) => {
               width: Dimensions.get("window").width * 0.9,
               shadowColor: "black",
               shadowOffset: { height: 0, width: 0 },
+              elevation: 7,
+
               shadowOpacity: 0.25,
               shadowRadius: 5,
               borderRadius: 3,
@@ -178,6 +184,8 @@ const AccountSettings = (props) => {
               padding: 10,
               shadowColor: "black",
               shadowOffset: { height: 0, width: 0 },
+              elevation: 7,
+
               shadowOpacity: 0.25,
               shadowRadius: 5,
               backgroundColor: Colors[scheme].primary,
@@ -462,6 +470,8 @@ const styles = StyleSheet.create({
 
     shadowColor: "black",
     shadowOffset: { height: 0, width: 0 },
+    elevation: 7,
+
     shadowOpacity: 0.25,
     shadowRadius: 5,
     alignItems: "center",
@@ -484,6 +494,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     shadowColor: "black",
     shadowOffset: { height: 0, width: 0 },
+    elevation: 7,
+
     shadowOpacity: 0.25,
     shadowRadius: 5,
   },

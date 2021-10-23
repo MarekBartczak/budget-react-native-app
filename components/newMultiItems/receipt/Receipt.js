@@ -270,6 +270,7 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
     shadowColor: "black",
     shadowOpacity: 0.2,
+    elevation: 7,
   },
   modalView: {
     height: Dimensions.get("window").height,

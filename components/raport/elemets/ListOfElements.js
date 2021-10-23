@@ -43,6 +43,7 @@ const Expense = (props) => {
                 marginBottom: 20,
                 padding: 10,
                 width: "100%",
+                elevation: 7,
               }}
             >
               <View

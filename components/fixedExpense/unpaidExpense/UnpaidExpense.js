@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 10,
     marginBottom: 10,
+    elevation: 7,
   },
   overDateList: {
     marginTop: 5,

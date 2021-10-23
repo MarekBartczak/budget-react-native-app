@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     paddingBottom: 5,
     marginBottom: 5,
+    elevation: 7,
   },
   input: {
     padding: 10,

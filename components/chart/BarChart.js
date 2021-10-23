@@ -79,6 +79,8 @@ const Chart = (props) => {
 
         shadowColor: Colors[scheme].drawerActive,
         shadowOffset: { height: 1, width: 0 },
+        elevation: 7,
+
         shadowOpacity: 1,
         shadowRadius: 5,
         paddingBottom: 45,
@@ -128,6 +130,7 @@ const Chart = (props) => {
               shadowRadius: 1,
               shadowColor: Colors[scheme].headerTintColor,
               shadowOpacity: 0.1,
+              elevation: 7,
             },
           }}
           bezier

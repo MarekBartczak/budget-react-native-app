@@ -77,6 +77,7 @@ const Chart = (props) => {
         shadowOpacity: 1,
         shadowRadius: 5,
         paddingBottom: 45,
+        elevation: 7,
       }}
     >
       <TouchableOpacity onPress={props.press}>
@@ -120,6 +121,8 @@ const Chart = (props) => {
               marginTop: 0,
               paddingTop: 10,
               shadowOffset: { height: -10, width: -10 },
+              elevation: 7,
+
               shadowRadius: 1,
               shadowColor: Colors[scheme].headerTintColor,
               shadowOpacity: 0.1,

@@ -132,6 +132,8 @@ const styles = StyleSheet.create({
   fixedComponent: {
     width: Dimensions.get("window").width * 0.9,
     shadowOffset: { height: 0, width: 0 },
+    elevation: 7,
+
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 7,

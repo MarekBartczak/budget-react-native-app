@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.2,
     shadowRadius: 2,
+    elevation: 7,
   },
   title: {
     fontFamily: "Kanit_400Regular",

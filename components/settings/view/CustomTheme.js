@@ -40,6 +40,7 @@ const CustomTheme = (props) => {
           alignItems: "center",
           justifyContent: "space-between",
           borderRadius: 20,
+          elevation: 7,
         }}
       >
         <Text

@@ -346,6 +346,7 @@ const DrawerNavigator = (props) => {
               shadowOffset: { height: 0, width: 0 },
               shadowOpacity: 0.25,
               shadowRadius: 5,
+              elevation: 7,
             }}
           >
             <Text
