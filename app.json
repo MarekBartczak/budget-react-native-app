@@ -1,7 +1,6 @@
 {
   "expo": {
     "userInterfaceStyle": "automatic",
-
     "name": "budget-react-native-app",
     "slug": "budget-react-native-app",
     "version": "0.1.0",
@@ -19,10 +18,8 @@
       "userInterfaceStyle": "automatic",
       "buildNumber": "0.1.9",
       "usesAppleSignIn": true,
-
       "bundleIdentifier": "com.marek.bartczak.financialApp",
       "googleServicesFile": "./GoogleService-Info.plist",
-
       "supportsTablet": false,
       "config": {
         "googleSignIn": {
@@ -32,11 +29,12 @@
     },
     "android": {
       "userInterfaceStyle": "automatic",
-
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.marek.bartczak.financialapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -37,7 +37,7 @@ const ItemListToAdd = (props) => {
                 height: 20,
                 borderRadius: 20,
               }}
-              source={{ url: props.imageUrl }}
+              source={{ uri: props.imageUrl }}
             />
           </View>
           <Text
