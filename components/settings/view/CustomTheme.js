@@ -83,7 +83,7 @@ const CustomTheme = (props) => {
     <View style={styles.customTheme}>
       {themeElement("light_Blue", "Jasny niebieski")}
       {themeElement("light_Pink", "Jasny różowy")}
-      {themeElement("light_Gold", "Jasny  PLNoty")}
+      {themeElement("light_Gold", "Jasny  złoty")}
       {themeElement("light", "Jasny zielony")}
       {themeElement("dark", "Ciemny")}
     </View>

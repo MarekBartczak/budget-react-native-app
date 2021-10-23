@@ -27,7 +27,7 @@ const AppleLogin = (props) => {
           paddingLeft: 10,
         }}
       >
-        ZLOGUJ PRZEZ GOOGLE
+        ZALOGUJ PRZEZ GOOGLE
       </Text>
     </TouchableOpacity>
   );

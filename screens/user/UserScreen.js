@@ -39,7 +39,7 @@ const UserScreen = (props) => {
   if (fixedExpenseCostList.length > 0) {
     fiexedExpenseSummary = fixedExpenseCostList.reduce(countSum);
   }
-  console.log(Application);
+  // console.log(Application);
   accountSummary = incomeSum - expenseSum - fiexedExpenseSummary;
 
   const showPhoto = () => {
