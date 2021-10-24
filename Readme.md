@@ -12,6 +12,7 @@ and not finished yet...
 ![picture d](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/d.png)
 ![picture e](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/e.png)
 ![picture f](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/f.png)
+![picture g](https://github.com/MarekBartczak/budget-react-native-app/blob/master/repoImg/g.png)
 
 ## installation
 
