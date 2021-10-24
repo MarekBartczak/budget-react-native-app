@@ -357,8 +357,8 @@ const styles = StyleSheet.create({
     elevation: 7,
 
     shadowRadius: 5,
-    borderBottomLeftRadius: 100,
-    borderBottomRightRadius: 100,
+    borderBottomRightRadius: Dimensions.get("window").width / 5,
+    borderBottomLeftRadius: Dimensions.get("window").width / 5,
     paddingBottom: 40,
   },
   input: {

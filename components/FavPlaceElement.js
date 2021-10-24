@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as favoritePlaceAction from "../store/actions/favoritePlace";
 import * as itemsAction from "../store/actions/items";
 import Colors from "../constants/Colors";
+import fontScale from "../constants/FontScale";
 
 const FavPlaceElement = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -99,7 +100,6 @@ export default FavPlaceElement;
 const styles = StyleSheet.create({
   favBtn: {
     margin: 10,
-    height: 80,
 
     width: Dimensions.get("window").width / 4,
     alignItems: "center",
@@ -108,13 +108,13 @@ const styles = StyleSheet.create({
   text: {
     width: "80%",
     height: 20,
-    fontSize: 12,
+    fontSize: fontScale(6),
     textAlign: "center",
     fontFamily: "Kanit_400Regular",
   },
   logo: {
-    height: Dimensions.get("window").width / 5.6,
-    width: Dimensions.get("window").width / 5.6,
+    height: Dimensions.get("window").height / 11,
+    width: Dimensions.get("window").height / 11,
     borderRadius: 10,
 
     // borderWidth: 1,

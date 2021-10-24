@@ -11,6 +11,7 @@ import RNDateTimePicker from "@react-native-community/datetimepicker";
 import Colors from "../constants/Colors";
 import { useSelector } from "react-redux";
 import { Entypo } from "@expo/vector-icons";
+import fontScale from "../constants/FontScale";
 
 const DatePicker = (props) => {
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -70,14 +71,18 @@ const DatePicker = (props) => {
             <Text
               style={{
                 fontFamily: "Kanit_600SemiBold",
-                fontSize: 30,
+                fontSize: fontScale(10),
                 color: Colors[scheme].button,
               }}
             >
               {props.date ? props.date.toISOString().slice(0, 10) : currentDate}
             </Text>
             <View style={{ marginLeft: 20 }}>
-              <Entypo name="calendar" size={34} color={Colors[scheme].button} />
+              <Entypo
+                name="calendar"
+                size={fontScale(10)}
+                color={Colors[scheme].button}
+              />
             </View>
           </TouchableOpacity>
           {androidDatePicker()}

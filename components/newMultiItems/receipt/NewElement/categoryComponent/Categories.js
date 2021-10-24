@@ -6,6 +6,7 @@ import SubCategoryList from "./SubCategoryList";
 import ExternalComponent from "../../../../ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { useHeaderHeight } from "@react-navigation/stack";
 import { useSelector } from "react-redux";
+import fontScale from "../../../../../constants/FontScale";
 
 const Categories = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -15,7 +16,7 @@ const Categories = (props) => {
   const mainCategoryList = categoriesListObjectKeys.map(
     (el) => categoriesList[el].name
   );
-  let iconSize = 32;
+  let iconSize = fontScale(10);
 
   return (
     <ExternalComponent style={{ ...styles.screen, ...{} }}>

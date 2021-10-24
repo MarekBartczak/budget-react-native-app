@@ -10,6 +10,7 @@ import React from "react";
 import Colors from "../../../constants/Colors";
 import { useDispatch, useSelector } from "react-redux";
 import * as favoritePlaceAction from "../../../store/actions/favoritePlace";
+import fontScale from "../../../constants/FontScale";
 
 const ApiElement = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -35,7 +36,7 @@ const ApiElement = (props) => {
       >
         {props.name}
       </Text>
-      <Image style={styles.logo} source={{ url: props.logo }} />
+      <Image style={styles.logo} source={{ uri: props.logo }} />
     </TouchableOpacity>
   );
 };
@@ -45,19 +46,19 @@ export default ApiElement;
 const styles = StyleSheet.create({
   element: {
     width: Dimensions.get("window").width,
-    height: 50,
+    // height: 50,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 15,
-    marginVertical: 10,
+    paddingHorizontal: 10,
+    marginVertical: 5,
     overflow: "hidden",
     borderBottomWidth: 1,
     // borderBottomWidth: 1,
   },
   name: {
     fontWeight: "bold",
-    fontSize: 15,
+    fontSize: fontScale(8),
     fontFamily: "Kanit_600SemiBold",
   },
   logo: {

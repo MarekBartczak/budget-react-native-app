@@ -3,6 +3,7 @@ import React from "react";
 import summaryCostCounter from "../../../functions/summaryCostCounter";
 import Colors from "../../../constants/Colors";
 import { useSelector } from "react-redux";
+import fontScale from "../../../constants/FontScale";
 
 const Expense = (props) => {
   const scheme = useSelector((state) => state.config.scheme);

@@ -121,7 +121,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     left: -5,
     width: Dimensions.get("window").width * 0.3,
-    height: Dimensions.get("window").width * 0.15,
+    // height: Dimensions.get("window").width * 0.15,
+    paddingVertical: 5,
     justifyContent: "center",
     alignItems: "center",
 

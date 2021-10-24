@@ -21,6 +21,7 @@ import {
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useNavigation } from "@react-navigation/native";
 import * as itemsAction from "../../../store/actions/items";
+import fontScale from "../../../constants/FontScale";
 
 const ExpenseListElement = (props) => {
   const userId = useSelector((state) => state.auth.userID);
@@ -28,7 +29,7 @@ const ExpenseListElement = (props) => {
   const categories = useSelector((state) => state.item.categoryList);
   const navigation = useNavigation();
   const getColor = () => Colors[scheme].accent;
-  const iconSize = 20;
+  const iconSize = fontScale(10);
   const dispatch = useDispatch();
   const iconList = [
     {

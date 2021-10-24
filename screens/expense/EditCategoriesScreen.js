@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
   inputView: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height * 0.1,
-    borderBottomLeftRadius: 100,
-    borderBottomRightRadius: 100,
+    borderBottomRightRadius: Dimensions.get("window").width / 5,
+    borderBottomLeftRadius: Dimensions.get("window").width / 5,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",

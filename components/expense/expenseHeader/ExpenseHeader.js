@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Colors from "../../../constants/Colors";
 import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
+import fontScale from "../../../constants/FontScale";
 
 import ExpenseHeaderModalFilter from "./ExpenseHeaderModalFilter";
 import ExpenseSearch from "../expenseFilter/ExpenseSearch";
@@ -70,7 +71,7 @@ const ExpenseHeader = (props) => {
         >
           <MaterialIcons
             name="search"
-            size={30}
+            size={fontScale(10)}
             color={Colors[scheme].button}
           />
         </TouchableOpacity>
@@ -83,7 +84,7 @@ const ExpenseHeader = (props) => {
         >
           <MaterialIcons
             name="filter-list"
-            size={30}
+            size={fontScale(10)}
             color={Colors[scheme].button}
           />
         </TouchableOpacity>
@@ -101,8 +102,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "space-around",
-    borderBottomLeftRadius: 100,
-    borderBottomRightRadius: 100,
+    borderBottomRightRadius: Dimensions.get("window").width / 5,
+    borderBottomLeftRadius: Dimensions.get("window").width / 5,
     shadowOffset: { height: 1, width: 0 },
     elevation: 7,
 
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
   filterButton: { borderRadius: 3, padding: 10, marginRight: 10 },
   costText: {
     fontFamily: "Kanit_600SemiBold",
-    fontSize: 25,
+    fontSize: fontScale(10),
     textAlign: "center",
   },
 });

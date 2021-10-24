@@ -11,6 +11,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Colors from "../../../constants/Colors";
 import SearchEngine from "../expenseFilter/SearchEngine";
+import fontScale from "../../../constants/FontScale";
 const ExpenseSearch = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -33,8 +34,8 @@ const ExpenseSearch = (props) => {
           style={{
             ...styles.expenseHeaderModalSearch,
             ...{
-              borderTopLeftRadius: 100,
-              borderTopRightRadius: 100,
+              borderTopLeftRadius: Dimensions.get("window").width / 5,
+              borderTopRightRadius: Dimensions.get("window").width / 5,
               backgroundColor: Colors[scheme].backGround,
             },
           }}
@@ -43,8 +44,8 @@ const ExpenseSearch = (props) => {
             style={{
               ...styles.close,
               ...{
-                borderTopLeftRadius: 100,
-                borderTopRightRadius: 100,
+                borderTopLeftRadius: Dimensions.get("window").width / 5,
+                borderTopRightRadius: Dimensions.get("window").width / 5,
                 backgroundColor: Colors[scheme].backGroundOne,
               },
             }}
@@ -94,16 +95,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+    alignItems: "center",
   },
   expenseHeaderModalSearch: {
     height: Dimensions.get("window").height * 0.6,
   },
   closeBtn: {
+    // marginTop: 5,
     alignItems: "center",
   },
   closeBtnText: {
     fontFamily: "Kanit_600SemiBold",
-    fontSize: 15,
+    fontSize: fontScale(8),
   },
   searchArea: {},
 });

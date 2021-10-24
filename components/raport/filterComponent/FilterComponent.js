@@ -128,8 +128,8 @@ const FilterComponent = (props) => {
             ...{
               height: 200,
               backgroundColor: Colors[scheme].backGroundOne,
-              borderBottomLeftRadius: 100,
-              borderBottomRightRadius: 100,
+              borderBottomRightRadius: Dimensions.get("window").width / 5,
+              borderBottomLeftRadius: Dimensions.get("window").width / 5,
               shadowColor: Colors[scheme].drawerActive,
               shadowOffset: { height: 0, width: 0 },
               shadowOpacity: 1,

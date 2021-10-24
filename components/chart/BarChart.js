@@ -74,8 +74,8 @@ const Chart = (props) => {
     <View
       style={{
         backgroundColor: Colors[scheme].backGroundOne,
-        borderBottomLeftRadius: 100,
-        borderBottomRightRadius: 100,
+        borderBottomRightRadius: Dimensions.get("window").width / 5,
+        borderBottomLeftRadius: Dimensions.get("window").width / 5,
 
         shadowColor: Colors[scheme].drawerActive,
         shadowOffset: { height: 1, width: 0 },

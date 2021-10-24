@@ -10,6 +10,7 @@ import React, { useState, useEffect } from "react";
 import * as expenseActions from "../../../store/actions/items";
 import { useSelector, useDispatch } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
+import fontScale from "../../../constants/FontScale";
 
 import Colors from "../../../constants/Colors";
 const SearchEngine = (props) => {
@@ -68,6 +69,7 @@ const SearchEngine = (props) => {
             style={{
               color: Colors[scheme].button,
               fontFamily: "Kanit_600SemiBold",
+              fontSize: fontScale(5),
             }}
           >
             SZUKAJ
@@ -82,14 +84,18 @@ const SearchEngine = (props) => {
           }}
           onPress={() => clearFilterBy()}
         >
-          <MaterialIcons name="clear" size={24} color={Colors[scheme].button} />
+          <MaterialIcons
+            name="clear"
+            size={fontScale(5)}
+            color={Colors[scheme].button}
+          />
         </TouchableOpacity>
       </View>
       <View style={{ ...styles.result, ...{} }}>
         <Text
           style={{
             ...styles.resultText,
-            ...{ color: Colors[scheme].primarySecond },
+            ...{ color: Colors[scheme].primarySecond, fontSize: fontScale(6) },
           }}
         >
           ZNALEZIONO:{"  "}
@@ -97,7 +103,7 @@ const SearchEngine = (props) => {
             style={{
               color: Colors[scheme].button,
               fontFamily: "Kanit_600SemiBold",
-              fontSize: 20,
+              fontSize: fontScale(6),
             }}
           >
             {filterCount.items}
@@ -106,7 +112,7 @@ const SearchEngine = (props) => {
         <Text
           style={{
             ...styles.resultText,
-            ...{ color: Colors[scheme].primarySecond },
+            ...{ color: Colors[scheme].primarySecond, fontSize: fontScale(6) },
           }}
         >
           KWOTA :{"  "}
@@ -114,11 +120,11 @@ const SearchEngine = (props) => {
             style={{
               color: Colors[scheme].button,
               fontFamily: "Kanit_600SemiBold",
-              fontSize: 20,
+              fontSize: fontScale(6),
             }}
           >
             {filterCount.cost.toFixed(2)}
-            <Text> PLN</Text>
+            <Text style={{ fontSize: fontScale(6) }}> PLN</Text>
           </Text>
         </Text>
       </View>
@@ -145,9 +151,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   textInput: {
-    padding: 10,
+    paddingHorizontal: 10,
     borderRadius: 3,
     width: Dimensions.get("window").width * 0.7,
+    fontSize: fontScale(5),
   },
   input: {
     width: Dimensions.get("window").width,

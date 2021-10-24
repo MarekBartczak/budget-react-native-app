@@ -92,7 +92,7 @@ const signInWithGoogleAsync = async (signinFunction, categoryList) => {
   try {
     const result = await Google.logInAsync({
       androidClientId:
-        "712755376912-ns54gk53ascroi4osnei9tak3m7oq3nc.apps.googleusercontent.com",
+        "712755376912-q8vtk0ejip5gs2uj574ajhed18891tve.apps.googleusercontent.com",
       androidStandaloneAppClientId:
         "712755376912-ns54gk53ascroi4osnei9tak3m7oq3nc.apps.googleusercontent.com",
 

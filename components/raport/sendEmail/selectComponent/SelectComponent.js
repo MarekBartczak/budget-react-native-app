@@ -23,8 +23,8 @@ const SelectComponent = (props) => {
             shadowOpacity: 1,
             shadowRadius: 5,
             paddingBottom: 5,
-            borderBottomLeftRadius: 100,
-            borderBottomRightRadius: 100,
+            borderBottomRightRadius: Dimensions.get("window").width / 5,
+            borderBottomLeftRadius: Dimensions.get("window").width / 5,
             elevation: 7,
           },
         }}

@@ -11,6 +11,7 @@ import Colors from "../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import * as itemActions from "../../store/actions/items";
+import fontScale from "../../constants/FontScale";
 
 const EditCategoryElement = (props) => {
   const userId = useSelector((state) => state.auth.userID);
@@ -56,7 +57,7 @@ const EditCategoryElement = (props) => {
             style={{
               borderColor: Colors[scheme].button,
               borderBottomWidth: 1,
-              width: Dimensions.get("window").width * 0.5,
+              // width: Dimensions.get("window").width * 0.5,
               color: Colors[scheme].primarySecond,
               padding: 5,
             }}
@@ -68,6 +69,7 @@ const EditCategoryElement = (props) => {
             style={{
               color: Colors[scheme].primarySecond,
               fontFamily: "Kanit_600SemiBold",
+              fontSize: fontScale(6),
             }}
           >
             {props.element.toUpperCase()}
@@ -133,8 +135,9 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
   },
   textElement: {
-    width: Dimensions.get("window").width * 0.65,
+    // width: Dimensions.get("window").width * 0.65,
   },
 });

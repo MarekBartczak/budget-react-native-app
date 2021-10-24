@@ -69,14 +69,15 @@ const Chart = (props) => {
     <View
       style={{
         backgroundColor: Colors[scheme].backGroundOne,
-        borderBottomLeftRadius: 100,
-        borderBottomRightRadius: 100,
+        borderBottomLeftRadius: Dimensions.get("window").width / 5,
+        borderBottomRightRadius: Dimensions.get("window").width / 5,
 
         shadowColor: Colors[scheme].drawerActive,
         shadowOffset: { height: 1, width: 0 },
         shadowOpacity: 1,
         shadowRadius: 5,
-        paddingBottom: 45,
+        paddingBottom: 15,
+        marginBottom: 20,
         elevation: 7,
       }}
     >
@@ -100,7 +101,7 @@ const Chart = (props) => {
           segments={data.length}
           fromZero={true}
           width={Dimensions.get("window").width * 1}
-          height={Dimensions.get("window").height * 0.25}
+          height={Dimensions.get("window").height * 0.26}
           chartConfig={{
             labelColor: () => Colors[scheme].headerTintColor,
             backgroundGradientFromOpacity: 0,
@@ -143,19 +144,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width,
-  },
-
-  valMax: {
-    position: "absolute",
-    left: 10,
-    top: -10,
-    zIndex: 1,
-  },
-  valMaxText: { fontSize: 10 },
-  valMinText: { fontSize: 10 },
-  valMin: {
-    left: 10,
-    top: Dimensions.get("window").height * 0.3 - 50,
-    position: "absolute",
   },
 });

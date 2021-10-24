@@ -9,6 +9,7 @@ import {
 import React from "react";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
+import fontScale from "../../constants/FontScale";
 
 const ItemListToAdd = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -33,9 +34,10 @@ const ItemListToAdd = (props) => {
           <View style={styles.imageView}>
             <Image
               style={{
-                width: 20,
-                height: 20,
+                width: fontScale(6),
+                height: fontScale(6),
                 borderRadius: 20,
+                marginLeft: 30,
               }}
               source={{ uri: props.imageUrl }}
             />
@@ -47,6 +49,7 @@ const ItemListToAdd = (props) => {
                 fontWeight: selected.fontWeight,
                 color: Colors[scheme].headerTintColor,
                 fontFamily: "Kanit_400Regular",
+                fontSize: fontScale(5),
               },
             }}
           >
@@ -64,9 +67,9 @@ const styles = StyleSheet.create({
   list: {
     flexDirection: "row",
     width: Dimensions.get("window").width * 0.9,
-    padding: 5,
+    padding: 3,
 
-    marginVertical: 3,
+    // marginVertical: 2,
     // shadowOffset: { height: 0, width: 0 },
     // shadowRadius: 7,
     // shadowColor: "black",
@@ -75,6 +78,6 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   imageView: {
-    marginRight: 20,
+    marginRight: 30,
   },
 });

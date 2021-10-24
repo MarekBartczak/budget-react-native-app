@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import ItemListToAdd from "../items/itemListToAdd";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
+import fontScale from "../../constants/FontScale";
 
 const PlaceList = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -60,8 +61,8 @@ const PlaceList = (props) => {
       style={{
         backgroundColor: Colors[scheme].backGroundOne,
         paddingBottom: 15,
-        borderBottomLeftRadius: 100,
-        borderBottomRightRadius: 100,
+        borderBottomRightRadius: Dimensions.get("window").width / 5,
+        borderBottomLeftRadius: Dimensions.get("window").width / 5,
         shadowColor: Colors[scheme].drawerActive,
         shadowOffset: { height: 1, width: 0 },
         shadowOpacity: 1,
@@ -92,7 +93,7 @@ const PlaceList = (props) => {
                 color: Colors[scheme].button,
                 textAlign: "center",
                 paddingVertical: 3,
-                // fontFamily: "Kanit_600SemiBold",
+                fontSize: fontScale(6),
               }}
             >
               {"Zapisane".toUpperCase()}
@@ -115,6 +116,7 @@ const PlaceList = (props) => {
                 color: Colors[scheme].button,
                 textAlign: "center",
                 paddingVertical: 3,
+                fontSize: fontScale(6),
                 // fontFamily: "Kanit_600SemiBold",
               }}
             >
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 100,
     marginBottom: 10,
-    borderRadius: 1,
+    borderRadius: 3,
     // shadowOffset: { height: 0, width: 0 },
     // shadowRadius: 7,
     // shadowColor: "black",

@@ -11,6 +11,7 @@ import Colors from "../../../constants/Colors";
 
 import SelectFilterType from "./modalFilter/SelectFilterType";
 import ExpenseFilter from "../expenseFilter/ExpenseFilter";
+import fontScale from "../../../constants/FontScale";
 const ExpenseHeaderModalFilter = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -32,8 +33,8 @@ const ExpenseHeaderModalFilter = (props) => {
         style={{
           ...styles.expenseHeaderModalFilter,
           ...{
-            borderTopLeftRadius: 100,
-            borderTopRightRadius: 100,
+            borderTopLeftRadius: Dimensions.get("window").width / 5,
+            borderTopRightRadius: Dimensions.get("window").width / 5,
             backgroundColor: Colors[scheme].backGround,
           },
         }}
@@ -42,8 +43,8 @@ const ExpenseHeaderModalFilter = (props) => {
           style={{
             ...styles.close,
             ...{
-              borderTopLeftRadius: 100,
-              borderTopRightRadius: 100,
+              borderTopLeftRadius: Dimensions.get("window").width / 5,
+              borderTopRightRadius: Dimensions.get("window").width / 5,
               backgroundColor: Colors[scheme].backGroundOne,
             },
           }}
@@ -108,6 +109,6 @@ const styles = StyleSheet.create({
   },
   closeBtnText: {
     fontFamily: "Kanit_600SemiBold",
-    fontSize: 15,
+    fontSize: fontScale(8),
   },
 });

@@ -15,6 +15,7 @@ import Input from "./input/Input";
 import FavPlaceElement from "../components/FavPlaceElement";
 import ApiList from "../components/place/ApiList";
 import { LinearGradient } from "expo-linear-gradient";
+import fontScale from "../constants/FontScale";
 
 const FavoritePlaces = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: Dimensions.get("window").height * 0.3,
-    marginTop: 20,
+    // marginTop: 25,
     paddingTop: 10,
     borderRadius: 3,
   },
@@ -142,13 +143,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-  },
-  favBtn: {
-    margin: 10,
-    height: 80,
-    width: Dimensions.get("window").width / 4,
-    alignItems: "center",
-    justifyContent: "flex-end",
   },
 
   modalEdit: {
@@ -173,7 +167,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   closeModalBtn: {
-    width: Dimensions.get("window").width / 2,
+    // width: Dimensions.get("window").width / 2,
     alignItems: "center",
     marginHorizontal: Dimensions.get("window").width / 4,
     justifyContent: "center",
@@ -181,15 +175,17 @@ const styles = StyleSheet.create({
     borderRadius: 3,
 
     borderWidth: 1,
-    padding: 10,
-    paddingHorizontal: 30,
+    padding: 5,
+    paddingHorizontal: 10,
   },
   closeModalText: {
     fontWeight: "bold",
+    fontSize: fontScale(8),
   },
   apiList: {
     width: Dimensions.get("window").width,
     alignItems: "center",
+    justifyContent: "center",
   },
 });
 

@@ -7,12 +7,12 @@ import {
   Keyboard,
   FlatList,
   Dimensions,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import {
-  TouchableWithoutFeedback,
+  Platform,
   TouchableOpacity,
-} from "react-native-gesture-handler";
+  TouchableWithoutFeedback,
+} from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import Colors from "../../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
@@ -24,6 +24,7 @@ import * as itemsAction from "../../../store/actions/items";
 import SaveItemsToTheStore from "../../../functions/SaveItemsToTheStore";
 import numberInputValidation from "../../../functions/NumberInputValidation";
 import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";
+import fontScale from "../../../constants/FontScale";
 
 const heightWindow = Dimensions.get("window").height;
 
@@ -88,7 +89,7 @@ const Receipt = (props) => {
                     ...{ backgroundColor: Colors[scheme].primary },
                   }}
                 >
-                  <TouchableOpacity onPress={() => showModal(true)}>
+                  <TouchableOpacity onPress={() => showModal(!modal)}>
                     <Feather
                       name="edit"
                       size={15}
@@ -107,27 +108,29 @@ const Receipt = (props) => {
                         ...{ backgroundColor: Colors[scheme].backGround },
                       }}
                     >
-                      <TouchableOpacity onPress={() => showModal(!modal)}>
-                        <View
+                      <TouchableOpacity
+                        onPress={() => {
+                          console.log("x");
+                          showModal(false);
+                        }}
+                        style={{
+                          width: Dimensions.get("window").width / 2,
+                          borderColor: Colors[scheme].primaryThird,
+                          borderWidth: 1,
+                          padding: 10,
+                          paddingHorizontal: 30,
+                          borderRadius: 10,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Text
                           style={{
-                            width: Dimensions.get("window").width / 2,
-                            borderColor: Colors[scheme].primaryThird,
-                            borderWidth: 1,
-                            padding: 10,
-                            paddingHorizontal: 30,
-                            borderRadius: 3,
-                            alignItems: "center",
+                            color: Colors[scheme].button,
+                            fontFamily: "Kanit_600SemiBold",
                           }}
                         >
-                          <Text
-                            style={{
-                              color: Colors[scheme].button,
-                              fontFamily: "Kanit_600SemiBold",
-                            }}
-                          >
-                            {"Zamknij".toUpperCase()}
-                          </Text>
-                        </View>
+                          {"Zamknij".toUpperCase()}
+                        </Text>
                       </TouchableOpacity>
                       <View
                         style={{
@@ -152,7 +155,7 @@ const Receipt = (props) => {
                           onChangeText={props.setPlace}
                         />
                         <View>
-                          <TouchableOpacity onPress={() => showModal(!modal)}>
+                          <TouchableOpacity onPress={() => showModal(false)}>
                             <Feather
                               name="save"
                               size={25}
@@ -199,7 +202,13 @@ const Receipt = (props) => {
                     ...{ backgroundColor: Colors[scheme].primaryThird },
                   }}
                 >
-                  <Text style={{ color: Colors[scheme].primarySecond }}>
+                  <Text
+                    style={{
+                      color: Colors[scheme].primarySecond,
+                      fontFamily: "Kanit_400Regular",
+                      fontSize: fontScale(7),
+                    }}
+                  >
                     Razem {sum.toFixed(2)} PLN
                   </Text>
                 </View>
@@ -300,21 +309,20 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   place: {
-    paddingVertical: 10,
+    paddingVertical: 5,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 10,
+    // marginTop: 10,
   },
   placeText: {
-    fontSize: 25,
-    fontWeight: "bold",
+    fontSize: fontScale(15),
+    fontFamily: "Kanit_600SemiBold",
   },
   date: {
     alignItems: "center",
-    marginTop: 10,
   },
   dateText: {
     fontWeight: "bold",

@@ -8,6 +8,7 @@ import {
 import React from "react";
 import Colors from "../constants/Colors";
 import { useSelector } from "react-redux";
+import fontScale from "../constants/FontScale";
 
 const AddNewItem = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -63,8 +64,9 @@ const AddNewItem = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    width: Dimensions.get("screen").width * 0.5,
-    height: Dimensions.get("screen").height * 0.05,
+    // width: Dimensions.get("screen").width * 0.5,
+    paddingHorizontal: 20,
+    height: Dimensions.get("screen").height * 0.04,
     borderRadius: 3,
     justifyContent: "center",
     alignItems: "center",
@@ -74,14 +76,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     flexDirection: "row",
-    height: "100%",
   },
   add: {
     justifyContent: "center",
     alignItems: "center",
   },
   btnText: {
-    fontSize: 15,
+    fontSize: fontScale(7),
     fontFamily: "Kanit_600SemiBold",
   },
 });

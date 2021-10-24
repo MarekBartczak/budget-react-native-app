@@ -15,6 +15,7 @@ import summaryCostCounter from "../../functions/summaryCostCounter";
 import * as summmaryActions from "../../store/actions/summary";
 import uuid from "react-native-uuid";
 import { MaterialIcons } from "@expo/vector-icons";
+import fontScale from "../../constants/FontScale";
 
 const SumaryCost = (props) => {
   const dispatch = useDispatch();
@@ -306,7 +307,7 @@ const styles = StyleSheet.create({
 
   textCost: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: fontScale(10),
     textAlign: "center",
     fontFamily: "Kanit_600SemiBold",
   },
@@ -320,7 +321,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     marginBottom: 10,
     fontWeight: "bold",
-    fontSize: 15,
+    fontSize: fontScale(6),
     textAlign: "center",
     fontFamily: "Kanit_600SemiBold",
   },

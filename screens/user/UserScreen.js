@@ -4,25 +4,28 @@ import Colors from "../../constants/Colors";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import { useSelector } from "react-redux";
 import * as Application from "expo-application";
+import fontScale from "../../constants/FontScale";
 
 const UserScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
   const userName = useSelector((state) => state.auth.userName);
   const userEmail = useSelector((state) => state.auth.userEmail);
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
-
   const expense = useSelector((state) => state.item.items);
   const fixedExpense = useSelector((state) => state.fixedExpense.fixedExpense);
   const income = useSelector((state) => state.income.income);
-
   const appinfo = require("../../app.json");
-
   let accountSummary = 0;
   const countSum = (total, sum) => total + sum;
-
   const expenseCostList = expense.map((el) => el.cost);
   let expenseSum = 0;
+
+  // const fontScale = (size) => {
+  //   return (
+  //     (Dimensions.get("window").height / Dimensions.get("window").width) * size
+  //   );
+  // };
+
   if (expenseCostList.length > 0) {
     expenseSum = expenseCostList.reduce(countSum);
   }
@@ -39,7 +42,6 @@ const UserScreen = (props) => {
   if (fixedExpenseCostList.length > 0) {
     fiexedExpenseSummary = fixedExpenseCostList.reduce(countSum);
   }
-  // console.log(Application);
   accountSummary = incomeSum - expenseSum - fiexedExpenseSummary;
 
   const showPhoto = () => {
@@ -90,7 +92,7 @@ const UserScreen = (props) => {
               style={{
                 color: Colors[scheme].button,
                 fontFamily: "Kanit_400Regular",
-                fontSize: 15,
+                fontSize: fontScale(8),
               }}
             >
               STAN KONTA {"  "}
@@ -99,7 +101,7 @@ const UserScreen = (props) => {
               style={{
                 color: Colors[scheme].button,
                 fontFamily: "Kanit_600SemiBold",
-                fontSize: 15,
+                fontSize: fontScale(8),
               }}
             >
               {accountSummary.toFixed(2)} PLN
@@ -132,6 +134,7 @@ const UserScreen = (props) => {
               style={{
                 color: Colors[scheme].primaryThird,
                 fontFamily: "Kanit_400Regular",
+                fontSize: fontScale(6),
               }}
             >
               Wersja: {appinfo.expo.version}
@@ -140,6 +143,7 @@ const UserScreen = (props) => {
               style={{
                 color: Colors[scheme].primaryThird,
                 fontFamily: "Kanit_400Regular",
+                fontSize: fontScale(6),
               }}
             >
               Kompilacja: {appinfo.expo.ios.buildNumber}
@@ -158,7 +162,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   family: {
-    fontSize: 15,
+    fontSize: fontScale(15),
     color: Colors.light.primarySecond,
   },
 
@@ -167,7 +171,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     width: Dimensions.get("window").width,
     alignItems: "center",
-    marginBottom: 50,
+    // marginBottom: 50,
 
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
@@ -177,7 +181,7 @@ const styles = StyleSheet.create({
 
   userName: {
     fontFamily: "Kanit_600SemiBold",
-    fontSize: 20,
+    fontSize: fontScale(10),
   },
 
   userEmailView: {
@@ -185,7 +189,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     width: Dimensions.get("window").width,
     alignItems: "center",
-    marginBottom: 50,
+    // marginBottom: 50,
     // shadowColor: "black",
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 0.2,
@@ -194,7 +198,7 @@ const styles = StyleSheet.create({
 
   userEmail: {
     fontFamily: "Kanit_600SemiBold",
-    fontSize: 15,
+    fontSize: fontScale(10),
   },
 
   screen: {
@@ -207,9 +211,9 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 60,
-    borderBottomRightRadius: 100,
-    borderBottomLeftRadius: 100,
+    paddingBottom: 15,
+    borderBottomLeftRadius: Dimensions.get("window").width / 5,
+    borderBottomRightRadius: Dimensions.get("window").width / 5,
     elevation: 7,
     // borderLeftWidth: 5,
     // borderRightWidth: 5,
@@ -221,17 +225,16 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   photoExternal: {
-    width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").width * 0.7,
+    height: Dimensions.get("window").width * 0.45,
   },
 
   photo: {
-    width: Dimensions.get("window").width * 0.6,
-    height: Dimensions.get("window").width * 0.6,
-    borderRadius: Dimensions.get("window").width * 0.3,
+    width: Dimensions.get("window").width * 0.4,
+    height: Dimensions.get("window").width * 0.4,
+    // borderRadius: Dimensions.get("window").width * 0.3,
   },
   userDataView: {
     marginTop: 20,

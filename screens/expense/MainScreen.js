@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   addNewItem: {
-    marginTop: 25,
+    marginTop: 10,
     bottom: 0,
 
     alignItems: "center",
@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
   },
   component: {
     overflow: "hidden",
-    paddingBottom: 15,
   },
 });
 
