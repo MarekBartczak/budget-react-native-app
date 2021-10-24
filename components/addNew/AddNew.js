@@ -16,6 +16,7 @@ import * as configActions from "../../store/actions/config";
 import { useSelector, useDispatch } from "react-redux";
 import numberInputValidation from "../../functions/NumberInputValidation";
 import switchComaToDot from "../../functions/switchCompaToDot";
+import fontScale from "../../constants/FontScale";
 const AddNewComponent = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ const AddNewComponent = (props) => {
                     color: Colors[scheme].primarySecond,
                     backgroundColor: Colors[scheme].primary,
                     shadowColor: Colors[scheme].drawerActive,
+                    fontSize: fontScale(6),
                   },
                 }}
                 value={props.amountValue}
@@ -109,6 +111,7 @@ const AddNewComponent = (props) => {
                     color: Colors[scheme].primarySecond,
                     backgroundColor: Colors[scheme].primary,
                     shadowColor: Colors[scheme].drawerActive,
+                    fontSize: fontScale(6),
                   },
                 }}
                 value={props.nameValue}
@@ -124,6 +127,7 @@ const AddNewComponent = (props) => {
                     color: Colors[scheme].primarySecond,
                     backgroundColor: Colors[scheme].primary,
                     shadowColor: Colors[scheme].drawerActive,
+                    fontSize: fontScale(6),
                   },
                 }}
                 value={props.contractor}
@@ -144,7 +148,7 @@ const AddNewComponent = (props) => {
                   <Text
                     style={{
                       fontFamily: "Kanit_600SemiBold",
-                      fontSize: 15,
+                      fontSize: fontScale(8),
                       color: Colors[scheme].primaryThird,
                     }}
                   >
@@ -169,7 +173,7 @@ const AddNewComponent = (props) => {
                   <Text
                     style={{
                       fontFamily: "Kanit_600SemiBold",
-                      fontSize: 15,
+                      fontSize: fontScale(8),
                       color: Colors[scheme].button,
                     }}
                   >
@@ -218,16 +222,16 @@ const styles = StyleSheet.create({
 
     // paddingBottom: 10,
     borderRadius: 10,
-    padding: 10,
+    padding: 5,
   },
   input: {
     width: Dimensions.get("window").width * 0.8,
     shadowOffset: { height: 1, width: 1 },
     shadowOpacity: 0.25,
     shadowRadius: 1,
-    margin: 10,
-    marginTop: 5,
-    paddingVertical: 5,
+    margin: 5,
+    // marginTop: 5,
+    paddingVertical: 3,
     paddingHorizontal: 10,
     borderRadius: 10,
     elevation: 7,

@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import Colors from "../../../constants/Colors";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
+import fontScale from "../../../constants/FontScale";
 
 import React, { useEffect } from "react";
 const UnpaidExpense = (props) => {
@@ -66,6 +67,7 @@ const UnpaidExpense = (props) => {
                 style={{
                   color: Colors[scheme].primarySecond,
                   fontFamily: "Kanit_400Regular",
+                  fontSize: fontScale(6),
                 }}
               >
                 {item.item.date.replace(/-/g, ".")}{" "}
@@ -74,6 +76,7 @@ const UnpaidExpense = (props) => {
                 style={{
                   color: Colors[scheme].primarySecond,
                   fontFamily: "Kanit_400Regular",
+                  fontSize: fontScale(6),
                 }}
               >
                 {item.item.title.toUpperCase()}{" "}
@@ -84,6 +87,7 @@ const UnpaidExpense = (props) => {
               style={{
                 color: Colors[scheme].primarySecond,
                 fontFamily: "Kanit_400Regular",
+                fontSize: fontScale(6),
               }}
             >
               {item.item.cost} PLN{" "}
@@ -101,7 +105,7 @@ export default UnpaidExpense;
 const styles = StyleSheet.create({
   unpaidExpenseComponent: {
     width: Dimensions.get("window").width * 0.9,
-    height: 100,
+    maxHeight: 200,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 2,
     shadowColor: "black",

@@ -13,6 +13,7 @@ import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import filteredList from "./filteredList";
 import emailTemplate from "./emailTemplate";
+import fontScale from "../../../../constants/FontScale";
 
 const Send = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -124,6 +125,7 @@ const Send = (props) => {
                 ...{
                   color: Colors[scheme].button,
                   fontFamily: "Kanit_600SemiBold",
+                  fontSize: fontScale(6),
                 },
               }}
             >

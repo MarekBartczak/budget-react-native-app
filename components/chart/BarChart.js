@@ -83,7 +83,7 @@ const Chart = (props) => {
 
         shadowOpacity: 1,
         shadowRadius: 5,
-        paddingBottom: 45,
+        paddingBottom: 15,
       }}
     >
       <TouchableOpacity onPress={props.press}>
@@ -106,8 +106,12 @@ const Chart = (props) => {
           fromZero={true}
           withInnerLines={false}
           width={Dimensions.get("window").width}
-          height={Dimensions.get("window").height * 0.24}
+          height={Dimensions.get("window").height * 0.2}
           chartConfig={{
+            propsForLabels: {
+              fontSize: 10,
+            },
+
             labelColor: () => Colors[scheme].headerTintColor,
             backgroundGradientFromOpacity: 0,
             backgroundGradientToOpacity: 0,
@@ -124,8 +128,9 @@ const Chart = (props) => {
           style={{
             ...styles.chart,
             ...{
-              marginTop: 0,
-              paddingTop: 10,
+              // marginTop: 0,
+              // paddingTop: 10,
+
               shadowOffset: { height: -10, width: -10 },
               shadowRadius: 1,
               shadowColor: Colors[scheme].headerTintColor,
@@ -148,19 +153,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width,
-  },
-
-  valMax: {
-    position: "absolute",
-    left: 10,
-    top: -10,
-    zIndex: 1,
-  },
-  valMaxText: { fontSize: 10 },
-  valMinText: { fontSize: 10 },
-  valMin: {
-    left: 10,
-    top: Dimensions.get("window").height * 0.3 - 50,
-    position: "absolute",
   },
 });

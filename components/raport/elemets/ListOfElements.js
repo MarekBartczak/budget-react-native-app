@@ -30,6 +30,7 @@ const Expense = (props) => {
       </View>
       <View>
         <FlatList
+          style={{ marginBottom: 150 }}
           data={props.filteredList}
           keyExtractor={(key, index) => key + index}
           renderItem={(item) => (

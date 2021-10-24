@@ -11,6 +11,7 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import * as raportActions from "../../../../store/actions/raport";
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
+import fontScale from "../../../../constants/FontScale";
 
 const SelectEl = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -41,10 +42,14 @@ const SelectEl = (props) => {
         >
           <Ionicons
             name={item.isSelected ? "radio-button-on" : "radio-button-off"}
-            size={15}
+            size={fontScale(8)}
             color={Colors[scheme].button}
           />
-          <Text style={{ color: Colors[scheme].button }}>{item.date}</Text>
+          <Text
+            style={{ color: Colors[scheme].button, fontSize: fontScale(8) }}
+          >
+            {item.date}
+          </Text>
         </View>
       </TouchableOpacity>
     );
@@ -82,8 +87,10 @@ const SelectEl = (props) => {
             style={{
               ...styles.textName,
               ...{
-                color: Colors[scheme].primarySecond,
+                color: Colors[scheme].primary,
                 fontFamily: "Kanit_600SemiBold",
+                // textAlign: "center",
+                fontSize: fontScale(6),
               },
             }}
           >
@@ -123,10 +130,10 @@ const styles = StyleSheet.create({
   },
   textName: {
     marginTop: 10,
-    fontSize: 12,
+    fontSize: fontScale(6),
   },
   textDate: {
-    fontSize: 8,
+    fontSize: fontScale(6),
   },
   item: {
     padding: 5,

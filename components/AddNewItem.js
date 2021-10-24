@@ -18,6 +18,7 @@ const AddNewItem = (props) => {
       style={{
         ...styles.add,
         ...{
+          paddingVertical: 3,
           backgroundColor: Colors[scheme].primary,
           shadowColor: "black",
           shadowOffset: { height: 0, width: 0 },

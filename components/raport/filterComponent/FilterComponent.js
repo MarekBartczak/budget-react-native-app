@@ -126,7 +126,7 @@ const FilterComponent = (props) => {
           style={{
             ...styles.filterComponent,
             ...{
-              height: 200,
+              height: 120,
               backgroundColor: Colors[scheme].backGroundOne,
               borderBottomRightRadius: Dimensions.get("window").width / 5,
               borderBottomLeftRadius: Dimensions.get("window").width / 5,
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
   },
   filterBtn: {
     // marginTop: 10,
-    marginHorizontal: 20,
+    marginHorizontal: 10,
     // height: 30,
     padding: 10,
     // marginTop: 10,

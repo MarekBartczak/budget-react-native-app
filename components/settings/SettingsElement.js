@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import fontScale from "../../constants/FontScale";
 
 const Settings = (props) => {
   const navigation = useNavigation();
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   textElement: {
     width: Dimensions.get("window").width * 0.5,
     fontFamily: "Kanit_400Regular",
-    fontSize: 25,
+    fontSize: fontScale(10),
     textAlign: "center",
   },
   textView: {

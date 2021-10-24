@@ -9,6 +9,7 @@ import AddNewItem from "../../components/AddNewItem";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import UnpaidExpense from "../../components/fixedExpense/unpaidExpense/UnpaidExpense";
 import EmptyList from "../../components/emptyList/EmptyList";
+import fontScale from "../../constants/FontScale";
 const FixedExpenseScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const fixedExpenseMonthFilter = useSelector(
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
   },
   unPaidComponent: {
-    marginTop: 50,
+    // marginTop: 50,
   },
   component: {},
   chartCcomponent: {

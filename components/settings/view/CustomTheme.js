@@ -4,12 +4,14 @@ import {
   View,
   TouchableOpacity,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import Colors from "../../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import * as configActions from "../../../store/actions/config";
 import updateConfigInClound from "../../../functions/cloud/config/updateConfigInClound";
+import fontScale from "../../../constants/FontScale";
 const CustomTheme = (props) => {
   const userId = useSelector((state) => state.auth.userID);
   const scheme = useSelector((state) => state.config.scheme);
@@ -22,13 +24,13 @@ const CustomTheme = (props) => {
     dispatch(configActions.getScheme(title));
     updateInCloud(title);
   };
-
+  const cirlceSize = 15;
   const themeElement = (title, name) => {
     return (
       <TouchableOpacity
         onPress={() => setColors(title)}
         style={{
-          margin: 10,
+          margin: 5,
           padding: 5,
           width: Dimensions.get("window").width * 0.9,
           flexDirection: "row",
@@ -48,13 +50,14 @@ const CustomTheme = (props) => {
             color: Colors[scheme].primarySecond,
             fontFamily: "Kanit_400Regular",
             marginLeft: 10,
+            fontSize: fontScale(6),
           }}
         >
           {name.toUpperCase()}
         </Text>
         <View
           style={{
-            borderRadius: 20,
+            borderRadius: fontScale(cirlceSize),
             flexDirection: "row",
             overflow: "hidden",
             borderColor: Colors[title].backGroundOne,
@@ -63,15 +66,15 @@ const CustomTheme = (props) => {
         >
           <View
             style={{
-              height: 40,
-              width: 20,
+              height: fontScale(cirlceSize),
+              width: fontScale(cirlceSize) / 2,
               backgroundColor: Colors[title].backGroundOne,
             }}
           ></View>
           <View
             style={{
-              height: 40,
-              width: 20,
+              height: fontScale(cirlceSize),
+              width: fontScale(cirlceSize) / 2,
               backgroundColor: Colors[title].backGround_one,
             }}
           ></View>

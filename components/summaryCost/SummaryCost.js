@@ -239,7 +239,7 @@ const SumaryCost = (props) => {
               <TouchableOpacity onPress={() => setChartFilterFunction("all")}>
                 <MaterialIcons
                   name="all-inclusive"
-                  size={24}
+                  size={fontScale(10)}
                   color={Colors[scheme].button}
                 />
               </TouchableOpacity>
@@ -248,7 +248,7 @@ const SumaryCost = (props) => {
               >
                 <MaterialIcons
                   name="attach-money"
-                  size={24}
+                  size={fontScale(10)}
                   color={Colors[scheme].button}
                 />
               </TouchableOpacity>
@@ -258,7 +258,7 @@ const SumaryCost = (props) => {
               >
                 <MaterialIcons
                   name="money-off"
-                  size={24}
+                  size={fontScale(10)}
                   color={Colors[scheme].button}
                 />
               </TouchableOpacity>
