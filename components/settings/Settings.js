@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import SettingsElement from "./SettingsElement";
+import fontSclae from "../../constants/FontScale";
 
 const Settings = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
