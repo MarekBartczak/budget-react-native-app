@@ -80,7 +80,6 @@ export default {
     backGround_one: "rgba(255, 255, 255, 0.93)",
     backGroundOne: "rgba(258, 72, 147, 1)",
     backGroundOneDarkness: "rgba(238, 52, 127, 1)",
-
     backGroundList: "rgba(255, 255, 255,1)",
     accent: "rgba(258, 72, 147, 1)",
     button: "rgba(258, 72, 147, 1)",

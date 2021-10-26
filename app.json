@@ -1,9 +1,9 @@
 {
   "expo": {
     "userInterfaceStyle": "automatic",
-    "name": "budget control",
+    "name": "Budget Control",
     "slug": "budget-react-native-app",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "userInterfaceStyle": "automatic",
-      "buildNumber": "0.1.11",
+      "buildNumber": "0.2.13",
       "usesAppleSignIn": true,
       "bundleIdentifier": "com.marek.bartczak.financialApp",
       "googleServicesFile": "./GoogleService-Info.plist",

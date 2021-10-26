@@ -46,6 +46,7 @@ const Send = (props) => {
   };
   const list = filteredList(raport, listObj);
   const message = emailTemplate(list);
+  // console.log(message.Expense);
   // console.log(list);
 
   const emailSender = () => {

@@ -1,4 +1,33 @@
+const countSum = (total, sum) => total + sum;
+const sum = {
+  Expense: { name: "Wydatki", amount: 0 },
+  FixedExpense: { name: "Stałe wydatki", amount: 0 },
+  Income: { name: "Wpływy", amount: 0 },
+};
+
+const clearSum = () => {
+  sum.Expense = { name: "Wydatki", amount: 0 };
+  sum.FixedExpense = { name: "Stałe wydatki", amount: 0 };
+  sum.Income = { name: "Wpływy", amount: 0 };
+};
+
 const emailTemplate = (list) => {
+  const sumCounter = (type) => {
+    if (list[type].length > 0) {
+      let sumOfAllList = list[type].map((el) => {
+        let costList = el.map((internalElement) => internalElement.cost);
+        let sum = costList.reduce(countSum);
+        return sum;
+      });
+      sum[type].amount = sumOfAllList.reduce(countSum).toFixed(2);
+      // console.log(sum);
+    }
+  };
+
+  sumCounter("Expense");
+  sumCounter("FixedExpense");
+  sumCounter("Income");
+
   let NumberedList = {
     head: `<h2>Raport finansowy</h2> utworzony dnia: ${new Date()
       .toISOString()
@@ -9,14 +38,16 @@ const emailTemplate = (list) => {
     Income: [],
     footer: `<h5>Podsumowanie:</h5>
     <ul>
-    <li>2021 maj: 2123zł</li>
-    <li>2021 lipiec: 321zł</li>
+    <li>${sum.Expense.name} : ${sum.Expense.amount} PLN</li>
+    <li>${sum.FixedExpense.name} : ${sum.FixedExpense.amount} PLN</li>
+    <li>${sum.Income.name} : ${sum.Income.amount} PLN</li>
     </ul>`,
   };
   const liObj = (type, el) => {
     switch (type) {
       case "Expense":
-        return `<li> ${el.date} | ${el.name} | ${el.category} | ${el.place} | <b>${el.cost}zł</b> </li>`;
+        // console.log(el);
+        return `<li> ${el.date} | ${el.mainCategory} | ${el.subCategory} | ${el.place} | <b>${el.cost}zł</b> </li>`;
       case "FixedExpense":
         return `<li> ${el.date} | ${el.title} | ${el.recipient} | <b>${el.cost}zł</b></li>`;
       case "Income":
@@ -36,6 +67,8 @@ const emailTemplate = (list) => {
   NumberedList.FixedExpense = createNumberedList("FixedExpense").join("");
   NumberedList.Income = createNumberedList("Income").join("");
 
+  clearSum();
+  // console.log(NumberedList.footer);
   return NumberedList;
 };
 

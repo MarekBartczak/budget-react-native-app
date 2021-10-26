@@ -39,7 +39,6 @@ const isNotPadid = false;
 const DrawerNavigator = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const userId = useSelector((state) => state.auth.userID);
-  // const userId = "e2d9R8E7hpRKOgIkjPq8XvHBgpz2";
   const userPhotoUrl = useSelector((state) => state.auth.userPhotoUrl);
   const userDisplayName = useSelector((state) => state.auth.userName);
   const fetchedData = useSelector((state) => state.auth.fetchedData);
@@ -169,11 +168,6 @@ const DrawerNavigator = (props) => {
         list.forEach((el, index) => (el.firebaseId = objKeyList[index]));
         dispatchSwitcher(type, list);
       }
-      // if (obj === null) {
-      //   list = [{ cost: "0" }];
-      //   console.log(list);
-      //   dispatchSwitcher(type, [0]);
-      // }
     });
   };
 
@@ -203,21 +197,8 @@ const DrawerNavigator = (props) => {
   useEffect(() => {
     fetchData();
   }, [status]);
-  // console.log(isExpenseLoaded);
-  // console.log(userId);
-  // console.log(isCategoryLoadied.length);
-  // console.log(isIncomeLoaded);
-  // console.log(isFixedExpenseLoaded);
-  // console.log(isConfigLoaded);
-  if (
-    // isExpenseLoaded === true &&
-    // isIncomeLoaded === true &&
-    // isFixedExpenseLoaded === true &&
-    // isConfigLoaded === true
-    isCategoryLoadied.length === 1
-    // false
-    // true
-  ) {
+
+  if (isCategoryLoadied.length === 1) {
     return (
       <NavigationContainer>
         <Drawer.Navigator
