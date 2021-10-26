@@ -59,7 +59,6 @@ const StackExpenseNavigator = (props) => {
           />
         </TouchableOpacity>
       ),
-      headerRight: () => <Logout />,
     };
   };
 

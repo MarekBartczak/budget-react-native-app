@@ -60,7 +60,6 @@ const StackFixedExpenseNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
-        headerRight: () => <Logout />,
       }))}
       {stackScreen(
         "FixedExpensesList",

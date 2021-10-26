@@ -5,6 +5,7 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 import { useSelector } from "react-redux";
 import * as Application from "expo-application";
 import fontScale from "../../constants/FontScale";
+import Logout from "../../components/auth/logout/Logout";
 
 const UserScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -116,18 +117,31 @@ const UserScreen = (props) => {
                 ...{ color: Colors[scheme].primarySecond },
               }}
             >
-              {userName.toUpperCase()}
+              {userName}
             </Text>
           </View>
-          <View style={{ ...styles.userEmailView, ...{} }}>
-            <Text
-              style={{
-                ...styles.userEmail,
-                ...{ color: Colors[scheme].primarySecond },
-              }}
-            >
-              {userEmail}
-            </Text>
+          {userName !== userEmail && (
+            <View style={{ ...styles.userEmailView, ...{} }}>
+              <Text
+                style={{
+                  ...styles.userEmail,
+                  ...{ color: Colors[scheme].primarySecond },
+                }}
+              >
+                {userEmail}
+              </Text>
+            </View>
+          )}
+
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              width: Dimensions.get("window").width,
+              marginBottom: 100,
+            }}
+          >
+            <Logout />
           </View>
           <View style={{ alignItems: "center", marginBottom: 10 }}>
             <Text

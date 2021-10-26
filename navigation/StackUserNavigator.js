@@ -49,7 +49,6 @@ const StackUserNavigator = (props) => {
           />
         </TouchableOpacity>
       ),
-      headerRight: () => <Logout />,
     };
   };
 

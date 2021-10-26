@@ -58,7 +58,6 @@ const StackIncomeNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
-        headerRight: () => <Logout />,
       }))}
       {stackScreen("IncomeList", IncomeList, ({ navigation }) => ({
         headerTitle: "Lista wpływów",

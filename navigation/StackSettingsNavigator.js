@@ -66,7 +66,6 @@ const StackSettingsNavigator = (props) => {
             />
           </TouchableOpacity>
         ),
-        headerRight: () => <Logout />,
       }))}
 
       {stackScreen(
