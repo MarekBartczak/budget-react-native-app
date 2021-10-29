@@ -54,7 +54,7 @@ const Category = {
     name: "art biurowe",
     list: ["papiernicze", "książki"],
   },
-  familyExpense: { name: "rodzinne", list: ["prezenty", "Wyjścia"] },
+  familyExpense: { name: "rodzinne", list: ["prezenty", "wyjścia"] },
 };
 
 export default Category;

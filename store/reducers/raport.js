@@ -14,7 +14,7 @@ const initialState = {
   sendRaportEveryMonth: false,
   raportWasSentInCurrentMonth: false,
   email: "",
-  sentRaports: 5,
+  raportToSend: 5,
 };
 
 export default (state = initialState, action) => {

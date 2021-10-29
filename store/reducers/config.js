@@ -14,6 +14,7 @@ const initialState = {
   addIncomeKeyboardStatus: false,
   toogleDangerZone: false,
   deleteAccount: false,
+  language: "en",
 };
 
 export default (state = initialState, action) => {

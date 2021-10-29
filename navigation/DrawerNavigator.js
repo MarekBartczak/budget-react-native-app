@@ -28,6 +28,7 @@ import * as authActions from "../store/actions/auth";
 import * as raportActions from "../store/actions/raport";
 import * as configActions from "../store/actions/config";
 import firebase from "firebase";
+import { dataLang, selectLang } from "../lang/lang";
 
 import {
   MaterialCommunityIcons,
@@ -50,6 +51,7 @@ const DrawerNavigator = (props) => {
     (state) => state.fixedExpense.isLoaded
   );
   const isConfigLoaded = useSelector((state) => state.config.isLoaded);
+  const lang = useSelector((state) => state.config.language);
   // const isIncomeLoaded = useSelector((state) => state.income.isLoaded);
   let photo = null;
   if (userPhotoUrl === null) {
@@ -57,6 +59,10 @@ const DrawerNavigator = (props) => {
   } else {
     photo = userPhotoUrl;
   }
+
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const showImage = () => {
     let photo = null;
@@ -231,7 +237,7 @@ const DrawerNavigator = (props) => {
                   color={Colors[scheme].primarySecond}
                 />
               ),
-              drawerLabel: "Wydatki",
+              drawerLabel: translate("Wydatki"),
             }}
           />
           <Drawer.Screen
@@ -256,7 +262,7 @@ const DrawerNavigator = (props) => {
                   </Text>
                 </View>
               ),
-              drawerLabel: "Stałe wydatki",
+              drawerLabel: translate("Stałe wydatki"),
             }}
           />
           <Drawer.Screen
@@ -270,7 +276,7 @@ const DrawerNavigator = (props) => {
                   color={Colors[scheme].primarySecond}
                 />
               ),
-              drawerLabel: "Wpływy",
+              drawerLabel: translate("Wpływy"),
             }}
           />
 
@@ -285,7 +291,7 @@ const DrawerNavigator = (props) => {
                   color={Colors[scheme].primarySecond}
                 />
               ),
-              drawerLabel: "Raport",
+              drawerLabel: translate("Raport"),
             }}
           />
           <Drawer.Screen
@@ -299,7 +305,7 @@ const DrawerNavigator = (props) => {
                   color={Colors[scheme].primarySecond}
                 />
               ),
-              drawerLabel: "Ustawienia",
+              drawerLabel: translate("Ustawienia"),
             }}
           />
         </Drawer.Navigator>

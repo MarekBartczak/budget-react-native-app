@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "userInterfaceStyle": "automatic",
-      "buildNumber": "0.2.13",
+      "buildNumber": "0.2.14",
       "usesAppleSignIn": true,
       "bundleIdentifier": "com.marek.bartczak.financialApp",
       "googleServicesFile": "./GoogleService-Info.plist",
@@ -29,7 +29,7 @@
     },
     "android": {
       "userInterfaceStyle": "automatic",
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

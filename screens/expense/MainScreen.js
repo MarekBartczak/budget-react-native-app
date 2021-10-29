@@ -10,13 +10,24 @@ import chartElement from "../../functions/ChartElement";
 import SummaryCost from "../../components/summaryCost/SummaryCost";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
 import EmptyList from "../../components/emptyList/EmptyList";
+import { dataLang, selectLang } from "../../lang/lang";
+
 const MainScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
+  const lang = useSelector((state) => state.config.language);
   const chartEl = chartElement(itemsFromRedux);
   const dispatch = useDispatch();
   const type = "expense";
+
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
+
+  let x = translate("Wpływy");
+  console.log(x);
+  // selectLang(lang, dataLang, "Wpływy");
 
   return (
     <ExternalComponent>
@@ -58,7 +69,7 @@ const MainScreen = (props) => {
             <AddNewItem
               navigateTo={() => props.navigation.navigate("AddMultipleItem")}
               setPlace={() => dispatch(favoritePlaceAction.selectPlace(""))}
-              text={"Nowe Wydatki".toUpperCase()}
+              text={translate("Nowe wydatki").toUpperCase()}
             />
           </View>
         </View>
