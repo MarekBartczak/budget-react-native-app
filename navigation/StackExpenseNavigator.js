@@ -16,11 +16,17 @@ import FavoritePlaceScreen from "../screens/expense/FavoritePlaceScreen";
 import InputDataScreen from "../screens/expense/InputDataScreen";
 import MainScreen from "../screens/expense/MainScreen";
 import PlaceScreen from "../screens/expense/PlaceScreen";
+import { dataLang, selectLang } from "../lang/lang";
 
 const Stack = createStackNavigator();
 
 const StackExpenseNavigator = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
+
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const filter = (title, screenName) => {
     return {
@@ -38,7 +44,7 @@ const StackExpenseNavigator = (props) => {
             color: Colors[scheme].headerTintColor,
           }}
         >
-          WYDATKI
+          {translate("WYDATKI").toUpperCase()}
         </Text>
       ),
 
@@ -81,9 +87,9 @@ const StackExpenseNavigator = (props) => {
       {stackScreen("Home", MainScreen, ({ navigation }) =>
         toggleDrawer(navigation)
       )}
-      {stackScreen("Details", DetailsScreen, { title: "Szczegóły" })}
+      {stackScreen("Details", DetailsScreen, { title: translate("Szczegóły") })}
       {stackScreen("Date", DateScreen, ({ navigation }) =>
-        filter("Data", "Date")
+        filter(translate("Data"), "Date")
       )}
       {stackScreen("ExpenseList", ExpenseListScreen, ({ navigation }) => ({
         headerTitle: () => (
@@ -94,38 +100,38 @@ const StackExpenseNavigator = (props) => {
               color: Colors[scheme].headerTintColor,
             }}
           >
-            LISTA WYDATKÓW
+            {translate("LISTA WYDATKÓW").toUpperCase()}
           </Text>
         ),
       }))}
       {stackScreen("Place", PlaceScreen, ({ navigation }) =>
-        filter("Miejsce", "Place")
+        filter(translate("Miejsce"), "Place")
       )}
       {stackScreen("InputData", InputDataScreen, ({ navigation }) =>
-        filter("Wpisz dane", "InputData")
+        filter(translate("Wpisz dane"), "InputData")
       )}
       {stackScreen("Category", CategoryScreen, ({ navigation }) =>
-        filter("Kategoria", "Category")
+        filter(translate("Kategoria"), "Category")
       )}
 
       {stackScreen("FavoritePlace", FavoritePlaceScreen, {
-        title: "Ulubione",
+        title: translate("Ulubione"),
       })}
       {stackScreen("EditCategories", EditCategories, {
-        title: "Edycja Kategorii",
+        title: translate("Edycja Kategorii"),
       })}
       {stackScreen(
         "AddMultipleItem",
         AddMultipleItemScreen,
         ({ navigation }) => ({
-          headerTitle: "Cały paragon",
+          headerTitle: translate("Cały paragon").toUpperCase(),
         })
       )}
       {stackScreen(
         "AddToReceipt",
         AddItemToTheReceiptScreen,
         ({ navigation }) => ({
-          headerTitle: "Dodaj do paragonu",
+          headerTitle: translate("Dodaj do paragonu"),
         })
       )}
     </Stack.Navigator>

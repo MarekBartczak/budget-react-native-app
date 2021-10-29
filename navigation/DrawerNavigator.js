@@ -241,7 +241,7 @@ const DrawerNavigator = (props) => {
             }}
           />
           <Drawer.Screen
-            name="Stałe wydatki"
+            name={translate("Stałe wydatki")}
             component={StackFixedExpenseNavigator}
             options={{
               drawerIcon: () => (
@@ -266,7 +266,7 @@ const DrawerNavigator = (props) => {
             }}
           />
           <Drawer.Screen
-            name="Wpływy"
+            name={translate("Wpływy")}
             component={StackIncomeNavigator}
             options={{
               drawerIcon: () => (
@@ -281,7 +281,7 @@ const DrawerNavigator = (props) => {
           />
 
           <Drawer.Screen
-            name="Raport"
+            name={translate("Raport")}
             component={StackRaportNavigator}
             options={{
               drawerIcon: () => (
@@ -295,7 +295,7 @@ const DrawerNavigator = (props) => {
             }}
           />
           <Drawer.Screen
-            name="Ustawienia"
+            name={translate("Ustawienia")}
             component={StackSettingsNavigator}
             options={{
               drawerIcon: () => (
@@ -344,7 +344,7 @@ const DrawerNavigator = (props) => {
                 marginBottom: 20,
               }}
             >
-              Pobieranie danych...
+              {translate("Pobieranie danych...")}
             </Text>
             <Text>
               <ActivityIndicator

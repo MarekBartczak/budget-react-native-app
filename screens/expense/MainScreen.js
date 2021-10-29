@@ -25,10 +25,6 @@ const MainScreen = (props) => {
     return selectLang(lang, dataLang, word);
   };
 
-  let x = translate("Wpływy");
-  console.log(x);
-  // selectLang(lang, dataLang, "Wpływy");
-
   return (
     <ExternalComponent>
       <View

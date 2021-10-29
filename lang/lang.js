@@ -72,6 +72,17 @@ export const dataLang = [
   { en: "Income", default: "Wpływy" },
   { en: "Raport", default: "Raport" },
   { en: "Settings", default: "Ustawienia" },
+  { en: "Loading data...", default: "Pobieranie danych..." },
+  { en: "Details", default: "Szczegóły" },
+  { en: "Date", default: "Data" },
+  { en: "list of expenses", default: "LISTA WYDATKÓW" },
+  { en: "Place", default: "Miejsce" },
+  { en: "Input data", default: "Wpisz dane" },
+  { en: "Category", default: "Kategoria" },
+  { en: "Favorite", default: "Ulubione" },
+  { en: "Edit of categories", default: "Edycja Kategorii" },
+  { en: "Receipt", default: "Cały paragon" },
+  { en: "Add to the receipt", default: "Dodaj do paragonu" },
 ];
 
 export const selectLang = (selected, langFile, defaultWord) => {
