@@ -19,3 +19,7 @@ export const TOGGLE_DELETE_ACCOUNT = "TOGGLE_DELETE_ACCOUNT";
 export const toggleDeleteAccount = (status) => {
   return { type: TOGGLE_DELETE_ACCOUNT, status: status };
 };
+export const SWITCH_LANG = "SWITCH_LANG";
+export const switchLang = (lang) => {
+  return { type: SWITCH_LANG, lang: lang };
+};

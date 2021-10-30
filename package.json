@@ -53,6 +53,7 @@
     "react-native-date-picker": "^3.3.1",
     "react-native-dropdown-autocomplete": "^1.0.18",
     "react-native-fbsdk": "^3.0.0",
+    "react-native-flags": "^1.0.0",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-google-signin": "^2.1.1",
     "react-native-html-to-pdf": "^0.10.0",

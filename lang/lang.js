@@ -143,8 +143,8 @@ export const dataLang = [
   { en: "Light gold", default: "Jasny złoty" },
   { en: "Light green", default: "Jasny zielony" },
   { en: "Dark", default: "ciemny" },
-  // { en: "", default: "" },
-  // { en: "", default: "" },
+  { en: "Language settings", default: "USTAWIENIA JĘZYKA" },
+  { en: "Language", default: "Język" },
   // { en: "", default: "" },
 ];
 

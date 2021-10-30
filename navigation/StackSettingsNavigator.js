@@ -15,7 +15,7 @@ import AccountSettingsScreen from "../screens/settings/AccountSettingsScreen";
 import { dataLang, selectLang } from "../lang/lang";
 import SettingsScreen from "../screens/settings/SettingsScreen";
 import Logout from "../components/auth/logout/Logout";
-
+import LangScreen from "../components/settings/lang/LangScreeng";
 const Stack = createStackNavigator();
 
 const StackSettingsNavigator = (props) => {
@@ -41,36 +41,40 @@ const StackSettingsNavigator = (props) => {
         },
       }}
     >
-      {stackScreen("Ustawienia", SettingsScreen, ({ navigation }) => ({
-        headerTitle: () => (
-          <Text
-            style={{
-              fontFamily: "Kanit_600SemiBold",
-              fontSize: 15,
-              color: Colors[scheme].headerTintColor,
-            }}
-          >
-            {translate("USTAWIENIA").toUpperCase()}
-          </Text>
-        ),
-        headerLeft: () => (
-          <TouchableOpacity
-            style={{
-              padding: 0,
-              justifyContent: "center",
-              alignItems: "center",
-              marginLeft: 20,
-            }}
-            onPress={() => navigation.toggleDrawer()}
-          >
-            <MaterialCommunityIcons
-              name="menu"
-              size={34}
-              color={Colors[scheme].headerTintColor}
-            />
-          </TouchableOpacity>
-        ),
-      }))}
+      {stackScreen(
+        translate("Ustawienia"),
+        SettingsScreen,
+        ({ navigation }) => ({
+          headerTitle: () => (
+            <Text
+              style={{
+                fontFamily: "Kanit_600SemiBold",
+                fontSize: 15,
+                color: Colors[scheme].headerTintColor,
+              }}
+            >
+              {translate("USTAWIENIA").toUpperCase()}
+            </Text>
+          ),
+          headerLeft: () => (
+            <TouchableOpacity
+              style={{
+                padding: 0,
+                justifyContent: "center",
+                alignItems: "center",
+                marginLeft: 20,
+              }}
+              onPress={() => navigation.toggleDrawer()}
+            >
+              <MaterialCommunityIcons
+                name="menu"
+                size={34}
+                color={Colors[scheme].headerTintColor}
+              />
+            </TouchableOpacity>
+          ),
+        })
+      )}
 
       {stackScreen(
         "AccountSettings",
@@ -100,6 +104,19 @@ const StackSettingsNavigator = (props) => {
             }}
           >
             {translate("USTAWIENIA WIDOKU").toUpperCase()}
+          </Text>
+        ),
+      }))}
+      {stackScreen("LangSettings", LangScreen, ({ navigation }) => ({
+        headerTitle: () => (
+          <Text
+            style={{
+              fontFamily: "Kanit_600SemiBold",
+              fontSize: 15,
+              color: Colors[scheme].headerTintColor,
+            }}
+          >
+            {translate("USTAWIENIA JĘZYKA").toUpperCase()}
           </Text>
         ),
       }))}

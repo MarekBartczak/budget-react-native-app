@@ -4,6 +4,7 @@ import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
 import SettingsElement from "./SettingsElement";
 import fontSclae from "../../constants/FontScale";
 import { dataLang, selectLang } from "../../lang/lang";
@@ -36,6 +37,17 @@ const Settings = (props) => {
           />
         }
         target={"ViewSettings"}
+      />
+      <SettingsElement
+        title={translate("Język")}
+        icon={
+          <Fontisto
+            name="flag"
+            size={24}
+            color={Colors[scheme].headerTintColor}
+          />
+        }
+        target={"LangSettings"}
       />
     </View>
   );

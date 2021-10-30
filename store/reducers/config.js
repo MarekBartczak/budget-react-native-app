@@ -4,6 +4,7 @@ import {
   TOGGLE_CUSTOM_THEME,
   TOGGLE_DANGER_ZONE,
   TOGGLE_DELETE_ACCOUNT,
+  SWITCH_LANG,
 } from "../actions/config";
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
   addIncomeKeyboardStatus: false,
   toogleDangerZone: false,
   deleteAccount: false,
-  language: "en",
+  language: "en", // default or en
 };
 
 export default (state = initialState, action) => {
@@ -29,6 +30,8 @@ export default (state = initialState, action) => {
       return { ...state, toogleDangerZone: action.status };
     case TOGGLE_DELETE_ACCOUNT:
       return { ...state, deleteAccount: action.status };
+    case SWITCH_LANG:
+      return { ...state, language: action.lang };
   }
   return state;
 };
