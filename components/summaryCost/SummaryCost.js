@@ -16,6 +16,7 @@ import * as summmaryActions from "../../store/actions/summary";
 import uuid from "react-native-uuid";
 import { MaterialIcons } from "@expo/vector-icons";
 import fontScale from "../../constants/FontScale";
+import { dataLang, selectLang } from "../../lang/lang";
 
 const SumaryCost = (props) => {
   const dispatch = useDispatch();
@@ -32,6 +33,10 @@ const SumaryCost = (props) => {
   const getType = props.type;
   const itemsList = props.list;
   let amount = 0;
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   let filteredByDate;
   filteredByDate = itemsList.filter((el) =>
@@ -44,7 +49,6 @@ const SumaryCost = (props) => {
     props.getChartFilter(filter);
   };
   if (filteredDate[getType] !== "") {
-    // console.log(filteredDate[getType]);
     filteredByDate = itemsList.filter((el) =>
       el.date.includes(filteredDate[getType])
     );
@@ -63,7 +67,7 @@ const SumaryCost = (props) => {
         const month = el.slice(5, 7);
 
         return {
-          named: `${year} - ${months[month - 1]}`,
+          named: `${year} - ${translate(months[month - 1])}`,
           date: el,
         };
       });
@@ -170,7 +174,7 @@ const SumaryCost = (props) => {
                   paddingHorizontal: 10,
                 }}
               >
-                ZAMKNIJ
+                {translate("ZAMKNIJ").toUpperCase()}
               </Text>
             </TouchableOpacity>
             <FlatList
@@ -283,7 +287,7 @@ const SumaryCost = (props) => {
               },
             }}
           >
-            {year} {month}
+            {year} {month && translate(month).toUpperCase()}
           </Text>
         </TouchableOpacity>
       </View>

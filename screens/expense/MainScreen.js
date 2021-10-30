@@ -16,11 +16,11 @@ const MainScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
   const itemsFromRedux = useSelector((state) => state.item.items);
-  const lang = useSelector((state) => state.config.language);
   const chartEl = chartElement(itemsFromRedux);
   const dispatch = useDispatch();
   const type = "expense";
 
+  const lang = useSelector((state) => state.config.language);
   const translate = (word) => {
     return selectLang(lang, dataLang, word);
   };

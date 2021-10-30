@@ -93,6 +93,19 @@ export const dataLang = [
   { en: "Balance", default: "stan konta" },
   { en: "Version", default: "wersja" },
   { en: "Build", default: "Kompilacja" },
+  { en: "January", default: "Styczeń" },
+  { en: "February", default: "Luty" },
+  { en: "March", default: "Marzec" },
+  { en: "April", default: "Kwiecień" },
+  { en: "May", default: "Maj" },
+  { en: "June", default: "Czerwiec" },
+  { en: "July", default: "Lipiec" },
+  { en: "August", default: "Sierpień" },
+  { en: "September", default: "Wrzesień" },
+  { en: "October", default: "Październik" },
+  { en: "November", default: "Listopad" },
+  { en: "December", default: "Grudzień" },
+  { en: "close", default: "zamknij" },
 ];
 
 export const selectLang = (selected, langFile, defaultWord) => {
