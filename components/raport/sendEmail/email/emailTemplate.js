@@ -1,3 +1,5 @@
+import { dataLang, selectLang } from "../../../../lang/lang";
+
 const countSum = (total, sum) => total + sum;
 const sum = {
   Expense: { name: "Wydatki", amount: 0 },
@@ -11,7 +13,10 @@ const clearSum = () => {
   sum.Income = { name: "Wpływy", amount: 0 };
 };
 
-const emailTemplate = (list) => {
+const emailTemplate = (list, lang) => {
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const sumCounter = (type) => {
     if (list[type].length > 0) {
       let sumOfAllList = list[type].map((el) => {
@@ -29,29 +34,31 @@ const emailTemplate = (list) => {
   sumCounter("Income");
 
   let NumberedList = {
-    head: `<h2>Raport finansowy</h2> utworzony dnia: ${new Date()
-      .toISOString()
-      .slice(0, 10)}
+    head: `<h2>${translate("Raport finansowy")}</h2> ${translate(
+      "utworzony dnia"
+    )}: ${new Date().toISOString().slice(0, 10)}
     <hr />`,
     Expense: [],
     FixedExpense: [],
     Income: [],
-    footer: `<h5>Podsumowanie:</h5>
+    footer: `<h5>${translate("Podsumowanie")}:</h5>
     <ul>
-    <li>${sum.Expense.name} : ${sum.Expense.amount} PLN</li>
-    <li>${sum.FixedExpense.name} : ${sum.FixedExpense.amount} PLN</li>
-    <li>${sum.Income.name} : ${sum.Income.amount} PLN</li>
+    <li>${translate(sum.Expense.name)} : ${sum.Expense.amount} PLN</li>
+    <li>${translate(sum.FixedExpense.name)} : ${
+      sum.FixedExpense.amount
+    } PLN</li>
+    <li>${translate(sum.Income.name)} : ${sum.Income.amount} PLN</li>
     </ul>`,
   };
   const liObj = (type, el) => {
     switch (type) {
       case "Expense":
         // console.log(el);
-        return `<li> ${el.date} | ${el.mainCategory} | ${el.subCategory} | ${el.place} | <b>${el.cost}zł</b> </li>`;
+        return `<li> ${el.date} | ${el.mainCategory} | ${el.subCategory} | ${el.place} | <b>${el.cost}PLN</b> </li>`;
       case "FixedExpense":
-        return `<li> ${el.date} | ${el.title} | ${el.recipient} | <b>${el.cost}zł</b></li>`;
+        return `<li> ${el.date} | ${el.title} | ${el.recipient} | <b>${el.cost}PLN</b></li>`;
       case "Income":
-        return `<li> ${el.date} | ${el.title} | ${el.from} | <b>${el.cost}zł</b></li>`;
+        return `<li> ${el.date} | ${el.title} | ${el.from} | <b>${el.cost}PLN</b></li>`;
     }
   };
   const createNumberedList = (type) => {

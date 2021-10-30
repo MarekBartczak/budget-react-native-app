@@ -14,12 +14,15 @@ import { useSelector } from "react-redux";
 import filteredList from "./filteredList";
 import emailTemplate from "./emailTemplate";
 import fontScale from "../../../../constants/FontScale";
-
+import { dataLang, selectLang } from "../../../../lang/lang";
 const Send = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const [messageSendingInProgress, setMessageSendingInProgress] =
     useState(false);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   let email = "";
   const diffrentEmail = useSelector((state) => state.raport.diffrentEmail);
   const updatedDefaultEmail = useSelector((state) => state.raport.email);
@@ -45,7 +48,7 @@ const Send = (props) => {
     Income: useSelector((state) => state.income.income),
   };
   const list = filteredList(raport, listObj);
-  const message = emailTemplate(list);
+  const message = emailTemplate(list, lang);
   // console.log(message.Expense);
   // console.log(list);
 
@@ -55,15 +58,15 @@ const Send = (props) => {
       header: message.head,
       recipient: email,
       message: [
-        "<b>Wydatki</b><br/>",
+        `<b>${translate("Wydatki")}</b><br/>`,
         message.Expense,
-        "<hr>",
-        "<b>Stałe wydatki</b><br/>",
+        `<hr>`,
+        `<b>${translate("Stałe wydatki")}</b><br/>`,
         message.FixedExpense,
-        "<hr>",
-        "<b>Wpływy</b><br/>",
+        `<hr>`,
+        `<b>${translate("Wpływy")}</b><br/>`,
         message.Income,
-        "<hr>",
+        `<hr>`,
       ].join(""),
       footer: message.footer,
     };
@@ -77,7 +80,7 @@ const Send = (props) => {
         .send(service_id, service_template, templateForm, service_user)
         .then((res) => {
           setMessageSendingInProgress(false);
-          alert("wiadomość wysłana");
+          alert(translate("Wiadomość wysłana"));
         })
         .catch((err) => {
           console.log(err);
@@ -99,7 +102,7 @@ const Send = (props) => {
           }}
         >
           <Text style={{ fontFamily: "Kanit_600SemiBold", marginBottom: 10 }}>
-            Wysyłanie wiadomości do...
+            {translate("Wysyłanie wiadomości")}...
           </Text>
           <Text>
             <ActivityIndicator size="large" />
@@ -130,7 +133,7 @@ const Send = (props) => {
                 },
               }}
             >
-              {"Wyślij raport".toUpperCase()}
+              {translate("Wyślij raport").toUpperCase()}
             </Text>
           </View>
         </TouchableOpacity>

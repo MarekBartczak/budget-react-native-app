@@ -4,10 +4,13 @@ import summaryCostCounter from "../../../functions/summaryCostCounter";
 import Colors from "../../../constants/Colors";
 import { useSelector } from "react-redux";
 import fontScale from "../../../constants/FontScale";
-
+import { dataLang, selectLang } from "../../../lang/lang";
 const Expense = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   return (
     <View>
       <View
@@ -25,7 +28,8 @@ const Expense = (props) => {
             },
           }}
         >
-          {"razem:".toUpperCase()} {summaryCostCounter(props.filteredList)} PLN
+          {translate("razem").toUpperCase()}{" "}
+          {summaryCostCounter(props.filteredList)} PLN
         </Text>
       </View>
       <View>

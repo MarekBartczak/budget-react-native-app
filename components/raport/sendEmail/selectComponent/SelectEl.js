@@ -12,6 +12,7 @@ import * as raportActions from "../../../../store/actions/raport";
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import fontScale from "../../../../constants/FontScale";
+import { dataLang, selectLang } from "../../../../lang/lang";
 
 const SelectEl = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
@@ -23,6 +24,10 @@ const SelectEl = (props) => {
   const dispatch = useDispatch();
   const setTypeInStore = () => {
     dispatch(raportActions.isSelectedType(!isSelected, props.el));
+  };
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
   };
 
   const isDateSelectedToggle = (date, isSelected) => {
@@ -94,7 +99,7 @@ const SelectEl = (props) => {
               },
             }}
           >
-            {props.name.toUpperCase()}
+            {translate(props.name).toUpperCase()}
           </Text>
           <FontAwesome
             name={"angle-double-down"}

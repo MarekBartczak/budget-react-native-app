@@ -5,6 +5,7 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 import FilterComponent from "../../components/raport/filterComponent/FilterComponent";
 import Colors from "../../constants/Colors";
 import fontScale from "../../constants/FontScale";
+import { dataLang, selectLang } from "../../lang/lang";
 const RaportScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -13,6 +14,10 @@ const RaportScreen = (props) => {
   const updateDefaultEmail = useSelector(
     (state) => state.raport.updateDefaultEmail
   );
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const raportWrongEmailInfo = () => {
     return (
@@ -39,7 +44,7 @@ const RaportScreen = (props) => {
             color: Colors[scheme].primarySecond,
           }}
         >
-          !! UWAGA RAPORT NIEDOSTĘPNY !!
+          !! {translate("RAPORT NIEDOSTĘPNY")} !!
         </Text>
         <Text
           style={{
@@ -49,7 +54,7 @@ const RaportScreen = (props) => {
             color: Colors[scheme].primarySecond,
           }}
         >
-          Zmień domyślny adres email
+          {translate("Zmień domyślny adres email")}
         </Text>
 
         <Text
@@ -59,7 +64,8 @@ const RaportScreen = (props) => {
             color: Colors[scheme].primarySecond,
           }}
         >
-          *| Ustawienia | konto | Zmień domyślny adres email |
+          *| {translate("Ustawienia")} | {translate("konto")} |{" "}
+          {translate("Zmień domyślny adres email")} |
         </Text>
       </View>
     );

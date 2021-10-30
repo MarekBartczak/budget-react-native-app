@@ -11,9 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../../constants/Colors";
 import months from "../../../constants/Months";
 import getDateList from "./GetDateList";
-
 import ListOfElements from "../elemets/ListOfElements";
-
+import { dataLang, selectLang } from "../../../lang/lang";
 import DateElement from "../elemets/DateElement";
 import * as raportActions from "../../../store/actions/raport";
 const FilterComponent = (props) => {
@@ -27,6 +26,10 @@ const FilterComponent = (props) => {
     Expense: useSelector((state) => state.item.items),
     FixedExpense: useSelector((state) => state.fixedExpense.fixedExpense),
     Income: useSelector((state) => state.income.income),
+  };
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
   };
 
   const dateList = {
@@ -103,7 +106,7 @@ const FilterComponent = (props) => {
             ...{ color: Colors[scheme].button },
           }}
         >
-          {name}
+          {translate(name)}
         </Text>
       </TouchableOpacity>
     );

@@ -3,7 +3,7 @@ import Colors from "../../../constants/Colors";
 import React from "react";
 import { useSelector } from "react-redux";
 import Months from "../../../data/months";
-
+import { dataLang, selectLang } from "../../../lang/lang";
 const DateElement = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -11,6 +11,10 @@ const DateElement = (props) => {
   const year = date.slice(0, 4);
   const monthIndex = date.slice(5);
   const month = Months[Number(monthIndex - 1)];
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   return (
     <View
       style={{
@@ -21,7 +25,7 @@ const DateElement = (props) => {
       <Text
         style={{ ...styles.text, ...{ color: Colors[scheme].headerTintColor } }}
       >
-        {month.toUpperCase()} {year.toUpperCase()}
+        {translate(month).toUpperCase()} {year.toUpperCase()}
       </Text>
     </View>
   );
