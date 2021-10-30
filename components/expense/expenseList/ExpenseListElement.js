@@ -22,6 +22,7 @@ import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useNavigation } from "@react-navigation/native";
 import * as itemsAction from "../../../store/actions/items";
 import fontScale from "../../../constants/FontScale";
+import { dataLang, selectLang } from "../../../lang/lang";
 
 const ExpenseListElement = (props) => {
   const userId = useSelector((state) => state.auth.userID);
@@ -31,6 +32,10 @@ const ExpenseListElement = (props) => {
   const getColor = () => Colors[scheme].accent;
   const iconSize = fontScale(10);
   const dispatch = useDispatch();
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const iconList = [
     {
       icon: () => (
@@ -196,7 +201,7 @@ const ExpenseListElement = (props) => {
               fontSize: 17,
             }}
           >
-            {props.subCategory.toUpperCase()}
+            {translate(props.subCategory).toUpperCase()}
           </Text>
           <Text
             style={{
@@ -238,7 +243,7 @@ const ExpenseListElement = (props) => {
                 marginRight: 5,
               }}
             >
-              {props.mainCategory.toUpperCase()}
+              {translate(props.mainCategory).toUpperCase()}
             </Text>
             <Text style={{ marginRight: 10 }}>{showIcon()} </Text>
           </View>

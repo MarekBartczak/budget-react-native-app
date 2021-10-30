@@ -6,10 +6,15 @@ import { useDispatch } from "react-redux";
 import switchComaToDot from "../../../functions/switchCompaToDot";
 import AddNew from "../../addNew/AddNew";
 import validateChecker from "../../undefinedListCheck/ValidateChecker";
+import { dataLang, selectLang } from "../../../lang/lang";
 const AddNewFixedExpenseComponent = (props) => {
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setDate(currentDate);
+  };
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
   };
 
   const newFixedExpense = () => {
@@ -41,9 +46,9 @@ const AddNewFixedExpenseComponent = (props) => {
 
   const perdiodicElementProps = {
     title: "Nowy stały wydatek",
-    placeHolderAmount: "Kwota",
-    placeHolderName: "Nazwa",
-    placeHolderContractor: "Odbiorca",
+    placeHolderAmount: translate("Kwota"),
+    placeHolderName: translate("Nazwa"),
+    placeHolderContractor: translate("Kontrahent"),
     amountValue: cost,
     setAmountValue: setCost,
     nameValue: title,

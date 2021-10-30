@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../../constants/Colors";
 import * as expenseActions from "../../../store/actions/items";
 import getElementToFilterBy from "../../../functions/expenseFilter/getElementToFilterBy";
+import { dataLang, selectLang } from "../../../lang/lang";
 const ExpenseFilter = (props) => {
   const items = useSelector((state) => state.item.items);
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ const ExpenseFilter = (props) => {
   const filterCount = useSelector((state) => state.item.filter.count);
   const getFilterBy = useSelector((state) => state.item.filter.selectedFilter);
   const search = useSelector((state) => state.item.filter.searchElement);
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const setFilterBy = (type, filter) => {
     dispatch(expenseActions[`setFilter_${type}`](filter));
   };
@@ -40,8 +45,9 @@ const ExpenseFilter = (props) => {
           textAlign: "center",
         }}
       >
-        Filtr: data: {getFilterBy.date}, kategoria:
-        {getFilterBy.mainCategory}, miejsce: {getFilterBy.place}{" "}
+        {translate("Filtr")}: {translate("data")}: {getFilterBy.date},{" "}
+        {translate("kategoria")}:{getFilterBy.mainCategory},{" "}
+        {translate("miejsce")}: {getFilterBy.place}{" "}
       </Text>
       <Text
         style={{
@@ -53,7 +59,7 @@ const ExpenseFilter = (props) => {
           textAlign: "center",
         }}
       >
-        ZNALEZIONO: {filterCount.items}
+        {translate("ZNALEZIONO")}: {filterCount.items}
       </Text>
       <FlatList
         style={{

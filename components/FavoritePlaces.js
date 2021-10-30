@@ -16,9 +16,15 @@ import FavPlaceElement from "../components/FavPlaceElement";
 import ApiList from "../components/place/ApiList";
 import { LinearGradient } from "expo-linear-gradient";
 import fontScale from "../constants/FontScale";
+import { dataLang, selectLang } from "../lang/lang";
 
 const FavoritePlaces = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const [showEdit, setShowEdit] = useState(false);
   const [favPlaceName, setFavPlaceName] = useState("");
@@ -95,7 +101,7 @@ const FavoritePlaces = (props) => {
                   ...{ color: Colors[scheme].button },
                 }}
               >
-                Zamknij
+                {translate("Zamknij").toUpperCase()}
               </Text>
             </View>
             <View>

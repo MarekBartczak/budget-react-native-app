@@ -10,10 +10,15 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../../../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
 import * as itemsActions from "../../../../store/actions/items";
+import { dataLang, selectLang } from "../../../../lang/lang";
 const SelectFilterType = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const [select, setSelect] = useState("");
   const dispatch = useDispatch();
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   useEffect(() => {
     dispatch(itemsActions.setFilterType(select));
@@ -61,13 +66,13 @@ const SelectFilterType = (props) => {
       }}
     >
       <View style={{ ...styles.dateFilter, ...{} }}>
-        {selectFilter("date", "DATA")}
+        {selectFilter("date", translate("DATA").toUpperCase())}
       </View>
       <View style={{ ...styles.categoryFilter, ...{} }}>
-        {selectFilter("mainCategory", "KATEGORIA")}
+        {selectFilter("mainCategory", translate("KATEGORIA").toUpperCase())}
       </View>
       <View style={{ ...styles.placeFilter, ...{} }}>
-        {selectFilter("place", "MIEJSCE")}
+        {selectFilter("place", translate("MIEJSCE").toUpperCase())}
       </View>
       <View style={{ ...styles.clear, ...{} }}>
         <TouchableOpacity

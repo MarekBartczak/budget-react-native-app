@@ -10,6 +10,7 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 import UnpaidExpense from "../../components/fixedExpense/unpaidExpense/UnpaidExpense";
 import EmptyList from "../../components/emptyList/EmptyList";
 import fontScale from "../../constants/FontScale";
+import { dataLang, selectLang } from "../../lang/lang";
 const FixedExpenseScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const fixedExpenseMonthFilter = useSelector(
@@ -24,6 +25,10 @@ const FixedExpenseScreen = (props) => {
   const [filter, setFilter] = useState(
     fixedExpenseShowList.filter((el) => true)
   );
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const delayCost = useSelector((state) => state.fixedExpense.delayCost);
 
@@ -98,7 +103,7 @@ const FixedExpenseScreen = (props) => {
               fontFamily: "Kanit_400Regular",
             }}
           >
-            {"Brak zaległych rachunków".toUpperCase()}
+            {translate("Brak zaległych rachunków").toUpperCase()}
           </Text>
         ) : (
           <Text
@@ -107,7 +112,7 @@ const FixedExpenseScreen = (props) => {
               fontFamily: "Kanit_400Regular",
             }}
           >
-            {"Zaległe rachunki na kwotę:".toUpperCase()}{" "}
+            {translate("Zaległe rachunki na kwotę").toUpperCase()}{" "}
             <Text style={{ color: "red", fontFamily: "Kanit_400Regular" }}>
               {" "}
               {delayCost} PLN{" "}
@@ -122,7 +127,7 @@ const FixedExpenseScreen = (props) => {
             props.navigation.navigate("AddNewFixedExpenseScreen")
           }
           setPlace={() => {}}
-          text={"Nowe stałe wydatki"}
+          text={translate("Dodaj nowy stały wydatek")}
         />
       </View>
     </ExternalComponent>

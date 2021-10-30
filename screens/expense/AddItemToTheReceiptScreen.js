@@ -10,10 +10,14 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/Colors";
 import { useSelector, useDispatch } from "react-redux";
-import { Ionicons } from "@expo/vector-icons";
+import { dataLang, selectLang } from "../../lang/lang";
 
 const AddItemToTheReceiptScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const selectedCategory = useSelector((state) => state.item.category.main);
   const selectedSubCategory = useSelector((state) => state.item.category.sub);
@@ -63,7 +67,7 @@ const AddItemToTheReceiptScreen = (props) => {
                 fontFamily: "Kanit_600SemiBold",
               }}
             >
-              DALEJ
+              {translate("DALEJ").toUpperCase()}
             </Text>
           </TouchableOpacity>
         ) : (
@@ -90,7 +94,7 @@ const AddItemToTheReceiptScreen = (props) => {
                   fontFamily: "Kanit_600SemiBold",
                 }}
               >
-                DALEJ
+                {translate("DALEJ").toUpperCase()}
               </Text>
             </View>
           </View>

@@ -11,12 +11,16 @@ import * as expenseActions from "../../../store/actions/items";
 import { useSelector, useDispatch } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import fontScale from "../../../constants/FontScale";
+import { dataLang, selectLang } from "../../../lang/lang";
 
 import Colors from "../../../constants/Colors";
 const SearchEngine = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const filterCount = useSelector((state) => state.item.filter.count);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const [search, setSearch] = useState();
   const dispatch = useDispatch();
 
@@ -72,7 +76,7 @@ const SearchEngine = (props) => {
               fontSize: fontScale(5),
             }}
           >
-            SZUKAJ
+            {translate("SZUKAJ").toUpperCase()}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -98,7 +102,7 @@ const SearchEngine = (props) => {
             ...{ color: Colors[scheme].primarySecond, fontSize: fontScale(6) },
           }}
         >
-          ZNALEZIONO:{"  "}
+          {translate("ZNALEZIONO")}:{"  "}
           <Text
             style={{
               color: Colors[scheme].button,
@@ -115,7 +119,7 @@ const SearchEngine = (props) => {
             ...{ color: Colors[scheme].primarySecond, fontSize: fontScale(6) },
           }}
         >
-          KWOTA :{"  "}
+          {translate("KWOTA")} :{"  "}
           <Text
             style={{
               color: Colors[scheme].button,

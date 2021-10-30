@@ -25,7 +25,7 @@ import SaveItemsToTheStore from "../../../functions/SaveItemsToTheStore";
 import numberInputValidation from "../../../functions/NumberInputValidation";
 import saveDataToTheCloud from "../../../functions/cloud/saveDataToTheCloud";
 import fontScale from "../../../constants/FontScale";
-
+import { dataLang, selectLang } from "../../../lang/lang";
 const heightWindow = Dimensions.get("window").height;
 
 const Receipt = (props) => {
@@ -37,7 +37,10 @@ const Receipt = (props) => {
   const showReceipt = useSelector((state) => state.item.receipt);
   const receiptItem = useSelector((state) => state.item.receipt.items);
   const userId = useSelector((state) => state.auth.userID);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const dispatch = useDispatch();
 
   const sumOf = (total, sum) => total + sum;
@@ -80,7 +83,7 @@ const Receipt = (props) => {
                     ...{ color: Colors[scheme].primarySecond },
                   }}
                 >
-                  {props.place ? props.place : "Wybierz sklep"}
+                  {props.place ? props.place : translate("Wybierz sklep")}
                 </Text>
 
                 <View
@@ -110,7 +113,6 @@ const Receipt = (props) => {
                     >
                       <TouchableOpacity
                         onPress={() => {
-                          console.log("x");
                           showModal(false);
                         }}
                         style={{
@@ -129,7 +131,7 @@ const Receipt = (props) => {
                             fontFamily: "Kanit_600SemiBold",
                           }}
                         >
-                          {"Zamknij".toUpperCase()}
+                          {translate("Zamknij").toUpperCase()}
                         </Text>
                       </TouchableOpacity>
                       <View
@@ -150,7 +152,7 @@ const Receipt = (props) => {
                             },
                           }}
                           value={props.place}
-                          placeholder="wpisz nowe miejsce"
+                          placeholder={translate("wpisz nowe miejsce")}
                           keyboardType={"default"}
                           onChangeText={props.setPlace}
                         />
@@ -209,7 +211,7 @@ const Receipt = (props) => {
                       fontSize: fontScale(7),
                     }}
                   >
-                    Razem {sum.toFixed(2)} PLN
+                    {translate("Razem")} {sum.toFixed(2)} PLN
                   </Text>
                 </View>
                 <View style={styles.buttons}>
@@ -228,7 +230,7 @@ const Receipt = (props) => {
                         saveDataToTheCloud.expense(itemToSaved, userId);
                         props.backToHome();
                       } else {
-                        alert("Dodaj pozycje do paragonu");
+                        alert(translate("Dodaj pozycje do paragonu"));
                       }
                     }}
                   >
@@ -248,7 +250,7 @@ const Receipt = (props) => {
                       if (GetSelectedPlace.length > 0) {
                         navigation.navigate("AddToReceipt");
                       } else {
-                        alert("Wybierz Sklep");
+                        alert(translate("Wybierz Sklep"));
                       }
                     }}
                   >

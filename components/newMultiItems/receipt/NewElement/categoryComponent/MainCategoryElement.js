@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../../../../constants/Colors";
 import * as itemActions from "../../../../../store/actions/items";
 import { useNavigation } from "@react-navigation/native";
-
+import { dataLang, selectLang } from "../../../../../lang/lang";
 import {
   Entypo,
   Feather,
@@ -20,6 +20,10 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 const MainCategoryElement = (props) => {
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const navigation = useNavigation();
 
   const scheme = useSelector((state) => state.config.scheme);
@@ -106,7 +110,7 @@ const MainCategoryElement = (props) => {
               ...{ color: getColor() },
             }}
           >
-            {props.title.toUpperCase()}
+            {translate(props.title).toUpperCase()}
           </Text>
         </View>
       </View>

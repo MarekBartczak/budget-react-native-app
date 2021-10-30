@@ -6,10 +6,15 @@ import ExpenseListElement from "./ExpenseListElement";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import getFilteredListBySelectedFilter from "../../../functions/expenseFilter/getFilteredListBySelectedFilter";
 import getFilteredListBySearchInput from "../../../functions/expenseFilter/getFilteredListBySearchInput";
+import { dataLang, selectLang } from "../../../lang/lang";
 const ExpenseList = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const filter = useSelector((state) => state.item.filter);
   const bareItems = useSelector((state) => state.item.items);
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const [filteredList, setFilterList] = useState(
     getFilteredListBySelectedFilter(filter, bareItems)
   );
@@ -75,7 +80,7 @@ const ExpenseList = (props) => {
             color={Colors[scheme].button}
           />
           <Text style={{ color: Colors[scheme].button, marginTop: 30 }}>
-            NIC NIE ZNALEZIONO
+            {translate("NIC NIE ZNALEZIONO").toUpperCase()}
           </Text>
         </View>
       )}

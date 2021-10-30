@@ -13,7 +13,7 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import setNextPayDay from "../../../functions/SetNextPayDay";
 import { useDispatch, useSelector } from "react-redux";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
-
+import { dataLang, selectLang } from "../../../lang/lang";
 const FixedExpenseDetails = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -30,6 +30,10 @@ const FixedExpenseDetails = (props) => {
   if (historyList.length > 0) {
     historyEl = historyList[0];
   }
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const checkIfIsPaidIsCurrrentMonth = () => {
     return filteredHistoryEl[0].isPaid;
@@ -178,7 +182,7 @@ const FixedExpenseDetails = (props) => {
                   },
                 }}
               >
-                {"Termin zapłaty".toUpperCase()}
+                {translate("Termin zapłaty").toUpperCase()}
               </Text>
               <Text
                 style={{
@@ -201,7 +205,7 @@ const FixedExpenseDetails = (props) => {
                   },
                 }}
               >
-                {"Kwota".toUpperCase()}
+                {translate("Kwota").toUpperCase()}
               </Text>
               <Text
                 style={{
@@ -256,7 +260,7 @@ const FixedExpenseDetails = (props) => {
                 ...{ marginRight: 20, color: Colors[scheme].primarySecond },
               }}
             >
-              archiwizuj opłacony rachunek{" "}
+              {translate("archiwizuj opłacony rachunek")}{" "}
             </Text>
             <Text>{showIsPaid()}</Text>
           </View>

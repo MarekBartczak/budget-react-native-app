@@ -7,7 +7,7 @@ import ExternalComponent from "../../../../ExternalComponentWithGradient/Externa
 import { useHeaderHeight } from "@react-navigation/stack";
 import { useSelector } from "react-redux";
 import fontScale from "../../../../../constants/FontScale";
-
+import { dataLang, selectLang } from "../../../../../lang/lang";
 const Categories = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const categoriesList = useSelector((state) => state.item.categoryList)[0];
@@ -16,6 +16,10 @@ const Categories = (props) => {
   const mainCategoryList = categoriesListObjectKeys.map(
     (el) => categoriesList[el].name
   );
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   let iconSize = fontScale(10);
 
   return (

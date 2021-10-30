@@ -93,11 +93,28 @@ export const dataLang = [
   { en: "family", default: "rodzinne" },
   { en: "gifts", default: "prezenty" },
   { en: "family outings", default: "wyjścia" },
-  // { en: "", default: "" },
-  // { en: "", default: "" },
-  // { en: "", default: "" },
-  // { en: "", default: "" },
-  // { en: "", default: "" },
+  { en: "Nothing found", default: "nic nie znaleziono" },
+  { en: "Filter", default: "filtr" },
+  { en: "Found", default: "znaleziono" },
+  { en: "search", default: "szukaj" },
+  { en: "Amount", default: "kwota" },
+  { en: "Next", default: "dalej" },
+  { en: "Stored", default: "zapisane" },
+  { en: "Select a store", default: "wybierz sklep" },
+  { en: "Input a new place", default: "wpisz nowe miejsce" },
+  { en: "Total", default: "razem" },
+  { en: "Add items to the receipt", default: "Dodaj pozycje do paragonu" },
+  { en: "No outstanding bills", default: "Brak zaległych rachunków" },
+  { en: "Bills Outstanding", default: "Zaległe rachunki na kwotę" },
+  { en: "Please correct the amount", default: "Proszę wpisać poprawną kwotę" },
+  { en: "Please complete the form", default: "proszę uzupełnić formularz" },
+  { en: "Save", default: "zapisz" },
+  { en: "Billing frequency", default: "Częstotliwość opłat" },
+  { en: "Date of payment", default: "Termin zapłaty" },
+  { en: "Add to the receipt", default: "Dodaj do paragonu" },
+  { en: "Name", default: "nazwa" },
+  { en: "Contractor", default: "Kontrahent" },
+  { en: "archive the paid bill", default: "archiwizuj opłacony rachunek" },
   // { en: "", default: "" },
   // { en: "", default: "" },
   // { en: "", default: "" },
@@ -109,5 +126,13 @@ export const selectLang = (selected, langFile, defaultWord) => {
     (el) => el.default.toLowerCase() === defaultWord.toLowerCase()
   );
 
-  return translatedWord[selected];
+  return translatedWord === undefined ? defaultWord : translatedWord[selected];
 };
+
+/*
+const lang = useSelector((state) => state.config.language);
+const translate = (word) => {
+  return selectLang(lang, dataLang, word);
+};
+
+*/

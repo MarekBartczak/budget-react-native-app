@@ -17,9 +17,14 @@ import { useSelector, useDispatch } from "react-redux";
 import numberInputValidation from "../../functions/NumberInputValidation";
 import switchComaToDot from "../../functions/switchCompaToDot";
 import fontScale from "../../constants/FontScale";
+import { dataLang, selectLang } from "../../lang/lang";
 const AddNewComponent = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   useEffect(() => {
     const keyboardShowListener = Keyboard.addListener(
@@ -49,7 +54,7 @@ const AddNewComponent = (props) => {
       return (
         <Text style={{ color: "red", fontSize: 10 }}>
           {" "}
-          Proszę wpisać poprawną kwotę{" "}
+          {translate("Proszę wpisać poprawną kwotę")}{" "}
         </Text>
       );
     }
@@ -152,7 +157,7 @@ const AddNewComponent = (props) => {
                       color: Colors[scheme].primaryThird,
                     }}
                   >
-                    ZAPISZ
+                    {translate("ZAPISZ").toUpperCase()}
                   </Text>
                 </View>
               ) : (

@@ -18,7 +18,7 @@ import uuid from "react-native-uuid";
 import MultiItem from "../../models/MultiItem";
 import { useNavigation } from "@react-navigation/native";
 import switchComaToDot from "../../functions/switchCompaToDot";
-
+import { dataLang, selectLang } from "../../lang/lang";
 const InputData = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const navigation = useNavigation();
@@ -28,6 +28,10 @@ const InputData = (props) => {
   const subCategory = useSelector((state) => state.item.category.sub);
 
   const dispatch = useDispatch();
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const ErrorCostValidation = () => {
     if (cost === undefined) {
@@ -36,7 +40,7 @@ const InputData = (props) => {
       return (
         <Text style={{ color: "red", fontSize: 10 }}>
           {" "}
-          Proszę wpisać poprawną kwotę{" "}
+          {translate("Proszę wpisać poprawną kwotę")}{" "}
         </Text>
       );
     }
@@ -76,7 +80,7 @@ const InputData = (props) => {
             ...{ color: Colors[scheme].button },
           }}
         >
-          {"Dodaj do paragonu".toUpperCase()}
+          {translate("Dodaj do paragonu").toUpperCase()}
         </Text>
       </View>
     );
@@ -161,7 +165,7 @@ const InputData = (props) => {
                   },
                 }}
                 value={cost}
-                placeholder={"Kwota"}
+                placeholder={translate("Kwota")}
                 keyboardType={"numeric"}
                 onChangeText={setCost}
                 placeholderTextColor={Colors[scheme].primarySecond}

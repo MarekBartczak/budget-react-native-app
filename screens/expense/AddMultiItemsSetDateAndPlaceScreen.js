@@ -15,7 +15,7 @@ import switchComaToDot from "../../functions/switchCompaToDot";
 import * as itemsAction from "../../store/actions/items";
 import { useDispatch, useSelector } from "react-redux";
 import ExternalComponent from "../../components/ExternalComponentWithGradient/ExternalComponentWithGradient";
-
+// import {dataLang, selectLang} from '../../lang/lang'
 const AddMultiItemsScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
   const selectedPlace = useSelector((state) => state.favoritePlace.selected);
@@ -24,6 +24,10 @@ const AddMultiItemsScreen = (props) => {
   const filteredFavList = favList.filter(
     (el) => el.name !== "Dodaj" && el.logo !== ""
   );
+  //   const lang = useSelector((state) => state.config.language);
+  // const translate = (word) => {
+  //   return selectLang(lang, dataLang, word);
+  // };
 
   const dispatch = useDispatch();
   const favListNames = filteredFavList.map((el) => el.name);

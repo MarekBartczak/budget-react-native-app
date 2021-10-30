@@ -15,11 +15,21 @@ import fontScale from "../constants/FontScale";
 
 const DatePicker = (props) => {
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const lang = useSelector((state) => state.config.language);
+
   const scheme = useSelector((state) => state.config.scheme);
   const show = Platform.OS === "ios";
   const showAndroid = Platform.OS === "android";
   const currentDate = new Date().toISOString().slice(0, 10);
 
+  let local = "pl_PL";
+
+  if (lang === "en") {
+    local = "en_EN";
+  }
+  if (lang === "default") {
+    local = "pl_PL";
+  }
   const androidDatePicker = () => {
     return showDatePicker && datePicker();
   };
@@ -33,7 +43,7 @@ const DatePicker = (props) => {
           alignItems: "center",
           justifyContent: "center",
         }}
-        locale="pl-PL"
+        locale={local}
         maximumDate={props.maxDate}
         timeZoneOffsetInMinutes={0}
         testID="dateTimePicker"

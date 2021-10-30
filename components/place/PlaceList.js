@@ -11,10 +11,14 @@ import ItemListToAdd from "../items/itemListToAdd";
 import Colors from "../../constants/Colors";
 import { useSelector } from "react-redux";
 import fontScale from "../../constants/FontScale";
+import { dataLang, selectLang } from "../../lang/lang";
 
 const PlaceList = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const [isFavoritePlaceShow, setIsFavoritePlaceShow] = useState(false);
 
   const setBtnColor = (state) => {
@@ -96,7 +100,7 @@ const PlaceList = (props) => {
                 fontSize: fontScale(6),
               }}
             >
-              {"Zapisane".toUpperCase()}
+              {translate("Zapisane").toUpperCase()}
             </Text>
           </View>
         </TouchableOpacity>
@@ -120,7 +124,7 @@ const PlaceList = (props) => {
                 // fontFamily: "Kanit_600SemiBold",
               }}
             >
-              {"Ulubione".toUpperCase()}
+              {translate("Ulubione").toUpperCase()}
             </Text>
           </View>
         </TouchableOpacity>

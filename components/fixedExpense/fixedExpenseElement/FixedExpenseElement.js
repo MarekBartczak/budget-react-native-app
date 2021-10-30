@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-
+import { dataLang, selectLang } from "../../../lang/lang";
 import * as fixedExpenseActions from "../../../store/actions/fixedExpense";
 
 const FixedExpenseElement = (props) => {
@@ -21,7 +21,10 @@ const FixedExpenseElement = (props) => {
   };
   const navigation = useNavigation();
   const userId = useSelector((state) => state.auth.userID);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const dispatch = useDispatch();
   const scheme = useSelector((state) => state.config.scheme);
   const deleteItem = () => {
@@ -84,7 +87,7 @@ const FixedExpenseElement = (props) => {
             fontSize: 18,
           }}
         >
-          SZCZEGÓŁY
+          {translate("SZCZEGÓŁY").toUpperCase()}
         </Text>
       </TouchableOpacity>
     );

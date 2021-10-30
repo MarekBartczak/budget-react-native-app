@@ -12,9 +12,13 @@ import { useSelector } from "react-redux";
 import Colors from "../../../constants/Colors";
 import SearchEngine from "../expenseFilter/SearchEngine";
 import fontScale from "../../../constants/FontScale";
+import { dataLang, selectLang } from "../../../lang/lang";
 const ExpenseSearch = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View
@@ -67,7 +71,7 @@ const ExpenseSearch = (props) => {
                   },
                 }}
               >
-                ZAMKNIJ
+                {translate("ZAMKNIJ").toUpperCase()}
               </Text>
             </TouchableOpacity>
           </View>

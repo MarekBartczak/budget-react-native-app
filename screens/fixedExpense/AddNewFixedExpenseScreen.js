@@ -23,6 +23,7 @@ import ExternalComponentWithGradient from "../../components/ExternalComponentWit
 import saveDataToTheCloud from "../../functions/cloud/saveDataToTheCloud";
 import switchComaToDot from "../../functions/switchCompaToDot";
 import numberInputValidation from "../../functions/NumberInputValidation";
+import { dataLang, selectLang } from "../../lang/lang";
 const AddNewFixedExpenseScreen = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
 
@@ -34,6 +35,10 @@ const AddNewFixedExpenseScreen = (props) => {
   const [interval, setInterval] = useState("");
   const [description, setDescription] = useState("");
   const userId = useSelector((state) => state.auth.userID);
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const intervalPath = {
     "7days": {
@@ -118,7 +123,7 @@ const AddNewFixedExpenseScreen = (props) => {
           }}
         >
           {" "}
-          Proszę wpisać poprawną kwotę{" "}
+          {translate("Proszę wpisać poprawną kwotę")}{" "}
         </Text>
       );
     }
@@ -162,7 +167,7 @@ const AddNewFixedExpenseScreen = (props) => {
       cleanState();
       props.navigation.navigate("FixedExpense");
     } else {
-      alert("dane nie zostaly uzupelnione");
+      alert(translate("proszę uzupełnić formularz"));
     }
   };
 
@@ -264,7 +269,7 @@ const AddNewFixedExpenseScreen = (props) => {
                       fontFamily: "Kanit_600SemiBold",
                     }}
                   >
-                    {"Częstotliwość opłat".toUpperCase()}
+                    {translate("Częstotliwość opłat").toUpperCase()}
                   </Text>
                   <View style={styles.intervalOptions}>
                     <View>{intervalImage("7days", intervalPath)}</View>
@@ -289,7 +294,7 @@ const AddNewFixedExpenseScreen = (props) => {
                           color: Colors[scheme].primaryThird,
                         }}
                       >
-                        ZAPISZ
+                        {translate("ZAPISZ").toUpperCase()}
                       </Text>
                     </View>
                   ) : (
@@ -314,7 +319,7 @@ const AddNewFixedExpenseScreen = (props) => {
                           color: Colors[scheme].button,
                         }}
                       >
-                        ZAPISZ
+                        {translate("ZAPISZ").toUpperCase()}
                       </Text>
                     </TouchableOpacity>
                   )}

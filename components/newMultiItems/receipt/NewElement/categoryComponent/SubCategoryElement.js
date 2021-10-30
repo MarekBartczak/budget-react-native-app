@@ -11,10 +11,14 @@ import { useSelector, useDispatch } from "react-redux";
 import * as itemActions from "../../../../../store/actions/items";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { dataLang, selectLang } from "../../../../../lang/lang";
 
 const SubCategoryElement = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const dispatch = useDispatch();
   const selectedSubCategory = useSelector((state) => state.item.category.sub);
   return (
@@ -51,7 +55,7 @@ const SubCategoryElement = (props) => {
                   }
             }
           >
-            {props.item.toUpperCase()}
+            {translate(props.item).toUpperCase()}
           </Text>
         </View>
       </View>

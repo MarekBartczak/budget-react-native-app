@@ -12,9 +12,13 @@ import Colors from "../../../constants/Colors";
 import SelectFilterType from "./modalFilter/SelectFilterType";
 import ExpenseFilter from "../expenseFilter/ExpenseFilter";
 import fontScale from "../../../constants/FontScale";
+import { dataLang, selectLang } from "../../../lang/lang";
 const ExpenseHeaderModalFilter = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   return (
     <View
       style={{
@@ -66,7 +70,7 @@ const ExpenseHeaderModalFilter = (props) => {
                 },
               }}
             >
-              ZAMKNIJ
+              {translate("ZAMKNIJ").toUpperCase()}
             </Text>
           </TouchableOpacity>
         </View>
