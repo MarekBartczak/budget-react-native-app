@@ -8,11 +8,17 @@ import IncomeDetails from "../components/income/incomeDetails/IncomeDetails";
 import IncomeList from "../components/income/IncomeList";
 import Logout from "../components/auth/logout/Logout";
 import { useSelector } from "react-redux";
+import { dataLang, selectLang } from "../lang/lang";
+
 const Stack = createStackNavigator();
 
 const StackIncomeNavigator = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
 
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
@@ -38,7 +44,7 @@ const StackIncomeNavigator = (props) => {
               color: Colors[scheme].headerTintColor,
             }}
           >
-            WPŁYWY
+            {translate("WPŁYWY").toUpperCase()}
           </Text>
         ),
         headerLeft: () => (
@@ -60,10 +66,10 @@ const StackIncomeNavigator = (props) => {
         ),
       }))}
       {stackScreen("IncomeList", IncomeList, ({ navigation }) => ({
-        headerTitle: "Lista wpływów",
+        headerTitle: translate("Lista wpływów"),
       }))}
       {stackScreen("IncomeDetails", IncomeDetails, ({ navigation }) => ({
-        headerTitle: "Szczegóły",
+        headerTitle: translate("Szczegóły"),
       }))}
     </Stack.Navigator>
   );

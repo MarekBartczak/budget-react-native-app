@@ -14,12 +14,17 @@ import SendRaportScreen from "../screens/raport/SendRaportScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Logout from "../components/auth/logout/Logout";
 import { useSelector } from "react-redux";
+import { dataLang, selectLang } from "../lang/lang";
 
 const Stack = createStackNavigator();
 
 const StackRaportNavigator = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
 
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
@@ -45,7 +50,7 @@ const StackRaportNavigator = (props) => {
               color: Colors[scheme].headerTintColor,
             }}
           >
-            RAPORT
+            {translate("RAPORT").toUpperCase()}
           </Text>
         ),
         headerLeft: () => (
@@ -80,7 +85,7 @@ const StackRaportNavigator = (props) => {
         ),
       }))}
       {stackScreen("SendRaport", SendRaportScreen, {
-        title: "Wyslij",
+        title: translate("Wyślij"),
       })}
     </Stack.Navigator>
   );

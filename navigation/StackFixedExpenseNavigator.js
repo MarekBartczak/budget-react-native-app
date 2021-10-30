@@ -10,12 +10,17 @@ import FixedExpenseDetails from "../components/fixedExpense/fixedExpenseDetails/
 import AddNewFixedExpenseScreen from "../screens/fixedExpense/AddNewFixedExpenseScreen";
 import Logout from "../components/auth/logout/Logout";
 import { useSelector } from "react-redux";
+import { dataLang, selectLang } from "../lang/lang";
 
 const Stack = createStackNavigator();
 
 const StackFixedExpenseNavigator = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
 
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
@@ -40,7 +45,7 @@ const StackFixedExpenseNavigator = (props) => {
               color: Colors[scheme].headerTintColor,
             }}
           >
-            STAŁE WYDATKI
+            {translate("STAŁE WYDATKI").toUpperCase()}
           </Text>
         ),
         headerLeft: () => (
@@ -65,21 +70,21 @@ const StackFixedExpenseNavigator = (props) => {
         "FixedExpensesList",
         FixedExpensesList,
         ({ navigation }) => ({
-          headerTitle: "Lista stałych wydatków",
+          headerTitle: translate("Lista stałych wydatków"),
         })
       )}
       {stackScreen(
         "FixedExpenseDetails",
         FixedExpenseDetails,
         ({ navigation }) => ({
-          headerTitle: "Szczegóły",
+          headerTitle: translate("Szczegóły"),
         })
       )}
       {stackScreen(
         "AddNewFixedExpenseScreen",
         AddNewFixedExpenseScreen,
         ({ navigation }) => ({
-          headerTitle: "Dodaj nowy stały wydatek",
+          headerTitle: translate("Dodaj nowy stały wydatek"),
         })
       )}
     </Stack.Navigator>

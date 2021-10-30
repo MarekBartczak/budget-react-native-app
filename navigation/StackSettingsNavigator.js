@@ -12,7 +12,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import ViewSettingsScreen from "../screens/settings/ViewSettingsScreen";
 import AccountSettingsScreen from "../screens/settings/AccountSettingsScreen";
-
+import { dataLang, selectLang } from "../lang/lang";
 import SettingsScreen from "../screens/settings/SettingsScreen";
 import Logout from "../components/auth/logout/Logout";
 
@@ -20,7 +20,11 @@ const Stack = createStackNavigator();
 
 const StackSettingsNavigator = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
 
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const stackScreen = (name, component, option) => {
     return <Stack.Screen name={name} component={component} options={option} />;
   };
@@ -46,7 +50,7 @@ const StackSettingsNavigator = (props) => {
               color: Colors[scheme].headerTintColor,
             }}
           >
-            USTAWIENIA
+            {translate("USTAWIENIA").toUpperCase()}
           </Text>
         ),
         headerLeft: () => (
@@ -80,7 +84,7 @@ const StackSettingsNavigator = (props) => {
                 color: Colors[scheme].headerTintColor,
               }}
             >
-              USTAWIENIA KONTA
+              {translate("USTAWIENIA KONTA").toUpperCase()}
             </Text>
           ),
         })
@@ -95,7 +99,7 @@ const StackSettingsNavigator = (props) => {
               color: Colors[scheme].headerTintColor,
             }}
           >
-            USTAWIENIA WIDOKU
+            {translate("USTAWIENIA WIDOKU").toUpperCase()}
           </Text>
         ),
       }))}

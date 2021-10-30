@@ -7,12 +7,17 @@ import { TouchableOpacity, useColorScheme } from "react-native";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { useSelector } from "react-redux";
+import { dataLang, selectLang } from "../lang/lang";
 
 const Stack = createStackNavigator();
 
 const StackUserNavigator = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
 
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const filter = (title, screenName) => {
     return {
       title: title,
@@ -29,7 +34,7 @@ const StackUserNavigator = (props) => {
             color: Colors[scheme].headerTintColor,
           }}
         >
-          DANE KONTA
+          {translate("informacje o koncie").toUpperCase()}
         </Text>
       ),
       headerLeft: () => (

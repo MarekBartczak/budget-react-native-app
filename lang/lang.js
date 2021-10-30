@@ -83,6 +83,13 @@ export const dataLang = [
   { en: "Edit of categories", default: "Edycja Kategorii" },
   { en: "Receipt", default: "Cały paragon" },
   { en: "Add to the receipt", default: "Dodaj do paragonu" },
+  { en: "Fixed expense list", default: "Lista stałych wydatków" },
+  { en: "Add new fixed expense", default: "Dodaj nowy stały wydatek" },
+  { en: "List of incomes", default: "Lista wpływów" },
+  { en: "send", default: "wyślij" },
+  { en: "accound settings", default: "ustawienia konta" },
+  { en: "view settings", default: "ustawienia widoku" },
+  { en: "account information", default: "informacje o koncie" },
 ];
 
 export const selectLang = (selected, langFile, defaultWord) => {
