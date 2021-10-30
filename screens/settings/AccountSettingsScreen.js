@@ -21,7 +21,12 @@ import * as configActions from "../../store/actions/config";
 import * as authActions from "../../store/actions/auth";
 import deleteAccountPermanently from "./deleteAccountPermanently";
 import updateConfigInClound from "../../functions/cloud/config/updateConfigInClound";
+import { dataLang, selectLang } from "../../lang/lang";
 const AccountSettings = (props) => {
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const userId = useSelector((state) => state.auth.userID);
   const dispatch = useDispatch();
   const scheme = useSelector((state) => state.config.scheme);
@@ -163,7 +168,7 @@ const AccountSettings = (props) => {
             autoCorrect={false}
             onChangeText={setNewEmail}
             placeholderTextColor={Colors[scheme].primaryThird}
-            placeholder="adres email"
+            placeholder="Email"
             style={{
               backgroundColor: Colors[scheme].light,
               margin: 20,
@@ -195,7 +200,7 @@ const AccountSettings = (props) => {
             }}
           >
             <Text style={{ color: Colors[scheme].button, textAlign: "center" }}>
-              ZMIEŃ
+              {translate("ZMIEŃ")}
             </Text>
           </TouchableOpacity>
         </View>
@@ -225,7 +230,7 @@ const AccountSettings = (props) => {
                   ...{ color: Colors[scheme].primarySecond },
                 }}
               >
-                Wysyłaj raport na adres
+                {translate("Wysyłaj raport na adres")}
               </Text>
               <Text
                 style={{
@@ -287,7 +292,7 @@ const AccountSettings = (props) => {
                       ...{ color: Colors[scheme].primarySecond },
                     }}
                   >
-                    Zmień domyślny adres email
+                    {translate("Zmień domyślny adres email")}
                   </Text>
                 </View>
                 <View>
@@ -324,7 +329,7 @@ const AccountSettings = (props) => {
                       ...{ color: Colors[scheme].primarySecond },
                     }}
                   >
-                    Strefa niebezpieczna
+                    {translate("Strefa niebezpieczna")}
                   </Text>
                 </View>
                 <View>
@@ -361,7 +366,7 @@ const AccountSettings = (props) => {
                         ...{ color: Colors[scheme].primarySecond },
                       }}
                     >
-                      Usuwanie konta
+                      {translate("Usuwanie konta")}
                     </Text>
                   </View>
                   <View>
@@ -398,7 +403,7 @@ const AccountSettings = (props) => {
                       padding: 4,
                     }}
                   >
-                    Aby usnąć konto przepisz poniższy email
+                    {translate("Aby usnąć konto przepisz poniższy email")}
                   </Text>
                   <Text
                     style={{
@@ -441,7 +446,7 @@ const AccountSettings = (props) => {
                         textAlign: "center",
                       }}
                     >
-                      !! USUWAM KONTO BEZPOWROTNIE !!
+                      !! {translate("USUŃ KONTO")} !!
                     </Text>
                   </View>
                 </TouchableOpacityCustom>

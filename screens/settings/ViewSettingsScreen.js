@@ -13,6 +13,7 @@ import ExternalComponent from "../../components/ExternalComponentWithGradient/Ex
 import CustomTheme from "../../components/settings/view/CustomTheme";
 import * as configActions from "../../store/actions/config";
 import updateConfigInClound from "../../functions/cloud/config/updateConfigInClound";
+import { dataLang, selectLang } from "../../lang/lang";
 const ViewSettings = (props) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.userID);
@@ -20,6 +21,10 @@ const ViewSettings = (props) => {
   const isEnabled = useSelector((state) => state.config.customScheme);
   const toggleSwitch = () => {
     dispatch(configActions.toggleCustomTheme(!isEnabled));
+  };
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
   };
 
   useEffect(() => {
@@ -49,7 +54,7 @@ const ViewSettings = (props) => {
                 },
               }}
             >
-              {"Kolory niestandardowe".toUpperCase()}
+              {translate("Kolory niestandardowe").toUpperCase()}
             </Text>
           </View>
           <View>

@@ -6,13 +6,17 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import SettingsElement from "./SettingsElement";
 import fontSclae from "../../constants/FontScale";
-
+import { dataLang, selectLang } from "../../lang/lang";
 const Settings = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   return (
     <View style={styles.container}>
       <SettingsElement
-        title={"Konto"}
+        title={translate("Konto")}
         icon={
           <MaterialCommunityIcons
             name="account-cog"
@@ -23,7 +27,7 @@ const Settings = (props) => {
         target={"AccountSettings"}
       />
       <SettingsElement
-        title={"Widok"}
+        title={translate("Widok")}
         icon={
           <MaterialCommunityIcons
             name="view-dashboard"

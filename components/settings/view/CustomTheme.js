@@ -12,10 +12,15 @@ import { useSelector, useDispatch } from "react-redux";
 import * as configActions from "../../../store/actions/config";
 import updateConfigInClound from "../../../functions/cloud/config/updateConfigInClound";
 import fontScale from "../../../constants/FontScale";
+import { dataLang, selectLang } from "../../../lang/lang";
 const CustomTheme = (props) => {
   const userId = useSelector((state) => state.auth.userID);
   const scheme = useSelector((state) => state.config.scheme);
   const dispatch = useDispatch();
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   const updateInCloud = (title) => {
     updateConfigInClound.theme.set.colorSet(title, userId);
@@ -53,7 +58,7 @@ const CustomTheme = (props) => {
             fontSize: fontScale(6),
           }}
         >
-          {name.toUpperCase()}
+          {translate(name).toUpperCase()}
         </Text>
         <View
           style={{
@@ -87,7 +92,7 @@ const CustomTheme = (props) => {
     <View style={styles.customTheme}>
       {themeElement("light_Blue", "Jasny niebieski")}
       {themeElement("light_Pink", "Jasny różowy")}
-      {themeElement("light_Gold", "Jasny  złoty")}
+      {themeElement("light_Gold", "Jasny złoty")}
       {themeElement("light", "Jasny zielony")}
       {themeElement("dark", "Ciemny")}
     </View>
