@@ -86,10 +86,13 @@ export const dataLang = [
   { en: "Fixed expense list", default: "Lista stałych wydatków" },
   { en: "Add new fixed expense", default: "Dodaj nowy stały wydatek" },
   { en: "List of incomes", default: "Lista wpływów" },
-  { en: "send", default: "wyślij" },
-  { en: "accound settings", default: "ustawienia konta" },
-  { en: "view settings", default: "ustawienia widoku" },
-  { en: "account information", default: "informacje o koncie" },
+  { en: "Send", default: "wyślij" },
+  { en: "Accound settings", default: "ustawienia konta" },
+  { en: "View settings", default: "ustawienia widoku" },
+  { en: "Account information", default: "informacje o koncie" },
+  { en: "Balance", default: "stan konta" },
+  { en: "Version", default: "wersja" },
+  { en: "Build", default: "Kompilacja" },
 ];
 
 export const selectLang = (selected, langFile, defaultWord) => {

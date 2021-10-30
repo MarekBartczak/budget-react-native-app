@@ -6,8 +6,11 @@ import { useSelector } from "react-redux";
 import * as Application from "expo-application";
 import fontScale from "../../constants/FontScale";
 import Logout from "../../components/auth/logout/Logout";
+import { dataLang, selectLang } from "../../lang/lang";
 
 const UserScreen = (props) => {
+  const lang = useSelector((state) => state.config.language);
+
   const scheme = useSelector((state) => state.config.scheme);
   const userName = useSelector((state) => state.auth.userName);
   const userEmail = useSelector((state) => state.auth.userEmail);
@@ -20,6 +23,9 @@ const UserScreen = (props) => {
   const countSum = (total, sum) => total + sum;
   const expenseCostList = expense.map((el) => el.cost);
   let expenseSum = 0;
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
 
   // const fontScale = (size) => {
   //   return (
@@ -96,7 +102,7 @@ const UserScreen = (props) => {
                 fontSize: fontScale(8),
               }}
             >
-              STAN KONTA {"  "}
+              {translate("STAN KONTA").toUpperCase()} {"  "}
             </Text>
             <Text
               style={{
@@ -151,7 +157,7 @@ const UserScreen = (props) => {
                 fontSize: fontScale(6),
               }}
             >
-              Wersja: {appinfo.expo.version}
+              {translate("Wersja")}: {appinfo.expo.version}
             </Text>
             <Text
               style={{
@@ -160,7 +166,7 @@ const UserScreen = (props) => {
                 fontSize: fontScale(6),
               }}
             >
-              Kompilacja: {appinfo.expo.ios.buildNumber}
+              {translate("Kompilacja")}: {appinfo.expo.ios.buildNumber}
             </Text>
           </View>
         </View>
