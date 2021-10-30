@@ -41,45 +41,89 @@ const AddNewFixedExpenseScreen = (props) => {
   };
 
   const intervalPath = {
-    "7days": {
-      light: require("../../assets/interval/inverval_7days_light.png"),
-      dark: require("../../assets/interval/inverval_7days_dark.png"),
-      light_Gold: require("../../assets/interval/inverval_7days_light_Gold.png"),
-      light_Pink: require("../../assets/interval/inverval_7days_light_Pink.png"),
-      light_Blue: require("../../assets/interval/inverval_7days_light_Blue.png"),
-      value: { days: 7, months: 0, years: 0 },
+    en: {
+      "7days": {
+        light: require("../../assets/interval/en/inverval_7days_light.png"),
+        dark: require("../../assets/interval/en/inverval_7days_dark.png"),
+        light_Gold: require("../../assets/interval/en/inverval_7days_light_Gold.png"),
+        light_Pink: require("../../assets/interval/en/inverval_7days_light_Pink.png"),
+        light_Blue: require("../../assets/interval/en/inverval_7days_light_Blue.png"),
+        value: { days: 7, months: 0, years: 0 },
+      },
+      "10days": {
+        light: require("../../assets/interval/en/inverval_10days_light.png"),
+        dark: require("../../assets/interval/en/inverval_10days_dark.png"),
+        light_Gold: require("../../assets/interval/en/inverval_10days_light_Gold.png"),
+        light_Pink: require("../../assets/interval/en/inverval_10days_light_Pink.png"),
+        light_Blue: require("../../assets/interval/en/inverval_10days_light_Blue.png"),
+        value: { days: 10, months: 0, years: 0 },
+      },
+      "1month": {
+        light: require("../../assets/interval/en/inverval_1month_light.png"),
+        dark: require("../../assets/interval/en/inverval_1month_dark.png"),
+        light_Gold: require("../../assets/interval/en/inverval_1month_light_Gold.png"),
+        light_Pink: require("../../assets/interval/en/inverval_1month_light_Pink.png"),
+        light_Blue: require("../../assets/interval/en/inverval_1month_light_Blue.png"),
+        value: { days: 0, months: 1, years: 0 },
+      },
+      "1quarter": {
+        light: require("../../assets/interval/en/inverval_1quarter_light.png"),
+        dark: require("../../assets/interval/en/inverval_1quarter_dark.png"),
+        light_Gold: require("../../assets/interval/en/inverval_1quarter_light_Gold.png"),
+        light_Pink: require("../../assets/interval/en/inverval_1quarter_light_Pink.png"),
+        light_Blue: require("../../assets/interval/en/inverval_1quarter_light_Blue.png"),
+        value: { days: 0, months: 3, years: 0 },
+      },
+      "1year": {
+        light: require("../../assets/interval/en/inverval_1year_light.png"),
+        dark: require("../../assets/interval/en/inverval_1year_dark.png"),
+        light_Gold: require("../../assets/interval/en/inverval_1year_light_Gold.png"),
+        light_Pink: require("../../assets/interval/en/inverval_1year_light_Pink.png"),
+        light_Blue: require("../../assets/interval/en/inverval_1year_light_Blue.png"),
+        value: { days: 0, months: 0, years: 1 },
+      },
     },
-    "10days": {
-      light: require("../../assets/interval/inverval_10days_light.png"),
-      dark: require("../../assets/interval/inverval_10days_dark.png"),
-      light_Gold: require("../../assets/interval/inverval_10days_light_Gold.png"),
-      light_Pink: require("../../assets/interval/inverval_10days_light_Pink.png"),
-      light_Blue: require("../../assets/interval/inverval_10days_light_Blue.png"),
-      value: { days: 10, months: 0, years: 0 },
-    },
-    "1month": {
-      light: require("../../assets/interval/inverval_1month_light.png"),
-      dark: require("../../assets/interval/inverval_1month_dark.png"),
-      light_Gold: require("../../assets/interval/inverval_1month_light_Gold.png"),
-      light_Pink: require("../../assets/interval/inverval_1month_light_Pink.png"),
-      light_Blue: require("../../assets/interval/inverval_1month_light_Blue.png"),
-      value: { days: 0, months: 1, years: 0 },
-    },
-    "1quarter": {
-      light: require("../../assets/interval/inverval_1quarter_light.png"),
-      dark: require("../../assets/interval/inverval_1quarter_dark.png"),
-      light_Gold: require("../../assets/interval/inverval_1quarter_light_Gold.png"),
-      light_Pink: require("../../assets/interval/inverval_1quarter_light_Pink.png"),
-      light_Blue: require("../../assets/interval/inverval_1quarter_light_Blue.png"),
-      value: { days: 0, months: 3, years: 0 },
-    },
-    "1year": {
-      light: require("../../assets/interval/inverval_1year_light.png"),
-      dark: require("../../assets/interval/inverval_1year_dark.png"),
-      light_Gold: require("../../assets/interval/inverval_1year_light_Gold.png"),
-      light_Pink: require("../../assets/interval/inverval_1year_light_Pink.png"),
-      light_Blue: require("../../assets/interval/inverval_1year_light_Blue.png"),
-      value: { days: 0, months: 0, years: 1 },
+    default: {
+      "7days": {
+        light: require("../../assets/interval/inverval_7days_light.png"),
+        dark: require("../../assets/interval/inverval_7days_dark.png"),
+        light_Gold: require("../../assets/interval/inverval_7days_light_Gold.png"),
+        light_Pink: require("../../assets/interval/inverval_7days_light_Pink.png"),
+        light_Blue: require("../../assets/interval/inverval_7days_light_Blue.png"),
+        value: { days: 7, months: 0, years: 0 },
+      },
+      "10days": {
+        light: require("../../assets/interval/inverval_10days_light.png"),
+        dark: require("../../assets/interval/inverval_10days_dark.png"),
+        light_Gold: require("../../assets/interval/inverval_10days_light_Gold.png"),
+        light_Pink: require("../../assets/interval/inverval_10days_light_Pink.png"),
+        light_Blue: require("../../assets/interval/inverval_10days_light_Blue.png"),
+        value: { days: 10, months: 0, years: 0 },
+      },
+      "1month": {
+        light: require("../../assets/interval/inverval_1month_light.png"),
+        dark: require("../../assets/interval/inverval_1month_dark.png"),
+        light_Gold: require("../../assets/interval/inverval_1month_light_Gold.png"),
+        light_Pink: require("../../assets/interval/inverval_1month_light_Pink.png"),
+        light_Blue: require("../../assets/interval/inverval_1month_light_Blue.png"),
+        value: { days: 0, months: 1, years: 0 },
+      },
+      "1quarter": {
+        light: require("../../assets/interval/inverval_1quarter_light.png"),
+        dark: require("../../assets/interval/inverval_1quarter_dark.png"),
+        light_Gold: require("../../assets/interval/inverval_1quarter_light_Gold.png"),
+        light_Pink: require("../../assets/interval/inverval_1quarter_light_Pink.png"),
+        light_Blue: require("../../assets/interval/inverval_1quarter_light_Blue.png"),
+        value: { days: 0, months: 3, years: 0 },
+      },
+      "1year": {
+        light: require("../../assets/interval/inverval_1year_light.png"),
+        dark: require("../../assets/interval/inverval_1year_dark.png"),
+        light_Gold: require("../../assets/interval/inverval_1year_light_Gold.png"),
+        light_Pink: require("../../assets/interval/inverval_1year_light_Pink.png"),
+        light_Blue: require("../../assets/interval/inverval_1year_light_Blue.png"),
+        value: { days: 0, months: 0, years: 1 },
+      },
     },
   };
   const intervalImage = (type, path) => {
@@ -272,11 +316,11 @@ const AddNewFixedExpenseScreen = (props) => {
                     {translate("Częstotliwość opłat").toUpperCase()}
                   </Text>
                   <View style={styles.intervalOptions}>
-                    <View>{intervalImage("7days", intervalPath)}</View>
-                    <View>{intervalImage("10days", intervalPath)}</View>
-                    <View>{intervalImage("1month", intervalPath)}</View>
-                    <View>{intervalImage("1quarter", intervalPath)}</View>
-                    <View>{intervalImage("1year", intervalPath)}</View>
+                    <View>{intervalImage("7days", intervalPath[lang])}</View>
+                    <View>{intervalImage("10days", intervalPath[lang])}</View>
+                    <View>{intervalImage("1month", intervalPath[lang])}</View>
+                    <View>{intervalImage("1quarter", intervalPath[lang])}</View>
+                    <View>{intervalImage("1year", intervalPath[lang])}</View>
                   </View>
                 </View>
                 <View style={{ alignItems: "center" }}>

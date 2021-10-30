@@ -16,6 +16,7 @@ import fontScale from "../constants/FontScale";
 
 const FavPlaceElement = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
+  const lang = useSelector((state) => state.config.language);
 
   const newFavPlace = () => {
     props.selectPlace();
@@ -31,23 +32,46 @@ const FavPlaceElement = (props) => {
 
   const dispatch = useDispatch();
 
-  let path = require("../assets/default_fav_element_dark.png");
-  switch (scheme) {
-    case "dark":
-      path = require("../assets/default_fav_element_dark.png");
-      break;
-    case "light":
-      path = require("../assets/default_fav_element_light.png");
-      break;
-    case "light_Blue":
-      path = require("../assets/default_fav_element_light_Blue.png");
-      break;
-    case "light_Pink":
-      path = require("../assets/default_fav_element_light_Pink.png");
-      break;
-    case "light_Gold":
-      path = require("../assets/default_fav_element_light_Gold.png");
-      break;
+  let path = "";
+  if (lang === "default") {
+    path = require("../assets/default_fav_element_dark.png");
+    switch (scheme) {
+      case "dark":
+        path = require("../assets/default_fav_element_dark.png");
+        break;
+      case "light":
+        path = require("../assets/default_fav_element_light.png");
+        break;
+      case "light_Blue":
+        path = require("../assets/default_fav_element_light_Blue.png");
+        break;
+      case "light_Pink":
+        path = require("../assets/default_fav_element_light_Pink.png");
+        break;
+      case "light_Gold":
+        path = require("../assets/default_fav_element_light_Gold.png");
+        break;
+    }
+  }
+  if (lang == "en") {
+    path = require("../assets/en/default_fav_element_dark.png");
+    switch (scheme) {
+      case "dark":
+        path = require("../assets/en/default_fav_element_dark.png");
+        break;
+      case "light":
+        path = require("../assets/en/default_fav_element_light.png");
+        break;
+      case "light_Blue":
+        path = require("../assets/en/default_fav_element_light_Blue.png");
+        break;
+      case "light_Pink":
+        path = require("../assets/en/default_fav_element_light_Pink.png");
+        break;
+      case "light_Gold":
+        path = require("../assets/en/default_fav_element_light_Gold.png");
+        break;
+    }
   }
 
   return (
