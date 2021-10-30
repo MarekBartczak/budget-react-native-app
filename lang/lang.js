@@ -145,7 +145,7 @@ export const dataLang = [
   { en: "Dark", default: "ciemny" },
   { en: "Language settings", default: "USTAWIENIA JĘZYKA" },
   { en: "Language", default: "Język" },
-  // { en: "", default: "" },
+  { en: "Logout", default: "Wyloguj" },
 ];
 
 export const selectLang = (selected, langFile, defaultWord) => {

@@ -133,6 +133,14 @@ const DrawerNavigator = (props) => {
       dispatch(configActions.getScheme(val));
     });
 
+    let languageSet = firebase
+      .database()
+      .ref(`users/${userId}/config/language/lang`);
+    languageSet.on("value", async (data) => {
+      let val = await data.val();
+      dispatch(configActions.switchLang(val));
+    });
+
     let updateDefaultEmail = firebase
       .database()
       .ref(`users/${userId}/config/account/updateDefaultEmail`);

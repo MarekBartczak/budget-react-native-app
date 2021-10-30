@@ -16,10 +16,13 @@ import * as incomeActions from "../../../store/actions/income";
 import * as expenseActions from "../../../store/actions/items";
 import { MaterialIcons } from "@expo/vector-icons";
 import fontScale from "../../../constants/FontScale";
-
+import { dataLang, selectLang } from "../../../lang/lang";
 const Logout = (props) => {
   const scheme = useSelector((state) => state.config.scheme);
-
+  const lang = useSelector((state) => state.config.language);
+  const translate = (word) => {
+    return selectLang(lang, dataLang, word);
+  };
   const dispatch = useDispatch();
 
   const clearStateAfterLogout = () => {
@@ -66,7 +69,7 @@ const Logout = (props) => {
             fontSize: fontScale(9),
           }}
         >
-          Wyloguj{" "}
+          {translate("Wyloguj")}{" "}
         </Text>
       </View>
     </TouchableOpacity>

@@ -12,7 +12,10 @@ import { dataLang, selectLang } from "../../../lang/lang";
 import * as configActions from "../../../store/actions/config";
 import { useDispatch, useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
+import updateConfigInClound from "../../../functions/cloud/config/updateConfigInClound";
 const LangScreeng = (props) => {
+  const userId = useSelector((state) => state.auth.userID);
+
   const scheme = useSelector((state) => state.config.scheme);
   const lang = useSelector((state) => state.config.language);
   const dispatch = useDispatch();
@@ -21,6 +24,7 @@ const LangScreeng = (props) => {
   };
   const setLanguage = (set) => {
     dispatch(configActions.switchLang(set));
+    updateConfigInClound.language.set.language(set, userId);
   };
 
   const languageComponent = (setLang, name) => {

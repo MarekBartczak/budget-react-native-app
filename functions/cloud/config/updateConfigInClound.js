@@ -36,6 +36,16 @@ const updateConfigInClound = {
       },
     },
   },
+  language: {
+    set: {
+      language: (lang, userId) => {
+        firebase
+          .database()
+          .ref(`users/${userId}/config/language/lang`)
+          .set(lang);
+      },
+    },
+  },
 };
 
 export default updateConfigInClound;
