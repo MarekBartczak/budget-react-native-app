@@ -138,7 +138,11 @@ const DrawerNavigator = (props) => {
       .ref(`users/${userId}/config/language/lang`);
     languageSet.on("value", async (data) => {
       let val = await data.val();
-      dispatch(configActions.switchLang(val));
+      if (val === null) {
+        dispatch(configActions.switchLang("en"));
+      } else {
+        dispatch(configActions.switchLang(val));
+      }
     });
 
     let updateDefaultEmail = firebase
